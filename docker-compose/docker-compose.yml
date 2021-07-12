@@ -1,0 +1,6 @@
+version: "3.7"
+services:
+  gridcapa-app:
+    image: farao/gridcapa-app:latest
+    ports:
+      - 80:80
