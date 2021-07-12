@@ -1,0 +1,49 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: gridcapa-app
+  labels:
+    app: gridcapa
+    component: gridcapa-app
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: gridcapa-app
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: gridcapa-app
+    spec:
+      containers:
+        - name: gridcapa-app
+          image: docker.io/farao/gridcapa-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              memory: "128Mi"
+            limits:
+              memory: "128Mi"
+      restartPolicy: Always
