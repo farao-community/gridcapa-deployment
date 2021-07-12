@@ -1,6 +1,18 @@
 version: "3.7"
 services:
-  gridcapa-app:
-    image: farao/gridcapa-app:latest
+  nginx-proxy:
+    image: nginx:alpine
     ports:
       - 80:80
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - gridcapa
+
+  gridcapa-app:
+    image: farao/gridcapa-app:latest
+    networks:
+      - gridcapa
+
+networks:
+  gridcapa:
