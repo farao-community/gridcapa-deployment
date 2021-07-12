@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gridcapa
+  labels:
+    app: gridcapa
+    component: gridcapa
+spec:
+  rules:
+    - host: gridcapa.farao-community.com
+      http:
+        paths:
+          - path: /cse/d2cc
+            pathType: Prefix
+            backend:
+              service:
+                name: gridcapa-app
+                port:
+                  number: 80
