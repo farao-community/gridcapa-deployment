@@ -18,9 +18,6 @@ spec:
       http:
         paths:
           - path: /cse/d2cc(/|$)(.*)
-            pathType: Prefix
             backend:
-              service:
-                name: gridcapa-app
-                port:
-                  number: 80
+              serviceName: gridcapa-app
+              servicePort: 80
