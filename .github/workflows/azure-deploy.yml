@@ -3,6 +3,9 @@ name: Azure deployment
 on:
   push:
   workflow_dispatch:
+  repository_dispatch:
+    types:
+      - gridcapa_app_updated
 
 jobs:
   deploy-on-azure:
@@ -28,3 +31,9 @@ jobs:
 
       - name: Delete key
         run: rm key
+
+      - name: Broadcast update event
+        uses: farao-community/broadcast-event@master
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          event-type: gridcapa_deployed_on_azure
