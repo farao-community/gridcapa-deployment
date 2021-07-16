@@ -14,5 +14,29 @@ services:
     networks:
       - gridcapa
 
+  ftp-server:
+    image: delfer/alpine-ftp-server
+    environment:
+      USERS: gridcapa|gridcapa|/data/gridcapa
+    volumes:
+      - ftp-data:/data/gridcapa
+    networks:
+      - gridcapa
+
+  filebrowser:
+    image: filebrowser/filebrowser
+    restart: always
+    volumes:
+      - ftp-data:/srv
+    environment:
+      FB_BASEURL: /utils/filebrowser
+      FB_USERNAME: gridcapa
+      FB_PASSWORD: $$2y$$10$$aWh9euDInAg94hlz3eLRteghF5ASR8LCq6K2EkGwxi4a9oxSyhnP.
+    networks:
+      - gridcapa
+
 networks:
   gridcapa:
+
+volumes:
+  ftp-data:

@@ -1,6 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+bases:
+  - ../../base
+
 resources:
-  - gridcapa-app-deployment.yaml
-  - gridcapa-app-service.yaml
+  - gridcapa-ingress.yaml
