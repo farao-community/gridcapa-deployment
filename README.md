@@ -19,8 +19,19 @@ cd docker-compose
 docker-compose up -d
 ```
 
-Then open your favorite browser on page http://localhost/cse/d2cc.
+Multiple environment are available:
+- Main GridCapa UI on page http://localhost/cse/d2cc.
+- FTP server file browser on page http://localhost/utils/filebrowser. Default credentials are gridcapa/gridcapa.
 
 ## Deploying using Kubernetes
 
 Kubernetes deployment is still under development. This documentation is still to be provided.
+
+### Prerequisites
+
+If deploying integrated dev version including FTP server and browser, some secrets must be created on Kubernetes cluster.
+Encrypted password can be obtained by default bcrypt algorithm. 
+
+```bash
+kubectl create secret generic gridcapa-ftp-credentials --from-literal='ftp-user=<FTP_USER>' --from-literal='ftp-password=<FTP_PASSWORD>' --from-literal='ftp-encrypted-password=<FTP_ENCRYPTED_PASSWORD>'
+```
