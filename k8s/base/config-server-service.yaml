@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-server
+  labels:
+    app: gridcapa
+    component: config-server
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: config-server
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
