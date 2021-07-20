@@ -22,12 +22,19 @@ docker-compose up -d
 Multiple environment are available:
 - Main GridCapa UI on page http://localhost/cse/d2cc.
 - FTP server file browser on page http://localhost/utils/filebrowser. Default credentials are gridcapa/gridcapa.
+- RabbitMQ management UI on page http://localhost/utils/rabbitmq. Default credentials are gridcapa/gridcapa.
 
 ## Deploying using Kubernetes
 
 Kubernetes deployment is still under development. This documentation is still to be provided.
 
 ### Prerequisites
+
+Some secrets are needed on the cluster as deployment prerequisites.
+
+```bash
+kubectl create secret generic gridcapa-rabbitmq-credentials --from-literal='rabbitmq-user=<RABBITMQ_USER>' --from-literal='rabbitmq-password=<RABBITMQ_PASSWORD>' --from-literal='rabbitmq-erlang-cookie=<RABBITMQ_ERLANG_COOKIE>'
+```
 
 If deploying integrated dev version including FTP server and browser, some secrets must be created on Kubernetes cluster.
 Encrypted password can be obtained by default bcrypt algorithm. 
