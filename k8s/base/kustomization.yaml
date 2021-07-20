@@ -4,3 +4,6 @@ kind: Kustomization
 resources:
   - gridcapa-app-deployment.yaml
   - gridcapa-app-service.yaml
+  - rabbitmq-service.yaml
+  - rabbitmq-statefulset.yaml
+  - rabbitmq-storage-class.yaml

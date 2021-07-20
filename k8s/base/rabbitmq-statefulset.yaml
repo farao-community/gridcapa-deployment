@@ -1,0 +1,92 @@
+  apiVersion: apps/v1
+  kind: StatefulSet
+  metadata:
+    name: gridcapa-rabbitmq
+    labels:
+      app: gridcapa
+      component: gridcapa-rabbitmq
+  spec:
+    selector:
+      matchLabels:
+        app: gridcapa
+        component: gridcapa-rabbitmq
+    # headless service that gives network identity to the RMQ nodes, and enables them to cluster
+    serviceName: gridcapa-rabbitmq # serviceName is the name of the service that governs this StatefulSet. This service must exist before the StatefulSet, and is responsible for the network identity of the set. Pods get DNS/hostnames that follow the pattern: pod-specific-string.serviceName.default.svc.cluster.local where "pod-specific-string" is managed by the StatefulSet controller.
+    replicas: 2
+    volumeClaimTemplates:
+      - metadata:
+          name: gridcapa-rabbitmq-data
+        spec:
+          storageClassName: gridcapa-rabbitmq-storage-class
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: "3Gi"
+    template:
+      metadata:
+        name: gridcapa-rabbitmq
+        labels:
+          app: gridcapa
+          component: gridcapa-rabbitmq
+      spec:
+        containers:
+          - name: rabbitmq
+            image: docker.io/rabbitmq:management
+            volumeMounts:
+              - name: gridcapa-rabbitmq-data
+                mountPath: "/var/lib/rabbitmq/mnesia"
+            env:
+              - name: RABBITMQ_DEFAULT_PASS
+                valueFrom:
+                  secretKeyRef:
+                    name: gridcapa-rabbitmq-credentials
+                    key: rabbitmq-password
+              - name: RABBITMQ_DEFAULT_USER
+                valueFrom:
+                  secretKeyRef:
+                    name: gridcapa-rabbitmq-credentials
+                    key: rabbitmq-user
+              - name: RABBITMQ_ERLANG_COOKIE
+                valueFrom:
+                  secretKeyRef:
+                    name: rabbitmq-secrets
+                    key: rabbitmq-erlang-cookie
+            ports:
+              - name: amqp
+                containerPort: 5672
+                protocol: TCP
+              - name: management
+                containerPort: 15672
+                protocol: TCP
+              - name: prometheus
+                containerPort: 15692
+                protocol: TCP
+              - name: epmd
+                containerPort: 4369
+                protocol: TCP
+            livenessProbe:
+              exec:
+                # This is just an example. There is no "one true health check" but rather
+                # several rabbitmq-diagnostics commands that can be combined to form increasingly comprehensive
+                # and intrusive health checks.
+                # Learn more at https://www.rabbitmq.com/monitoring.html#health-checks.
+                #
+                # Stage 2 check:
+                command: ["rabbitmq-diagnostics", "status"]
+              initialDelaySeconds: 60
+              # See https://www.rabbitmq.com/monitoring.html for monitoring frequency recommendations.
+              periodSeconds: 60
+              timeoutSeconds: 15
+            readinessProbe: # probe to know when RMQ is ready to accept traffic
+              exec:
+                # This is just an example. There is no "one true health check" but rather
+                # several rabbitmq-diagnostics commands that can be combined to form increasingly comprehensive
+                # and intrusive health checks.
+                # Learn more at https://www.rabbitmq.com/monitoring.html#health-checks.
+                #
+                # Stage 1 check:
+                command: ["rabbitmq-diagnostics", "ping"]
+              initialDelaySeconds: 20
+              periodSeconds: 60
+              timeoutSeconds: 10

@@ -25,3 +25,7 @@ spec:
             backend:
               serviceName: ftp-filebrowser
               servicePort: 80
+          - path: /utils/rabbitmq(/|$)(.*)
+            backend:
+              serviceName: gridcapa-rabbitmq
+              servicePort: 15672
