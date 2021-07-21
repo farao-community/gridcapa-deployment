@@ -1,19 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cassandra
+  name: cassandra-svc
   labels:
     app: gridcapa
-    component: cassandra
+    component: cassandra-svc
 spec:
-  clusterIP: None
+  type: ClusterIP
   ports:
-    - port: 7000
-      name: intra-node-communication
-    - port: 7001
-      name: tls-intra-node-communication
     - port: 9042
-      name: cql
   selector:
     app: gridcapa
     component: cassandra

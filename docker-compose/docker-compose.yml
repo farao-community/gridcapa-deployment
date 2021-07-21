@@ -40,9 +40,10 @@ services:
   cassandra:
     image: bitnami/cassandra
     environment:
+      MAX_HEAP_SIZE: 512M
+      HEAP_NEWSIZE: 512M
       CASSANDRA_AUTHENTICATOR: AllowAllAuthenticator
       CASSANDRA_AUTHORIZER: AllowAllAuthorizer
-      JVM_OPTS: "-Xms1024M -Xmx1024M"
     volumes:
       - cassandra-data:/bitnami
       - ./config/gridsuite-cassandra-schema.cql:/docker-entrypoint-initdb.d/schema.cql

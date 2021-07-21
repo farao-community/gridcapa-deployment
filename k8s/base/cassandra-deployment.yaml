@@ -1,13 +1,11 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: cassandra
   labels:
     app: gridcapa
     component: cassandra
 spec:
-  serviceName: cassandra-peers
-  replicas: 2
   selector:
     matchLabels:
       app: gridcapa
@@ -18,31 +16,20 @@ spec:
         app: gridcapa
         component: cassandra
     spec:
-      terminationGracePeriodSeconds: 1800
       containers:
         - name: cassandra
           image: docker.io/bitnami/cassandra
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 7000
-              name: intra-node
-            - containerPort: 7001
-              name: tls-intra-node
-            - containerPort: 7199
-              name: jmx
             - containerPort: 9042
               name: cql
           resources:
             limits:
               cpu: "500m"
-              memory: 2Gi
+              memory: 1Gi
             requests:
               cpu: "500m"
-              memory: 2Gi
-          securityContext:
-            capabilities:
-              add:
-                - IPC_LOCK
+              memory: 1Gi
           lifecycle:
             preStop:
               exec:
@@ -51,20 +38,14 @@ spec:
                   - -c
                   - nodetool drain
           env:
-            - name: JVM_OPTS
-              value: "-Xms1024M -Xmx1024M"
-            - name: CASSANDRA_SEEDS
-              value: "cassandra-0.cassandra.default.svc.cluster.local"
-            - name: CASSANDRA_CLUSTER_NAME
-              value: "GridsuiteCassandra"
+            - name: MAX_HEAP_SIZE
+              value: 512M
+            - name: HEAP_NEWSIZE
+              value: 512M
             - name: CASSANDRA_AUTHENTICATOR
               value: "AllowAllAuthenticator"
             - name: CASSANDRA_AUTHORIZER
               value: "AllowAllAuthorizer"
-            - name: POD_IP
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.podIP
           volumeMounts:
             - name: cassandra-data
               mountPath: /bitnami
@@ -76,15 +57,6 @@ spec:
         - name: cassandra-load-schema
           configMap:
             name: cassandra-schema
-  # These are converted to volume claims by the controller
-  # and mounted at the paths mentioned above.
-  # do not use these in production until ssd GCEPersistentDisk or other ssd pd
-  volumeClaimTemplates:
-    - metadata:
-        name: cassandra-data
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
-        storageClassName: cassandra-storage-class
-        resources:
-          requests:
-            storage: 1Gi
+        - name: cassandra-data
+          persistentVolumeClaim:
+            claimName: cassandra-storage

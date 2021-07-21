@@ -3,8 +3,9 @@ kind: Kustomization
 
 resources:
   - cassandra-configmap.yaml
+  - cassandra-deployment.yaml
+  - cassandra-pv-claim.yaml
   - cassandra-service.yaml
-  - cassandra-statefulset.yaml
   - cassandra-storage-class.yaml
   - config-notification-server-configmap.yaml
   - config-notification-server-deployment.yaml

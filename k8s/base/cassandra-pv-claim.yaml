@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cassandra-storage
+  labels:
+    app: gridcapa
+    component: cassandra-storage
+spec:
+  storageClassName: cassandra-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

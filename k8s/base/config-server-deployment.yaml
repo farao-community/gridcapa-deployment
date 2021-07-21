@@ -22,6 +22,17 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
+          env:
+            - name: GRIDCAPA_RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: GRIDCAPA_RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
           volumeMounts:
             - mountPath: /config
               name: config-server-configmap-volume

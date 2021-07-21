@@ -16,6 +16,5 @@ data:
         username: ${GRIDCAPA_RABBITMQ_USER}
         password: ${GRIDCAPA_RABBITMQ_PASSWORD}
   cassandra.properties: |-
-    cassandra.contact-points=cassandra.default.svc.cluster.local
+    cassandra.contact-points=cassandra-svc
     cassandra.port=9042
-    cassandra.datacenter=dc1
