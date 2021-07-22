@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: gridcapa
+    component: apps-metadata-server
+  name: apps-metadata-server
+spec:
+  type: ClusterIP
+  ports:
+    - name: apps-metadata-server
+      port: 80
+      targetPort: 8080
+  selector:
+    app: gridcapa
+    component: apps-metadata-server

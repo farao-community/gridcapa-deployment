@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apps-metadata-server
+  labels:
+    app: gridcapa
+    component: apps-metadata-server
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: apps-metadata-server
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: apps-metadata-server
+    spec:
+      containers:
+        - name: apps-metadata-server
+          image: bitnami/apache:2.4
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /opt/bitnami/apache/htdocs/
+              name: apps-metadata-server-configmap-volume
+            - mountPath: /opt/bitnami/apache/var/run/
+              name: run-emptydir
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1001
+            readOnlyRootFilesystem: true
+          resources:
+            requests:
+              memory: "128Mi"
+            limits:
+              memory: "128Mi"
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
+      restartPolicy: Always
+      volumes:
+        - name: apps-metadata-server-configmap-volume
+          configMap:
+            name: apps-metadata-server-configmap
+        - name: run-emptydir
+          emptyDir: {}

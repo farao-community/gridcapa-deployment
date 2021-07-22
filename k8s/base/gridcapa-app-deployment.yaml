@@ -24,6 +24,10 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
+          volumeMounts:
+            - mountPath: /usr/local/apache2/htdocs/gridcapa/env.json
+              subPath: env.json
+              name: gridcapa-app-env-configmap-volume
           livenessProbe:
             tcpSocket:
               port: 80
@@ -47,3 +51,7 @@ spec:
             limits:
               memory: "128Mi"
       restartPolicy: Always
+      volumes:
+        - name: gridcapa-app-env-configmap-volume
+          configMap:
+            name: gridcapa-app-env-configmap

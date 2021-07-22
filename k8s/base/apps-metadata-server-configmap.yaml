@@ -1,0 +1,14 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: apps-metadata-server-configmap
+  labels:
+    app: gridcapa
+    component: apps-metadata-server-configmap
+data:
+  apps-metadata.json: |-
+    [{
+      "name" : "Capa CSE D2CC",
+      "url"  : "/cse/d2cc",
+      "appColor" : "#F56908"
+    }]

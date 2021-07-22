@@ -5,4 +5,5 @@ bases:
   - ../../base
 
 resources:
+  - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
