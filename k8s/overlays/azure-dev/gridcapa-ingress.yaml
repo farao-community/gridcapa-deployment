@@ -42,3 +42,7 @@ spec:
             backend:
               serviceName: gridcapa-rabbitmq
               servicePort: 15672
+          - path: /apps-metadata(/|$)(.*)
+            backend:
+              serviceName: apps-metadata-server
+              servicePort: 80

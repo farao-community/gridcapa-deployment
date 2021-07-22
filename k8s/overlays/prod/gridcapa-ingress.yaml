@@ -30,3 +30,7 @@ spec:
             backend:
               serviceName: config-notification-server
               servicePort: 80
+          - path: /apps-metadata(/|$)(.*)
+            backend:
+              serviceName: apps-metadata-server
+              servicePort: 80
