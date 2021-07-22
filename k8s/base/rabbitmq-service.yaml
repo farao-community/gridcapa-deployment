@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gridcapa-rabbitmq
+  labels:
+    app: gridcapa
+    component: gridcapa-rabbitmq
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 15672
+    - name: prometheus
+      protocol: TCP
+      port: 15692
+    - name: amqp
+      protocol: TCP
+      port: 5672
+  selector:
+    app: gridcapa
+    component: gridcapa-rabbitmq

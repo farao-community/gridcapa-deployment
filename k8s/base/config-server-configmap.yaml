@@ -1,0 +1,20 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: config-server-configmap
+  labels:
+    app: gridcapa
+    component: config-server-configmap
+data:
+  application.yml: |-
+    server:
+      port: 8080
+
+    spring:
+      rabbitmq:
+        addresses: gridcapa-rabbitmq:5672
+        username: ${GRIDCAPA_RABBITMQ_USER}
+        password: ${GRIDCAPA_RABBITMQ_PASSWORD}
+  cassandra.properties: |-
+    cassandra.contact-points=cassandra-svc
+    cassandra.port=9042

@@ -6,10 +6,15 @@ metadata:
     app: gridcapa
     component: gridcapa
   annotations:
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^/cse/d2cc$ /cse/d2cc/ permanent;
       proxy_set_header X-Forwarded-Prefix /cse/d2cc/;
+      proxy_set_header userId "johnDoe";
     nginx.ingress.kubernetes.io/server-snippet: |
       merge_slashes off;
 spec:
@@ -21,7 +26,19 @@ spec:
             backend:
               serviceName: gridcapa-app
               servicePort: 80
+          - path: /cse/d2cc/config(/|$)(.*)
+            backend:
+              serviceName: config-server
+              servicePort: 80
+          - path: /cse/d2cc/config-notification(/|$)(.*)
+            backend:
+              serviceName: config-notification-server
+              servicePort: 80
           - path: /utils/filebrowser(/|$)(.*)
             backend:
               serviceName: ftp-filebrowser
               servicePort: 80
+          - path: /utils/rabbitmq(/|$)(.*)
+            backend:
+              serviceName: gridcapa-rabbitmq
+              servicePort: 15672

@@ -14,6 +14,62 @@ services:
     networks:
       - gridcapa
 
+  config-server:
+    image: gridsuite/config-server:latest
+    volumes:
+      - ./config/gridsuite-config-server-application.yml:/config/application.yml:Z
+      - ./config/gridsuite-cassandra.properties:/config/cassandra.properties:Z
+    command: --spring.config.additional-location=/config/
+    networks:
+      - gridcapa
+    depends_on:
+      - cassandra
+    restart: on-failure
+
+  config-notification-server:
+    image: gridsuite/config-notification-server:latest
+    volumes:
+      - ./config/gridsuite-config-notification-server-application.yml:/config/application.yml:Z
+    command: --server.port=80 --spring.config.additional-location=/config/
+    networks:
+      - gridcapa
+    depends_on:
+      - rabbitmq
+    restart: on-failure
+
+  cassandra:
+    image: bitnami/cassandra
+    environment:
+      MAX_HEAP_SIZE: 512M
+      HEAP_NEWSIZE: 512M
+      CASSANDRA_AUTHENTICATOR: AllowAllAuthenticator
+      CASSANDRA_AUTHORIZER: AllowAllAuthorizer
+    volumes:
+      - cassandra-data:/bitnami
+      - ./config/gridsuite-cassandra-schema.cql:/docker-entrypoint-initdb.d/schema.cql
+    networks:
+      - gridcapa
+    healthcheck:
+      test: ["CMD-SHELL", "[ $$(nodetool statusgossip) = running]"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  rabbitmq:
+    image: rabbitmq:management
+    environment:
+      RABBITMQ_DEFAULT_USER: gridcapa
+      RABBITMQ_DEFAULT_PASS: gridcapa
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq/mnesia
+    networks:
+      - gridcapa
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
   ftp-server:
     image: delfer/alpine-ftp-server
     environment:
@@ -39,4 +95,6 @@ networks:
   gridcapa:
 
 volumes:
+  cassandra-data:
   ftp-data:
+  rabbitmq-data:
