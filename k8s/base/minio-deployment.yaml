@@ -1,0 +1,73 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: gridcapa-minio
+  labels:
+    app: gridcapa
+    component: gridcapa-minio
+
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: gridcapa-minio
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: gridcapa-minio
+    spec:
+      containers:
+        - name: gridcapa-minio
+          image: docker.io/bitnami/minio:2021.6.17
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+          ports:
+            - containerPort: 9000
+          env:
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+            - name: MINIO_FORCE_NEW_KEYS
+              value: yes
+            - name: MINIO_DEFAULT_BUCKETS
+              value: gridcapa
+          volumeMounts:
+            - name: gridcapa-minio-data
+              mountPath: /data
+          livenessProbe:
+            tcpSocket:
+              port: 9000
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /minio/health/live
+              port: 9000
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              memory: "350Mi"
+            limits:
+              memory: "350Mi"
+      restartPolicy: Always
+      volumes:
+        - name: gridcapa-minio-data
+          persistentVolumeClaim:
+            claimName: gridcapa-minio-storage

@@ -46,3 +46,7 @@ spec:
             backend:
               serviceName: apps-metadata-server
               servicePort: 80
+          - path: /()(minio.*)
+            backend:
+              serviceName: gridcapa-minio
+              servicePort: 9000

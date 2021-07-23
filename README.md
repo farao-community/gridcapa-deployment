@@ -23,6 +23,7 @@ Multiple environment are available:
 - Main GridCapa UI on page http://localhost/cse/d2cc.
 - FTP server file browser on page http://localhost/utils/filebrowser. Default credentials are gridcapa/gridcapa.
 - RabbitMQ management UI on page http://localhost/utils/rabbitmq. Default credentials are gridcapa/gridcapa.
+- MinIO browser on page http://localhost/minio. Default credentials are gridcapa/gridcapa.
 
 ## Deploying using Kubernetes
 
@@ -36,6 +37,7 @@ Some secrets are needed on the cluster as deployment prerequisites.
 kubectl create secret generic gridcapa-rabbitmq-credentials --from-literal='rabbitmq-user=<RABBITMQ_USER>' --from-literal='rabbitmq-password=<RABBITMQ_PASSWORD>'
 kubectl create secret generic admin-rabbitmq-credentials --from-literal='rabbitmq-user=<RABBITMQ_USER>' --from-literal='rabbitmq-password=<RABBITMQ_PASSWORD>'
 kubectl create secret generic rabbitmq-secrets --from-literal='rabbitmq-erlang-cookie=<RABBITMQ_ERLANG_COOKIE>'
+kubectl create secret generic gridcapa-minio-credentials --from-literal='minio-access-key=<MINIO_ACCESS_KEY>' --from-literal='minio-secret-key=<MINIO_SECRET_KEY>'
 ```
 
 If deploying integrated dev version including FTP server and browser, some secrets must be created on Kubernetes cluster.

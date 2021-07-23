@@ -13,6 +13,7 @@ services:
       - gridcapa-app
       - rabbitmq
       - filebrowser
+      - minio
     networks:
       - gridcapa
 
@@ -100,10 +101,23 @@ services:
     networks:
       - gridcapa
 
+  minio:
+    image: bitnami/minio
+    restart: always
+    volumes:
+      - minio-data:/data
+    environment:
+      MINIO_ACCESS_KEY: gridcapa
+      MINIO_SECRET_KEY: gridcapa
+      MINIO_DEFAULT_BUCKETS: gridcapa
+    networks:
+      - gridcapa
+
 networks:
   gridcapa:
 
 volumes:
   cassandra-data:
   ftp-data:
+  minio-data:
   rabbitmq-data:
