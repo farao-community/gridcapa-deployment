@@ -6,6 +6,7 @@ on:
   repository_dispatch:
     types:
       - gridcapa_app_updated
+      - gridcapa_cgm_data_bridge_updated
 
 jobs:
   deploy-on-azure:

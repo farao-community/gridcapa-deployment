@@ -86,6 +86,10 @@ services:
       USERS: gridcapa|gridcapa|/data/gridcapa
     volumes:
       - ftp-data:/data/gridcapa
+    ports:
+      - "21:21"
+      - "20:20"
+      - "21000-21010:21000-21010"
     networks:
       - gridcapa
 
@@ -110,6 +114,15 @@ services:
       MINIO_ACCESS_KEY: gridcapa
       MINIO_SECRET_KEY: gridcapa
       MINIO_DEFAULT_BUCKETS: gridcapa
+    ports:
+      - "9000:9000"
+    networks:
+      - gridcapa
+
+  gridcapa-cgm-data-bridge:
+    image: farao/gridcapa-cgm-data-bridge:latest
+    volumes:
+      - ./config/gridcapa-cgm-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 

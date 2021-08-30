@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gridcapa-cgm-data-bridge
+  labels:
+    app: gridcapa
+    component: gridcapa-cgm-data-bridge
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: gridcapa-cgm-data-bridge
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
