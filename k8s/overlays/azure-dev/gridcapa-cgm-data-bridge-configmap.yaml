@@ -1,0 +1,25 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: gridcapa-cgm-data-bridge-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-cgm-data-bridge-configmap
+data:
+  application.yml: |-
+    cgm-data-bridge:
+      sources:
+        ftp:
+          host: ftp-server
+          port: 21
+          username: ${GRIDCAPA_FTP_USER}
+          password: ${GRIDCAPA_FTP_PASSWORD}
+          base-directory: /data/gridcapa/cse/d2cc/cgms
+          polling-delay-in-ms: 5000
+      sinks:
+        minio:
+          url: http://gridcapa-minio:9000
+          access-key: ${GRIDCAPA_MINIO_USER}
+          secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+          bucket: gridcapa
+          base-directory: /CGMs

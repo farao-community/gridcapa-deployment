@@ -1,0 +1,16 @@
+cgm-data-bridge:
+  sources:
+    ftp:
+      host: ftp-server
+      port: 21
+      username: gridcapa
+      password: gridcapa
+      base-directory: /data/gridcapa/cse/d2cc/cgms
+      polling-delay-in-ms: 5000
+  sinks:
+    minio:
+      url: http://minio:9000
+      access-key: gridcapa
+      secret-key: gridcapa
+      bucket: gridcapa
+      base-directory: /CGMs
