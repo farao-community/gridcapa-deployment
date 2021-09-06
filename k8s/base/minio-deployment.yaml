@@ -37,10 +37,34 @@ spec:
                 secretKeyRef:
                   name: gridcapa-minio-credentials
                   key: minio-secret-key
+            - name: RABBITMQ_DEFAULT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: RABBITMQ_DEFAULT_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
             - name: MINIO_FORCE_NEW_KEYS
               value: yes
             - name: MINIO_DEFAULT_BUCKETS
               value: gridcapa
+            - name: MINIO_NOTIFY_AMQP_ENABLE
+              value: on
+            - name: MINIO_NOTIFY_AMQP_URL
+              value: amqp://$(RABBITMQ_DEFAULT_USER):$(RABBITMQ_DEFAULT_PASS)@gridcapa-rabbitmq:5672
+            - name: MINIO_NOTIFY_AMQP_EXCHANGE
+              value: gridcapa.minio.events
+            - name: MINIO_NOTIFY_AMQP_EXCHANGE_TYPE
+              value: fanout
+            - name: MINIO_NOTIFY_AMQP_DELIVERY_MODE
+              value: "2"
+            - name: MINIO_NOTIFY_AMQP_AUTO_DELETED
+              value: off
+            - name: MINIO_NOTIFY_AMQP_DURABLE
+              value: on
           volumeMounts:
             - name: gridcapa-minio-data
               mountPath: /data
