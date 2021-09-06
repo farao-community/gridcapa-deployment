@@ -70,6 +70,9 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: gridcapa
       RABBITMQ_DEFAULT_PASS: gridcapa
+    ports:
+      - "5672:5672"
+      - "15672:15672"
     volumes:
       - rabbitmq-data:/var/lib/rabbitmq/mnesia
     networks:
@@ -113,6 +116,13 @@ services:
       MINIO_ACCESS_KEY: gridcapa
       MINIO_SECRET_KEY: gridcapa
       MINIO_DEFAULT_BUCKETS: gridcapa
+      MINIO_NOTIFY_AMQP_ENABLE: "on"
+      MINIO_NOTIFY_AMQP_URL: amqp://gridcapa:gridcapa@rabbitmq:5672
+      MINIO_NOTIFY_AMQP_EXCHANGE: gridcapa.minio.events
+      MINIO_NOTIFY_AMQP_EXCHANGE_TYPE: fanout
+      MINIO_NOTIFY_AMQP_DELIVERY_MODE: 2
+      MINIO_NOTIFY_AMQP_AUTO_DELETED: "off"
+      MINIO_NOTIFY_AMQP_DURABLE: "on"
     ports:
       - "9000:9000"
     networks:

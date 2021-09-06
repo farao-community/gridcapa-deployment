@@ -1,4 +1,5 @@
 cgm-data-bridge:
+  target-process: cse-d2cc
   sources:
     ftp:
       host: ftp-server
