@@ -60,7 +60,7 @@ spec:
             - name: MINIO_NOTIFY_AMQP_EXCHANGE_TYPE
               value: fanout
             - name: MINIO_NOTIFY_AMQP_DELIVERY_MODE
-              value: 2
+              value: "2"
             - name: MINIO_NOTIFY_AMQP_AUTO_DELETED
               value: off
             - name: MINIO_NOTIFY_AMQP_DURABLE
