@@ -1,9 +1,9 @@
 server:
-  port: 80
+  port: 8080
 
 spring:
   rabbitmq:
     addresses: rabbitmq
-    port:
+    port: 5672
     username: gridcapa
     password: gridcapa

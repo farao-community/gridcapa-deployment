@@ -40,7 +40,7 @@ services:
     image: gridsuite/config-notification-server:latest
     volumes:
       - ./config/gridsuite-config-notification-server-application.yml:/config/application.yml:Z
-    command: --server.port=80 --spring.config.additional-location=/config/
+    command: --spring.config.additional-location=/config/
     networks:
       - gridcapa
     depends_on:
@@ -108,7 +108,7 @@ services:
       - gridcapa
 
   minio:
-    image: bitnami/minio
+    image: bitnami/minio:2021.6.17
     restart: always
     volumes:
       - minio-data:/data
