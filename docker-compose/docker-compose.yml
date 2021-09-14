@@ -26,6 +26,7 @@ services:
 
   config-server:
     image: gridsuite/config-server:latest
+    restart: always
     volumes:
       - ./config/gridsuite-config-server-application.yml:/config/application.yml:Z
       - ./config/gridsuite-cassandra.properties:/config/cassandra.properties:Z
@@ -34,10 +35,10 @@ services:
       - gridcapa
     depends_on:
       - cassandra
-    restart: on-failure
 
   config-notification-server:
     image: gridsuite/config-notification-server:latest
+    restart: always
     volumes:
       - ./config/gridsuite-config-notification-server-application.yml:/config/application.yml:Z
     command: --spring.config.additional-location=/config/
@@ -45,7 +46,6 @@ services:
       - gridcapa
     depends_on:
       - rabbitmq
-    restart: on-failure
 
   cassandra:
     image: bitnami/cassandra
@@ -85,6 +85,7 @@ services:
 
   ftp-server:
     image: delfer/alpine-ftp-server
+    restart: always
     environment:
       USERS: gridcapa|gridcapa|/data/gridcapa
     volumes:
