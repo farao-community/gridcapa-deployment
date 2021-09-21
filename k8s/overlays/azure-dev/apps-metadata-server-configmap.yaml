@@ -11,4 +11,9 @@ data:
       "name" : "Capa CSE D2CC",
       "url"  : "/cse/d2cc",
       "appColor" : "#F56908"
+    },
+    {
+      "name" : "Capa Valid CORE",
+      "url"  : "/core/valid",
+      "appColor" : "#F56908"
     }]
