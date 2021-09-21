@@ -2,7 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - apps-metadata-server-configmap.yaml
   - apps-metadata-server-deployment.yaml
   - apps-metadata-server-service.yaml
   - cassandra-configmap.yaml
@@ -16,10 +15,6 @@ resources:
   - config-server-configmap.yaml
   - config-server-deployment.yaml
   - config-server-service.yaml
-  - gridcapa-app-deployment.yaml
-  - gridcapa-app-service.yaml
-  - gridcapa-cgm-data-bridge-deployment.yaml
-  - gridcapa-cgm-data-bridge-service.yaml
   - minio-deployment.yaml
   - minio-pv-claim.yaml
   - minio-service.yaml

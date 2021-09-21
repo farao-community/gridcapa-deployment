@@ -2,9 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 bases:
-  - ../../base
+  - ../../cse/d2cc
 
 resources:
+  - apps-metadata-server-configmap.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-cgm-data-bridge-configmap.yaml
   - gridcapa-ingress.yaml
