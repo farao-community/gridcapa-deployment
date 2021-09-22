@@ -13,6 +13,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^/cse/d2cc$ /cse/d2cc/ permanent;
+      rewrite ^/core/valid$ /core/valid/ permanent;
       proxy_set_header X-Forwarded-Prefix /cse/d2cc/;
       proxy_set_header userId "johnDoe";
     nginx.ingress.kubernetes.io/server-snippet: |
@@ -25,6 +26,18 @@ spec:
           - path: /cse/d2cc(/|$)(.*)
             backend:
               serviceName: gridcapa-app
+              servicePort: 80
+          - path: /core/valid(/|$)(.*)
+            backend:
+              serviceName: core-valid-gridcapa-app
+              servicePort: 80
+          - path: /core/valid/config(/|$)(.*)
+            backend:
+              serviceName: config-server
+              servicePort: 80
+          - path: /core/valid/config-notification(/|$)(.*)
+            backend:
+              serviceName: config-notification-server
               servicePort: 80
           - path: /cse/d2cc/config(/|$)(.*)
             backend:
