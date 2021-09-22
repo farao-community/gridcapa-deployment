@@ -29,10 +29,10 @@ docker-compose up -d
 ```
 
 Multiple environment are available:
-- Main GridCapa UI on page http://localhost/cse/d2cc.
-- FTP server file browser on page http://localhost/utils/filebrowser. Default credentials are gridcapa/gridcapa.
-- RabbitMQ management UI on page http://localhost/utils/rabbitmq. Default credentials are gridcapa/gridcapa.
-- MinIO browser on page http://localhost/minio. Default credentials are gridcapa/gridcapa.
+- Main GridCapa UI on page http://localhost/cse/d2cc/.
+- FTP server file browser on page http://localhost/utils/filebrowser/. Default credentials are gridcapa/gridcapa.
+- RabbitMQ management UI on page http://localhost/utils/rabbitmq/. Default credentials are gridcapa/gridcapa.
+- MinIO browser on page http://localhost/minio/. Default credentials are gridcapa/gridcapa.
 
 #### GridCapa CORE Validation
 
@@ -42,10 +42,10 @@ docker-compose up -d
 ```
 
 Multiple environment are available:
-- Main GridCapa UI on page http://localhost/core/valid.
-- SFTP server file browser on page http://localhost/utils/filebrowser. Default credentials are gridcapa/gridcapa.
-- RabbitMQ management UI on page http://localhost/utils/rabbitmq. Default credentials are gridcapa/gridcapa.
-- MinIO browser on page http://localhost/minio. Default credentials are gridcapa/gridcapa.
+- Main GridCapa UI on page http://localhost/core/valid/.
+- SFTP server file browser on page http://localhost/utils/filebrowser/. Default credentials are gridcapa/gridcapa.
+- RabbitMQ management UI on page http://localhost/utils/rabbitmq/. Default credentials are gridcapa/gridcapa.
+- MinIO browser on page http://localhost/minio/. Default credentials are gridcapa/gridcapa.
 
 ### MinIO bucket notifications
 
