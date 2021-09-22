@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sftp-storage
+  labels:
+    app: gridcapa
+    component: sftp-storage
+spec:
+  storageClassName: sftp-storage-class
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
