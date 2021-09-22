@@ -1,12 +1,19 @@
 # GridCapa deployment module
 [![MPL-2.0 License](https://img.shields.io/badge/license-MPL_2.0-blue.svg)](https://www.mozilla.org/en-US/MPL/2.0/)
 
-This repository contains all the deployment files for GridCapa application:
+This repository contains all the deployment files for GridCapa applications:
 
 - Docker Compose scripts for test and development usage
 - Kubernetes scripts for production usage
 
 ## Deploying using Docker Compose
+
+Docker Compose scripts are designed to run all GridCapa applications independently. A
+GridCapa application is an instanciation of GridCapa framework for a given business process.
+
+GridCapa currently contains the following applications.
+- GridCapa CSE D2CC
+- GridCapa CORE Validation
 
 ### Prerequisites
 
@@ -14,16 +21,31 @@ Docker Compose scripts needs Docker (version >= 18) and docker-compose.
 
 ### Deployment
 
+#### GridCapa CSE D2CC
+
 ```bash
-cd docker-compose
+cd docker-compose/cse/d2cc
 docker-compose up -d
 ```
 
 Multiple environment are available:
-- Main GridCapa UI on page http://localhost/cse/d2cc.
-- FTP server file browser on page http://localhost/utils/filebrowser. Default credentials are gridcapa/gridcapa.
-- RabbitMQ management UI on page http://localhost/utils/rabbitmq. Default credentials are gridcapa/gridcapa.
-- MinIO browser on page http://localhost/minio. Default credentials are gridcapa/gridcapa.
+- Main GridCapa UI on page http://localhost/cse/d2cc/.
+- FTP server file browser on page http://localhost/utils/filebrowser/. Default credentials are gridcapa/gridcapa.
+- RabbitMQ management UI on page http://localhost/utils/rabbitmq/. Default credentials are gridcapa/gridcapa.
+- MinIO browser on page http://localhost/minio/. Default credentials are gridcapa/gridcapa.
+
+#### GridCapa CORE Validation
+
+```bash
+cd docker-compose/core/valid
+docker-compose up -d
+```
+
+Multiple environment are available:
+- Main GridCapa UI on page http://localhost/core/valid/.
+- SFTP server file browser on page http://localhost/utils/filebrowser/. Default credentials are gridcapa/gridcapa.
+- RabbitMQ management UI on page http://localhost/utils/rabbitmq/. Default credentials are gridcapa/gridcapa.
+- MinIO browser on page http://localhost/minio/. Default credentials are gridcapa/gridcapa.
 
 ### MinIO bucket notifications
 
