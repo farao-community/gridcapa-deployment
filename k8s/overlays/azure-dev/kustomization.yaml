@@ -8,8 +8,8 @@ bases:
 
 resources:
   - apps-metadata-server-configmap.yaml
-  - ftp-filebrowser-deployment.yaml
-  - ftp-filebrowser-service.yaml
+  - filebrowser-deployment.yaml
+  - filebrowser-service.yaml
   - ftp-pv-claim.yaml
   - ftp-server-deployment.yaml
   - ftp-server-service.yaml
@@ -17,3 +17,7 @@ resources:
   - gridcapa-app-env-configmap.yaml
   - gridcapa-cgm-data-bridge-configmap.yaml
   - gridcapa-ingress.yaml
+  - sftp-pv-claim.yaml
+  - sftp-server-deployment.yaml
+  - sftp-server-service.yaml
+  - sftp-storage-class.yaml
