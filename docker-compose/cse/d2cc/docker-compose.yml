@@ -130,7 +130,7 @@ services:
       - gridcapa
 
   gridcapa-cgm-data-bridge:
-    image: farao/gridcapa-cgm-data-bridge:latest
+    image: farao/gridcapa-data-bridge:latest
     volumes:
       - ./config/gridcapa-cgm-data-bridge-application.yml:/config/application.yml
     networks:
