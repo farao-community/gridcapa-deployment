@@ -4,3 +4,6 @@ kind: Kustomization
 resources:
   - core-valid-gridcapa-app-deployment.yaml
   - core-valid-gridcapa-app-service.yaml
+  - core-valid-task-notification-server-configmap.yaml
+  - core-valid-task-notification-server-deployment.yaml
+  - cse-d2cc-task-notification-server-service.yaml

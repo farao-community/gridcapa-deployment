@@ -6,3 +6,6 @@ resources:
   - gridcapa-app-service.yaml
   - gridcapa-cgm-data-bridge-deployment.yaml
   - gridcapa-cgm-data-bridge-service.yaml
+  - cse-d2cc-task-notification-server-configmap.yaml
+  - cse-d2cc-task-notification-server-deployment.yaml
+  - cse-d2cc-task-notification-server-service.yaml

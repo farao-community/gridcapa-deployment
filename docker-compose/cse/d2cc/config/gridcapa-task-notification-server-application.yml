@@ -7,7 +7,6 @@ spring:
     config:
       enabled: false
   rabbitmq:
-    host: rabbitmq
-    port: 5672
+    addresses: rabbitmq:5672
     username: gridcapa
     password: gridcapa
