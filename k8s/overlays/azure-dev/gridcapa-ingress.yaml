@@ -49,7 +49,7 @@ spec:
               servicePort: 80
           - path: /utils/filebrowser(/|$)(.*)
             backend:
-              serviceName: ftp-filebrowser
+              serviceName: filebrowser
               servicePort: 80
           - path: /utils/rabbitmq(/|$)(.*)
             backend:
