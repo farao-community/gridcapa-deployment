@@ -1,10 +1,12 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: gridcapa-app
+  name: cse-d2cc-gridcapa-app
   labels:
     app: gridcapa
     component: gridcapa-app
+    region: cse
+    process: d2cc
 
 spec:
   replicas: 2
@@ -12,14 +14,18 @@ spec:
     matchLabels:
       app: gridcapa
       component: gridcapa-app
+      region: cse
+      process: d2cc
   template:
     metadata:
       labels:
         app: gridcapa
         component: gridcapa-app
+        region: cse
+        process: d2cc
     spec:
       containers:
-        - name: gridcapa-app
+        - name: cse-d2cc-gridcapa-app
           image: docker.io/farao/gridcapa-app:latest
           imagePullPolicy: Always
           ports:

@@ -24,6 +24,13 @@ services:
     networks:
       - gridcapa
 
+  gridcapa-cgm-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/gridcapa-cgm-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
   config-server:
     image: gridsuite/config-server:latest
     restart: always

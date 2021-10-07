@@ -25,7 +25,7 @@ spec:
         paths:
           - path: /cse/d2cc(/|$)(.*)
             backend:
-              serviceName: gridcapa-app
+              serviceName: cse-d2cc-gridcapa-app
               servicePort: 80
           - path: /core/valid(/|$)(.*)
             backend:
