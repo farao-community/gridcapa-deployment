@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: gridcapa-cgm-data-bridge
-          image: docker.io/farao/gridcapa-cgm-data-bridge:latest
+          image: docker.io/farao/gridcapa-data-bridge:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
