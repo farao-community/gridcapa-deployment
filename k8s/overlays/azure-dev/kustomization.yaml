@@ -15,7 +15,7 @@ resources:
   - ftp-server-service.yaml
   - ftp-storage-class.yaml
   - gridcapa-app-env-configmap.yaml
-  - gridcapa-cgm-data-bridge-configmap.yaml
+  - cse-d2cc-cgm-data-bridge-configmap.yaml
   - gridcapa-ingress.yaml
   - sftp-pv-claim.yaml
   - sftp-server-deployment.yaml
