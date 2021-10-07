@@ -6,7 +6,7 @@ metadata:
     app: gridcapa
     component: ftp-storage
 spec:
-  storageClassName: ftp-storage-class
+  storageClassName: gridcapa-storage-class
   accessModes:
     - ReadWriteMany
   resources:

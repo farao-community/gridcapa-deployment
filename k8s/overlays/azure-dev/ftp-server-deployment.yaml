@@ -50,7 +50,7 @@ spec:
                   name: gridcapa-ftp-credentials
                   key: ftp-password
             - name: USERS
-              value: "$(GRIDCAPA_FTP_USER)|$(GRIDCAPA_FTP_PASSWORD)|/data/gridcapa"
+              value: "$(GRIDCAPA_FTP_USER)|$(GRIDCAPA_FTP_PASSWORD)|/data/gridcapa|1000"
             - name: ADDRESS
               value: ftp-server
           livenessProbe:

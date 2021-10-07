@@ -25,7 +25,7 @@ spec:
           ports:
             - containerPort: 22
           volumeMounts:
-            - mountPath: "/home"
+            - mountPath: /home/gridcapa/data
               name: sftp-server-storage
           env:
             - name: GRIDCAPA_SFTP_USER
@@ -39,7 +39,7 @@ spec:
                   name: gridcapa-sftp-credentials
                   key: sftp-password
             - name: SFTP_USERS
-              value: "$(GRIDCAPA_SFTP_USER):$(GRIDCAPA_SFTP_PASSWORD):::data"
+              value: "$(GRIDCAPA_SFTP_USER):$(GRIDCAPA_SFTP_PASSWORD):1000::data"
           livenessProbe:
             tcpSocket:
               port: 22
