@@ -10,15 +10,16 @@ resources:
   - apps-metadata-server-configmap.yaml
   - core-valid-cgm-data-bridge-configmap.yaml
   - cse-d2cc-cgm-data-bridge-configmap.yaml
+  - filebrowser-configmap.yaml
   - filebrowser-deployment.yaml
+  - filebrowser-pv-claim.yaml
   - filebrowser-service.yaml
   - ftp-pv-claim.yaml
   - ftp-server-deployment.yaml
   - ftp-server-service.yaml
-  - ftp-storage-class.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
+  - gridcapa-storage-class.yaml
   - sftp-pv-claim.yaml
   - sftp-server-deployment.yaml
   - sftp-server-service.yaml
-  - sftp-storage-class.yaml
