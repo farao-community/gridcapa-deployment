@@ -87,7 +87,7 @@ services:
     image: delfer/alpine-ftp-server
     restart: always
     environment:
-      USERS: gridcapa|gridcapa|/data/gridcapa
+      USERS: gridcapa|gridcapa|/data/gridcapa/cse/d2cc/cgms
     volumes:
       - ftp-data:/data/gridcapa
     ports:

@@ -94,9 +94,9 @@ services:
     image: atmoz/sftp
     restart: always
     environment:
-      SFTP_USERS: gridcapa:gridcapa:::data
+      SFTP_USERS: gridcapa:gridcapa:::data/core/valid/cgms
     volumes:
-      - sftp-data:/home
+      - sftp-data:/home/gridcapa/data
     ports:
       - "2222:22"
     networks:
@@ -106,7 +106,7 @@ services:
     image: filebrowser/filebrowser
     restart: always
     volumes:
-      - sftp-data:/srv
+      - sftp-data:/srv/sftp
     environment:
       FB_BASEURL: /utils/filebrowser
       FB_USERNAME: gridcapa
