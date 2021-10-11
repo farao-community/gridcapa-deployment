@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cse-d2cc-postgres
+  labels:
+    app: gridcapa
+    component: postgres
+    region: cse
+    process: d2cc
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: postgres
+      region: cse
+      process: d2cc
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: postgres
+        region: cse
+        process: d2cc
+    spec:
+      containers:
+        - name: cse-d2cc-postgres
+          image: docker.io/bitnami/postgresql
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: cse-d2cc-task-manager
+            - name: POSTGRES_USER
+                valueFrom:
+                  secretKeyRef:
+                    name: gridcapa-postgres-credentials
+                    key: postgres-user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgres-credentials
+                  key: postgres-password
+          resources:
+            limits:
+              cpu: "500m"
+              memory: 1Gi
+            requests:
+              cpu: "500m"
+              memory: 1Gi
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /bitnami/postgres
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: postgres-pv-claim
