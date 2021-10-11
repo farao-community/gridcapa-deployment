@@ -4,7 +4,7 @@ metadata:
   name: cse-d2cc-task-manager-configmap
   labels:
     app: gridcapa
-    component: gridcapa-task-manager-configmap
+    component: task-manager-configmap
     region: cse
     process: d2cc
 data:
