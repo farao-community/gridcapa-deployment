@@ -14,7 +14,7 @@ data:
         stream:
           bindings:
             input:
-              destination: task-notification
+              destination: task-update
         config:
           enabled: false
       rabbitmq:
