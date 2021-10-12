@@ -1,0 +1,68 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-d2cc-task-manager-configmap
+  labels:
+    app: gridcapa
+    component: task-manager-configmap
+    region: cse
+    process: d2cc
+data:
+  application.yml: |-
+    spring:
+      datasource:
+        url: jdbc:postgresql://cse-d2cc-postgres:5432/cse-d2cc-task-manager
+        driverClassName: org.postgresql.Driver
+        username: ${POSTGRES_USER}
+        password: ${POSTGRES_PASSWORD}
+      jpa:
+        hibernate:
+          ddl-auto: update
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        port: 5672
+        username: ${RABBITMQ_DEFAULT_USER}
+        password: ${RABBITMQ_DEFAULT_PASS}
+      cloud:
+        stream:
+          bindings:
+            task-updated:
+              binder: my-rabbit
+              destination: task-updated
+          binders:
+            my-rabbit:
+              type: rabbit
+              environment:
+                spring:
+                  rabbitmq:
+                    host: gridcapa-rabbitmq
+                    port: 5672
+                    username: ${RABBITMQ_DEFAULT_USER}
+                    password: ${RABBITMQ_DEFAULT_PASS}
+          rabbit:
+            bindings:
+              task-updated:
+                producer:
+                  exchange-name: task-updated
+                  exchange-durable: true
+                  exchange-type: fanout
+
+    task-server:
+      minio:
+        connect:
+          url: http://gridcapa-minio:9000/
+          access-key: ${MINIO_ACCESS_KEY}
+          secret-key: ${MINIO_SECRET_KEY}
+        notification:
+          exchange: gridcapa.minio.events
+          queue-prefix: cse-d2cc-task-manager
+      process:
+        tag: CSE_D2CC
+        timezone: CET
+        inputs:
+          - CGM
+          - CRAC
+          - GLSK
+          - TARGET-CH
+          - NTC
+          - NTC-RED
