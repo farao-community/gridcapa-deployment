@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ftp-storage
+  name: sftp-storage
   labels:
     app: gridcapa
-    component: ftp-storage
+    component: sftp-storage
 spec:
   storageClassName: gridcapa-storage-class
   accessModes:

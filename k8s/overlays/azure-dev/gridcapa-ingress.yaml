@@ -41,7 +41,7 @@ spec:
               servicePort: 80
           - path: /cse/d2cc(/|$)(.*)
             backend:
-              serviceName: gridcapa-app
+              serviceName: cse-d2cc-gridcapa-app
               servicePort: 80
           - path: /cse/d2cc/config(/|$)(.*)
             backend:
@@ -57,7 +57,7 @@ spec:
               servicePort: 80
           - path: /utils/filebrowser(/|$)(.*)
             backend:
-              serviceName: ftp-filebrowser
+              serviceName: filebrowser
               servicePort: 80
           - path: /utils/rabbitmq(/|$)(.*)
             backend:

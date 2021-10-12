@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ftp-filebrowser
+  name: filebrowser
   labels:
     app: gridcapa
-    component: ftp-filebrowser
+    component: filebrowser
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: ftp-filebrowser
+    component: filebrowser
   ports:
     - port: 80
-      targetPort: 80
+      targetPort: 8080
       name: http

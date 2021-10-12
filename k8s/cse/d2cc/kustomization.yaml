@@ -2,10 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - gridcapa-app-deployment.yaml
-  - gridcapa-app-service.yaml
-  - gridcapa-cgm-data-bridge-deployment.yaml
-  - gridcapa-cgm-data-bridge-service.yaml
+  - cse-d2cc-gridcapa-app-deployment.yaml
+  - cse-d2cc-gridcapa-app-service.yaml
+  - cse-d2cc-cgm-data-bridge-deployment.yaml
+  - cse-d2cc-cgm-data-bridge-service.yaml
   - cse-d2cc-task-notification-server-configmap.yaml
   - cse-d2cc-task-notification-server-deployment.yaml
   - cse-d2cc-task-notification-server-service.yaml
