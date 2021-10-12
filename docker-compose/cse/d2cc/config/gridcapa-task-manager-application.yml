@@ -1,0 +1,57 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres/cse-d2cc-task-manager
+    driverClassName: org.postgresql.Driver
+    username: cse-d2cc
+    password: cse-d2cc
+  jpa:
+    hibernate:
+      ddl-auto: update
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+  cloud:
+    stream:
+      bindings:
+        task-updated:
+          binder: my-rabbit
+          destination: task-updated
+      binders:
+        my-rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: rabbitmq
+                port: 5672
+                username: gridcapa
+                password: gridcapa
+      rabbit:
+        bindings:
+          task-updated:
+            producer:
+              exchange-name: task-updated
+              exchange-durable: true
+              exchange-type: fanout
+
+task-server:
+  minio:
+    connect:
+      url: http://minio:9000/
+      access-key: gridcapa
+      secret-key: gridcapa
+    notification:
+      exchange: gridcapa.minio.events
+      queue-prefix: cse-d2cc-gridcapa-task-manager
+  process:
+    tag: CSE_D2CC
+    timezone: CET
+    inputs:
+      - CGM
+      - CRAC
+      - GLSK
+      - TARGET-CH
+      - NTC
+      - NTC-RED
