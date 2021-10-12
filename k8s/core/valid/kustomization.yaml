@@ -6,3 +6,6 @@ resources:
   - core-valid-cgm-data-bridge-service.yaml
   - core-valid-gridcapa-app-deployment.yaml
   - core-valid-gridcapa-app-service.yaml
+  - core-valid-task-notification-server-configmap.yaml
+  - core-valid-task-notification-server-deployment.yaml
+  - core-valid-task-notification-server-service.yaml

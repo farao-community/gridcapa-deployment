@@ -6,6 +6,9 @@ resources:
   - cse-d2cc-gridcapa-app-service.yaml
   - cse-d2cc-cgm-data-bridge-deployment.yaml
   - cse-d2cc-cgm-data-bridge-service.yaml
+  - cse-d2cc-task-notification-server-configmap.yaml
+  - cse-d2cc-task-notification-server-deployment.yaml
+  - cse-d2cc-task-notification-server-service.yaml
   - cse-d2cc-postgres-deployment.yaml
   - cse-d2cc-postgres-pv-claim.yaml
   - cse-d2cc-postgres-service.yaml

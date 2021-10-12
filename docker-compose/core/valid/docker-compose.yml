@@ -54,6 +54,16 @@ services:
     depends_on:
       - rabbitmq
 
+  task-notification-server:
+    image: springcloudstream/websocket-sink-rabbit:latest
+    restart: always
+    volumes:
+      - ./config/gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
+    networks:
+      - gridcapa
+    depends_on:
+      - rabbitmq
+
   cassandra:
     image: bitnami/cassandra
     environment:

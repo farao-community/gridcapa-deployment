@@ -1,0 +1,23 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: core-valid-task-notification-server-configmap
+  labels:
+    app: gridcapa
+    component: task-notification-server-configmap
+    region: core
+    process: valid
+data:
+  application.yml: |-
+    spring:
+      cloud:
+        stream:
+          bindings:
+            input:
+              destination: task-update
+        config:
+          enabled: false
+      rabbitmq:
+        addresses: gridcapa-rabbitmq:5672
+        username: ${GRIDCAPA_RABBITMQ_USER}
+        password: ${GRIDCAPA_RABBITMQ_PASSWORD}
