@@ -32,10 +32,10 @@ spec:
             - name: POSTGRES_DB
               value: cse-d2cc-task-manager
             - name: POSTGRES_USER
-                valueFrom:
-                  secretKeyRef:
-                    name: gridcapa-postgres-credentials
-                    key: postgres-user
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgres-credentials
+                  key: postgres-user
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -54,4 +54,4 @@ spec:
       volumes:
         - name: postgres-data
           persistentVolumeClaim:
-            claimName: postgres-pv-claim
+            claimName: cse-d2cc-postgres-pv-claim

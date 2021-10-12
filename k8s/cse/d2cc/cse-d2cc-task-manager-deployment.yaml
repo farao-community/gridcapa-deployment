@@ -7,7 +7,6 @@ metadata:
     component: gridcapa-task-manager
     region: cse
     process: d2cc
-
 spec:
   replicas: 2
   selector:
@@ -32,10 +31,10 @@ spec:
             - containerPort: 8080
           env:
             - name: POSTGRES_USER
-                valueFrom:
-                  secretKeyRef:
-                    name: gridcapa-postgres-credentials
-                    key: postgres-user
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgres-credentials
+                  key: postgres-user
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -87,8 +86,23 @@ spec:
               memory: "384Mi"
             limits:
               memory: "384Mi"
-        restartPolicy: Always
-        volumes:
-          - name: cse-d2cc-task-manager-configmap-volume
-            configMap:
-              name: cse-d2cc-task-manager-configmap
+      initContainers:
+        - name: minio-notifications
+          image: docker.io/minio/mc
+          env:
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+          command: ['/bin/sh', "-c","mc alias set gridcapa http://gridcapa-minio:9000 $(MINIO_ACCESS_KEY) $(MINIO_SECRET_KEY) && (mc event add gridcapa/gridcapa arn:minio:sqs::_:amqp --event put,delete || true)"]
+      restartPolicy: Always
+      volumes:
+        - name: cse-d2cc-task-manager-configmap-volume
+          configMap:
+            name: cse-d2cc-task-manager-configmap
