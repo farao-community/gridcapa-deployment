@@ -3,7 +3,7 @@ spring:
     stream:
       bindings:
         input:
-          destination: task-notification
+          destination: task-updated
     config:
       enabled: false
   rabbitmq:
