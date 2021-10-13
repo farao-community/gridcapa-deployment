@@ -55,6 +55,10 @@ spec:
             backend:
               serviceName: cse-d2cc-task-notification-server
               servicePort: 80
+          - path: /cse/d2cc/task-manager(/|$)(.*)
+            backend:
+              serviceName: cse-d2cc-task-manager
+              servicePort: 80
           - path: /utils/filebrowser(/|$)(.*)
             backend:
               serviceName: filebrowser
