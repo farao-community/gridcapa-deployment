@@ -6,6 +6,13 @@ resources:
   - core-valid-cgm-data-bridge-service.yaml
   - core-valid-gridcapa-app-deployment.yaml
   - core-valid-gridcapa-app-service.yaml
+  - core-valid-postgres-deployment.yaml
+  - core-valid-postgres-pv-claim.yaml
+  - core-valid-postgres-service.yaml
+  - core-valid-postgres-storage-class.yaml
+  - core-valid-task-manager-configmap.yaml
+  - core-valid-task-manager-deployment.yaml
+  - core-valid-task-manager-service.yaml
   - core-valid-task-notification-server-configmap.yaml
   - core-valid-task-notification-server-deployment.yaml
   - core-valid-task-notification-server-service.yaml

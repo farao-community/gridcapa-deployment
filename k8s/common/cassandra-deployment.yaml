@@ -48,7 +48,7 @@ spec:
               value: "AllowAllAuthorizer"
           volumeMounts:
             - name: cassandra-data
-              mountPath: /bitnami
+              mountPath: /bitnami/cassandra
             - name: cassandra-load-schema
               mountPath: /docker-entrypoint-initdb.d/schema.cql
               subPath: schema.cql
