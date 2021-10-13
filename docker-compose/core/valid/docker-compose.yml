@@ -24,13 +24,6 @@ services:
     networks:
       - gridcapa
 
-  gridcapa-cgm-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/gridcapa-cgm-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
   config-server:
     image: gridsuite/config-server:latest
     restart: always
@@ -81,6 +74,19 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+
+  postgres:
+    image: bitnami/postgresql
+    environment:
+      POSTGRES_DB: core-valid-task-manager
+      POSTGRES_USER: core-valid
+      POSTGRES_PASSWORD: core-valid
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/bitnami/postgres
+    networks:
+      - gridcapa
 
   rabbitmq:
     image: rabbitmq:management
@@ -145,10 +151,26 @@ services:
     networks:
       - gridcapa
 
+  gridcapa-cgm-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/gridcapa-cgm-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  gridcapa-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./config/gridcapa-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+
 networks:
   gridcapa:
 
 volumes:
+  postgres-data:
   cassandra-data:
   sftp-data:
   minio-data:
