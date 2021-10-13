@@ -131,7 +131,7 @@ services:
       - gridcapa
 
   minio:
-    image: bitnami/minio
+    image: bitnami/minio:2021.6.17
     restart: always
     volumes:
       - minio-data:/data
@@ -146,10 +146,8 @@ services:
       MINIO_NOTIFY_AMQP_DELIVERY_MODE: 2
       MINIO_NOTIFY_AMQP_AUTO_DELETED: "off"
       MINIO_NOTIFY_AMQP_DURABLE: "on"
-      MINIO_BROWSER_REDIRECT_URL: "http://minio"
-    command: minio server --console-address ":9001" /data
     ports:
-      - "9001:9001"
+      - "9000:9000"
     networks:
       - gridcapa
 
