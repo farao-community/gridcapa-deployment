@@ -24,13 +24,6 @@ services:
     networks:
       - gridcapa
 
-  gridcapa-cgm-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/gridcapa-cgm-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
   config-server:
     image: gridsuite/config-server:latest
     restart: always
@@ -82,6 +75,19 @@ services:
       timeout: 10s
       retries: 5
 
+  postgres:
+    image: bitnami/postgresql
+    environment:
+      POSTGRES_DB: core-valid-task-manager
+      POSTGRES_USER: core-valid
+      POSTGRES_PASSWORD: core-valid
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/bitnami/postgres
+    networks:
+      - gridcapa
+
   rabbitmq:
     image: rabbitmq:management
     environment:
@@ -125,7 +131,7 @@ services:
       - gridcapa
 
   minio:
-    image: bitnami/minio:2021.6.17
+    image: bitnami/minio
     restart: always
     volumes:
       - minio-data:/data
@@ -140,15 +146,33 @@ services:
       MINIO_NOTIFY_AMQP_DELIVERY_MODE: 2
       MINIO_NOTIFY_AMQP_AUTO_DELETED: "off"
       MINIO_NOTIFY_AMQP_DURABLE: "on"
+      MINIO_BROWSER_REDIRECT_URL: "http://minio"
+    command: minio server --console-address ":9001" /data
     ports:
-      - "9000:9000"
+      - "9001:9001"
     networks:
       - gridcapa
+
+  gridcapa-cgm-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/gridcapa-cgm-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  gridcapa-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./config/gridcapa-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
 
 networks:
   gridcapa:
 
 volumes:
+  postgres-data:
   cassandra-data:
   sftp-data:
   minio-data:
