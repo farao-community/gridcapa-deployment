@@ -44,7 +44,7 @@ task-server:
       secret-key: gridcapa
     notification:
       exchange: gridcapa.minio.events
-      queue-prefix: cse-d2cc-gridcapa-task-manager
+      queue: cse-d2cc-gridcapa-task-manager
   process:
     tag: CSE_D2CC
     timezone: CET

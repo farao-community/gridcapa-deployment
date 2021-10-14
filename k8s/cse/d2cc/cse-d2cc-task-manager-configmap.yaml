@@ -55,7 +55,7 @@ data:
           secret-key: ${MINIO_SECRET_KEY}
         notification:
           exchange: gridcapa.minio.events
-          queue-prefix: cse-d2cc-task-manager
+          queue: cse-d2cc-task-manager
       process:
         tag: CSE_D2CC
         timezone: CET
