@@ -123,7 +123,7 @@ services:
     image: filebrowser/filebrowser
     restart: always
     volumes:
-      - ftp-data:/srv
+      - ftp-data:/srv/ftp
     environment:
       FB_BASEURL: /utils/filebrowser
       FB_USERNAME: gridcapa
