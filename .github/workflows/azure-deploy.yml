@@ -7,6 +7,7 @@ on:
     types:
       - gridcapa_app_updated
       - gridcapa_data_bridge_updated
+      - gridcapa_task_manager_updated
 
 jobs:
   deploy-on-azure:
