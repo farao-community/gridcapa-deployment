@@ -1,30 +1,30 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-d2cc-task-manager
+  name: core-valid-task-manager
   labels:
     app: gridcapa
     component: task-manager
-    region: cse
-    process: d2cc
+    region: core
+    process: valid
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: gridcapa
       component: task-manager
-      region: cse
-      process: d2cc
+      region: core
+      process: valid
   template:
     metadata:
       labels:
         app: gridcapa
         component: task-manager
-        region: cse
-        process: d2cc
+        region: core
+        process: valid
     spec:
       containers:
-        - name: cse-d2cc-task-manager
+        - name: core-valid-task-manager
           image: docker.io/farao/gridcapa-task-manager:latest
           imagePullPolicy: Always
           ports:
@@ -63,7 +63,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: cse-d2cc-task-manager-configmap-volume
+              name: core-valid-task-manager-configmap-volume
           livenessProbe:
             tcpSocket:
               port: 8080
@@ -103,6 +103,6 @@ spec:
           command: ['/bin/sh', "-c","mc alias set gridcapa http://gridcapa-minio:9000 $(MINIO_ACCESS_KEY) $(MINIO_SECRET_KEY) && (mc event add gridcapa/gridcapa arn:minio:sqs::_:amqp --event put,delete || true)"]
       restartPolicy: Always
       volumes:
-        - name: cse-d2cc-task-manager-configmap-volume
+        - name: core-valid-task-manager-configmap-volume
           configMap:
-            name: cse-d2cc-task-manager-configmap
+            name: core-valid-task-manager-configmap

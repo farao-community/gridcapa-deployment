@@ -43,6 +43,8 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: task-notification-server-configmap-volume
+            - mountPath: /tmp
+              name: temp-volume
           securityContext:
             allowPrivilegeEscalation: false
             runAsNonRoot: true
@@ -73,4 +75,6 @@ spec:
       volumes:
         - name: task-notification-server-configmap-volume
           configMap:
-            name: task-notification-server-configmap
+            name: core-valid-task-notification-server-configmap
+        - name: temp-volume
+          emptyDir: {}

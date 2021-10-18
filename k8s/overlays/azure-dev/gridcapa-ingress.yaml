@@ -39,6 +39,10 @@ spec:
             backend:
               serviceName: core-valid-task-notification-server
               servicePort: 80
+          - path: /core/valid/task-manager(/|$)(.*)
+            backend:
+              serviceName: core-valid-task-manager
+              servicePort: 80
           - path: /cse/d2cc(/|$)(.*)
             backend:
               serviceName: cse-d2cc-gridcapa-app
@@ -54,6 +58,10 @@ spec:
           - path: /cse/d2cc/task-notification(/|$)(.*)
             backend:
               serviceName: cse-d2cc-task-notification-server
+              servicePort: 80
+          - path: /cse/d2cc/task-manager(/|$)(.*)
+            backend:
+              serviceName: cse-d2cc-task-manager
               servicePort: 80
           - path: /utils/filebrowser(/|$)(.*)
             backend:

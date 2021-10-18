@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: core-valid-postgres-pv-claim
+  labels:
+    app: gridcapa
+    component: postgres-pv-claim
+    region: core
+    process: valid
+spec:
+  storageClassName: core-valid-postgres-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
