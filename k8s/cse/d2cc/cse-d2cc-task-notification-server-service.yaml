@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: core-valid-task-notification-server
+  name: cse-d2cc-task-notification-server
   labels:
     app: gridcapa
     component: task-notification-server

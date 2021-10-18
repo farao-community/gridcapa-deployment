@@ -19,6 +19,14 @@ jobs:
       - name: Set up kubectl
         uses: azure/setup-kubectl@v1
 
+      - name: Set up python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.7'
+
+      - name: Install python dependencies
+        run: python -m pip install --upgrade pip pyyaml requests
+
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -28,7 +36,7 @@ jobs:
           BASTION_KEY: ${{secrets.BASTION_KEY}}
 
       - name: Deploy to Azure
-        run: kubectl kustomize k8s/overlays/azure-dev | ssh -o "StrictHostKeyChecking no" -i key ${{ secrets.BASTION_LOGIN }}@${{ secrets.BASTION_HOST }} kubectl apply -f -
+        run: kubectl kustomize k8s/overlays/azure-dev | python .github/scripts/image-tag-to-digest.py | ssh -o "StrictHostKeyChecking no" -i key ${{ secrets.BASTION_LOGIN }}@${{ secrets.BASTION_HOST }} kubectl apply -f -
 
       - name: Delete key
         run: rm key
