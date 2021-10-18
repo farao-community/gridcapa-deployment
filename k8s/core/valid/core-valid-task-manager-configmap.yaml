@@ -55,7 +55,7 @@ data:
           secret-key: ${MINIO_SECRET_KEY}
         notification:
           exchange: gridcapa.minio.events
-          queue-prefix: core-valid-task-manager
+          queue: core-valid-task-manager
       process:
         tag: CORE_VALID
         timezone: CET
