@@ -21,6 +21,7 @@ services:
     image: farao/gridcapa-app:latest
     volumes:
       - ./config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ./config/process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
     networks:
       - gridcapa
 

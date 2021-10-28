@@ -1,0 +1,12 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-d2cc-gridcapa-app-process-metadata-configmap
+  labels:
+    app: gridcapa
+    component: cse-d2cc-gridcapa-app-process-metadata-configmap
+data:
+  process-metadata.json: |-
+    {
+      "processName": "CSE D2CC"
+    }
