@@ -6,7 +6,7 @@ metadata:
     app: gridcapa
     component: core-valid-gridcapa-app-process-metadata-configmap
 data:
-  proces-metadata.json: |-
+  process-metadata.json: |-
     {
-      "processName": "Core Validation"
+      "processName": "CORE Validation"
     }

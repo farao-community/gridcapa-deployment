@@ -6,7 +6,7 @@ metadata:
     app: gridcapa
     component: cse-d2cc-gridcapa-app-process-metadata-configmap
 data:
-  proces-metadata.json: |-
+  process-metadata.json: |-
     {
       "processName": "CSE D2CC"
     }
