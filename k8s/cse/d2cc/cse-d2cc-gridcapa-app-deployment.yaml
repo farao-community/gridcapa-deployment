@@ -66,4 +66,4 @@ spec:
             name: gridcapa-app-env-configmap
         - name: gridcapa-app-process-metadata-configmap-volume
             configMap:
-              name: gridcapa-app-process-metadata-configmap
+              name: cse-d2cc-gridcapa-app-process-metadata-configmap

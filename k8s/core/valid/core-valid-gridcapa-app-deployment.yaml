@@ -65,4 +65,4 @@ spec:
             name: gridcapa-app-env-configmap
         - name: gridcapa-app-process-metadata-configmap-volume
             configMap:
-              name: gridcapa-app-process-metadata-configmap
+              name: core-valid-gridcapa-app-process-metadata-configmap
