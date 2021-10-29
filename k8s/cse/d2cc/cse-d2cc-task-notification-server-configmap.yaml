@@ -14,7 +14,7 @@ data:
         stream:
           bindings:
             input:
-              destination: task-updated
+              destination: cse-d2cc-task-updated
         config:
           enabled: false
       rabbitmq:

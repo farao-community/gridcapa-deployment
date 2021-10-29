@@ -43,7 +43,7 @@ data:
             bindings:
               task-updated:
                 producer:
-                  exchange-name: task-updated
+                  exchange-name: core-valid-task-updated
                   exchange-durable: true
                   exchange-type: fanout
 
