@@ -1,8 +1,8 @@
 data-bridge:
   target-process: CORE_VALID
-  file-type: CGM
-  file-regex: [0-9]{8}_[0-9]{4}.*CGM.*.(uct|UCT)
-  time-validity: hourly
+  file-type: REFPROG
+  file-regex: [0-9]{8}_F110_.*.(xml|XML)
+  time-validity: daily
   remote-file-regex:
     - ".*"
   sources:
@@ -12,7 +12,7 @@ data-bridge:
       port: 22
       username: gridcapa
       password: gridcapa
-      base-directory: /data/core/valid/cgms
+      base-directory: /data/core/valid/refprogs
       polling-delay-in-ms: 5000
   sinks:
     minio:
@@ -20,4 +20,4 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CORE/VALID/CGMs
+      base-directory: /CORE/VALID/REFPROGs

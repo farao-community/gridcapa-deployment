@@ -153,9 +153,37 @@ services:
       - gridcapa
 
   gridcapa-cgm-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
+    image: farao/data-bridge:1.0.1-SNAPSHOT
     volumes:
       - ./config/gridcapa-cgm-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  gridcapa-cbcora-data-bridge:
+    image: farao/data-bridge:1.0.1-SNAPSHOT
+    volumes:
+      - ./config/gridcapa-cbcora-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  gridcapa-glsk-data-bridge:
+    image: farao/data-bridge:1.0.1-SNAPSHOT
+    volumes:
+      - ./config/gridcapa-glsk-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  gridcapa-refprog-data-bridge:
+    image: farao/data-bridge:1.0.1-SNAPSHOT
+    volumes:
+      - ./config/gridcapa-refprog-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  gridcapa-study-point-data-bridge:
+    image: farao/data-bridge:1.0.1-SNAPSHOT
+    volumes:
+      - ./config/gridcapa-study-point-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
