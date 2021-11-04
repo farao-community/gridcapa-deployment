@@ -1,7 +1,7 @@
 data-bridge:
   target-process: CORE_VALID
   file-type: REFPROG
-  file-regex: [0-9]{8}_F110_.*.(xml|XML)
+  file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F110.*.(xml|XML)
   time-validity: daily
   remote-file-regex:
     - ".*"
