@@ -167,6 +167,12 @@ services:
     networks:
       - gridcapa
 
+  gridcapa-job-launcher:
+    image: farao/gridcapa-job-launcher:SNAPSHOT
+    volumes:
+      - ./config/gridcapa-job-launcher-application.properties:/config/application.properties
+    networks:
+      - gridcapa
 
 networks:
   gridcapa:
