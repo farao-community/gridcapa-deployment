@@ -1,0 +1,3 @@
+task:
+  manager:
+    url: http://localhost/core/valid/task-manager/
