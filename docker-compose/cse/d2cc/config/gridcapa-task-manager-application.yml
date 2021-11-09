@@ -55,3 +55,4 @@ task-server:
       - TARGET-CH
       - NTC
       - NTC-RED
+      - VULCANUS

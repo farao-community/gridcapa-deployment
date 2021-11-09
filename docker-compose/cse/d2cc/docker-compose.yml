@@ -160,6 +160,48 @@ services:
     networks:
       - gridcapa
 
+  gridcapa-crac-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/gridcapa-crac-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  gridcapa-glsk-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/gridcapa-glsk-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  gridcapa-ntc-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/gridcapa-ntc-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  gridcapa-ntc-red-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/gridcapa-ntc-red-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  gridcapa-target-ch-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/gridcapa-target-ch-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  gridcapa-vulcanus-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/gridcapa-vulcanus-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
   gridcapa-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
