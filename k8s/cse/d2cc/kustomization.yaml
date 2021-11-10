@@ -2,18 +2,30 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - cse-d2cc-gridcapa-app-deployment.yaml
-  - cse-d2cc-gridcapa-app-service.yaml
   - cse-d2cc-cgm-data-bridge-deployment.yaml
-  - cse-d2cc-gridcapa-app-process-metadata-configmap.yaml
   - cse-d2cc-cgm-data-bridge-service.yaml
-  - cse-d2cc-task-notification-server-configmap.yaml
-  - cse-d2cc-task-notification-server-deployment.yaml
-  - cse-d2cc-task-notification-server-service.yaml
+  - cse-d2cc-crac-data-bridge-deployment.yaml
+  - cse-d2cc-crac-data-bridge-service.yaml
+  - cse-d2cc-glsk-data-bridge-deployment.yaml
+  - cse-d2cc-glsk-data-bridge-service.yaml
+  - cse-d2cc-gridcapa-app-deployment.yaml
+  - cse-d2cc-gridcapa-app-process-metadata-configmap.yaml
+  - cse-d2cc-gridcapa-app-service.yaml
+  - cse-d2cc-ntc-data-bridge-deployment.yaml
+  - cse-d2cc-ntc-data-bridge-service.yaml
+  - cse-d2cc-ntc-red-data-bridge-deployment.yaml
+  - cse-d2cc-ntc-red-data-bridge-service.yaml
   - cse-d2cc-postgres-deployment.yaml
   - cse-d2cc-postgres-pv-claim.yaml
   - cse-d2cc-postgres-service.yaml
   - cse-d2cc-postgres-storage-class.yaml
+  - cse-d2cc-target-ch-data-bridge-deployment.yaml
+  - cse-d2cc-target-ch-data-bridge-service.yaml
   - cse-d2cc-task-manager-configmap.yaml
   - cse-d2cc-task-manager-deployment.yaml
   - cse-d2cc-task-manager-service.yaml
+  - cse-d2cc-task-notification-server-configmap.yaml
+  - cse-d2cc-task-notification-server-deployment.yaml
+  - cse-d2cc-task-notification-server-service.yaml
+  - cse-d2cc-vulcanus-data-bridge-deployment.yaml
+  - cse-d2cc-vulcanus-data-bridge-service.yaml
