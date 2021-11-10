@@ -28,7 +28,7 @@ data:
           bindings:
             task-updated:
               binder: my-rabbit
-              destination: task-updated
+              destination: cse-d2cc-task-updated
           binders:
             my-rabbit:
               type: rabbit

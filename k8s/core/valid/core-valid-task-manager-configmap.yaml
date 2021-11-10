@@ -28,7 +28,7 @@ data:
           bindings:
             task-updated:
               binder: my-rabbit
-              destination: task-updated
+              destination: core-valid-task-updated
           binders:
             my-rabbit:
               type: rabbit
