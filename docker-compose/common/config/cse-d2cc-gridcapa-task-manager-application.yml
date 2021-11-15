@@ -15,7 +15,7 @@ spring:
   cloud:
     stream:
       bindings:
-        cse-d2cc-task-updated:
+        task-updated:
           binder: my-rabbit
           destination: cse-d2cc-task-updated
       binders:
@@ -30,7 +30,7 @@ spring:
                 password: gridcapa
       rabbit:
         bindings:
-          cse-d2cc-task-updated:
+          task-updated:
             producer:
               exchange-name: cse-d2cc-task-updated
               exchange-durable: true

@@ -152,16 +152,6 @@ services:
     networks:
       - gridcapa
 
-  core-valid-task-notification-server:
-    image: springcloudstream/websocket-sink-rabbit:latest
-    restart: always
-    volumes:
-      - ./config/core-valid-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
-    networks:
-      - gridcapa
-    depends_on:
-      - rabbitmq
-
   core-valid-postgres:
     image: bitnami/postgresql
     environment:
@@ -201,6 +191,16 @@ services:
       - ./config/core-valid-gridcapa-task-manager-application.yml:/config/application.yml
     networks:
       - gridcapa
+
+  core-valid-task-notification-server:
+    image: springcloudstream/websocket-sink-rabbit:latest
+    restart: always
+    volumes:
+      - ./config/core-valid-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
+    networks:
+      - gridcapa
+    depends_on:
+      - rabbitmq
 
   cse-d2cc-gridcapa-cgm-data-bridge:
     image: farao/gridcapa-data-bridge:latest

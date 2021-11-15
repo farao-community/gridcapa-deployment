@@ -15,7 +15,7 @@ spring:
   cloud:
     stream:
       bindings:
-        core-valid-task-updated:
+        task-updated:
           binder: my-rabbit
           destination: core-valid-task-updated
       binders:
@@ -30,7 +30,7 @@ spring:
                 password: gridcapa
       rabbit:
         bindings:
-          core-valid-task-updated:
+          task-updated:
             producer:
               exchange-name: core-valid-task-updated
               exchange-durable: true
