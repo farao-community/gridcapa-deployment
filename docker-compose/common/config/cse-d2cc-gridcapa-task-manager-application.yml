@@ -28,13 +28,6 @@ spring:
                 port: 5672
                 username: gridcapa
                 password: gridcapa
-      rabbit:
-        bindings:
-          task-updated:
-            producer:
-              exchange-name: cse-d2cc-task-updated
-              exchange-durable: true
-              exchange-type: fanout
 
 task-server:
   minio:
