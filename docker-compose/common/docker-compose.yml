@@ -169,7 +169,7 @@ services:
       POSTGRES_USER: core-valid
       POSTGRES_PASSWORD: core-valid
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - core-postgres-data:/bitnami/postgres
     networks:
