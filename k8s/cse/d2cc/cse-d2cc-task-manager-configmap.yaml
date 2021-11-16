@@ -27,25 +27,8 @@ data:
         stream:
           bindings:
             task-updated:
-              binder: my-rabbit
+              binder: rabbit
               destination: cse-d2cc-task-updated
-          binders:
-            my-rabbit:
-              type: rabbit
-              environment:
-                spring:
-                  rabbitmq:
-                    host: gridcapa-rabbitmq
-                    port: 5672
-                    username: ${RABBITMQ_DEFAULT_USER}
-                    password: ${RABBITMQ_DEFAULT_PASS}
-          rabbit:
-            bindings:
-              task-updated:
-                producer:
-                  exchange-name: cse-d2cc-task-updated
-                  exchange-durable: true
-                  exchange-type: fanout
 
     task-server:
       minio:
