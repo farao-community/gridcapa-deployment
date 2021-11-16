@@ -1,3 +1,2 @@
-task:
-  manager:
-    url: http://localhost/core/valid/task-manager/
+job-launcher:
+  taskManagerUrl: http://localhost/core/valid/task-manager/

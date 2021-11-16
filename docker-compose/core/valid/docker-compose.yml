@@ -18,7 +18,7 @@ services:
       - gridcapa
 
   gridcapa-app:
-    image: farao/gridcapa-app:latest
+    image: farao/gridcapa-app:SNAPSHOT
     volumes:
       - ./config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
       - ./config/process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
@@ -188,7 +188,7 @@ services:
       - gridcapa
 
   gridcapa-task-manager:
-    image: farao/gridcapa-task-manager:latest
+    image: farao/gridcapa-task-manager:1.0.0-SNAPSHOT
     volumes:
       - ./config/gridcapa-task-manager-application.yml:/config/application.yml
     networks:
@@ -197,7 +197,7 @@ services:
   gridcapa-job-launcher:
     image: farao/gridcapa-job-launcher:1.0.0-SNAPSHOT
     volumes:
-      - ./config/gridcapa-job-launcher-application.yml:/config/application.yml
+      - ./config/gridcapa-job-launcher.yml:/config/application.yml
     networks:
       - gridcapa
 
