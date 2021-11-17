@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://postgres/cse-d2cc-task-manager
+    url: jdbc:postgresql://cse-d2cc-postgres:5432/cse-d2cc-task-manager
     driverClassName: org.postgresql.Driver
     username: cse-d2cc
     password: cse-d2cc
@@ -17,7 +17,7 @@ spring:
       bindings:
         task-updated:
           binder: rabbit
-          destination: task-updated
+          destination: cse-d2cc-task-updated
 
 task-server:
   minio:
@@ -27,7 +27,7 @@ task-server:
       secret-key: gridcapa
     notification:
       exchange: gridcapa.minio.events
-      queue: cse-d2cc-gridcapa-task-manager
+      queue: cse-d2cc-task-manager
   process:
     tag: CSE_D2CC
     timezone: CET
