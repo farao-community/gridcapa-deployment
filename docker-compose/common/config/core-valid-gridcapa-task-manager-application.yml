@@ -16,18 +16,8 @@ spring:
     stream:
       bindings:
         task-updated:
-          binder: my-rabbit
+          binder: rabbit
           destination: core-valid-task-updated
-      binders:
-        my-rabbit:
-          type: rabbit
-          environment:
-            spring:
-              rabbitmq:
-                host: rabbitmq
-                port: 5672
-                username: gridcapa
-                password: gridcapa
 
 task-server:
   minio:
