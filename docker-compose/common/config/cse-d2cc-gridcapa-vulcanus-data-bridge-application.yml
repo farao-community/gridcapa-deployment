@@ -1,0 +1,24 @@
+data-bridge:
+  target-process: CSE_D2CC
+  file-type: VULCANUS
+  file-regex: .*(?<day>[0-9]{2})(?<month>[0-9]{2})(?<year>[0-9]{4}).*.(xls|XLS)
+  time-validity: daily
+  remote-file-regex:
+    - ".*.zip"
+    - ".*[0-9]{8}.*.(xls|XLS)"
+  sources:
+    ftp:
+      active: true
+      host: ftp-server
+      port: 21
+      username: gridcapa
+      password: gridcapa
+      base-directory: /data/gridcapa/cse/d2cc/vulcanus
+      polling-delay-in-ms: 5000
+  sinks:
+    minio:
+      url: http://minio:9000
+      access-key: gridcapa
+      secret-key: gridcapa
+      bucket: gridcapa
+      base-directory: /CSE/D2CC/VULCANUS
