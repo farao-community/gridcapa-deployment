@@ -1,0 +1,239 @@
+version: "3.7"
+services:
+  nginx-proxy:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:Z
+      - ./config/apps-metadata.json:/usr/share/nginx/html/apps-metadata.json:Z
+    depends_on:
+      - config-notification-server
+      - config-server
+      - core-valid-gridcapa-app
+      - cse-d2cc-gridcapa-app
+      - rabbitmq
+      - filebrowser
+      - minio
+    networks:
+      - gridcapa
+
+  core-valid-gridcapa-app:
+    image: farao/gridcapa-app:latest
+    volumes:
+      - ./config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ./config/core-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+    networks:
+      - gridcapa
+
+  cse-d2cc-gridcapa-app:
+    image: farao/gridcapa-app:latest
+    volumes:
+      - ./config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ./config/cse-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+    networks:
+      - gridcapa
+
+  config-server:
+    image: gridsuite/config-server:latest
+    restart: always
+    volumes:
+      - ./config/gridsuite-config-server-application.yml:/config/application.yml:Z
+      - ./config/gridsuite-cassandra.properties:/config/cassandra.properties:Z
+    command: --spring.config.additional-location=/config/
+    networks:
+      - gridcapa
+    depends_on:
+      - cassandra
+
+  config-notification-server:
+    image: gridsuite/config-notification-server:latest
+    restart: always
+    volumes:
+      - ./config/gridsuite-config-notification-server-application.yml:/config/application.yml:Z
+    command: --spring.config.additional-location=/config/
+    networks:
+      - gridcapa
+    depends_on:
+      - rabbitmq
+
+  cassandra:
+    image: bitnami/cassandra
+    environment:
+      MAX_HEAP_SIZE: 512M
+      HEAP_NEWSIZE: 512M
+      CASSANDRA_AUTHENTICATOR: AllowAllAuthenticator
+      CASSANDRA_AUTHORIZER: AllowAllAuthorizer
+    volumes:
+      - cassandra-data:/bitnami
+      - ./config/gridsuite-cassandra-schema.cql:/docker-entrypoint-initdb.d/schema.cql
+    networks:
+      - gridcapa
+    healthcheck:
+      test: ["CMD-SHELL", "[ $$(nodetool statusgossip) = running]"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  rabbitmq:
+    image: rabbitmq:management
+    environment:
+      RABBITMQ_DEFAULT_USER: gridcapa
+      RABBITMQ_DEFAULT_PASS: gridcapa
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq/mnesia
+    networks:
+      - gridcapa
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  sftp-server:
+    image: atmoz/sftp
+    restart: always
+    environment:
+      SFTP_USERS: gridcapa:gridcapa:::data/core/valid/cgms
+    volumes:
+      - sftp-data:/home/gridcapa/data
+    ports:
+      - "2222:22"
+    networks:
+      - gridcapa
+
+  ftp-server:
+    image: delfer/alpine-ftp-server
+    restart: always
+    environment:
+      USERS: gridcapa|gridcapa|/data/gridcapa/cse/d2cc/cgms
+    volumes:
+      - ftp-data:/data/gridcapa
+    ports:
+      - "21:21"
+      - "21000-21010:21000-21010"
+    networks:
+      - gridcapa
+
+  filebrowser:
+    image: filebrowser/filebrowser
+    restart: always
+    volumes:
+      - sftp-data:/srv/sftp
+      - ftp-data:/srv/ftp
+    environment:
+      FB_BASEURL: /utils/filebrowser
+      FB_USERNAME: gridcapa
+      FB_PASSWORD: $$2y$$10$$aWh9euDInAg94hlz3eLRteghF5ASR8LCq6K2EkGwxi4a9oxSyhnP.
+    networks:
+      - gridcapa
+
+  minio:
+    image: bitnami/minio:2021.6.17
+    restart: always
+    volumes:
+      - minio-data:/data
+    environment:
+      MINIO_ACCESS_KEY: gridcapa
+      MINIO_SECRET_KEY: gridcapa
+      MINIO_DEFAULT_BUCKETS: gridcapa
+      MINIO_NOTIFY_AMQP_ENABLE: "on"
+      MINIO_NOTIFY_AMQP_URL: amqp://gridcapa:gridcapa@rabbitmq:5672
+      MINIO_NOTIFY_AMQP_EXCHANGE: gridcapa.minio.events
+      MINIO_NOTIFY_AMQP_EXCHANGE_TYPE: fanout
+      MINIO_NOTIFY_AMQP_DELIVERY_MODE: 2
+      MINIO_NOTIFY_AMQP_AUTO_DELETED: "off"
+      MINIO_NOTIFY_AMQP_DURABLE: "on"
+    ports:
+      - "9000:9000"
+    networks:
+      - gridcapa
+
+  core-valid-postgres:
+    image: bitnami/postgresql
+    environment:
+      POSTGRES_DB: core-valid-task-manager
+      POSTGRES_USER: core-valid
+      POSTGRES_PASSWORD: core-valid
+    ports:
+      - "5433:5432"
+    volumes:
+      - core-postgres-data:/bitnami/postgres
+    networks:
+      - gridcapa
+
+  cse-d2cc-postgres:
+    image: bitnami/postgresql
+    environment:
+      POSTGRES_DB: cse-d2cc-task-manager
+      POSTGRES_USER: cse-d2cc
+      POSTGRES_PASSWORD: cse-d2cc
+    ports:
+      - "5432:5432"
+    volumes:
+      - cse-postgres-data:/bitnami/postgres
+    networks:
+      - gridcapa
+
+  core-valid-gridcapa-cgm-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/core-valid-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-valid-gridcapa-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./config/core-valid-gridcapa-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-valid-task-notification-server:
+    image: springcloudstream/websocket-sink-rabbit:latest
+    restart: always
+    volumes:
+      - ./config/core-valid-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
+    networks:
+      - gridcapa
+    depends_on:
+      - rabbitmq
+
+  cse-d2cc-gridcapa-cgm-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/cse-d2cc-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-d2cc-gridcapa-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./config/cse-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-d2cc-task-notification-server:
+    image: springcloudstream/websocket-sink-rabbit:latest
+    restart: always
+    volumes:
+      - ./config/cse-d2cc-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
+    networks:
+      - gridcapa
+    depends_on:
+      - rabbitmq
+
+networks:
+  gridcapa:
+
+volumes:
+  core-postgres-data:
+  cse-postgres-data:
+  cassandra-data:
+  sftp-data:
+  ftp-data:
+  minio-data:
+  rabbitmq-data:
