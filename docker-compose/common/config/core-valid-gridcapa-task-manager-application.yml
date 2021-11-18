@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://postgres/cse-d2cc-task-manager
+    url: jdbc:postgresql://core-valid-postgres:5432/core-valid-task-manager
     driverClassName: org.postgresql.Driver
-    username: cse-d2cc
-    password: cse-d2cc
+    username: core-valid
+    password: core-valid
   jpa:
     hibernate:
       ddl-auto: update
@@ -17,7 +17,7 @@ spring:
       bindings:
         task-updated:
           binder: rabbit
-          destination: task-updated
+          destination: core-valid-task-updated
 
 task-server:
   minio:
@@ -27,15 +27,13 @@ task-server:
       secret-key: gridcapa
     notification:
       exchange: gridcapa.minio.events
-      queue: cse-d2cc-gridcapa-task-manager
+      queue: core-valid-task-manager
   process:
-    tag: CSE_D2CC
+    tag: CORE_VALID
     timezone: CET
     inputs:
       - CGM
-      - CRAC
+      - CBCORA
       - GLSK
-      - TARGET-CH
-      - NTC
-      - NTC-RED
-      - VULCANUS
+      - REFPROG
+      - STUDY-POINTS

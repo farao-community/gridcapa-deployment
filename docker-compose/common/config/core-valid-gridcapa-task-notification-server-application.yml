@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: core-valid-task-updated
+    config:
+      enabled: false
+  rabbitmq:
+    addresses: rabbitmq:5672
+    username: gridcapa
+    password: gridcapa
