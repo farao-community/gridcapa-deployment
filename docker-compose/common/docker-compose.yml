@@ -109,7 +109,7 @@ services:
     image: delfer/alpine-ftp-server
     restart: always
     environment:
-      USERS: gridcapa|gridcapa|/data/gridcapa/cse/d2cc/cgms
+      USERS: gridcapa|gridcapa|/data/gridcapa/cse/d2cc/cgms /data/gridcapa/cse/d2cc/cracs /data/gridcapa/cse/d2cc/glsks /data/gridcapa/cse/d2cc/ntc /data/gridcapa/cse/d2cc/ntcreds /data/gridcapa/cse/d2cc/targetchs /data/gridcapa/cse/d2cc/vulcanus
     volumes:
       - ftp-data:/data/gridcapa
     ports:
@@ -209,6 +209,47 @@ services:
     networks:
       - gridcapa
 
+  cse-d2cc-gridcapa-crac-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/cse-d2cc-gridcapa-crac-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-d2cc-gridcapa-glsk-data-bridge:
+      image: farao/gridcapa-data-bridge:latest
+      volumes:
+        - ./config/cse-d2cc-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
+      networks:
+        - gridcapa
+
+  cse-d2cc-gridcapa-ntc-data-bridge:
+      image: farao/gridcapa-data-bridge:latest
+      volumes:
+        - ./config/cse-d2cc-gridcapa-ntc-data-bridge-application.yml:/config/application.yml
+      networks:
+        - gridcapa
+
+  cse-d2cc-gridcapa-ntc-red-data-bridge:
+      image: farao/gridcapa-data-bridge:latest
+      volumes:
+        - ./config/cse-d2cc-gridcapa-ntc-red-data-bridge-application.yml:/config/application.yml
+      networks:
+        - gridcapa
+
+  cse-d2cc-gridcapa-target-ch-data-bridge:
+      image: farao/gridcapa-data-bridge:latest
+      volumes:
+        - ./config/cse-d2cc-gridcapa-target-ch-data-bridge-application.yml:/config/application.yml
+      networks:
+        - gridcapa
+
+  cse-d2cc-gridcapa-vulcanus-data-bridge:
+      image: farao/gridcapa-data-bridge:latest
+      volumes:
+        - ./config/cse-d2cc-gridcapa-vulcanus-data-bridge-application.yml:/config/application.yml
+      networks:
+        - gridcapa
   cse-d2cc-gridcapa-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
