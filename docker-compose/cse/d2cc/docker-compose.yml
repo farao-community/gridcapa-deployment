@@ -111,7 +111,7 @@ services:
     image: delfer/alpine-ftp-server
     restart: always
     environment:
-      USERS: gridcapa|gridcapa|/data/gridcapa/cse/d2cc/cgms
+      USERS: gridcapa|gridcapa|/data/gridcapa/cse/d2cc/cgms /data/gridcapa/cse/d2cc/cracs /data/gridcapa/cse/d2cc/glsks /data/gridcapa/cse/d2cc/ntc /data/gridcapa/cse/d2cc/ntcreds /data/gridcapa/cse/d2cc/targetchs /data/gridcapa/cse/d2cc/vulcanus
     volumes:
       - ftp-data:/data/gridcapa
     ports:
@@ -150,13 +150,6 @@ services:
       MINIO_NOTIFY_AMQP_DURABLE: "on"
     ports:
       - "9000:9000"
-    networks:
-      - gridcapa
-
-  gridcapa-cgm-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/gridcapa-cgm-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
