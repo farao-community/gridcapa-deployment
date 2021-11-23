@@ -1,2 +1,2 @@
 job-launcher:
-  taskManagerUrl: http://localhost/core/valid/task-manager/
+  taskManagerUrl: http://gridcapa-task-manager:8080/
