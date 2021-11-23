@@ -20,11 +20,11 @@ data:
       sources:
         ftp:
           active: true
-          host: ftp-server
+          host: ${GRIDCAPA_FTP_HOST}
           port: 21
           username: ${GRIDCAPA_FTP_USER}
           password: ${GRIDCAPA_FTP_PASSWORD}
-          base-directory: /data/gridcapa/cse/d2cc/targetchs
+          base-directory: ${GRIDCAPA_FTP_ROOT_DIRECTORY}/cse/d2cc/targetchs
           polling-delay-in-ms: 5000
       sinks:
         minio:

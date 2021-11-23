@@ -35,8 +35,6 @@ spec:
               name: filebrowser-configmap-volume
             - mountPath: "/data"
               name: filebrowser-storage
-            - mountPath: "/srv/ftp"
-              name: ftp-server-storage
             - mountPath: "/srv/sftp"
               name: sftp-server-storage
           env:
@@ -75,9 +73,6 @@ spec:
             limits:
               memory: "128Mi"
       volumes:
-        - name: ftp-server-storage
-          persistentVolumeClaim:
-            claimName: ftp-storage
         - name: sftp-server-storage
           persistentVolumeClaim:
             claimName: sftp-storage

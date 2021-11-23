@@ -20,9 +20,6 @@ resources:
   - filebrowser-deployment.yaml
   - filebrowser-pv-claim.yaml
   - filebrowser-service.yaml
-  - ftp-pv-claim.yaml
-  - ftp-server-deployment.yaml
-  - ftp-server-service.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
   - gridcapa-storage-class.yaml
