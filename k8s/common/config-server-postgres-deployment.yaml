@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-server-postgres
+  labels:
+    app: gridcapa
+    component: config-server-postgres
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: config-server-postgres
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: config-server-postgres
+    spec:
+      containers:
+        - name: config-server-postgres
+          image: docker.io/bitnami/postgresql
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: config-server-db
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgres-credentials
+                  key: postgres-user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgres-credentials
+                  key: postgres-password
+          resources:
+            limits:
+              cpu: "500m"
+              memory: 1Gi
+            requests:
+              cpu: "500m"
+              memory: 1Gi
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /bitnami/postgres
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: config-server-postgres-pv-claim

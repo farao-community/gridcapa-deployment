@@ -4,17 +4,16 @@ kind: Kustomization
 resources:
   - apps-metadata-server-deployment.yaml
   - apps-metadata-server-service.yaml
-  - cassandra-configmap.yaml
-  - cassandra-deployment.yaml
-  - cassandra-pv-claim.yaml
-  - cassandra-service.yaml
-  - cassandra-storage-class.yaml
   - config-notification-server-configmap.yaml
   - config-notification-server-deployment.yaml
   - config-notification-server-service.yaml
   - config-server-configmap.yaml
   - config-server-deployment.yaml
   - config-server-service.yaml
+  - config-server-postgres-deployment.yaml
+  - config-server-postgres-pv-claim.yaml
+  - config-server-postgres-service.yaml
+  - config-server-postgres-storage-class.yaml
   - minio-deployment.yaml
   - minio-pv-claim.yaml
   - minio-service.yaml

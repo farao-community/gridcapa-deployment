@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: cassandra-storage
+  name: config-server-postgres-pv-claim
   labels:
     app: gridcapa
-    component: cassandra-storage
+    component: config-server-postgres
 spec:
-  storageClassName: cassandra-storage-class
+  storageClassName: config-server-postgres-storage-class
   accessModes:
     - ReadWriteOnce
   resources:

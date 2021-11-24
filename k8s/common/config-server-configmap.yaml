@@ -15,6 +15,12 @@ data:
         addresses: gridcapa-rabbitmq:5672
         username: ${GRIDCAPA_RABBITMQ_USER}
         password: ${GRIDCAPA_RABBITMQ_PASSWORD}
-  cassandra.properties: |-
-    cassandra.contact-points=cassandra-svc
-    cassandra.port=9042
+    dbName: config-server-db
+  database.properties: |-
+    dbVendor=postgresql
+    host=config-server-postgres
+    port=5432
+    query=
+    login=${POSTGRES_USER}
+    password=${POSTGRES_PASSWORD}
+    driver=postgresql
