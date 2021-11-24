@@ -39,12 +39,12 @@ services:
     restart: always
     volumes:
       - ./config/gridsuite-config-server-application.yml:/config/application.yml:Z
-      - ./config/gridsuite-cassandra.properties:/config/cassandra.properties:Z
+      - ./config/gridsuite-postgres.properties:/config/database.properties:Z
     command: --spring.config.additional-location=/config/
     networks:
       - gridcapa
     depends_on:
-      - cassandra
+      - config-server-postgres
 
   config-notification-server:
     image: gridsuite/config-notification-server:latest
@@ -57,23 +57,18 @@ services:
     depends_on:
       - rabbitmq
 
-  cassandra:
-    image: bitnami/cassandra
+  config-server-postgres:
+    image: bitnami/postgresql
     environment:
-      MAX_HEAP_SIZE: 512M
-      HEAP_NEWSIZE: 512M
-      CASSANDRA_AUTHENTICATOR: AllowAllAuthenticator
-      CASSANDRA_AUTHORIZER: AllowAllAuthorizer
+      POSTGRES_DB: config-server-db
+      POSTGRES_USER: config-server
+      POSTGRES_PASSWORD: config-server
+    ports:
+      - "5434:5432"
     volumes:
-      - cassandra-data:/bitnami
-      - ./config/gridsuite-cassandra-schema.cql:/docker-entrypoint-initdb.d/schema.cql
+      - config-server-postgres-data:/bitnami/postgres
     networks:
       - gridcapa
-    healthcheck:
-      test: ["CMD-SHELL", "[ $$(nodetool statusgossip) = running]"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
 
   rabbitmq:
     image: rabbitmq:management
@@ -273,6 +268,7 @@ networks:
 volumes:
   core-postgres-data:
   cse-postgres-data:
+  config-server-postgres-data:
   cassandra-data:
   sftp-data:
   ftp-data:
