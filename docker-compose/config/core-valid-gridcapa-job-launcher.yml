@@ -1,0 +1,2 @@
+job-launcher:
+  taskManagerUrl: http://core-valid-gridcapa-task-manager:8080/

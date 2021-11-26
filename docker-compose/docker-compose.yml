@@ -215,6 +215,13 @@ services:
     networks:
       - gridcapa
 
+  core-valid-gridcapa-job-launcher:
+    image: farao/gridcapa-job-launcher:SNAPSHOT
+    volumes:
+      - ./config/core-valid/core-valid-gridcapa-job-launcher.yml:/config/application.yml
+    networks:
+      - gridcapa
+
   core-valid-task-notification-server:
     image: springcloudstream/websocket-sink-rabbit:latest
     restart: always
