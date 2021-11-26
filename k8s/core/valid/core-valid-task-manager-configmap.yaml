@@ -11,10 +11,11 @@ data:
   application.yml: |-
     spring:
       datasource:
-        url: jdbc:postgresql://core-valid-postgres:5432/core-valid-task-manager
+        url: jdbc:postgresql://faraopostgres.postgres.database.azure.com:5432/core_valid_tasks
         driverClassName: org.postgresql.Driver
         username: ${POSTGRES_USER}
         password: ${POSTGRES_PASSWORD}
+        sslmode: require
       jpa:
         hibernate:
           ddl-auto: update

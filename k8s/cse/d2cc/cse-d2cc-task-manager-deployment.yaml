@@ -33,12 +33,12 @@ spec:
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-postgres-credentials
+                  name: gridcapa-cse-d2cc-postgres-credentials
                   key: postgres-user
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-postgres-credentials
+                  name: gridcapa-cse-d2cc-postgres-credentials
                   key: postgres-password
             - name: MINIO_ACCESS_KEY
               valueFrom:
