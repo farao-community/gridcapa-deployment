@@ -19,7 +19,7 @@ services:
       - gridcapa
 
   core-valid-gridcapa-app:
-    image: farao/gridcapa-app:latest
+    image: farao/gridcapa-app:SNAPSHOT
     volumes:
       - ./config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
       - ./config/core-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
@@ -216,7 +216,7 @@ services:
       - gridcapa
 
   core-valid-gridcapa-job-launcher:
-    image: farao/gridcapa-job-launcher:SNAPSHOT
+    image: farao/gridcapa-job-launcher:1.0.0-SNAPSHOT
     volumes:
       - ./config/core-valid/core-valid-gridcapa-job-launcher.yml:/config/application.yml
     networks:
