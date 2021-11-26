@@ -180,28 +180,28 @@ services:
     networks:
       - gridcapa
 
-  gridcapa-cbcora-data-bridge:
+  core-valid-gridcapa-cbcora-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
       - ./config/core-valid-gridcapa-cbcora-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  gridcapa-glsk-data-bridge:
+  core-valid-gridcapa-glsk-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/core-valid-core-valid-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
+      - ./config/core-valid-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  gridcapa-refprog-data-bridge:
+  core-valid-gridcapa-refprog-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
       - ./config/core-valid-gridcapa-refprog-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  gridcapa-study-point-data-bridge:
+  core-valid-gridcapa-study-point-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
       - ./config/core-valid-gridcapa-study-point-data-bridge-application.yml:/config/application.yml
