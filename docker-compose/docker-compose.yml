@@ -92,7 +92,7 @@ services:
     image: atmoz/sftp
     restart: always
     environment:
-      SFTP_USERS: gridcapa:gridcapa:::data/core/valid/cgms
+      SFTP_USERS: gridcapa:gridcapa:::data/core/valid/cgms,data/core/valid/cbcoras,data/core/valid/refprogs,data/core/valid/studypoints,data/core/valid/glsks
     volumes:
       - sftp-data:/home/gridcapa/data
     ports:
@@ -177,6 +177,34 @@ services:
     image: farao/gridcapa-data-bridge:latest
     volumes:
       - ./config/core-valid-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  gridcapa-cbcora-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/core-valid-gridcapa-cbcora-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  gridcapa-glsk-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/core-valid-core-valid-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  gridcapa-refprog-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/core-valid-gridcapa-refprog-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  gridcapa-study-point-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/core-valid-gridcapa-study-point-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -269,7 +297,6 @@ volumes:
   core-postgres-data:
   cse-postgres-data:
   config-server-postgres-data:
-  cassandra-data:
   sftp-data:
   ftp-data:
   minio-data:
