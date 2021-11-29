@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: core-valid-cbcora-data-bridge
+  labels:
+    app: gridcapa
+    component: gridcapa-cbcora-data-bridge
+    region: core
+    process: valid
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: gridcapa-cbcora-data-bridge
+    region: core
+    process: valid
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
