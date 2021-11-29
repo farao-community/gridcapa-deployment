@@ -9,6 +9,10 @@ bases:
 resources:
   - apps-metadata-server-configmap.yaml
   - core-valid-cgm-data-bridge-configmap.yaml
+  - core-valid-glsk-data-bridge-configmap.yaml
+  - core-valid-cbcora-data-bridge-configmap.yaml
+  - core-valid-refprog-data-bridge-configmap.yaml
+  - core-valid-studypoint-data-bridge-configmap.yaml
   - cse-d2cc-cgm-data-bridge-configmap.yaml
   - cse-d2cc-crac-data-bridge-configmap.yaml
   - cse-d2cc-glsk-data-bridge-configmap.yaml
