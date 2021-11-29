@@ -30,6 +30,11 @@ spec:
           ports:
             - containerPort: 8080
           env:
+            - name: GRIDCAPA_FTP_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-host
             - name: GRIDCAPA_FTP_USER
               valueFrom:
                 secretKeyRef:
@@ -40,6 +45,11 @@ spec:
                 secretKeyRef:
                   name: gridcapa-ftp-credentials
                   key: ftp-password
+            - name: GRIDCAPA_FTP_ROOT_DIRECTORY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-root-directory
             - name: GRIDCAPA_MINIO_USER
               valueFrom:
                 secretKeyRef:

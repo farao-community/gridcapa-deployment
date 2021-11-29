@@ -11,10 +11,20 @@ data:
       port: 8080
 
     spring:
+      r2dbc:
+        properties:
+          sslMode: REQUIRE
       rabbitmq:
         addresses: gridcapa-rabbitmq:5672
         username: ${GRIDCAPA_RABBITMQ_USER}
         password: ${GRIDCAPA_RABBITMQ_PASSWORD}
-  cassandra.properties: |-
-    cassandra.contact-points=cassandra-svc
-    cassandra.port=9042
+
+    dbName: config_server_db
+  database.properties: |-
+    dbVendor=postgresql
+    host=faraopostgres.postgres.database.azure.com
+    port=5432
+    query=
+    login=${POSTGRES_USER}
+    password=${POSTGRES_PASSWORD}
+    driver=postgresql

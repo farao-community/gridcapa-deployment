@@ -7,3 +7,5 @@ spring:
     port: 5672
     username: gridcapa
     password: gridcapa
+
+dbName: config-server-db
