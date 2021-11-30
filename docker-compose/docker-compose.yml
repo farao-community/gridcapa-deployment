@@ -218,7 +218,7 @@ services:
   core-valid-gridcapa-job-launcher:
     image: farao/gridcapa-job-launcher:1.0.0-SNAPSHOT
     volumes:
-      - ./config/core-valid/core-valid-gridcapa-job-launcher.yml:/config/application.yml
+      - ./config/core-valid-gridcapa-job-launcher.yml:/config/application.yml
     networks:
       - gridcapa
 
