@@ -30,6 +30,11 @@ spec:
           ports:
             - containerPort: 8080
           env:
+            - name: GRIDCAPA_SFTP_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-sftp-credentials
+                  key: sftp-host
             - name: GRIDCAPA_SFTP_USER
               valueFrom:
                 secretKeyRef:
@@ -40,6 +45,11 @@ spec:
                 secretKeyRef:
                   name: gridcapa-sftp-credentials
                   key: sftp-password
+            - name: GRIDCAPA_SFTP_ROOT_DIRECTORY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-sftp-credentials
+                  key: sftp-root-directory
             - name: GRIDCAPA_MINIO_USER
               valueFrom:
                 secretKeyRef:

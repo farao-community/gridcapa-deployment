@@ -19,11 +19,11 @@ data:
       sources:
         sftp:
           active: true
-          host: sftp-server
-          port: 22
+          host: ${GRIDCAPA_SFTP_HOST}
+          port: 2222
           username: ${GRIDCAPA_SFTP_USER}
           password: ${GRIDCAPA_SFTP_PASSWORD}
-          base-directory: /data/core/valid/cbcoras
+          base-directory: ${GRIDCAPA_SFTP_ROOT_DIRECTORY}/core/valid/cbcoras
           polling-delay-in-ms: 5000
       sinks:
         minio:

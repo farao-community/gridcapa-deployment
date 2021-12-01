@@ -63,10 +63,6 @@ spec:
             backend:
               serviceName: cse-d2cc-task-manager
               servicePort: 80
-          - path: /utils/filebrowser(/|$)(.*)
-            backend:
-              serviceName: filebrowser
-              servicePort: 80
           - path: /utils/rabbitmq(/|$)(.*)
             backend:
               serviceName: gridcapa-rabbitmq
