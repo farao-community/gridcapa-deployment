@@ -1,0 +1,13 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: core-valid-gridcapa-job-launcher-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-job-launcher-configmap
+    region: core
+    process: valid
+data:
+  application.yml: |-
+    job-launcher:
+      taskManagerUrl: http://core-valid-gridcapa-task-manager:8080/tasks/launch
