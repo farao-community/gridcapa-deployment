@@ -1,0 +1,2 @@
+job-launcher:
+  taskManagerUrl: http://cse-d2cc-gridcapa-task-manager:8080/tasks/launch

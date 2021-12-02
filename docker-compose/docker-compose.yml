@@ -19,7 +19,7 @@ services:
       - gridcapa
 
   core-valid-gridcapa-app:
-    image: farao/gridcapa-app:SNAPSHOT
+    image: farao/gridcapa-app:latest
     volumes:
       - ./config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
       - ./config/core-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
@@ -216,7 +216,7 @@ services:
       - gridcapa
 
   core-valid-gridcapa-job-launcher:
-    image: farao/gridcapa-job-launcher:1.0.0-SNAPSHOT
+    image: farao/gridcapa-job-launcher:latest
     volumes:
       - ./config/core-valid-gridcapa-job-launcher.yml:/config/application.yml
     networks:
@@ -284,6 +284,13 @@ services:
     image: farao/gridcapa-task-manager:latest
     volumes:
       - ./config/cse-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-d2cc-gridcapa-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    volumes:
+      - ./config/cse-d2cc-gridcapa-job-launcher.yml:/config/application.yml
     networks:
       - gridcapa
 
