@@ -4,6 +4,14 @@ kind: Kustomization
 resources:
   - core-valid-cgm-data-bridge-deployment.yaml
   - core-valid-cgm-data-bridge-service.yaml
+  - core-valid-glsk-data-bridge-deployment.yaml
+  - core-valid-glsk-data-bridge-service.yaml
+  - core-valid-refprog-data-bridge-deployment.yaml
+  - core-valid-refprog-data-bridge-service.yaml
+  - core-valid-cbcora-data-bridge-deployment.yaml
+  - core-valid-cbcora-data-bridge-service.yaml
+  - core-valid-studypoint-data-bridge-deployment.yaml
+  - core-valid-studypoint-data-bridge-service.yaml
   - core-valid-gridcapa-app-deployment.yaml
   - core-valid-gridcapa-app-process-metadata-configmap.yaml
   - core-valid-gridcapa-app-service.yaml
