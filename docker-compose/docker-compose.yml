@@ -215,6 +215,13 @@ services:
     networks:
       - gridcapa
 
+  core-valid-gridcapa-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    volumes:
+      - ./config/core-valid-gridcapa-job-launcher.yml:/config/application.yml
+    networks:
+      - gridcapa
+
   core-valid-task-notification-server:
     image: springcloudstream/websocket-sink-rabbit:latest
     restart: always
@@ -277,6 +284,13 @@ services:
     image: farao/gridcapa-task-manager:latest
     volumes:
       - ./config/cse-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-d2cc-gridcapa-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    volumes:
+      - ./config/cse-d2cc-gridcapa-job-launcher.yml:/config/application.yml
     networks:
       - gridcapa
 

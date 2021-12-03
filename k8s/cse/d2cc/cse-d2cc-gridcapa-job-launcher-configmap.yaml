@@ -1,0 +1,13 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-d2cc-gridcapa-job-launcher-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-job-launcher-configmap
+    region: core
+    process: valid
+data:
+  application.yml: |-
+    job-launcher:
+      taskManagerUrl: http://cse-d2cc-gridcapa-task-manager:8080/tasks/launch

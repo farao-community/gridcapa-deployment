@@ -61,6 +61,13 @@ spec:
             pathType: Prefix
           - backend:
               service:
+                name: core-valid-gridcapa-job-launcher
+                port:
+                  number: 80
+            path: /core/valid/gridcapa-job-launcher(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
                 name: cse-d2cc-gridcapa-app
                 port:
                   number: 80
@@ -93,6 +100,13 @@ spec:
                 port:
                   number: 80
             path: /cse/d2cc/task-manager(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-d2cc-gridcapa-job-launcher
+                port:
+                  number: 80
+            path: /cse/d2cc/gridcapa-job-launcher(/|$)(.*)
             pathType: Prefix
           - backend:
               service:
