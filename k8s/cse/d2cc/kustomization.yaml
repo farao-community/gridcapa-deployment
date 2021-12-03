@@ -11,6 +11,9 @@ resources:
   - cse-d2cc-gridcapa-app-deployment.yaml
   - cse-d2cc-gridcapa-app-process-metadata-configmap.yaml
   - cse-d2cc-gridcapa-app-service.yaml
+  - cse-d2cc-gridcapa-job-launcher-deployment.yaml
+  - cse-d2cc-gridcapa-job-launcher-service.yaml
+  - cse-d2cc-gridcapa-job-launcher-configmap.yaml
   - cse-d2cc-ntc-data-bridge-deployment.yaml
   - cse-d2cc-ntc-data-bridge-service.yaml
   - cse-d2cc-ntc-red-data-bridge-deployment.yaml
