@@ -10,4 +10,4 @@ metadata:
 data:
   application.yml: |-
     job-launcher:
-      taskManagerUrl: http://cse-d2cc-gridcapa-task-manager:8080/tasks/launch
+      taskManagerUrl: http://gridcapa.farao-community.com/cse/d2cc/task-manager/tasks/launch/

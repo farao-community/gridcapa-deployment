@@ -10,4 +10,4 @@ metadata:
 data:
   application.yml: |-
     job-launcher:
-      taskManagerUrl: http://core-valid-gridcapa-task-manager:8080/tasks/launch
+      taskManagerUrl: http://gridcapa.farao-community.com/core/valid/task-manager/tasks/launch/
