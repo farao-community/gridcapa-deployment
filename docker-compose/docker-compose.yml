@@ -290,6 +290,23 @@ services:
     depends_on:
       - rabbitmq
 
+  rao-runner:
+    hostname: rao-runner
+    image: inca.rte-france.com/farao/rao-runner-app:2.6.1
+    volumes:
+      - ./core-valid-gridcapa-rao-runner-application.yml:/config/application.yml
+      - ./core-valid-gridcapa-rao-runner-config.yml:/home/farao/.itools/config.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - minio
+      - rabbitmq
+    env_file:
+      - .env
+
 networks:
   gridcapa:
 
