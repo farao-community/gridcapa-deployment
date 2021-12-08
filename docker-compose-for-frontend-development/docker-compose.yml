@@ -197,6 +197,20 @@ services:
     networks:
       - gridcapa
 
+  core-valid-gridcapa-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    volumes:
+      - ./../docker-compose/config/core-valid-gridcapa-job-launcher.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-valid-gridcapa-fake-runner:
+    image: farao/gridcapa-fake-runner:latest
+    volumes:
+      - ./../docker-compose/config/core-valid-gridcapa-fake-runner.yml:/config/application.yml
+    networks:
+      - gridcapa
+
   core-valid-task-notification-server:
     image: springcloudstream/websocket-sink-rabbit:latest
     restart: always
@@ -255,10 +269,25 @@ services:
         - ./../docker-compose/config/cse-d2cc-gridcapa-vulcanus-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
+
   cse-d2cc-gridcapa-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
       - ./../docker-compose/config/cse-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-d2cc-gridcapa-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    volumes:
+      - ./../docker-compose/config/cse-d2cc-gridcapa-job-launcher.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-d2cc-gridcapa-fake-runner:
+    image: farao/gridcapa-fake-runner:latest
+    volumes:
+      - ./../docker-compose/config/cse-d2cc-gridcapa-fake-runner.yml:/config/application.yml
     networks:
       - gridcapa
 

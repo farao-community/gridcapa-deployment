@@ -4,6 +4,12 @@ spring:
       bindings:
         input:
           destination: cse-d2cc-task-updated
+          group: core-valid-task-notification
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
     config:
       enabled: false
   rabbitmq:
