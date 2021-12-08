@@ -1,26 +1,26 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-d2cc-gridcapa-job-launcher-configmap
+  name: cse-d2cc-gridcapa-fake-runner-configmap
   labels:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: gridcapa-fake-runner
     region: cse
     process: d2cc
 data:
   application.yml: |-
     spring:
       rabbitmq:
-        host: rabbitmq
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
+        host: rabbitmq
         port: 5672
       cloud:
         stream:
+          default:
+            group: cse-d2cc-fake-runner
           bindings:
-            run-task:
+            handleRun-in-0:
               destination: cse-d2cc-run-task
-              group: cse-d2cc-job-launcher
-
-    job-launcher:
-      task-manager-url: http://gridcapa.farao-community.com/cse/d2cc/task-manager/tasks/
+            handleRun-out-0:
+              destination: cse-d2cc-task-status-updated

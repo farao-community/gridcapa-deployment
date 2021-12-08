@@ -50,12 +50,12 @@ spec:
                 secretKeyRef:
                   name: gridcapa-minio-credentials
                   key: minio-secret-key
-            - name: RABBITMQ_DEFAULT_USER
+            - name: RABBITMQ_USER
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-rabbitmq-credentials
                   key: rabbitmq-user
-            - name: RABBITMQ_DEFAULT_PASS
+            - name: RABBITMQ_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-rabbitmq-credentials
