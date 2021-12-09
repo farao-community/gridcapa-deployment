@@ -8,8 +8,8 @@ This repository contains all the deployment files for GridCapa applications:
 
 ## Deploying using Docker Compose
 
-Docker Compose scripts are designed to run all GridCapa applications independently. A
-GridCapa application is an instanciation of GridCapa framework for a given business process.
+GridCapa framework instantiates different GridCapa applications by business process.
+Docker Compose script is designed to run all GridCapa applications together.
 
 GridCapa currently contains the following applications.
 - GridCapa CSE D2CC
@@ -19,33 +19,29 @@ GridCapa currently contains the following applications.
 
 Docker Compose scripts needs Docker (version >= 18) and docker-compose.
 
-### Deployment
-
-#### GridCapa CSE D2CC
+#### Default GridCapa environment
 
 ```bash
-cd docker-compose/cse/d2cc
+cd docker-compose
 docker-compose up -d
 ```
 
 Multiple environment are available:
 - Main GridCapa UI on page http://localhost/cse/d2cc/.
 - FTP server file browser on page http://localhost/utils/filebrowser/. Default credentials are gridcapa/gridcapa.
-- RabbitMQ management UI on page http://localhost/utils/rabbitmq/. Default credentials are gridcapa/gridcapa.
-- MinIO browser on page http://localhost/minio/. Default credentials are gridcapa/gridcapa.
-
-#### GridCapa CORE Validation
-
-```bash
-cd docker-compose/core/valid
-docker-compose up -d
-```
-
-Multiple environment are available:
-- Main GridCapa UI on page http://localhost/core/valid/.
 - SFTP server file browser on page http://localhost/utils/filebrowser/. Default credentials are gridcapa/gridcapa.
 - RabbitMQ management UI on page http://localhost/utils/rabbitmq/. Default credentials are gridcapa/gridcapa.
 - MinIO browser on page http://localhost/minio/. Default credentials are gridcapa/gridcapa.
+
+#### Specific GridCapa front-end app development environment 
+
+```bash
+cd docker-compose-for-front-end-development
+docker-compose up -d
+```
+- Now you have the gridcapa back-end running with docker-compose 
+- Then run locally gridcapa-app following the application [README](https://github.com/farao-community/gridcapa-app/blob/master/README.md).
+- You should be able now to debug locally your front-end application
 
 ### MinIO bucket notifications
 

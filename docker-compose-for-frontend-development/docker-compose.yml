@@ -1,0 +1,285 @@
+version: "3.7"
+services:
+  nginx-proxy:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:Z
+      - ./../docker-compose/config/apps-metadata.json:/usr/share/nginx/html/apps-metadata.json:Z
+    depends_on:
+      - config-notification-server
+      - config-server
+      - rabbitmq
+      - filebrowser
+      - minio
+    networks:
+      - gridcapa
+
+  config-server:
+    image: gridsuite/config-server:latest
+    restart: always
+    volumes:
+      - ./../docker-compose/config/gridsuite-config-server-application.yml:/config/application.yml:Z
+      - ./../docker-compose/config/gridsuite-postgres.properties:/config/database.properties:Z
+    command: --spring.config.additional-location=/config/
+    networks:
+      - gridcapa
+    depends_on:
+      - config-server-postgres
+
+  config-notification-server:
+    image: gridsuite/config-notification-server:latest
+    restart: always
+    volumes:
+      - ./../docker-compose/config/gridsuite-config-notification-server-application.yml:/config/application.yml:Z
+    command: --spring.config.additional-location=/config/
+    networks:
+      - gridcapa
+    depends_on:
+      - rabbitmq
+
+  config-server-postgres:
+    image: bitnami/postgresql
+    environment:
+      POSTGRES_DB: config-server-db
+      POSTGRES_USER: config-server
+      POSTGRES_PASSWORD: config-server
+    ports:
+      - "5434:5432"
+    volumes:
+      - config-server-postgres-data:/bitnami/postgres
+    networks:
+      - gridcapa
+
+  rabbitmq:
+    image: rabbitmq:management
+    environment:
+      RABBITMQ_DEFAULT_USER: gridcapa
+      RABBITMQ_DEFAULT_PASS: gridcapa
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq/mnesia
+    networks:
+      - gridcapa
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  sftp-server:
+    image: atmoz/sftp
+    restart: always
+    environment:
+      SFTP_USERS: gridcapa:gridcapa:::data/core/valid/cgms,data/core/valid/cbcoras,data/core/valid/refprogs,data/core/valid/studypoints,data/core/valid/glsks
+    volumes:
+      - sftp-data:/home/gridcapa/data
+    ports:
+      - "2222:22"
+    networks:
+      - gridcapa
+
+  ftp-server:
+    image: delfer/alpine-ftp-server
+    restart: always
+    environment:
+      USERS: gridcapa|gridcapa|/data/gridcapa/cse/d2cc/cgms /data/gridcapa/cse/d2cc/cracs /data/gridcapa/cse/d2cc/glsks /data/gridcapa/cse/d2cc/ntc /data/gridcapa/cse/d2cc/ntcreds /data/gridcapa/cse/d2cc/targetchs /data/gridcapa/cse/d2cc/vulcanus
+    volumes:
+      - ftp-data:/data/gridcapa
+    ports:
+      - "21:21"
+      - "21000-21010:21000-21010"
+    networks:
+      - gridcapa
+
+  filebrowser:
+    image: filebrowser/filebrowser
+    restart: always
+    volumes:
+      - sftp-data:/srv/sftp
+      - ftp-data:/srv/ftp
+    environment:
+      FB_BASEURL: /utils/filebrowser
+      FB_USERNAME: gridcapa
+      FB_PASSWORD: $$2y$$10$$aWh9euDInAg94hlz3eLRteghF5ASR8LCq6K2EkGwxi4a9oxSyhnP.
+    networks:
+      - gridcapa
+
+  minio:
+    image: bitnami/minio:2021.6.17
+    restart: always
+    volumes:
+      - minio-data:/data
+    environment:
+      MINIO_ACCESS_KEY: gridcapa
+      MINIO_SECRET_KEY: gridcapa
+      MINIO_DEFAULT_BUCKETS: gridcapa
+      MINIO_NOTIFY_AMQP_ENABLE: "on"
+      MINIO_NOTIFY_AMQP_URL: amqp://gridcapa:gridcapa@rabbitmq:5672
+      MINIO_NOTIFY_AMQP_EXCHANGE: gridcapa.minio.events
+      MINIO_NOTIFY_AMQP_EXCHANGE_TYPE: fanout
+      MINIO_NOTIFY_AMQP_DELIVERY_MODE: 2
+      MINIO_NOTIFY_AMQP_AUTO_DELETED: "off"
+      MINIO_NOTIFY_AMQP_DURABLE: "on"
+    ports:
+      - "9000:9000"
+    networks:
+      - gridcapa
+
+  core-valid-postgres:
+    image: bitnami/postgresql
+    environment:
+      POSTGRES_DB: core-valid-task-manager
+      POSTGRES_USER: core-valid
+      POSTGRES_PASSWORD: core-valid
+    ports:
+      - "5433:5432"
+    volumes:
+      - core-postgres-data:/bitnami/postgres
+    networks:
+      - gridcapa
+
+  cse-d2cc-postgres:
+    image: bitnami/postgresql
+    environment:
+      POSTGRES_DB: cse-d2cc-task-manager
+      POSTGRES_USER: cse-d2cc
+      POSTGRES_PASSWORD: cse-d2cc
+    ports:
+      - "5432:5432"
+    volumes:
+      - cse-postgres-data:/bitnami/postgres
+    networks:
+      - gridcapa
+
+  core-valid-gridcapa-cgm-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./../docker-compose/config/core-valid-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-valid-gridcapa-cbcora-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./../docker-compose/config/core-valid-gridcapa-cbcora-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-valid-gridcapa-glsk-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./../docker-compose/config/core-valid-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-valid-gridcapa-refprog-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./../docker-compose/config/core-valid-gridcapa-refprog-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-valid-gridcapa-study-point-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./../docker-compose/config/core-valid-gridcapa-study-point-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-valid-gridcapa-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./../docker-compose/config/core-valid-gridcapa-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-valid-task-notification-server:
+    image: springcloudstream/websocket-sink-rabbit:latest
+    restart: always
+    volumes:
+      - ./../docker-compose/config/core-valid-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
+    networks:
+      - gridcapa
+    depends_on:
+      - rabbitmq
+
+  cse-d2cc-gridcapa-cgm-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./../docker-compose/config/cse-d2cc-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-d2cc-gridcapa-crac-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./../docker-compose/config/cse-d2cc-gridcapa-crac-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-d2cc-gridcapa-glsk-data-bridge:
+      image: farao/gridcapa-data-bridge:latest
+      volumes:
+        - ./../docker-compose/config/cse-d2cc-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
+      networks:
+        - gridcapa
+
+  cse-d2cc-gridcapa-ntc-data-bridge:
+      image: farao/gridcapa-data-bridge:latest
+      volumes:
+        - ./../docker-compose/config/cse-d2cc-gridcapa-ntc-data-bridge-application.yml:/config/application.yml
+      networks:
+        - gridcapa
+
+  cse-d2cc-gridcapa-ntc-red-data-bridge:
+      image: farao/gridcapa-data-bridge:latest
+      volumes:
+        - ./../docker-compose/config/cse-d2cc-gridcapa-ntc-red-data-bridge-application.yml:/config/application.yml
+      networks:
+        - gridcapa
+
+  cse-d2cc-gridcapa-target-ch-data-bridge:
+      image: farao/gridcapa-data-bridge:latest
+      volumes:
+        - ./../docker-compose/config/cse-d2cc-gridcapa-target-ch-data-bridge-application.yml:/config/application.yml
+      networks:
+        - gridcapa
+
+  cse-d2cc-gridcapa-vulcanus-data-bridge:
+      image: farao/gridcapa-data-bridge:latest
+      volumes:
+        - ./../docker-compose/config/cse-d2cc-gridcapa-vulcanus-data-bridge-application.yml:/config/application.yml
+      networks:
+        - gridcapa
+  cse-d2cc-gridcapa-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./../docker-compose/config/cse-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-d2cc-task-notification-server:
+    image: springcloudstream/websocket-sink-rabbit:latest
+    restart: always
+    volumes:
+      - ./../docker-compose/config/cse-d2cc-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
+    networks:
+      - gridcapa
+    depends_on:
+      - rabbitmq
+
+networks:
+  gridcapa:
+
+volumes:
+  core-postgres-data:
+  cse-postgres-data:
+  config-server-postgres-data:
+  sftp-data:
+  ftp-data:
+  minio-data:
+  rabbitmq-data:
