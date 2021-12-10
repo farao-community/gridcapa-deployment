@@ -1,2 +1,15 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    username: gridcapa
+    password: gridcapa
+    port: 5672
+  cloud:
+    stream:
+      bindings:
+        run-task:
+          destination: cse-d2cc-run-task
+          group: cse-d2cc-job-launcher
+
 job-launcher:
-  taskManagerUrl: http://cse-d2cc-gridcapa-task-manager:8080/tasks/launch
+  task-manager-url: http://cse-d2cc-gridcapa-task-manager:8080/tasks/

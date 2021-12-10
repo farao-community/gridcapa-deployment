@@ -4,7 +4,7 @@ metadata:
   name: cse-d2cc-task-manager-configmap
   labels:
     app: gridcapa
-    component: task-manager-configmap
+    component: task-manager
     region: cse
     process: d2cc
 data:
@@ -22,13 +22,18 @@ data:
       rabbitmq:
         host: gridcapa-rabbitmq
         port: 5672
-        username: ${RABBITMQ_DEFAULT_USER}
-        password: ${RABBITMQ_DEFAULT_PASS}
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
       cloud:
         stream:
+          default:
+            group: cse-d2cc-task-manager
           bindings:
+            handleMinioEvent-in-0:
+              destination: gridcapa.minio.events
+            handleTaskStatusUpdate-in-0:
+              destination: cse-d2cc-task-status-updated
             task-updated:
-              binder: rabbit
               destination: cse-d2cc-task-updated
 
     task-server:
@@ -37,9 +42,6 @@ data:
           url: http://gridcapa-minio:9000/
           access-key: ${MINIO_ACCESS_KEY}
           secret-key: ${MINIO_SECRET_KEY}
-        notification:
-          exchange: gridcapa.minio.events
-          queue: cse-d2cc-task-manager
       process:
         tag: CSE_D2CC
         timezone: CET

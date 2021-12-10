@@ -30,12 +30,12 @@ spec:
           ports:
             - containerPort: 9292
           env:
-            - name: GRIDCAPA_RABBITMQ_USER
+            - name: RABBITMQ_USER
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-rabbitmq-credentials
                   key: rabbitmq-user
-            - name: GRIDCAPA_RABBITMQ_PASSWORD
+            - name: RABBITMQ_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-rabbitmq-credentials

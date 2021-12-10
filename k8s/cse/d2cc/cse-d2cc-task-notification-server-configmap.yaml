@@ -4,7 +4,7 @@ metadata:
   name: cse-d2cc-task-notification-server-configmap
   labels:
     app: gridcapa
-    component: task-notification-server-configmap
+    component: task-notification-server
     region: cse
     process: d2cc
 data:
@@ -15,9 +15,15 @@ data:
           bindings:
             input:
               destination: cse-d2cc-task-updated
+              group: cse-d2cc-task-notification
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
         config:
           enabled: false
       rabbitmq:
         addresses: gridcapa-rabbitmq:5672
-        username: ${GRIDCAPA_RABBITMQ_USER}
-        password: ${GRIDCAPA_RABBITMQ_PASSWORD}
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}

@@ -1,10 +1,10 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-d2cc-gridcapa-job-launcher
+  name: cse-d2cc-gridcapa-fake-runner
   labels:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: gridcapa-fake-runner
     region: cse
     process: d2cc
 spec:
@@ -12,20 +12,20 @@ spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-job-launcher
+      component: gridcapa-fake-runner
       region: cse
       process: d2cc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-job-launcher
+        component: gridcapa-fake-runner
         region: cse
         process: d2cc
     spec:
       containers:
-        - name: cse-d2cc-gridcapa-job-launcher
-          image: docker.io/farao/gridcapa-job-launcher:latest
+        - name: cse-d2cc-gridcapa-fake-runner
+          image: docker.io/farao/gridcapa-fake-runner:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -43,7 +43,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: cse-d2cc-gridcapa-job-launcher-configmap-volume
+              name: cse-d2cc-gridcapa-fake-runner-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -69,6 +69,6 @@ spec:
               memory: "384Mi"
       restartPolicy: Always
       volumes:
-        - name: cse-d2cc-gridcapa-job-launcher-configmap-volume
+        - name: cse-d2cc-gridcapa-fake-runner-configmap-volume
           configMap:
-            name: cse-d2cc-gridcapa-job-launcher-configmap
+            name: cse-d2cc-gridcapa-fake-runner-configmap
