@@ -11,7 +11,7 @@ data:
   application.yml: |-
     spring:
       rabbitmq:
-        host: rabbitmq
+        host: gridcapa-rabbitmq
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
         port: 5672
@@ -23,4 +23,4 @@ data:
               group: cse-d2cc-job-launcher
 
     job-launcher:
-      task-manager-url: http://gridcapa.farao-community.com/cse/d2cc/task-manager/tasks/
+      task-manager-url: http://cse-d2cc-task-manager/tasks/

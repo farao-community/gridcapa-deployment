@@ -13,7 +13,7 @@ data:
       rabbitmq:
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        host: rabbitmq
+        host: gridcapa-rabbitmq
         port: 5672
       cloud:
         stream:

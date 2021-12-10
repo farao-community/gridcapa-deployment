@@ -5,15 +5,15 @@ metadata:
   labels:
     app: gridcapa
     component: gridcapa-job-launcher
-    region: core
-    process: valid
+    region: cse
+    process: d2cc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
     component: gridcapa-job-launcher
-    region: core
-    process: valid
+    region: cse
+    process: d2cc
   ports:
     - port: 80
       targetPort: 8080
