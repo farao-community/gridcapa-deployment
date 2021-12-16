@@ -1,0 +1,35 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-idcc-ntc-red-data-bridge-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-ntc-red-data-bridge-configmap
+    region: cse
+    process: idcc
+data:
+  application.yml: |-
+    data-bridge:
+      target-process: CSE_IDCC
+      file-type: NTC-RED
+      file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*.(xml|XML)
+      time-validity: daily
+      remote-file-regex:
+        - ".*.zip"
+        - "[0-9]{8}.*.(xml|XML)"
+      sources:
+        ftp:
+          active: true
+          host: ${GRIDCAPA_FTP_HOST}
+          port: 21
+          username: ${GRIDCAPA_FTP_USER}
+          password: ${GRIDCAPA_FTP_PASSWORD}
+          base-directory: ${GRIDCAPA_FTP_ROOT_DIRECTORY}/cse/idcc/ntcreds
+          polling-delay-in-ms: 5000
+      sinks:
+        minio:
+          url: http://gridcapa-minio:9000
+          access-key: ${GRIDCAPA_MINIO_USER}
+          secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+          bucket: gridcapa
+          base-directory: /CSE/IDCC/NTCREDs

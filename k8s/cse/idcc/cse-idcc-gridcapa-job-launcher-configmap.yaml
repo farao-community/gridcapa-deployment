@@ -1,0 +1,26 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-idcc-gridcapa-job-launcher-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-job-launcher
+    region: cse
+    process: idcc
+data:
+  application.yml: |-
+    spring:
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+      cloud:
+        stream:
+          bindings:
+            run-task:
+              destination: cse-idcc-launch-task
+              group: cse-idcc-job-launcher
+
+    job-launcher:
+      task-manager-url: http://cse-idcc-task-manager/tasks/

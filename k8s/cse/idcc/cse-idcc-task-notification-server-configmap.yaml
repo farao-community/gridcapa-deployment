@@ -1,0 +1,29 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-idcc-task-notification-server-configmap
+  labels:
+    app: gridcapa
+    component: task-notification-server
+    region: cse
+    process: idcc
+data:
+  application.yml: |-
+    spring:
+      cloud:
+        stream:
+          bindings:
+            input:
+              destination: cse-idcc-task-updated
+              group: cse-idcc-task-notification
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+        config:
+          enabled: false
+      rabbitmq:
+        addresses: gridcapa-rabbitmq:5672
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}

@@ -1,0 +1,93 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: cse-idcc-vulcanus-data-bridge
+  labels:
+    app: gridcapa
+    component: gridcapa-vulcanus-data-bridge
+    region: cse
+    process: idcc
+
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: gridcapa-vulcanus-data-bridge
+      region: cse
+      process: idcc
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: gridcapa-vulcanus-data-bridge
+        region: cse
+        process: idcc
+    spec:
+      containers:
+        - name: cse-idcc-vulcanus-data-bridge
+          image: docker.io/farao/gridcapa-data-bridge:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: GRIDCAPA_FTP_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-host
+            - name: GRIDCAPA_FTP_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-user
+            - name: GRIDCAPA_FTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-password
+            - name: GRIDCAPA_FTP_ROOT_DIRECTORY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-root-directory
+            - name: GRIDCAPA_MINIO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: GRIDCAPA_MINIO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: cse-idcc-vulcanus-data-bridge-configmap-volume
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              memory: "384Mi"
+            limits:
+              memory: "384Mi"
+      restartPolicy: Always
+      volumes:
+        - name: cse-idcc-vulcanus-data-bridge-configmap-volume
+          configMap:
+            name: cse-idcc-vulcanus-data-bridge-configmap
