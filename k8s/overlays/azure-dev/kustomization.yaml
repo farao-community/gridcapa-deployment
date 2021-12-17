@@ -5,6 +5,7 @@ bases:
   - ../../common
   - ../../core/valid
   - ../../cse/d2cc
+  - ../../cse/idcc
 
 resources:
   - apps-metadata-server-configmap.yaml
@@ -20,6 +21,16 @@ resources:
   - cse-d2cc-ntc-red-data-bridge-configmap.yaml
   - cse-d2cc-target-ch-data-bridge-configmap.yaml
   - cse-d2cc-vulcanus-data-bridge-configmap.yaml
+  - cse-idcc-cgm-data-bridge-configmap.yaml
+  - cse-idcc-crac-data-bridge-configmap.yaml
+  - cse-idcc-glsk-data-bridge-configmap.yaml
+  - cse-idcc-ntc-data-bridge-configmap.yaml
+  - cse-idcc-ntc-red-data-bridge-configmap.yaml
+  - cse-idcc-ntc2-at-data-bridge-configmap.yaml
+  - cse-idcc-ntc2-ch-data-bridge-configmap.yaml
+  - cse-idcc-ntc2-fr-data-bridge-configmap.yaml
+  - cse-idcc-ntc2-si-data-bridge-configmap.yaml
+  - cse-idcc-vulcanus-data-bridge-configmap.yaml
   - filebrowser-configmap.yaml
   - filebrowser-deployment.yaml
   - filebrowser-pv-claim.yaml

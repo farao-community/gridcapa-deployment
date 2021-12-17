@@ -1,0 +1,39 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - cse-idcc-cgm-data-bridge-deployment.yaml
+  - cse-idcc-cgm-data-bridge-service.yaml
+  - cse-idcc-crac-data-bridge-deployment.yaml
+  - cse-idcc-crac-data-bridge-service.yaml
+  - cse-idcc-glsk-data-bridge-deployment.yaml
+  - cse-idcc-glsk-data-bridge-service.yaml
+  - cse-idcc-gridcapa-app-deployment.yaml
+  - cse-idcc-gridcapa-app-process-metadata-configmap.yaml
+  - cse-idcc-gridcapa-app-service.yaml
+  - cse-idcc-gridcapa-job-launcher-deployment.yaml
+  - cse-idcc-gridcapa-job-launcher-service.yaml
+  - cse-idcc-gridcapa-job-launcher-configmap.yaml
+  - cse-idcc-gridcapa-fake-runner-configmap.yaml
+  - cse-idcc-gridcapa-fake-runner-deployment.yaml
+  - cse-idcc-gridcapa-fake-runner-service.yaml
+  - cse-idcc-ntc-data-bridge-deployment.yaml
+  - cse-idcc-ntc-data-bridge-service.yaml
+  - cse-idcc-ntc-red-data-bridge-deployment.yaml
+  - cse-idcc-ntc-red-data-bridge-service.yaml
+  - cse-idcc-ntc2-at-data-bridge-deployment.yaml
+  - cse-idcc-ntc2-at-data-bridge-service.yaml
+  - cse-idcc-ntc2-ch-data-bridge-deployment.yaml
+  - cse-idcc-ntc2-ch-data-bridge-service.yaml
+  - cse-idcc-ntc2-fr-data-bridge-deployment.yaml
+  - cse-idcc-ntc2-fr-data-bridge-service.yaml
+  - cse-idcc-ntc2-si-data-bridge-deployment.yaml
+  - cse-idcc-ntc2-si-data-bridge-service.yaml
+  - cse-idcc-task-manager-configmap.yaml
+  - cse-idcc-task-manager-deployment.yaml
+  - cse-idcc-task-manager-service.yaml
+  - cse-idcc-task-notification-server-configmap.yaml
+  - cse-idcc-task-notification-server-deployment.yaml
+  - cse-idcc-task-notification-server-service.yaml
+  - cse-idcc-vulcanus-data-bridge-deployment.yaml
+  - cse-idcc-vulcanus-data-bridge-service.yaml

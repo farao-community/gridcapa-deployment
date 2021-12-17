@@ -1,0 +1,58 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-idcc-task-manager-configmap
+  labels:
+    app: gridcapa
+    component: task-manager
+    region: cse
+    process: idcc
+data:
+  application.yml: |-
+    spring:
+      datasource:
+        url: jdbc:postgresql://faraopostgres.postgres.database.azure.com:5432/cse_idcc_tasks
+        driverClassName: org.postgresql.Driver
+        username: ${POSTGRES_USER}
+        password: ${POSTGRES_PASSWORD}
+        sslmode: require
+      jpa:
+        hibernate:
+          ddl-auto: update
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        port: 5672
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+      cloud:
+        stream:
+          default:
+            group: cse-idcc-task-manager
+          bindings:
+            handleMinioEvent-in-0:
+              destination: gridcapa.minio.events
+            handleTaskStatusUpdate-in-0:
+              destination: cse-idcc-task-status-updated
+            task-updated:
+              destination: cse-idcc-task-updated
+
+    task-server:
+      minio:
+        connect:
+          url: http://gridcapa-minio:9000/
+          access-key: ${MINIO_ACCESS_KEY}
+          secret-key: ${MINIO_SECRET_KEY}
+      process:
+        tag: CSE_IDCC
+        timezone: CET
+        inputs:
+          - CGM
+          - CRAC
+          - GLSK
+          - NTC2-AT
+          - NTC2-CH
+          - NTC2-FR
+          - NTC2-SI
+          - NTC
+          - NTC-RED
+          - VULCANUS

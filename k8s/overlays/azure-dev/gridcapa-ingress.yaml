@@ -112,6 +112,48 @@ spec:
             pathType: Prefix
           - backend:
               service:
+                name: cse-idcc-gridcapa-app
+                port:
+                  number: 80
+            path: /cse/idcc(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: config-server
+                port:
+                  number: 80
+            path: /cse/idcc/config(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: config-notification-server
+                port:
+                  number: 80
+            path: /cse/idcc/config-notification(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-idcc-task-notification-server
+                port:
+                  number: 80
+            path: /cse/idcc/task-notification(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-idcc-task-manager
+                port:
+                  number: 80
+            path: /cse/idcc/task-manager(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-idcc-gridcapa-job-launcher
+                port:
+                  number: 80
+            path: /cse/idcc/gridcapa-job-launcher(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
                 name: filebrowser
                 port:
                   number: 80
