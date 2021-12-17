@@ -8,15 +8,18 @@ resources:
   - cse-idcc-crac-data-bridge-service.yaml
   - cse-idcc-glsk-data-bridge-deployment.yaml
   - cse-idcc-glsk-data-bridge-service.yaml
+  - cse-idcc-gridcapa-adapter-configmap.yaml
+  - cse-idcc-gridcapa-adapter-deployment.yaml
+  - cse-idcc-gridcapa-adapter-service.yaml
   - cse-idcc-gridcapa-app-deployment.yaml
   - cse-idcc-gridcapa-app-process-metadata-configmap.yaml
   - cse-idcc-gridcapa-app-service.yaml
   - cse-idcc-gridcapa-job-launcher-deployment.yaml
   - cse-idcc-gridcapa-job-launcher-service.yaml
   - cse-idcc-gridcapa-job-launcher-configmap.yaml
-  - cse-idcc-gridcapa-fake-runner-configmap.yaml
-  - cse-idcc-gridcapa-fake-runner-deployment.yaml
-  - cse-idcc-gridcapa-fake-runner-service.yaml
+  - cse-idcc-gridcapa-runner-configmap.yaml
+  - cse-idcc-gridcapa-runner-deployment.yaml
+  - cse-idcc-gridcapa-runner-service.yaml
   - cse-idcc-ntc-data-bridge-deployment.yaml
   - cse-idcc-ntc-data-bridge-service.yaml
   - cse-idcc-ntc-red-data-bridge-deployment.yaml
