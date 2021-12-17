@@ -1,0 +1,21 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+    template:
+      reply-timeout: 2400000
+  cloud:
+    stream:
+      bindings:
+        handleRun-in-0:
+          binder: rabbit
+          destination: cse-idcc-launch-task
+
+cse-cc-runner:
+  binding:
+    destination: cse-request
+
+cse-adapter:
+  target-process: IDCC
