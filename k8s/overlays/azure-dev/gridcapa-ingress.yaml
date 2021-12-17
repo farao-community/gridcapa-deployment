@@ -4,6 +4,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^/cse/d2cc$ /cse/d2cc/ permanent;
+      rewrite ^/cse/idcc$ /cse/idcc/ permanent;
       rewrite ^/core/valid$ /core/valid/ permanent;
       proxy_set_header X-Forwarded-Prefix /cse/d2cc/;
       proxy_set_header userId "johnDoe";

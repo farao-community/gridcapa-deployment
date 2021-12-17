@@ -1,10 +1,10 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-idcc-gridcapa-fake-runner
+  name: cse-idcc-gridcapa-adapter
   labels:
     app: gridcapa
-    component: gridcapa-fake-runner
+    component: gridcapa-adapter
     region: cse
     process: idcc
 spec:
@@ -12,20 +12,20 @@ spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-fake-runner
+      component: gridcapa-adapter
       region: cse
       process: idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-fake-runner
+        component: gridcapa-adapter
         region: cse
         process: idcc
     spec:
       containers:
-        - name: cse-idcc-gridcapa-fake-runner
-          image: docker.io/farao/gridcapa-fake-runner:latest
+        - name: cse-idcc-gridcapa-adapter
+          image: docker.io/farao/gridcapa-cse-adapter:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -43,7 +43,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: cse-idcc-gridcapa-fake-runner-configmap-volume
+              name: cse-idcc-gridcapa-adapter-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -64,11 +64,11 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              memory: "384Mi"
+              memory: "50Mi"
             limits:
-              memory: "384Mi"
+              memory: "100Mi"
       restartPolicy: Always
       volumes:
-        - name: cse-idcc-gridcapa-fake-runner-configmap-volume
+        - name: cse-idcc-gridcapa-adapter-configmap-volume
           configMap:
-            name: cse-idcc-gridcapa-fake-runner-configmap
+            name: cse-idcc-gridcapa-adapter-configmap
