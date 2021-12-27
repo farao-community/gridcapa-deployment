@@ -9,7 +9,13 @@ metadata:
     process: valid
 data:
   application.yml: |-
+    logback:
+      amqp:
+        exchange: "core-valid-task-manager-logs-exchange"
+        routing-key: "#"
     spring:
+      application:
+        name: core-valid-gridcapa-job-launcher
       rabbitmq:
         host: gridcapa-rabbitmq
         username: ${RABBITMQ_USER}

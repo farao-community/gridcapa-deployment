@@ -9,7 +9,13 @@ metadata:
     process: d2cc
 data:
   application.yml: |-
+    logback:
+      amqp:
+        exchange: "cse-d2cc-task-manager-logs-exchange"
+        routing-key: "#"
     spring:
+      application:
+        name: cse-d2cc-gridcapa-job-launcher
       rabbitmq:
         host: gridcapa-rabbitmq
         username: ${RABBITMQ_USER}

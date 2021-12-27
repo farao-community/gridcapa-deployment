@@ -21,6 +21,8 @@ spring:
           destination: gridcapa.minio.events
         handleTaskStatusUpdate-in-0:
           destination: core-valid-task-status-updated
+        handleTaskLogEventUpdate-in-0:
+          destination: core-valid-task-manager-logs-exchange
         task-updated:
           destination: core-valid-task-updated
 
