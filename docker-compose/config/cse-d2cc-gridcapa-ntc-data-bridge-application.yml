@@ -1,4 +1,5 @@
 data-bridge:
+  zone-id: "Europe/Paris"
   target-process: CSE_D2CC
   file-type: NTC
   file-regex: (?<year>[0-9]{4}).*.(xml|XML)
