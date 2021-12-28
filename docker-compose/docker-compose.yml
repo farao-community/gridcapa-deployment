@@ -222,13 +222,6 @@ services:
     networks:
       - gridcapa
 
-  core-valid-gridcapa-fake-runner:
-    image: farao/gridcapa-fake-runner:latest
-    volumes:
-      - ./config/core-valid-gridcapa-fake-runner.yml:/config/application.yml
-    networks:
-      - gridcapa
-
   core-valid-task-notification-server:
     image: springcloudstream/websocket-sink-rabbit:latest
     restart: always
@@ -239,73 +232,39 @@ services:
     depends_on:
       - rabbitmq
 
-  cse-d2cc-gridcapa-cgm-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
+  core-valid-runner:
+    image: farao/gridcapa-core-valid-runner:SNAPSHOT
     volumes:
-      - ./config/cse-d2cc-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
+      - ./config/core-valid-runner-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - minio
+      - rabbitmq
     networks:
       - gridcapa
 
-  cse-d2cc-gridcapa-crac-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
+  core-valid-adapter:
+    image: farao/gridcapa-core-valid-adapter:SNAPSHOT
     volumes:
-      - ./config/cse-d2cc-gridcapa-crac-data-bridge-application.yml:/config/application.yml
+      - ./config/core-valid-adapter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - rabbitmq
     networks:
       - gridcapa
-
-  cse-d2cc-gridcapa-glsk-data-bridge:
-      image: farao/gridcapa-data-bridge:latest
-      volumes:
-        - ./config/cse-d2cc-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
-      networks:
-        - gridcapa
-
-  cse-d2cc-gridcapa-ntc-data-bridge:
-      image: farao/gridcapa-data-bridge:latest
-      volumes:
-        - ./config/cse-d2cc-gridcapa-ntc-data-bridge-application.yml:/config/application.yml
-      networks:
-        - gridcapa
-
-  cse-d2cc-gridcapa-ntc-red-data-bridge:
-      image: farao/gridcapa-data-bridge:latest
-      volumes:
-        - ./config/cse-d2cc-gridcapa-ntc-red-data-bridge-application.yml:/config/application.yml
-      networks:
-        - gridcapa
-
-  cse-d2cc-gridcapa-target-ch-data-bridge:
-      image: farao/gridcapa-data-bridge:latest
-      volumes:
-        - ./config/cse-d2cc-gridcapa-target-ch-data-bridge-application.yml:/config/application.yml
-      networks:
-        - gridcapa
-
-  cse-d2cc-gridcapa-vulcanus-data-bridge:
-      image: farao/gridcapa-data-bridge:latest
-      volumes:
-        - ./config/cse-d2cc-gridcapa-vulcanus-data-bridge-application.yml:/config/application.yml
-      networks:
-        - gridcapa
 
   cse-d2cc-gridcapa-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
       - ./config/cse-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-d2cc-gridcapa-job-launcher:
-    image: farao/gridcapa-job-launcher:latest
-    volumes:
-      - ./config/cse-d2cc-gridcapa-job-launcher.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-d2cc-gridcapa-fake-runner:
-    image: farao/gridcapa-fake-runner:latest
-    volumes:
-      - ./config/cse-d2cc-gridcapa-fake-runner.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -318,6 +277,13 @@ services:
       - gridcapa
     depends_on:
       - rabbitmq
+
+  cse-d2cc-gridcapa-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    volumes:
+      - ./config/cse-d2cc-gridcapa-job-launcher.yml:/config/application.yml
+    networks:
+      - gridcapa
 
 networks:
   gridcapa:

@@ -1,0 +1,37 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+    template:
+      reply-timeout: 6000000
+  cloud:
+    stream:
+      bindings:
+        task-status-update:
+          binder: rabbit
+          destination: core-valid-task-status-updated
+
+rao-runner-server:
+  amqp:
+    queue-name: rao-request-queue
+
+core-valid-runner:
+  bindings:
+    request:
+      destination: core-valid-requests
+      routing-key: "#"
+    response:
+      destination: core-valid-response
+      expiration: 60000
+  whitelist:
+    - http://minio:9000/
+
+minio:
+  access:
+    name: gridcapa
+    secret: gridcapa
+  url: http://minio:9000/
+  bucket: gridcapa
+  base-path: CORE/VALID/

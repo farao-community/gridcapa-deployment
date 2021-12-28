@@ -1,0 +1,24 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+    template:
+      reply-timeout: 6000000
+  cloud:
+    stream:
+      bindings:
+        handleRun-in-0:
+          binder: rabbit
+          destination: core-valid-run-task
+          group: core-valid
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+
+core-valid-runner:
+  amqp:
+    queue-name: core-valid-requests
