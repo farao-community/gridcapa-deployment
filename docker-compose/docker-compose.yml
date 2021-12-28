@@ -223,7 +223,7 @@ services:
       - gridcapa
 
   core-valid-runner:
-    image: farao/gridcapa-core-valid-runner:SNAPSHOT
+    image: farao/gridcapa-core-valid:latest
     volumes:
       - ./config/core-valid-runner-application.yml:/config/application.yml
     healthcheck:
