@@ -37,3 +37,9 @@ task-server:
     timezone: CET
     inputs:
       - CGM
+      - CRAC
+      - GLSK
+      - TARGET-CH
+      - NTC
+      - NTC-RED
+      - VULCANUS
