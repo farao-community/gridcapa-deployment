@@ -9,7 +9,13 @@ metadata:
     process: idcc
 data:
   application.yml: |-
+    logback:
+      amqp:
+        exchange: cse-idcc-task-manager-logs-exchange
+        routing-key: "#"
     spring:
+      application:
+        name: cse-idcc-gridcapa-job-launcher
       rabbitmq:
         host: gridcapa-rabbitmq
         username: ${RABBITMQ_USER}

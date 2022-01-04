@@ -21,6 +21,8 @@ spring:
           destination: gridcapa.minio.events
         handleTaskStatusUpdate-in-0:
           destination: cse-d2cc-task-status-updated
+        handleTaskLogEventUpdate-in-0:
+          destination: cse-d2cc-task-manager-logs-exchange
         task-updated:
           destination: cse-d2cc-task-updated
 
