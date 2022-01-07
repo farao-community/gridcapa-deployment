@@ -25,6 +25,8 @@ services:
       - ./config/core-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
     networks:
       - gridcapa
+    profiles:
+      - core-valid
 
   cse-d2cc-gridcapa-app:
     image: farao/gridcapa-app:latest
@@ -33,6 +35,8 @@ services:
       - ./config/cse-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
     networks:
       - gridcapa
+    profiles:
+      - cse-d2cc
 
   config-server:
     image: gridsuite/config-server:latest
@@ -99,6 +103,8 @@ services:
       - "2222:22"
     networks:
       - gridcapa
+    profiles:
+      - core-valid
 
   ftp-server:
     image: delfer/alpine-ftp-server
@@ -112,6 +118,8 @@ services:
       - "21000-21010:21000-21010"
     networks:
       - gridcapa
+    profiles:
+      - cse-d2cc
 
   filebrowser:
     image: filebrowser/filebrowser
@@ -159,6 +167,8 @@ services:
       - core-postgres-data:/bitnami/postgres
     networks:
       - gridcapa
+    profiles:
+      - core-valid
 
   cse-d2cc-postgres:
     image: bitnami/postgresql
@@ -172,6 +182,8 @@ services:
       - cse-postgres-data:/bitnami/postgres
     networks:
       - gridcapa
+    profiles:
+      - cse-d2cc
 
   core-valid-gridcapa-cgm-data-bridge:
     image: farao/gridcapa-data-bridge:latest
@@ -179,6 +191,8 @@ services:
       - ./config/core-valid-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
+    profiles:
+      - core-valid
 
   core-valid-gridcapa-cbcora-data-bridge:
     image: farao/gridcapa-data-bridge:latest
@@ -186,6 +200,8 @@ services:
       - ./config/core-valid-gridcapa-cbcora-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
+    profiles:
+      - core-valid
 
   core-valid-gridcapa-glsk-data-bridge:
     image: farao/gridcapa-data-bridge:latest
@@ -193,6 +209,8 @@ services:
       - ./config/core-valid-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
+    profiles:
+      - core-valid
 
   core-valid-gridcapa-refprog-data-bridge:
     image: farao/gridcapa-data-bridge:latest
@@ -200,6 +218,8 @@ services:
       - ./config/core-valid-gridcapa-refprog-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
+    profiles:
+      - core-valid
 
   core-valid-gridcapa-study-point-data-bridge:
     image: farao/gridcapa-data-bridge:latest
@@ -207,6 +227,8 @@ services:
       - ./config/core-valid-gridcapa-study-point-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
+    profiles:
+      - core-valid
 
   core-valid-gridcapa-task-manager:
     image: farao/gridcapa-task-manager:latest
@@ -214,6 +236,8 @@ services:
       - ./config/core-valid-gridcapa-task-manager-application.yml:/config/application.yml
     networks:
       - gridcapa
+    profiles:
+      - core-valid
 
   core-valid-gridcapa-job-launcher:
     image: farao/gridcapa-job-launcher:latest
@@ -221,6 +245,8 @@ services:
       - ./config/core-valid-gridcapa-job-launcher.yml:/config/application.yml
     networks:
       - gridcapa
+    profiles:
+      - core-valid
 
   core-valid-gridcapa-fake-runner:
     image: farao/gridcapa-fake-runner:latest
@@ -228,6 +254,8 @@ services:
       - ./config/core-valid-gridcapa-fake-runner.yml:/config/application.yml
     networks:
       - gridcapa
+    profiles:
+      - core-valid
 
   core-valid-task-notification-server:
     image: springcloudstream/websocket-sink-rabbit:latest
@@ -238,6 +266,8 @@ services:
       - gridcapa
     depends_on:
       - rabbitmq
+    profiles:
+      - core-valid
 
   cse-d2cc-gridcapa-cgm-data-bridge:
     image: farao/gridcapa-data-bridge:latest
@@ -245,6 +275,8 @@ services:
       - ./config/cse-d2cc-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
+    profiles:
+      - cse-d2cc
 
   cse-d2cc-gridcapa-crac-data-bridge:
     image: farao/gridcapa-data-bridge:latest
@@ -252,6 +284,8 @@ services:
       - ./config/cse-d2cc-gridcapa-crac-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
+    profiles:
+      - cse-d2cc
 
   cse-d2cc-gridcapa-glsk-data-bridge:
       image: farao/gridcapa-data-bridge:latest
@@ -259,6 +293,8 @@ services:
         - ./config/cse-d2cc-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
+      profiles:
+        - cse-d2cc
 
   cse-d2cc-gridcapa-ntc-data-bridge:
       image: farao/gridcapa-data-bridge:latest
@@ -266,6 +302,8 @@ services:
         - ./config/cse-d2cc-gridcapa-ntc-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
+      profiles:
+        - cse-d2cc
 
   cse-d2cc-gridcapa-ntc-red-data-bridge:
       image: farao/gridcapa-data-bridge:latest
@@ -273,6 +311,8 @@ services:
         - ./config/cse-d2cc-gridcapa-ntc-red-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
+      profiles:
+        - cse-d2cc
 
   cse-d2cc-gridcapa-target-ch-data-bridge:
       image: farao/gridcapa-data-bridge:latest
@@ -280,6 +320,8 @@ services:
         - ./config/cse-d2cc-gridcapa-target-ch-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
+      profiles:
+        - cse-d2cc
 
   cse-d2cc-gridcapa-vulcanus-data-bridge:
       image: farao/gridcapa-data-bridge:latest
@@ -287,6 +329,8 @@ services:
         - ./config/cse-d2cc-gridcapa-vulcanus-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
+      profiles:
+        - cse-d2cc
 
   cse-d2cc-gridcapa-task-manager:
     image: farao/gridcapa-task-manager:latest
@@ -294,6 +338,8 @@ services:
       - ./config/cse-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
     networks:
       - gridcapa
+    profiles:
+      - cse-d2cc
 
   cse-d2cc-gridcapa-job-launcher:
     image: farao/gridcapa-job-launcher:latest
@@ -301,6 +347,8 @@ services:
       - ./config/cse-d2cc-gridcapa-job-launcher.yml:/config/application.yml
     networks:
       - gridcapa
+    profiles:
+      - cse-d2cc
 
   cse-d2cc-gridcapa-fake-runner:
     image: farao/gridcapa-fake-runner:latest
@@ -308,6 +356,8 @@ services:
       - ./config/cse-d2cc-gridcapa-fake-runner.yml:/config/application.yml
     networks:
       - gridcapa
+    profiles:
+      - cse-d2cc
 
   cse-d2cc-task-notification-server:
     image: springcloudstream/websocket-sink-rabbit:latest
@@ -318,6 +368,8 @@ services:
       - gridcapa
     depends_on:
       - rabbitmq
+    profiles:
+      - cse-d2cc
 
 networks:
   gridcapa:
