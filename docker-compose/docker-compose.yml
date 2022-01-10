@@ -238,7 +238,7 @@ services:
       - gridcapa
 
   core-valid-adapter:
-    image: farao/gridcapa-core-valid-adapter:SNAPSHOT
+    image: farao/gridcapa-core-valid-adapter:latest
     volumes:
       - ./config/core-valid-adapter-application.yml:/config/application.yml
     healthcheck:
