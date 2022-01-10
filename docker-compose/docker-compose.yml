@@ -222,10 +222,32 @@ services:
     networks:
       - gridcapa
 
-  core-valid-gridcapa-fake-runner:
-    image: farao/gridcapa-fake-runner:latest
+  core-valid-runner:
+    image: farao/gridcapa-core-valid:latest
     volumes:
-      - ./config/core-valid-gridcapa-fake-runner.yml:/config/application.yml
+      - ./config/core-valid-runner-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - minio
+      - rabbitmq
+    networks:
+      - gridcapa
+
+  core-valid-adapter:
+    image: farao/gridcapa-core-valid-adapter:latest
+    volumes:
+      - ./config/core-valid-adapter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - rabbitmq
     networks:
       - gridcapa
 
