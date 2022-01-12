@@ -1,10 +1,10 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: core-valid-gridcapa-fake-runner
+  name: core-valid-runner
   labels:
     app: gridcapa
-    component: gridcapa-fake-runner
+    component: gridcapa-core-valid-runner
     region: core
     process: valid
 spec:
@@ -12,20 +12,20 @@ spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-fake-runner
+      component: gridcapa-core-valid-runner
       region: core
       process: valid
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-fake-runner
+        component: gridcapa-core-valid-runner
         region: core
         process: valid
     spec:
       containers:
-        - name: core-valid-gridcapa-fake-runner
-          image: docker.io/farao/gridcapa-fake-runner:latest
+        - name: core-valid-runner
+          image: docker.io/farao/gridcapa-core-valid:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -43,7 +43,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: core-valid-gridcapa-fake-runner-configmap-volume
+              name: core-valid-runner-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -64,11 +64,11 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              memory: "384Mi"
+              memory: "50Gi"
             limits:
-              memory: "384Mi"
+              memory: "50Gi"
       restartPolicy: Always
       volumes:
-        - name: core-valid-gridcapa-fake-runner-configmap-volume
+        - name: core-valid-runner-configmap-volume
           configMap:
-            name: core-valid-gridcapa-fake-runner-configmap
+            name: core-valid-runner-configmap

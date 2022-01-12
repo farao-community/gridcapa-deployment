@@ -1,17 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: core-valid-gridcapa-fake-runner
+  name: core-valid-runner
   labels:
     app: gridcapa
-    component: gridcapa-fake-runner
+    component: gridcapa-core-valid-runner
     region: core
     process: valid
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-fake-runner
+    component: gridcapa-core-valid-runner
     region: core
     process: valid
   ports:

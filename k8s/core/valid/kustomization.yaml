@@ -15,9 +15,12 @@ resources:
   - core-valid-gridcapa-app-deployment.yaml
   - core-valid-gridcapa-app-process-metadata-configmap.yaml
   - core-valid-gridcapa-app-service.yaml
-  - core-valid-gridcapa-fake-runner-configmap.yaml
-  - core-valid-gridcapa-fake-runner-deployment.yaml
-  - core-valid-gridcapa-fake-runner-service.yaml
+  - core-valid-runner-configmap.yaml
+  - core-valid-runner-deployment.yaml
+  - core-valid-runner-service.yaml
+  - core-valid-adapter-configmap.yaml
+  - core-valid-adapter-deployment.yaml
+  - core-valid-adapter-service.yaml
   - core-valid-task-manager-configmap.yaml
   - core-valid-task-manager-deployment.yaml
   - core-valid-task-manager-service.yaml

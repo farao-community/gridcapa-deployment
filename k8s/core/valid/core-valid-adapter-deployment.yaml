@@ -1,0 +1,74 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: core-valid-adapter
+  labels:
+    app: gridcapa
+    component: gridcapa-core-valid-adapter
+    region: core
+    process: valid
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: gridcapa-core-valid-adapter
+      region: core
+      process: valid
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: gridcapa-core-valid-adapter
+        region: core
+        process: valid
+    spec:
+      containers:
+        - name: core-valid-adapter
+          image: docker.io/farao/gridcapa-core-valid-adapter:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: core-valid-adapter-configmap-volume
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              memory: "384Mi"
+            limits:
+              memory: "384Mi"
+      restartPolicy: Always
+      volumes:
+        - name: core-valid-adapter-configmap-volume
+          configMap:
+            name: core-valid-adapter-configmap

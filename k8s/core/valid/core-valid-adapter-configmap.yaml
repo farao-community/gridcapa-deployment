@@ -1,0 +1,35 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: core-valid-adapter-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-core-valid-adapter
+    region: core
+    process: valid
+data:
+  application.yml: |-
+    spring:
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+        template:
+          reply-timeout: 60000000
+      cloud:
+        stream:
+          bindings:
+            handleRun-in-0:
+              binder: rabbit
+              destination: core-valid-run-task
+              group: core-valid
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+
+    core-valid-runner:
+      amqp:
+        queue-name: core-valid-requests
