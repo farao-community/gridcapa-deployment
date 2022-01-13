@@ -1,0 +1,47 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: core-valid-runner-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-core-valid-runner
+    region: core
+    process: valid
+data:
+  application.yml: |-
+    spring:
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+        template:
+          reply-timeout: 600000000
+      cloud:
+        stream:
+          bindings:
+            task-status-update:
+              binder: rabbit
+              destination: core-valid-task-status-updated
+
+    rao-runner-server:
+      amqp:
+        queue-name: rao-request-queue
+
+    core-valid-runner:
+      bindings:
+        request:
+          destination: core-valid-requests
+          routing-key: "#"
+        response:
+          destination: core-valid-response
+          expiration: 6000000
+      whitelist:
+        - http://gridcapa-minio:9000/
+    minio:
+      url: http://gridcapa-minio:9000/
+      access:
+        name: ${GRIDCAPA_MINIO_USER}
+        secret: ${GRIDCAPA_MINIO_PASSWORD}
+      bucket: gridcapa
+      base-path: CORE/VALID/
