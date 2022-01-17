@@ -1,10 +1,10 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-idcc-gridcapa-fake-runner-configmap
+  name: cse-idcc-runner-configmap
   labels:
     app: gridcapa
-    component: gridcapa-fake-runner
+    component: gridcapa-runner
     region: cse
     process: idcc
 data:
@@ -23,13 +23,13 @@ data:
             task-status-update:
               destination: cse-idcc-task-status-updated
 
-    dichotomy-server:
+    rao-runner-server:
       amqp:
-        queue-name: dichotomy-request-queue
+        queue-name: rao-request-queue
 
     minio:
       bucket: gridcapa
-      base-path: ""
+      base-path: CSE/IDCC
       access:
         name: ${MINIO_ACCESS_KEY}
         secret: ${MINIO_SECRET_KEY}

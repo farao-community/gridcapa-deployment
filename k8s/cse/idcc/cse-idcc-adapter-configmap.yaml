@@ -19,7 +19,14 @@ data:
           stream:
             bindings:
               handleRun-in-0:
+                binder: rabbit
                 destination: cse-idcc-launch-task
+                group: cse-idcc-adapter
+            rabbit:
+              default:
+                consumer:
+                  auto-bind-dlq: true
+                  max-attempts: 1
 
     cse-cc-runner:
       binding:
