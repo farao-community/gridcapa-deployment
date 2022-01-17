@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dichotomy-runner
+  labels:
+    app: gridcapa
+    component: dichotomy-runner
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: dichotomy-runner
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: dichotomy-runner
+    spec:
+      containers:
+        - name: dichotomy-runner
+          image: docker.io/farao/gridcapa-dichotomy-runner:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: dichotomy-runner-configmap-volume
+          resources:
+            requests:
+              cpu: "1.0"
+              memory: "2Gi"
+            limits:
+              cpu: "2.0"
+              memory: "4Gi"
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
+      restartPolicy: Always
+      volumes:
+        - name: dichotomy-runner-configmap-volume
+          configMap:
+            name: dichotomy-runner-configmap

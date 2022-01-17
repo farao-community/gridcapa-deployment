@@ -1,10 +1,10 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-idcc-gridcapa-adapter
+  name: cse-idcc-gridcapa-runner
   labels:
     app: gridcapa
-    component: gridcapa-adapter
+    component: gridcapa-runner
     region: cse
     process: idcc
 spec:
@@ -12,20 +12,20 @@ spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-adapter
+      component: gridcapa-runner
       region: cse
       process: idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-adapter
+        component: gridcapa-runner
         region: cse
         process: idcc
     spec:
       containers:
-        - name: cse-idcc-gridcapa-adapter
-          image: docker.io/farao/gridcapa-cse-adapter:latest
+        - name: cse-idcc-gridcapa-runner
+          image: docker.io/farao/gridcapa-cse-runner:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -40,14 +40,20 @@ spec:
                 secretKeyRef:
                   name: gridcapa-rabbitmq-credentials
                   key: rabbitmq-password
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-<<<<<<< HEAD:k8s/cse/idcc/cse-idcc-adapter-deployment.yaml
-              name: cse-idcc-adapter-configmap-volume
-=======
-              name: cse-idcc-gridcapa-adapter-configmap-volume
->>>>>>> a1980c25c4429041bb6e9b5dfbfa0fbae8764957:k8s/cse/idcc/cse-idcc-gridcapa-adapter-deployment.yaml
+              name: cse-idcc-gridcapa-runner-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -68,15 +74,13 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              memory: "50Mi"
+              cpu: "1.0"
+              memory: "8Gi"
             limits:
-              memory: "100Mi"
+              cpu: "2.0"
+              memory: "16Gi"
       restartPolicy: Always
       volumes:
-<<<<<<< HEAD:k8s/cse/idcc/cse-idcc-adapter-deployment.yaml
-        - name: cse-idcc-adapter-configmap-volume
-=======
-        - name: cse-idcc-gridcapa-adapter-configmap-volume
->>>>>>> a1980c25c4429041bb6e9b5dfbfa0fbae8764957:k8s/cse/idcc/cse-idcc-gridcapa-adapter-deployment.yaml
+        - name: cse-idcc-gridcapa-runner-configmap-volume
           configMap:
-            name: cse-idcc-gridcapa-adapter-configmap
+            name: cse-idcc-gridcapa-runner-configmap

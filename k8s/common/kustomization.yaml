@@ -10,6 +10,9 @@ resources:
   - config-server-configmap.yaml
   - config-server-deployment.yaml
   - config-server-service.yaml
+  - dichotomy-runner-configmap.yaml
+  - dichotomy-runner-deployment.yaml
+  - dichotomy-runner-service.yaml
   - minio-deployment.yaml
   - minio-pv-claim.yaml
   - minio-service.yaml

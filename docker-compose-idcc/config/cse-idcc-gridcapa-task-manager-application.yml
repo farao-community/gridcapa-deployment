@@ -1,0 +1,46 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://cse-idcc-postgres:5432/cse-idcc-task-manager
+    driverClassName: org.postgresql.Driver
+    username: cse-idcc
+    password: cse-idcc
+  jpa:
+    hibernate:
+      ddl-auto: update
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+  cloud:
+    stream:
+      default:
+        group: cse-idcc-task-manager
+      bindings:
+        handleMinioEvent-in-0:
+          destination: gridcapa.minio.events
+        handleTaskStatusUpdate-in-0:
+          destination: cse-idcc-task-status-updated
+        task-updated:
+          destination: cse-idcc-task-updated
+
+task-server:
+  minio:
+    connect:
+      url: http://minio:9000/
+      access-key: gridcapa
+      secret-key: gridcapa
+  process:
+    tag: CSE_IDCC
+    timezone: CET
+    inputs:
+      - CGM
+      - CRAC
+      - GLSK
+      - NTC2-AT
+      - NTC2-CH
+      - NTC2-FR
+      - NTC2-SI
+      - NTC
+      - NTC-RED
+      - VULCANUS
