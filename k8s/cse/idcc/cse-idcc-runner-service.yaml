@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cse-idcc-gridcapa-runner
+  labels:
+    app: gridcapa
+    component: gridcapa-runner
+    region: cse
+    process: idcc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: gridcapa-runner
+    region: cse
+    process: idcc
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http

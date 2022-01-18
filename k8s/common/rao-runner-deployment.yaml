@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rao-runner
+  labels:
+    app: gridcapa
+    component: rao-runner
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: rao-runner
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: rao-runner
+    spec:
+      containers:
+        - name: rao-runner
+          image: docker.io/farao/gridcapa-rao-runner:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+          volumeMounts:
+            - mountPath: /.itools/config.yml
+              subPath: config.yml
+              name: rao-runner-itools-configmap-volume
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: rao-runner-configmap-volume
+            - mountPath: /tmp
+              name: tmp-emptydir
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            readOnlyRootFilesystem: true
+          resources:
+            requests:
+              cpu: "8.0"
+              memory: "2Gi"
+            limits:
+              cpu: "16.0"
+              memory: "8Gi"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
+      restartPolicy: Always
+      volumes:
+        - name: rao-runner-configmap-volume
+          configMap:
+            name: rao-runner-configmap
+        - name: rao-runner-itools-configmap-volume
+          configMap:
+            name: rao-runner-itools-configmap
+        - name: tmp-emptydir
+          emptyDir: {}

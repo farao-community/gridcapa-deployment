@@ -1,0 +1,36 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-idcc-gridcapa-adapter-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-adapter
+    region: cse
+    process: idcc
+data:
+  application.yml: |-
+    spring:
+      rabbitmq:
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        host: gridcapa-rabbitmq
+        port: 5672
+      cloud:
+          stream:
+            bindings:
+              handleRun-in-0:
+                binder: rabbit
+                destination: cse-idcc-launch-task
+                group: cse-idcc-adapter
+            rabbit:
+              default:
+                consumer:
+                  auto-bind-dlq: true
+                  max-attempts: 1
+
+    cse-cc-runner:
+      binding:
+        destination: cse-request
+
+    cse-adapter:
+      target-process: IDCC

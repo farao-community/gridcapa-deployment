@@ -1,10 +1,10 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-idcc-gridcapa-fake-runner
+  name: cse-idcc-gridcapa-runner
   labels:
     app: gridcapa
-    component: gridcapa-fake-runner
+    component: gridcapa-runner
     region: cse
     process: idcc
 spec:
@@ -12,20 +12,20 @@ spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-fake-runner
+      component: gridcapa-runner
       region: cse
       process: idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-fake-runner
+        component: gridcapa-runner
         region: cse
         process: idcc
     spec:
       containers:
-        - name: cse-idcc-gridcapa-fake-runner
-          image: docker.io/farao/gridcapa-fake-runner:latest
+        - name: cse-idcc-gridcapa-runner
+          image: docker.io/farao/gridcapa-cse-runner:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -40,10 +40,26 @@ spec:
                 secretKeyRef:
                   name: gridcapa-rabbitmq-credentials
                   key: rabbitmq-password
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: cse-idcc-gridcapa-fake-runner-configmap-volume
+              name: cse-idcc-runner-configmap-volume
+            - mountPath: /home/farao/.itools/config.yml
+              subPath: config.yml
+              name: cse-idcc-runner-itools-configmap-volume
+            - mountPath: /home/farao/xnodes/xnodes.xml
+              subPath: xnodes.xml
+              name: cse-idcc-runner-xnodes-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -64,11 +80,19 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              memory: "384Mi"
+              cpu: "1.0"
+              memory: "8Gi"
             limits:
-              memory: "384Mi"
+              cpu: "2.0"
+              memory: "16Gi"
       restartPolicy: Always
       volumes:
-        - name: cse-idcc-gridcapa-fake-runner-configmap-volume
+        - name: cse-idcc-runner-configmap-volume
           configMap:
-            name: cse-idcc-gridcapa-fake-runner-configmap
+            name: cse-idcc-runner-configmap
+        - name: cse-idcc-runner-itools-configmap-volume
+          configMap:
+            name: cse-idcc-runner-itools-configmap
+        - name: cse-idcc-runner-xnodes-configmap-volume
+          configMap:
+            name: cse-idcc-runner-xnodes-configmap
