@@ -43,11 +43,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-<<<<<<< HEAD:k8s/cse/idcc/cse-idcc-adapter-deployment.yaml
               name: cse-idcc-adapter-configmap-volume
-=======
-              name: cse-idcc-gridcapa-adapter-configmap-volume
->>>>>>> a1980c25c4429041bb6e9b5dfbfa0fbae8764957:k8s/cse/idcc/cse-idcc-gridcapa-adapter-deployment.yaml
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -73,10 +69,6 @@ spec:
               memory: "100Mi"
       restartPolicy: Always
       volumes:
-<<<<<<< HEAD:k8s/cse/idcc/cse-idcc-adapter-deployment.yaml
         - name: cse-idcc-adapter-configmap-volume
-=======
-        - name: cse-idcc-gridcapa-adapter-configmap-volume
->>>>>>> a1980c25c4429041bb6e9b5dfbfa0fbae8764957:k8s/cse/idcc/cse-idcc-gridcapa-adapter-deployment.yaml
           configMap:
             name: cse-idcc-gridcapa-adapter-configmap
