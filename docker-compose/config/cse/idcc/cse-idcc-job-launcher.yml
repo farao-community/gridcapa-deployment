@@ -12,4 +12,4 @@ spring:
           group: cse-idcc-job-launcher
 
 job-launcher:
-  task-manager-url: http://cse-idcc-gridcapa-task-manager:8080/tasks/
+  task-manager-url: http://cse-idcc-task-manager:8080/tasks/

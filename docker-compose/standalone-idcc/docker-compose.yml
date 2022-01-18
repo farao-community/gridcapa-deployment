@@ -144,70 +144,70 @@ services:
   cse-idcc-cgm-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/idcc/cse-idcc-cgm-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/idcc/data-bridge/cse-idcc-cgm-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
   cse-idcc-crac-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/idcc/cse-idcc-crac-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/idcc/data-bridge/cse-idcc-crac-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
   cse-idcc-glsk-data-bridge:
       image: farao/gridcapa-data-bridge:latest
       volumes:
-        - ../config/cse/idcc/cse-idcc-glsk-data-bridge-application.yml:/config/application.yml
+        - ../config/cse/idcc/data-bridge/cse-idcc-glsk-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
 
   cse-idcc-ntc-data-bridge:
       image: farao/gridcapa-data-bridge:latest
       volumes:
-        - ../config/cse/idcc/cse-idcc-ntc-data-bridge-application.yml:/config/application.yml
+        - ../config/cse/idcc/data-bridge/cse-idcc-ntc-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
 
   cse-idcc-ntc-red-data-bridge:
       image: farao/gridcapa-data-bridge:latest
       volumes:
-        - ../config/cse/idcc/cse-idcc-ntc-red-data-bridge-application.yml:/config/application.yml
+        - ../config/cse/idcc/data-bridge/cse-idcc-ntc-red-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
 
   cse-idcc-ntc2-at-data-bridge:
       image: farao/gridcapa-data-bridge:latest
       volumes:
-        - ../config/cse/idcc/cse-idcc-ntc2-at-data-bridge-application.yml:/config/application.yml
+        - ../config/cse/idcc/data-bridge/cse-idcc-ntc2-at-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
 
   cse-idcc-ntc2-ch-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/idcc/cse-idcc-ntc2-ch-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/idcc/data-bridge/cse-idcc-ntc2-ch-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
   cse-idcc-ntc2-fr-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/idcc/cse-idcc-ntc2-fr-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/idcc/data-bridge/cse-idcc-ntc2-fr-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
   cse-idcc-ntc2-si-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/idcc/cse-idcc-ntc2-si-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/idcc/data-bridge/cse-idcc-ntc2-si-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
   cse-idcc-vulcanus-data-bridge:
       image: farao/gridcapa-data-bridge:latest
       volumes:
-        - ../config/cse/idcc/cse-idcc-vulcanus-data-bridge-application.yml:/config/application.yml
+        - ../config/cse/idcc/data-bridge/cse-idcc-vulcanus-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
 
@@ -239,7 +239,7 @@ services:
     image: farao/gridcapa-rao-runner:latest
     volumes:
       - ../config/cse/idcc/cse-idcc-itools-config.yml:/home/farao/.itools/config.yml
-      - ../config/cse/idcc/rao-runner-application.yml:/config/application.yml
+      - ../config/rao-runner-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://rao-runner/actuator/health" ]
       interval: 30s
