@@ -5,12 +5,15 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./config/nginx.conf:/etc/nginx/nginx.conf:Z
-      - ./config/apps-metadata.json:/usr/share/nginx/html/apps-metadata.json:Z
+      - ./nginx.conf:/etc/nginx/nginx.conf:Z
+      - ../config/apps-metadata.json:/usr/share/nginx/html/apps-metadata.json:Z
     depends_on:
       - config-notification-server
       - config-server
       - cse-idcc-gridcapa-app
+      - cse-idcc-task-notification-server
+      - cse-idcc-task-manager
+      - cse-idcc-job-launcher
       - rabbitmq
       - filebrowser
       - minio
@@ -20,8 +23,8 @@ services:
   cse-idcc-gridcapa-app:
     image: farao/gridcapa-app:latest
     volumes:
-      - ./config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
-      - ./config/cse-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+      - ../config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ../config/cse/idcc/cse-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
     networks:
       - gridcapa
 
@@ -29,8 +32,8 @@ services:
     image: gridsuite/config-server:latest
     restart: always
     volumes:
-      - ./config/gridsuite-config-server-application.yml:/config/application.yml:Z
-      - ./config/gridsuite-postgres.properties:/config/database.properties:Z
+      - ../config/gridsuite-config-server-application.yml:/config/application.yml:Z
+      - ../config/gridsuite-postgres.properties:/config/database.properties:Z
     command: --spring.config.additional-location=/config/
     networks:
       - gridcapa
@@ -41,7 +44,7 @@ services:
     image: gridsuite/config-notification-server:latest
     restart: always
     volumes:
-      - ./config/gridsuite-config-notification-server-application.yml:/config/application.yml:Z
+      - ../config/gridsuite-config-notification-server-application.yml:/config/application.yml:Z
     command: --spring.config.additional-location=/config/
     networks:
       - gridcapa
@@ -138,87 +141,87 @@ services:
     networks:
       - gridcapa
 
-  cse-idcc-gridcapa-cgm-data-bridge:
+  cse-idcc-cgm-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/cse-idcc-cgm-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/idcc/cse-idcc-cgm-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  cse-idcc-gridcapa-crac-data-bridge:
+  cse-idcc-crac-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/cse-idcc-crac-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/idcc/cse-idcc-crac-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  cse-idcc-gridcapa-glsk-data-bridge:
+  cse-idcc-glsk-data-bridge:
       image: farao/gridcapa-data-bridge:latest
       volumes:
-        - ./config/cse-idcc-glsk-data-bridge-application.yml:/config/application.yml
+        - ../config/cse/idcc/cse-idcc-glsk-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
 
-  cse-idcc-gridcapa-ntc-data-bridge:
+  cse-idcc-ntc-data-bridge:
       image: farao/gridcapa-data-bridge:latest
       volumes:
-        - ./config/cse-idcc-ntc-data-bridge-application.yml:/config/application.yml
+        - ../config/cse/idcc/cse-idcc-ntc-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
 
-  cse-idcc-gridcapa-ntc-red-data-bridge:
+  cse-idcc-ntc-red-data-bridge:
       image: farao/gridcapa-data-bridge:latest
       volumes:
-        - ./config/cse-idcc-ntc-red-data-bridge-application.yml:/config/application.yml
+        - ../config/cse/idcc/cse-idcc-ntc-red-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
 
-  cse-idcc-gridcapa-ntc2-at-data-bridge:
+  cse-idcc-ntc2-at-data-bridge:
       image: farao/gridcapa-data-bridge:latest
       volumes:
-        - ./config/cse-idcc-ntc2-at-data-bridge-application.yml:/config/application.yml
+        - ../config/cse/idcc/cse-idcc-ntc2-at-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
 
-  cse-idcc-gridcapa-ntc2-ch-data-bridge:
+  cse-idcc-ntc2-ch-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/cse-idcc-ntc2-ch-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/idcc/cse-idcc-ntc2-ch-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  cse-idcc-gridcapa-ntc2-fr-data-bridge:
+  cse-idcc-ntc2-fr-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/cse-idcc-ntc2-fr-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/idcc/cse-idcc-ntc2-fr-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  cse-idcc-gridcapa-ntc2-si-data-bridge:
+  cse-idcc-ntc2-si-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/cse-idcc-ntc2-si-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/idcc/cse-idcc-ntc2-si-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  cse-idcc-gridcapa-vulcanus-data-bridge:
+  cse-idcc-vulcanus-data-bridge:
       image: farao/gridcapa-data-bridge:latest
       volumes:
-        - ./config/cse-idcc-vulcanus-data-bridge-application.yml:/config/application.yml
+        - ../config/cse/idcc/cse-idcc-vulcanus-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
 
-  cse-idcc-gridcapa-task-manager:
+  cse-idcc-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
-      - ./config/cse-idcc-task-manager-application.yml:/config/application.yml
+      - ../config/cse/idcc/cse-idcc-task-manager-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  cse-idcc-gridcapa-job-launcher:
+  cse-idcc-job-launcher:
     image: farao/gridcapa-job-launcher:latest
     volumes:
-      - ./config/cse-idcc-job-launcher.yml:/config/application.yml
+      - ../config/cse/idcc/cse-idcc-job-launcher.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -226,7 +229,7 @@ services:
     image: springcloudstream/websocket-sink-rabbit:latest
     restart: always
     volumes:
-      - ./config/cse-idcc-task-notification-server-application.yml:/config/bootstrap.yml:Z
+      - ../config/cse/idcc/cse-idcc-task-notification-server-application.yml:/config/bootstrap.yml:Z
     networks:
       - gridcapa
     depends_on:
@@ -235,8 +238,8 @@ services:
   rao-runner:
     image: farao/gridcapa-rao-runner:latest
     volumes:
-      - ./config/itools-config.yml:/home/farao/.itools/config.yml
-      - ./config/rao-runner-application.yml:/config/application.yml
+      - ../config/cse/idcc/cse-idcc-itools-config.yml:/home/farao/.itools/config.yml
+      - ../config/cse/idcc/rao-runner-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://rao-runner/actuator/health" ]
       interval: 30s
@@ -251,9 +254,9 @@ services:
   cse-cc-runner:
     image: farao/gridcapa-cse-runner:latest
     volumes:
-      - ./config/itools-config.yml:/home/farao/.itools/config.yml
-      - ./config/cse-idcc-runner-application.yml:/config/application.yml
-      - ./config/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
+      - ../config/cse/idcc/cse-idcc-itools-config.yml:/home/farao/.itools/config.yml
+      - ../config/cse/idcc/cse-idcc-runner-application.yml:/config/application.yml
+      - ../config/cse/idcc/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://cse-cc-runner/actuator/health" ]
       interval: 30s
@@ -268,7 +271,7 @@ services:
   cse-idcc-adpater:
     image: farao/gridcapa-cse-adapter:latest
     volumes:
-      - ./config/cse-idcc-adapter-application.yml:/config/application.yml
+      - ../config/cse/idcc/cse-idcc-adapter-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://cse-idcc-adapter/actuator/health" ]
       interval: 30s
