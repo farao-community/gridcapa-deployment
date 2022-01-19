@@ -81,9 +81,9 @@ spec:
           resources:
             requests:
               cpu: "1.0"
-              memory: "8Gi"
+              memory: "384Mi"
             limits:
-              cpu: "2.0"
+              cpu: "4.0"
               memory: "16Gi"
       restartPolicy: Always
       volumes:
