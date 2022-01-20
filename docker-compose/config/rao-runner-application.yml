@@ -25,5 +25,5 @@ rao-runner:
 
 logback:
   amqp:
-    exchange: rao-runners-logs-exchange
+    exchange: rao-runners-logs-exchange  # common exchange for logs to all rao client applications
     routing-key: "#"
