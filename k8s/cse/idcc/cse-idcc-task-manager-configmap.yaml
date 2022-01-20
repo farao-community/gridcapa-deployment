@@ -34,7 +34,7 @@ data:
             handleTaskStatusUpdate-in-0:
               destination: cse-idcc-task-status-updated
             handleTaskLogEventUpdate-in-0:
-              destination: cse-idcc-task-manager-logs-exchange
+              destination: task-manager-logs-exchange
             task-updated:
               destination: cse-idcc-task-updated
 
