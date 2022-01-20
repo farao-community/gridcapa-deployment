@@ -1,3 +1,7 @@
+logback:
+  amqp:
+    exchange: task-manager-logs-exchange.cse-idcc-task-manager
+    routing-key: "#"
 spring:
   rabbitmq:
     host: rabbitmq

@@ -1,0 +1,24 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+  cloud:
+    stream:
+      bindings:
+        dispatchRaoLogsEvents-in-0:
+          destination: rao-runners-logs-exchange
+        dispatch-logs:
+          group: cse-idcc-task-manager
+          destination: task-manager-logs-exchange   # queue: exchange.group-name # final queue name:  task-manager-logs-exchange.cse-idcc-task-manager
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+    function:
+      definition: dispatchRaoLogsEvents
+
+client:
+  name: cse-idcc-runner
