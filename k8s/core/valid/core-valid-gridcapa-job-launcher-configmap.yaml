@@ -11,7 +11,7 @@ data:
   application.yml: |-
     logback:
       amqp:
-        exchange: core-valid-task-manager-logs-exchange
+        exchange: task-manager-logs-exchange.core-valid-task-manager
         routing-key: "#"
     spring:
       application:

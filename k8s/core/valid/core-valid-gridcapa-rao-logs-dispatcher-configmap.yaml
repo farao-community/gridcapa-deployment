@@ -1,0 +1,37 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: core-valid-gridcapa-rao-logs-dispatcher-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-rao-logs-dispatcher
+    region: core
+    process: valid
+data:
+  application.yml: |-
+    spring:
+      application:
+        name: core-valid-gridcapa-rao-logs-dispatcher
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+      cloud:
+        stream:
+          bindings:
+            dispatchRaoLogsEvents-in-0:
+              destination: rao-runners-logs-exchange
+            dispatch-logs:
+              group: core-valid-task-manager
+              destination: task-manager-logs-exchange
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+        function:
+          definition: dispatchRaoLogsEvents
+
+    client:
+      name: core-valid-runner
