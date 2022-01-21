@@ -25,6 +25,7 @@ data:
 
     rao-runner-server:
       amqp:
+        client-app-id: cse-idcc-runner
         queue-name: rao-request-queue
 
     minio:

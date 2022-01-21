@@ -26,6 +26,7 @@ data:
 
     rao-runner-server:
       amqp:
+        client-app-id: core-valid-runner
         queue-name: rao-request-queue
 
     core-valid-runner:
