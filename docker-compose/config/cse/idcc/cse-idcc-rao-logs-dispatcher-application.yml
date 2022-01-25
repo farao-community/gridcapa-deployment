@@ -7,9 +7,9 @@ spring:
   cloud:
     stream:
       bindings:
-        dispatchRaoLogsEvents-in-0:
+        dispatchRaoEvents-in-0:
           destination: rao-runners-logs-exchange
-        dispatch-logs:
+        dispatchRaoEvents-out-0:
           group: cse-idcc-task-manager
           destination: task-manager-logs-exchange   # queue: exchange.group-name # final queue name:  task-manager-logs-exchange.cse-idcc-task-manager
       rabbit:
@@ -18,7 +18,7 @@ spring:
             auto-bind-dlq: true
             max-attempts: 1
     function:
-      definition: dispatchRaoLogsEvents
+      definition: dispatchRaoEvents
 
 client:
   name: cse-idcc-runner
