@@ -1,0 +1,50 @@
+spring:
+  banner:
+    location: classpath:banner.txt
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:gridcapa}
+    password: ${RABBITMQ_PASSWORD:gridcapa}
+    template:
+      reply-timeout: 6000000
+  cloud:
+    stream:
+      bindings:
+        task-status-update:
+          binder: rabbit
+          destination: task-status-updated
+
+rao-runner-server:
+  amqp:
+    queue-name: ${RAO_ADAPTER_SERVER_QUEUE_NAME:rao-request-queue}
+
+core-valid-runner:
+  bindings:
+    request:
+      destination: core-valid-requests
+      routing-key: "#"
+    response:
+      destination: core-valid-response
+      expiration: 600000
+  whitelist:
+    - http://${MINIO_HOST:localhost}:${MINIO_PORT:9000}
+    - http://minio:9000
+  search-tree-rao-parameters:
+    max-curative-topo-per-tso:
+      FR: 1
+    max-curative-pst-per-tso:
+      FR: 0
+    max-curative-ra-per-tso:
+      FR: 1
+
+minio:
+  access:
+    name: ${MINIO_USERNAME:gridcapa}
+    secret: ${MINIO_PASSWORD:gridcapa}
+  url: http://${MINIO_HOST:localhost}:${MINIO_PORT:9000}
+  bucket: ${MINIO_BUCKET:gridcapa}
+  base-path: ${CORE_VALID_SERVER_MINIO_BASE_PATH:CORE/VALID/}
+
+server:
+  port: ${CORE_VALID_SERVER_PORT:8080}

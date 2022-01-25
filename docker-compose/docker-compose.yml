@@ -215,6 +215,43 @@ services:
     networks:
       - gridcapa
 
+  core-valid-gridcapa-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    volumes:
+      - ./config/core-valid-gridcapa-job-launcher.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-valid-runner:
+    image: farao/gridcapa-core-valid:latest
+    volumes:
+      - ./config/core-valid-gridcapa-runner-application.yml:/config/application.yml
+      - ./config/core-valid-gridcapa-runner-itools-config.yml:/home/farao/.itools/config.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - minio
+      - rabbitmq
+    networks:
+      - gridcapa
+
+  core-valid-adapter:
+    image: farao/gridcapa-core-valid-adapter:SNAPSHOT
+    volumes:
+      - ./config/core-valid-adapter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - rabbitmq
+    networks:
+      - gridcapa
+
   core-valid-task-notification-server:
     image: springcloudstream/websocket-sink-rabbit:latest
     restart: always
@@ -273,10 +310,25 @@ services:
         - ./config/cse-d2cc-gridcapa-vulcanus-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
+
   cse-d2cc-gridcapa-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
       - ./config/cse-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-d2cc-gridcapa-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    volumes:
+      - ./config/cse-d2cc-gridcapa-job-launcher.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-d2cc-gridcapa-fake-runner:
+    image: farao/gridcapa-fake-runner:latest
+    volumes:
+      - ./config/cse-d2cc-gridcapa-fake-runner.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -291,21 +343,19 @@ services:
       - rabbitmq
 
   rao-runner:
-    hostname: rao-runner
-    image: inca.rte-france.com/farao/rao-runner-app:2.6.1
+    image: farao/gridcapa-rao-runner:latest
     volumes:
-      - ./core-valid-gridcapa-rao-runner-application.yml:/config/application.yml
-      - ./core-valid-gridcapa-rao-runner-config.yml:/home/farao/.itools/config.yml
+      - ./config/rao-runner-application.yml:/config/application.yml
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      test: [ "CMD", "curl", "-f", "http://rao-runner/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5
     depends_on:
       - minio
       - rabbitmq
-    env_file:
-      - .env
+    networks:
+      - gridcapa
 
 networks:
   gridcapa:
