@@ -232,6 +232,7 @@ services:
     image: farao/gridcapa-core-valid:latest
     volumes:
       - ../config/core/valid/core-valid-runner-application.yml:/config/application.yml
+      - ./config/core/valid/core-valid-itools-config-OLF.yml:/home/farao/.itools/config.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s
@@ -346,6 +347,21 @@ services:
       - gridcapa
     depends_on:
       - rabbitmq
+
+  rao-runner:
+    image: farao/gridcapa-rao-runner:latest
+    volumes:
+      - ../config/rao-runner-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://rao-runner/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - minio
+      - rabbitmq
+    networks:
+      - gridcapa
 
 networks:
   gridcapa:
