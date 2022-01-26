@@ -29,14 +29,25 @@ data:
           default:
             group: cse-idcc-task-manager
           bindings:
-            handleMinioEvent-in-0:
+            consumeMinioEvent-in-0:
               destination: gridcapa.minio.events
-            handleTaskStatusUpdate-in-0:
+            consumeTaskStatusUpdate-in-0:
               destination: cse-idcc-task-status-updated
-            handleTaskLogEventUpdate-in-0:
+            consumeTaskEventUpdate-in-0:
               destination: cse-idcc-task-manager-logs-exchange
             task-updated:
               destination: cse-idcc-task-updated
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+            bindings:
+              consumeMinioEvent-in-0:
+                consumer:
+                  exchange-type: fanout
+        function:
+          definition: consumeMinioEvent;consumeTaskStatusUpdate;consumeTaskEventUpdate
 
     task-server:
       minio:
