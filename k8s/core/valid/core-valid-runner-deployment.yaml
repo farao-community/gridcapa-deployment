@@ -54,6 +54,9 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: core-valid-runner-configmap-volume
+            - mountPath: /home/farao/.itools/config.yml
+              subPath: config.yml
+              name: core-valid-runner-itools-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -74,11 +77,16 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              memory: "50Gi"
+              cpu: "1.0"
+              memory: "384Mi"
             limits:
-              memory: "50Gi"
+              cpu: "8.0"
+              memory: "10Gi"
       restartPolicy: Always
       volumes:
         - name: core-valid-runner-configmap-volume
           configMap:
             name: core-valid-runner-configmap
+        - name: core-valid-runner-itools-configmap-volume
+          configMap:
+            name: core-valid-runner-itools-configmap
