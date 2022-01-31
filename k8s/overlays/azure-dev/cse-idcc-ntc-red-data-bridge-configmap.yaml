@@ -33,4 +33,4 @@ data:
           access-key: ${GRIDCAPA_MINIO_USER}
           secret-key: ${GRIDCAPA_MINIO_PASSWORD}
           bucket: gridcapa
-          base-directory: /CSE/IDCC/NTCREDs
+          base-directory: /CSE/IDCC/INPUTS/NTCREDs

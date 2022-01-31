@@ -33,4 +33,4 @@ data:
           access-key: ${GRIDCAPA_MINIO_USER}
           secret-key: ${GRIDCAPA_MINIO_PASSWORD}
           bucket: gridcapa
-          base-directory: /CSE/D2CC/TARGETCHs
+          base-directory: /CSE/D2CC/INPUTS/TARGETCHs
