@@ -6,12 +6,13 @@ spring:
     password: gridcapa
   cloud:
     stream:
+      default:
+        group: cse-d2cc
       bindings:
         dispatchRaoLogsEvents-in-0:
           destination: rao-runners-logs-exchange
         dispatch-logs:
-          group: cse-d2cc-task-manager
-          destination: task-manager-logs-exchange   # queue: exchange.group-name # final queue name:  task-manager-logs-exchange.cse-d2cc-task-manager
+          destination: task-manager-logs-exchange.cse-d2cc-task-manager
       rabbit:
         default:
           consumer:

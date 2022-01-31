@@ -19,12 +19,13 @@ data:
         port: 5672
       cloud:
         stream:
+          default:
+            group: cse-idcc
           bindings:
             dispatchRaoLogsEvents-in-0:
               destination: rao-runners-logs-exchange
             dispatch-logs:
-              group: cse-idcc-task-manager
-              destination: task-manager-logs-exchange
+              destination: task-manager-logs-exchange.cse-idcc-task-manager
           rabbit:
             default:
               consumer:
