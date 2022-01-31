@@ -17,14 +17,25 @@ spring:
       default:
         group: core-valid-task-manager
       bindings:
-        handleMinioEvent-in-0:
+        consumeMinioEvent-in-0:
           destination: gridcapa.minio.events
-        handleTaskStatusUpdate-in-0:
+        consumeTaskStatusUpdate-in-0:
           destination: core-valid-task-status-updated
-        handleTaskLogEventUpdate-in-0:
-          destination: task-manager-logs-exchange
+        consumeTaskEventUpdate-in-0:
+          destination: core-valid-task-manager-logs-exchange
         task-updated:
           destination: core-valid-task-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+        bindings:
+          consumeMinioEvent-in-0:
+            consumer:
+              exchange-type: fanout
+    function:
+      definition: consumeMinioEvent;consumeTaskStatusUpdate;consumeTaskEventUpdate
 
 task-server:
   minio:

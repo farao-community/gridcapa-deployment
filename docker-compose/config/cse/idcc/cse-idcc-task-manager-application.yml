@@ -19,10 +19,10 @@ spring:
       bindings:
         consumeMinioEvent-in-0:
           destination: gridcapa.minio.events
-        consumeTaskStatusUpdate-in-0:
+        handleTaskStatusUpdate-in-0:
           destination: cse-idcc-task-status-updated
-        consumeTaskLogEventUpdate-in-0:
-          destination: task-manager-logs-exchange
+        consumeTaskEventUpdate-in-0:
+          destination: cse-idcc-task-manager-logs-exchange
         task-updated:
           destination: cse-idcc-task-updated
       rabbit:
@@ -35,7 +35,7 @@ spring:
             consumer:
               exchange-type: fanout
     function:
-      definition: consumeMinioEvent;consumeTaskStatusUpdate;consumeTaskLogEventUpdate
+      definition: consumeMinioEvent;consumeTaskStatusUpdate;consumeTaskEventUpdate
 
 task-server:
   minio:
