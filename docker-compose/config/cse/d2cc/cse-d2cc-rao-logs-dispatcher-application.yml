@@ -12,7 +12,7 @@ spring:
         dispatchRaoLogsEvents-in-0:
           destination: rao-runners-logs-exchange
         dispatch-logs:
-          destination: task-manager-logs-exchange.cse-d2cc-task-manager
+          destination: cse-d2cc-task-manager-logs-exchange
       rabbit:
         default:
           consumer:

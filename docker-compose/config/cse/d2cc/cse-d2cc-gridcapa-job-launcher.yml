@@ -1,6 +1,6 @@
 logback:
   amqp:
-    exchange: task-manager-logs-exchange.cse-d2cc-task-manager
+    exchange: cse-d2cc-task-manager-logs-exchange
     routing-key: "#"
 spring:
   application:

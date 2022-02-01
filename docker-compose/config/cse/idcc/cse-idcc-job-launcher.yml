@@ -1,6 +1,6 @@
 logback:
   amqp:
-    exchange: task-manager-logs-exchange.cse-idcc-task-manager
+    exchange: cse-idcc-task-manager-logs-exchange
     routing-key: "#"
 spring:
   rabbitmq:

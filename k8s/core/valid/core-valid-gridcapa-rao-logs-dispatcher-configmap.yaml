@@ -25,7 +25,7 @@ data:
             dispatchRaoLogsEvents-in-0:
               destination: rao-runners-logs-exchange
             dispatch-logs:
-              destination: task-manager-logs-exchange.core-valid-task-manager
+              destination: core-valid-task-manager-logs-exchange
           rabbit:
             default:
               consumer:
