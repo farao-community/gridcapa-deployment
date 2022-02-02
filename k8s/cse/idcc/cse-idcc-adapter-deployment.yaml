@@ -64,9 +64,9 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              memory: "50Mi"
+              memory: "384Mi"
             limits:
-              memory: "100Mi"
+              memory: "384Mi"
       restartPolicy: Always
       volumes:
         - name: cse-idcc-adapter-configmap-volume
