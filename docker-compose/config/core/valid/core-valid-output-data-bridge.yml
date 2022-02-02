@@ -1,0 +1,18 @@
+data-bridge:
+  file-regex: StudyPointResult.csv
+  sources:
+    minio:
+      url: http://minio:9000
+      access-key: gridcapa
+      secret-key: gridcapa
+      bucket: gridcapa
+      base-directory: /CORE/VALID/
+      polling-delay-in-ms: 10000
+  sinks:
+    ftp:
+      active: true
+      host: localhost
+      port: 21
+      username: gridcapa
+      password: gridcapa
+      base-directory: /data/gridcapa/cse/d2cc/cgms
