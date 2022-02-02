@@ -251,6 +251,22 @@ services:
     networks:
       - gridcapa
 
+  rao-logs-dispatcher:
+    image: farao/gridcapa-rao-logs-dispatcher:latest
+    volumes:
+      - ../config/cse/idcc/cse-idcc-rao-logs-dispatcher-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://rao-logs-dispatcher/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - rao-runner
+      - cse-idcc-task-manager
+      - rabbitmq
+    networks:
+      - gridcapa
+
   cse-cc-runner:
     image: farao/gridcapa-cse-runner:latest
     volumes:

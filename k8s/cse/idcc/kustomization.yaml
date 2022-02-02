@@ -37,6 +37,9 @@ resources:
   - cse-idcc-task-manager-configmap.yaml
   - cse-idcc-task-manager-deployment.yaml
   - cse-idcc-task-manager-service.yaml
+  - cse-idcc-rao-logs-dispatcher-configmap.yaml
+  - cse-idcc-rao-logs-dispatcher-deployment.yaml
+  - cse-idcc-rao-logs-dispatcher-service.yaml
   - cse-idcc-task-notification-server-configmap.yaml
   - cse-idcc-task-notification-server-deployment.yaml
   - cse-idcc-task-notification-server-service.yaml
