@@ -19,7 +19,7 @@ spring:
       bindings:
         consumeMinioEvent-in-0:
           destination: gridcapa.minio.events
-        handleTaskStatusUpdate-in-0:
+        consumeTaskStatusUpdate-in-0:
           destination: cse-idcc-task-status-updated
         consumeTaskEventUpdate-in-0:
           destination: cse-idcc-task-manager-logs-exchange
