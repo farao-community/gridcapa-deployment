@@ -1,10 +1,10 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-idcc-gridcapa-rao-logs-dispatcher
+  name: cse-idcc-rao-logs-dispatcher
   labels:
     app: gridcapa
-    component: gridcapa-rao-logs-dispatcher
+    component: rao-logs-dispatcher
     region: cse
     process: idcc
 spec:
@@ -12,19 +12,19 @@ spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-rao-logs-dispatcher
+      component: rao-logs-dispatcher
       region: cse
       process: idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-rao-logs-dispatcher
+        component: rao-logs-dispatcher
         region: cse
         process: idcc
     spec:
       containers:
-        - name: cse-idcc-gridcapa-rao-logs-dispatcher
+        - name: cse-idcc-rao-logs-dispatcher
           image: docker.io/farao/gridcapa-rao-logs-dispatcher:latest
           imagePullPolicy: Always
           ports:
@@ -43,7 +43,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: cse-idcc-gridcapa-rao-logs-dispatcher-configmap-volume
+              name: cse-idcc-rao-logs-dispatcher-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -71,6 +71,6 @@ spec:
               memory: "16Gi"
       restartPolicy: Always
       volumes:
-        - name: cse-idcc-gridcapa-rao-logs-dispatcher-configmap-volume
+        - name: cse-idcc-rao-logs-dispatcher-configmap-volume
           configMap:
-            name: cse-idcc-gridcapa-rao-logs-dispatcher-configmap
+            name: cse-idcc-rao-logs-dispatcher-configmap

@@ -24,6 +24,9 @@ resources:
   - core-valid-task-manager-configmap.yaml
   - core-valid-task-manager-deployment.yaml
   - core-valid-task-manager-service.yaml
+  - core-valid-rao-logs-dispatcher-configmap.yaml
+  - core-valid-rao-logs-dispatcher-deployment.yaml
+  - core-valid-rao-logs-dispatcher-service.yaml
   - core-valid-task-notification-server-configmap.yaml
   - core-valid-task-notification-server-deployment.yaml
   - core-valid-task-notification-server-service.yaml

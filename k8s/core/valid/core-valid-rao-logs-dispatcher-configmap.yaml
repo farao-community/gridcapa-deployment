@@ -1,17 +1,17 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-d2cc-gridcapa-rao-logs-dispatcher-configmap
+  name: core-valid-rao-logs-dispatcher-configmap
   labels:
     app: gridcapa
-    component: gridcapa-rao-logs-dispatcher
-    region: cse
-    process: d2cc
+    component: rao-logs-dispatcher
+    region: core
+    process: valid
 data:
   application.yml: |-
     spring:
       application:
-        name: cse-d2cc-gridcapa-rao-logs-dispatcher
+        name: core-valid-rao-logs-dispatcher
       rabbitmq:
         host: gridcapa-rabbitmq
         username: ${RABBITMQ_USER}
@@ -20,12 +20,12 @@ data:
       cloud:
         stream:
           default:
-            group: cse-d2cc
+            group: core-valid
           bindings:
             dispatchRaoEvents-in-0:
               destination: rao-runners-logs-exchange
             dispatch-logs:
-              destination: cse-d2cc-task-manager-logs-exchange
+              destination: core-valid-task-manager-logs-exchange
           rabbit:
             default:
               consumer:
@@ -35,4 +35,4 @@ data:
           definition: dispatchRaoEvents
 
     client:
-      name: cse-d2cc-runner
+      name: core-valid-runner
