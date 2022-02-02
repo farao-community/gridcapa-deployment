@@ -22,7 +22,7 @@ data:
           default:
             group: cse-idcc
           bindings:
-            dispatchRaoLogsEvents-in-0:
+            dispatchRaoEvents-in-0:
               destination: rao-runners-logs-exchange
             dispatch-logs:
               destination: cse-idcc-task-manager-logs-exchange
@@ -32,7 +32,7 @@ data:
                 auto-bind-dlq: true
                 max-attempts: 1
         function:
-          definition: dispatchRaoLogsEvents
+          definition: dispatchRaoEvents
 
     client:
       name: cse-idcc-runner
