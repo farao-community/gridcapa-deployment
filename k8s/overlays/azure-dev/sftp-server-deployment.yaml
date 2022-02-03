@@ -39,7 +39,7 @@ spec:
                   name: gridcapa-sftp-credentials
                   key: sftp-password
             - name: SFTP_USERS
-              value: "$(GRIDCAPA_SFTP_USER):$(GRIDCAPA_SFTP_PASSWORD):1000::data/core/valid/cgms,data/core/valid/cbcoras,data/core/valid/refprogs,data/core/valid/studypoints,data/core/valid/glsks"
+              value: "$(GRIDCAPA_SFTP_USER):$(GRIDCAPA_SFTP_PASSWORD):1000::data/core/valid/cgms,data/core/valid/cbcoras,data/core/valid/refprogs,data/core/valid/studypoints,data/core/valid/glsks,data/core/valid/outputs"
           livenessProbe:
             tcpSocket:
               port: 22

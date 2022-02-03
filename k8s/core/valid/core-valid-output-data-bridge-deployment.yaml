@@ -1,0 +1,83 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: core-valid-output-data-bridge
+  labels:
+    app: gridcapa
+    component: gridcapa-output-data-bridge
+    region: core
+    process: valid
+
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: gridcapa-output-data-bridge
+      region: core
+      process: valid
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: gridcapa-output-data-bridge
+        region: core
+        process: valid
+    spec:
+      containers:
+        - name: core-valid-output-data-bridge
+          image: docker.io/farao/gridcapa-output-data-bridge:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: GRIDCAPA_SFTP_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-sftp-credentials
+                  key: sftp-user
+            - name: GRIDCAPA_SFTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-sftp-credentials
+                  key: sftp-password
+            - name: GRIDCAPA_MINIO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: GRIDCAPA_MINIO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: core-valid-output-data-bridge-configmap-volume
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              memory: "384Mi"
+            limits:
+              memory: "384Mi"
+      restartPolicy: Always
+      volumes:
+        - name: core-valid-output-data-bridge-configmap-volume
+          configMap:
+            name: core-valid-output-data-bridge-configmap
