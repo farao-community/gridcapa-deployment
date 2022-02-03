@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: cse-idcc-runner
   rabbitmq:
     host: rabbitmq
     port: 5672
@@ -14,6 +16,7 @@ spring:
 
 rao-runner-server:
   amqp:
+    client-app-id: cse-idcc-runner
     queue-name: rao-request-queue
 
 minio:

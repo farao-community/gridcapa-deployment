@@ -26,6 +26,9 @@ resources:
   - cse-d2cc-task-manager-configmap.yaml
   - cse-d2cc-task-manager-deployment.yaml
   - cse-d2cc-task-manager-service.yaml
+  - cse-d2cc-rao-logs-dispatcher-configmap.yaml
+  - cse-d2cc-rao-logs-dispatcher-deployment.yaml
+  - cse-d2cc-rao-logs-dispatcher-service.yaml
   - cse-d2cc-task-notification-server-configmap.yaml
   - cse-d2cc-task-notification-server-deployment.yaml
   - cse-d2cc-task-notification-server-service.yaml
