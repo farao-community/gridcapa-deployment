@@ -98,7 +98,7 @@ services:
     image: atmoz/sftp
     restart: always
     environment:
-      SFTP_USERS: gridcapa:gridcapa:::data/core/valid/cgms,data/core/valid/cbcoras,data/core/valid/refprogs,data/core/valid/studypoints,data/core/valid/glsks
+      SFTP_USERS: gridcapa:gridcapa:::data/core/valid/cgms,data/core/valid/cbcoras,data/core/valid/refprogs,data/core/valid/studypoints,data/core/valid/glsks,data/core/valid/outputs
     volumes:
       - sftp-data:/home/gridcapa/data
     ports:
@@ -110,7 +110,7 @@ services:
     image: delfer/alpine-ftp-server
     restart: always
     environment:
-      USERS: gridcapa|gridcapa|/data/gridcapa/cse/d2cc/cgms /data/gridcapa/cse/d2cc/cracs /data/gridcapa/cse/d2cc/glsks /data/gridcapa/cse/d2cc/ntc /data/gridcapa/cse/d2cc/ntcreds /data/gridcapa/cse/d2cc/targetchs /data/gridcapa/cse/d2cc/vulcanus
+      USERS: gridcapa|gridcapa|/data/gridcapa/cse/d2cc/cgms /data/gridcapa/cse/d2cc/cracs /data/gridcapa/cse/d2cc/glsks /data/gridcapa/cse/d2cc/ntc /data/gridcapa/cse/d2cc/ntcreds /data/gridcapa/cse/d2cc/targetchs /data/gridcapa/cse/d2cc/vulcanus /data/gridcapa/cse/d2cc/outputs
     volumes:
       - ftp-data:/data/gridcapa
     ports:
@@ -176,6 +176,13 @@ services:
       - "5432:5432"
     volumes:
       - cse-postgres-data:/bitnami/postgres
+    networks:
+      - gridcapa
+
+  core-valid-output-data-bridge:
+    image: farao/gridcapa-output-data-bridge:latest
+    volumes:
+      - ../config/core/valid/core-valid-output-data-bridge.yml:/config/application.yml
     networks:
       - gridcapa
 

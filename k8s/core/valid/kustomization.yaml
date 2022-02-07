@@ -34,3 +34,5 @@ resources:
   - core-valid-gridcapa-job-launcher-service.yaml
   - core-valid-gridcapa-job-launcher-configmap.yaml
   - core-valid-runner-itools-configmap.yaml
+  - core-valid-output-data-bridge-deployment.yaml
+  - core-valid-output-data-bridge-service.yaml

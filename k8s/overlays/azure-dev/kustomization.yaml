@@ -41,3 +41,4 @@ resources:
   - sftp-pv-claim.yaml
   - sftp-server-deployment.yaml
   - sftp-server-service.yaml
+  - core-valid-output-data-bridge-configmap.yaml
