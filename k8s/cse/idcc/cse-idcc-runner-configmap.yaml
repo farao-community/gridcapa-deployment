@@ -23,6 +23,10 @@ data:
             task-status-update:
               destination: cse-idcc-task-status-updated
 
+    logback:
+      amqp:
+        exchange: cse-idcc-task-manager-logs-exchange
+
     rao-runner-server:
       amqp:
         client-app-id: cse-idcc-runner
@@ -30,7 +34,7 @@ data:
 
     minio:
       bucket: gridcapa
-      base-path: CSE/IDCC
+      base-path:
       access:
         name: ${MINIO_ACCESS_KEY}
         secret: ${MINIO_SECRET_KEY}

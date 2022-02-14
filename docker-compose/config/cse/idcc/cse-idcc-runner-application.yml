@@ -14,6 +14,10 @@ spring:
         task-status-update:
           destination: cse-idcc-task-status-updated
 
+logback:
+  amqp:
+    exchange: cse-idcc-task-manager-logs-exchange
+
 rao-runner-server:
   amqp:
     client-app-id: cse-idcc-runner
