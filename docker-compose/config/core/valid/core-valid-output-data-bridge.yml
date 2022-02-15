@@ -7,7 +7,7 @@ data-bridge:
       secret-key: gridcapa
       bucket: gridcapa
       base-directory: /CORE/VALID/outputs
-      polling-delay-in-ms: 10000
+      polling-delay-in-ms: 5000
   sinks:
     sftp:
       active: true
