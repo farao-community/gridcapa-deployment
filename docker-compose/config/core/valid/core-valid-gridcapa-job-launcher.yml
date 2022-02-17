@@ -19,3 +19,9 @@ spring:
 
 job-launcher:
   task-manager-url: http://core-valid-gridcapa-task-manager:8080/tasks/
+
+scheduler:
+  enable: true
+  start-hour: 0
+  end-hour: 20
+  cronjob: "0 */5 ${scheduler.start-hour}-${scheduler.end-hour} * * *"
