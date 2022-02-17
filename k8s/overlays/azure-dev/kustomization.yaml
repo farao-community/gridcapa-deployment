@@ -9,9 +9,10 @@ bases:
 
 resources:
   - apps-metadata-server-configmap.yaml
+  - core-valid-cbcora-data-bridge-configmap.yaml
   - core-valid-cgm-data-bridge-configmap.yaml
   - core-valid-glsk-data-bridge-configmap.yaml
-  - core-valid-cbcora-data-bridge-configmap.yaml
+  - core-valid-output-data-bridge-configmap.yaml
   - core-valid-refprog-data-bridge-configmap.yaml
   - core-valid-studypoint-data-bridge-configmap.yaml
   - cse-d2cc-cgm-data-bridge-configmap.yaml
@@ -38,7 +39,8 @@ resources:
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
   - gridcapa-storage-class.yaml
+  - rao-runner-autoscaler.yaml
   - sftp-pv-claim.yaml
   - sftp-server-deployment.yaml
   - sftp-server-service.yaml
-  - core-valid-output-data-bridge-configmap.yaml
+

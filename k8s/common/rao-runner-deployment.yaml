@@ -6,7 +6,6 @@ metadata:
     app: gridcapa
     component: rao-runner
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: gridcapa
