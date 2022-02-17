@@ -1,37 +1,16 @@
-rao:
-  default: SearchTreeRao
+load-flow-default-parameters:
+  voltageInitMode: DC_VALUES
+  balanceType: PROPORTIONAL_TO_GENERATION_P
+  countriesToBalance: AL,AT,BA,BE,BG,CH,CZ,DE,ES,FR,GR,HR,HU,IT,ME,MK,NL,PL,PT,RO,RS,SI,SK,UA
+  phaseShifterRegulationOn: true
 
 hades2:
   homeDir: /home/farao/farao-dep/runtime/hades2
   timeout: -1
   debug: false
 
-rao-parameters:
-  objective-function: MAX_MIN_MARGIN_IN_AMPERE
-  max-number-of-iterations: 5
-  pst-penalty-cost: 0.01
-  pst-sensitivity-threshold : 0.02
-  sensitivity-fallback-overcost: 0.0
-  rao-with-loop-flow-limitation: false
-  perimeters-in-parallel: 4
-
-search-tree-rao-parameters:
-  preventive-rao-stop-criterion: SECURE
-  curative-rao-stop-criterion: SECURE
-  maximum-search-depth: 5
-  relative-network-action-minimum-impact-threshold: 5
-  absolute-network-action-minimum-impact-threshold: 5
-  curative-rao-optimize-operators-not-sharing-cras : false
-  leaves-in-parallel: 4
-
 hades2-default-parameters:
-  dcMode: false
-  balanceType: PROPORTIONAL_TO_GENERATION_P
-  countriesToBalance: AL,AT,BA,BE,BG,CH,CZ,DE,ES,FR,GR,HR,HU,IT,ME,MK,NL,PL,PT,RO,RS,SI,SK,TR,UA
   nbThreads: 4
-
-linear-rao-parameters:
-  security-analysis-without-rao: false
 
 hades2-default-sensitivity-parameters:
   computeInitialLoadflow: true
@@ -41,15 +20,22 @@ hades2-default-sensitivity-parameters:
   resultsThreshold: 0.1
   hubPtdf: -1
 
-load-flow-default-parameters:
-  voltageInitMode: DC_VALUES
-  transformerVoltageControlOn: true
-  phaseShifterRegulationOn: true
-  noGeneratorReactiveLimits: false
-  twtSplitShuntAdmittance: false
-  simulShunt: false
-  readSlackBus: false
-  writeSlackBus: false
-  dc: false
-  distributedSlack: true
-  balanceType: PROPORTIONAL_TO_GENERATION_P
+rao-parameters:
+  objective-function: MAX_MIN_MARGIN_IN_AMPERE
+  max-number-of-iterations: 5
+  pst-penalty-cost: 0.01
+  pst-sensitivity-threshold : 0.01
+  sensitivity-fallback-overcost: 0.0
+  rao-with-loop-flow-limitation: false
+  perimeters-in-parallel: 4
+
+search-tree-rao-parameters:
+  preventive-rao-stop-criterion: SECURE
+  curative-rao-stop-criterion: SECURE
+  second-preventive-optimization-condition: POSSIBLE_CURATIVE_IMPROVEMENT
+  maximum-search-depth: 5
+  relative-network-action-minimum-impact-threshold: 0.0
+  absolute-network-action-minimum-impact-threshold: 2.0
+  curative-rao-optimize-operators-not-sharing-cras : false
+  preventive-leaves-in-parallel: 4
+  curative-leaves-in-parallel: 1
