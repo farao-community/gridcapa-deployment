@@ -16,7 +16,7 @@ data:
         password: ${RABBITMQ_PASSWORD}
         port: 5672
         template:
-          reply-timeout: 2400000
+          reply-timeout: 7200000
       cloud:
         stream:
           bindings:
@@ -30,7 +30,7 @@ data:
     rao-runner-server:
       amqp:
         client-app-id: cse-idcc-runner
-        queue-name: rao-request-queue
+        queue-name: cse-idcc-rao-request-queue
 
     minio:
       bucket: gridcapa

@@ -1,10 +1,10 @@
-kind: Deployment
 apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: cse-idcc-gridcapa-runner
+  name: cse-idcc-rao-runner
   labels:
     app: gridcapa
-    component: gridcapa-runner
+    component: rao-runner
     region: cse
     process: idcc
 spec:
@@ -12,20 +12,20 @@ spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-runner
+      component: rao-runner
       region: cse
       process: idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-runner
+        component: rao-runner
         region: cse
         process: idcc
     spec:
       containers:
-        - name: cse-idcc-gridcapa-runner
-          image: docker.io/farao/gridcapa-cse-runner:latest
+        - name: cse-idcc-rao-runner
+          image: docker.io/farao/gridcapa-rao-runner:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -51,48 +51,51 @@ spec:
                   name: gridcapa-minio-credentials
                   key: minio-secret-key
           volumeMounts:
+            - mountPath: /.itools/config.yml
+              subPath: config.yml
+              name: cse-idcc-rao-runner-itools-volume
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: cse-idcc-runner-configmap-volume
-            - mountPath: /home/farao/.itools/config.yml
-              subPath: config.yml
-              name: cse-idcc-runner-itools-configmap-volume
-            - mountPath: /home/farao/xnodes/xnodes.xml
-              subPath: xnodes.xml
-              name: cse-idcc-runner-xnodes-configmap-volume
+              name: cse-idcc-rao-runner-volume
+            - mountPath: /tmp
+              name: tmp-emptydir
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            readOnlyRootFilesystem: true
+          resources:
+            requests:
+              cpu: "8.0"
+              memory: "30Gi"
+            limits:
+              cpu: "8.0"
+              memory: "40Gi"
           livenessProbe:
             httpGet:
               path: /actuator/health
               port: 8080
-            initialDelaySeconds: 25
-            periodSeconds: 15
+            initialDelaySeconds: 15
+            periodSeconds: 20
             timeoutSeconds: 2
-            failureThreshold: 3
+            failureThreshold: 1
             successThreshold: 1
           readinessProbe:
             httpGet:
               path: /actuator/health
               port: 8080
-            initialDelaySeconds: 35
+            initialDelaySeconds: 15
+            periodSeconds: 20
             timeoutSeconds: 2
-            periodSeconds: 15
-            failureThreshold: 3
+            failureThreshold: 1
             successThreshold: 1
-          resources:
-            requests:
-              cpu: "1.0"
-              memory: "384Mi"
-            limits:
-              cpu: "4.0"
-              memory: "16Gi"
       restartPolicy: Always
       volumes:
-        - name: cse-idcc-runner-configmap-volume
+        - name: cse-idcc-rao-runner-volume
           configMap:
-            name: cse-idcc-runner-configmap
-        - name: cse-idcc-runner-itools-configmap-volume
+            name: cse-idcc-rao-runner
+        - name: cse-idcc-rao-runner-itools-volume
           configMap:
-            name: cse-idcc-runner-itools-configmap
-        - name: cse-idcc-runner-xnodes-configmap-volume
-          configMap:
-            name: cse-idcc-runner-xnodes-configmap
+            name: cse-idcc-rao-runner-itools
+        - name: tmp-emptydir
+          emptyDir: {}

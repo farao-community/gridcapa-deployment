@@ -17,6 +17,10 @@ resources:
   - cse-idcc-job-launcher-deployment.yaml
   - cse-idcc-job-launcher-service.yaml
   - cse-idcc-job-launcher-configmap.yaml
+  - cse-idcc-rao-runner-configmap.yaml
+  - cse-idcc-rao-runner-deployment.yaml
+  - cse-idcc-rao-runner-itools-configmap.yaml
+  - cse-idcc-rao-runner-service.yaml
   - cse-idcc-runner-configmap.yaml
   - cse-idcc-runner-deployment.yaml
   - cse-idcc-runner-itools-configmap.yaml
