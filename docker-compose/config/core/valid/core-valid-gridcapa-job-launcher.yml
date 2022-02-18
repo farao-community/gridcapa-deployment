@@ -24,4 +24,4 @@ scheduler:
   enable: true
   start-hour: 0
   end-hour: 20
-  cronjob: "0 */5 ${scheduler.start-hour}-${scheduler.end-hour} * * *"
+  frequency-in-minutes: 1
