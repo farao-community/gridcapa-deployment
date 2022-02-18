@@ -18,7 +18,8 @@ spring:
           group: core-valid-job-launcher
 
 job-launcher:
-  task-manager-url: http://core-valid-gridcapa-task-manager:8080/tasks/
+  task-manager-timestamp-url: http://core-valid-gridcapa-task-manager:8080/tasks/
+  task-manager-business-date-url: http://core-valid-gridcapa-task-manager:8080/tasks/businessdate/
 
 scheduler:
   enable: true
