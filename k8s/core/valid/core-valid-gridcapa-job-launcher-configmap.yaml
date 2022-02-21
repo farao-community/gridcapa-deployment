@@ -29,4 +29,15 @@ data:
               group: core-valid-job-launcher
 
     job-launcher:
-      task-manager-url: http://core-valid-task-manager/tasks/
+      url:
+        task-manager-timestamp-url: http://core-valid-task-manager/tasks/
+        task-manager-business-date-url: http://core-valid-task-manager/tasks/businessdate/
+      process:
+        tag: CORE_VALID
+        timezone: CET
+
+    scheduler:
+      enable: true
+      start-hour: 0
+      end-hour: 20
+      frequency-in-minutes: 1
