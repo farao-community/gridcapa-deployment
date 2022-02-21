@@ -5,7 +5,7 @@ spring:
     username: gridcapa
     password: gridcapa
     template:
-      reply-timeout: 2400000
+      reply-timeout: 7200000
   cloud:
     stream:
       bindings:

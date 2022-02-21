@@ -40,6 +40,3 @@ data:
 
     scheduler:
       enable: false
-      start-hour: 0
-      end-hour: 20
-      frequency-in-minutes: 1
