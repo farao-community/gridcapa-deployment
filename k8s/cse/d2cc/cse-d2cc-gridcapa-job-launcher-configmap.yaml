@@ -29,4 +29,15 @@ data:
               group: cse-d2cc-job-launcher
 
     job-launcher:
-      task-manager-url: http://cse-d2cc-task-manager/tasks/
+      url:
+        task-manager-timestamp-url: http://cse-d2cc-task-manager/tasks/
+        task-manager-business-date-url: http://cse-d2cc-task-manager/tasks/businessdate/
+      process:
+        tag: CSE_D2CC
+        timezone: CET
+
+    scheduler:
+      enable: false
+      start-hour: 0
+      end-hour: 20
+      frequency-in-minutes: 1
