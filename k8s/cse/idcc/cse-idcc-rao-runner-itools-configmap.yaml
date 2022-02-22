@@ -1,0 +1,19 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-idcc-rao-runner-itools
+  labels:
+    app: gridcapa
+    component: rao-runner
+    region: cse
+    process: idcc
+
+data:
+  application.yml: |-
+    rao:
+      default: SearchTreeRao
+
+    hades2:
+      homeDir: /home/farao/farao-dep/runtime/hades2
+      timeout: -1
+      debug: false

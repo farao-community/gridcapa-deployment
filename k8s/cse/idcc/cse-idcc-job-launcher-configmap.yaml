@@ -21,6 +21,8 @@ data:
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
         port: 5672
+        template:
+          reply-timeout: 7200000
       cloud:
         stream:
           bindings:
@@ -38,6 +40,3 @@ data:
 
     scheduler:
       enable: false
-      start-hour: 0
-      end-hour: 20
-      frequency-in-minutes: 1

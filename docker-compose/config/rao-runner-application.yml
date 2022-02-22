@@ -5,7 +5,7 @@ spring:
     username: gridcapa
     password: gridcapa
     template:
-      reply-timeout: 12000000
+      reply-timeout: 7200000
 
 minio:
   bucket: gridcapa
