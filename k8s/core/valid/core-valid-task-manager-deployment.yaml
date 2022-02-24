@@ -84,9 +84,11 @@ spec:
             successThreshold: 1
           resources:
             requests:
+              cpu: "1.0"
               memory: "384Mi"
             limits:
-              memory: "384Mi"
+              cpu: "4.0"
+              memory: "1Gi"
       initContainers:
         - name: minio-notifications
           image: docker.io/minio/mc

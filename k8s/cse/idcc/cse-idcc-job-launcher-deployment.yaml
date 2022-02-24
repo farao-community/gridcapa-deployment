@@ -67,7 +67,7 @@ spec:
               cpu: "0.1"
               memory: "384Mi"
             limits:
-              cpu: "1.0"
+              cpu: "0.5"
               memory: "384Mi"
       restartPolicy: Always
       volumes:
