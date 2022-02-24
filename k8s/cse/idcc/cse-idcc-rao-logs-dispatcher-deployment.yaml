@@ -64,11 +64,11 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              cpu: "1.0"
-              memory: "8Gi"
+              cpu: "0.5"
+              memory: "500Mi"
             limits:
               cpu: "2.0"
-              memory: "16Gi"
+              memory: "1Gi"
       restartPolicy: Always
       volumes:
         - name: cse-idcc-rao-logs-dispatcher-configmap-volume
