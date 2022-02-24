@@ -36,6 +36,9 @@
             volumeMounts:
               - name: gridcapa-rabbitmq-data
                 mountPath: "/var/lib/rabbitmq/mnesia"
+              - mountPath: /etc/rabbitmq/rabbitmq.conf
+                subPath: rabbitmq.conf
+                name: gridcapa-rabbitmq-configmap-volume
             env:
               - name: RABBITMQ_DEFAULT_PASS
                 valueFrom:
@@ -47,6 +50,8 @@
                   secretKeyRef:
                     name: gridcapa-rabbitmq-credentials
                     key: rabbitmq-user
+              - name: RABBITMQ_CONFIG_FILE
+                value: "/etc/rabbitmq/rabbitmq.conf"
               - name: RABBITMQ_ERLANG_COOKIE
                 valueFrom:
                   secretKeyRef:
@@ -90,3 +95,7 @@
               initialDelaySeconds: 20
               periodSeconds: 60
               timeoutSeconds: 10
+        volumes:
+          - name: gridcapa-rabbitmq-configmap-volume
+            configMap:
+              name: gridcapa-rabbitmq-configmap

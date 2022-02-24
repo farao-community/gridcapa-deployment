@@ -14,6 +14,7 @@ resources:
   - minio-pv-claim.yaml
   - minio-service.yaml
   - minio-storage-class.yaml
+  - rabbitmq-configmap.yaml
   - rabbitmq-service.yaml
   - rabbitmq-statefulset.yaml
   - rabbitmq-storage-class.yaml
