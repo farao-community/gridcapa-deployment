@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: gridcapa-rabbitmq-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-rabbitmq
+data:
+  rabbitmq.conf: |-
+    consumer_timeout = 7200000
