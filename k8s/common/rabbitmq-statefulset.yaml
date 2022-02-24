@@ -36,9 +36,10 @@
             volumeMounts:
               - name: gridcapa-rabbitmq-data
                 mountPath: "/var/lib/rabbitmq/mnesia"
-              - mountPath: /etc/rabbitmq/rabbitmq.conf
+              - name: gridcapa-rabbitmq-configmap-volume
                 subPath: rabbitmq.conf
-                name: gridcapa-rabbitmq-configmap-volume
+                mountPath: /etc/rabbitmq/rabbitmq.conf
+
             env:
               - name: RABBITMQ_DEFAULT_PASS
                 valueFrom:
