@@ -16,7 +16,7 @@ data:
         host: gridcapa-rabbitmq
         port: 5672
         template:
-          reply-timeout: 7200000
+          reply-timeout: 14400000
       cloud:
           stream:
             bindings:

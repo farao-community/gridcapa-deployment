@@ -32,7 +32,7 @@
       spec:
         containers:
           - name: rabbitmq
-            image: docker.io/rabbitmq:management
+            image: rabbitmq:3.8.14-management-alpine
             volumeMounts:
               - name: gridcapa-rabbitmq-data
                 mountPath: "/var/lib/rabbitmq/mnesia"
