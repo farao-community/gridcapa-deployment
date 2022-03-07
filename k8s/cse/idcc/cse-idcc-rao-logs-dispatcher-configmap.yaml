@@ -24,7 +24,7 @@ data:
           bindings:
             dispatchRaoEvents-in-0:
               destination: rao-runners-logs-exchange
-            dispatch-logs:
+            dispatchRaoEvents-out-0:
               destination: cse-idcc-task-manager-logs-exchange
           rabbit:
             default:
