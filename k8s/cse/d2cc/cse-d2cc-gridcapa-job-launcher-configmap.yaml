@@ -27,6 +27,9 @@ data:
             run-task:
               destination: cse-d2cc-run-task
               group: cse-d2cc-job-launcher
+            run-task-auto:
+              destination: cse-d2cc-run-task
+              group: cse-d2cc-job-launcher
 
     job-launcher:
       url:
