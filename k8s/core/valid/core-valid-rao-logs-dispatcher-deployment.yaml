@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: core-valid-rao-logs-dispatcher
-          image: docker.io/farao/gridcapa-rao-logs-dispatcher:latest
+          image: gridcapa-core-valid-rao-logs-dispatcher
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: cse-idcc-gridcapa-app
-          image: docker.io/farao/gridcapa-app:latest
+          image: gridcapa-cse-app
           imagePullPolicy: Always
           ports:
             - containerPort: 80

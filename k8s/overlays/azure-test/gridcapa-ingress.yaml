@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      rewrite ^/cse/d2cc$ /cse/d2cc/ permanent;
+      rewrite ^/cse/idcc$ /cse/idcc/ permanent;
       rewrite ^/core/valid$ /core/valid/ permanent;
       proxy_set_header X-Forwarded-Prefix /cse/d2cc/;
       proxy_set_header userId "johnDoe";
@@ -19,11 +19,11 @@ metadata:
   labels:
     app: gridcapa
     component: gridcapa
-  name: gridcapa-dev
-  namespace: default
+  name: gridcapa
+  namespace: gridcapa
 spec:
   rules:
-    - host: gridcapa-dev.farao-community.com
+    - host: gridcapa.farao-community.com
       http:
         paths:
           - backend:
@@ -70,45 +70,45 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: cse-d2cc-gridcapa-app
+                name: cse-idcc-gridcapa-app
                 port:
                   number: 80
-            path: /cse/d2cc(/|$)(.*)
+            path: /cse/idcc(/|$)(.*)
             pathType: Prefix
           - backend:
               service:
                 name: config-server
                 port:
                   number: 80
-            path: /cse/d2cc/config(/|$)(.*)
+            path: /cse/idcc/config(/|$)(.*)
             pathType: Prefix
           - backend:
               service:
                 name: config-notification-server
                 port:
                   number: 80
-            path: /cse/d2cc/config-notification(/|$)(.*)
+            path: /cse/idcc/config-notification(/|$)(.*)
             pathType: Prefix
           - backend:
               service:
-                name: cse-d2cc-task-notification-server
+                name: cse-idcc-task-notification-server
                 port:
                   number: 80
-            path: /cse/d2cc/task-notification(/|$)(.*)
+            path: /cse/idcc/task-notification(/|$)(.*)
             pathType: Prefix
           - backend:
               service:
-                name: cse-d2cc-task-manager
+                name: cse-idcc-task-manager
                 port:
                   number: 80
-            path: /cse/d2cc/task-manager(/|$)(.*)
+            path: /cse/idcc/task-manager(/|$)(.*)
             pathType: Prefix
           - backend:
               service:
-                name: cse-d2cc-gridcapa-job-launcher
+                name: cse-idcc-gridcapa-job-launcher
                 port:
                   number: 80
-            path: /cse/d2cc/gridcapa-job-launcher(/|$)(.*)
+            path: /cse/idcc/gridcapa-job-launcher(/|$)(.*)
             pathType: Prefix
           - backend:
               service:

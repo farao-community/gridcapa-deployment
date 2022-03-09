@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: cse-idcc-gridcapa-adapter
-          image: docker.io/farao/gridcapa-cse-adapter:latest
+          image: gridcapa-cse-adapter
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

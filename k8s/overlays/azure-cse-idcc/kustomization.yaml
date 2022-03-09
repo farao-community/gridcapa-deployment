@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+  - ../../cse/idcc
+
+resources:
+  - cse-idcc-cgm-data-bridge-configmap.yaml
+  - cse-idcc-crac-data-bridge-configmap.yaml
+  - cse-idcc-glsk-data-bridge-configmap.yaml
+  - cse-idcc-ntc-data-bridge-configmap.yaml
+  - cse-idcc-ntc-red-data-bridge-configmap.yaml
+  - cse-idcc-ntc2-at-data-bridge-configmap.yaml
+  - cse-idcc-ntc2-ch-data-bridge-configmap.yaml
+  - cse-idcc-ntc2-fr-data-bridge-configmap.yaml
+  - cse-idcc-ntc2-si-data-bridge-configmap.yaml
+  - cse-idcc-vulcanus-data-bridge-configmap.yaml
+
+
+
+
+

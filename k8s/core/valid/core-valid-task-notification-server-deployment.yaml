@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: task-notification-server
-          image: docker.io/springcloudstream/websocket-sink-rabbit:latest
+          image: gridcapa-task-notification-server
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9292

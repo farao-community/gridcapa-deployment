@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: core-valid-task-manager
-          image: docker.io/farao/gridcapa-task-manager:latest
+          image: gridcapa-core-valid-task-manager
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

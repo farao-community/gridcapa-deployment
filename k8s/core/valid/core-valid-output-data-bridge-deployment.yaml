@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: core-valid-output-data-bridge
-          image: docker.io/farao/gridcapa-output-data-bridge:latest
+          image: gridcapa-core-valid-output-data-bridge
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
