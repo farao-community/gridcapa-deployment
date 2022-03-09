@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: core-valid-gridcapa-app
-          image: docker.io/farao/gridcapa-app:latest
+          image: gridcapa-app
           imagePullPolicy: Always
           ports:
             - containerPort: 80

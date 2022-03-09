@@ -4,7 +4,7 @@ kind: Kustomization
 bases:
   - ../../common
   - ../azure-core-valid
-  - ../azure-cse-d2cc
+  - ../azure-cse-idcc
 
 resources:
   - apps-metadata-server-configmap.yaml
@@ -46,7 +46,7 @@ images:
     newName: docker.io/farao/gridcapa-output-data-bridge
     newTag: latest
   - name: gridcapa-core-valid-adpater
-    newName: docker.io/farao/gridcapa-cse-adapter
+    newName: docker.io/farao/gridcapa-core-valid-adapter
     newTag: latest
   - name: gridcapa-core-valid-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
@@ -58,7 +58,7 @@ images:
     newName: docker.io/farao/gridcapa-rao-runner
     newTag: latest
   - name: gridcapa-core-valid-runner
-    newName: docker.io/farao/gridcapa-cse-runner
+    newName: docker.io/farao/gridcapa-core-valid
     newTag: latest
   - name: gridcapa-core-valid-task-manager
     newName: docker.io/farao/gridcapa-task-manager

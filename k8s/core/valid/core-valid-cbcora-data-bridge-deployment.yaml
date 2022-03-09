@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: core-valid-cbcora-data-bridge
-          image: docker.io/farao/gridcapa-data-bridge:latest
+          image: gridcapa-core-valid-input-data-bridge
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

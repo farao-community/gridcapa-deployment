@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: cse-idcc-task-manager
-          image: docker.io/farao/gridcapa-task-manager:latest
+          image: gridcapa-cse-task-manager
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
