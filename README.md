@@ -83,7 +83,7 @@ kubectl create secret generic gridcapa-rabbitmq-credentials --from-literal='rabb
 kubectl create secret generic admin-rabbitmq-credentials --from-literal='rabbitmq-user=<RABBITMQ_USER>' --from-literal='rabbitmq-password=<RABBITMQ_PASSWORD>'
 kubectl create secret generic rabbitmq-secrets --from-literal='rabbitmq-erlang-cookie=<RABBITMQ_ERLANG_COOKIE>'
 kubectl create secret generic gridcapa-minio-credentials --from-literal='minio-access-key=<MINIO_ACCESS_KEY>' --from-literal='minio-secret-key=<MINIO_SECRET_KEY>'
-kubectl create secret generic gridcapa-ftp-credentials --from-literal='ftp-user=<FTP_USER>' --from-literal='ftp-password=<FTP_PASSWORD>'
+kubectl create secret generic gridcapa-ftp-credentials --from-literal='ftp-user=<FTP_USER>' --from-literal='ftp-password=<FTP_PASSWORD>' --from-literal='ftp-host=<FTP_HOST>' --from-literal='ftp-root-directory=<FTP_ROOT_DIRECTORY>'
 kubectl create secret generic gridcapa-sftp-credentials --from-literal='sftp-user=<SFTP_USER>' --from-literal='sftp-password=<SFTP_PASSWORD>'
 kubectl create secret generic gridcapa-filebrowser-credentials --from-literal='fb-user=<FB_USER>' --from-literal='fb-encrypted-password=<FB_ENCRYPTED_PASSWORD>'
 kubectl create secret generic gridcapa-config-server-postgres-credentials --from-literal='postgres-user=<POSTGRES_USER>' --from-literal='postgres-password=<POSTGRES_PASSWORD>'
