@@ -1,0 +1,28 @@
+server:
+  port: 9090
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:6060/auth/realms/Gridcapa-realm/protocol/openid-connect/certs
+          issuer-uri: http://localhost:6060/auth/realms/Gridcapa-realm
+  cloud:
+    gateway:
+      routes:
+        - id: cse-d2cc-gridcapa-task-manager
+          uri: cse-d2cc-gridcapa-task-manager:8080
+          predicates:
+            - Path=/tasks/**
+        - id: core-valid-gridcapa-task-manager
+          uri: core-valid-gridcapa-task-manager:8080
+          predicates:
+            - Path=/tasks/**
+        - id: cse-d2cc-gridcapa-job-launcher
+          uri: cse-d2cc-gridcapa-job-launcher:8080
+          predicates:
+            - Path=/start/**
+        - id: core-valid-gridcapa-job-launcher
+          uri: core-valid-gridcapa-job-launcher:8080
+          predicates:
+            - Path=/start/**
