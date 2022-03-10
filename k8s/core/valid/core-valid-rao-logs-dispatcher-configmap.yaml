@@ -24,7 +24,7 @@ data:
           bindings:
             dispatchRaoEvents-in-0:
               destination: rao-runners-logs-exchange
-            dispatchRaoEvents-out-0
+            dispatchRaoEvents-out-0:
               destination: core-valid-task-manager-logs-exchange
           rabbit:
             default:
