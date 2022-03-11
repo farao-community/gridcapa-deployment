@@ -1,0 +1,8 @@
+{
+    "authority": "http://keycloak:8080/",
+    "client_id": "gridcapa-app-client",
+    "redirect_uri": "https://localhost:3000/core/valid/sign-in-callback",
+    "post_logout_redirect_uri" : "https://localhost:3000/core/valid/logout-callback",
+    "silent_redirect_uri" : "https://localhost:3000/core/valid/silent-renew-callback",
+    "scope" : "openid User.read profile"
+}
