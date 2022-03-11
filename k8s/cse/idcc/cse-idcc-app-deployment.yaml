@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: cse-idcc-gridcapa-app
-          image: gridcapa-cse-app
+          image: gridcapa-app
           imagePullPolicy: Always
           ports:
             - containerPort: 80

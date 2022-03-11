@@ -3,6 +3,7 @@ kind: Kustomization
 
 bases:
   - ../../common
+  - ../azure-commons
   - ../azure-core-valid
   - ../azure-cse-d2cc
 
@@ -10,6 +11,37 @@ resources:
   - apps-metadata-server-configmap.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
+  - minio-pv-claim.yaml
+
+patches:
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: gridcapa-minio
+      spec:
+        template:
+          spec:
+            volumes:
+              - name: gridcapa-minio-data
+                persistentVolumeClaim:
+                  claimName: gridcapa-dev-minio-storage
+  - patch: |-
+      apiVersion: apps/v1
+      kind: StatefulSet
+      metadata:
+        name: gridcapa-rabbitmq
+      spec:
+        volumeClaimTemplates:
+          - metadata:
+              name: gridcapa-rabbitmq-data
+            spec:
+              storageClassName: azure-storage-class
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: "3Gi"
 
 images:
   - name: gridcapa-task-notification-server
@@ -45,8 +77,8 @@ images:
   - name: gridcapa-core-valid-output-data-bridge
     newName: docker.io/farao/gridcapa-output-data-bridge
     newTag: latest
-  - name: gridcapa-core-valid-adpater
-    newName: docker.io/farao/gridcapa-cse-adapter
+  - name: gridcapa-core-valid-adapter
+    newName: docker.io/farao/gridcapa-core-valid-adapter
     newTag: latest
   - name: gridcapa-core-valid-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
