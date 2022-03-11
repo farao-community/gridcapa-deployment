@@ -15,8 +15,3 @@ resources:
   - cse-idcc-ntc2-fr-data-bridge-configmap.yaml
   - cse-idcc-ntc2-si-data-bridge-configmap.yaml
   - cse-idcc-vulcanus-data-bridge-configmap.yaml
-
-
-
-
-

@@ -12,4 +12,3 @@ resources:
   - cse-d2cc-ntc-red-data-bridge-configmap.yaml
   - cse-d2cc-target-ch-data-bridge-configmap.yaml
   - cse-d2cc-vulcanus-data-bridge-configmap.yaml
-

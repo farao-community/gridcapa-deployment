@@ -13,11 +13,6 @@ data:
       "appColor" : "#36cf29"
     },
     {
-      "name" : "Capa CSE IDCC",
-      "url"  : "/cse/idcc",
-      "appColor" : "#21afe1"
-    },
-    {
       "name" : "Capa CORE Validation",
       "url"  : "/core/valid",
       "appColor" : "#F56908"

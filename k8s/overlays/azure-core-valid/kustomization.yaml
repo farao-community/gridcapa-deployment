@@ -19,4 +19,3 @@ resources:
   - sftp-pv-claim.yaml
   - sftp-server-deployment.yaml
   - sftp-server-service.yaml
-
