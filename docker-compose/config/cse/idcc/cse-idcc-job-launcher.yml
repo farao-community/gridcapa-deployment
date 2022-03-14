@@ -14,9 +14,6 @@ spring:
         run-task:
           destination: cse-idcc-launch-task
           group: cse-idcc-job-launcher
-        run-task-auto:
-          destination: cse-idcc-launch-task
-          group: cse-idcc-job-launcher
 
 job-launcher:
   url:
