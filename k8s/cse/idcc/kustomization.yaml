@@ -2,12 +2,36 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - cse-idcc-cgm-data-bridge-deployment.yaml
-  - cse-idcc-cgm-data-bridge-service.yaml
-  - cse-idcc-crac-data-bridge-deployment.yaml
-  - cse-idcc-crac-data-bridge-service.yaml
-  - cse-idcc-glsk-data-bridge-deployment.yaml
-  - cse-idcc-glsk-data-bridge-service.yaml
+  - data-bridge/cse-idcc-cgm-data-bridge-configmap.yaml
+  - data-bridge/cse-idcc-cgm-data-bridge-deployment.yaml
+  - data-bridge/cse-idcc-cgm-data-bridge-service.yaml
+  - data-bridge/cse-idcc-crac-data-bridge-configmap.yaml
+  - data-bridge/cse-idcc-crac-data-bridge-deployment.yaml
+  - data-bridge/cse-idcc-crac-data-bridge-service.yaml
+  - data-bridge/cse-idcc-glsk-data-bridge-configmap.yaml
+  - data-bridge/cse-idcc-glsk-data-bridge-deployment.yaml
+  - data-bridge/cse-idcc-glsk-data-bridge-service.yaml
+  - data-bridge/cse-idcc-ntc-data-bridge-configmap.yaml
+  - data-bridge/cse-idcc-ntc-data-bridge-deployment.yaml
+  - data-bridge/cse-idcc-ntc-data-bridge-service.yaml
+  - data-bridge/cse-idcc-ntc-red-data-bridge-configmap.yaml
+  - data-bridge/cse-idcc-ntc-red-data-bridge-deployment.yaml
+  - data-bridge/cse-idcc-ntc-red-data-bridge-service.yaml
+  - data-bridge/cse-idcc-ntc2-at-data-bridge-configmap.yaml
+  - data-bridge/cse-idcc-ntc2-at-data-bridge-deployment.yaml
+  - data-bridge/cse-idcc-ntc2-at-data-bridge-service.yaml
+  - data-bridge/cse-idcc-ntc2-ch-data-bridge-configmap.yaml
+  - data-bridge/cse-idcc-ntc2-ch-data-bridge-deployment.yaml
+  - data-bridge/cse-idcc-ntc2-ch-data-bridge-service.yaml
+  - data-bridge/cse-idcc-ntc2-fr-data-bridge-configmap.yaml
+  - data-bridge/cse-idcc-ntc2-fr-data-bridge-deployment.yaml
+  - data-bridge/cse-idcc-ntc2-fr-data-bridge-service.yaml
+  - data-bridge/cse-idcc-ntc2-si-data-bridge-configmap.yaml
+  - data-bridge/cse-idcc-ntc2-si-data-bridge-deployment.yaml
+  - data-bridge/cse-idcc-ntc2-si-data-bridge-service.yaml
+  - data-bridge/cse-idcc-vulcanus-data-bridge-configmap.yaml
+  - data-bridge/cse-idcc-vulcanus-data-bridge-deployment.yaml
+  - data-bridge/cse-idcc-vulcanus-data-bridge-service.yaml
   - cse-idcc-adapter-configmap.yaml
   - cse-idcc-adapter-deployment.yaml
   - cse-idcc-adapter-service.yaml
@@ -26,18 +50,6 @@ resources:
   - cse-idcc-runner-itools-configmap.yaml
   - cse-idcc-runner-service.yaml
   - cse-idcc-runner-xnodes-configmap.yaml
-  - cse-idcc-ntc-data-bridge-deployment.yaml
-  - cse-idcc-ntc-data-bridge-service.yaml
-  - cse-idcc-ntc-red-data-bridge-deployment.yaml
-  - cse-idcc-ntc-red-data-bridge-service.yaml
-  - cse-idcc-ntc2-at-data-bridge-deployment.yaml
-  - cse-idcc-ntc2-at-data-bridge-service.yaml
-  - cse-idcc-ntc2-ch-data-bridge-deployment.yaml
-  - cse-idcc-ntc2-ch-data-bridge-service.yaml
-  - cse-idcc-ntc2-fr-data-bridge-deployment.yaml
-  - cse-idcc-ntc2-fr-data-bridge-service.yaml
-  - cse-idcc-ntc2-si-data-bridge-deployment.yaml
-  - cse-idcc-ntc2-si-data-bridge-service.yaml
   - cse-idcc-task-manager-configmap.yaml
   - cse-idcc-task-manager-deployment.yaml
   - cse-idcc-task-manager-service.yaml
@@ -47,5 +59,3 @@ resources:
   - cse-idcc-task-notification-server-configmap.yaml
   - cse-idcc-task-notification-server-deployment.yaml
   - cse-idcc-task-notification-server-service.yaml
-  - cse-idcc-vulcanus-data-bridge-deployment.yaml
-  - cse-idcc-vulcanus-data-bridge-service.yaml
