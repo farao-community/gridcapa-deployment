@@ -1,39 +1,37 @@
-server:
-  port: 9090
 spring:
   security:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://localhost:6060/auth/realms/Gridcapa-realm/protocol/openid-connect/certs
-          issuer-uri: http://localhost:6060/auth/realms/Gridcapa-realm
+          jwk-set-uri: http://localhost:8080/auth/realms/Gridcapa-realm/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8080/auth/realms/Gridcapa-realm
   cloud:
     gateway:
       routes:
         - id: cse-d2cc-gridcapa-task-manager
           uri: cse-d2cc-gridcapa-task-manager:8080
           predicates:
-            - Path=/tasks/**
+            - Path=/cse/d2cc/task-manager/**
         - id: cse-d2cc-gridcapa-task-notification
           uri: cse-d2cc-gridcapa-task-manager:8080
           predicates:
-            - Path=/tasks/**
+            - Path=/cse/d2cc/task-notification/**
         - id: core-valid-gridcapa-task-manager
           uri: core-valid-gridcapa-task-manager:8080
           predicates:
-            - Path=/tasks/**
+            - Path=/core/valid/task-manager/**
         - id: core-valid-gridcapa-task-notification
           uri: core-valid-task-notification-server:9292
           predicates:
-            - Path=/tasks/**
+            - Path=/core/valid/task-notification/**
         - id: cse-d2cc-gridcapa-job-launcher
           uri: cse-d2cc-gridcapa-job-launcher:8080
           predicates:
-            - Path=/start/**
+            - Path=/cse/d2cc/gridcapa-job-launcher/**
         - id: core-valid-gridcapa-job-launcher
           uri: core-valid-gridcapa-job-launcher:8080
           predicates:
-            - Path=/start/**
+            - Path=/core/valid/gridcapa-job-launcher/**
         - id: gridsuite-config
           uri: config-server:8080
           predicates:

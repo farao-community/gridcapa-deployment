@@ -13,7 +13,7 @@ services:
   nginx-proxy:
     image: nginx:alpine
     ports:
-      - 80:80
+      - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:Z
       - ../config/apps-metadata.json:/usr/share/nginx/html/apps-metadata.json:Z
@@ -36,8 +36,6 @@ services:
 
   gateway:
     image: farao/gridcapa-gateway:latest
-    ports:
-      - "9090:9090"
     volumes:
       - ./gateway.yml:/config/application.yml
     depends_on:
@@ -52,7 +50,6 @@ services:
       - cse-d2cc-gridcapa-task-manager
       - cse-d2cc-gridcapa-job-launcher
       - rabbitmq
-      - filebrowser
       - minio
     networks:
       - gridcapa
