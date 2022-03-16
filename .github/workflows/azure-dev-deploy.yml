@@ -1,0 +1,51 @@
+name: Azure dev deployment
+
+on:
+  push:
+  workflow_dispatch:
+  repository_dispatch:
+    types:
+      - gridcapa_app_updated
+      - gridcapa_data_bridge_updated
+      - gridcapa_task_manager_updated
+      - gridcapa_job_launcher_updated
+      - gridcapa_rao_logs_dispatcher_updated
+
+jobs:
+  deploy-on-azure-dev:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-20.04
+    environment:
+      name: GridCapa K8S
+
+    steps:
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v1
+
+      - name: Set up python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.7'
+
+      - name: Install python dependencies
+        run: python -m pip install --upgrade pip pyyaml requests
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Create key
+        run: 'echo "$BASTION_KEY" > key; chmod 600 key'
+        env:
+          BASTION_KEY: ${{secrets.BASTION_KEY}}
+
+      - name: Deploy to Azure
+        run: kubectl kustomize k8s/overlays/azure/dev | python .github/scripts/image-tag-to-digest.py | ssh -o "StrictHostKeyChecking no" -i key ${{ secrets.BASTION_LOGIN }}@${{ secrets.BASTION_HOST }} kubectl apply -f -
+
+      - name: Delete key
+        run: rm key
+
+      - name: Broadcast update event
+        uses: farao-community/broadcast-event@master
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          event-type: gridcapa_deployed_on_azure

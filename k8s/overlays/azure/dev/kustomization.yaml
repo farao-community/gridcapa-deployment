@@ -1,0 +1,101 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+  - ../../../common
+  - ../../../cse/d2cc
+  - ../common
+  - ../core/valid
+
+resources:
+  - apps-metadata-server-configmap.yaml
+  - gridcapa-app-env-configmap.yaml
+  - gridcapa-ingress.yaml
+  - minio-pv-claim.yaml
+
+configMapGenerator:
+  - name: env-configmap
+    env: env.properties
+
+patches:
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: gridcapa-minio
+      spec:
+        template:
+          spec:
+            volumes:
+              - name: gridcapa-minio-data
+                persistentVolumeClaim:
+                  claimName: gridcapa-dev-minio-storage
+  - patch: |-
+      apiVersion: apps/v1
+      kind: StatefulSet
+      metadata:
+        name: gridcapa-rabbitmq
+      spec:
+        volumeClaimTemplates:
+          - metadata:
+              name: gridcapa-rabbitmq-data
+            spec:
+              storageClassName: azure-storage-class
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: "3Gi"
+
+images:
+  - name: gridcapa-task-notification-server
+    newName: docker.io/springcloudstream/websocket-sink-rabbit
+    newTag: latest
+  - name: gridcapa-app
+    newName: docker.io/farao/gridcapa-app
+    newTag: latest
+  - name: gridcapa-cse-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: latest
+  - name: gridcapa-cse-adapter
+    newName: docker.io/farao/gridcapa-cse-adapter
+    newTag: latest
+  - name: gridcapa-cse-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: latest
+  - name: gridcapa-cse-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
+    newTag: latest
+  - name: gridcapa-cse-rao-runner
+    newName: docker.io/farao/gridcapa-rao-runner
+    newTag: latest
+  - name: gridcapa-cse-runner
+    newName: docker.io/farao/gridcapa-cse-runner
+    newTag: latest
+  - name: gridcapa-cse-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest
+  - name: gridcapa-core-valid-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: latest
+  - name: gridcapa-core-valid-output-data-bridge
+    newName: docker.io/farao/gridcapa-output-data-bridge
+    newTag: latest
+  - name: gridcapa-core-valid-adapter
+    newName: docker.io/farao/gridcapa-core-valid-adapter
+    newTag: latest
+  - name: gridcapa-core-valid-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: latest
+  - name: gridcapa-core-valid-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
+    newTag: latest
+  - name: gridcapa-core-valid-rao-runner
+    newName: docker.io/farao/gridcapa-rao-runner
+    newTag: latest
+  - name: gridcapa-core-valid-runner
+    newName: docker.io/farao/gridcapa-core-valid
+    newTag: latest
+  - name: gridcapa-core-valid-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest

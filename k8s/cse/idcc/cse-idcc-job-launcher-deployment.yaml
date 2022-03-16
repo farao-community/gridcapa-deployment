@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: cse-idcc-gridcapa-job-launcher
-          image: docker.io/farao/gridcapa-job-launcher:latest
+          image: gridcapa-cse-job-launcher
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: core-valid-adapter
-          image: docker.io/farao/gridcapa-core-valid-adapter:latest
+          image: gridcapa-core-valid-adapter
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
