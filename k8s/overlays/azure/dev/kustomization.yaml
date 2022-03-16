@@ -57,7 +57,7 @@ images:
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: latest
-  - name: gridcapa-cse-adpater
+  - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
     newTag: latest
   - name: gridcapa-cse-job-launcher
@@ -94,7 +94,7 @@ images:
     newName: docker.io/farao/gridcapa-rao-runner
     newTag: latest
   - name: gridcapa-core-valid-runner
-    newName: docker.io/farao/gridcapa-cse-runner
+    newName: docker.io/farao/gridcapa-core-valid
     newTag: latest
   - name: gridcapa-core-valid-task-manager
     newName: docker.io/farao/gridcapa-task-manager
