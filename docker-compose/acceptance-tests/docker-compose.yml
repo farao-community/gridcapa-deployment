@@ -8,7 +8,9 @@ services:
       - KEYCLOAK_USER=gridcapa
       - KEYCLOAK_PASSWORD=gridcapa
     volumes:
-      - keycloak-data:/data
+      - keycloak-data:/opt/jboss/keycloak/standalone/data
+    networks:
+      - gridcapa
 
   nginx-proxy:
     image: nginx:alpine
@@ -38,6 +40,8 @@ services:
     image: farao/gridcapa-gateway:latest
     volumes:
       - ./gateway.yml:/config/application.yml
+    ports:
+      - "9595:9595"
     depends_on:
       - config-notification-server
       - config-server

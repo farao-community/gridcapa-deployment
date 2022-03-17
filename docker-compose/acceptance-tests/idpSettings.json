@@ -1,5 +1,5 @@
 {
-    "authority": "http://localhost:8080/auth/realms/Gridcapa-realm",
+    "authority": "http://keycloak:8080/auth/realms/Gridcapa-realm",
     "client_id": "gridcapa-app-client",
     "redirect_uri": "http://localhost/core/valid/sign-in-callback",
     "post_logout_redirect_uri" : "http://localhost/core/valid/logout-callback",

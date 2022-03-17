@@ -1,10 +1,13 @@
+server:
+  port: 8080
+
 spring:
   security:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://localhost:8080/auth/realms/Gridcapa-realm/protocol/openid-connect/certs
-          issuer-uri: http://localhost:8080/auth/realms/Gridcapa-realm
+          jwk-set-uri: http://keycloak:8080/auth/realms/Gridcapa-realm/protocol/openid-connect/certs
+          issuer-uri: http://keycloak:8080/auth/realms/Gridcapa-realm
   cloud:
     gateway:
       routes:
@@ -12,18 +15,10 @@ spring:
           uri: cse-d2cc-gridcapa-task-manager:8080
           predicates:
             - Path=/cse/d2cc/task-manager/**
-        - id: cse-d2cc-gridcapa-task-notification
-          uri: cse-d2cc-gridcapa-task-manager:8080
-          predicates:
-            - Path=/cse/d2cc/task-notification/**
         - id: core-valid-gridcapa-task-manager
           uri: core-valid-gridcapa-task-manager:8080
           predicates:
             - Path=/core/valid/task-manager/**
-        - id: core-valid-gridcapa-task-notification
-          uri: core-valid-task-notification-server:9292
-          predicates:
-            - Path=/core/valid/task-notification/**
         - id: cse-d2cc-gridcapa-job-launcher
           uri: cse-d2cc-gridcapa-job-launcher:8080
           predicates:
@@ -35,12 +30,6 @@ spring:
         - id: gridsuite-config
           uri: config-server:8080
           predicates:
-            - Path=/config/**
-          filters:
-            - AddRequestHeader=userId, johnDoe
-        - id: gridsuite-config-notification
-          uri: config-notification-server:8080
-          predicates:
-            - Path=/config-notification/**
+            - Path=/core/valid/config/**
           filters:
             - AddRequestHeader=userId, johnDoe
