@@ -1,0 +1,19 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: gridcapa-postgresql-configmap
+  labels:
+    app: gridcapa
+    component: postgresql
+data:
+  init.sh: |-
+    #!/bin/bash
+
+    psql << EOF
+    CREATE DATABASE config_server_db;
+    CREATE USER $POSTGRES_CONFIG_USER WITH ENCRYPTED PASSWORD '$POSTGRES_CONFIG_PASSWORD';
+    GRANT ALL PRIVILEGES ON DATABASE config_server_db TO $POSTGRES_CONFIG_USER;
+    CREATE DATABASE cse_idcc_tasks;
+    CREATE USER $POSTGRES_CSE_IDCC_USER WITH ENCRYPTED PASSWORD '$POSTGRES_CSE_IDCC_PASSWORD';
+    GRANT ALL PRIVILEGES ON DATABASE cse_idcc_tasks TO $POSTGRES_CSE_IDCC_USER;
+    EOF

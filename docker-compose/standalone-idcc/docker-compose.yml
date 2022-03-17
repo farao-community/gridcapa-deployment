@@ -38,7 +38,7 @@ services:
     networks:
       - gridcapa
     depends_on:
-      - config-server-postgres
+      - gridcapa-postgres
 
   config-notification-server:
     image: gridsuite/config-notification-server:latest
@@ -51,16 +51,15 @@ services:
     depends_on:
       - rabbitmq
 
-  config-server-postgres:
+  gridcapa-postgres:
     image: bitnami/postgresql
     environment:
-      POSTGRES_DB: config-server-db
-      POSTGRES_USER: config-server
-      POSTGRES_PASSWORD: config-server
+      ALLOW_EMPTY_PASSWORD: 'yes'
     ports:
       - "5434:5432"
     volumes:
-      - config-server-postgres-data:/bitnami/postgres
+      - gridcapa-postgres-data:/bitnami/postgresql
+      - ../config/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - gridcapa
 
@@ -127,19 +126,6 @@ services:
       MINIO_NOTIFY_AMQP_DURABLE: "on"
     ports:
       - "9000:9000"
-    networks:
-      - gridcapa
-
-  cse-idcc-postgres:
-    image: bitnami/postgresql
-    environment:
-      POSTGRES_DB: cse-idcc-task-manager
-      POSTGRES_USER: cse-idcc
-      POSTGRES_PASSWORD: cse-idcc
-    ports:
-      - "5432:5432"
-    volumes:
-      - cse-postgres-data:/bitnami/postgres
     networks:
       - gridcapa
 
@@ -305,9 +291,7 @@ networks:
   gridcapa:
 
 volumes:
-  core-postgres-data:
-  cse-postgres-data:
-  config-server-postgres-data:
+  gridcapa-postgres-data:
   ftp-data:
   minio-data:
   rabbitmq-data:

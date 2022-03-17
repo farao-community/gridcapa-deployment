@@ -11,11 +11,10 @@ data:
   application.yml: |-
     spring:
       datasource:
-        url: jdbc:postgresql://faraopostgres.postgres.database.azure.com:5432/cse_idcc_tasks
+        url: jdbc:postgresql://${POSTGRES_HOST}:5432/${POSTGRES_DB}
         driverClassName: org.postgresql.Driver
         username: ${POSTGRES_USER}
         password: ${POSTGRES_PASSWORD}
-        sslmode: require
       jpa:
         hibernate:
           ddl-auto: update

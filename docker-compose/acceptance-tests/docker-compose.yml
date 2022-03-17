@@ -63,16 +63,15 @@ services:
     depends_on:
       - rabbitmq
 
-  config-server-postgres:
+  gridcapa-postgres:
     image: bitnami/postgresql
     environment:
-      POSTGRES_DB: config-server-db
-      POSTGRES_USER: config-server
-      POSTGRES_PASSWORD: config-server
+      ALLOW_EMPTY_PASSWORD: 'yes'
     ports:
       - "5434:5432"
     volumes:
-      - config-server-postgres-data:/bitnami/postgres
+      - gridcapa-postgres-data:/bitnami/postgresql
+      - ../config/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - gridcapa
 
@@ -150,32 +149,6 @@ services:
       MINIO_NOTIFY_AMQP_DURABLE: "on"
     ports:
       - "9000:9000"
-    networks:
-      - gridcapa
-
-  core-valid-postgres:
-    image: bitnami/postgresql
-    environment:
-      POSTGRES_DB: core-valid-task-manager
-      POSTGRES_USER: core-valid
-      POSTGRES_PASSWORD: core-valid
-    ports:
-      - "5433:5432"
-    volumes:
-      - core-postgres-data:/bitnami/postgres
-    networks:
-      - gridcapa
-
-  cse-d2cc-postgres:
-    image: bitnami/postgresql
-    environment:
-      POSTGRES_DB: cse-d2cc-task-manager
-      POSTGRES_USER: cse-d2cc
-      POSTGRES_PASSWORD: cse-d2cc
-    ports:
-      - "5432:5432"
-    volumes:
-      - cse-postgres-data:/bitnami/postgres
     networks:
       - gridcapa
 
@@ -374,9 +347,7 @@ networks:
   gridcapa:
 
 volumes:
-  core-postgres-data:
-  cse-postgres-data:
-  config-server-postgres-data:
+  gridcapa-postgres-data:
   sftp-data:
   ftp-data:
   minio-data:

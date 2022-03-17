@@ -1,0 +1,111 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gridcapa-postgresql
+  labels:
+    app: gridcapa
+    component: postgresql
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: postgresql
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: postgresql
+    spec:
+      containers:
+        - name: gridcapa-postgresql
+          image: docker.io/bitnami/postgresql
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+          env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: postgres-password
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: postgres-password
+            - name: POSTGRES_CONFIG_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: config-user
+            - name: POSTGRES_CONFIG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: config-password
+            - name: POSTGRES_CSE_IDCC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-idcc-user
+            - name: POSTGRES_CSE_IDCC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-idcc-password
+            - name: POSTGRES_CSE_D2CC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-d2cc-user
+            - name: POSTGRES_CSE_D2CC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-d2cc-password
+            - name: POSTGRES_CORE_VALID_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: core-valid-user
+            - name: POSTGRES_CORE_VALID_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: core-valid-password
+          livenessProbe:
+            tcpSocket:
+              port: 5432
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            tcpSocket:
+              port: 5432
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            limits:
+              cpu: "500m"
+              memory: 1Gi
+            requests:
+              cpu: "500m"
+              memory: 1Gi
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /bitnami/postgres # important to let postgres and not postgresql otherwise rights issues
+            - name: postgres-init
+              subPath: init.sh
+              mountPath: /docker-entrypoint-initdb.d/init.sh
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: gridcapa-postgresql-storage
+        - name: postgres-init
+          configMap:
+            name: gridcapa-postgresql-configmap
