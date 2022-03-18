@@ -27,6 +27,9 @@ data:
             run-task:
               destination: core-valid-run-task
               group: core-valid-job-launcher
+            run-task-auto:
+              destination: core-valid-run-task-auto
+              group: core-valid-job-launcher
 
     job-launcher:
       url:

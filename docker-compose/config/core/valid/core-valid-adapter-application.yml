@@ -9,15 +9,21 @@ spring:
   cloud:
     stream:
       bindings:
-        handleRun-in-0:
+        consumeTask-in-0:
           binder: rabbit
           destination: core-valid-run-task
+          group: core-valid
+        consumeAutoTask-in-0:
+          binder: rabbit
+          destination: core-valid-run-task-auto
           group: core-valid
       rabbit:
         default:
           consumer:
             auto-bind-dlq: true
             max-attempts: 1
+    function:
+      definition: consumeTask;consumeAutoTask
 
 core-valid-runner:
   amqp:
