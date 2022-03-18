@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gridcapa-postgresql
+  labels:
+    app: gridcapa
+    component: postgresql
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: postgresql
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: postgresql
+    spec:
+      securityContext:
+        fsGroup: 1001
+      containers:
+        - name: gridcapa-postgresql
+          image: docker.io/bitnami/postgresql
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+          ports:
+            - containerPort: 5432
+          env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: postgres-password
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: postgres-password
+            - name: POSTGRES_CONFIG_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: config-user
+            - name: POSTGRES_CONFIG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: config-password
+            - name: POSTGRES_CSE_IDCC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-idcc-user
+            - name: POSTGRES_CSE_IDCC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-idcc-password
+          resources:
+            limits:
+              cpu: "500m"
+              memory: 1Gi
+            requests:
+              cpu: "500m"
+              memory: 1Gi
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /bitnami/postgresql
+            - name: postgres-init
+              subPath: init.sh
+              mountPath: /docker-entrypoint-initdb.d/init.sh
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: gridcapa-postgresql-storage
+        - name: postgres-init
+          configMap:
+            name: gridcapa-postgresql-configmap

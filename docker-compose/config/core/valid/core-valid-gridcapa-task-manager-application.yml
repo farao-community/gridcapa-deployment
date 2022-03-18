@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://core-valid-postgres:5432/core-valid-task-manager
+    url: jdbc:postgresql://gridcapa-postgres:5432/core_valid_tasks
     driverClassName: org.postgresql.Driver
-    username: core-valid
+    username: core_valid_server
     password: core-valid
   jpa:
     hibernate:

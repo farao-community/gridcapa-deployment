@@ -86,10 +86,7 @@ kubectl create secret generic gridcapa-minio-credentials --from-literal='minio-a
 kubectl create secret generic gridcapa-ftp-credentials --from-literal='ftp-user=<FTP_USER>' --from-literal='ftp-password=<FTP_PASSWORD>'
 kubectl create secret generic gridcapa-sftp-credentials --from-literal='sftp-user=<SFTP_USER>' --from-literal='sftp-password=<SFTP_PASSWORD>'
 kubectl create secret generic gridcapa-filebrowser-credentials --from-literal='fb-user=<FB_USER>' --from-literal='fb-encrypted-password=<FB_ENCRYPTED_PASSWORD>'
-kubectl create secret generic gridcapa-config-server-postgres-credentials --from-literal='postgres-user=<POSTGRES_USER>' --from-literal='postgres-password=<POSTGRES_PASSWORD>'
-kubectl create secret generic gridcapa-cse-d2cc-postgres-credentials --from-literal='postgres-user=<POSTGRES_USER>' --from-literal='postgres-password=<POSTGRES_PASSWORD>'
-kubectl create secret generic gridcapa-cse-idcc-postgres-credentials --from-literal='postgres-user=<POSTGRES_USER>' --from-literal='postgres-password=<POSTGRES_PASSWORD>'
-kubectl create secret generic gridcapa-core-valid-postgres-credentials --from-literal='postgres-user=<POSTGRES_USER>' --from-literal='postgres-password=<POSTGRES_PASSWORD>'
+kubectl create secret generic gridcapa-postgresql-credentials --from-literal='postgres-password=<POSTGRES_PASSWORD>' --from-literal='config-user=<CONFIG_USER>' --from-literal='config-password=<CONFIG_PASSWORD>' --from-literal='cse-idcc-user=<CSE_IDCC_USER>' --from-literal='cse-idcc-password=<CSE_IDCC_PASSWORD>' --from-literal='cse-d2cc-user=<CSE_D2CC_USER>' --from-literal='cse-d2cc-password=<CSE_D2CC_PASSWORD>' --from-literal='core-valid-user=<CORE_VALID_USER>' --from-literal='core-valid-password=<CORE_VALID_PASSWORD>'
 ```
 
 ### MinIO bucket notifications

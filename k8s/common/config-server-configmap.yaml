@@ -11,18 +11,15 @@ data:
       port: 8080
 
     spring:
-      r2dbc:
-        properties:
-          sslMode: REQUIRE
       rabbitmq:
         addresses: gridcapa-rabbitmq:5672
         username: ${GRIDCAPA_RABBITMQ_USER}
         password: ${GRIDCAPA_RABBITMQ_PASSWORD}
 
-    dbName: config_server_db
+    dbName: ${POSTGRES_DB}
   database.properties: |-
     dbVendor=postgresql
-    host=faraopostgres.postgres.database.azure.com
+    host=${POSTGRES_HOST}
     port=5432
     query=
     login=${POSTGRES_USER}

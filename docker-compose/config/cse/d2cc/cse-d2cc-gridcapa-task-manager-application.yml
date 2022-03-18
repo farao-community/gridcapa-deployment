@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://cse-d2cc-postgres:5432/cse-d2cc-task-manager
+    url: jdbc:postgresql://gridcapa-postgres:5432/cse_d2cc_tasks
     driverClassName: org.postgresql.Driver
-    username: cse-d2cc
+    username: cse_d2cc_server
     password: cse-d2cc
   jpa:
     hibernate:

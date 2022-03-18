@@ -30,16 +30,26 @@ spec:
           ports:
             - containerPort: 8080
           env:
+            - name: POSTGRES_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POSTGRES_HOST
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POSTGRES_CSE_IDCC_DB
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-cse-idcc-postgres-credentials
-                  key: postgres-user
+                  name: gridcapa-postgresql-credentials
+                  key: cse-idcc-user
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-cse-idcc-postgres-credentials
-                  key: postgres-password
+                  name: gridcapa-postgresql-credentials
+                  key: cse-idcc-password
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:

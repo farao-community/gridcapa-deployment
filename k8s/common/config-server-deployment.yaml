@@ -23,16 +23,26 @@ spec:
           ports:
             - containerPort: 80
           env:
+            - name: POSTGRES_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POSTGRES_HOST
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POSTGRES_CONFIG_DB
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-config-server-postgres-credentials
-                  key: postgres-user
+                  name: gridcapa-postgresql-credentials
+                  key: config-user
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-config-server-postgres-credentials
-                  key: postgres-password
+                  name: gridcapa-postgresql-credentials
+                  key: config-password
             - name: GRIDCAPA_RABBITMQ_USER
               valueFrom:
                 secretKeyRef:

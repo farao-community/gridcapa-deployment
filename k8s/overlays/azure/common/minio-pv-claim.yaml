@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gridcapa-minio-storage
+  labels:
+    app: gridcapa
+    component: gridcapa-minio-storage
+spec:
+  storageClassName: azure-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi

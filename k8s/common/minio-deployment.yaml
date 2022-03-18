@@ -17,6 +17,8 @@ spec:
         app: gridcapa
         component: gridcapa-minio
     spec:
+      securityContext:
+        fsGroup: 1001
       containers:
         - name: gridcapa-minio
           image: docker.io/bitnami/minio:2021.6.17
