@@ -5,5 +5,8 @@ bases:
   - ../../../../core/valid
 
 resources:
+  - keycloak-deployment.yaml
+  - keycloak-pv-claim.yaml
+  - keycloak-service.yaml
   - rao-runner-autoscaler.yaml
   - core-valid-minio-cleaning-cronjob.yaml

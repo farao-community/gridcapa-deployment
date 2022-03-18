@@ -1,0 +1,71 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: keycloak
+  labels:
+    app: gridcapa
+    component: keycloak
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: keycloak
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: keycloak
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: keycloak
+          image: quay.io/keycloak/keycloak:15.0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: "/opt/jboss/keycloak/standalone/data"
+              name: keycloak-storage
+          env:
+            - name: KEYCLOAK_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-keycloak-credentials
+                  key: keycloak-user
+            - name: KEYCLOAK_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-keycloak-credentials
+                  key: keycloak-password
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              memory: "128Mi"
+            limits:
+              memory: "128Mi"
+      volumes:
+        - name: keycloak-storage
+          persistentVolumeClaim:
+            claimName: keycloak-storage
+      restartPolicy: Always
