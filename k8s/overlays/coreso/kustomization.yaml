@@ -7,8 +7,10 @@ bases:
 
 resources:
   - apps-metadata-server-configmap.yaml
+  - cse-idcc-runner-itools-coreso-configmap.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
+  - gridcapa-ingress-minio.yaml
   - minio-pv-claim.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
@@ -44,6 +46,35 @@ patches:
               resources:
                 requests:
                   storage: "3Gi"
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-idcc-gridcapa-runner
+      spec:
+        template:
+          spec:
+            volumes:
+              - name: cse-idcc-runner-itools-configmap-volume
+                configMap:
+                  name: cse-idcc-runner-itools-coreso-configmap
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-idcc-rao-runner
+      spec:
+        template:
+          spec:
+            containers:
+              - name: cse-idcc-rao-runner
+                resources:
+                  requests:
+                    cpu: "6.0"
+                    memory: "5Gi"
+                  limits:
+                    cpu: "8.0"
+                    memory: "16Gi"
 
 configMapGenerator:
   - name: env-configmap

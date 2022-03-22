@@ -15,6 +15,25 @@ configMapGenerator:
   - name: env-configmap
     env: env.properties
 
+patches:
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-idcc-rao-runner
+      spec:
+        template:
+          spec:
+            containers:
+              - name: cse-idcc-rao-runner
+                resources:
+                  requests:
+                    cpu: "14.0"
+                    memory: "5Gi"
+                  limits:
+                    cpu: "16.0"
+                    memory: "16Gi"
+
 images:
   - name: gridcapa-task-notification-server
     newName: docker.io/springcloudstream/websocket-sink-rabbit

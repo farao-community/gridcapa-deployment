@@ -2,19 +2,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      rewrite ^/cse/idcc$ /cse/idcc/ permanent;
-      proxy_set_header X-Forwarded-Prefix /cse/idcc/;
-      proxy_set_header userId "johnDoe";
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
-    nginx.ingress.kubernetes.io/server-snippet: |
-      merge_slashes off;
-    nginx.ingress.kubernetes.io/service-upstream: "true"
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/client-max-body-size: "50m"
-    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    kubernetes.io/ingress.class: traefik
+    ingress.kubernetes.io/custom-request-headers: userId:johnDoe
+    traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
   labels:
     app: gridcapa
     component: gridcapa
@@ -30,61 +20,54 @@ spec:
                 name: cse-idcc-gridcapa-app
                 port:
                   number: 80
-            path: /cse/idcc(/|$)(.*)
+            path: /cse/idcc/
             pathType: Prefix
           - backend:
               service:
                 name: config-server
                 port:
                   number: 80
-            path: /cse/idcc/config(/|$)(.*)
+            path: /cse/idcc/config/
             pathType: Prefix
           - backend:
               service:
                 name: config-notification-server
                 port:
                   number: 80
-            path: /cse/idcc/config-notification(/|$)(.*)
+            path: /cse/idcc/config-notification/
             pathType: Prefix
           - backend:
               service:
                 name: cse-idcc-task-notification-server
                 port:
                   number: 80
-            path: /cse/idcc/task-notification(/|$)(.*)
+            path: /cse/idcc/task-notification/
             pathType: Prefix
           - backend:
               service:
                 name: cse-idcc-task-manager
                 port:
                   number: 80
-            path: /cse/idcc/task-manager(/|$)(.*)
+            path: /cse/idcc/task-manager/
             pathType: Prefix
           - backend:
               service:
                 name: cse-idcc-gridcapa-job-launcher
                 port:
                   number: 80
-            path: /cse/idcc/gridcapa-job-launcher(/|$)(.*)
+            path: /cse/idcc/gridcapa-job-launcher/
             pathType: Prefix
           - backend:
               service:
                 name: gridcapa-rabbitmq
                 port:
                   number: 15672
-            path: /utils/rabbitmq(/|$)(.*)
+            path: /utils/rabbitmq/
             pathType: Prefix
           - backend:
               service:
                 name: apps-metadata-server
                 port:
                   number: 80
-            path: /apps-metadata(/|$)(.*)
-            pathType: Prefix
-          - backend:
-              service:
-                name: gridcapa-minio
-                port:
-                  number: 9000
-            path: /()(minio.*)
+            path: /apps-metadata/
             pathType: Prefix

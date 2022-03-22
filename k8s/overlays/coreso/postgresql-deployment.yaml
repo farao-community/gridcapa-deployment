@@ -67,7 +67,7 @@ spec:
               memory: 1Gi
           volumeMounts:
             - name: postgres-data
-              mountPath: /bitnami/postgresql
+              mountPath: /bitnami/postgres
             - name: postgres-init
               subPath: init.sh
               mountPath: /docker-entrypoint-initdb.d/init.sh
