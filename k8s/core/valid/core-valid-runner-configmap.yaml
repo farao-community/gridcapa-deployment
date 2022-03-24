@@ -12,7 +12,6 @@ data:
     logback:
       amqp:
         exchange: core-valid-task-manager-logs-exchange
-        routing-key: "#"
     spring:
       rabbitmq:
         host: gridcapa-rabbitmq
