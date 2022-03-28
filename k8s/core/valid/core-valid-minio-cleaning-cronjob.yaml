@@ -1,0 +1,27 @@
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: minio-cleaning-cronjob
+  labels:
+    app: farao
+    component: minio-cleaning-cronjob
+spec:
+  schedule: "0 0 * * *"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: minio-cleaning-cronjob
+              image: inca.rte-france.com/farao/minio-mc
+              args: ["rm", "-r", "--force", "--older-than", "7d", "minio/cep-validation"]
+              envFrom:
+                - secretRef:
+                    name: farao-secrets-dev
+              env:
+                - name: MC_HOST_minio
+                  value: http://${GRIDCAPA_MINIO_USER}:${GRIDCAPA_MINIO_PASSWORD}@minio:9000
+          restartPolicy: Never
