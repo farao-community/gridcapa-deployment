@@ -16,7 +16,7 @@ spec:
         spec:
           containers:
             - name: minio-cleaning-cronjob
-              image: inca.rte-france.com/farao/minio-mc
+              image: minio/mc
               args: ["rm", "-r", "--force", "--older-than", "3d", "minio/gridcapa/CORE/VALID/"]
               envFrom:
                 - secretRef:
