@@ -6,7 +6,7 @@ metadata:
     app: farao
     component: minio-cleaning-cronjob
 spec:
-  schedule: "50 * * * *"
+  schedule: "0 0 * * *"
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 3
