@@ -6,7 +6,7 @@ metadata:
     app: farao
     component: minio-cleaning-cronjob
 spec:
-  schedule: "0 0 * * *"
+  schedule: "50 * * * *"
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 3
@@ -17,7 +17,7 @@ spec:
           containers:
             - name: minio-cleaning-cronjob
               image: inca.rte-france.com/farao/minio-mc
-              args: ["rm", "-r", "--force", "--older-than", "7d", "minio/cep-validation"]
+              args: ["rm", "-r", "--force", "--older-than", "3d", "minio/gridcapa/CORE/VALID/"]
               envFrom:
                 - secretRef:
                     name: farao-secrets-dev
