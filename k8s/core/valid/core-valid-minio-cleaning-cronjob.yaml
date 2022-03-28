@@ -23,5 +23,5 @@ spec:
                     name: farao-secrets-dev
               env:
                 - name: MC_HOST_minio
-                  value: http://${GRIDCAPA_MINIO_USER}:${GRIDCAPA_MINIO_PASSWORD}@minio:9000
+                  value: http://${GRIDCAPA_MINIO_USER}:${GRIDCAPA_MINIO_PASSWORD}@gridcapa-minio:9000
           restartPolicy: Never
