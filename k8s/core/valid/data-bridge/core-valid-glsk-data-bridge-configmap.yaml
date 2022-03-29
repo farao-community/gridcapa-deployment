@@ -18,7 +18,7 @@ data:
       remote-file-regex:
         - ".*"
       sources:
-        sftp:
+        ftp:
           active: true
           host: ${SOURCE_HOST}
           port: ${SOURCE_PORT}

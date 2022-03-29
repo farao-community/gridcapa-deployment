@@ -43,13 +43,13 @@ spec:
             - name: SOURCE_USER
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-sftp-credentials
-                  key: sftp-user
+                  name: gridcapa-ftp-credentials
+                  key: ftp-user
             - name: SOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-sftp-credentials
-                  key: sftp-password
+                  name: gridcapa-ftp-credentials
+                  key: ftp-password
             - name: SOURCE_BASE_DIRECTORY
               valueFrom:
                 configMapKeyRef:
