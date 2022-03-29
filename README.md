@@ -84,8 +84,6 @@ kubectl create secret generic admin-rabbitmq-credentials --from-literal='rabbitm
 kubectl create secret generic rabbitmq-secrets --from-literal='rabbitmq-erlang-cookie=<RABBITMQ_ERLANG_COOKIE>'
 kubectl create secret generic gridcapa-minio-credentials --from-literal='minio-access-key=<MINIO_ACCESS_KEY>' --from-literal='minio-secret-key=<MINIO_SECRET_KEY>'
 kubectl create secret generic gridcapa-ftp-credentials --from-literal='ftp-user=<FTP_USER>' --from-literal='ftp-password=<FTP_PASSWORD>'
-kubectl create secret generic gridcapa-sftp-credentials --from-literal='sftp-user=<SFTP_USER>' --from-literal='sftp-password=<SFTP_PASSWORD>'
-kubectl create secret generic gridcapa-filebrowser-credentials --from-literal='fb-user=<FB_USER>' --from-literal='fb-encrypted-password=<FB_ENCRYPTED_PASSWORD>'
 kubectl create secret generic gridcapa-postgresql-credentials --from-literal='postgres-password=<POSTGRES_PASSWORD>' --from-literal='config-user=<CONFIG_USER>' --from-literal='config-password=<CONFIG_PASSWORD>' --from-literal='cse-idcc-user=<CSE_IDCC_USER>' --from-literal='cse-idcc-password=<CSE_IDCC_PASSWORD>' --from-literal='cse-d2cc-user=<CSE_D2CC_USER>' --from-literal='cse-d2cc-password=<CSE_D2CC_PASSWORD>' --from-literal='core-valid-user=<CORE_VALID_USER>' --from-literal='core-valid-password=<CORE_VALID_PASSWORD>'
 ```
 
