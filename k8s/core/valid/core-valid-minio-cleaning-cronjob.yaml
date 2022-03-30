@@ -3,8 +3,10 @@ apiVersion: batch/v1beta1
 metadata:
   name: minio-cleaning-cronjob
   labels:
-    app: farao
-    component: minio-cleaning-cronjob
+    app: gridcapa
+    component: gridcapa-core-minio-cleaning-cronjob
+    region: core
+    process: valid
 spec:
   schedule: "0 0 * * *"
   concurrencyPolicy: Forbid
@@ -17,11 +19,18 @@ spec:
           containers:
             - name: minio-cleaning-cronjob
               image: minio/mc
-              args: ["rm", "-r", "--force", "--older-than", "3d", "minio/gridcapa/CORE/VALID/"]
-              envFrom:
-                - secretRef:
-                    name: farao-secrets-dev
+              args: [ "rm", "-r", "--force", "--older-than", "3d", "minio/gridcapa/CORE/VALID/" ]
               env:
+                - name: MINIO_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-access-key
+                - name: MINIO_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-secret-key
                 - name: MC_HOST_minio
-                  value: http://${GRIDCAPA_MINIO_USER}:${GRIDCAPA_MINIO_PASSWORD}@gridcapa-minio:9000
+                  value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
           restartPolicy: Never
