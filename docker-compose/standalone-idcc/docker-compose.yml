@@ -261,6 +261,7 @@ services:
       - ../config/cse/idcc/cse-idcc-itools-config.yml:/home/farao/.itools/config.yml
       - ../config/cse/idcc/cse-idcc-runner-application.yml:/config/application.yml
       - ../config/cse/idcc/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
+      - ../config/cse/idcc/combinedRAs.json:/home/farao/combinedRAs.json
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://cse-cc-runner/actuator/health" ]
       interval: 30s
