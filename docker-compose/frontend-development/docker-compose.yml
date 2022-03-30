@@ -26,7 +26,7 @@ services:
     networks:
       - gridcapa
     depends_on:
-      - config-server-postgres
+      - gridcapa-postgres
 
   config-notification-server:
     image: gridsuite/config-notification-server:latest
