@@ -49,8 +49,6 @@ services:
     command: --spring.config.additional-location=/config/
     networks:
       - gridcapa
-    depends_on:
-      - config-server-postgres
 
   config-notification-server:
     image: gridsuite/config-notification-server:latest
