@@ -81,15 +81,16 @@ services:
       timeout: 10s
       retries: 5
 
-  sftp-server:
-    image: atmoz/sftp
+  ftp-server:
+    image: delfer/alpine-ftp-server
     restart: always
     environment:
-      SFTP_USERS: gridcapa:gridcapa:::data/core/valid/cgms,data/core/valid/cbcoras,data/core/valid/refprogs,data/core/valid/studypoints,data/core/valid/glsks,data/core/valid/outputs
+      USERS: gridcapa|gridcapa|/data/gridcapa/core/valid/cgms /data/gridcapa/core/valid/cbcoras /data/gridcapa/core/valid/refprogs /data/gridcapa/core/valid/studypoints /data/gridcapa/core/valid/glsks /data/gridcapa/core/valid/outputs
     volumes:
-      - sftp-data:/home/gridcapa/data
+      - ftp-data:/data/gridcapa
     ports:
-      - "2222:22"
+      - "21:21"
+      - "21000-21010:21000-21010"
     networks:
       - gridcapa
 
@@ -97,7 +98,7 @@ services:
     image: filebrowser/filebrowser
     restart: always
     volumes:
-      - sftp-data:/srv/sftp
+      - ftp-data:/srv/ftp
     environment:
       FB_BASEURL: /utils/filebrowser
       FB_USERNAME: gridcapa
@@ -242,6 +243,6 @@ networks:
 
 volumes:
   gridcapa-postgres-data:
-  sftp-data:
+  ftp-data:
   minio-data:
   rabbitmq-data:
