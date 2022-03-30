@@ -29,10 +29,10 @@ patches:
                 resources:
                   requests:
                     cpu: "14.0"
-                    memory: "5Gi"
+                    memory: "20Gi"
                   limits:
                     cpu: "16.0"
-                    memory: "16Gi"
+                    memory: "50Gi"
 
 images:
   - name: gridcapa-task-notification-server
