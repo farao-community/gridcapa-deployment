@@ -7,13 +7,13 @@ data-bridge:
   remote-file-regex:
     - ".*"
   sources:
-    sftp:
+    ftp:
       active: true
-      host: sftp-server
-      port: 22
+      host: ftp-server
+      port: 21
       username: gridcapa
       password: gridcapa
-      base-directory: /data/core/valid/studypoints
+      base-directory: /data/gridcapa/core/valid/studypoints
       polling-delay-in-ms: 5000
   sinks:
     minio:

@@ -26,7 +26,7 @@ services:
     networks:
       - gridcapa
     depends_on:
-      - config-server-postgres
+      - gridcapa-postgres
 
   config-notification-server:
     image: gridsuite/config-notification-server:latest
@@ -69,23 +69,11 @@ services:
       timeout: 10s
       retries: 5
 
-  sftp-server:
-    image: atmoz/sftp
-    restart: always
-    environment:
-      SFTP_USERS: gridcapa:gridcapa:::data/core/valid/cgms,data/core/valid/cbcoras,data/core/valid/refprogs,data/core/valid/studypoints,data/core/valid/glsks
-    volumes:
-      - sftp-data:/home/gridcapa/data
-    ports:
-      - "2222:22"
-    networks:
-      - gridcapa
-
   ftp-server:
     image: delfer/alpine-ftp-server
     restart: always
     environment:
-      USERS: gridcapa|gridcapa|/data/gridcapa/cse/d2cc/cgms /data/gridcapa/cse/d2cc/cracs /data/gridcapa/cse/d2cc/glsks /data/gridcapa/cse/d2cc/ntc /data/gridcapa/cse/d2cc/ntcreds /data/gridcapa/cse/d2cc/targetchs /data/gridcapa/cse/d2cc/vulcanus
+      USERS: gridcapa|gridcapa|/data/gridcapa/cse/d2cc/cgms /data/gridcapa/cse/d2cc/cracs /data/gridcapa/cse/d2cc/glsks /data/gridcapa/cse/d2cc/ntc /data/gridcapa/cse/d2cc/ntcreds /data/gridcapa/cse/d2cc/targetchs /data/gridcapa/cse/d2cc/vulcanus /data/gridcapa/core/valid/cgms /data/gridcapa/core/valid/cbcoras /data/gridcapa/core/valid/refprogs /data/gridcapa/core/valid/studypoints /data/gridcapa/core/valid/glsks /data/gridcapa/core/valid/outputs
     volumes:
       - ftp-data:/data/gridcapa
     ports:
@@ -98,7 +86,6 @@ services:
     image: filebrowser/filebrowser
     restart: always
     volumes:
-      - sftp-data:/srv/sftp
       - ftp-data:/srv/ftp
     environment:
       FB_BASEURL: /utils/filebrowser
@@ -279,7 +266,6 @@ networks:
 
 volumes:
   gridcapa-postgres-data:
-  sftp-data:
   ftp-data:
   minio-data:
   rabbitmq-data:

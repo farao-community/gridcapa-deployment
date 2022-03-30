@@ -5,11 +5,4 @@ bases:
   - ../../../../core/valid
 
 resources:
-  - filebrowser-configmap.yaml
-  - filebrowser-deployment.yaml
-  - filebrowser-pv-claim.yaml
-  - filebrowser-service.yaml
   - rao-runner-autoscaler.yaml
-  - sftp-pv-claim.yaml
-  - sftp-server-deployment.yaml
-  - sftp-server-service.yaml
