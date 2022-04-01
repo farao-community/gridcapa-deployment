@@ -7,8 +7,12 @@ bases:
 
 resources:
   - apps-metadata-server-configmap.yaml
+  - cse-idcc-runner-itools-coreso-configmap.yaml
+  - ftp-endpoint.yaml
+  - ftp-service.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
+  - gridcapa-ingress-minio.yaml
   - minio-pv-claim.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
@@ -44,6 +48,43 @@ patches:
               resources:
                 requests:
                   storage: "3Gi"
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-idcc-gridcapa-runner
+      spec:
+        template:
+          spec:
+            volumes:
+              - name: cse-idcc-runner-itools-configmap-volume
+                configMap:
+                  name: cse-idcc-runner-itools-coreso-configmap
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-idcc-rao-runner
+      spec:
+        replicas: 6
+        template:
+          spec:
+            containers:
+              - name: cse-idcc-rao-runner
+                resources:
+                  requests:
+                    cpu: "10.0"
+                    memory: "20Gi"
+                  limits:
+                    cpu: "12.0"
+                    memory: "50Gi"
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-idcc-gridcapa-runner
+      spec:
+        replicas: 6
 
 configMapGenerator:
   - name: env-configmap
@@ -52,28 +93,28 @@ configMapGenerator:
 images:
   - name: gridcapa-task-notification-server
     newName: docker.io/springcloudstream/websocket-sink-rabbit
-    newTag: latest
+    newTag: 3.2.0
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-cse-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-cse-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-cse-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-cse-runner
     newName: docker.io/farao/gridcapa-cse-runner
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: latest
+    newTag: v1.0.0

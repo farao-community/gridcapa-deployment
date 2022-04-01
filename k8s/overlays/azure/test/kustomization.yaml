@@ -15,34 +15,53 @@ configMapGenerator:
   - name: env-configmap
     env: env.properties
 
+patches:
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-idcc-rao-runner
+      spec:
+        template:
+          spec:
+            containers:
+              - name: cse-idcc-rao-runner
+                resources:
+                  requests:
+                    cpu: "14.0"
+                    memory: "20Gi"
+                  limits:
+                    cpu: "16.0"
+                    memory: "50Gi"
+
 images:
   - name: gridcapa-task-notification-server
     newName: docker.io/springcloudstream/websocket-sink-rabbit
-    newTag: latest
+    newTag: 3.2.0
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-cse-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-cse-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-cse-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-cse-runner
     newName: docker.io/farao/gridcapa-cse-runner
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-core-valid-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: latest
