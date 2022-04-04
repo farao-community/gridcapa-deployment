@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: rao-runner
-          image: docker.io/farao/gridcapa-rao-runner:latest
+          image: gridcapa-core-valid-rao-runner
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

@@ -118,3 +118,12 @@ images:
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.0.0
+  - name: gridsuite-config-notification-server
+    newName: docker.io/gridsuite/config-notification-server
+    newTag: latest
+  - name: gridsuite-config-server
+    newName: docker.io/gridsuite/config-server
+    newTag: latest
+  - name: apps-metadata-server
+    newName: bitnami/apache
+    newTag: 2.4
