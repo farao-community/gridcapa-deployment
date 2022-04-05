@@ -1,0 +1,24 @@
+data-bridge:
+  zone-id: "Europe/Paris"
+  target-process: CSE_VALID_IDCC
+  file-type: CRAC
+  file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2})_[0-9]{2}[1-7]_CRAC_FR[0-9].xml"
+  time-validity: hourly
+  remote-file-regex:
+    - ".*CRAC_ID.*.zip"
+  sources:
+    sftp:
+      active: true
+      host: sftp
+      port: 22
+      username: cia
+      password: passcia
+      base-directory: /data/inputs/cia
+      polling-delay-in-ms: 5000
+  sinks:
+    minio:
+      url: http://minio:9000
+      access-key: cep-validation
+      secret-key: cep-validation
+      bucket: cep-validation
+      base-directory: /CSE/ID/CRACs

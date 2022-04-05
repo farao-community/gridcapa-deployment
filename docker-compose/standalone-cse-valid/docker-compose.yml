@@ -1,0 +1,181 @@
+version: "3.7"
+services:
+  sftp:
+    hostname: sftp
+    image: atmoz/sftp
+    volumes:
+      - cia-data:/home/cia
+      - ecp-data:/home/ecp
+    ports:
+      - "2222:22"
+    environment:
+      SFTP_USERS: cia:passcia:::data/inputs/cia,data/outputs/cia,temp/inputs/cia,temp/outputs/cia ecp:passecp:::data/inputs/ecp,temp/inputs/ecp
+    env_file:
+      - .env
+    networks:
+      - gridcapa
+
+  minio:
+    hostname: minio
+    image: minio/minio
+    volumes:
+      - minio-data:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    command: server --console-address :9001 /data
+    environment:
+      MINIO_DEFAULT_BUCKETS: cep-validation
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    env_file:
+      - .env
+    networks:
+      - gridcapa
+
+  rabbitmq:
+    hostname: rabbitmq
+    image: rabbitmq:management
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    env_file:
+      - .env
+    networks:
+      - gridcapa
+
+  data-bridge-idcc-ttc:
+    hostname: data-bridge-idcc-ttc
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ../config/cse/valid/data-bridge-idcc-ttc.yml:/config/application.yml
+    env_file:
+      - .env
+    networks:
+      - gridcapa
+
+  data-bridge-idcc-crac:
+    hostname: data-bridge-idcc-crac
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ../config/cse/valid/data-bridge-idcc-crac.yml:/config/application.yml
+    env_file:
+      - .env
+    networks:
+      - gridcapa
+
+  data-bridge-idcc-glsk:
+    hostname: data-bridge-idcc-glsk
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ../config/cse/valid/data-bridge-idcc-glsk.yml:/config/application.yml
+    env_file:
+      - .env
+    networks:
+      - gridcapa
+
+  data-bridge-idcc-cgm:
+    hostname: data-bridge-idcc-cgm
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ../config/cse/valid/data-bridge-idcc-cgm.yml:/config/application.yml
+    env_file:
+      - .env
+    networks:
+      - gridcapa
+
+  data-bridge-d2cc-ttc:
+    hostname: data-bridge-d2cc-ttc
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ../config/cse/valid/data-bridge-d2cc-ttc.yml:/config/application.yml
+    env_file:
+      - .env
+    networks:
+      - gridcapa
+
+  data-bridge-d2cc-crac:
+    hostname: data-bridge-d2cc-crac
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ../config/cse/valid/data-bridge-d2cc-crac.yml:/config/application.yml
+    env_file:
+      - .env
+    networks:
+      - gridcapa
+
+  data-bridge-d2cc-glsk:
+    hostname: data-bridge-d2cc-glsk
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ../config/cse/valid/data-bridge-d2cc-glsk.yml:/config/application.yml
+    env_file:
+      - .env
+    networks:
+      - gridcapa
+
+  data-bridge-d2cc-cgm:
+    hostname: data-bridge-d2cc-cgm
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ../config/cse/valid/data-bridge-d2cc-cgm.yml:/config/application.yml
+    env_file:
+      - .env
+    networks:
+      - gridcapa
+
+  process-publication:
+    hostname: process-publication
+    image: inca.rte-france.com/farao/process-publication-server-app:0.2.1
+    volumes:
+      - ../config/cse/valid/process-publication-application.yml:/config/application.yml
+    ports:
+      - 8080:8080
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - rabbitmq
+    env_file:
+      - .env
+    networks:
+      - gridcapa
+
+  timestamp-validation:
+    hostname: timestamp-validation
+    image: farao/timestamp-validation-server-app:1.4.3-SNAPSHOT
+    volumes:
+      - ../config/cse/valid/timestamp-validation-application.yml:/config/application.yml
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - minio
+      - rabbitmq
+    env_file:
+      - .env
+    networks:
+      - gridcapa
+
+networks:
+  gridcapa:
+
+volumes:
+  minio-data:
+  rabbitmq-data:
+  cia-data:
+  ecp-data:
