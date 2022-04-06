@@ -141,7 +141,7 @@ services:
     image: springcloudstream/websocket-sink-rabbit:latest
     restart: always
     volumes:
-      - ../config/core/valid/core-valid-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
+      - ../config/cse/valid/idcc/cse-valid-idcc-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
     networks:
       - gridcapa
     depends_on:
@@ -151,7 +151,7 @@ services:
     image: springcloudstream/websocket-sink-rabbit:latest
     restart: always
     volumes:
-      - ../config/core/valid/core-valid-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
+      - ../config/cse/valid/d2cc/cse-valid-d2cc-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
     networks:
       - gridcapa
     depends_on:

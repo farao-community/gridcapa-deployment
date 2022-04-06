@@ -50,4 +50,4 @@ task-server:
       - CGM
       - GLSK
       - CRAC
-      - TTC ADJUSTMENT
+      - TTC_ADJUSTMENT

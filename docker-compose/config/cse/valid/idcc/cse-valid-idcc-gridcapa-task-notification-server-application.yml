@@ -3,8 +3,8 @@ spring:
     stream:
       bindings:
         input:
-          destination: cse-valid-d2cc-task-updated
-          group: cse-valid-d2cc-task-notification
+          destination: cse-valid-idcc-task-updated
+          group: cse-valid-idcc-task-notification
       rabbit:
         default:
           consumer:
