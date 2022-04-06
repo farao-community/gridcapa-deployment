@@ -11,9 +11,10 @@ services:
       - rabbitmq
       - minio
       - filebrowser
+      - cse-valid-d2cc-gridcapa-app
+      - cse-valid-idcc-gridcapa-app
 #      - config-notification-server
 #      - config-server
-#      - core-valid-gridcapa-app
 #      - core-valid-task-notification-server
 #      - core-valid-gridcapa-task-manager
 #      - core-valid-gridcapa-job-launcher
@@ -84,6 +85,22 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+
+  cse-valid-d2cc-gridcapa-app:
+    image: farao/gridcapa-app:latest
+    volumes:
+      - ../config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ../config/cse/valid/d2cc/cse-d2cc-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+    networks:
+      - gridcapa
+
+  cse-valid-idcc-gridcapa-app:
+    image: farao/gridcapa-app:latest
+    volumes:
+      - ../config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ../config/cse/valid/idcc/cse-idcc-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+    networks:
+      - gridcapa
 
   data-bridge-idcc-ttc-adjustment:
     image: farao/gridcapa-data-bridge:latest

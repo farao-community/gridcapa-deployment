@@ -13,5 +13,15 @@
     "name" : "Capa CORE Validation",
     "url"  : "/core/valid",
     "appColor" : "#F56908"
+  },
+  {
+    "name" : "CSE IDCC Validation",
+    "url"  : "/cse/valid/idcc",
+    "appColor" : "#F56908"
+  },
+  {
+    "name" : "CSE D2CC Validation",
+    "url"  : "/cse/valid/d2cc",
+    "appColor" : "#F56908"
   }
 ]
