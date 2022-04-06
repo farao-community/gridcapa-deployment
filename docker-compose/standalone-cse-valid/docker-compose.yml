@@ -1,34 +1,46 @@
 version: "3.7"
 services:
-#  nginx-proxy:
-#    image: nginx:alpine
-#    ports:
-#      - "80:80"
-#    volumes:
-#      - ./nginx.conf:/etc/nginx/nginx.conf:Z
-#      - ../config/apps-metadata.json:/usr/share/nginx/html/apps-metadata.json:Z
-#    depends_on:
+  nginx-proxy:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:Z
+      - ../config/apps-metadata.json:/usr/share/nginx/html/apps-metadata.json:Z
+    depends_on:
+      - rabbitmq
+      - minio
+      - filebrowser
 #      - config-notification-server
 #      - config-server
 #      - core-valid-gridcapa-app
 #      - core-valid-task-notification-server
 #      - core-valid-gridcapa-task-manager
 #      - core-valid-gridcapa-job-launcher
-#      - rabbitmq
-#      - minio
-#    networks:
-#      - gridcapa
+    networks:
+      - gridcapa
 
   sftp:
     hostname: sftp
     image: atmoz/sftp
     volumes:
-      - cia-data:/home/cia
-      - ecp-data:/home/ecp
+      - sftp-data:/home/gridcapa/data
     ports:
       - "2222:22"
     environment:
-      SFTP_USERS: cia:passcia:::data/inputs/cia,data/outputs/cia,temp/inputs/cia,temp/outputs/cia ecp:passecp:::data/inputs/ecp,temp/inputs/ecp
+      SFTP_USERS: gridcapa:gridcapa:::/data/gridcapa/data/inputs/ecp,/data/gridcapa/data/inputs/cia,/data/gridcapa/data/outputs/cia
+    networks:
+      - gridcapa
+
+  filebrowser:
+    image: filebrowser/filebrowser
+    restart: always
+    volumes:
+      - sftp-data:/srv/sftp
+    environment:
+      FB_BASEURL: /utils/filebrowser
+      FB_USERNAME: gridcapa
+      FB_PASSWORD: $$2y$$10$$aWh9euDInAg94hlz3eLRteghF5ASR8LCq6K2EkGwxi4a9oxSyhnP.
     networks:
       - gridcapa
 
@@ -165,5 +177,4 @@ networks:
 volumes:
   minio-data:
   rabbitmq-data:
-  cia-data:
-  ecp-data:
+  sftp-data:

@@ -11,9 +11,9 @@ data-bridge:
       active: true
       host: sftp
       port: 22
-      username: ecp
-      password: passecp
-      base-directory: /data/inputs/ecp
+      username: gridcapa
+      password: gridcapa
+      base-directory: /data/gridcapa/data/inputs/ecp
       polling-delay-in-ms: 5000
   sinks:
     minio:

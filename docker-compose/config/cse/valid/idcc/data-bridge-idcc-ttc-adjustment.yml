@@ -11,9 +11,9 @@ data-bridge:
       active: true
       host: sftp
       port: 22
-      username: cia
-      password: passcia
-      base-directory: /data/inputs/cia
+      username: gridcapa
+      password: gridcapa
+      base-directory: /data/gridcapa/data/inputs/cia
       polling-delay-in-ms: 5000
   sinks:
     minio:
