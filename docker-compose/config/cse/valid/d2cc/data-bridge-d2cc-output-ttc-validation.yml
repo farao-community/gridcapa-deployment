@@ -1,0 +1,18 @@
+data-bridge:
+  file-regex: "TTC_RTEValidation_(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_2D[1-7]_[0-9].xml"
+  sources:
+    minio:
+      url: http://minio:9000
+      access-key: gridcapa
+      secret-key: gridcapa
+      bucket: gridcapa
+      base-directory: /CSE/2D/TTC_VALIDATION
+      polling-delay-in-ms: 3000
+  sinks:
+    sftp:
+      active: true
+      host: sftp
+      port: 22
+      username: cia
+      password: passcia
+      base-directory: /data/outputs/cia

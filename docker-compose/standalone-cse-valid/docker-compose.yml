@@ -1,5 +1,24 @@
 version: "3.7"
 services:
+#  nginx-proxy:
+#    image: nginx:alpine
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - ./nginx.conf:/etc/nginx/nginx.conf:Z
+#      - ../config/apps-metadata.json:/usr/share/nginx/html/apps-metadata.json:Z
+#    depends_on:
+#      - config-notification-server
+#      - config-server
+#      - core-valid-gridcapa-app
+#      - core-valid-task-notification-server
+#      - core-valid-gridcapa-task-manager
+#      - core-valid-gridcapa-job-launcher
+#      - rabbitmq
+#      - minio
+#    networks:
+#      - gridcapa
+
   sftp:
     hostname: sftp
     image: atmoz/sftp
@@ -10,127 +29,133 @@ services:
       - "2222:22"
     environment:
       SFTP_USERS: cia:passcia:::data/inputs/cia,data/outputs/cia,temp/inputs/cia,temp/outputs/cia ecp:passecp:::data/inputs/ecp,temp/inputs/ecp
-    env_file:
-      - .env
     networks:
       - gridcapa
 
   minio:
-    hostname: minio
-    image: minio/minio
+    image: bitnami/minio:2021.6.17
+    restart: always
     volumes:
       - minio-data:/data
+    environment:
+      MINIO_ACCESS_KEY: gridcapa
+      MINIO_SECRET_KEY: gridcapa
+      MINIO_DEFAULT_BUCKETS: gridcapa
+      MINIO_NOTIFY_AMQP_ENABLE: "on"
+      MINIO_NOTIFY_AMQP_URL: amqp://gridcapa:gridcapa@rabbitmq:5672
+      MINIO_NOTIFY_AMQP_EXCHANGE: gridcapa.minio.events
+      MINIO_NOTIFY_AMQP_EXCHANGE_TYPE: fanout
+      MINIO_NOTIFY_AMQP_DELIVERY_MODE: 2
+      MINIO_NOTIFY_AMQP_AUTO_DELETED: "off"
+      MINIO_NOTIFY_AMQP_DURABLE: "on"
     ports:
       - "9000:9000"
-      - "9001:9001"
-    command: server --console-address :9001 /data
-    environment:
-      MINIO_DEFAULT_BUCKETS: cep-validation
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
-      interval: 30s
-      timeout: 30s
-      retries: 5
-    env_file:
-      - .env
+#      - "9001:9001"
+#    command: server --console-address :9001 /data
     networks:
       - gridcapa
 
   rabbitmq:
-    hostname: rabbitmq
     image: rabbitmq:management
-    volumes:
-      - rabbitmq-data:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: gridcapa
+      RABBITMQ_DEFAULT_PASS: gridcapa
     ports:
       - "5672:5672"
       - "15672:15672"
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq/mnesia
+    networks:
+      - gridcapa
     healthcheck:
-      test: rabbitmq-diagnostics -q ping
+      test: ["CMD", "rabbitmq-diagnostics ping"]
       interval: 30s
-      timeout: 30s
+      timeout: 10s
       retries: 5
-    env_file:
-      - .env
+
+  data-bridge-idcc-ttc-adjustment:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ../config/cse/valid/idcc/data-bridge-idcc-ttc-adjustment.yml:/config/application.yml
     networks:
       - gridcapa
 
-  data-bridge-idcc-ttc:
-    hostname: data-bridge-idcc-ttc
-    image: farao/gridcapa-data-bridge:latest
+  data-bridge-idcc-output-ttc-validation:
+    image: farao/gridcapa-output-data-bridge:latest
     volumes:
-      - ../config/cse/valid/data-bridge-idcc-ttc.yml:/config/application.yml
-    env_file:
-      - .env
+      - ../config/cse/valid/idcc/data-bridge-idcc-output-ttc-validation.yml:/config/application.yml
     networks:
       - gridcapa
 
   data-bridge-idcc-crac:
-    hostname: data-bridge-idcc-crac
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/valid/data-bridge-idcc-crac.yml:/config/application.yml
-    env_file:
-      - .env
+      - ../config/cse/valid/idcc/data-bridge-idcc-crac.yml:/config/application.yml
     networks:
       - gridcapa
 
   data-bridge-idcc-glsk:
-    hostname: data-bridge-idcc-glsk
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/valid/data-bridge-idcc-glsk.yml:/config/application.yml
-    env_file:
-      - .env
+      - ../config/cse/valid/idcc/data-bridge-idcc-glsk.yml:/config/application.yml
     networks:
       - gridcapa
 
   data-bridge-idcc-cgm:
-    hostname: data-bridge-idcc-cgm
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/valid/data-bridge-idcc-cgm.yml:/config/application.yml
-    env_file:
-      - .env
+      - ../config/cse/valid/idcc/data-bridge-idcc-cgm.yml:/config/application.yml
     networks:
       - gridcapa
 
-  data-bridge-d2cc-ttc:
-    hostname: data-bridge-d2cc-ttc
+  data-bridge-d2cc-ttc-adjustment:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/valid/data-bridge-d2cc-ttc.yml:/config/application.yml
-    env_file:
-      - .env
+      - ../config/cse/valid/d2cc/data-bridge-d2cc-ttc-adjustment.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  data-bridge-d2cc-output-ttc-validation:
+    image: farao/gridcapa-output-data-bridge:latest
+    volumes:
+      - ../config/cse/valid/d2cc/data-bridge-d2cc-output-ttc-validation.yml:/config/application.yml
     networks:
       - gridcapa
 
   data-bridge-d2cc-crac:
-    hostname: data-bridge-d2cc-crac
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/valid/data-bridge-d2cc-crac.yml:/config/application.yml
-    env_file:
-      - .env
+      - ../config/cse/valid/d2cc/data-bridge-d2cc-crac.yml:/config/application.yml
     networks:
       - gridcapa
 
   data-bridge-d2cc-glsk:
-    hostname: data-bridge-d2cc-glsk
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/valid/data-bridge-d2cc-glsk.yml:/config/application.yml
-    env_file:
-      - .env
+      - ../config/cse/valid/d2cc/data-bridge-d2cc-glsk.yml:/config/application.yml
     networks:
       - gridcapa
 
   data-bridge-d2cc-cgm:
-    hostname: data-bridge-d2cc-cgm
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/valid/data-bridge-d2cc-cgm.yml:/config/application.yml
-    env_file:
-      - .env
+      - ../config/cse/valid/d2cc/data-bridge-d2cc-cgm.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  timestamp-validation:
+    hostname: timestamp-validation
+    image: farao/timestamp-validation-server-app:1.4.3-SNAPSHOT
+    volumes:
+      - ../config/cse/valid/timestamp-validation-application.yml:/config/application.yml
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - minio
+      - rabbitmq
     networks:
       - gridcapa
 
