@@ -134,43 +134,6 @@ services:
     networks:
       - gridcapa
 
-  process-publication:
-    hostname: process-publication
-    image: inca.rte-france.com/farao/process-publication-server-app:0.2.1
-    volumes:
-      - ../config/cse/valid/process-publication-application.yml:/config/application.yml
-    ports:
-      - 8080:8080
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
-      interval: 30s
-      timeout: 30s
-      retries: 5
-    depends_on:
-      - rabbitmq
-    env_file:
-      - .env
-    networks:
-      - gridcapa
-
-  timestamp-validation:
-    hostname: timestamp-validation
-    image: farao/timestamp-validation-server-app:1.4.3-SNAPSHOT
-    volumes:
-      - ../config/cse/valid/timestamp-validation-application.yml:/config/application.yml
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
-      interval: 30s
-      timeout: 30s
-      retries: 5
-    depends_on:
-      - minio
-      - rabbitmq
-    env_file:
-      - .env
-    networks:
-      - gridcapa
-
 networks:
   gridcapa:
 
