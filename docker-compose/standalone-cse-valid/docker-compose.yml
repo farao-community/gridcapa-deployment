@@ -13,10 +13,12 @@ services:
       - filebrowser
       - cse-valid-d2cc-gridcapa-app
       - cse-valid-idcc-gridcapa-app
-#      - config-notification-server
-#      - config-server
-#      - core-valid-task-notification-server
-#      - core-valid-gridcapa-task-manager
+      - config-notification-server
+      - config-server
+      - cse-valid-d2cc-task-notification-server
+      - cse-valid-idcc-task-notification-server
+      - cse-valid-d2cc-gridcapa-task-manager
+      - cse-valid-idcc-gridcapa-task-manager
 #      - core-valid-gridcapa-job-launcher
     networks:
       - gridcapa
@@ -85,6 +87,75 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+
+  config-server:
+    image: gridsuite/config-server:latest
+    restart: always
+    volumes:
+      - ../config/gridsuite-config-server-application.yml:/config/application.yml:Z
+      - ../config/gridsuite-postgres.properties:/config/database.properties:Z
+    command: --spring.config.additional-location=/config/
+    networks:
+      - gridcapa
+    depends_on:
+      - gridcapa-postgres
+
+  gridcapa-postgres:
+    image: bitnami/postgresql
+    environment:
+      ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - "5434:5432"
+    volumes:
+      - gridcapa-postgres-data:/bitnami/postgresql
+      - ../config/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - gridcapa
+
+  cse-valid-idcc-gridcapa-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ../config/cse/valid/idcc/cse-valid-idcc-gridcapa-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-valid-d2cc-gridcapa-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ../config/cse/valid/d2cc/cse-valid-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  config-notification-server:
+    image: gridsuite/config-notification-server:latest
+    restart: always
+    volumes:
+      - ../config/gridsuite-config-notification-server-application.yml:/config/application.yml:Z
+    command: --spring.config.additional-location=/config/
+    networks:
+      - gridcapa
+    depends_on:
+      - rabbitmq
+
+  cse-valid-idcc-task-notification-server:
+    image: springcloudstream/websocket-sink-rabbit:latest
+    restart: always
+    volumes:
+      - ../config/core/valid/core-valid-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
+    networks:
+      - gridcapa
+    depends_on:
+      - rabbitmq
+
+  cse-valid-d2cc-task-notification-server:
+    image: springcloudstream/websocket-sink-rabbit:latest
+    restart: always
+    volumes:
+      - ../config/core/valid/core-valid-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
+    networks:
+      - gridcapa
+    depends_on:
+      - rabbitmq
 
   cse-valid-d2cc-gridcapa-app:
     image: farao/gridcapa-app:latest
@@ -192,6 +263,7 @@ networks:
   gridcapa:
 
 volumes:
+  gridcapa-postgres-data:
   minio-data:
   rabbitmq-data:
   sftp-data:
