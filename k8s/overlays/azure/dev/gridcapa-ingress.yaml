@@ -5,6 +5,8 @@ metadata:
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^/cse/d2cc$ /cse/d2cc/ permanent;
       rewrite ^/core/valid$ /core/valid/ permanent;
+      rewrite ^/cse/valid/d2cc$ /cse/valid/d2cc/ permanent;
+      rewrite ^/cse/valid/iccc$ /cse/valid/idcc/ permanent;
       proxy_set_header X-Forwarded-Prefix /cse/d2cc/;
       proxy_set_header userId "johnDoe";
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
@@ -35,10 +37,38 @@ spec:
             pathType: Prefix
           - backend:
               service:
+                name: cse-valid-d2cc-gridcapa-app
+                port:
+                  number: 80
+            path: /cse/valid/d2cc(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-valid-idcc-gridcapa-app
+                port:
+                  number: 80
+            path: /cse/valid/idcc(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
                 name: config-server
                 port:
                   number: 80
             path: /core/valid/config(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: config-server
+                port:
+                  number: 80
+            path: /cse/valid/d2cc/config(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: config-server
+                port:
+                  number: 80
+            path: /cse/valid/idcc/config(/|$)(.*)
             pathType: Prefix
           - backend:
               service:
@@ -49,6 +79,20 @@ spec:
             pathType: Prefix
           - backend:
               service:
+                name: config-notification-server
+                port:
+                  number: 80
+            path: /cse/valid/d2cc/config-notification(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: config-notification-server
+                port:
+                  number: 80
+            path: /cse/valid/idcc/config-notification(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
                 name: core-valid-task-notification-server
                 port:
                   number: 80
@@ -56,10 +100,38 @@ spec:
             pathType: Prefix
           - backend:
               service:
+                name: cse-valid-d2cc-task-notification-server
+                port:
+                  number: 80
+            path: /cse/valid/d2cc/task-notification(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-valid-idcc-task-notification-server
+                port:
+                  number: 80
+            path: /cse/valid/idcc/task-notification(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
                 name: core-valid-task-manager
                 port:
                   number: 80
             path: /core/valid/task-manager(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-valid-d2cc-task-manager
+                port:
+                  number: 80
+            path: /cse/valid/d2cc/task-manager(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-valid-idcc-task-manager
+                port:
+                  number: 80
+            path: /cse/valid/idcc/task-manager(/|$)(.*)
             pathType: Prefix
           - backend:
               service:
