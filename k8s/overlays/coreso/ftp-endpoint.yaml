@@ -1,9 +1,0 @@
-kind: "Endpoints"
-apiVersion: "v1"
-metadata:
-  name: coreso-ftp
-subsets:
-  - addresses:
-      - ip: 192.168.236.230
-    ports:
-      - port: 21
