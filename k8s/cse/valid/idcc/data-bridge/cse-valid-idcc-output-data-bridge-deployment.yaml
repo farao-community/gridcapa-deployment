@@ -43,13 +43,13 @@ spec:
             - name: OUTPUT_USER
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-ftp-credentials
-                  key: ftp-user
+                  name: gridcapa-sftp-credentials
+                  key: gridcapa-sftp-user
             - name: OUTPUT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-ftp-credentials
-                  key: ftp-password
+                  name: gridcapa-sftp-credentials
+                  key: gridcapa-sftp-password
             - name: OUTPUT_BASE_DIRECTORY
               valueFrom:
                 configMapKeyRef:

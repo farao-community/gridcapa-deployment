@@ -55,7 +55,7 @@ data:
           access-key: ${MINIO_ACCESS_KEY}
           secret-key: ${MINIO_SECRET_KEY}
       process:
-        tag: CSE_VALID_idcc
+        tag: CSE_VALID_IDCC
         timezone: CET
         inputs:
           - TTC_ADJUSTMENT
