@@ -21,4 +21,4 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CSE/ID/CGMs
+      base-directory: /CSE/VALID/IDCC/CGMs

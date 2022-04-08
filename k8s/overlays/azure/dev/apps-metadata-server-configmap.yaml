@@ -20,10 +20,10 @@ data:
     {
       "name" : "Capa CSE D2CC Validation",
       "url"  : "/cse/valid/d2cc",
-      "appColor" : "#F56908"
+      "appColor" : "#490030"
     },
     {
       "name" : "Capa CSE IDCC Validation",
       "url"  : "/cse/valid/idcc",
-      "appColor" : "#F56908"
+      "appColor" : "#F400A1"
     }]

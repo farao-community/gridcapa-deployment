@@ -19,7 +19,6 @@ services:
       - cse-valid-idcc-task-notification-server
       - cse-valid-d2cc-gridcapa-task-manager
       - cse-valid-idcc-gridcapa-task-manager
-#      - core-valid-gridcapa-job-launcher
     networks:
       - gridcapa
 
@@ -65,8 +64,6 @@ services:
       MINIO_NOTIFY_AMQP_DURABLE: "on"
     ports:
       - "9000:9000"
-#      - "9001:9001"
-#    command: server --console-address :9001 /data
     networks:
       - gridcapa
 

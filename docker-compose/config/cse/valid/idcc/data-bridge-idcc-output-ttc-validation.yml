@@ -6,7 +6,7 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CSE/ID/TTC_VALIDATION
+      base-directory: /CSE/VALID/IDCC/TTC_VALIDATION
       polling-delay-in-ms: 5000
   sinks:
     sftp:

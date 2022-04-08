@@ -21,4 +21,4 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CSE/2D/TTC_ADJUSTMENT
+      base-directory: /CSE/VALID/D2CC/TTC_ADJUSTMENT

@@ -21,4 +21,4 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CSE/ID/CRACs
+      base-directory: /CSE/VALID/IDCC/CRACs
