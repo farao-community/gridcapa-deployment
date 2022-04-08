@@ -240,22 +240,6 @@ services:
     networks:
       - gridcapa
 
-  timestamp-validation:
-    hostname: timestamp-validation
-    image: farao/timestamp-validation-server-app:1.4.3-SNAPSHOT
-    volumes:
-      - ../config/cse/valid/timestamp-validation-application.yml:/config/application.yml
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
-      interval: 30s
-      timeout: 30s
-      retries: 5
-    depends_on:
-      - minio
-      - rabbitmq
-    networks:
-      - gridcapa
-
 networks:
   gridcapa:
 
