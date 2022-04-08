@@ -38,6 +38,21 @@ images:
   - name: gridcapa-task-notification-server
     newName: docker.io/springcloudstream/websocket-sink-rabbit
     newTag: 3.2.0
+  - name: apps-metadata-server
+    newName: bitnami/apache
+    newTag: "2.4"
+  - name: rabbitmq
+    newName: docker.io/rabbitmq
+    newTag: management
+  - name: minio
+    newName: docker.io/bitnami/minio
+    newTag: 2021.6.17
+  - name: gridsuite-config-notification-server
+    newName: docker.io/gridsuite/config-notification-server
+    newTag: latest
+  - name: gridsuite-config-server
+    newName: docker.io/gridsuite/config-server
+    newTag: latest
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: v1.0.0
@@ -86,12 +101,3 @@ images:
   - name: gridcapa-core-valid-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.0.0
-  - name: gridsuite-config-notification-server
-    newName: docker.io/gridsuite/config-notification-server
-    newTag: latest
-  - name: gridsuite-config-server
-    newName: docker.io/gridsuite/config-server
-    newTag: latest
-  - name: apps-metadata-server
-    newName: bitnami/apache
-    newTag: 2.4

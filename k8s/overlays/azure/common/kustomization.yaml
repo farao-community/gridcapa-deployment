@@ -11,7 +11,7 @@ resources:
   - postgresql-deployment.yaml
   - postgresql-pv-claim.yaml
   - postgresql-service.yaml
-
+  - rabbitmq-statefulset.yaml
 patches:
   - patch: |-
       apiVersion: apps/v1

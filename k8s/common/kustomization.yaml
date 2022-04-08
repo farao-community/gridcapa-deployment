@@ -14,7 +14,6 @@ resources:
   - minio-service.yaml
   - rabbitmq-configmap.yaml
   - rabbitmq-service.yaml
-  - rabbitmq-statefulset.yaml
   - rao-runner-configmap.yaml
   - rao-runner-itools-configmap.yaml
   - rao-runner-deployment.yaml
