@@ -22,8 +22,8 @@ data:
           active: true
           host: ${SOURCE_HOST}
           port: ${SOURCE_PORT}
-          username: gridcapa
-          password: gridcapa
+          username: ${SOURCE_USER}
+          password: ${SOURCE_PASSWORD}
           base-directory: ${SOURCE_BASE_DIRECTORY}
           polling-delay-in-ms: 5000
       sinks:

@@ -39,17 +39,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_POSTGRES_CORE_VALID_DB
+                  key: GRIDCAPA_POSTGRES_CSE_VALID_D2CC_DB
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
-                  key: core-valid-user
+                  key: cse-valid-d2cc-user
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
-                  key: core-valid-password
+                  key: cse-valid-d2cc-password
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
