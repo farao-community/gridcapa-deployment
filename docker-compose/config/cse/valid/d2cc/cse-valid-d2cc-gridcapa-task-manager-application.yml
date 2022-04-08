@@ -47,7 +47,7 @@ task-server:
     tag: CSE_VALID_D2CC
     timezone: CET
     inputs:
+      - TTC_ADJUSTMENT
+      - CRAC
       - CGM
       - GLSK
-      - CRAC
-      - TTC_ADJUSTMENT
