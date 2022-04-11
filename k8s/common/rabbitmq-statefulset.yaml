@@ -13,16 +13,6 @@
     # headless service that gives network identity to the RMQ nodes, and enables them to cluster
     serviceName: gridcapa-rabbitmq # serviceName is the name of the service that governs this StatefulSet. This service must exist before the StatefulSet, and is responsible for the network identity of the set. Pods get DNS/hostnames that follow the pattern: pod-specific-string.serviceName.default.svc.cluster.local where "pod-specific-string" is managed by the StatefulSet controller.
     replicas: 1
-    volumeClaimTemplates:
-      - metadata:
-          name: gridcapa-rabbitmq-data
-        spec:
-          storageClassName: gridcapa-rabbitmq-storage-class
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: "3Gi"
     template:
       metadata:
         name: gridcapa-rabbitmq
@@ -100,3 +90,5 @@
           - name: gridcapa-rabbitmq-configmap-volume
             configMap:
               name: gridcapa-rabbitmq-configmap
+          - name: gridcapa-rabbitmq-data
+            emptyDir: { }
