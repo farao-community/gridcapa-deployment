@@ -16,7 +16,8 @@ data:
       file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F226-.*.(xml|XML)
       time-validity: daily
       remote-file-regex:
-        - ".*"
+        - .*-F226-.*.(zip|ZIP)
+        - (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F226-.*.(xml|XML)
       sources:
         ftp:
           active: true
@@ -24,7 +25,7 @@ data:
           port: ${SOURCE_PORT}
           username: ${SOURCE_USER}
           password: ${SOURCE_PASSWORD}
-          base-directory: ${SOURCE_BASE_DIRECTORY}/glsks
+          base-directory: ${SOURCE_BASE_DIRECTORY}
           polling-delay-in-ms: 5000
       sinks:
         minio:
