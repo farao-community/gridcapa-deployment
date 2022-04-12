@@ -93,7 +93,7 @@ configMapGenerator:
 images:
   - name: gridcapa-task-notification-server
     newName: docker.io/springcloudstream/websocket-sink-rabbit
-    newTag: 3.2.0
+    newTag: 2021.0.x
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: v1.0.0
