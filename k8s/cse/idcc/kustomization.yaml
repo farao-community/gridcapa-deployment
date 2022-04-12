@@ -38,6 +38,7 @@ resources:
   - cse-idcc-app-deployment.yaml
   - cse-idcc-app-process-metadata-configmap.yaml
   - cse-idcc-app-service.yaml
+  - cse-idcc-combined-ras-configmap.yaml
   - cse-idcc-job-launcher-deployment.yaml
   - cse-idcc-job-launcher-service.yaml
   - cse-idcc-job-launcher-configmap.yaml
