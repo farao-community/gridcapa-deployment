@@ -20,7 +20,6 @@ resources:
   - data-bridge/core-valid-studypoint-data-bridge-configmap.yaml
   - data-bridge/core-valid-studypoint-data-bridge-deployment.yaml
   - data-bridge/core-valid-studypoint-data-bridge-service.yaml
-  - core-valid-minio-cleaning-cronjob.yaml
   - core-valid-gridcapa-app-deployment.yaml
   - core-valid-gridcapa-app-process-metadata-configmap.yaml
   - core-valid-gridcapa-app-service.yaml

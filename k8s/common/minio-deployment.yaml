@@ -21,7 +21,7 @@ spec:
         fsGroup: 1001
       containers:
         - name: gridcapa-minio
-          image: docker.io/bitnami/minio:2021.6.17
+          image: minio
           imagePullPolicy: IfNotPresent
           securityContext:
             runAsNonRoot: true

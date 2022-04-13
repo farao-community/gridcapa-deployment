@@ -54,7 +54,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CORE_VALID
+                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CORE_VALID_CGM
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:

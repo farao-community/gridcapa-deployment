@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: apps-metadata-server
-          image: bitnami/apache:2.4
+          image: apps-metadata-server
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

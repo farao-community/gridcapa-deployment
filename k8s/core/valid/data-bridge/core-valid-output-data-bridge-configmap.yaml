@@ -26,4 +26,4 @@ data:
           port: ${OUTPUT_PORT}
           username: ${OUTPUT_USER}
           password: ${OUTPUT_PASSWORD}
-          base-directory: ${OUTPUT_BASE_DIRECTORY}/outputs
+          base-directory: ${OUTPUT_BASE_DIRECTORY}
