@@ -37,7 +37,7 @@ patches:
 images:
   - name: gridcapa-task-notification-server
     newName: docker.io/springcloudstream/websocket-sink-rabbit
-    newTag: 3.2.0
+    newTag: 2021.0.x
   - name: apps-metadata-server
     newName: bitnami/apache
     newTag: "2.4"
@@ -79,25 +79,25 @@ images:
     newTag: v1.0.0
   - name: gridcapa-core-valid-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v1.0.0
+    newTag: latest
   - name: gridcapa-core-valid-output-data-bridge
     newName: docker.io/farao/gridcapa-output-data-bridge
-    newTag: v1.0.0
+    newTag: latest
   - name: gridcapa-core-valid-adapter
     newName: docker.io/farao/gridcapa-core-valid-adapter
-    newTag: v1.0.0
+    newTag: latest
   - name: gridcapa-core-valid-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
-    newTag: v1.0.0
+    newTag: latest
   - name: gridcapa-core-valid-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: v1.0.0
+    newTag: latest
   - name: gridcapa-core-valid-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner
-    newTag: v1.0.0
+    newTag: latest
   - name: gridcapa-core-valid-runner
     newName: docker.io/farao/gridcapa-core-valid
-    newTag: v1.0.0
+    newTag: latest
   - name: gridcapa-core-valid-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.0.0
+    newTag: latest
