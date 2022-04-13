@@ -8,8 +8,6 @@ bases:
 resources:
   - apps-metadata-server-configmap.yaml
   - cse-idcc-runner-itools-coreso-configmap.yaml
-  - ftp-endpoint.yaml
-  - ftp-service.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
   - gridcapa-ingress-minio.yaml
