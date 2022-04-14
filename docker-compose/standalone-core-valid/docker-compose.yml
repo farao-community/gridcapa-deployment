@@ -231,6 +231,22 @@ services:
     networks:
       - gridcapa
 
+  rao-logs-dispatcher:
+    image: farao/gridcapa-rao-logs-dispatcher:latest
+    volumes:
+      - ../config/core/valid/core-valid-rao-logs-dispatcher-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://rao-logs-dispatcher/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - rao-runner
+      - core-valid-gridcapa-task-manager
+      - rabbitmq
+    networks:
+      - gridcapa
+
   core-valid-output-data-bridge:
     image: farao/gridcapa-output-data-bridge:latest
     volumes:
