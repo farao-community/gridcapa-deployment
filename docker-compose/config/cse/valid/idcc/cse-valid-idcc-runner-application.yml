@@ -1,6 +1,6 @@
 logback:
   amqp:
-    exchange: cse-valid-d2cc-task-manager-logs-exchange
+    exchange: cse-valid-idcc-task-manager-logs-exchange
     routing-key: "#"
 spring:
   rabbitmq:
@@ -14,21 +14,21 @@ spring:
     stream:
       bindings:
         task-status-update:
-          destination: cse-valid-d2cc-task-status-updated
+          destination: cse-valid-idcc-task-status-updated
 
 rao-runner-server:
   amqp:
-    client-app-id: cse-valid-d2cc-runner
+    client-app-id: cse-valid-idcc-runner
     queue-name: rao-request-queue
 
 cse-valid-runner:
   async-time-out: 600000
   bindings:
     request:
-      destination: cse-valid-d2cc-requests
+      destination: cse-valid-idcc-requests
       routing-key: "#"
     response:
-      destination: cse-valid-d2cc-response
+      destination: cse-valid-idcc-response
       expiration: 600000
   whitelist:
     - http://minio:9000/

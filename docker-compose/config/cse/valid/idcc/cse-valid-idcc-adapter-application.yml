@@ -11,7 +11,7 @@ spring:
       bindings:
         consumeTask-in-0:
           binder: rabbit
-          destination: cse-valid-d2cc-run-task
+          destination: cse-valid-idcc-run-task
           group: cse-valid
       rabbit:
         default:
@@ -23,4 +23,4 @@ spring:
 
 cse-valid-runner:
   amqp:
-    queue-name: cse-valid-d2cc-requests
+    queue-name: cse-valid-idcc-requests
