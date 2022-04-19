@@ -1,0 +1,53 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-valid-d2cc-runner-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-cse-valid-d2cc-runner
+    region: cse
+    process: valid_d2cc
+data:
+  application.yml: |-
+    logback:
+      amqp:
+        exchange: cse-valid-d2cc-task-manager-logs-exchange
+    spring:
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+        template:
+          reply-timeout: 600000000
+      cloud:
+        stream:
+          bindings:
+            task-status-update:
+              binder: rabbit
+              destination: cse-valid-d2cc-task-status-updated
+
+    rao-runner-server:
+      amqp:
+        client-app-id: cse-valid-d2cc-runner
+        queue-name: rao-request-queue
+
+    cse-valid-d2cc-runner:
+      async-time-out: 600000
+      bindings:
+        request:
+          destination: cse-valid-d2cc-requests
+          routing-key: "#"
+        response:
+          destination: cse-valid-d2cc-response
+          expiration: 6000000
+      whitelist:
+        - http://gridcapa-minio:9000/
+
+    minio:
+      url: http://gridcapa-minio:9000/
+      access:
+        name: ${GRIDCAPA_MINIO_USER}
+        secret: ${GRIDCAPA_MINIO_PASSWORD}
+      bucket: gridcapa
+      base-path: CSE/VALID/D2CC

@@ -4,6 +4,6 @@ kind: Kustomization
 bases:
   - ../../../../cse/valid/d2cc
   - ../../../../cse/valid/idcc
-#
-#resources:
-#  - rao-runner-autoscaler.yaml
+
+resources:
+  - rao-runner-autoscaler.yaml
