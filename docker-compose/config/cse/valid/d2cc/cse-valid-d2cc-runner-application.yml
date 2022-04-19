@@ -1,0 +1,42 @@
+logback:
+  amqp:
+    exchange: cse-valid-d2cc-task-manager-logs-exchange
+    routing-key: "#"
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+    template:
+      reply-timeout: 6000000
+  cloud:
+    stream:
+      bindings:
+        task-status-update:
+          destination: cse-valid-d2cc-task-status-updated
+
+rao-runner-server:
+  amqp:
+    client-app-id: cse-valid-d2cc-runner
+    queue-name: rao-request-queue
+
+cse-valid-runner:
+  async-time-out: 600000
+  bindings:
+    request:
+      destination: cse-valid-requests
+      routing-key: "#"
+    response:
+      destination: cse-valid-response
+      expiration: 600000
+  whitelist:
+    - http://minio:9000/
+
+minio:
+  access:
+    name: gridcapa
+    secret: gridcapa
+  url: http://minio:9000/
+  bucket: gridcapa
+  base-path: CSE/VALID/

@@ -1,0 +1,26 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+    template:
+      reply-timeout: 6000000
+  cloud:
+    stream:
+      bindings:
+        consumeTask-in-0:
+          binder: rabbit
+          destination: cse-valid-d2cc-run-task
+          group: cse-valid
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+    function:
+      definition: consumeTask
+
+cse-valid-runner:
+  amqp:
+    queue-name: cse-valid-requests
