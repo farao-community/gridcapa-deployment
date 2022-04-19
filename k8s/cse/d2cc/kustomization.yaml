@@ -20,9 +20,6 @@ resources:
   - data-bridge/cse-d2cc-target-ch-data-bridge-configmap.yaml
   - data-bridge/cse-d2cc-target-ch-data-bridge-deployment.yaml
   - data-bridge/cse-d2cc-target-ch-data-bridge-service.yaml
-  - data-bridge/cse-d2cc-vulcanus-data-bridge-configmap.yaml
-  - data-bridge/cse-d2cc-vulcanus-data-bridge-deployment.yaml
-  - data-bridge/cse-d2cc-vulcanus-data-bridge-service.yaml
   - cse-d2cc-gridcapa-app-deployment.yaml
   - cse-d2cc-gridcapa-app-process-metadata-configmap.yaml
   - cse-d2cc-gridcapa-app-service.yaml
