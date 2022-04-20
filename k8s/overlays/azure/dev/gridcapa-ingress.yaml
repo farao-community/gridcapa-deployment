@@ -182,6 +182,13 @@ spec:
                   number: 80
             path: /cse/valid/idcc/task-manager(/|$)(.*)
             pathType: Prefix
+          - backend:
+              service:
+                name: cse-valid-idcc-gridcapa-job-launcher
+                port:
+                  number: 80
+            path: /cse/valid/idcc/gridcapa-job-launcher(/|$)(.*)
+            pathType: Prefix
           #endregion
           #region CSE valid D2CC
           - backend:
@@ -218,5 +225,12 @@ spec:
                 port:
                   number: 80
             path: /cse/valid/d2cc/task-manager(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-valid-d2cc-gridcapa-job-launcher
+                port:
+                  number: 80
+            path: /cse/valid/d2cc/gridcapa-job-launcher(/|$)(.*)
             pathType: Prefix
           #endregion

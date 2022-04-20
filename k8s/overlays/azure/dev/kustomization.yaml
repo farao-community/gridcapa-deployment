@@ -89,7 +89,6 @@ images:
   - name: gridcapa-cse-valid-d2cc-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: latest
-
   - name: gridcapa-cse-valid-idcc-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: latest
@@ -98,4 +97,16 @@ images:
     newTag: latest
   - name: gridcapa-cse-valid-idcc-task-manager
     newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest
+  - name: gridcapa-cse-valid-idcc-runner
+    newName: docker.io/farao/gridcapa-cse-valid
+    newTag: latest
+  - name: gridcapa-cse-valid-idcc-adapter
+    newName: docker.io/farao/gridcapa-cse-valid-adapter
+    newTag: latest
+  - name: gridcapa-cse-valid-idcc-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: latest
+  - name: gridcapa-cse-valid-idcc-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: latest
