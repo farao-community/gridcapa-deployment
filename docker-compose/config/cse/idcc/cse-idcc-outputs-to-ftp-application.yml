@@ -1,0 +1,29 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+  cloud:
+    stream:
+      default:
+        group: cse-idcc-outputs
+      bindings:
+        consumeTaskStatusUpdate-in-0:
+          destination: cse-idcc-task-status-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+    function:
+      definition: consumeTaskStatusUpdate
+
+task-manager:
+  base-url: http://cse-idcc-task-manager:8080
+ftp:
+  host: ${FTP_HOST:ftp-server}
+  port: ${FTP_PORT:21}
+  access-key: ${FTP_ACCESS_KEY:gridcapa}
+  secret-key: ${FTP_SECRET_KEY:gridcapa}
+  remote-destination-directory: ${FTP_REMOTE_DESTINATION_DIRECTORY:/data/gridcapa/cse/idcc/outputs}
