@@ -258,10 +258,10 @@ services:
   cse-cc-runner:
     image: farao/gridcapa-cse-runner:latest
     volumes:
-      - ../config/cse/idcc/cse-idcc-itools-config.yml:/home/farao/.itools/config.yml
+      - ../config/cse/commun/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
       - ../config/cse/idcc/cse-idcc-runner-application.yml:/config/application.yml
-      - ../config/cse/idcc/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
-      - ../config/cse/idcc/combinedRAs.json:/home/farao/combinedRAs.json
+      - ../config/cse/commun/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
+      - ../config/cse/commun/combinedRAs.json:/home/farao/combinedRAs.json
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://cse-cc-runner/actuator/health" ]
       interval: 30s

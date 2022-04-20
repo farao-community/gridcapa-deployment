@@ -233,6 +233,21 @@ services:
     depends_on:
       - rabbitmq
 
+  cse-d2cc-gridcapa-adpater:
+    image: farao/gridcapa-cse-adapter:latest
+    volumes:
+      - ../config/cse/d2cc/cse-d2cc-gridcapa-adapter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://cse-d2cc-adapter/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - minio
+      - rabbitmq
+    networks:
+      - gridcapa
+
   cse-d2cc-gridcapa-cgm-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
@@ -289,10 +304,21 @@ services:
     networks:
       - gridcapa
 
-  cse-d2cc-gridcapa-fake-runner:
-    image: farao/gridcapa-fake-runner:latest
+  cse-d2cc-gridcapa-runner:
+    image: farao/gridcapa-cse-runner:latest
     volumes:
-      - ../config/cse/d2cc/cse-d2cc-gridcapa-fake-runner.yml:/config/application.yml
+      - ../config/cse/commun/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
+      - ../config/cse/d2cc/cse-d2cc-gridcapa-runner-application.yml:/config/application.yml
+      - ../config/cse/commun/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
+      - ../config/cse/commun/combinedRAs.json:/home/farao/combinedRAs.json
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://cse-cc-runner/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - minio
+      - rabbitmq
     networks:
       - gridcapa
 
