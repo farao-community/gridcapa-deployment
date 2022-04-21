@@ -24,3 +24,6 @@ spring:
 cse-valid-runner:
   amqp:
     queue-name: cse-valid-d2cc-requests
+
+cse-valid-adapter:
+  target-process: D2CC
