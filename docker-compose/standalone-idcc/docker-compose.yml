@@ -226,7 +226,7 @@ services:
   rao-runner:
     image: farao/gridcapa-rao-runner:latest
     volumes:
-      - ../config/cse/idcc/cse-idcc-itools-config.yml:/home/farao/.itools/config.yml
+      - ../config/cse/commun/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
       - ../config/rao-runner-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://rao-runner/actuator/health" ]
