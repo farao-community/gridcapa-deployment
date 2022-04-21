@@ -20,7 +20,7 @@ images:
     newName: docker.io/springcloudstream/websocket-sink-rabbit
     newTag: latest
   - name: apps-metadata-server
-    newName: bitnami/apache
+    newName: docker.io/bitnami/apache
     newTag: latest
   - name: rabbitmq
     newName: docker.io/rabbitmq
