@@ -22,8 +22,8 @@ spring:
 task-manager:
   base-url: http://cse-idcc-task-manager:8080
 ftp:
-  host: ${FTP_HOST:ftp-server}
-  port: ${FTP_PORT:21}
-  access-key: ${FTP_ACCESS_KEY:gridcapa}
-  secret-key: ${FTP_SECRET_KEY:gridcapa}
-  remote-destination-directory: ${FTP_REMOTE_DESTINATION_DIRECTORY:/data/gridcapa/cse/idcc/outputs}
+  host: ftp-server
+  port: 21
+  access-key: gridcapa
+  secret-key: gridcapa
+  remote-destination-directory: /data/gridcapa/cse/idcc/outputs

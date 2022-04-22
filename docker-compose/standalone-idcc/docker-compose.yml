@@ -87,7 +87,7 @@ services:
     image: delfer/alpine-ftp-server
     restart: always
     environment:
-      USERS: gridcapa|gridcapa|/data/gridcapa/cse/idcc/cgms /data/gridcapa/cse/idcc/cracs /data/gridcapa/cse/idcc/glsks /data/gridcapa/cse/idcc/ntc /data/gridcapa/cse/idcc/ntcreds /data/gridcapa/cse/idcc/ntc2-at /data/gridcapa/cse/idcc/ntc2-ch /data/gridcapa/cse/idcc/ntc2-fr /data/gridcapa/cse/idcc/ntc2-si /data/gridcapa/cse/idcc/vulcanus /data/gridcapa/cse/idcc/outputs
+      USERS: gridcapa|gridcapa|/data/gridcapa/cse/idcc/outputs /data/gridcapa/cse/idcc/cgms /data/gridcapa/cse/idcc/cracs /data/gridcapa/cse/idcc/glsks /data/gridcapa/cse/idcc/ntc /data/gridcapa/cse/idcc/ntcreds /data/gridcapa/cse/idcc/ntc2-at /data/gridcapa/cse/idcc/ntc2-ch /data/gridcapa/cse/idcc/ntc2-fr /data/gridcapa/cse/idcc/ntc2-si /data/gridcapa/cse/idcc/vulcanus
     volumes:
       - ftp-data:/data/gridcapa
     ports:
@@ -200,7 +200,7 @@ services:
       - gridcapa
 
   cse-idcc-task-manager:
-    image: gridcapa-task-manager:dev
+    image: farao/gridcapa-task-manager:dev
     volumes:
       - ../config/cse/idcc/cse-idcc-task-manager-application.yml:/config/application.yml
     networks:
@@ -279,6 +279,21 @@ services:
       - ../config/cse/idcc/cse-idcc-adapter-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://cse-idcc-adapter/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - minio
+      - rabbitmq
+    networks:
+      - gridcapa
+
+  cse-idcc-gridcapa-export:
+    image: farao/gridcapa-export:dev
+    volumes:
+      - ../config/cse/idcc/cse-idcc-gridcapa-export-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://cse-idcc-gridcapa-export/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5

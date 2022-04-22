@@ -53,13 +53,15 @@ task-server:
       - NTC-RED
       - VULCANUS
     outputs:
-      - CNE
+      - TTC_RES
+      - INITIAL_CGM
+      - FINAL_CGM
   whitelist:
     - http://minio:9000/
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
-  base-path: ${GRIDCAPA_MINIO_BASE_PATH:""}
+  base-path: ${GRIDCAPA_MINIO_BASE_PATH:}
   url: ${GRIDCAPA_MINIO_URL:http://minio:9000}
   access-key: ${GRIDCAPA_MINIO_ACCESS_KEY:gridcapa}
   secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
