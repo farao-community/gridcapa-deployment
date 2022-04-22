@@ -1,12 +1,11 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-idcc-runner-itools-coreso-configmap
+  name: cse-runner-itools-configmap
   labels:
     app: gridcapa
     component: gridcapa-runner
     region: cse
-    process: idcc
 
 data:
   config.yml: |-
@@ -39,7 +38,7 @@ data:
       pst-sensitivity-threshold : 0.01
       sensitivity-fallback-overcost: 0.0
       rao-with-loop-flow-limitation: false
-      perimeters-in-parallel: 10
+      perimeters-in-parallel: 14
 
     search-tree-rao-parameters:
       preventive-rao-stop-criterion: SECURE
@@ -49,5 +48,5 @@ data:
       relative-network-action-minimum-impact-threshold: 0.0
       absolute-network-action-minimum-impact-threshold: 2.0
       curative-rao-optimize-operators-not-sharing-cras : false
-      preventive-leaves-in-parallel: 10
+      preventive-leaves-in-parallel: 14
       curative-leaves-in-parallel: 1

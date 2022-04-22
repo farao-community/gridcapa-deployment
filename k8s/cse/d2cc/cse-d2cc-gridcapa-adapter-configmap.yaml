@@ -1,0 +1,38 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-d2cc-gridcapa-adapter-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-adapter
+    region: cse
+    process: d2cc
+data:
+  application.yml: |-
+    spring:
+      rabbitmq:
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        host: gridcapa-rabbitmq
+        port: 5672
+        template:
+          reply-timeout: 14400000
+      cloud:
+          stream:
+            bindings:
+              handleRun-in-0:
+                binder: rabbit
+                destination: cse-d2cc-launch-task
+                group: cse-d2cc-adapter
+            rabbit:
+              default:
+                consumer:
+                  auto-bind-dlq: true
+                  max-attempts: 1
+
+    cse-cc-runner:
+      binding:
+        destination: cse-request
+
+    cse-adapter:
+      target-process: D2CC

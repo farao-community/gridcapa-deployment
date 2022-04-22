@@ -2,7 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 bases:
-  - ../../../cse/idcc
+  - ../cse/idcc
+  - ../cse/d2cc
+  - ../cse/common
   - ../common
   - ../core/valid
 
@@ -20,12 +22,12 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-idcc-rao-runner
+        name: cse-rao-runner
       spec:
         template:
           spec:
             containers:
-              - name: cse-idcc-rao-runner
+              - name: cse-rao-runner
                 resources:
                   requests:
                     cpu: "14.0"
@@ -73,7 +75,7 @@ images:
     newTag: v1.0.0
   - name: gridcapa-cse-runner
     newName: docker.io/farao/gridcapa-cse-runner
-    newTag: v1.0.0
+    newTag: v1.1.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.0.0

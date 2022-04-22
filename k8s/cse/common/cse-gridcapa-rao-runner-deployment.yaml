@@ -1,12 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cse-idcc-rao-runner
+  name: cse-rao-runner
   labels:
     app: gridcapa
     component: rao-runner
     region: cse
-    process: idcc
 spec:
   replicas: 2
   selector:
@@ -14,17 +13,15 @@ spec:
       app: gridcapa
       component: rao-runner
       region: cse
-      process: idcc
   template:
     metadata:
       labels:
         app: gridcapa
         component: rao-runner
         region: cse
-        process: idcc
     spec:
       containers:
-        - name: cse-idcc-rao-runner
+        - name: cse-rao-runner
           image: gridcapa-cse-rao-runner
           imagePullPolicy: Always
           ports:
@@ -53,10 +50,10 @@ spec:
           volumeMounts:
             - mountPath: /.itools/config.yml
               subPath: config.yml
-              name: cse-idcc-rao-runner-itools-volume
+              name: cse-rao-runner-itools-volume
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: cse-idcc-rao-runner-volume
+              name: cse-rao-runner-volume
             - mountPath: /tmp
               name: tmp-emptydir
           securityContext:
@@ -91,11 +88,11 @@ spec:
             successThreshold: 1
       restartPolicy: Always
       volumes:
-        - name: cse-idcc-rao-runner-volume
+        - name: cse-rao-runner-volume
           configMap:
-            name: cse-idcc-rao-runner
-        - name: cse-idcc-rao-runner-itools-volume
+            name: cse-rao-runner
+        - name: cse-rao-runner-itools-volume
           configMap:
-            name: cse-idcc-rao-runner-itools
+            name: cse-rao-runner-itools
         - name: tmp-emptydir
           emptyDir: {}
