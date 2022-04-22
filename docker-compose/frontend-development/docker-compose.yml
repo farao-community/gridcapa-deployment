@@ -223,7 +223,7 @@ services:
       networks:
         - gridcapa
 
-  cse-d2cc-gridcapa-task-manager:
+  cse-d2cc-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
       - ../config/cse/d2cc/cse-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
