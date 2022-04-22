@@ -226,7 +226,7 @@ services:
   rao-runner:
     image: farao/gridcapa-rao-runner:latest
     volumes:
-      - ../config/cse/commun/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
+      - ../config/cse/common/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
       - ../config/rao-runner-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://rao-runner/actuator/health" ]
@@ -258,10 +258,10 @@ services:
   cse-cc-runner:
     image: farao/gridcapa-cse-runner:latest
     volumes:
-      - ../config/cse/commun/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
+      - ../config/cse/common/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
       - ../config/cse/idcc/cse-idcc-runner-application.yml:/config/application.yml
-      - ../config/cse/commun/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
-      - ../config/cse/commun/combinedRAs.json:/home/farao/combinedRAs.json
+      - ../config/cse/common/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
+      - ../config/cse/common/combinedRAs.json:/home/farao/combinedRAs.json
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://cse-cc-runner/actuator/health" ]
       interval: 30s
