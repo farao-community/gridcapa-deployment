@@ -131,3 +131,6 @@ images:
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.0.0
+  - name: gridcapa-cse-export
+    newName: docker.io/farao/gridcapa-export
+    newTag: v0.0.1
