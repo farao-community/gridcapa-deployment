@@ -24,11 +24,11 @@ rao-runner-server:
     queue-name: rao-request-queue
 
 minio-adapter:
-  bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
-  base-path: ${GRIDCAPA_MINIO_BASE_PATH:""}
-  url: ${GRIDCAPA_MINIO_URL:http://minio:9000}
-  access-key: ${GRIDCAPA_MINIO_ACCESS_KEY:gridcapa}
-  secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
+  bucket: gridcapa
+  base-path:
+  url: http://minio:9000
+  access-key: gridcapa
+  secret-key: gridcapa
 
 cse-cc-runner:
   xnodes:

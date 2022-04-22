@@ -31,14 +31,12 @@ data:
       amqp:
         client-app-id: cse-idcc-runner
         queue-name: cse-idcc-rao-request-queue
-
-    minio:
+    minio-adapter:
       bucket: gridcapa
       base-path:
-      access:
-        name: ${MINIO_ACCESS_KEY}
-        secret: ${MINIO_SECRET_KEY}
       url: http://gridcapa-minio:9000/
+      access-key: ${MINIO_ACCESS_KEY}
+      secret-key: ${MINIO_SECRET_KEY}
 
     cse-cc-runner:
       xnodes:
@@ -69,3 +67,9 @@ data:
           expiration: 60000
       whitelist:
         - http://gridcapa-minio:9000/
+      files-metadata:
+          process-id: CSE_IDCC
+          outputs:
+            initial-cgm: INITIAL_CGM
+            final-cgm: FINAL_CGM
+            ttc-res: TTC_RES
