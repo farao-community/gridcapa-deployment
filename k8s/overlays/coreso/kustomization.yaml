@@ -68,7 +68,7 @@ patches:
       metadata:
         name: cse-rao-runner
       spec:
-        replicas: 6
+        replicas: 2
         template:
           spec:
             containers:

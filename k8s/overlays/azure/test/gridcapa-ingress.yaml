@@ -115,7 +115,7 @@ spec:
                 name: cse-d2cc-gridcapa-app
                 port:
                   number: 80
-            path: /cse/idcc(/|$)(.*)
+            path: /cse/d2cc(/|$)(.*)
             pathType: Prefix
           - backend:
               service:
