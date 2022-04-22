@@ -19,8 +19,8 @@ spring:
 
 job-launcher:
   url:
-    task-manager-timestamp-url: http://cse-d2cc-gridcapa-task-manager:8080/tasks/
-    task-manager-business-date-url: http://cse-d2cc-gridcapa-task-manager:8080/tasks/businessdate/
+    task-manager-timestamp-url: http://cse-d2cc-task-manager:8080/tasks/
+    task-manager-business-date-url: http://cse-d2cc-task-manager:8080/tasks/businessdate/
   process:
     tag: D2CC
     timezone: CET
