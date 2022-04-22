@@ -21,11 +21,11 @@ data:
         stream:
           bindings:
             task-status-update:
-              destination: cse-idcc-task-status-updated
+              destination: cse-d2cc-task-status-updated
 
     logback:
       amqp:
-        exchange: cse-idcc-task-manager-logs-exchange
+        exchange: cse-d2cc-task-manager-logs-exchange
 
     rao-runner-server:
       amqp:
@@ -70,7 +70,7 @@ data:
       bindings:
         request:
           destination: cse-request
-          group: cse-idcc-runner
+          group: cse-d2cc-runner
         response:
           destination: cse-response
           expiration: 60000
