@@ -1,12 +1,11 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-idcc-rao-runner
+  name: cse-rao-runner
   labels:
     app: gridcapa
     component: rao-runner
     region: cse
-    process: idcc
 data:
   application.yml: |-
     spring:
@@ -27,7 +26,7 @@ data:
     rao-runner:
       messages:
         rao-request:
-          queue-name: cse-idcc-rao-request-queue
+          queue-name: cse-rao-request-queue
       url:
         whitelist:
           - http://gridcapa-minio:9000/

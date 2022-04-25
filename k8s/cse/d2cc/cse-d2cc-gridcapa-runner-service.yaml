@@ -1,17 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cse-d2cc-gridcapa-fake-runner
+  name: cse-d2cc-gridcapa-runner
   labels:
     app: gridcapa
-    component: gridcapa-fake-runner
+    component: gridcapa-runner
     region: cse
     process: d2cc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-fake-runner
+    component: gridcapa-runner
     region: cse
     process: d2cc
   ports:
