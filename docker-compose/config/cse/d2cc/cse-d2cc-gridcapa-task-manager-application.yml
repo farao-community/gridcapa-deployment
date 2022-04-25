@@ -50,6 +50,5 @@ task-server:
       - CGM
       - CRAC
       - GLSK
-      - TARGET-CH
       - NTC
       - NTC-RED

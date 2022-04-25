@@ -40,9 +40,22 @@ spec:
                 secretKeyRef:
                   name: gridcapa-rabbitmq-credentials
                   key: rabbitmq-password
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
+              name: cse-d2cc-adapter-configmap-volume
+            - mountPath: /config/target-ch.xml
+              subPath: target-ch.xml
               name: cse-d2cc-adapter-configmap-volume
           livenessProbe:
             httpGet:
