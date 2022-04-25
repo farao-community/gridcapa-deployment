@@ -60,3 +60,6 @@ resources:
   - cse-idcc-task-notification-server-configmap.yaml
   - cse-idcc-task-notification-server-deployment.yaml
   - cse-idcc-task-notification-server-service.yaml
+  - cse-idcc-export-configmap.yaml
+  - cse-idcc-export-deployment.yaml
+  - cse-idcc-export-service.yaml
