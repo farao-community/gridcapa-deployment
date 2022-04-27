@@ -9,15 +9,18 @@ spring:
       default:
         group: cse-idcc-outputs
       bindings:
-        consumeTaskStatusUpdate-in-0:
-          destination: cse-idcc-task-status-updated
+        consumeTaskDtoUpdate-in-0:
+          destination: cse-idcc-task-updated
       rabbit:
         default:
           consumer:
             auto-bind-dlq: true
             max-attempts: 1
+        consumeTaskDtoUpdate-in-0:
+          consumer:
+            routing-key-expression: '''status'''
     function:
-      definition: consumeTaskStatusUpdate
+      definition: consumeTaskDtoUpdate
 
 task-manager:
   base-url: http://cse-idcc-task-manager:8080
@@ -26,4 +29,4 @@ ftp:
   port: 21
   access-key: gridcapa
   secret-key: gridcapa
-  remote-destination-directory: /data/gridcapa/cse/idcc/outputs
+  remote-relative-destination-directory: cse/idcc/outputs

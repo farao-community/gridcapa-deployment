@@ -87,7 +87,7 @@ services:
     image: delfer/alpine-ftp-server
     restart: always
     environment:
-      USERS: gridcapa|gridcapa|/data/gridcapa/cse/idcc/outputs /data/gridcapa/cse/idcc/cgms /data/gridcapa/cse/idcc/cracs /data/gridcapa/cse/idcc/glsks /data/gridcapa/cse/idcc/ntc /data/gridcapa/cse/idcc/ntcreds /data/gridcapa/cse/idcc/ntc2-at /data/gridcapa/cse/idcc/ntc2-ch /data/gridcapa/cse/idcc/ntc2-fr /data/gridcapa/cse/idcc/ntc2-si /data/gridcapa/cse/idcc/vulcanus
+      USERS: gridcapa|gridcapa|/data/gridcapa /data/gridcapa/cse/idcc/outputs /data/gridcapa/cse/idcc/cgms /data/gridcapa/cse/idcc/cracs /data/gridcapa/cse/idcc/glsks /data/gridcapa/cse/idcc/ntc /data/gridcapa/cse/idcc/ntcreds /data/gridcapa/cse/idcc/ntc2-at /data/gridcapa/cse/idcc/ntc2-ch /data/gridcapa/cse/idcc/ntc2-fr /data/gridcapa/cse/idcc/ntc2-si /data/gridcapa/cse/idcc/vulcanus
     volumes:
       - ftp-data:/data/gridcapa
     ports:
