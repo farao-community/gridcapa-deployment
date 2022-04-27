@@ -16,9 +16,10 @@ spring:
           consumer:
             auto-bind-dlq: true
             max-attempts: 1
-        consumeTaskDtoUpdate-in-0:
-          consumer:
-            routing-key-expression: '''status'''
+        bindings:
+          consumeTaskDtoUpdate-in-0:
+            consumer:
+              binding-routing-key: status
     function:
       definition: consumeTaskDtoUpdate
 
