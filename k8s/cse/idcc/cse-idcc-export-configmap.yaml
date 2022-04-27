@@ -24,21 +24,21 @@ data:
           default:
             group: cse-idcc-outputs
           bindings:
-            consumeTaskStatusUpdate-in-0:
-              destination: cse-idcc-task-status-updated
+            consumeTaskDtoUpdate-in-0:
+              destination: cse-idcc-task-dto-status-updated
           rabbit:
             default:
               consumer:
                 auto-bind-dlq: true
                 max-attempts: 1
         function:
-          definition: consumeTaskStatusUpdate
+          definition: consumeTaskDtoUpdate
 
     task-manager:
-      base-url: http://cse-idcc-task-manager:8080
+      base-url: http://cse-idcc-task-manager
     ftp:
       host: ${SOURCE_HOST}
       port: 21
       access-key: ${SOURCE_USER}
       secret-key: ${SOURCE_PASSWORD}
-      remote-destination-directory: ${SOURCE_BASE_DIRECTORY}/outputs
+      remote-relative-destination-directory: cse/idcc/outputs

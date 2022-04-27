@@ -36,6 +36,8 @@ data:
               destination: cse-idcc-task-manager-logs-exchange
             task-updated:
               destination: cse-idcc-task-updated
+            task-status-updated:
+              destination: cse-idcc-task-dto-status-updated
           rabbit:
             default:
               consumer:
@@ -45,6 +47,9 @@ data:
               consumeMinioEvent-in-0:
                 consumer:
                   exchange-type: fanout
+              task-status-updated:
+                producer:
+                  routing-key-expression: '''status'''
         function:
           definition: consumeMinioEvent;consumeTaskStatusUpdate;consumeTaskEventUpdate
 
@@ -68,7 +73,7 @@ data:
           - INITIAL_CGM
           - FINAL_CGM
       whitelist:
-        - http://minio:9000/
+        - http://gridcapa-minio:9000/
     minio-adapter:
           bucket: gridcapa
           base-path:
