@@ -25,12 +25,15 @@ data:
             group: cse-idcc-outputs
           bindings:
             consumeTaskDtoUpdate-in-0:
-              destination: cse-idcc-task-dto-status-updated
+              destination: cse-idcc-task-updated
           rabbit:
             default:
               consumer:
                 auto-bind-dlq: true
                 max-attempts: 1
+            consumeTaskDtoUpdate-in-0:
+              consumer:
+                routing-key-expression: '''status'''
         function:
           definition: consumeTaskDtoUpdate
 
