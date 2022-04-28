@@ -1,6 +1,6 @@
 spring:
   application:
-    name: cse-idcc-runner
+    name: cse-d2cc-runner
   rabbitmq:
     host: rabbitmq
     port: 5672
@@ -12,31 +12,27 @@ spring:
     stream:
       bindings:
         task-status-update:
-          destination: cse-idcc-task-status-updated
+          destination: cse-d2cc-task-status-updated
 
 logback:
   amqp:
-    exchange: cse-idcc-task-manager-logs-exchange
+    exchange: cse-d2cc-task-manager-logs-exchange
 
 rao-runner-server:
   amqp:
-    client-app-id: cse-idcc-runner
+    client-app-id: cse-d2cc-runner
     queue-name: rao-request-queue
 
-minio-adapter:
+minio:
   bucket: gridcapa
-  base-path:
-  url: http://minio:9000
-  access-key: gridcapa
-  secret-key: gridcapa
+  base-path: ""
+  access:
+    name: gridcapa
+    secret: gridcapa
+  url: http://minio:9000/
 
 cse-cc-runner:
-  zone-id: "Europe/Paris"
   trm: 500
-  outputs:
-    initial-cgm: INITIAL_CGM
-    final-cgm: FINAL_CGM
-    ttc-res: TTC_RES
   xnodes:
     file-path: /home/farao/xnodes/xnodes.xml
   combined-ras:
@@ -65,9 +61,10 @@ cse-cc-runner:
   bindings:
     request:
       destination: cse-request
-      group: cse-idcc-runner
+      group: cse-d2cc-runner
     response:
       destination: cse-response
       expiration: 60000
   whitelist:
     - http://minio:9000/
+

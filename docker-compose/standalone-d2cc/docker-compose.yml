@@ -10,21 +10,21 @@ services:
     depends_on:
       - config-notification-server
       - config-server
-      - cse-idcc-gridcapa-app
-      - cse-idcc-task-notification-server
-      - cse-idcc-task-manager
-      - cse-idcc-job-launcher
+      - cse-d2cc-gridcapa-app
+      - cse-d2cc-task-notification-server
+      - cse-d2cc-task-manager
+      - cse-d2cc-job-launcher
       - rabbitmq
       - filebrowser
       - minio
     networks:
       - gridcapa
 
-  cse-idcc-gridcapa-app:
+  cse-d2cc-gridcapa-app:
     image: farao/gridcapa-app:latest
     volumes:
       - ../config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
-      - ../config/cse/idcc/cse-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+      - ../config/cse/d2cc/cse-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
     networks:
       - gridcapa
 
@@ -87,7 +87,7 @@ services:
     image: delfer/alpine-ftp-server
     restart: always
     environment:
-      USERS: gridcapa|gridcapa|/data/gridcapa /data/gridcapa/cse/idcc/outputs /data/gridcapa/cse/idcc/cgms /data/gridcapa/cse/idcc/cracs /data/gridcapa/cse/idcc/glsks /data/gridcapa/cse/idcc/ntc /data/gridcapa/cse/idcc/ntcreds /data/gridcapa/cse/idcc/ntc2-at /data/gridcapa/cse/idcc/ntc2-ch /data/gridcapa/cse/idcc/ntc2-fr /data/gridcapa/cse/idcc/ntc2-si /data/gridcapa/cse/idcc/vulcanus
+      USERS: gridcapa|gridcapa|/data/gridcapa/cse/d2cc/cgms /data/gridcapa/cse/d2cc/cracs /data/gridcapa/cse/d2cc/glsks /data/gridcapa/cse/d2cc/ntc /data/gridcapa/cse/d2cc/ntcreds /data/gridcapa/cse/d2cc/targetchs
     volumes:
       - ftp-data:/data/gridcapa
     ports:
@@ -129,95 +129,67 @@ services:
     networks:
       - gridcapa
 
-  cse-idcc-cgm-data-bridge:
+  cse-d2cc-cgm-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/idcc/data-bridge/cse-idcc-cgm-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/d2cc/data-bridge/cse-d2cc-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  cse-idcc-crac-data-bridge:
+  cse-d2cc-crac-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/idcc/data-bridge/cse-idcc-crac-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/d2cc/data-bridge/cse-d2cc-gridcapa-crac-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  cse-idcc-glsk-data-bridge:
+  cse-d2cc-glsk-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/idcc/data-bridge/cse-idcc-glsk-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/d2cc/data-bridge/cse-d2cc-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  cse-idcc-ntc-data-bridge:
+  cse-d2cc-ntc-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/idcc/data-bridge/cse-idcc-ntc-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/d2cc/data-bridge/cse-d2cc-gridcapa-ntc-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  cse-idcc-ntc-red-data-bridge:
+  cse-d2cc-ntc-red-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/idcc/data-bridge/cse-idcc-ntc-red-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/d2cc/data-bridge/cse-d2cc-gridcapa-ntc-red-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  cse-idcc-ntc2-at-data-bridge:
+  cse-d2cc-targetch-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/idcc/data-bridge/cse-idcc-ntc2-at-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/d2cc/data-bridge/cse-d2cc-gridcapa-target-ch-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  cse-idcc-ntc2-ch-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ../config/cse/idcc/data-bridge/cse-idcc-ntc2-ch-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-idcc-ntc2-fr-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ../config/cse/idcc/data-bridge/cse-idcc-ntc2-fr-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-idcc-ntc2-si-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ../config/cse/idcc/data-bridge/cse-idcc-ntc2-si-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-idcc-vulcanus-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ../config/cse/idcc/data-bridge/cse-idcc-vulcanus-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-idcc-task-manager:
+  cse-d2cc-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
-      - ../config/cse/idcc/cse-idcc-task-manager-application.yml:/config/application.yml
+      - ../config/cse/d2cc/cse-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  cse-idcc-job-launcher:
+  cse-d2cc-job-launcher:
     image: farao/gridcapa-job-launcher:latest
     volumes:
-      - ../config/cse/idcc/cse-idcc-job-launcher.yml:/config/application.yml
+      - ../config/cse/d2cc/cse-d2cc-gridcapa-job-launcher.yml:/config/application.yml
     networks:
       - gridcapa
 
-  cse-idcc-task-notification-server:
+  cse-d2cc-task-notification-server:
     image: springcloudstream/websocket-sink-rabbit:latest
     restart: always
     volumes:
-      - ../config/cse/idcc/cse-idcc-task-notification-server-application.yml:/config/bootstrap.yml:Z
+      - ../config/cse/d2cc/cse-d2cc-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
     networks:
       - gridcapa
     depends_on:
@@ -242,7 +214,7 @@ services:
   rao-logs-dispatcher:
     image: farao/gridcapa-rao-logs-dispatcher:latest
     volumes:
-      - ../config/cse/idcc/cse-idcc-rao-logs-dispatcher-application.yml:/config/application.yml
+      - ../config/cse/d2cc/cse-d2cc-rao-logs-dispatcher-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://rao-logs-dispatcher/actuator/health" ]
       interval: 30s
@@ -250,7 +222,7 @@ services:
       retries: 5
     depends_on:
       - rao-runner
-      - cse-idcc-task-manager
+      - cse-d2cc-task-manager
       - rabbitmq
     networks:
       - gridcapa
@@ -259,7 +231,7 @@ services:
     image: farao/gridcapa-cse-runner:latest
     volumes:
       - ../config/cse/common/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
-      - ../config/cse/idcc/cse-idcc-runner-application.yml:/config/application.yml
+      - ../config/cse/d2cc/cse-d2cc-gridcapa-runner-application.yml:/config/application.yml
       - ../config/cse/common/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
       - ../config/cse/common/combinedRAs.json:/home/farao/combinedRAs.json
     healthcheck:
@@ -273,27 +245,13 @@ services:
     networks:
       - gridcapa
 
-  cse-idcc-adapter:
+  cse-d2cc-adpater:
     image: farao/gridcapa-cse-adapter:latest
     volumes:
-      - ../config/cse/idcc/cse-idcc-adapter-application.yml:/config/application.yml
+      - ../config/cse/d2cc/cse-d2cc-gridcapa-adapter-application.yml:/config/application.yml
+      - ../config/cse/d2cc/20211209_Targets_CH.xml:/config/target-ch.xml
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://cse-idcc-adapter/actuator/health" ]
-      interval: 30s
-      timeout: 30s
-      retries: 5
-    depends_on:
-      - minio
-      - rabbitmq
-    networks:
-      - gridcapa
-
-  cse-idcc-gridcapa-export:
-    image: farao/gridcapa-export:latest
-    volumes:
-      - ../config/cse/idcc/cse-idcc-gridcapa-export-application.yml:/config/application.yml
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://cse-idcc-gridcapa-export/actuator/health" ]
+      test: [ "CMD", "curl", "-f", "http://cse-d2cc-adapter/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5

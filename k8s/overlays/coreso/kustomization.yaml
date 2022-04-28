@@ -4,10 +4,12 @@ kind: Kustomization
 bases:
   - ../../common
   - ../../cse/idcc
+  - ../../cse/d2cc
+  - ../../cse/common
 
 resources:
   - apps-metadata-server-configmap.yaml
-  - cse-idcc-runner-itools-coreso-configmap.yaml
+  - cse-runner-itools-coreso-configmap.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
   - gridcapa-ingress-minio.yaml
@@ -52,6 +54,8 @@ patches:
       metadata:
         name: cse-idcc-gridcapa-runner
       spec:
+        spec:
+          replicas: 2
         template:
           spec:
             volumes:
@@ -62,13 +66,13 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-idcc-rao-runner
+        name: cse-rao-runner
       spec:
-        replicas: 6
+        replicas: 2
         template:
           spec:
             containers:
-              - name: cse-idcc-rao-runner
+              - name: cse-rao-runner
                 resources:
                   requests:
                     cpu: "10.0"
@@ -80,10 +84,15 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-idcc-gridcapa-runner
+        name: cse-d2cc-gridcapa-runner
       spec:
-        replicas: 6
-
+        replicas: 2
+        template:
+          spec:
+            volumes:
+              - name: cse-d2cc-runner-itools-configmap-volume
+                configMap:
+                  name: cse-runner-itools-coreso-configmap
 configMapGenerator:
   - name: env-configmap
     env: env.properties
@@ -127,7 +136,7 @@ images:
     newTag: v1.0.0
   - name: gridcapa-cse-runner
     newName: docker.io/farao/gridcapa-cse-runner
-    newTag: v1.0.0
+    newTag: v1.1.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.0.0

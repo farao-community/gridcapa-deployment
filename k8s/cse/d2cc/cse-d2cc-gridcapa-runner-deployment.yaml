@@ -1,12 +1,12 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-idcc-gridcapa-runner
+  name: cse-d2cc-gridcapa-runner
   labels:
     app: gridcapa
     component: gridcapa-runner
     region: cse
-    process: idcc
+    process: d2cc
 spec:
   replicas: 2
   selector:
@@ -14,17 +14,17 @@ spec:
       app: gridcapa
       component: gridcapa-runner
       region: cse
-      process: idcc
+      process: d2cc
   template:
     metadata:
       labels:
         app: gridcapa
         component: gridcapa-runner
         region: cse
-        process: idcc
+        process: d2cc
     spec:
       containers:
-        - name: cse-idcc-gridcapa-runner
+        - name: cse-d2cc-gridcapa-runner
           image: gridcapa-cse-runner
           imagePullPolicy: Always
           ports:
@@ -53,16 +53,16 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: cse-idcc-runner-configmap-volume
+              name: cse-d2cc-runner-configmap-volume
             - mountPath: /home/farao/.itools/config.yml
               subPath: config.yml
-              name: cse-idcc-runner-itools-configmap-volume
+              name: cse-d2cc-runner-itools-configmap-volume
             - mountPath: /home/farao/xnodes/xnodes.xml
               subPath: xnodes.xml
-              name: cse-idcc-runner-xnodes-configmap-volume
+              name: cse-d2cc-runner-xnodes-configmap-volume
             - mountPath: /home/farao/combinedRAs.json
               subPath: combinedRAs.json
-              name: cse-idcc-combined-ras-configmap-volume
+              name: cse-d2cc-combined-ras-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -90,15 +90,15 @@ spec:
               memory: "16Gi"
       restartPolicy: Always
       volumes:
-        - name: cse-idcc-runner-configmap-volume
+        - name: cse-d2cc-runner-configmap-volume
           configMap:
-            name: cse-idcc-runner-configmap
-        - name: cse-idcc-runner-itools-configmap-volume
+            name: cse-d2cc-runner-configmap
+        - name: cse-d2cc-runner-itools-configmap-volume
           configMap:
             name: cse-runner-itools-configmap
-        - name: cse-idcc-runner-xnodes-configmap-volume
+        - name: cse-d2cc-runner-xnodes-configmap-volume
           configMap:
             name: cse-runner-xnodes-configmap
-        - name: cse-idcc-combined-ras-configmap-volume
+        - name: cse-d2cc-combined-ras-configmap-volume
           configMap:
             name: cse-combined-ras-configmap

@@ -1,12 +1,12 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-idcc-runner-configmap
+  name: cse-d2cc-runner-configmap
   labels:
     app: gridcapa
     component: gridcapa-runner
     region: cse
-    process: idcc
+    process: d2cc
 data:
   application.yml: |-
     spring:
@@ -21,31 +21,27 @@ data:
         stream:
           bindings:
             task-status-update:
-              destination: cse-idcc-task-status-updated
+              destination: cse-d2cc-task-status-updated
 
     logback:
       amqp:
-        exchange: cse-idcc-task-manager-logs-exchange
+        exchange: cse-d2cc-task-manager-logs-exchange
 
     rao-runner-server:
       amqp:
-        client-app-id: cse-idcc-runner
+        client-app-id: cse-d2cc-runner
         queue-name: cse-rao-request-queue
 
-    minio-adapter:
+    minio:
       bucket: gridcapa
       base-path:
+      access:
+        name: ${MINIO_ACCESS_KEY}
+        secret: ${MINIO_SECRET_KEY}
       url: http://gridcapa-minio:9000/
-      access-key: ${MINIO_ACCESS_KEY}
-      secret-key: ${MINIO_SECRET_KEY}
 
     cse-cc-runner:
-      zone-id: "Europe/Paris"
       trm: 500
-      outputs:
-        initial-cgm: INITIAL_CGM
-        final-cgm: FINAL_CGM
-        ttc-res: TTC_RES
       xnodes:
         file-path: /home/farao/xnodes/xnodes.xml
       combined-ras:
@@ -74,7 +70,7 @@ data:
       bindings:
         request:
           destination: cse-request
-          group: cse-idcc-runner
+          group: cse-d2cc-runner
         response:
           destination: cse-response
           expiration: 60000

@@ -112,6 +112,48 @@ spec:
             pathType: Prefix
           - backend:
               service:
+                name: cse-d2cc-gridcapa-app
+                port:
+                  number: 80
+            path: /cse/d2cc(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: config-server
+                port:
+                  number: 80
+            path: /cse/d2cc/config(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: config-notification-server
+                port:
+                  number: 80
+            path: /cse/d2cc/config-notification(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-d2cc-task-notification-server
+                port:
+                  number: 80
+            path: /cse/d2cc/task-notification(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-d2cc-task-manager
+                port:
+                  number: 80
+            path: /cse/d2cc/task-manager(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-d2cc-gridcapa-job-launcher
+                port:
+                  number: 80
+            path: /cse/d2cc/gridcapa-job-launcher(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
                 name: filebrowser
                 port:
                   number: 80
