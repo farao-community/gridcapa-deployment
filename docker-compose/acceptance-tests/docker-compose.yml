@@ -348,21 +348,6 @@ services:
     networks:
       - gridcapa
 
-  cse-idcc-gridcapa-export:
-    image: farao/gridcapa-export:latest
-    volumes:
-      - ../config/cse/idcc/cse-idcc-gridcapa-export-application.yml:/config/application.yml
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://cse-idcc-gridcapa-export/actuator/health" ]
-      interval: 30s
-      timeout: 30s
-      retries: 5
-    depends_on:
-      - minio
-      - rabbitmq
-    networks:
-      - gridcapa
-
 networks:
   gridcapa:
 
