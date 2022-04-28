@@ -41,3 +41,6 @@ resources:
   - cse-d2cc-task-notification-server-configmap.yaml
   - cse-d2cc-task-notification-server-deployment.yaml
   - cse-d2cc-task-notification-server-service.yaml
+  - cse-d2cc-export-configmap.yaml
+  - cse-d2cc-export-deployment.yaml
+  - cse-d2cc-export-service.yaml
