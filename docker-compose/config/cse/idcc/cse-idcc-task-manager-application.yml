@@ -25,6 +25,8 @@ spring:
           destination: cse-idcc-task-manager-logs-exchange
         task-updated:
           destination: cse-idcc-task-updated
+        task-status-updated:
+          destination: cse-idcc-task-updated
       rabbit:
         default:
           consumer:
@@ -34,6 +36,9 @@ spring:
           consumeMinioEvent-in-0:
             consumer:
               exchange-type: fanout
+          task-status-updated:
+            producer:
+              routing-key-expression: '''status'''
     function:
       definition: consumeMinioEvent;consumeTaskStatusUpdate;consumeTaskEventUpdate
 
