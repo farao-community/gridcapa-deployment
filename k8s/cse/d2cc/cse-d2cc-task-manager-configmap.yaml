@@ -67,6 +67,9 @@ data:
           - TTC_RES
           - INITIAL_CGM
           - FINAL_CGM
+      whitelist:
+        - http://gridcapa-minio:9000/
+
     minio-adapter:
       bucket: gridcapa
       base-path:

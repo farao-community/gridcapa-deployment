@@ -74,9 +74,10 @@ data:
           - FINAL_CGM
       whitelist:
         - http://gridcapa-minio:9000/
+
     minio-adapter:
-          bucket: gridcapa
-          base-path:
-          url: http://gridcapa-minio:9000/
-          access-key: ${MINIO_ACCESS_KEY}
-          secret-key: ${MINIO_SECRET_KEY}
+      bucket: gridcapa
+      base-path:
+      url: http://gridcapa-minio:9000/
+      access-key: ${MINIO_ACCESS_KEY}
+      secret-key: ${MINIO_SECRET_KEY}

@@ -36,6 +36,8 @@ data:
               destination: core-valid-task-manager-logs-exchange
             task-updated:
               destination: core-valid-task-updated
+            task-status-updated:
+              destination: core-valid-task-updated
           rabbit:
             default:
               consumer:
@@ -45,15 +47,13 @@ data:
               consumeMinioEvent-in-0:
                 consumer:
                   exchange-type: fanout
+              task-status-updated:
+                producer:
+                  routing-key-expression: '''status'''
         function:
           definition: consumeMinioEvent;consumeTaskStatusUpdate;consumeTaskEventUpdate
 
     task-server:
-      minio:
-        connect:
-          url: http://gridcapa-minio:9000/
-          access-key: ${MINIO_ACCESS_KEY}
-          secret-key: ${MINIO_SECRET_KEY}
       process:
         tag: CORE_VALID
         timezone: CET
@@ -63,3 +63,12 @@ data:
           - GLSK
           - REFPROG
           - STUDY-POINTS
+      whitelist:
+        - http://gridcapa-minio:9000/
+
+    minio-adapter:
+      bucket: gridcapa
+      base-path:
+      url: http://gridcapa-minio:9000/
+      access-key: ${MINIO_ACCESS_KEY}
+      secret-key: ${MINIO_SECRET_KEY}
