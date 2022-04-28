@@ -333,6 +333,21 @@ services:
     depends_on:
       - rabbitmq
 
+  cse-d2cc-gridcapa-export:
+    image: farao/gridcapa-export:latest
+    volumes:
+      - ../config/cse/d2cc/cse-d2cc-gridcapa-export-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://cse-d2cc-gridcapa-export/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - minio
+      - rabbitmq
+    networks:
+      - gridcapa
+
   rao-runner:
     image: farao/gridcapa-rao-runner:latest
     volumes:
