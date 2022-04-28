@@ -10,6 +10,10 @@ on:
       - gridcapa_task_manager_updated
       - gridcapa_job_launcher_updated
       - gridcapa_rao_logs_dispatcher_updated
+      - gridcapa_export_updated
+      - gridcapa_rao_runner_updated
+      - gridcapa_cse_updated
+      - gridcapa_cse_adapter_updated
 
 jobs:
   deploy-on-azure-dev:
