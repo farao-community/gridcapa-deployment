@@ -3,6 +3,7 @@ kind: Kustomization
 
 bases:
   - ../../../cse/idcc
+  - ../../../cse/d2cc
   - ../common
   - ../core/valid
 
@@ -76,6 +77,9 @@ images:
     newTag: v1.0.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
+    newTag: v1.0.0
+  - name: gridcapa-cse-export
+    newName: docker.io/farao/gridcapa-export
     newTag: v1.0.0
   - name: gridcapa-core-valid-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge

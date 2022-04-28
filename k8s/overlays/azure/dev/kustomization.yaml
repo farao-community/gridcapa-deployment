@@ -2,8 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 bases:
-  - ../../../cse/idcc
+  - ../../../cse/d2cc
   - ../common
+  - ../core/valid
 
 resources:
   - apps-metadata-server-configmap.yaml
@@ -34,14 +35,14 @@ images:
     newName: docker.io/gridsuite/config-server
     newTag: latest
   - name: gridcapa-app
-    newName: docker.io/benrejebmoh/gridcapa-app
-    newTag: dev
+    newName: docker.io/farao/gridcapa-app
+    newTag: latest
   - name: gridcapa-cse-input-data-bridge
-    newName: docker.io/benrejebmoh/gridcapa-data-bridge
-    newTag: dev
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: latest
   - name: gridcapa-cse-adapter
-    newName: docker.io/benrejebmoh/gridcapa-cse-adapter
-    newTag: dev
+    newName: docker.io/farao/gridcapa-cse-adapter
+    newTag: latest
   - name: gridcapa-cse-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
     newTag: latest
@@ -52,14 +53,14 @@ images:
     newName: docker.io/farao/gridcapa-rao-runner
     newTag: latest
   - name: gridcapa-cse-runner
-    newName: docker.io/benrejebmoh/gridcapa-cse-runner
-    newTag: dev
+    newName: docker.io/farao/gridcapa-cse-runner
+    newTag: latest
   - name: gridcapa-cse-task-manager
-    newName: docker.io/benrejebmoh/gridcapa-task-manager
-    newTag: dev
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest
   - name: gridcapa-cse-export
-    newName: docker.io/benrejebmoh/gridcapa-export
-    newTag: dev
+    newName: docker.io/farao/gridcapa-export
+    newTag: latest
   - name: gridcapa-core-valid-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: latest
