@@ -45,4 +45,4 @@ data:
       port: 21
       access-key: ${SOURCE_USER}
       secret-key: ${SOURCE_PASSWORD}
-      remote-relative-destination-directory: cse/d2cc/outputs
+      remote-relative-destination-directory: ${SINK_DIRECTORY}

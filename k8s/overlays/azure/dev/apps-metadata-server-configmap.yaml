@@ -8,9 +8,9 @@ metadata:
 data:
   apps-metadata.json: |-
     [{
-           "name" : "Capa CSE IDCC",
-           "url"  : "/cse/idcc",
-           "appColor" : "#21afe1"
+       "name" : "Capa CSE IDCC",
+       "url"  : "/cse/idcc",
+       "appColor" : "#21afe1"
     },
     {
       "name" : "Capa CSE D2CC",

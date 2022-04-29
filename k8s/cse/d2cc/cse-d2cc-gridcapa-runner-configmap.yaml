@@ -73,7 +73,7 @@ data:
             - FFG.IL14 FFG.IL13 3
       bindings:
         request:
-          destination: cse-request
+          destination: cse-d2cc-request
           group: cse-d2cc-runner
         response:
           destination: cse-response

@@ -23,6 +23,11 @@ data:
         secret: ${MINIO_SECRET_KEY}
       url: http://gridcapa-minio:9000/
 
+    logback:
+      amqp:
+        exchange: cse-runners-logs
+        routing-key: "#"
+
     rao-runner:
       messages:
         rao-request:
