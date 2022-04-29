@@ -60,7 +60,7 @@ patches:
             volumes:
               - name: cse-idcc-runner-itools-configmap-volume
                 configMap:
-                  name: cse-idcc-runner-itools-coreso-configmap
+                  name: cse-runner-itools-coreso-configmap
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1

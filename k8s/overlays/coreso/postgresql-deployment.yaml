@@ -58,6 +58,16 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: cse-idcc-password
+            - name: POSTGRES_CSE_D2CC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-d2cc-user
+            - name: POSTGRES_CSE_D2CC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-d2cc-password
           resources:
             limits:
               cpu: "500m"
