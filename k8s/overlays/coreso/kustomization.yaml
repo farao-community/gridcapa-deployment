@@ -54,8 +54,7 @@ patches:
       metadata:
         name: cse-idcc-gridcapa-runner
       spec:
-        spec:
-          replicas: 2
+        replicas: 2
         template:
           spec:
             volumes:
