@@ -32,7 +32,7 @@ data:
 
     cse-cc-runner:
       binding:
-        destination: cse-request
+        destination: cse-idcc-request
 
     cse-adapter:
       target-process: IDCC

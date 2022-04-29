@@ -32,7 +32,7 @@ data:
 
     cse-cc-runner:
       binding:
-        destination: cse-request
+        destination: cse-d2cc-request
 
     minio-adapter:
       url: http://gridcapa-minio:9000/
