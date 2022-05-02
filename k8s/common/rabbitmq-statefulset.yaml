@@ -61,6 +61,10 @@
               - name: epmd
                 containerPort: 4369
                 protocol: TCP
+            resources:
+              requests:
+                cpu: "2.0"
+                memory: "1Gi"
             livenessProbe:
               exec:
                 # This is just an example. There is no "one true health check" but rather
