@@ -13,16 +13,6 @@
     # headless service that gives network identity to the RMQ nodes, and enables them to cluster
     serviceName: gridcapa-rabbitmq # serviceName is the name of the service that governs this StatefulSet. This service must exist before the StatefulSet, and is responsible for the network identity of the set. Pods get DNS/hostnames that follow the pattern: pod-specific-string.serviceName.default.svc.cluster.local where "pod-specific-string" is managed by the StatefulSet controller.
     replicas: 1
-    volumeClaimTemplates:
-      - metadata:
-          name: gridcapa-rabbitmq-data
-        spec:
-          storageClassName: gridcapa-rabbitmq-storage-class
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: "3Gi"
     template:
       metadata:
         name: gridcapa-rabbitmq
@@ -32,7 +22,7 @@
       spec:
         containers:
           - name: rabbitmq
-            image: docker.io/rabbitmq:management
+            image: rabbitmq
             volumeMounts:
               - name: gridcapa-rabbitmq-data
                 mountPath: "/var/lib/rabbitmq/mnesia"
@@ -71,6 +61,10 @@
               - name: epmd
                 containerPort: 4369
                 protocol: TCP
+            resources:
+              requests:
+                cpu: "2.0"
+                memory: "1Gi"
             livenessProbe:
               exec:
                 # This is just an example. There is no "one true health check" but rather

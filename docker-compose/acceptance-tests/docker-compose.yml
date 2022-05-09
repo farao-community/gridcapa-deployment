@@ -16,7 +16,7 @@ services:
       - core-valid-gridcapa-job-launcher
       - cse-d2cc-gridcapa-app
       - cse-d2cc-task-notification-server
-      - cse-d2cc-gridcapa-task-manager
+      - cse-d2cc-task-manager
       - cse-d2cc-gridcapa-job-launcher
       - rabbitmq
       - filebrowser
@@ -233,56 +233,65 @@ services:
     depends_on:
       - rabbitmq
 
+  cse-d2cc-gridcapa-adpater:
+    image: farao/gridcapa-cse-adapter:latest
+    volumes:
+      - ../config/cse/d2cc/cse-d2cc-gridcapa-adapter-application.yml:/config/application.yml
+      - ../config/cse/d2cc/20211209_Targets_CH.xml:/config/target-ch.xml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://cse-d2cc-adapter/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - minio
+      - rabbitmq
+    networks:
+      - gridcapa
+
   cse-d2cc-gridcapa-cgm-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/d2cc/cse-d2cc-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/d2cc/data-bridge/cse-d2cc-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
   cse-d2cc-gridcapa-crac-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/d2cc/cse-d2cc-gridcapa-crac-data-bridge-application.yml:/config/application.yml
+      - ../config/cse/d2cc/data-bridge/cse-d2cc-gridcapa-crac-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
   cse-d2cc-gridcapa-glsk-data-bridge:
       image: farao/gridcapa-data-bridge:latest
       volumes:
-        - ../config/cse/d2cc/cse-d2cc-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
+        - ../config/cse/d2cc/data-bridge/cse-d2cc-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
 
   cse-d2cc-gridcapa-ntc-data-bridge:
       image: farao/gridcapa-data-bridge:latest
       volumes:
-        - ../config/cse/d2cc/cse-d2cc-gridcapa-ntc-data-bridge-application.yml:/config/application.yml
+        - ../config/cse/d2cc/data-bridge/cse-d2cc-gridcapa-ntc-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
 
   cse-d2cc-gridcapa-ntc-red-data-bridge:
       image: farao/gridcapa-data-bridge:latest
       volumes:
-        - ../config/cse/d2cc/cse-d2cc-gridcapa-ntc-red-data-bridge-application.yml:/config/application.yml
+        - ../config/cse/d2cc/data-bridge/cse-d2cc-gridcapa-ntc-red-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
 
   cse-d2cc-gridcapa-target-ch-data-bridge:
       image: farao/gridcapa-data-bridge:latest
       volumes:
-        - ../config/cse/d2cc/cse-d2cc-gridcapa-target-ch-data-bridge-application.yml:/config/application.yml
+        - ../config/cse/d2cc/data-bridge/cse-d2cc-gridcapa-target-ch-data-bridge-application.yml:/config/application.yml
       networks:
         - gridcapa
 
-  cse-d2cc-gridcapa-vulcanus-data-bridge:
-      image: farao/gridcapa-data-bridge:latest
-      volumes:
-        - ../config/cse/d2cc/cse-d2cc-gridcapa-vulcanus-data-bridge-application.yml:/config/application.yml
-      networks:
-        - gridcapa
-
-  cse-d2cc-gridcapa-task-manager:
+  cse-d2cc-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
       - ../config/cse/d2cc/cse-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
@@ -296,10 +305,21 @@ services:
     networks:
       - gridcapa
 
-  cse-d2cc-gridcapa-fake-runner:
-    image: farao/gridcapa-fake-runner:latest
+  cse-d2cc-gridcapa-runner:
+    image: farao/gridcapa-cse-runner:latest
     volumes:
-      - ../config/cse/d2cc/cse-d2cc-gridcapa-fake-runner.yml:/config/application.yml
+      - ../config/cse/common/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
+      - ../config/cse/d2cc/cse-d2cc-gridcapa-runner-application.yml:/config/application.yml
+      - ../config/cse/common/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
+      - ../config/cse/common/combinedRAs.json:/home/farao/combinedRAs.json
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://cse-cc-runner/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - minio
+      - rabbitmq
     networks:
       - gridcapa
 
@@ -312,6 +332,21 @@ services:
       - gridcapa
     depends_on:
       - rabbitmq
+
+  cse-d2cc-gridcapa-export:
+    image: farao/gridcapa-export:latest
+    volumes:
+      - ../config/cse/d2cc/cse-d2cc-gridcapa-export-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://cse-d2cc-gridcapa-export/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - minio
+      - rabbitmq
+    networks:
+      - gridcapa
 
   rao-runner:
     image: farao/gridcapa-rao-runner:latest

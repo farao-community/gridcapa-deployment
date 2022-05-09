@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: config-notification-server
-          image: docker.io/gridsuite/config-notification-server:latest
+          image: gridsuite-config-notification-server
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

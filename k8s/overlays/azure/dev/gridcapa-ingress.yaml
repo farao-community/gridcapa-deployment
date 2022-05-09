@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite ^/cse/idcc$ /cse/idcc/ permanent;
       rewrite ^/cse/d2cc$ /cse/d2cc/ permanent;
       rewrite ^/core/valid$ /core/valid/ permanent;
       rewrite ^/cse/valid/d2cc$ /cse/valid/d2cc/ permanent;
@@ -103,6 +104,48 @@ spec:
             pathType: Prefix
           #endregion
           #region CSE capa D2CC
+          - backend:
+              service:
+                name: cse-idcc-gridcapa-app
+                port:
+                  number: 80
+            path: /cse/idcc(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: config-server
+                port:
+                  number: 80
+            path: /cse/idcc/config(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: config-notification-server
+                port:
+                  number: 80
+            path: /cse/idcc/config-notification(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-idcc-task-notification-server
+                port:
+                  number: 80
+            path: /cse/idcc/task-notification(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-idcc-task-manager
+                port:
+                  number: 80
+            path: /cse/idcc/task-manager(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-idcc-gridcapa-job-launcher
+                port:
+                  number: 80
+            path: /cse/idcc/gridcapa-job-launcher(/|$)(.*)
+            pathType: Prefix
           - backend:
               service:
                 name: cse-d2cc-gridcapa-app

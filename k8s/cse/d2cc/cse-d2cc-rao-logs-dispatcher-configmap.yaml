@@ -23,7 +23,7 @@ data:
             group: cse-d2cc
           bindings:
             dispatchRaoEvents-in-0:
-              destination: rao-runners-logs-exchange
+              destination: cse-runners-logs
             dispatchRaoEvents-out-0:
               destination: cse-d2cc-task-manager-logs-exchange
           rabbit:

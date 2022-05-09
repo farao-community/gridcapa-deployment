@@ -30,22 +30,50 @@ data:
     rao-runner-server:
       amqp:
         client-app-id: cse-idcc-runner
-        queue-name: cse-idcc-rao-request-queue
+        queue-name: cse-rao-request-queue
 
-    minio:
+    minio-adapter:
       bucket: gridcapa
       base-path:
-      access:
-        name: ${MINIO_ACCESS_KEY}
-        secret: ${MINIO_SECRET_KEY}
       url: http://gridcapa-minio:9000/
+      access-key: ${MINIO_ACCESS_KEY}
+      secret-key: ${MINIO_SECRET_KEY}
 
     cse-cc-runner:
+      zone-id: "Europe/Paris"
+      trm: 500
+      outputs:
+        initial-cgm: INITIAL_CGM
+        final-cgm: FINAL_CGM
+        ttc-res: TTC_RES
       xnodes:
         file-path: /home/farao/xnodes/xnodes.xml
+      combined-ras:
+        file-path: /home/farao/combinedRAs.json
+      mendrisio:
+        mendrisio-cagno-line:
+          target-ch-id: ml_0001
+          ntc-id: ml_mendrisio-cagno
+        mendrisio-pst-id: SMENDR3T SMENDR32 1
+        mendrisio-node-id: SMENDR3T
+      pisa:
+        link1:
+          node-fr: FFG.IL12
+          node-it: FFG.IL11
+          fictive-lines:
+            - FFG.IL12 FFG.IL11 1
+            - FFG.IL12 FFG.IL11 2
+            - FFG.IL12 FFG.IL11 3
+        link2:
+          node-fr: FFG.IL14
+          node-it: FFG.IL13
+          fictive-lines:
+            - FFG.IL14 FFG.IL13 1
+            - FFG.IL14 FFG.IL13 2
+            - FFG.IL14 FFG.IL13 3
       bindings:
         request:
-          destination: cse-request
+          destination: cse-idcc-request
           group: cse-idcc-runner
         response:
           destination: cse-response

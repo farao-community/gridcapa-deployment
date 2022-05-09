@@ -36,6 +36,8 @@ data:
               destination: cse-idcc-task-manager-logs-exchange
             task-updated:
               destination: cse-idcc-task-updated
+            task-status-updated:
+              destination: cse-idcc-task-updated
           rabbit:
             default:
               consumer:
@@ -45,15 +47,13 @@ data:
               consumeMinioEvent-in-0:
                 consumer:
                   exchange-type: fanout
+              task-status-updated:
+                producer:
+                  routing-key-expression: '''status'''
         function:
           definition: consumeMinioEvent;consumeTaskStatusUpdate;consumeTaskEventUpdate
 
     task-server:
-      minio:
-        connect:
-          url: http://gridcapa-minio:9000/
-          access-key: ${MINIO_ACCESS_KEY}
-          secret-key: ${MINIO_SECRET_KEY}
       process:
         tag: CSE_IDCC
         timezone: CET
@@ -68,3 +68,16 @@ data:
           - NTC
           - NTC-RED
           - VULCANUS
+        outputs:
+          - TTC_RES
+          - INITIAL_CGM
+          - FINAL_CGM
+      whitelist:
+        - http://gridcapa-minio:9000/
+
+    minio-adapter:
+      bucket: gridcapa
+      base-path:
+      url: http://gridcapa-minio:9000/
+      access-key: ${MINIO_ACCESS_KEY}
+      secret-key: ${MINIO_SECRET_KEY}

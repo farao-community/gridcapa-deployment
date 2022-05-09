@@ -6,3 +6,4 @@ bases:
 
 resources:
   - rao-runner-autoscaler.yaml
+  - core-valid-minio-cleaning-cronjob.yaml

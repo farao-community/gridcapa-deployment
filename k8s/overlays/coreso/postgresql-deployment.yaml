@@ -58,6 +58,16 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: cse-idcc-password
+            - name: POSTGRES_CSE_D2CC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-d2cc-user
+            - name: POSTGRES_CSE_D2CC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-d2cc-password
           resources:
             limits:
               cpu: "500m"
@@ -67,7 +77,7 @@ spec:
               memory: 1Gi
           volumeMounts:
             - name: postgres-data
-              mountPath: /bitnami/postgresql
+              mountPath: /bitnami/postgres
             - name: postgres-init
               subPath: init.sh
               mountPath: /docker-entrypoint-initdb.d/init.sh

@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: cse-d2cc-cgm-data-bridge
-          image: docker.io/farao/gridcapa-data-bridge:latest
+          image: gridcapa-cse-input-data-bridge
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
