@@ -58,7 +58,7 @@ task-server:
       - NTC-RED
       - VULCANUS
     optional-inputs:
-      - FORCED-PRAS
+      - USER-CONFIG
     outputs:
       - TTC_RES
       - INITIAL_CGM

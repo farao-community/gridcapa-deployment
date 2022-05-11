@@ -54,7 +54,7 @@ images:
     newName: docker.io/farao/gridcapa-rao-runner
     newTag: latest
   - name: gridcapa-cse-runner
-    newName: docker.io/farao/gridcapa-cse-runner
+    newName: docker.io/farao/gridcapa-cse-cc-import-runner
     newTag: latest
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
