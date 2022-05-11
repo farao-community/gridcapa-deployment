@@ -95,7 +95,7 @@ services:
     image: delfer/alpine-ftp-server
     restart: always
     environment:
-      USERS: gridcapa|gridcapa|/data/gridcapa/cse/d2cc/cgms /data/gridcapa/cse/d2cc/cracs /data/gridcapa/cse/d2cc/glsks /data/gridcapa/cse/d2cc/ntc /data/gridcapa/cse/d2cc/ntcreds /data/gridcapa/cse/d2cc/targetchs /data/gridcapa/cse/d2cc/vulcanus /data/gridcapa/cse/d2cc/outputs /data/gridcapa/core/valid/cgms /data/gridcapa/core/valid/cbcoras /data/gridcapa/core/valid/refprogs /data/gridcapa/core/valid/studypoints /data/gridcapa/core/valid/glsks /data/gridcapa/core/valid/outputs
+      USERS: gridcapa|gridcapa|/data/gridcapa/cse/d2cc/cgms /data/gridcapa/cse/d2cc/cracs /data/gridcapa/cse/d2cc/glsks /data/gridcapa/cse/d2cc/ntc /data/gridcapa/cse/d2cc/ntcreds /data/gridcapa/cse/d2cc/targetchs /data/gridcapa/cse/d2cc/vulcanus /data/gridcapa/cse/d2cc/user-configs /data/gridcapa/cse/d2cc/outputs /data/gridcapa/core/valid/cgms /data/gridcapa/core/valid/cbcoras /data/gridcapa/core/valid/refprogs /data/gridcapa/core/valid/studypoints /data/gridcapa/core/valid/glsks /data/gridcapa/core/valid/outputs
     volumes:
       - ftp-data:/data/gridcapa
     ports:
@@ -291,6 +291,13 @@ services:
       networks:
         - gridcapa
 
+  cse-d2cc-user-config-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ../config/cse/d2cc/data-bridge/cse-d2cc-user-config-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
   cse-d2cc-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
@@ -306,7 +313,7 @@ services:
       - gridcapa
 
   cse-d2cc-gridcapa-runner:
-    image: farao/gridcapa-cse-runner:latest
+    image: farao/gridcapa-cse-cc-import-runner:latest
     volumes:
       - ../config/cse/common/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
       - ../config/cse/d2cc/cse-d2cc-gridcapa-runner-application.yml:/config/application.yml

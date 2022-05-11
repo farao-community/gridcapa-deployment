@@ -134,7 +134,7 @@ images:
     newName: docker.io/farao/gridcapa-rao-runner
     newTag: v1.0.0
   - name: gridcapa-cse-runner
-    newName: docker.io/farao/gridcapa-cse-runner
+    newName: docker.io/farao/gridcapa-cse-cc-import-runner
     newTag: v1.2.1
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager

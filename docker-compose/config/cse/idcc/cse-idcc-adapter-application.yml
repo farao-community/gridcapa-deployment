@@ -19,3 +19,5 @@ cse-cc-runner:
 
 cse-adapter:
   target-process: IDCC
+  whitelist:
+    - http://minio:9000/

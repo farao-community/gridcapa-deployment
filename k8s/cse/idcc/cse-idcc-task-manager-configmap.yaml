@@ -68,6 +68,8 @@ data:
           - NTC
           - NTC-RED
           - VULCANUS
+        optional-inputs:
+          - USER-CONFIG
         outputs:
           - TTC_RES
           - INITIAL_CGM
