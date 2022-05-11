@@ -45,6 +45,8 @@ data:
       target-process: D2CC
       target-ch-fs-location: /config/target-ch.xml
       target-ch-minio-location: TARGET_CH
+      whitelist:
+        - http://minio:9000/
 
   target-ch.xml: |-
     <?xml version="1.0" encoding="UTF-8"?>
