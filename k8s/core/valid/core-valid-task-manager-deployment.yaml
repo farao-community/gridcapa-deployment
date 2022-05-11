@@ -101,7 +101,7 @@ spec:
               memory: "1Gi"
       initContainers:
         - name: minio-notifications
-          image: docker.io/minio/mc
+          image: minio-mc
           env:
             - name: MINIO_ACCESS_KEY
               valueFrom:
