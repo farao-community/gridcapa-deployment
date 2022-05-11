@@ -356,7 +356,7 @@ services:
       - gridcapa
 
   rao-runner:
-    image: farao/gridcapa-rao-runner:v1.0.0
+    image: farao/gridcapa-rao-runner:latest
     volumes:
       - ../config/rao-runner-application.yml:/config/application.yml
     healthcheck:
