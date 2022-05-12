@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-idcc-user-config-data-bridge
+  name: cse-d2cc-user-config-data-bridge
   labels:
     app: gridcapa
     component: gridcapa-user-config-data-bridge
