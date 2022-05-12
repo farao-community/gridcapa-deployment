@@ -41,7 +41,7 @@ images:
     newName: docker.io/springcloudstream/websocket-sink-rabbit
     newTag: 2021.0.x
   - name: apps-metadata-server
-    newName: bitnami/apache
+    newName: docker.io/bitnami/apache
     newTag: "2.4"
   - name: rabbitmq
     newName: docker.io/rabbitmq
@@ -84,25 +84,25 @@ images:
     newTag: v1.0.0
   - name: gridcapa-core-valid-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-core-valid-output-data-bridge
     newName: docker.io/farao/gridcapa-output-data-bridge
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-core-valid-adapter
     newName: docker.io/farao/gridcapa-core-valid-adapter
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-core-valid-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-core-valid-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-core-valid-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-core-valid-runner
     newName: docker.io/farao/gridcapa-core-valid
-    newTag: latest
+    newTag: v1.0.0
   - name: gridcapa-core-valid-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: latest
+    newTag: v1.0.0
