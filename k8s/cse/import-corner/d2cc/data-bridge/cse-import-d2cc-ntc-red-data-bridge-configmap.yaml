@@ -1,0 +1,36 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-import-d2cc-ntc-red-data-bridge-configmap
+  labels:
+    app: gridcapa-data-bridge
+    component: gridcapa-ntc-red-data-bridge
+    region: cse
+    process: import-d2cc
+data:
+  application.yml: |-
+    data-bridge:
+      zone-id: "Europe/Paris"
+      target-process: IMPORT_CSE_D2CC
+      file-type: NTC-RED
+      file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*.(xml|XML)
+      time-validity: daily
+      remote-file-regex:
+        - ".*.zip"
+        - "[0-9]{8}.*.(xml|XML)"
+      sources:
+        ftp:
+          active: true
+          host: ${SOURCE_HOST}
+          port: ${SOURCE_PORT}
+          username: ${SOURCE_USER}
+          password: ${SOURCE_PASSWORD}
+          base-directory: ${SOURCE_BASE_DIRECTORY}/ntcreds
+          polling-delay-in-ms: 5000
+      sinks:
+        minio:
+          url: http://gridcapa-minio:9000
+          access-key: ${MINIO_ACCESS_KEY}
+          secret-key: ${MINIO_SECRET_KEY}
+          bucket: ${MINIO_BUCKET}
+          base-directory: ${MINIO_BASE_DIRECTORY}/NTCREDs

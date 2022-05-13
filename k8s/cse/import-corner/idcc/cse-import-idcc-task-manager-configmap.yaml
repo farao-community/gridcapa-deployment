@@ -1,0 +1,85 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-import-idcc-task-manager-configmap
+  labels:
+    app: gridcapa
+    component: task-manager
+    region: cse
+    process: idcc
+data:
+  application.yml: |-
+    spring:
+      datasource:
+        url: jdbc:postgresql://${POSTGRES_HOST}:5432/${POSTGRES_DB}
+        driverClassName: org.postgresql.Driver
+        username: ${POSTGRES_USER}
+        password: ${POSTGRES_PASSWORD}
+      jpa:
+        hibernate:
+          ddl-auto: update
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        port: 5672
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+      cloud:
+        stream:
+          default:
+            group: cse-import-idcc-task-manager
+          bindings:
+            consumeMinioEvent-in-0:
+              destination: gridcapa.minio.events
+            consumeTaskStatusUpdate-in-0:
+              destination: cse-import-idcc-task-status-updated
+            consumeTaskEventUpdate-in-0:
+              destination: cse-import-idcc-task-manager-logs-exchange
+            task-updated:
+              destination: cse-import-idcc-task-updated
+            task-status-updated:
+              destination: cse-import-idcc-task-updated
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+            bindings:
+              consumeMinioEvent-in-0:
+                consumer:
+                  exchange-type: fanout
+              task-status-updated:
+                producer:
+                  routing-key-expression: '''status'''
+        function:
+          definition: consumeMinioEvent;consumeTaskStatusUpdate;consumeTaskEventUpdate
+
+    task-server:
+      process:
+        tag: CSE_IDCC
+        timezone: CET
+        inputs:
+          - CGM
+          - CRAC
+          - GLSK
+          - NTC2-AT
+          - NTC2-CH
+          - NTC2-FR
+          - NTC2-SI
+          - NTC
+          - NTC-RED
+          - VULCANUS
+        optional-inputs:
+          - USER-CONFIG
+        outputs:
+          - TTC_RES
+          - INITIAL_CGM
+          - FINAL_CGM
+      whitelist:
+        - http://gridcapa-minio:9000/
+
+    minio-adapter:
+      bucket: gridcapa
+      base-path:
+      url: http://gridcapa-minio:9000/
+      access-key: ${MINIO_ACCESS_KEY}
+      secret-key: ${MINIO_SECRET_KEY}

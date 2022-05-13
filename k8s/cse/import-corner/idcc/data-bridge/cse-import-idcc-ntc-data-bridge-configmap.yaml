@@ -1,0 +1,36 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-import-idcc-ntc-data-bridge-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-ntc-data-bridge-configmap
+    region: cse
+    process: idcc
+data:
+  application.yml: |-
+    data-bridge:
+      zone-id: "Europe/Paris"
+      target-process: CSE_IDCC
+      file-type: NTC
+      file-regex: (?<year>[0-9]{4}).*.(xml|XML)
+      time-validity: yearly
+      remote-file-regex:
+        - ".*.zip"
+        - "[0-9]{4}.*.(xml|XML)"
+      sources:
+        ftp:
+          active: true
+          host: ${SOURCE_HOST}
+          port: ${SOURCE_PORT}
+          username: ${SOURCE_USER}
+          password: ${SOURCE_PASSWORD}
+          base-directory: ${SOURCE_BASE_DIRECTORY}/ntc
+          polling-delay-in-ms: 5000
+      sinks:
+        minio:
+          url: http://gridcapa-minio:9000
+          access-key: ${MINIO_ACCESS_KEY}
+          secret-key: ${MINIO_SECRET_KEY}
+          bucket: ${MINIO_BUCKET}
+          base-directory: ${MINIO_BASE_DIRECTORY}/NTC

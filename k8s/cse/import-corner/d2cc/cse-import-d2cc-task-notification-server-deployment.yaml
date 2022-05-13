@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cse-import-d2cc-task-notification-server
+  labels:
+    app: gridcapa
+    component: task-notification-server
+    region: cse
+    process: import-d2cc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: task-notification-server
+      region: cse
+      process: import-d2cc
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: task-notification-server
+        region: cse
+        process: import-d2cc
+    spec:
+      containers:
+        - name: task-notification-server
+          image: gridcapa-task-notification-server
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9292
+          env:
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
+          volumeMounts:
+            - mountPath: /config
+              name: task-notification-server-configmap-volume
+            - mountPath: /tmp
+              name: temp-volume
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            readOnlyRootFilesystem: true
+          resources:
+            requests:
+              cpu: "0.1"
+              memory: "384Mi"
+            limits:
+              cpu: "1.0"
+              memory: "384Mi"
+          livenessProbe:
+            tcpSocket:
+              port: 9292
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
+          readinessProbe:
+            tcpSocket:
+              port: 9292
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
+      restartPolicy: Always
+      volumes:
+        - name: task-notification-server-configmap-volume
+          configMap:
+            name: cse-import-d2cc-task-notification-server-configmap
+        - name: temp-volume
+          emptyDir: {}
+
