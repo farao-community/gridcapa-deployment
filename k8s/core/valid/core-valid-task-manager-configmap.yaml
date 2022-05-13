@@ -63,6 +63,7 @@ data:
           - GLSK
           - REFPROG
           - STUDY-POINTS
+        outputs:
       whitelist:
         - http://gridcapa-minio:9000/
 
