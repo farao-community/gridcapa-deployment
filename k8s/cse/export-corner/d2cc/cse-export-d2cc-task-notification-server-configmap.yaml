@@ -1,0 +1,29 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-export-d2cc-task-notification-server-configmap
+  labels:
+    app: gridcapa-task-notification-server
+    component: gridcapa-task-notification-server
+    region: cse
+    process: export-d2cc
+data:
+  application.yml: |-
+    spring:
+      cloud:
+        stream:
+          bindings:
+            input:
+              destination: cse-export-d2cc-task-updated
+              group: cse-export-d2cc-task-notification
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+        config:
+          enabled: false
+      rabbitmq:
+        addresses: gridcapa-rabbitmq:5672
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}

@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cse-d2cc-task-notification-server
+  name: cse-export-d2cc-task-notification-server
   labels:
-    app: gridcapa
-    component: task-notification-server
+    app: gridcapa-task-notification-server
+    component: gridcapa-task-notification-server
     region: cse
-    process: d2cc
+    process: export-d2cc
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gridcapa
-      component: task-notification-server
+      app: gridcapa-task-notification-server
+      component: gridcapa-task-notification-server
       region: cse
-      process: d2cc
+      process: export-d2cc
   template:
     metadata:
       labels:
-        app: gridcapa
-        component: task-notification-server
+        app: gridcapa-task-notification-server
+        component: gridcapa-task-notification-server
         region: cse
-        process: d2cc
+        process: export-d2cc
     spec:
       containers:
-        - name: task-notification-server
+        - name: cse-export-d2cc-task-notification-server
           image: gridcapa-task-notification-server
           imagePullPolicy: IfNotPresent
           ports:
@@ -42,7 +42,7 @@ spec:
                   key: rabbitmq-password
           volumeMounts:
             - mountPath: /config
-              name: task-notification-server-configmap-volume
+              name: cse-export-d2cc-task-notification-server-configmap-volume
             - mountPath: /tmp
               name: temp-volume
           securityContext:
@@ -75,9 +75,9 @@ spec:
             successThreshold: 1
       restartPolicy: Always
       volumes:
-        - name: task-notification-server-configmap-volume
+        - name: cse-export-d2cc-task-notification-server-configmap-volume
           configMap:
-            name: cse-d2cc-task-notification-server-configmap
+            name: cse-export-d2cc-task-notification-server-configmap
         - name: temp-volume
           emptyDir: {}
 

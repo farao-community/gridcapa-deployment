@@ -1,31 +1,31 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-d2cc-rao-logs-dispatcher
+  name: cse-export-idcc-job-launcher
   labels:
-    app: gridcapa
-    component: rao-logs-dispatcher
+    app: gridcapa-job-launcher
+    component: gridcapa-job-launcher
     region: cse
-    process: d2cc
+    process: export-idcc
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gridcapa
-      component: rao-logs-dispatcher
+      app: gridcapa-job-launcher
+      component: gridcapa-job-launcher
       region: cse
-      process: d2cc
+      process: export-idcc
   template:
     metadata:
       labels:
-        app: gridcapa
-        component: rao-logs-dispatcher
+        app: gridcapa-job-launcher
+        component: gridcapa-job-launcher
         region: cse
-        process: d2cc
+        process: export-idcc
     spec:
       containers:
-        - name: cse-d2cc-rao-logs-dispatcher
-          image: gridcapa-cse-rao-logs-dispatcher
+        - name: cse-export-idcc-job-launcher
+          image: gridcapa-cse-job-launcher
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -43,7 +43,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: cse-d2cc-rao-logs-dispatcher-configmap-volume
+              name: cse-export-idcc-job-launcher-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -64,13 +64,13 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              cpu: "0.5"
-              memory: "500Mi"
+              cpu: "0.1"
+              memory: "384Mi"
             limits:
-              cpu: "2.0"
-              memory: "1Gi"
+              cpu: "0.5"
+              memory: "384Mi"
       restartPolicy: Always
       volumes:
-        - name: cse-d2cc-rao-logs-dispatcher-configmap-volume
+        - name: cse-export-idcc-job-launcher-configmap-volume
           configMap:
-            name: cse-d2cc-rao-logs-dispatcher-configmap
+            name: cse-export-idcc-job-launcher-configmap

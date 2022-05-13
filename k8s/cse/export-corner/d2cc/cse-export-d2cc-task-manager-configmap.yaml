@@ -1,12 +1,12 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-d2cc-task-manager-configmap
+  name: cse-export-d2cc-task-manager-configmap
   labels:
-    app: gridcapa
-    component: task-manager
+    app: gridcapa-task-manager
+    component: gridcapa-task-manager
     region: cse
-    process: d2cc
+    process: export-d2cc
 data:
   application.yml: |-
     spring:
@@ -26,18 +26,18 @@ data:
       cloud:
         stream:
           default:
-            group: cse-d2cc-task-manager
+            group: cse-export-d2cc-task-manager
           bindings:
             consumeMinioEvent-in-0:
               destination: gridcapa.minio.events
             consumeTaskStatusUpdate-in-0:
-              destination: cse-d2cc-task-status-updated
+              destination: cse-export-d2cc-task-status-updated
             consumeTaskEventUpdate-in-0:
-              destination: cse-d2cc-task-manager-logs-exchange
+              destination: cse-export-d2cc-task-manager-logs-exchange
             task-updated:
-              destination: cse-d2cc-task-updated
+              destination: cse-export-d2cc-task-updated
             task-status-updated:
-              destination: cse-d2cc-task-updated
+              destination: cse-export-d2cc-task-updated
           rabbit:
             default:
               consumer:
@@ -55,19 +55,15 @@ data:
 
     task-server:
       process:
-        tag: CSE_D2CC
+        tag: EXPORT_CSE_D2CC
         timezone: CET
         inputs:
           - CGM
           - CRAC
-          - GLSK
-          - NTC
-          - NTC-RED
         optional-inputs:
-          - USER-CONFIG
+          -
         outputs:
           - TTC_RES
-          - INITIAL_CGM
           - FINAL_CGM
       whitelist:
         - http://gridcapa-minio:9000/

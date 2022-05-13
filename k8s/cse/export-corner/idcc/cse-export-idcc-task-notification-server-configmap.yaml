@@ -1,12 +1,12 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-d2cc-task-notification-server-configmap
+  name: cse-export-idcc-task-notification-server-configmap
   labels:
-    app: gridcapa
-    component: task-notification-server
+    app: gridcapa-task-notification-server
+    component: gridcapa-task-notification-server
     region: cse
-    process: d2cc
+    process: export-idcc
 data:
   application.yml: |-
     spring:
@@ -14,8 +14,8 @@ data:
         stream:
           bindings:
             input:
-              destination: cse-d2cc-task-updated
-              group: cse-d2cc-task-notification
+              destination: cse-export-idcc-task-updated
+              group: cse-export-idcc-task-notification
           rabbit:
             default:
               consumer:
