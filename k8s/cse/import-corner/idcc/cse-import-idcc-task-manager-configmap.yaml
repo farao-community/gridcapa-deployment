@@ -55,7 +55,7 @@ data:
 
     task-server:
       process:
-        tag: CSE_IDCC
+        tag: CSE_IMPORT_IDCC
         timezone: CET
         inputs:
           - CGM

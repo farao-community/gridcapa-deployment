@@ -42,7 +42,7 @@ data:
       secret-key: ${MINIO_SECRET_KEY}
 
     cse-adapter:
-      target-process: IMPORT_CSE_D2CC
+      target-process: CSE_IMPORT_D2CC
       target-ch-fs-location: /config/target-ch.xml
       target-ch-minio-location: TARGET_CH
       whitelist:
