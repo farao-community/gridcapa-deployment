@@ -3,7 +3,6 @@ kind: Kustomization
 
 bases:
   - ../../../cse/d2cc
-  - ../../../cse/idcc
   - ../../../cse/common
   - ../common
   - ../core/valid
