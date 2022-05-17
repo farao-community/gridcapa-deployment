@@ -6,7 +6,7 @@ metadata:
     app: gridcapa
     component: gridcapa-user-config-data-bridge
     region: cse
-    process: idcc
+    process: d2cc
 
 spec:
   selector:
@@ -14,17 +14,17 @@ spec:
       app: gridcapa
       component: gridcapa-user-config-data-bridge
       region: cse
-      process: idcc
+      process: d2cc
   template:
     metadata:
       labels:
         app: gridcapa
         component: gridcapa-user-config-data-bridge
         region: cse
-        process: idcc
+        process: d2cc
     spec:
       containers:
-        - name: cse-idcc-user-config-data-bridge
+        - name: cse-d2cc-user-config-data-bridge
           image: gridcapa-cse-input-data-bridge
           imagePullPolicy: Always
           ports:
@@ -34,12 +34,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SOURCE_HOST_CSE_IDCC
+                  key: GRIDCAPA_SOURCE_HOST_CSE_D2CC
             - name: SOURCE_PORT
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SOURCE_PORT_CSE_IDCC
+                  key: GRIDCAPA_SOURCE_PORT_CSE_D2CC
             - name: SOURCE_USER
               valueFrom:
                 secretKeyRef:
@@ -54,7 +54,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CSE_IDCC
+                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CSE_D2CC
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
@@ -69,16 +69,16 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_MINIO_BUCKET_CSE_IDCC
+                  key: GRIDCAPA_MINIO_BUCKET_CSE_D2CC
             - name: MINIO_BASE_DIRECTORY
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CSE_IDCC
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CSE_D2CC
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: cse-idcc-user-config-data-bridge-configmap-volume
+              name: cse-d2cc-user-config-data-bridge-configmap-volume
           livenessProbe:
             tcpSocket:
               port: 8080
@@ -105,6 +105,6 @@ spec:
               memory: "384Mi"
       restartPolicy: Always
       volumes:
-        - name: cse-idcc-user-config-data-bridge-configmap-volume
+        - name: cse-d2cc-user-config-data-bridge-configmap-volume
           configMap:
-            name: cse-idcc-user-config-data-bridge-configmap
+            name: cse-d2cc-user-config-data-bridge-configmap
