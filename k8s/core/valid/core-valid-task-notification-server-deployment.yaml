@@ -54,9 +54,6 @@ spec:
             requests:
               cpu: "0.1"
               memory: "384Mi"
-            limits:
-              cpu: "1.0"
-              memory: "384Mi"
           livenessProbe:
             tcpSocket:
               port: 9292
