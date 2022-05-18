@@ -30,4 +30,4 @@ data:
 
     websocket:
       consumer:
-        threads: 2
+        threads: 4
