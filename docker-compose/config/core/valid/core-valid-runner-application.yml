@@ -9,7 +9,7 @@ spring:
     username: gridcapa
     password: gridcapa
     template:
-      reply-timeout: 6000000
+      reply-timeout: 7200000
   cloud:
     stream:
       bindings:
@@ -22,7 +22,7 @@ rao-runner-server:
     queue-name: rao-request-queue
 
 core-valid-runner:
-  async-time-out: 600000
+  async-time-out: 7200000
   bindings:
     request:
       destination: core-valid-requests
