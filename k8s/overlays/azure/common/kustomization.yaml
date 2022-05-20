@@ -6,6 +6,9 @@ bases:
 
 resources:
   - azure-storage-class.yaml
+  - keycloak-deployment.yaml
+  - keycloak-pv-claim.yaml
+  - keycloak-service.yaml
   - minio-pv-claim.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml

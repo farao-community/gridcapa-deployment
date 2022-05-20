@@ -9,6 +9,7 @@ bases:
 
 resources:
   - apps-metadata-server-configmap.yaml
+  - auth-ingress.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
 

@@ -6,7 +6,7 @@ metadata:
     app: gridcapa
     component: keycloak
 spec:
-  storageClassName: gridcapa-storage-class
+  storageClassName: azure-storage-class
   accessModes:
     - ReadWriteMany
   resources:

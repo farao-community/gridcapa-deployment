@@ -61,9 +61,9 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              memory: "128Mi"
+              memory: "512Mi"
             limits:
-              memory: "128Mi"
+              memory: "1Gi"
       volumes:
         - name: keycloak-storage
           persistentVolumeClaim:
