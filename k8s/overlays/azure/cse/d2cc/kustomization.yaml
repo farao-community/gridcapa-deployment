@@ -2,17 +2,16 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 bases:
-  - ../../../../core/valid
+  - ../../../../cse/d2cc
+  - ../../../../cse/common
 
 resources:
-  - core-valid-gridcapa-app-idp-settings-configmap.yaml
-  - rao-runner-autoscaler.yaml
-  - core-valid-minio-cleaning-cronjob.yaml
+  - cse-d2cc-gridcapa-app-idp-settings-configmap.yaml
 
 patchesJson6902:
   - target:
       group: apps
       version: v1
       kind: Deployment
-      name: core-valid-gridcapa-app
+      name: cse-d2cc-gridcapa-app
     path: patch.yaml
