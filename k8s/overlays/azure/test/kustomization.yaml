@@ -96,7 +96,7 @@ images:
     newTag: v1.0.0
   - name: gridcapa-core-valid-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
-    newTag: v1.1.2
+    newTag: v1.2.0
   - name: gridcapa-core-valid-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.0.0
@@ -108,4 +108,4 @@ images:
     newTag: v1.0.0
   - name: gridcapa-core-valid-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.1.2
+    newTag: v1.2.0
