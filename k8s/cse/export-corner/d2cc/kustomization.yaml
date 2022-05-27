@@ -15,6 +15,7 @@ resources:
   - cse-export-d2cc-adapter-deployment.yaml
   - cse-export-d2cc-adapter-service.yaml
   - cse-export-d2cc-app-deployment.yaml
+  - cse-export-d2cc-app-process-metadata-configmap.yaml
   - cse-export-d2cc-app-service.yaml
   - cse-export-d2cc-runner-configmap.yaml
   - cse-export-d2cc-runner-deployment.yaml

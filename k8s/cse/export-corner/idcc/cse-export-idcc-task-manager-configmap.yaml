@@ -55,13 +55,12 @@ data:
 
     task-server:
       process:
-        tag: EXPORT_CSE_IDCC
+        tag: CSE_EXPORT_IDCC
         timezone: CET
         inputs:
           - CGM
           - CRAC
         optional-inputs:
-          -
         outputs:
           - TTC_RES
           - FINAL_CGM

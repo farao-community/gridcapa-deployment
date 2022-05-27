@@ -17,20 +17,18 @@ resources:
   - data-bridge/cse-import-d2cc-ntc-red-data-bridge-configmap.yaml
   - data-bridge/cse-import-d2cc-ntc-red-data-bridge-deployment.yaml
   - data-bridge/cse-import-d2cc-ntc-red-data-bridge-service.yaml
-  - data-bridge/cse-import-d2cc-target-ch-data-bridge-configmap.yaml
-  - data-bridge/cse-import-d2cc-target-ch-data-bridge-deployment.yaml
-  - data-bridge/cse-import-d2cc-target-ch-data-bridge-service.yaml
   - data-bridge/cse-import-d2cc-user-config-data-bridge-configmap.yaml
   - data-bridge/cse-import-d2cc-user-config-data-bridge-deployment.yaml
   - data-bridge/cse-import-d2cc-user-config-data-bridge-service.yaml
-  - cse-import-d2cc-gridcapa-adapter-configmap.yaml
-  - cse-import-d2cc-gridcapa-adapter-deployment.yaml
-  - cse-import-d2cc-gridcapa-adapter-service.yaml
+  - cse-import-d2cc-adapter-configmap.yaml
+  - cse-import-d2cc-adapter-deployment.yaml
+  - cse-import-d2cc-adapter-service.yaml
   - cse-import-d2cc-app-deployment.yaml
+  - cse-import-d2cc-app-process-metadata-configmap.yaml
   - cse-import-d2cc-app-service.yaml
   - cse-import-d2cc-runner-configmap.yaml
   - cse-import-d2cc-runner-deployment.yaml
-  - cse-import-d2cc-gridcapa-runner-service.yaml
+  - cse-import-d2cc-runner-service.yaml
   - cse-import-d2cc-job-launcher-deployment.yaml
   - cse-import-d2cc-job-launcher-service.yaml
   - cse-import-d2cc-job-launcher-configmap.yaml
@@ -43,6 +41,6 @@ resources:
   - cse-import-d2cc-task-notification-server-configmap.yaml
   - cse-import-d2cc-task-notification-server-deployment.yaml
   - cse-import-d2cc-task-notification-server-service.yaml
-  - cse-import-d2cc-export-configmap.yaml
-  - cse-import-d2cc-export-deployment.yaml
-  - cse-import-d2cc-export-service.yaml
+  - cse-import-d2cc-exporter-configmap.yaml
+  - cse-import-d2cc-exporter-deployment.yaml
+  - cse-import-d2cc-exporter-service.yaml

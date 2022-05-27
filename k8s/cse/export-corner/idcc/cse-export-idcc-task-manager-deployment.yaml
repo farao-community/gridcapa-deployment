@@ -44,12 +44,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
-                  key: cse-idcc-user
+                  key: cse-export-idcc-user
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
-                  key: cse-idcc-password
+                  key: cse-export-idcc-password
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:

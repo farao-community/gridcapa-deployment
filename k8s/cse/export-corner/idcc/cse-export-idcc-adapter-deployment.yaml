@@ -64,9 +64,6 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: cse-export-idcc-adapter-configmap-volume
-            - mountPath: /config/target-ch.xml
-              subPath: target-ch.xml
-              name: cse-export-idcc-adapter-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
