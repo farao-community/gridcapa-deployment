@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cse-export-idcc-job-launcher
+  name: cse-export-idcc-gridcapa-job-launcher
   labels:
     app: gridcapa-job-launcher
     component: gridcapa-job-launcher

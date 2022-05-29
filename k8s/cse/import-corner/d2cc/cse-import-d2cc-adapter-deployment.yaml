@@ -50,6 +50,16 @@ spec:
                 secretKeyRef:
                   name: gridcapa-minio-credentials
                   key: minio-secret-key
+            - name: MINIO_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BUCKET_CSE_IMPORT_D2CC
+            - name: MINIO_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CSE_IMPORT_D2CC
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml

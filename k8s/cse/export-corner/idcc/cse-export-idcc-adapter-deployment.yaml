@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: cse-export-idcc-adapter
-          image: gridcapa-cse-export-adapter
+          image: gridcapa-cse-adapter
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -54,12 +54,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_MINIO_BUCKET_CSE_EXPORT_idcc
+                  key: GRIDCAPA_MINIO_BUCKET_CSE_EXPORT_IDCC
             - name: MINIO_BASE_DIRECTORY
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CSE_EXPORT_idcc
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CSE_EXPORT_IDCC
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml

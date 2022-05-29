@@ -8,9 +8,9 @@ resources:
   - data-bridge/cse-export-idcc-crac-data-bridge-configmap.yaml
   - data-bridge/cse-export-idcc-crac-data-bridge-deployment.yaml
   - data-bridge/cse-export-idcc-crac-data-bridge-service.yaml
-  - cse-export-idcc-export-configmap.yaml
-  - cse-export-idcc-export-deployment.yaml
-  - cse-export-idcc-export-service.yaml
+  - cse-export-idcc-exporter-configmap.yaml
+  - cse-export-idcc-exporter-deployment.yaml
+  - cse-export-idcc-exporter-service.yaml
   - cse-export-idcc-adapter-configmap.yaml
   - cse-export-idcc-adapter-deployment.yaml
   - cse-export-idcc-adapter-service.yaml

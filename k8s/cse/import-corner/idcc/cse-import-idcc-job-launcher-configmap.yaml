@@ -38,7 +38,7 @@ data:
         task-manager-timestamp-url: http://cse-import-idcc-task-manager/tasks/
         task-manager-business-date-url: http://cse-import-idcc-task-manager/tasks/businessdate/
       process:
-        tag: CSE_IDCC
+        tag: CSE_IMPORT_IDCC
         timezone: CET
 
     scheduler:

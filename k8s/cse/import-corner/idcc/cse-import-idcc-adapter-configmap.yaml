@@ -34,7 +34,17 @@ data:
       binding:
         destination: cse-import-idcc-request
 
-    cse-adapter:
-      target-process: IDCC
+    minio-adapter:
+      url: http://gridcapa-minio:9000/
+      base-path: ${MINIO_BASE_DIRECTORY}
+      bucket: ${MINIO_BUCKET}
+      access-key: ${MINIO_ACCESS_KEY}
+      secret-key: ${MINIO_SECRET_KEY}
+
+    url-validation:
       whitelist:
-        - http://minio:9000/
+        - http://gridcapa-minio:9000/
+
+    cse-adapter:
+      exchange-type: import
+      process-type: IDCC

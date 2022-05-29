@@ -69,7 +69,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_MINIO_BUCKET_CSE_IDCC
+                  key: GRIDCAPA_MINIO_BUCKET_CSE_IMPORT_D2CC
             - name: MINIO_BASE_DIRECTORY
               valueFrom:
                 configMapKeyRef:

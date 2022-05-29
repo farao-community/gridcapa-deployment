@@ -11,7 +11,7 @@ data:
   application.yml: |-
     data-bridge:
       zone-id: "Europe/Paris"
-      target-process: IMPORT_CSE_D2CC
+      target-process: CSE_IMPORT_D2CC
       file-type: NTC
       file-regex: (?<year>[0-9]{4}).*.(xml|XML)
       time-validity: yearly

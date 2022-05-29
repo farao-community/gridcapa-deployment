@@ -34,12 +34,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SOURCE_HOST_CSE_IDCC
+                  key: GRIDCAPA_SOURCE_HOST_CSE_IMPORT_D2CC
             - name: SOURCE_PORT
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SOURCE_PORT_CSE_IDCC
+                  key: GRIDCAPA_SOURCE_PORT_CSE_IMPORT_D2CC
             - name: SOURCE_USER
               valueFrom:
                 secretKeyRef:
@@ -54,7 +54,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SINK_DIRECTORY_CSE_IDCC
+                  key: GRIDCAPA_SINK_DIRECTORY_CSE_IMPORT_D2CC
             - name: RABBITMQ_USER
               valueFrom:
                 secretKeyRef:
