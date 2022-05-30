@@ -11,15 +11,14 @@ spring:
       bindings:
         handleRun-in-0:
           binder: rabbit
-          destination: cse-export-d2cc-launch-task
-          group: cse-export-d2cc-adapter
+          destination: cse-import-d2cc-launch-task
 
 cse-cc-runner:
   binding:
-    destination: cse-export-d2cc-request
+    destination: cse-import-d2cc-request
 
 minio-adapter:
-  url: http://minio:9000
+  url: http://minio:9000/
   base-path:
   bucket: gridcapa
   access-key: gridcapa
@@ -30,5 +29,7 @@ url-validation:
     - http://minio:9000/
 
 cse-adapter:
-  exchange-type: export
+  exchange-type: import
   process-type: D2CC
+  target-ch-fs-location: /config/target-ch.xml
+  target-ch-minio-location: TARGET_CH
