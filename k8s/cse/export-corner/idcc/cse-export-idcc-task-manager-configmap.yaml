@@ -61,7 +61,6 @@ data:
           - CGM
           - CRAC
         optional-inputs:
-          -
         outputs:
           - TTC_RES
           - FINAL_CGM

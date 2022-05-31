@@ -84,9 +84,8 @@ kubectl create secret generic admin-rabbitmq-credentials --from-literal='rabbitm
 kubectl create secret generic rabbitmq-secrets --from-literal='rabbitmq-erlang-cookie=<RABBITMQ_ERLANG_COOKIE>'
 kubectl create secret generic gridcapa-minio-credentials --from-literal='minio-access-key=<MINIO_ACCESS_KEY>' --from-literal='minio-secret-key=<MINIO_SECRET_KEY>'
 kubectl create secret generic gridcapa-ftp-credentials --from-literal='ftp-user=<FTP_USER>' --from-literal='ftp-password=<FTP_PASSWORD>'
-kubectl create secret generic gridcapa-postgresql-credentials --from-literal='postgres-password=<POSTGRES_PASSWORD>' --from-literal='config-user=<CONFIG_USER>' --from-literal='config-password=<CONFIG_PASSWORD>' --from-literal='cse-idcc-user=<CSE_IDCC_USER>' --from-literal='cse-idcc-password=<CSE_IDCC_PASSWORD>' --from-literal='cse-d2cc-user=<CSE_D2CC_USER>' --from-literal='cse-d2cc-password=<CSE_D2CC_PASSWORD>' --from-literal='core-valid-user=<CORE_VALID_USER>' --from-literal='core-valid-password=<CORE_VALID_PASSWORD>'
+kubectl create secret generic gridcapa-postgresql-credentials --from-literal='postgres-password=<POSTGRES_PASSWORD>' --from-literal='config-user=<CONFIG_USER>' --from-literal='config-password=<CONFIG_PASSWORD>' --from-literal='cse-import-idcc-user=<CSE_IMPORT_IDCC_USER>' --from-literal='cse-import-idcc-password=<CSE_IMPORT_IDCC_PASSWORD>' --from-literal='cse-import-d2cc-user=<CSE_IMPORT_D2CC_USER>' --from-literal='cse-import-d2cc-password=<CSE_IMPORT_D2CC_PASSWORD>' --from-literal='cse-export-idcc-user=<CSE_EXPORT_IDCC_USER>' --from-literal='cse-export-idcc-password=<CSE_EXPORT_IDCC_PASSWORD>' --from-literal='cse-export-d2cc-user=<CSE_EXPORT_D2CC_USER>' --from-literal='cse-export-d2cc-password=<CSE_EXPORT_D2CC_PASSWORD>' --from-literal='core-valid-user=<CORE_VALID_USER>' --from-literal='core-valid-password=<CORE_VALID_PASSWORD>'
 ```
-
 ### MinIO bucket notifications
 
 GridCapa platform needs bucket notifications activated on MinIO server to run correctly.
@@ -114,3 +113,6 @@ Check that they have been correctly saved by listing current notifications enabl
 ```bash
 ./mc event list gridcapa_k8s/gridcapa
 ```
+
+
+kubectl create secret generic gridcapa-postgresql-credentials --from-literal='postgres-password=gridcapa' --from-literal='config-user=gridcapa' --from-literal='config-password=gridcapa' --from-literal='cse-import-idcc-user=gridcapa' --from-literal='cse-import-idcc-password=gridcapa' --from-literal='cse-import-d2cc-user=gridcapa' --from-literal='cse-import-d2cc-password=gridcapa' --from-literal='cse-export-idcc-user=gridcapa' --from-literal='cse-export-idcc-password=gridcapa' --from-literal='cse-export-d2cc-user=gridcapa' --from-literal='cse-export-d2cc-password=gridcapa' --from-literal='core-valid-user=gridcapa' --from-literal='core-valid-password=gridcapa'

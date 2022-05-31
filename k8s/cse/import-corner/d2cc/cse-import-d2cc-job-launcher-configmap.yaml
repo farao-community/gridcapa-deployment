@@ -36,7 +36,7 @@ data:
         task-manager-timestamp-url: http://cse-import-d2cc-task-manager/tasks/
         task-manager-business-date-url: http://cse-import-d2cc-task-manager/tasks/businessdate/
       process:
-        tag: CSE_import-d2cc
+        tag: CSE_IMPORT_D2CC
         timezone: CET
 
     scheduler:

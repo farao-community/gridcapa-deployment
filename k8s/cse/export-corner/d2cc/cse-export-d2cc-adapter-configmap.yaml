@@ -41,12 +41,15 @@ data:
       access-key: ${MINIO_ACCESS_KEY}
       secret-key: ${MINIO_SECRET_KEY}
 
-    cse-adapter:
-      target-process: CSE_EXPORT_D2CC
-      target-ch-fs-location: /config/target-ch.xml
-      target-ch-minio-location: TARGET_CH
+    url-validation:
       whitelist:
         - http://gridcapa-minio:9000/
+
+    cse-adapter:
+      exchange-type: export
+      process-type: D2CC
+      target-ch-fs-location: /config/target-ch.xml
+      target-ch-minio-location: TARGET_CH
 
   target-ch.xml: |-
     <?xml version="1.0" encoding="UTF-8"?>

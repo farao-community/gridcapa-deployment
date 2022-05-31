@@ -1,0 +1,26 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+    template:
+      reply-timeout: 7200000
+  cloud:
+    stream:
+      bindings:
+        handleRun-in-0:
+          binder: rabbit
+          destination: cse-import-idcc-launch-task
+
+cse-cc-runner:
+  binding:
+    destination: cse-import-idcc-request
+
+url-validation:
+  whitelist:
+    - http://minio:9000/
+
+cse-adapter:
+  exchange-type: import
+  process-type: IDCC
