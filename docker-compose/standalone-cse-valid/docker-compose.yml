@@ -122,6 +122,22 @@ services:
     networks:
       - gridcapa
 
+  rao-runner:
+    image: farao/gridcapa-rao-runner:latest
+    volumes:
+      - ../config/cse/common/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
+      - ../config/rao-runner-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://rao-runner/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - minio
+      - rabbitmq
+    networks:
+      - gridcapa
+
   #region IDCC
   data-bridge-idcc-ttc-adjustment:
     image: farao/gridcapa-data-bridge:latest

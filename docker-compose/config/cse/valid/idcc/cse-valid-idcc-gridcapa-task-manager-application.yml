@@ -25,6 +25,8 @@ spring:
           destination: cse-valid-idcc-task-manager-logs-exchange
         task-updated:
           destination: cse-valid-idcc-task-updated
+        task-status-updated:
+          destination: cse-valid-idcc-task-updated
       rabbit:
         default:
           consumer:
@@ -38,11 +40,6 @@ spring:
       definition: consumeMinioEvent;consumeTaskStatusUpdate;consumeTaskEventUpdate
 
 task-server:
-  minio:
-    connect:
-      url: http://minio:9000/
-      access-key: gridcapa
-      secret-key: gridcapa
   process:
     tag: CSE_VALID_IDCC
     timezone: CET
@@ -51,3 +48,10 @@ task-server:
       - CRAC
       - CGM
       - GLSK
+
+minio-adapter:
+  bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
+  base-path: ${GRIDCAPA_MINIO_BASE_PATH:}
+  url: ${GRIDCAPA_MINIO_URL:http://minio:9000}
+  access-key: ${GRIDCAPA_MINIO_ACCESS_KEY:gridcapa}
+  secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}

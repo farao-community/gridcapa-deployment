@@ -33,10 +33,9 @@ cse-valid-runner:
   whitelist:
     - http://minio:9000/
 
-minio:
-  access:
-    name: gridcapa
-    secret: gridcapa
-  url: http://minio:9000/
+minio-adapter:
   bucket: gridcapa
-  base-path: CSE/VALID/
+  base-path: CSE/VALID/IDCC
+  access-key: gridcapa
+  secret-key: gridcapa
+  url: http://minio:9000/
