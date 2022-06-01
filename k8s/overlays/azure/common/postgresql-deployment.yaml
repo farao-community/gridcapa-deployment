@@ -53,6 +53,26 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: cse-idcc-password
+            - name: POSTGRES_CSE_VALID_IDCC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-valid-idcc-user
+            - name: POSTGRES_CSE_VALID_IDCC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-valid-idcc-password
+            - name: POSTGRES_CSE_VALID_D2CC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-valid-d2cc-user
+            - name: POSTGRES_CSE_VALID_D2CC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-valid-d2cc-password
             - name: POSTGRES_CSE_D2CC_USER
               valueFrom:
                 secretKeyRef:

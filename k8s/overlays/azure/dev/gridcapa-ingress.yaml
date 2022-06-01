@@ -6,6 +6,8 @@ metadata:
       rewrite ^/cse/idcc$ /cse/idcc/ permanent;
       rewrite ^/cse/d2cc$ /cse/d2cc/ permanent;
       rewrite ^/core/valid$ /core/valid/ permanent;
+      rewrite ^/cse/valid/d2cc$ /cse/valid/d2cc/ permanent;
+      rewrite ^/cse/valid/idcc$ /cse/valid/idcc/ permanent;
       proxy_set_header X-Forwarded-Prefix /cse/d2cc/;
       proxy_set_header userId "johnDoe";
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
@@ -27,19 +29,50 @@ spec:
     - host: gridcapa-dev.farao-community.com
       http:
         paths:
+          #region common
           - backend:
               service:
-                name: core-valid-gridcapa-app
+                name: filebrowser
                 port:
                   number: 80
-            path: /core/valid(/|$)(.*)
+            path: /utils/filebrowser(/|$)(.*)
             pathType: Prefix
+          - backend:
+              service:
+                name: gridcapa-minio
+                port:
+                  number: 9000
+            path: /()(minio.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gridcapa-rabbitmq
+                port:
+                  number: 15672
+            path: /utils/rabbitmq(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: apps-metadata-server
+                port:
+                  number: 80
+            path: /apps-metadata(/|$)(.*)
+            pathType: Prefix
+          #endregion
+          #region CORE valid
           - backend:
               service:
                 name: config-server
                 port:
                   number: 80
             path: /core/valid/config(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: core-valid-gridcapa-app
+                port:
+                  number: 80
+            path: /core/valid(/|$)(.*)
             pathType: Prefix
           - backend:
               service:
@@ -69,6 +102,8 @@ spec:
                   number: 80
             path: /core/valid/gridcapa-job-launcher(/|$)(.*)
             pathType: Prefix
+          #endregion
+          #region CSE capa D2CC
           - backend:
               service:
                 name: cse-idcc-gridcapa-app
@@ -153,31 +188,92 @@ spec:
                   number: 80
             path: /cse/d2cc/gridcapa-job-launcher(/|$)(.*)
             pathType: Prefix
+          #endregion
+          #region CSE valid IDCC
           - backend:
               service:
-                name: filebrowser
+                name: cse-valid-idcc-gridcapa-app
                 port:
                   number: 80
-            path: /utils/filebrowser(/|$)(.*)
+            path: /cse/valid/idcc(/|$)(.*)
             pathType: Prefix
           - backend:
               service:
-                name: gridcapa-rabbitmq
-                port:
-                  number: 15672
-            path: /utils/rabbitmq(/|$)(.*)
-            pathType: Prefix
-          - backend:
-              service:
-                name: apps-metadata-server
+                name: config-server
                 port:
                   number: 80
-            path: /apps-metadata(/|$)(.*)
+            path: /cse/valid/idcc/config(/|$)(.*)
             pathType: Prefix
           - backend:
               service:
-                name: gridcapa-minio
+                name: config-notification-server
                 port:
-                  number: 9000
-            path: /()(minio.*)
+                  number: 80
+            path: /cse/valid/idcc/config-notification(/|$)(.*)
             pathType: Prefix
+          - backend:
+              service:
+                name: cse-valid-idcc-task-notification-server
+                port:
+                  number: 80
+            path: /cse/valid/idcc/task-notification(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-valid-idcc-task-manager
+                port:
+                  number: 80
+            path: /cse/valid/idcc/task-manager(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-valid-idcc-gridcapa-job-launcher
+                port:
+                  number: 80
+            path: /cse/valid/idcc/gridcapa-job-launcher(/|$)(.*)
+            pathType: Prefix
+          #endregion
+          #region CSE valid D2CC
+          - backend:
+              service:
+                name: cse-valid-d2cc-gridcapa-app
+                port:
+                  number: 80
+            path: /cse/valid/d2cc(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: config-server
+                port:
+                  number: 80
+            path: /cse/valid/d2cc/config(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: config-notification-server
+                port:
+                  number: 80
+            path: /cse/valid/d2cc/config-notification(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-valid-d2cc-task-notification-server
+                port:
+                  number: 80
+            path: /cse/valid/d2cc/task-notification(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-valid-d2cc-task-manager
+                port:
+                  number: 80
+            path: /cse/valid/d2cc/task-manager(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-valid-d2cc-gridcapa-job-launcher
+                port:
+                  number: 80
+            path: /cse/valid/d2cc/gridcapa-job-launcher(/|$)(.*)
+            pathType: Prefix
+          #endregion

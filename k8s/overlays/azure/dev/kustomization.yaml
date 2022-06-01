@@ -6,6 +6,7 @@ bases:
   - ../../../cse/common
   - ../common
   - ../core/valid
+  - ../cse/valid
 
 resources:
   - apps-metadata-server-configmap.yaml
@@ -88,4 +89,46 @@ images:
     newTag: latest
   - name: gridcapa-core-valid-task-manager
     newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest
+  - name: gridcapa-cse-valid-d2cc-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: latest
+  - name: gridcapa-cse-valid-d2cc-output-data-bridge
+    newName: docker.io/farao/gridcapa-output-data-bridge
+    newTag: latest
+  - name: gridcapa-cse-valid-d2cc-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest
+  - name: gridcapa-cse-valid-d2cc-runner
+    newName: docker.io/farao/gridcapa-cse-valid
+    newTag: latest
+  - name: gridcapa-cse-valid-d2cc-adapter
+    newName: docker.io/farao/gridcapa-cse-valid-adapter
+    newTag: latest
+  - name: gridcapa-cse-valid-d2cc-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: latest
+  - name: gridcapa-cse-valid-d2cc-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
+    newTag: latest
+  - name: gridcapa-cse-valid-idcc-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: latest
+  - name: gridcapa-cse-valid-idcc-output-data-bridge
+    newName: docker.io/farao/gridcapa-output-data-bridge
+    newTag: latest
+  - name: gridcapa-cse-valid-idcc-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest
+  - name: gridcapa-cse-valid-idcc-runner
+    newName: docker.io/farao/gridcapa-cse-valid
+    newTag: latest
+  - name: gridcapa-cse-valid-idcc-adapter
+    newName: docker.io/farao/gridcapa-cse-valid-adapter
+    newTag: latest
+  - name: gridcapa-cse-valid-idcc-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: latest
+  - name: gridcapa-cse-valid-idcc-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: latest

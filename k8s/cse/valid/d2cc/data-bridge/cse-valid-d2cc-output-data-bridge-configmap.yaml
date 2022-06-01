@@ -1,0 +1,29 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-valid-d2cc-output-data-bridge-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-output-data-bridge-configmap
+    region: cse
+    process: valid_d2cc
+data:
+  application.yml: |-
+    data-bridge:
+      file-regex: "TTC_RTEValidation_(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_2D[1-7]_[0-9].xml"
+      sources:
+        minio:
+          url: http://gridcapa-minio:9000
+          access-key: ${MINIO_ACCESS_KEY}
+          secret-key: ${MINIO_SECRET_KEY}
+          bucket: ${MINIO_BUCKET}
+          base-directory: ${MINIO_BASE_DIRECTORY}/outputs
+          polling-delay-in-ms: 5000
+      sinks:
+        ftp:
+          active: true
+          host: ${OUTPUT_HOST}
+          port: ${OUTPUT_PORT}
+          username: ${OUTPUT_USER}
+          password: ${OUTPUT_PASSWORD}
+          base-directory: ${OUTPUT_BASE_DIRECTORY}
