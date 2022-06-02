@@ -41,11 +41,9 @@ data:
 
     cse-cc-runner:
       zone-id: "Europe/Paris"
-      trm: 500
       outputs:
-        initial-cgm: INITIAL_CGM
         final-cgm: FINAL_CGM
-        ttc-res: TTC_RES
+        ttc-rao: TTC_RAO
       pisa:
         link1:
           node-fr: FFG.IL12

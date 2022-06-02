@@ -62,7 +62,7 @@ data:
           - CRAC
         optional-inputs:
         outputs:
-          - TTC_RES
+          - TTC_RAO
           - FINAL_CGM
       whitelist:
         - http://gridcapa-minio:9000/
