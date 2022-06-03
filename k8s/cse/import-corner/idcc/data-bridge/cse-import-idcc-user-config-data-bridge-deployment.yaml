@@ -6,7 +6,7 @@ metadata:
     app: gridcapa
     component: gridcapa-user-config-data-bridge
     region: cse
-    process: idcc
+    process: d2cc
 
 spec:
   selector:
@@ -14,14 +14,14 @@ spec:
       app: gridcapa
       component: gridcapa-user-config-data-bridge
       region: cse
-      process: idcc
+      process: d2cc
   template:
     metadata:
       labels:
         app: gridcapa
         component: gridcapa-user-config-data-bridge
         region: cse
-        process: idcc
+        process: d2cc
     spec:
       containers:
         - name: cse-import-idcc-user-config-data-bridge

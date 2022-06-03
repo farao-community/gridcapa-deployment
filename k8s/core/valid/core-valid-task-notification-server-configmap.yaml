@@ -27,3 +27,7 @@ data:
         addresses: gridcapa-rabbitmq:5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
+
+    websocket:
+      consumer:
+        threads: 4

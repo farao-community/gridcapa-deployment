@@ -16,6 +16,8 @@ with open(args.kustomize) as file:
         # replace tag by inca.rte-france.com/gridcapa
         if "docker.io/rabbitmq" in image['newName']:
             imageIncaToPush = imageDockerIoToPull.replace("docker.io/", "inca.rte-france.com/gridcapa/")
+        if "docker.io/minio/mc" in image['newName']:
+            imageIncaToPush = imageDockerIoToPull.replace("docker.io/minio/mc", "inca.rte-france.com/gridcapa/minio-mc")
         if "docker.io/springcloudstream/" in image['newName']:
             imageIncaToPush = imageDockerIoToPull.replace("docker.io/springcloudstream/", "inca.rte-france.com/gridcapa/")
         if "docker.io/bitnami/" in image['newName']:
