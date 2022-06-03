@@ -50,10 +50,9 @@ data:
           FR: 0
         max-curative-ra-per-tso:
           FR: 1
-    minio:
-      url: http://gridcapa-minio:9000/
-      access:
-        name: ${GRIDCAPA_MINIO_USER}
-        secret: ${GRIDCAPA_MINIO_PASSWORD}
+    minio-adapter:
       bucket: gridcapa
       base-path: CORE/VALID/
+      access-key: ${GRIDCAPA_MINIO_USER}
+      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+      url: http://gridcapa-minio:9000/
