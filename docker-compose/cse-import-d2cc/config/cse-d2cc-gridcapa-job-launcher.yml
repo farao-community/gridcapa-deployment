@@ -18,6 +18,7 @@ spring:
           group: cse-import-d2cc-job-launcher
 
 job-launcher:
+  auto: false
   url:
     task-manager-timestamp-url: http://cse-import-d2cc-task-manager:8080/tasks/
     task-manager-business-date-url: http://cse-import-d2cc-task-manager:8080/tasks/businessdate/
