@@ -1,0 +1,48 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-export-idcc-exporter-configmap
+  labels:
+    app: gridcapa-exporter
+    component: gridcapa-exporter
+    region: cse
+    process: export-idcc
+data:
+  application.yml: |-
+    server:
+      port: 8080
+    spring:
+      application:
+        name: cse-export-idcc-exporter
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        port: 5672
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+      cloud:
+        stream:
+          default:
+            group: cse-export-idcc-outputs
+          bindings:
+            consumeTaskDtoUpdate-in-0:
+              destination: cse-export-idcc-task-updated
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+            bindings:
+              consumeTaskDtoUpdate-in-0:
+                consumer:
+                  binding-routing-key: status
+        function:
+          definition: consumeTaskDtoUpdate
+
+    task-manager:
+      base-url: http://cse-export-idcc-task-manager
+    ftp:
+      host: ${SOURCE_HOST}
+      port: 21
+      access-key: ${SOURCE_USER}
+      secret-key: ${SOURCE_PASSWORD}
+      remote-relative-destination-directory: ${SINK_DIRECTORY}

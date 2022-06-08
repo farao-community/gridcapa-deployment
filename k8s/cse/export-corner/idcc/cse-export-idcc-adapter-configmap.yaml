@@ -1,0 +1,50 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-export-idcc-adapter-configmap
+  labels:
+    app: gridcapa-cse-adpater
+    component: gridcapa-cse-adpater
+    region: cse
+    process: export-idcc
+data:
+  application.yml: |-
+    spring:
+      rabbitmq:
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        host: gridcapa-rabbitmq
+        port: 5672
+        template:
+          reply-timeout: 14400000
+      cloud:
+        stream:
+          bindings:
+            handleRun-in-0:
+              binder: rabbit
+              destination: cse-export-idcc-launch-task
+              group: cse-export-idcc-adapter
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+
+    cse-cc-runner:
+      binding:
+        destination: cse-export-idcc-request
+
+    minio-adapter:
+      url: http://gridcapa-minio:9000/
+      base-path: ${MINIO_BASE_DIRECTORY}
+      bucket: ${MINIO_BUCKET}
+      access-key: ${MINIO_ACCESS_KEY}
+      secret-key: ${MINIO_SECRET_KEY}
+
+    url-validation:
+      whitelist:
+        - http://gridcapa-minio:9000/
+
+    cse-adapter:
+      exchange-type: export
+      process-type: IDCC

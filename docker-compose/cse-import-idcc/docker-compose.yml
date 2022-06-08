@@ -1,0 +1,165 @@
+version: "3.7"
+services:
+  cse-import-idcc-gridcapa-app:
+    image: farao/gridcapa-app:latest
+    volumes:
+      - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ./config/cse-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+    networks:
+      - gridcapa
+
+  cse-import-idcc-cgm-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-idcc-cgm-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-idcc-crac-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-idcc-crac-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-idcc-glsk-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-idcc-glsk-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-idcc-ntc-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-idcc-ntc-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-idcc-ntc-red-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-idcc-ntc-red-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-idcc-ntc2-at-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-idcc-ntc2-at-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-idcc-ntc2-ch-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-idcc-ntc2-ch-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-idcc-ntc2-fr-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-idcc-ntc2-fr-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-idcc-ntc2-si-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-idcc-ntc2-si-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-idcc-vulcanus-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-idcc-vulcanus-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-idcc-user-config-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-idcc-user-config-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-idcc-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./config/cse-idcc-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-idcc-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    volumes:
+      - ./config/cse-idcc-job-launcher.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-idcc-task-notification-server:
+    image: springcloudstream/websocket-sink-rabbit:latest
+    restart: always
+    volumes:
+      - ./config/cse-idcc-task-notification-server-application.yml:/config/bootstrap.yml:Z
+    networks:
+      - gridcapa
+
+  cse-import-idcc-rao-logs-dispatcher:
+    image: farao/gridcapa-rao-logs-dispatcher:latest
+    volumes:
+      - ./config/cse-idcc-rao-logs-dispatcher-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://rao-logs-dispatcher/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - cse-import-idcc-task-manager
+    networks:
+      - gridcapa
+
+  cse-import-idcc-runner:
+    image: farao/gridcapa-cse-cc-import-runner:latest
+    volumes:
+      - ../cse-common/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
+      - ../cse-common/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
+      - ../cse-common/combinedRAs.json:/home/farao/combinedRAs.json
+      - ./config/cse-idcc-runner-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://cse-cc-runner/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  cse-import-idcc-adapter:
+    image: farao/gridcapa-cse-adapter:latest
+    volumes:
+      - ./config/cse-idcc-adapter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://cse-idcc-adapter/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  cse-import-idcc-outputs-exporter:
+    image: farao/gridcapa-export:latest
+    volumes:
+      - ./config/cse-idcc-gridcapa-export-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://cse-idcc-gridcapa-export/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+networks:
+  gridcapa:
+    name: gridcapa

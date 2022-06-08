@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cse-export-idcc-task-notification-server
+  labels:
+    app: gridcapa-task-notification-server
+    component: gridcapa-task-notification-server
+    region: cse
+    process: export-idcc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa-task-notification-server
+    component: gridcapa-task-notification-server
+    region: cse
+    process: export-idcc
+  ports:
+    - name: http
+      port: 80
+      targetPort: 9292
