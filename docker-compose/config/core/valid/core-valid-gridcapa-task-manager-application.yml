@@ -52,6 +52,7 @@ task-server:
       - GLSK
       - REFPROG
       - STUDY-POINTS
+    outputs:
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
