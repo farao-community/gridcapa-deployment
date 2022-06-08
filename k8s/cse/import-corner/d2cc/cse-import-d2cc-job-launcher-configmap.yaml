@@ -27,11 +27,9 @@ data:
             run-task:
               destination: cse-import-d2cc-launch-task
               group: cse-import-d2cc-job-launcher
-            run-task-auto:
-              destination: cse-import-d2cc-launch-task
-              group: cse-import-d2cc-job-launcher
 
     job-launcher:
+      auto: false
       url:
         task-manager-timestamp-url: http://cse-import-d2cc-task-manager/tasks/
         task-manager-business-date-url: http://cse-import-d2cc-task-manager/tasks/businessdate/
