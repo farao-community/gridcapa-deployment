@@ -12,6 +12,7 @@ data:
     logback:
       amqp:
         exchange: core-valid-task-manager-logs-exchange
+        routing-key: "#"
     spring:
       rabbitmq:
         host: gridcapa-rabbitmq
@@ -50,9 +51,10 @@ data:
           FR: 0
         max-curative-ra-per-tso:
           FR: 1
+
     minio-adapter:
       bucket: gridcapa
-      base-path: CORE/VALID/
+      base-path: /CORE/VALID
       access-key: ${GRIDCAPA_MINIO_USER}
       secret-key: ${GRIDCAPA_MINIO_PASSWORD}
       url: http://gridcapa-minio:9000/
