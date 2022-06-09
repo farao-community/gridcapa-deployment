@@ -9,10 +9,13 @@ This repository contains all the deployment files for GridCapa applications:
 ## Deploying using Docker Compose
 
 GridCapa framework instantiates different GridCapa applications by business process.
-Docker Compose script is designed to run all GridCapa applications together.
+Docker Compose scripts are designed to run all GridCapa applications independently.
 
-GridCapa currently contains the following applications.
-- GridCapa CSE D2CC
+GridCapa currently contains the following applications:
+- GridCapa CSE IMPORT D2CC
+- GridCapa CSE IMPORT IDCC
+- GridCapa CSE EXPORT D2CC
+- GridCapa CSE EXPORT IDCC
 - GridCapa CORE Validation
 
 ### Prerequisites
@@ -21,13 +24,30 @@ Docker Compose scripts needs Docker (version >= 18) and docker-compose.
 
 #### Default GridCapa environment
 
+First, you need to deploy the common base of GridCapa application :
 ```bash
-cd docker-compose
+cd docker-compose/common
 docker-compose up -d
 ```
 
+Then, you can deploy independently any process you want. For example to deploy CSE IMPORT D2CC :
+```bash
+cd docker-compose/cse-import-d2cc
+docker-compose up -d
+```
+
+After deploying the processes you needed, you will have to modify the nginx.conf file in docker-compose/nginx by commenting 
+the sections you don't need in the upstreams and in the locations. In IntelliJ, to comment, select the block 
+and click on ctrl + /. After that you can deploy nginx :
+```bash
+cd docker-compose/nginx
+docker-compose up -d
+```
+
+**Be careful to your local resources if you try to deploy too many processes it could be quite heavy.**
+
 Multiple environment are available:
-- Main GridCapa UI on page http://localhost/cse/d2cc/.
+- Main GridCapa UI on pages : http://localhost/cse/import/d2cc/, http://localhost/cse/import/idcc/, http://localhost/cse/export/d2cc/,http://localhost/cse/export/idcc/, http://localhost/core/valid/, according to what has been deployed.
 - FTP server file browser on page http://localhost/utils/filebrowser/. Default credentials are gridcapa/gridcapa.
 - SFTP server file browser on page http://localhost/utils/filebrowser/. Default credentials are gridcapa/gridcapa.
 - RabbitMQ management UI on page http://localhost/utils/rabbitmq/. Default credentials are gridcapa/gridcapa.
@@ -84,10 +104,9 @@ kubectl create secret generic admin-rabbitmq-credentials --from-literal='rabbitm
 kubectl create secret generic rabbitmq-secrets --from-literal='rabbitmq-erlang-cookie=<RABBITMQ_ERLANG_COOKIE>'
 kubectl create secret generic gridcapa-minio-credentials --from-literal='minio-access-key=<MINIO_ACCESS_KEY>' --from-literal='minio-secret-key=<MINIO_SECRET_KEY>'
 kubectl create secret generic gridcapa-ftp-credentials --from-literal='ftp-user=<FTP_USER>' --from-literal='ftp-password=<FTP_PASSWORD>'
-kubectl create secret generic gridcapa-postgresql-credentials --from-literal='postgres-password=<POSTGRES_PASSWORD>' --from-literal='config-user=<CONFIG_USER>' --from-literal='config-password=<CONFIG_PASSWORD>' --from-literal='cse-idcc-user=<CSE_IDCC_USER>' --from-literal='cse-idcc-password=<CSE_IDCC_PASSWORD>' --from-literal='cse-d2cc-user=<CSE_D2CC_USER>' --from-literal='cse-d2cc-password=<CSE_D2CC_PASSWORD>' --from-literal='core-valid-user=<CORE_VALID_USER>' --from-literal='core-valid-password=<CORE_VALID_PASSWORD>'
+kubectl create secret generic gridcapa-postgresql-credentials --from-literal='postgres-password=<POSTGRES_PASSWORD>' --from-literal='config-user=<CONFIG_USER>' --from-literal='config-password=<CONFIG_PASSWORD>' --from-literal='cse-import-idcc-user=<CSE_IMPORT_IDCC_USER>' --from-literal='cse-import-idcc-password=<CSE_IMPORT_IDCC_PASSWORD>' --from-literal='cse-import-d2cc-user=<CSE_IMPORT_D2CC_USER>' --from-literal='cse-import-d2cc-password=<CSE_IMPORT_D2CC_PASSWORD>' --from-literal='cse-export-idcc-user=<CSE_EXPORT_IDCC_USER>' --from-literal='cse-export-idcc-password=<CSE_EXPORT_IDCC_PASSWORD>' --from-literal='cse-export-d2cc-user=<CSE_EXPORT_D2CC_USER>' --from-literal='cse-export-d2cc-password=<CSE_EXPORT_D2CC_PASSWORD>' --from-literal='core-valid-user=<CORE_VALID_USER>' --from-literal='core-valid-password=<CORE_VALID_PASSWORD>'
 kubectl create secret generic gridcapa-keycloak-credentials --from-literal='keycloak-user=<KEYCLOAK_USER>' --from-literal='keycloak-password=<KEYCLOAK_PASSWORD>'
 ```
-
 ### MinIO bucket notifications
 
 GridCapa platform needs bucket notifications activated on MinIO server to run correctly.

@@ -12,6 +12,7 @@ data:
     logback:
       amqp:
         exchange: core-valid-task-manager-logs-exchange
+        routing-key: "#"
     spring:
       rabbitmq:
         host: gridcapa-rabbitmq
@@ -19,7 +20,7 @@ data:
         password: ${RABBITMQ_PASSWORD}
         port: 5672
         template:
-          reply-timeout: 600000000
+          reply-timeout: 7200000
       cloud:
         stream:
           bindings:
@@ -33,7 +34,7 @@ data:
         queue-name: rao-request-queue
 
     core-valid-runner:
-      async-time-out: 600000
+      async-time-out: 7200000
       bindings:
         request:
           destination: core-valid-requests
@@ -50,10 +51,10 @@ data:
           FR: 0
         max-curative-ra-per-tso:
           FR: 1
-    minio:
-      url: http://gridcapa-minio:9000/
-      access:
-        name: ${GRIDCAPA_MINIO_USER}
-        secret: ${GRIDCAPA_MINIO_PASSWORD}
+
+    minio-adapter:
       bucket: gridcapa
-      base-path: CORE/VALID/
+      base-path: /CORE/VALID
+      access-key: ${GRIDCAPA_MINIO_USER}
+      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+      url: http://gridcapa-minio:9000/

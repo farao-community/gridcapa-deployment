@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - data-bridge/cse-export-d2cc-cgm-data-bridge-configmap.yaml
+  - data-bridge/cse-export-d2cc-cgm-data-bridge-deployment.yaml
+  - data-bridge/cse-export-d2cc-cgm-data-bridge-service.yaml
+  - data-bridge/cse-export-d2cc-crac-data-bridge-configmap.yaml
+  - data-bridge/cse-export-d2cc-crac-data-bridge-deployment.yaml
+  - data-bridge/cse-export-d2cc-crac-data-bridge-service.yaml
+  - cse-export-d2cc-exporter-configmap.yaml
+  - cse-export-d2cc-exporter-deployment.yaml
+  - cse-export-d2cc-exporter-service.yaml
+  - cse-export-d2cc-adapter-configmap.yaml
+  - cse-export-d2cc-adapter-deployment.yaml
+  - cse-export-d2cc-adapter-service.yaml
+  - cse-export-d2cc-app-deployment.yaml
+  - cse-export-d2cc-app-process-metadata-configmap.yaml
+  - cse-export-d2cc-app-service.yaml
+  - cse-export-d2cc-runner-configmap.yaml
+  - cse-export-d2cc-runner-deployment.yaml
+  - cse-export-d2cc-runner-service.yaml
+  - cse-export-d2cc-job-launcher-deployment.yaml
+  - cse-export-d2cc-job-launcher-service.yaml
+  - cse-export-d2cc-job-launcher-configmap.yaml
+  - cse-export-d2cc-task-manager-configmap.yaml
+  - cse-export-d2cc-task-manager-deployment.yaml
+  - cse-export-d2cc-task-manager-service.yaml
+  - cse-export-d2cc-rao-logs-dispatcher-configmap.yaml
+  - cse-export-d2cc-rao-logs-dispatcher-deployment.yaml
+  - cse-export-d2cc-rao-logs-dispatcher-service.yaml
+  - cse-export-d2cc-task-notification-server-configmap.yaml
+  - cse-export-d2cc-task-notification-server-deployment.yaml
+  - cse-export-d2cc-task-notification-server-service.yaml

@@ -4,7 +4,11 @@ kind: Kustomization
 bases:
   - ../common
   - ../core/valid
-  - ../cse/d2cc
+  - ../../../cse/common
+  - ../../../cse/export-corner/d2cc
+  - ../../../cse/export-corner/idcc
+  - ../../../cse/import-corner/d2cc
+  - ../../../cse/import-corner/idcc
 
 resources:
   - apps-metadata-server-configmap.yaml
@@ -40,13 +44,13 @@ images:
     newTag: latest
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
-    newTag: latest-auth
+    newTag: latest
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: latest
   - name: gridcapa-cse-adapter
-    newName: docker.io/farao/gridcapa-cse-adapter
-    newTag: latest
+    newName: docker.io/benrejebmoh/gridcapa-cse-adapter
+    newTag: dev
   - name: gridcapa-cse-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
     newTag: latest
@@ -56,13 +60,16 @@ images:
   - name: gridcapa-cse-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner
     newTag: latest
-  - name: gridcapa-cse-runner
+  - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
+    newTag: latest
+  - name: gridcapa-cse-export-runner
+    newName: docker.io/farao/gridcapa-cse-cc-export-runner
     newTag: latest
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: latest
-  - name: gridcapa-cse-export
+  - name: gridcapa-cse-exporter
     newName: docker.io/farao/gridcapa-export
     newTag: latest
   - name: gridcapa-core-valid-input-data-bridge

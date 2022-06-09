@@ -1,0 +1,28 @@
+logback:
+  amqp:
+    exchange: cse-import-idcc-task-manager-logs-exchange
+    routing-key: "#"
+spring:
+  rabbitmq:
+    host: rabbitmq
+    username: gridcapa
+    password: gridcapa
+    port: 5672
+  cloud:
+    stream:
+      bindings:
+        run-task:
+          destination: cse-import-idcc-launch-task
+          group: cse-import-idcc-job-launcher
+
+job-launcher:
+  auto: false
+  url:
+    task-manager-timestamp-url: http://cse-import-idcc-task-manager:8080/tasks/
+    task-manager-business-date-url: http://cse-import-idcc-task-manager:8080/tasks/businessdate/
+  process:
+    tag: CSE_IMPORT_IDCC
+    timezone: CET
+
+scheduler:
+  enable: false
