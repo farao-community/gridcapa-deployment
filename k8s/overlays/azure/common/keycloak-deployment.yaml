@@ -24,24 +24,38 @@ spec:
         fsGroup: 1000
       containers:
         - name: keycloak
-          image: quay.io/keycloak/keycloak:15.0.1
-          imagePullPolicy: Always
+          image: quay.io/keycloak/keycloak:18.0.0
+          args: ["start"]
           ports:
             - containerPort: 8080
           volumeMounts:
             - mountPath: "/opt/jboss/keycloak/standalone/data"
               name: keycloak-storage
           env:
-            - name: KEYCLOAK_USER
+            - name: KEYCLOAK_ADMIN
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-keycloak-credentials
                   key: keycloak-user
-            - name: KEYCLOAK_PASSWORD
+            - name: KEYCLOAK_ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-keycloak-credentials
                   key: keycloak-password
+            - name: KC_HOSTNAME
+              value: "auth.farao-community.com"
+            - name: KC_HOSTNAME_STRICT_HTTPS
+              value: "false"
+            - name: KC_PROXY
+              value: "passthrough"
+            - name: KC_HEALTH_ENABLED
+              value: "true"
+            - name: KC_HTTPS_PORT
+              value: "443"
+            - name: KC_HTTP_ENABLED
+              value: "true"
+            - name: PROXY_ADDRESS_FORWARDING
+              value: "true"
           livenessProbe:
             tcpSocket:
               port: 8080
