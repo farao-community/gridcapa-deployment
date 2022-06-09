@@ -16,6 +16,7 @@ spring:
           group: cse-import-idcc-job-launcher
 
 job-launcher:
+  auto: false
   url:
     task-manager-timestamp-url: http://cse-import-idcc-task-manager:8080/tasks/
     task-manager-business-date-url: http://cse-import-idcc-task-manager:8080/tasks/businessdate/
