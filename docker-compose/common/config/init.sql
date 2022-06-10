@@ -19,3 +19,6 @@ GRANT ALL PRIVILEGES ON DATABASE core_valid_tasks TO core_valid_server;
 CREATE DATABASE cse_valid_d2cc_tasks;
 CREATE USER cse_valid_d2cc_server WITH ENCRYPTED PASSWORD 'cse-valid-d2cc';
 GRANT ALL PRIVILEGES ON DATABASE cse_valid_d2cc_tasks TO cse_valid_d2cc_server;
+CREATE DATABASE cse_valid_idcc_tasks;
+CREATE USER cse_valid_idcc_server WITH ENCRYPTED PASSWORD 'cse-valid-idcc';
+GRANT ALL PRIVILEGES ON DATABASE cse_valid_idcc_tasks TO cse_valid_idcc_server;

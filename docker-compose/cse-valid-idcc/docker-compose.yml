@@ -1,163 +1,17 @@
 version: "3.7"
 services:
-  nginx-proxy:
-    image: nginx:alpine
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:Z
-      - ../config/apps-metadata.json:/usr/share/nginx/html/apps-metadata.json:Z
-    depends_on:
-      - config-notification-server
-      - config-server
-      - filebrowser
-      - minio
-      - rabbitmq
-      - cse-valid-idcc-gridcapa-app
-      - cse-valid-idcc-gridcapa-job-launcher
-      - cse-valid-idcc-gridcapa-task-manager
-      - cse-valid-idcc-task-notification-server
-      - cse-valid-d2cc-gridcapa-app
-      - cse-valid-d2cc-gridcapa-job-launcher
-      - cse-valid-d2cc-gridcapa-task-manager
-      - cse-valid-d2cc-task-notification-server
-    networks:
-      - gridcapa
-
-  sftp:
-    hostname: sftp
-    image: atmoz/sftp
-    volumes:
-      - sftp-data:/home/gridcapa/data
-    ports:
-      - "2222:22"
-    environment:
-      SFTP_USERS: gridcapa:gridcapa:::/data/gridcapa/data/inputs/ecp,/data/gridcapa/data/inputs/cia,/data/gridcapa/data/outputs/cia
-    networks:
-      - gridcapa
-
-  filebrowser:
-    image: filebrowser/filebrowser
-    restart: always
-    volumes:
-      - sftp-data:/srv/sftp
-    environment:
-      FB_BASEURL: /utils/filebrowser
-      FB_USERNAME: gridcapa
-      FB_PASSWORD: $$2y$$10$$aWh9euDInAg94hlz3eLRteghF5ASR8LCq6K2EkGwxi4a9oxSyhnP.
-    networks:
-      - gridcapa
-
-  minio:
-    image: bitnami/minio:2021.6.17
-    restart: always
-    volumes:
-      - minio-data:/data
-    environment:
-      MINIO_ACCESS_KEY: gridcapa
-      MINIO_SECRET_KEY: gridcapa
-      MINIO_DEFAULT_BUCKETS: gridcapa
-      MINIO_NOTIFY_AMQP_ENABLE: "on"
-      MINIO_NOTIFY_AMQP_URL: amqp://gridcapa:gridcapa@rabbitmq:5672
-      MINIO_NOTIFY_AMQP_EXCHANGE: gridcapa.minio.events
-      MINIO_NOTIFY_AMQP_EXCHANGE_TYPE: fanout
-      MINIO_NOTIFY_AMQP_DELIVERY_MODE: 2
-      MINIO_NOTIFY_AMQP_AUTO_DELETED: "off"
-      MINIO_NOTIFY_AMQP_DURABLE: "on"
-    ports:
-      - "9000:9000"
-    networks:
-      - gridcapa
-
-  rabbitmq:
-    image: rabbitmq:management
-    environment:
-      RABBITMQ_DEFAULT_USER: gridcapa
-      RABBITMQ_DEFAULT_PASS: gridcapa
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-    volumes:
-      - rabbitmq-data:/var/lib/rabbitmq/mnesia
-    networks:
-      - gridcapa
-    healthcheck:
-      test: ["CMD", "rabbitmq-diagnostics ping"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-
-  config-server:
-    image: gridsuite/config-server:latest
-    restart: always
-    volumes:
-      - ../config/gridsuite-config-server-application.yml:/config/application.yml:Z
-      - ../config/gridsuite-postgres.properties:/config/database.properties:Z
-    command: --spring.config.additional-location=/config/
-    networks:
-      - gridcapa
-    depends_on:
-      - gridcapa-postgres
-
-  config-notification-server:
-    image: gridsuite/config-notification-server:latest
-    restart: always
-    volumes:
-      - ../config/gridsuite-config-notification-server-application.yml:/config/application.yml:Z
-    command: --spring.config.additional-location=/config/
-    networks:
-      - gridcapa
-    depends_on:
-      - rabbitmq
-
-  gridcapa-postgres:
-    image: bitnami/postgresql
-    environment:
-      ALLOW_EMPTY_PASSWORD: 'yes'
-    ports:
-      - "5434:5432"
-    volumes:
-      - gridcapa-postgres-data:/bitnami/postgresql
-      - ../config/init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - gridcapa
-
-  rao-runner:
-    image: farao/gridcapa-rao-runner:latest
-    volumes:
-      - ../config/cse/common/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
-      - ../config/rao-runner-application.yml:/config/application.yml
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://rao-runner/actuator/health" ]
-      interval: 30s
-      timeout: 30s
-      retries: 5
-    depends_on:
-      - minio
-      - rabbitmq
-    networks:
-      - gridcapa
-
-  #region IDCC
-  data-bridge-idcc-ttc-adjustment:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ../config/cse/valid/idcc/data-bridge-idcc-ttc-adjustment.yml:/config/application.yml
-    networks:
-      - gridcapa
-
   cse-valid-idcc-gridcapa-app:
     image: farao/gridcapa-app:latest
     volumes:
-      - ../config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
-      - ../config/cse/valid/idcc/cse-idcc-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+      - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ./config/cse-idcc-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
     networks:
       - gridcapa
 
   cse-valid-idcc-gridcapa-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
-      - ../config/cse/valid/idcc/cse-valid-idcc-gridcapa-task-manager-application.yml:/config/application.yml
+      - ./config/cse-valid-idcc-gridcapa-task-manager-application.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -165,182 +19,77 @@ services:
     image: springcloudstream/websocket-sink-rabbit:latest
     restart: always
     volumes:
-      - ../config/cse/valid/idcc/cse-valid-idcc-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
+      - ./config/cse-valid-idcc-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
     networks:
       - gridcapa
-    depends_on:
-      - rabbitmq
+
+  data-bridge-idcc-ttc-adjustment:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge-idcc-ttc-adjustment.yml:/config/application.yml
+    networks:
+      - gridcapa
 
   data-bridge-idcc-output-ttc-validation:
     image: farao/gridcapa-output-data-bridge:latest
     volumes:
-      - ../config/cse/valid/idcc/data-bridge-idcc-output-ttc-validation.yml:/config/application.yml
+      - ./config/data-bridge-idcc-output-ttc-validation.yml:/config/application.yml
     networks:
       - gridcapa
 
   data-bridge-idcc-crac:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/valid/idcc/data-bridge-idcc-crac.yml:/config/application.yml
+      - ./config/data-bridge-idcc-crac.yml:/config/application.yml
     networks:
       - gridcapa
 
   data-bridge-idcc-glsk:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/valid/idcc/data-bridge-idcc-glsk.yml:/config/application.yml
+      - ./config/data-bridge-idcc-glsk.yml:/config/application.yml
     networks:
       - gridcapa
 
   data-bridge-idcc-cgm:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ../config/cse/valid/idcc/data-bridge-idcc-cgm.yml:/config/application.yml
+      - ./config/data-bridge-idcc-cgm.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-valid-idcc-runner:
+    image: farao/gridcapa-cse-valid:latest
+    volumes:
+      - ./config/cse-valid-idcc-runner-application.yml:/config/application.yml
+      - ./config/cse-valid-idcc-itools-config-OLF.yml:/home/farao/.itools/config.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  cse-valid-idcc-adapter:
+    image: farao/gridcapa-cse-valid-adapter:latest
+    volumes:
+      - ./config/cse-valid-idcc-adapter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
     networks:
       - gridcapa
 
   cse-valid-idcc-gridcapa-job-launcher:
     image: farao/gridcapa-job-launcher:latest
     volumes:
-      - ../config/cse/valid/idcc/cse-valid-idcc-gridcapa-job-launcher.yml:/config/application.yml
+      - ./config/cse-valid-idcc-gridcapa-job-launcher.yml:/config/application.yml
     networks:
       - gridcapa
-
-  cse-valid-idcc-runner:
-    image: farao/gridcapa-cse-valid:1.0.0-LOCAL
-    volumes:
-      - ../config/cse/valid/idcc/cse-valid-idcc-runner-application.yml:/config/application.yml
-      - ../config/cse/valid/idcc/cse-valid-idcc-itools-config-OLF.yml:/home/farao/.itools/config.yml
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
-      interval: 30s
-      timeout: 30s
-      retries: 5
-    depends_on:
-      - minio
-      - rabbitmq
-    networks:
-      - gridcapa
-
-  cse-valid-idcc-adapter:
-    image: farao/gridcapa-cse-valid-adapter:1.0.0-LOCAL
-    volumes:
-      - ../config/cse/valid/idcc/cse-valid-idcc-adapter-application.yml:/config/application.yml
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
-      interval: 30s
-      timeout: 30s
-      retries: 5
-    depends_on:
-      - rabbitmq
-    networks:
-      - gridcapa
-  #endregion
-
-  #region D2CC
-  cse-valid-d2cc-gridcapa-app:
-    image: farao/gridcapa-app:latest
-    volumes:
-      - ../config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
-      - ../config/cse/valid/d2cc/cse-d2cc-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
-    networks:
-      - gridcapa
-
-  cse-valid-d2cc-gridcapa-task-manager:
-    image: farao/gridcapa-task-manager:latest
-    volumes:
-      - ../config/cse/valid/d2cc/cse-valid-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-valid-d2cc-task-notification-server:
-    image: springcloudstream/websocket-sink-rabbit:latest
-    restart: always
-    volumes:
-      - ../config/cse/valid/d2cc/cse-valid-d2cc-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
-    networks:
-      - gridcapa
-    depends_on:
-      - rabbitmq
-
-  data-bridge-d2cc-ttc-adjustment:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ../config/cse/valid/d2cc/data-bridge-d2cc-ttc-adjustment.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  data-bridge-d2cc-output-ttc-validation:
-    image: farao/gridcapa-output-data-bridge:latest
-    volumes:
-      - ../config/cse/valid/d2cc/data-bridge-d2cc-output-ttc-validation.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  data-bridge-d2cc-crac:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ../config/cse/valid/d2cc/data-bridge-d2cc-crac.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  data-bridge-d2cc-glsk:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ../config/cse/valid/d2cc/data-bridge-d2cc-glsk.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  data-bridge-d2cc-cgm:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ../config/cse/valid/d2cc/data-bridge-d2cc-cgm.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-valid-d2cc-runner:
-    image: farao/gridcapa-cse-valid:1.0.0-LOCAL
-    volumes:
-      - ../config/cse/valid/d2cc/cse-valid-d2cc-runner-application.yml:/config/application.yml
-      - ../config/cse/valid/d2cc/cse-valid-d2cc-itools-config-OLF.yml:/home/farao/.itools/config.yml
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
-      interval: 30s
-      timeout: 30s
-      retries: 5
-    depends_on:
-      - minio
-      - rabbitmq
-    networks:
-      - gridcapa
-
-  cse-valid-d2cc-adapter:
-    image: farao/gridcapa-cse-valid-adapter:1.0.0-LOCAL
-    volumes:
-      - ../config/cse/valid/d2cc/cse-valid-d2cc-adapter-application.yml:/config/application.yml
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
-      interval: 30s
-      timeout: 30s
-      retries: 5
-    depends_on:
-      - rabbitmq
-    networks:
-      - gridcapa
-
-  cse-valid-d2cc-gridcapa-job-launcher:
-    image: farao/gridcapa-job-launcher:latest
-    volumes:
-      - ../config/cse/valid/d2cc/cse-valid-d2cc-gridcapa-job-launcher.yml:/config/application.yml
-    networks:
-      - gridcapa
-  #endregion
 
 networks:
   gridcapa:
-
-volumes:
-  gridcapa-postgres-data:
-  minio-data:
-  rabbitmq-data:
-  sftp-data:
+    name: gridcapa

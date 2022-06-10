@@ -36,6 +36,9 @@ spring:
           consumeMinioEvent-in-0:
             consumer:
               exchange-type: fanout
+          task-status-updated:
+            producer:
+              routing-key-expression: '''status'''
     function:
       definition: consumeMinioEvent;consumeTaskStatusUpdate;consumeTaskEventUpdate
 
@@ -48,6 +51,7 @@ task-server:
       - CRAC
       - CGM
       - GLSK
+    outputs:
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
