@@ -64,7 +64,7 @@ cse-cc-runner:
         - FFG.IL14 FFG.IL13 3
   bindings:
     request:
-      destination: cse-request
+      destination: cse-import-idcc-request
       group: cse-idcc-runner
     response:
       destination: cse-response
