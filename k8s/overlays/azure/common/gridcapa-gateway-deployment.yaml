@@ -51,10 +51,6 @@ spec:
             timeoutSeconds: 2
             failureThreshold: 1
             successThreshold: 1
-      hostAliases:
-        - ip: "10.132.110.232"
-          hostnames:
-            - "gaia-sso.opf.rte-france.com"
       restartPolicy: Always
       volumes:
         - name: gateway-configmap-volume

@@ -3,11 +3,11 @@
   value:
     mountPath: /usr/local/apache2/htdocs/gridcapa/idpSettings.json
     subPath: idpSettings.json
-    name: cse-d2cc-gridcapa-app-idp-settings-configmap-volume
+    name: cse-export-d2cc-gridcapa-app-idp-settings-configmap-volume
 
 - op: add
   path: /spec/template/spec/volumes/-
   value:
-    name: cse-d2cc-gridcapa-app-idp-settings-configmap-volume
+    name: cse-export-d2cc-gridcapa-app-idp-settings-configmap-volume
     configMap:
-      name: cse-d2cc-gridcapa-app-idp-settings-configmap
+      name: cse-export-d2cc-gridcapa-app-idp-settings-configmap
