@@ -28,6 +28,11 @@ spec:
           ports:
             - containerPort: 5432
           env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: postgres-password
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -43,26 +48,46 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: config-password
-            - name: POSTGRES_CSE_IDCC_USER
+            - name: POSTGRES_CSE_IMPORT_IDCC_USER
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
-                  key: cse-idcc-user
-            - name: POSTGRES_CSE_IDCC_PASSWORD
+                  key: cse-import-idcc-user
+            - name: POSTGRES_CSE_IMPORT_IDCC_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
-                  key: cse-idcc-password
-            - name: POSTGRES_CSE_D2CC_USER
+                  key: cse-import-idcc-password
+            - name: POSTGRES_CSE_IMPORT_D2CC_USER
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
-                  key: cse-d2cc-user
-            - name: POSTGRES_CSE_D2CC_PASSWORD
+                  key: cse-import-d2cc-user
+            - name: POSTGRES_CSE_IMPORT_D2CC_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
-                  key: cse-d2cc-password
+                  key: cse-import-d2cc-password
+            - name: POSTGRES_CSE_EXPORT_IDCC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-export-idcc-user
+            - name: POSTGRES_CSE_EXPORT_IDCC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-export-idcc-password
+            - name: POSTGRES_CSE_EXPORT_D2CC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-export-d2cc-user
+            - name: POSTGRES_CSE_EXPORT_D2CC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-export-d2cc-password
           resources:
             limits:
               cpu: "500m"
