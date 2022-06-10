@@ -3,9 +3,11 @@ kind: Kustomization
 
 bases:
   - ../../common
-  - ../../cse/idcc
-  - ../../cse/d2cc
   - ../../cse/common
+  - ../../cse/export-corner/d2cc
+  - ../../cse/export-corner/idcc
+  - ../../cse/import-corner/d2cc
+  - ../../cse/import-corner/idcc
 
 resources:
   - apps-metadata-server-configmap.yaml
@@ -52,19 +54,6 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-idcc-gridcapa-runner
-      spec:
-        replicas: 2
-        template:
-          spec:
-            volumes:
-              - name: cse-idcc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-coreso-configmap
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
         name: cse-rao-runner
       spec:
         replicas: 2
@@ -83,13 +72,52 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-d2cc-gridcapa-runner
+        name: cse-import-idcc-gridcapa-runner
       spec:
         replicas: 2
         template:
           spec:
             volumes:
-              - name: cse-d2cc-runner-itools-configmap-volume
+              - name: cse-import-idcc-runner-itools-configmap-volume
+                configMap:
+                  name: cse-runner-itools-coreso-configmap
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-d2cc-gridcapa-runner
+      spec:
+        replicas: 2
+        template:
+          spec:
+            volumes:
+              - name: cse-import-d2cc-runner-itools-configmap-volume
+                configMap:
+                  name: cse-runner-itools-coreso-configmap
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-idcc-runner
+      spec:
+        replicas: 1
+        template:
+          spec:
+            volumes:
+              - name: cse-runner-itools-configmap-volume
+                configMap:
+                  name: cse-runner-itools-coreso-configmap
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-d2cc-runner
+      spec:
+        replicas: 1
+        template:
+          spec:
+            volumes:
+              - name: cse-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-coreso-configmap
 configMapGenerator:
@@ -126,22 +154,25 @@ images:
     newTag: v1.1.0
   - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
-    newTag: v1.2.0
+    newTag: v1.3.0
   - name: gridcapa-cse-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
-    newTag: v1.2.0
+    newTag: v1.3.1
   - name: gridcapa-cse-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.0.0
   - name: gridcapa-cse-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner
     newTag: v1.2.0
-  - name: gridcapa-cse-runner
+  - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.4.0
+    newTag: v1.4.1
+  - name: gridcapa-cse-export-runner
+    newName: docker.io/farao/gridcapa-cse-cc-export-runner
+    newTag: v1.4.1
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.1.2
+    newTag: v1.2.0
   - name: gridcapa-cse-exporter
     newName: docker.io/farao/gridcapa-export
-    newTag: v1.2.0
+    newTag: v1.1.0
