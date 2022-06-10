@@ -5,13 +5,14 @@ bases:
   - ../common
   - ../core/valid
   - ../../../cse/common
-  - ../../../cse/export-corner/d2cc
-  - ../../../cse/export-corner/idcc
-  - ../../../cse/import-corner/d2cc
-  - ../../../cse/import-corner/idcc
+  - ../cse/export-corner/d2cc
+  - ../cse/export-corner/idcc
+  - ../cse/import-corner/d2cc
+  - ../cse/import-corner/idcc
 
 resources:
   - apps-metadata-server-configmap.yaml
+  - auth-ingress.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
 
@@ -43,7 +44,7 @@ images:
     newTag: latest
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
-    newTag: latest
+    newTag: latest-auth
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: latest

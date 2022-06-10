@@ -8,5 +8,5 @@ metadata:
 data:
   process-metadata.json: |-
     {
-      "processName": "CSE IDCC"
+      "processName": "CSE IMPORT IDCC"
     }

@@ -16,7 +16,7 @@ metadata:
     nginx.ingress.kubernetes.io/server-snippet: |
       merge_slashes off;
     nginx.ingress.kubernetes.io/service-upstream: "true"
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/client-max-body-size: "50m"
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
   labels:
@@ -269,3 +269,7 @@ spec:
                   number: 9000
             path: /()(minio.*)
             pathType: Prefix
+  tls:
+    - hosts:
+        - gridcapa-dev.farao-community.com
+      secretName: gridcapa-tls
