@@ -62,6 +62,7 @@ data:
           - CRAC
           - GLSK
           - NTC
+          - TARGET-CH
           - NTC-RED
         optional-inputs:
           - USER-CONFIG
