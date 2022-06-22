@@ -6,7 +6,7 @@ data-bridge:
   time-validity: yearly
   remote-file-regex:
     - ".*.zip"
-    - "[0-9]{8}.*.(xml|XML)"
+    - "[0-9]{4}.*.(xml|XML)"
   sources:
     ftp:
       active: true
