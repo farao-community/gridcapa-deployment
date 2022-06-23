@@ -2,11 +2,10 @@ data-bridge:
   zone-id: "Europe/Paris"
   target-process: CSE_IMPORT_D2CC
   file-type: TARGET-CH
-  file-regex: (?<year>[0-9]{4}).*.(xml|XML)
+  file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*.(xml|XML)
   time-validity: yearly
   remote-file-regex:
-    - ".*.zip"
-    - "[0-9]{4}.*.(xml|XML)"
+    - "[0-9]{8}.*.(xml|XML)"
   sources:
     ftp:
       active: true
