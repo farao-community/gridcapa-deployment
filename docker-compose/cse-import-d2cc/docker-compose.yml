@@ -112,7 +112,6 @@ services:
     image: farao/gridcapa-cse-adapter:latest
     volumes:
       - ./config/cse-d2cc-gridcapa-adapter-application.yml:/config/application.yml
-      - ./config/20211209_Targets_CH.xml:/config/target-ch.xml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://cse-d2cc-adapter/actuator/health" ]
       interval: 30s
