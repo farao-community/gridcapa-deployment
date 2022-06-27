@@ -151,7 +151,7 @@ spec:
                 name: gateway
                 port:
                   number: 80
-            path: /(cse/import/d2cc/gridcapa-job-launcher/.*)
+            path: /()(cse/import/d2cc/gridcapa-job-launcher/.*)
             pathType: Prefix
 
           - backend:
