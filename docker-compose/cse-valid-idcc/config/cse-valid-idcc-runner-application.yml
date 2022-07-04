@@ -32,6 +32,7 @@ cse-valid-runner:
       expiration: 600000
   whitelist:
     - http://minio:9000/
+    - http://localhost:9000/
 
 minio-adapter:
   bucket: gridcapa
