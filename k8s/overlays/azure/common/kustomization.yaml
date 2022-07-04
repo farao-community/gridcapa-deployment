@@ -6,6 +6,12 @@ bases:
 
 resources:
   - azure-storage-class.yaml
+  - gridcapa-gateway-configmap.yaml
+  - gridcapa-gateway-deployment.yaml
+  - gridcapa-gateway-service.yaml
+  - keycloak-deployment.yaml
+  - keycloak-pv-claim.yaml
+  - keycloak-service.yaml
   - minio-pv-claim.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml

@@ -31,5 +31,3 @@ url-validation:
 cse-adapter:
   exchange-type: import
   process-type: D2CC
-  target-ch-fs-location: /config/target-ch.xml
-  target-ch-minio-location: TARGET_CH
