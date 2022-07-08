@@ -10,7 +10,7 @@ hades2:
   debug: false
 
 hades2-default-parameters:
-  nbThreads: 4
+  nbThreads: 3
 
 hades2-default-sensitivity-parameters:
   computeInitialLoadflow: true

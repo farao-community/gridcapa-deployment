@@ -37,6 +37,58 @@ patches:
                   limits:
                     cpu: "16.0"
                     memory: "50Gi"
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-idcc-gridcapa-runner
+      spec:
+        replicas: 2
+        template:
+          spec:
+            volumes:
+              - name: cse-import-idcc-runner-itools-configmap-volume
+                configMap:
+                  name: cse-runner-itools-azure-test-configmap
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-d2cc-gridcapa-runner
+      spec:
+        replicas: 2
+        template:
+          spec:
+            volumes:
+              - name: cse-import-d2cc-runner-itools-configmap-volume
+                configMap:
+                  name: cse-runner-itools-azure-test-configmap
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-idcc-runner
+      spec:
+        replicas: 1
+        template:
+          spec:
+            volumes:
+              - name: cse-runner-itools-configmap-volume
+                configMap:
+                  name: cse-runner-itools-azure-test-configmap
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-d2cc-runner
+      spec:
+        replicas: 1
+        template:
+          spec:
+            volumes:
+              - name: cse-runner-itools-configmap-volume
+                configMap:
+                  name: cse-runner-itools-azure-test-configmap
 
 images:
   - name: gridcapa-task-notification-server
