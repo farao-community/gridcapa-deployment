@@ -12,6 +12,7 @@ bases:
 
 resources:
   - apps-metadata-server-configmap.yaml
+  - cse-runner-itools-azure-test-configmap.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
 
