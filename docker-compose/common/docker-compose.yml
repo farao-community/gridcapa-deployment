@@ -105,6 +105,7 @@ services:
     image: farao/gridcapa-rao-runner:latest
     volumes:
       - ./config/rao-runner-application.yml:/config/application.yml
+      - ./config/rao-runner-itools.yml:/home/farao/.itools/config.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://rao-runner/actuator/health" ]
       interval: 30s

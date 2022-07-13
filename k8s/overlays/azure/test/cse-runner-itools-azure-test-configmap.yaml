@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-runner-itools-configmap
+  name: cse-runner-itools-azure-test-configmap
   labels:
     app: gridcapa
     component: gridcapa-runner
@@ -21,7 +21,7 @@ data:
       debug: false
 
     hades2-default-parameters:
-      nbThreads: 3
+      nbThreads: 2
 
     hades2-default-sensitivity-parameters:
       computeInitialLoadflow: true
@@ -41,7 +41,7 @@ data:
       sensitivity-fallback-overcost: 0.0
       rao-with-loop-flow-limitation: false
       rao-with-mnec-limitation: false
-      perimeters-in-parallel: 4
+      perimeters-in-parallel: 9
 
     search-tree-rao-parameters:
       maximum-search-depth: 5
@@ -49,7 +49,7 @@ data:
       curative-rao-stop-criterion: SECURE
       absolute-network-action-minimum-impact-threshold: 2.0
       relative-network-action-minimum-impact-threshold: 0.0
-      preventive-leaves-in-parallel: 4
+      preventive-leaves-in-parallel: 9
       curative-leaves-in-parallel: 1
       second-preventive-optimization-condition: POSSIBLE_CURATIVE_IMPROVEMENT
       global-opt-in-second-preventive: true

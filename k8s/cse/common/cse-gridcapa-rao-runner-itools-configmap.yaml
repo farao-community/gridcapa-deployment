@@ -8,9 +8,12 @@ metadata:
     region: cse
 
 data:
-  application.yml: |-
+  config.yml: |-
     rao:
       default: SearchTreeRao
+
+    computation-local:
+      availableCore: 20
 
     hades2:
       homeDir: /home/farao/farao-dep/runtime/hades2
