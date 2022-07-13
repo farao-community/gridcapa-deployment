@@ -1,23 +1,22 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-export-d2cc-crac-data-bridge-configmap
+  name: cse-import-d2cc-target-ch-data-bridge-configmap
   labels:
     app: gridcapa-data-bridge
-    component: gridcapa-crac-data-bridge
+    component: gridcapa-target-ch-data-bridge
     region: cse
-    process: export-d2cc
+    process: import-d2cc
 data:
   application.yml: |-
     data-bridge:
       zone-id: "Europe/Paris"
-      target-process: CSE_EXPORT_D2CC
-      file-type: CRAC
-      file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2})_.*.(xml|XML)
-      time-validity: hourly
+      target-process: CSE_IMPORT_D2CC
+      file-type: TARGET-CH
+      file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*.(xml|XML)
+      time-validity: yearly
       remote-file-regex:
-        - ".*Transit.*.zip"
-        - "[0-9]{8}_[0-9]{4}_.*Transit.*.(xml|XML)"
+        - "[0-9]{8}.*.(xml|XML)"
       sources:
         ftp:
           active: true
@@ -25,7 +24,7 @@ data:
           port: ${SOURCE_PORT}
           username: ${SOURCE_USER}
           password: ${SOURCE_PASSWORD}
-          base-directory: ${SOURCE_BASE_DIRECTORY}/cracs
+          base-directory: ${SOURCE_BASE_DIRECTORY}/targetchs
           polling-delay-in-ms: 5000
       sinks:
         minio:
@@ -33,4 +32,4 @@ data:
           access-key: ${MINIO_ACCESS_KEY}
           secret-key: ${MINIO_SECRET_KEY}
           bucket: ${MINIO_BUCKET}
-          base-directory: ${MINIO_BASE_DIRECTORY}/CRACs
+          base-directory: ${MINIO_BASE_DIRECTORY}/TARGETCHs

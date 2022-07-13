@@ -53,7 +53,7 @@ spec:
           resources:
             requests:
               cpu: "2.0"
-              memory: "384Mi"
+              memory: "5Gi"
           livenessProbe:
             tcpSocket:
               port: 9292

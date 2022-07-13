@@ -14,6 +14,9 @@ resources:
   - data-bridge/cse-import-d2cc-ntc-data-bridge-configmap.yaml
   - data-bridge/cse-import-d2cc-ntc-data-bridge-deployment.yaml
   - data-bridge/cse-import-d2cc-ntc-data-bridge-service.yaml
+  - data-bridge/cse-import-d2cc-target-ch-data-bridge-configmap.yaml
+  - data-bridge/cse-import-d2cc-target-ch-data-bridge-deployment.yaml
+  - data-bridge/cse-import-d2cc-target-ch-data-bridge-service.yaml
   - data-bridge/cse-import-d2cc-ntc-red-data-bridge-configmap.yaml
   - data-bridge/cse-import-d2cc-ntc-red-data-bridge-deployment.yaml
   - data-bridge/cse-import-d2cc-ntc-red-data-bridge-service.yaml
