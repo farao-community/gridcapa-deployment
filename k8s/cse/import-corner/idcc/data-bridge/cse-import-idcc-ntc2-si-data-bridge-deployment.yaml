@@ -6,7 +6,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ntc2-si-data-bridge
     region: cse
-    process: idcc
+    process: import-idcc
 
 spec:
   selector:
@@ -14,14 +14,14 @@ spec:
       app: gridcapa
       component: gridcapa-ntc2-si-data-bridge
       region: cse
-      process: idcc
+      process: import-idcc
   template:
     metadata:
       labels:
         app: gridcapa
         component: gridcapa-ntc2-si-data-bridge
         region: cse
-        process: idcc
+        process: import-idcc
     spec:
       containers:
         - name: cse-import-idcc-ntc2-si-data-bridge

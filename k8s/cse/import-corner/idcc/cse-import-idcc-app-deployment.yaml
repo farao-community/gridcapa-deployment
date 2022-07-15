@@ -6,7 +6,7 @@ metadata:
     app: gridcapa
     component: gridcapa-app
     region: cse
-    process: idcc
+    process: import-idcc
 
 spec:
   replicas: 2
@@ -15,14 +15,14 @@ spec:
       app: gridcapa
       component: gridcapa-app
       region: cse
-      process: idcc
+      process: import-idcc
   template:
     metadata:
       labels:
         app: gridcapa
         component: gridcapa-app
         region: cse
-        process: idcc
+        process: import-idcc
     spec:
       containers:
         - name: cse-import-idcc-gridcapa-app

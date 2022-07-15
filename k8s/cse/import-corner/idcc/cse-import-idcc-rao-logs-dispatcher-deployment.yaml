@@ -6,7 +6,7 @@ metadata:
     app: gridcapa
     component: rao-logs-dispatcher
     region: cse
-    process: idcc
+    process: import-idcc
 spec:
   replicas: 1
   selector:
@@ -14,14 +14,14 @@ spec:
       app: gridcapa
       component: rao-logs-dispatcher
       region: cse
-      process: idcc
+      process: import-idcc
   template:
     metadata:
       labels:
         app: gridcapa
         component: rao-logs-dispatcher
         region: cse
-        process: idcc
+        process: import-idcc
     spec:
       containers:
         - name: cse-import-idcc-rao-logs-dispatcher
