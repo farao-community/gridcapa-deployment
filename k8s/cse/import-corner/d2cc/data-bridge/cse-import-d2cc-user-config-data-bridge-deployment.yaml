@@ -24,7 +24,7 @@ spec:
         process: import-d2cc
     spec:
       containers:
-        - name: cse-idcc-user-config-data-bridge
+        - name: cse-d2cc-user-config-data-bridge
           image: gridcapa-cse-input-data-bridge
           imagePullPolicy: Always
           ports:

@@ -6,14 +6,14 @@ metadata:
     app: gridcapa
     component: task-notification-server
     region: cse
-    process: idcc
+    process: import-idcc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
     component: task-notification-server
     region: cse
-    process: idcc
+    process: import-idcc
   ports:
     - name: http
       port: 80

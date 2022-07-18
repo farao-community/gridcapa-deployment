@@ -6,7 +6,7 @@ metadata:
     app: gridcapa
     component: task-manager
     region: cse
-    process: idcc
+    process: import-idcc
 data:
   application.yml: |-
     spring:
