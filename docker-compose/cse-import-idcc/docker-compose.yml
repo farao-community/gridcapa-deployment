@@ -99,14 +99,6 @@ services:
     networks:
       - gridcapa
 
-  cse-import-idcc-task-notification-server:
-    image: springcloudstream/websocket-sink-rabbit:latest
-    restart: always
-    volumes:
-      - ./config/cse-idcc-task-notification-server-application.yml:/config/bootstrap.yml:Z
-    networks:
-      - gridcapa
-
   cse-import-idcc-rao-logs-dispatcher:
     image: farao/gridcapa-rao-logs-dispatcher:latest
     volumes:

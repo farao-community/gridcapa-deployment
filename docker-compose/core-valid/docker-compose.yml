@@ -82,14 +82,6 @@ services:
     networks:
       - gridcapa
 
-  core-valid-task-notification-server:
-    image: springcloudstream/websocket-sink-rabbit:latest
-    restart: always
-    volumes:
-      - ./config/core-valid-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
-    networks:
-      - gridcapa
-
   core-valid-output-data-bridge:
     image: farao/gridcapa-output-data-bridge:latest
     volumes:
