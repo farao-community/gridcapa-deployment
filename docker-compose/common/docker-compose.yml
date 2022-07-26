@@ -45,11 +45,24 @@ services:
     networks:
       - gridcapa
 
+  sftp:
+    hostname: sftp
+    image: atmoz/sftp
+    volumes:
+      - sftp-data:/home/gridcapa/data
+    ports:
+      - "2222:22"
+    environment:
+      SFTP_USERS: gridcapa:gridcapa:::/data/gridcapa/data/inputs/ecp,/data/gridcapa/data/inputs/cia,/data/gridcapa/data/outputs/cia
+    networks:
+      - gridcapa
+
   filebrowser:
     image: filebrowser/filebrowser
     restart: always
     volumes:
       - ftp-data:/srv/ftp
+      - sftp-data:/srv/sftp
     environment:
       FB_BASEURL: /utils/filebrowser
       FB_USERNAME: gridcapa
@@ -121,5 +134,6 @@ networks:
 volumes:
   gridcapa-postgres-data:
   ftp-data:
+  sftp-data:
   minio-data:
   rabbitmq-data:

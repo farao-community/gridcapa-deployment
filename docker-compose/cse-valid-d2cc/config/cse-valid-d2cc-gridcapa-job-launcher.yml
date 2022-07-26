@@ -1,0 +1,32 @@
+logback:
+  amqp:
+    exchange: cse-valid-d2cc-task-manager-logs-exchange
+    routing-key: "#"
+spring:
+  application:
+    name: cse-valid-d2cc-gridcapa-job-launcher
+  rabbitmq:
+    host: rabbitmq
+    username: gridcapa
+    password: gridcapa
+    port: 5672
+  cloud:
+    stream:
+      bindings:
+        run-task:
+          destination: cse-valid-d2cc-run-task
+          group: cse-valid-d2cc-job-launcher
+        run-task-auto:
+          destination: cse-valid-d2cc-run-task-auto
+          group: cse-valid-d2cc-job-launcher
+
+job-launcher:
+  url:
+    task-manager-timestamp-url: http://cse-valid-d2cc-gridcapa-task-manager:8080/tasks/
+    task-manager-business-date-url: http://cse-valid-d2cc-gridcapa-task-manager:8080/tasks/businessdate/
+  process:
+    tag: CSE_VALID_D2CC
+    timezone: CET
+
+scheduler:
+  enable: false
