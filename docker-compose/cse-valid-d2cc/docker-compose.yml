@@ -90,6 +90,18 @@ services:
     networks:
       - gridcapa
 
+  cse-valid-d2cc-publication:
+    image: farao/gridcapa-cse-valid-publication:latest
+    volumes:
+      - ./config/cse-valid-d2cc-publication-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
 networks:
   gridcapa:
     name: gridcapa
