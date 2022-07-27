@@ -69,6 +69,7 @@ data:
           - NTC-RED
           - VULCANUS
         optional-inputs:
+          - AUTOMATED-FORCED-PRAS
           - USER-CONFIG
         outputs:
           - TTC_RES
