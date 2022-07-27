@@ -69,3 +69,9 @@ stomp:
   notify: /task
   receive-request: /app
 
+ftp:
+  ftp-host: ftp-server
+  ftp-port: 21
+  ftp-user: gridcapa
+  ftp-password: gridcapa
+
