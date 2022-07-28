@@ -3,6 +3,8 @@ logback:
     exchange: cse-export-idcc-task-manager-logs-exchange
     routing-key: "#"
 spring:
+  application:
+    name: cse-export-idcc-gridcapa-job-launcher
   rabbitmq:
     host: rabbitmq
     username: gridcapa
@@ -17,6 +19,8 @@ spring:
           destination: cse-export-idcc-launch-task
         run-task-auto:
           destination: cse-export-idcc-launch-task
+        stop-task:
+          destination: cse-export-idcc-stop-task
         consumeTaskDtoUpdate-in-0:
           destination: cse-export-idcc-task-updated
       rabbit:
