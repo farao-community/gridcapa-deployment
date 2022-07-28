@@ -25,14 +25,14 @@ data:
             definition: interrupt;request
           default:
             binder: rabbit
-            group: cse-idcc-runner
+            group: cse-import-d2cc-runner
           bindings:
             interrupt-in-0:
               destination: cse-import-d2cc-stop-task
             request-in-0:
               destination: cse-import-d2cc-request
             request-out-0:
-              destination: cse-response
+              destination: cse-import-d2cc-response
             task-status-update:
               destination: cse-import-d2cc-task-status-updated
 
