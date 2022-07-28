@@ -10,6 +10,8 @@ metadata:
 data:
   application.yml: |-
     spring:
+      application:
+        name: cse-d2cc-runner
       rabbitmq:
         host: gridcapa-rabbitmq
         username: ${RABBITMQ_USER}
@@ -19,7 +21,18 @@ data:
           reply-timeout: 7200000
       cloud:
         stream:
+          function:
+            definition: interrupt;request
+          default:
+            binder: rabbit
+            group: cse-idcc-runner
           bindings:
+            interrupt-in-0:
+              destination: cse-import-d2cc-stop-task
+            request-in-0:
+              destination: cse-import-d2cc-request
+            request-out-0:
+              destination: cse-response
             task-status-update:
               destination: cse-import-d2cc-task-status-updated
 
@@ -71,12 +84,5 @@ data:
             - FFG.IL14 FFG.IL13 1
             - FFG.IL14 FFG.IL13 2
             - FFG.IL14 FFG.IL13 3
-      bindings:
-        request:
-          destination: cse-import-d2cc-request
-          group: cse-import-d2cc-runner
-        response:
-          destination: cse-response
-          expiration: 60000
       whitelist:
         - http://gridcapa-minio:9000/
