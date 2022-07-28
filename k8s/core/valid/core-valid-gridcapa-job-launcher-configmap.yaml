@@ -24,12 +24,27 @@ data:
       cloud:
         stream:
           bindings:
+            default:
+              group: core-valid-job-launcher
             run-task:
               destination: core-valid-run-task
-              group: core-valid-job-launcher
             run-task-auto:
               destination: core-valid-run-task-auto
-              group: core-valid-job-launcher
+            stop-task:
+              destination: core-valid-stop-task
+            consumeTaskDtoUpdate-in-0:
+              destination: core-valid-task-updated
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+            bindings:
+              consumeTaskDtoUpdate-in-0:
+                consumer:
+                  binding-routing-key: status
+        function:
+          definition: consumeTaskDtoUpdate
 
     job-launcher:
       url:
