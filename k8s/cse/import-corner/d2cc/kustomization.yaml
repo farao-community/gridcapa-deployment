@@ -44,9 +44,6 @@ resources:
   - cse-import-d2cc-rao-logs-dispatcher-configmap.yaml
   - cse-import-d2cc-rao-logs-dispatcher-deployment.yaml
   - cse-import-d2cc-rao-logs-dispatcher-service.yaml
-  - cse-import-d2cc-task-notification-server-configmap.yaml
-  - cse-import-d2cc-task-notification-server-deployment.yaml
-  - cse-import-d2cc-task-notification-server-service.yaml
   - cse-import-d2cc-exporter-configmap.yaml
   - cse-import-d2cc-exporter-deployment.yaml
   - cse-import-d2cc-exporter-service.yaml
