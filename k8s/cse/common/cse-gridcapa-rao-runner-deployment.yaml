@@ -48,7 +48,7 @@ spec:
                   name: gridcapa-minio-credentials
                   key: minio-secret-key
           volumeMounts:
-            - mountPath: /.itools/config.yml
+            - mountPath: /home/farao/.itools/config.yml
               subPath: config.yml
               name: cse-rao-runner-itools-volume
             - mountPath: /config/application.yml

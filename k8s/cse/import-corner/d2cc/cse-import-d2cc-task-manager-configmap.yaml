@@ -65,6 +65,7 @@ data:
           - TARGET-CH
           - NTC-RED
         optional-inputs:
+          - AUTOMATED-FORCED-PRAS
           - USER-CONFIG
         outputs:
           - TTC_RES

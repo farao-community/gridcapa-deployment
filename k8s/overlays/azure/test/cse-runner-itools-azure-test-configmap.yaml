@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-runner-itools-coreso-configmap
+  name: cse-runner-itools-azure-test-configmap
   labels:
     app: gridcapa
     component: gridcapa-runner
