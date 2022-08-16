@@ -50,8 +50,6 @@ data:
               task-status-updated:
                 producer:
                   routing-key-expression: '''status'''
-        function:
-          definition: consumeMinioEvent;consumeTaskStatusUpdate;consumeTaskEventUpdate
 
     task-server:
       process:
@@ -69,6 +67,7 @@ data:
           - NTC-RED
           - VULCANUS
         optional-inputs:
+          - AUTOMATED-FORCED-PRAS
           - USER-CONFIG
         outputs:
           - TTC_RES

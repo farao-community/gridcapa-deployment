@@ -35,8 +35,6 @@ data:
               consumeTaskDtoUpdate-in-0:
                 consumer:
                   binding-routing-key: status
-        function:
-          definition: consumeTaskDtoUpdate
 
     task-manager:
       base-url: http://cse-import-idcc-task-manager

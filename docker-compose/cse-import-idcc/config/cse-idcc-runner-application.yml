@@ -15,7 +15,7 @@ spring:
         group: cse-import-idcc-runner
       bindings:
         interrupt-in-0:
-          destination: cse-import-idcc-interrupt
+          destination: cse-import-idcc-stop-task
         request-in-0:
           destination: cse-import-idcc-request
         request-out-0:

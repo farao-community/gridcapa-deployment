@@ -57,6 +57,13 @@ services:
     networks:
       - gridcapa
 
+  cse-import-d2cc-automated-forced-pras-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-d2cc-gridcapa-automated-forced-pras-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
   cse-import-d2cc-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:

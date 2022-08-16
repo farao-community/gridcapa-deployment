@@ -22,8 +22,6 @@ spring:
           consumer:
             auto-bind-dlq: true
             max-attempts: 1
-    function:
-      definition: consumeTask;consumeAutoTask
 
 core-valid-runner:
   amqp:

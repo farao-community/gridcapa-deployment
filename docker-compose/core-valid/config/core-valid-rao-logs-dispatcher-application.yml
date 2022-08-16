@@ -18,8 +18,6 @@ spring:
           consumer:
             auto-bind-dlq: true
             max-attempts: 1
-    function:
-      definition: dispatchRaoEvents
 
 client:
   name: core-valid-runner

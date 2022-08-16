@@ -24,10 +24,25 @@ data:
       cloud:
         stream:
           bindings:
+            default:
+              group: cse-import-d2cc-job-launcher
             run-task:
               destination: cse-import-d2cc-launch-task
-              group: cse-import-d2cc-job-launcher
-
+            run-task-auto:
+              destination: cse-import-d2cc-launch-task
+            stop-task:
+              destination: cse-import-d2cc-stop-task
+            consumeTaskDtoUpdate-in-0:
+              destination: cse-import-d2cc-task-updated
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+            bindings:
+              consumeTaskDtoUpdate-in-0:
+                consumer:
+                  binding-routing-key: status
     job-launcher:
       auto: false
       url:
