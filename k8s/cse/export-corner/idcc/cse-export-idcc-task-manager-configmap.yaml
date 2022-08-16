@@ -50,8 +50,6 @@ data:
               task-status-updated:
                 producer:
                   routing-key-expression: '''status'''
-        function:
-          definition: consumeMinioEvent;consumeTaskStatusUpdate;consumeTaskEventUpdate
 
     task-server:
       process:
