@@ -59,8 +59,7 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: core-valid-  server:
-    port: 8081
+                name: core-valid-task-manager
                 port:
                   number: 80
             path: /core/valid/task-manager(/|$)(.*)
