@@ -31,8 +31,6 @@ data:
               consumer:
                 auto-bind-dlq: true
                 max-attempts: 1
-        function:
-          definition: dispatchRaoEvents
 
     client:
       name: cse-import-d2cc-runner
