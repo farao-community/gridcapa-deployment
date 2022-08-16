@@ -11,7 +11,7 @@ data:
   application.yml: |-
     spring:
       application:
-        name: cse-d2cc-runner
+        name: cse-import-d2cc-runner
       rabbitmq:
         host: gridcapa-rabbitmq
         username: ${RABBITMQ_USER}

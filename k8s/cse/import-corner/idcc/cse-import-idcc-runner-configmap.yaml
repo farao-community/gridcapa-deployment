@@ -21,8 +21,6 @@ data:
           reply-timeout: 7200000
       cloud:
         stream:
-          function:
-            definition: interrupt;request
           default:
             binder: rabbit
             group: cse-import-idcc-runner

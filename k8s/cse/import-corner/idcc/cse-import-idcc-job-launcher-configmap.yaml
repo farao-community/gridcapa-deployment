@@ -45,9 +45,6 @@ data:
               consumeTaskDtoUpdate-in-0:
                 consumer:
                   binding-routing-key: status
-        function:
-          definition: consumeTaskDtoUpdate
-
     job-launcher:
       auto: false
       url:
