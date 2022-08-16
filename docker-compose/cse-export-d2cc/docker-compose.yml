@@ -36,14 +36,6 @@ services:
     networks:
       - gridcapa
 
-  cse-export-d2cc-task-notification-server:
-    image: springcloudstream/websocket-sink-rabbit:latest
-    restart: always
-    volumes:
-      - ./config/cse-export-d2cc-task-notification-server-application.yml:/config/bootstrap.yml:Z
-    networks:
-      - gridcapa
-
   cse-export-d2cc-rao-logs-dispatcher:
     image: farao/gridcapa-rao-logs-dispatcher:latest
     volumes:

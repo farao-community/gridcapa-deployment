@@ -35,9 +35,6 @@ resources:
   - core-valid-rao-logs-dispatcher-configmap.yaml
   - core-valid-rao-logs-dispatcher-deployment.yaml
   - core-valid-rao-logs-dispatcher-service.yaml
-  - core-valid-task-notification-server-configmap.yaml
-  - core-valid-task-notification-server-deployment.yaml
-  - core-valid-task-notification-server-service.yaml
   - core-valid-gridcapa-job-launcher-deployment.yaml
   - core-valid-gridcapa-job-launcher-service.yaml
   - core-valid-gridcapa-job-launcher-configmap.yaml

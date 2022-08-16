@@ -56,9 +56,6 @@ resources:
   - cse-import-idcc-rao-logs-dispatcher-configmap.yaml
   - cse-import-idcc-rao-logs-dispatcher-deployment.yaml
   - cse-import-idcc-rao-logs-dispatcher-service.yaml
-  - cse-import-idcc-task-notification-server-configmap.yaml
-  - cse-import-idcc-task-notification-server-deployment.yaml
-  - cse-import-idcc-task-notification-server-service.yaml
   - cse-import-idcc-exporter-configmap.yaml
   - cse-import-idcc-exporter-deployment.yaml
   - cse-import-idcc-exporter-service.yaml

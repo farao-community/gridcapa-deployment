@@ -29,6 +29,3 @@ resources:
   - cse-export-idcc-rao-logs-dispatcher-configmap.yaml
   - cse-export-idcc-rao-logs-dispatcher-deployment.yaml
   - cse-export-idcc-rao-logs-dispatcher-service.yaml
-  - cse-export-idcc-task-notification-server-configmap.yaml
-  - cse-export-idcc-task-notification-server-deployment.yaml
-  - cse-export-idcc-task-notification-server-service.yaml
