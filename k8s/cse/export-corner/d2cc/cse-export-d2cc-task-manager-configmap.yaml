@@ -71,9 +71,9 @@ data:
       url: http://gridcapa-minio:9000/
       access-key: ${MINIO_ACCESS_KEY}
       secret-key: ${MINIO_SECRET_KEY}
-    
+
     stomp:
-      allowed-origin: http://cse-export-d2cc-gridcapa-app
+      allowed-origin: ${APP_URL}
       starting-ws-endpoint: /tasks/notify
       notify: /task
       receive-request: /app
