@@ -30,6 +30,11 @@ spec:
           ports:
             - containerPort: 8080
           env:
+            - name: APP_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_APP_URL
             - name: POSTGRES_HOST
               valueFrom:
                 configMapKeyRef:
