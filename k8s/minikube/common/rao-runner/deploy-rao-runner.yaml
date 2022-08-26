@@ -1,0 +1,166 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: rao-runner-configmap
+  labels:
+    app: gridcapa
+    component: rao-runner
+data:
+  application.yml: |-
+    spring:
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        port: 5672
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        template:
+          reply-timeout: 12000000
+
+    minio:
+      bucket: gridcapa
+      base-path:
+      access:
+        name: ${MINIO_ACCESS_KEY}
+        secret: ${MINIO_SECRET_KEY}
+      url: http://gridcapa-minio:9000/
+
+    rao-runner:
+      messages:
+        rao-request:
+          queue-name: rao-request-queue
+      url:
+        whitelist:
+          - http://gridcapa-minio:9000/
+
+    server:
+      port: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rao-runner
+  labels:
+    app: gridcapa
+    component: rao-runner
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: rao-runner
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: rao-runner
+    spec:
+      containers:
+        - name: rao-runner
+          image: docker.io/farao/gridcapa-rao-runner:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+          volumeMounts:
+            - mountPath: /.itools/config.yml
+              subPath: config.yml
+              name: rao-runner-itools-configmap-volume
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: rao-runner-configmap-volume
+            - mountPath: /tmp
+              name: tmp-emptydir
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            readOnlyRootFilesystem: true
+          resources:
+            requests:
+              cpu: "1.0"
+              memory: "1Gi"
+            limits:
+              cpu: "2.0"
+              memory: "4Gi"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
+      restartPolicy: Always
+      volumes:
+        - name: rao-runner-configmap-volume
+          configMap:
+            name: rao-runner-configmap
+        - name: rao-runner-itools-configmap-volume
+          configMap:
+            name: rao-runner-itools-configmap
+        - name: tmp-emptydir
+          emptyDir: {}
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: rao-runner-itools-configmap
+  labels:
+    app: gridcapa
+    component: rao-runner
+data:
+  application.yml: |-
+    rao:
+      default: SearchTreeRao
+
+    hades2:
+      homeDir: /home/farao/farao-dep/runtime/hades2
+      timeout: -1
+      debug: false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rao-runner
+  labels:
+    app: gridcapa
+    component: rao-runner
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: rao-runner
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
+

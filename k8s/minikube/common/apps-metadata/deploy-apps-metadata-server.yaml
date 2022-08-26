@@ -1,0 +1,136 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: gridcapa-app-env-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-app-env-configmap
+data:
+  env.json: |-
+    {
+      "appsMetadataServerUrl" : "https://gridcapa-dev.farao-local-community.com/apps-metadata"
+    }
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: apps-metadata-server-configmap
+  labels:
+    app: gridcapa
+    component: apps-metadata-server-configmap
+data:
+  apps-metadata.json: |-
+    [
+      {
+        "name" : "Capa CSE IMPORT D2CC",
+        "url"  : "/cse/import/d2cc",
+        "appColor" : "#36cf29"
+      },
+      {
+        "name" : "Capa CSE IMPORT IDCC",
+        "url"  : "/cse/import/idcc",
+        "appColor" : "#21afe1"
+      },
+      {
+        "name" : "Capa CSE EXPORT D2CC",
+        "url"  : "/cse/export/d2cc",
+        "appColor" : "#f4d03f"
+      },
+      {
+        "name" : "Capa CSE EXPORT IDCC",
+        "url"  : "/cse/export/idcc",
+        "appColor" : "#e629da"
+      },
+      {
+        "name" : "Capa CORE Validation",
+        "url"  : "/core/valid",
+        "appColor" : "#F56908"
+      }
+    ]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apps-metadata-server
+  labels:
+    app: gridcapa
+    component: apps-metadata-server
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: apps-metadata-server
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: apps-metadata-server
+    spec:
+      containers:
+        - name: apps-metadata-server
+          image: docker.io/bitnami/apache:2.4
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /opt/bitnami/apache/htdocs/
+              name: apps-metadata-server-configmap-volume
+            - mountPath: /opt/bitnami/apache/var/run/
+              name: run-emptydir
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1001
+            readOnlyRootFilesystem: true
+          resources:
+            requests:
+              cpu: "0.1"
+              memory: "128Mi"
+            limits:
+              cpu: "0.5"
+              memory: "128Mi"
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
+      restartPolicy: Always
+      volumes:
+        - name: apps-metadata-server-configmap-volume
+          configMap:
+            name: apps-metadata-server-configmap
+        - name: run-emptydir
+          emptyDir: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: gridcapa
+    component: apps-metadata-server
+  name: apps-metadata-server
+spec:
+  type: ClusterIP
+  ports:
+    - name: apps-metadata-server
+      port: 80
+      targetPort: 8080
+  selector:
+    app: gridcapa
+    component: apps-metadata-server
+
+

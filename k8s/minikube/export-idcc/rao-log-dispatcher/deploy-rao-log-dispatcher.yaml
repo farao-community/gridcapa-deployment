@@ -1,0 +1,135 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-export-idcc-rao-logs-dispatcher-configmap
+  labels:
+    app: gridcapa-rao-logs-dispatcher
+    component: gridcapa-rao-logs-dispatcher
+    region: cse
+    process: export-idcc
+data:
+  application.yml: |-
+    spring:
+      application:
+        name: cse-export-idcc-rao-logs-dispatcher
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+      cloud:
+        stream:
+          default:
+            group: cse-export-idcc
+          bindings:
+            dispatchRaoEvents-in-0:
+              destination: cse-runners-logs
+            dispatchRaoEvents-out-0:
+              destination: cse-export-idcc-task-manager-logs-exchange
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+
+    client:
+      name: cse-export-idcc-runner
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: cse-export-idcc-rao-logs-dispatcher
+  labels:
+    app: gridcapa-rao-logs-dispatcher
+    component: gridcapa-rao-logs-dispatcher
+    region: cse
+    process: export-idcc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gridcapa-rao-logs-dispatcher
+      component: gridcapa-rao-logs-dispatcher
+      region: cse
+      process: export-idcc
+  template:
+    metadata:
+      labels:
+        app: gridcapa-rao-logs-dispatcher
+        component: gridcapa-rao-logs-dispatcher
+        region: cse
+        process: export-idcc
+    spec:
+      containers:
+        - name: cse-export-idcc-rao-logs-dispatcher
+          image: docker.io/farao/gridcapa-rao-logs-dispatcher
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: cse-export-idcc-rao-logs-dispatcher-configmap-volume
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              cpu: "0.5"
+              memory: "500Mi"
+            limits:
+              cpu: "2.0"
+              memory: "1Gi"
+      restartPolicy: Always
+      volumes:
+        - name: cse-export-idcc-rao-logs-dispatcher-configmap-volume
+          configMap:
+            name: cse-export-idcc-rao-logs-dispatcher-configmap
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cse-export-idcc-rao-logs-dispatcher
+  labels:
+    app: gridcapa-rao-logs-dispatcher
+    component: gridcapa-rao-logs-dispatcher
+    region: cse
+    process: export-idcc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa-rao-logs-dispatcher
+    component: gridcapa-rao-logs-dispatcher
+    region: cse
+    process: export-idcc
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
+

@@ -1,0 +1,381 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: gridcapa-data-bridge
+  labels:
+    app: gridcapa-data-bridge
+    component: gridcapa-data-bridge
+data:
+  application.yml: |-
+    data-bridge:
+      sinks:
+        minio:
+          url: http://gridcapa-minio:9000
+          access-key: gridcapa
+          secret-key: gridcapa
+          bucket: gridcapa
+
+    data-bridges:
+      zone-id: "Europe/Paris"
+      ftp:
+        active: true
+        host: ${FTP_SOURCE_IP}
+        port: ${FTP_SOURCE_PORT}
+        username: gridcapa
+        password: gridcapa
+        polling-delay-in-ms: 5000
+      data-bridge-list:
+        -
+          target-process: CSE_IMPORT_D2CC
+          file-type: CGM
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2})_.*.(uct|UCT)
+          time-validity: hourly
+          ftp-directory: /data/gridcapa/cse/import/d2cc/cgms
+          minio-directory: /CSE/IMPORT/D2CC/CGMs
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{8}_[0-9]{4}_.*.(uct|UCT)"
+        -
+          target-process: CSE_IMPORT_D2CC
+          file-type: CRAC
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2}).*.(xml|XML)
+          time-validity: hourly
+          ftp-directory: /data/gridcapa/cse/import/d2cc/cracs
+          minio-directory: /CSE/IMPORT/D2CC/CRACs
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{8}_[0-9]{4}.*.(xml|XML)"
+        -
+          target-process: CSE_IMPORT_D2CC
+          file-type: AUTOMATED-FORCED-PRAS
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_.*automated_forced_pras.(json|JSON)
+          time-validity: yearly
+          ftp-directory: /data/gridcapa/cse/import/d2cc/automated-forced-pras
+          minio-directory: /CSE/IMPORT/D2CC/AUTOMATED-FORCED-PRAs
+          remote-file-regex:
+            - "[0-9]{8}_.*automated_forced_pras.(json|JSON)"
+        -
+          target-process: CSE_IMPORT_D2CC
+          file-type: GLSK
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2}).*.(xml|XML)
+          time-validity: hourly
+          ftp-directory: /data/gridcapa/cse/import/d2cc/glsks
+          minio-directory: /CSE/IMPORT/D2CC/GLSKs
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{8}_[0-9]{4}_.*.(xml|XML)"
+        -
+          target-process: CSE_IMPORT_D2CC
+          file-type: NTC
+          file-regex: (?<year>[0-9]{4}).*.(xml|XML)
+          time-validity: yearly
+          ftp-directory: /data/gridcapa/cse/import/d2cc/ntc
+          minio-directory: /CSE/IMPORT/D2CC/NTC
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{4}.*.(xml|XML)"
+        -
+          target-process: CSE_IMPORT_D2CC
+          file-type: NTC-RED
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*.(xml|XML)
+          time-validity: daily
+          ftp-directory: /data/gridcapa/cse/import/d2cc/ntcreds
+          minio-directory: /CSE/IMPORT/D2CC/NTCREDs
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{8}.*.(xml|XML)"
+        -
+          target-process: CSE_IMPORT_D2CC
+          file-type: TARGET-CH
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*.(xml|XML)
+          time-validity: yearly
+          ftp-directory: /data/gridcapa/cse/import/d2cc/targetchs
+          minio-directory: /CSE/IMPORT/D2CC/TARGETCHs
+          remote-file-regex:
+            - "[0-9]{8}.*.(xml|XML)"
+        -
+          target-process: CSE_IMPORT_D2CC
+          file-type: USER-CONFIG
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2})_.*.(json|JSON)
+          time-validity: hourly
+          ftp-directory: /data/gridcapa/cse/import/d2cc/user-configs
+          minio-directory: /CSE/IMPORT/D2CC/USER-CONFIGs
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{8}_[0-9]{4}_.*.(json|JSON)"
+        -
+          target-process: CSE_IMPORT_IDCC
+          file-type: CGM
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2})_.*.(uct|UCT)
+          time-validity: hourly
+          ftp-directory: /data/gridcapa/cse/import/idcc/cgms
+          minio-directory: /CSE/IMPORT/IDCC/CGMs
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{8}_[0-9]{4}_.*.(uct|UCT)"
+        -
+          target-process: CSE_IMPORT_IDCC
+          file-type: CRAC
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2}).*.(xml|XML)
+          time-validity: hourly
+          ftp-directory: /data/gridcapa/cse/import/idcc/cracs
+          minio-directory: /CSE/IMPORT/IDCC/CRACs
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{8}_[0-9]{4}.*.(xml|XML)"
+        -
+          target-process: CSE_IMPORT_IDCC
+          file-type: GLSK
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2}).*.(xml|XML)
+          time-validity: hourly
+          ftp-directory: /data/gridcapa/cse/import/idcc/glsks
+          minio-directory: /CSE/IMPORT/IDCC/GLSKs
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{8}_[0-9]{4}_.*.(xml|XML)"
+        -
+          target-process: CSE_IMPORT_IDCC
+          file-type: AUTOMATED-FORCED-PRAS
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_.*automated_forced_pras.(json|JSON)
+          time-validity: yearly
+          ftp-directory: /data/gridcapa/cse/import/idcc/automated-forced-pras
+          minio-directory: /CSE/IMPORT/IDCC/AUTOMATED-FORCED-PRAs
+          remote-file-regex:
+            - "[0-9]{8}_.*automated_forced_pras.(json|JSON)"
+        -
+          target-process: CSE_IMPORT_IDCC
+          file-type: NTC2-AT
+          file-regex: .*(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*.(xml|XML)
+          time-validity: daily
+          ftp-directory: /data/gridcapa/cse/import/idcc/ntc2-at
+          minio-directory: /CSE/IMPORT/IDCC/NTC2-AT
+          remote-file-regex:
+            - ".*[0-9]{8}.*AT-IT.*.(xml|XML)"
+        -
+          target-process: CSE_IMPORT_IDCC
+          file-type: NTC2-CH
+          file-regex: .*(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*.(xml|XML)
+          time-validity: daily
+          ftp-directory: /data/gridcapa/cse/import/idcc/ntc2-ch
+          minio-directory: /CSE/IMPORT/IDCC/NTC2-CH
+          remote-file-regex:
+            - ".*[0-9]{8}.*CH-IT.*.(xml|XML)"
+        -
+          target-process: CSE_IMPORT_IDCC
+          file-type: NTC2-FR
+          file-regex: .*(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*.(xml|XML)
+          time-validity: daily
+          ftp-directory: /data/gridcapa/cse/import/idcc/ntc2-fr
+          minio-directory: /CSE/IMPORT/IDCC/NTC2-FR
+          remote-file-regex:
+            - ".*[0-9]{8}.*FR-IT.*.(xml|XML)"
+        -
+          target-process: CSE_IMPORT_IDCC
+          file-type: NTC2-SI
+          file-regex: .*(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*.(xml|XML)
+          time-validity: daily
+          ftp-directory: /data/gridcapa/cse/import/idcc/ntc2-si
+          minio-directory: /CSE/IMPORT/IDCC/NTC2-SI
+          remote-file-regex:
+            - ".*[0-9]{8}.*SI-IT.*.(xml|XML)"
+        -
+          target-process: CSE_IMPORT_IDCC
+          file-type: NTC
+          file-regex: (?<year>[0-9]{4}).*.(xml|XML)
+          time-validity: yearly
+          ftp-directory: /data/gridcapa/cse/import/idcc/ntc
+          minio-directory: /CSE/IMPORT/IDCC/NTC
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{4}.*.(xml|XML)"
+        -
+          target-process: CSE_IMPORT_IDCC
+          file-type: NTC-RED
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*.(xml|XML)
+          time-validity: daily
+          ftp-directory: /data/gridcapa/cse/import/idcc/ntcreds
+          minio-directory: /CSE/IMPORT/IDCC/NTCREDs
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{8}.*.(xml|XML)"
+        -
+          target-process: CSE_IMPORT_IDCC
+          file-type: USER-CONFIG
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2})_.*.(json|JSON)
+          time-validity: hourly
+          ftp-directory: /data/gridcapa/cse/import/idcc/user-configs
+          minio-directory: /CSE/IMPORT/IDCC/USER-CONFIGs
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{8}_[0-9]{4}_.*.(json|JSON)"
+        -
+          target-process: CSE_IMPORT_IDCC
+          file-type: VULCANUS
+          file-regex: .*(?<day>[0-9]{2})(?<month>[0-9]{2})(?<year>[0-9]{4}).*.(xls|XLS)
+          time-validity: daily
+          ftp-directory: /data/gridcapa/cse/import/idcc/vulcanus
+          minio-directory: /CSE/IMPORT/IDCC/VULCANUS
+          remote-file-regex:
+            - ".*.zip"
+            - ".*[0-9]{8}.*.(xls|XLS)"
+        -
+          target-process: CSE_EXPORT_IDCC
+          file-type: CGM
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2})_.*.(uct|UCT)
+          time-validity: hourly
+          ftp-directory: /data/gridcapa/cse/export/idcc/cgms
+          minio-directory: /CSE/EXPORT/IDCC/CGMs
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{8}_[0-9]{4}_.*.(uct|UCT)"
+        -
+          target-process: CSE_EXPORT_IDCC
+          file-type: CRAC
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2}).*.(xml|XML)
+          time-validity: hourly
+          ftp-directory: /data/gridcapa/cse/export/idcc/cracs
+          minio-directory: /CSE/EXPORT/IDCC/CRACs
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{8}_[0-9]{4}.*.(xml|XML)"
+        -
+          target-process: CSE_EXPORT_D2CC
+          file-type: CGM
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2})_.*.(uct|UCT)
+          time-validity: hourly
+          ftp-directory: /data/gridcapa/cse/export/d2cc/cgms
+          minio-directory: /CSE/EXPORT/D2CC/CGMs
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{8}_[0-9]{4}_.*.(uct|UCT)"
+        -
+          target-process: CSE_EXPORT_D2CC
+          file-type: CRAC
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2}).*.(xml|XML)
+          time-validity: hourly
+          ftp-directory: /data/gridcapa/cse/export/d2cc/cracs
+          minio-directory: /CSE/EXPORT/D2CC/CRACs
+          remote-file-regex:
+            - ".*.zip"
+            - "[0-9]{8}_[0-9]{4}.*.(xml|XML)"
+        -
+          target-process: CORE_VALID
+          file-type: CBCORA
+          file-regex: .*(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F301-[0-9]{1,2}.(xml|XML)
+          time-validity: daily
+          ftp-directory: /data/gridcapa/core/valid/cbcoras
+          minio-directory: /CORE/VALID/CBCORAs
+          remote-file-regex:
+            - ".*"
+        -
+          target-process: CORE_VALID
+          file-type: CGM
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2}).*.(uct|UCT)
+          time-validity: hourly
+          ftp-directory: /data/gridcapa/core/valid/cgms
+          minio-directory: /CORE/VALID/CGMs
+          remote-file-regex:
+            - ".*"
+        -
+          target-process: CORE_VALID
+          file-type: GLSK
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F226-.*.(xml|XML)
+          time-validity: daily
+          ftp-directory: /data/gridcapa/core/valid/glsks
+          minio-directory: /CORE/VALID/GLSKs
+          remote-file-regex:
+            - ".*"
+        -
+          target-process: CORE_VALID
+          file-type: REFPROG
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F110.*.(xml|XML)
+          time-validity: daily
+          ftp-directory: /data/gridcapa/core/valid/refprogs
+          minio-directory: /CORE/VALID/REFPROGs
+          remote-file-regex:
+            - ".*"
+        -
+          target-process: CORE_VALID
+          file-type: STUDY-POINTS
+          file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-Points_Etude-.*.(csv|CSV)
+          time-validity: daily
+          ftp-directory: /data/gridcapa/core/valid/studypoints
+          minio-directory: /CORE/VALID/STUDYPOINTs
+          remote-file-regex:
+            - ".*"
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: gridcapa-data-bridge
+  labels:
+    app: gridcapa-data-bridge
+    component: gridcapa-data-bridge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gridcapa-data-bridge
+      component: gridcapa-data-bridge
+  template:
+    metadata:
+      labels:
+        app: gridcapa-data-bridge
+        component: gridcapa-data-bridge
+    spec:
+      volumes:
+        - name: gridcapa-data-bridge
+          configMap:
+            name: gridcapa-data-bridge
+            defaultMode: 420
+      containers:
+        - name: gridcapa-data-bridge
+          image: docker.io/farao/gridcapa-data-bridge:latest
+          env:
+            - name: FTP_SOURCE_IP
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SOURCE_HOST_CSE_EXPORT_D2CC
+            - name: FTP_SOURCE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SOURCE_PORT_CSE_EXPORT_D2CC          
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 384Mi
+            requests:
+              cpu: 100m
+              memory: 384Mi
+          volumeMounts:
+            - name: gridcapa-data-bridge
+              mountPath: /config/application.yml
+              subPath: application.yml
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 25
+            timeoutSeconds: 2
+            periodSeconds: 15
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            successThreshold: 1
+            failureThreshold: 3
+          imagePullPolicy: Always
+      restartPolicy: Always
+
+

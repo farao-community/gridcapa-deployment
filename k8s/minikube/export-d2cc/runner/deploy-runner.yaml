@@ -1,0 +1,197 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-export-d2cc-runner-configmap
+  labels:
+    app: gridcapa-runner
+    component: gridcapa-runner
+    region: cse
+    process: export-d2cc
+data:
+  application.yml: |-
+    spring:
+      application:
+        name: cse-export-d2cc-runner
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+        template:
+          reply-timeout: 7200000
+      cloud:
+        stream:
+          bindings:
+            task-status-update:
+              destination: cse-export-d2cc-task-status-updated
+
+    logback:
+      amqp:
+        exchange: cse-export-d2cc-task-manager-logs-exchange
+
+    rao-runner-server:
+      amqp:
+        client-app-id: cse-export-d2cc-runner
+        queue-name: rao-request-queue
+
+    minio-adapter:
+      bucket: gridcapa
+      base-path:
+      url: http://gridcapa-minio:9000/
+      access-key: ${MINIO_ACCESS_KEY}
+      secret-key: ${MINIO_SECRET_KEY}
+
+    cse-cc-runner:
+      zone-id: "Europe/Paris"
+      outputs:
+        final-cgm: FINAL_CGM
+        ttc-rao: TTC_RAO
+      xnodes:
+        file-path: /home/farao/xnodes/xnodes.xml
+      pisa:
+        link1:
+          node-fr: FFG.IL12
+          node-it: FFG.IL11
+          fictive-lines:
+            - FFG.IL12 FFG.IL11 1
+            - FFG.IL12 FFG.IL11 2
+            - FFG.IL12 FFG.IL11 3
+        link2:
+          node-fr: FFG.IL14
+          node-it: FFG.IL13
+          fictive-lines:
+            - FFG.IL14 FFG.IL13 1
+            - FFG.IL14 FFG.IL13 2
+            - FFG.IL14 FFG.IL13 3
+      bindings:
+        request:
+          destination: cse-export-d2cc-request
+          group: cse-export-d2cc-runner
+        response:
+          destination: cse-export-d2cc-response
+          expiration: 60000
+      whitelist:
+        - http://gridcapa-minio:9000/
+---
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: cse-export-d2cc-runner
+  labels:
+    app: gridcapa-runner
+    component: gridcapa-runner
+    region: cse
+    process: export-d2cc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gridcapa-runner
+      component: gridcapa-runner
+      region: cse
+      process: export-d2cc
+  template:
+    metadata:
+      labels:
+        app: gridcapa-runner
+        component: gridcapa-runner
+        region: cse
+        process: export-d2cc
+    spec:
+      containers:
+        - name: cse-export-d2cc-runner
+          image: docker.io/farao/gridcapa-cse-cc-export-runner:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: cse-export-d2cc-runner-configmap-volume
+            - mountPath: /home/farao/.itools/config.yml
+              subPath: config.yml
+              name: cse-runner-itools-configmap-volume
+            - mountPath: /home/farao/xnodes/xnodes.xml
+              subPath: xnodes.xml
+              name: cse-export-d2cc-runner-xnodes-configmap-volume
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              cpu: "1.0"
+              memory: "384Mi"
+            limits:
+              cpu: "2.0"
+              memory: "2Gi"
+      restartPolicy: Always
+      volumes:
+        - name: cse-export-d2cc-runner-configmap-volume
+          configMap:
+            name: cse-export-d2cc-runner-configmap
+        - name: cse-runner-itools-configmap-volume
+          configMap:
+            name: cse-runner-itools-configmap
+        - name: cse-export-d2cc-runner-xnodes-configmap-volume
+          configMap:
+            name: cse-runner-xnodes-configmap
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: cse-export-d2cc-runner
+  labels:
+    app: gridcapa-runner
+    component: gridcapa-runner
+    region: cse
+    process: export-d2cc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa-runner
+    component: gridcapa-runner
+    region: cse
+    process: export-d2cc
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
+

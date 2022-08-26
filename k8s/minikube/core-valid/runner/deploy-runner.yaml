@@ -1,0 +1,236 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: core-valid-runner-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-core-valid-runner
+    region: core
+    process: valid
+data:
+  application.yml: |-
+    logback:
+      amqp:
+        exchange: core-valid-task-manager-logs-exchange
+        routing-key: "#"
+    spring:
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+        template:
+          reply-timeout: 7200000
+      cloud:
+        stream:
+          bindings:
+            task-status-update:
+              binder: rabbit
+              destination: core-valid-task-status-updated
+
+    rao-runner-server:
+      amqp:
+        client-app-id: core-valid-runner
+        queue-name: rao-request-queue
+
+    core-valid-runner:
+      async-time-out: 7200000
+      bindings:
+        request:
+          destination: core-valid-requests
+          routing-key: "#"
+        response:
+          destination: core-valid-response
+          expiration: 6000000
+      whitelist:
+        - http://gridcapa-minio:9000/
+      search-tree-rao-parameters:
+        max-curative-topo-per-tso:
+          FR: 1
+        max-curative-pst-per-tso:
+          FR: 0
+        max-curative-ra-per-tso:
+          FR: 1
+
+    minio-adapter:
+      bucket: gridcapa
+      base-path: /CORE/VALID
+      access-key: ${GRIDCAPA_MINIO_USER}
+      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+      url: http://gridcapa-minio:9000/
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: core-valid-runner
+  labels:
+    app: gridcapa
+    component: gridcapa-core-valid-runner
+    region: core
+    process: valid
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: gridcapa-core-valid-runner
+      region: core
+      process: valid
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: gridcapa-core-valid-runner
+        region: core
+        process: valid
+    spec:
+      containers:
+        - name: core-valid-runner
+          image: docker.io/farao/gridcapa-core-valid:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
+            - name: GRIDCAPA_MINIO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: GRIDCAPA_MINIO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: core-valid-runner-configmap-volume
+            - mountPath: /home/farao/.itools/config.yml
+              subPath: config.yml
+              name: core-valid-runner-itools-configmap-volume
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              cpu: "1.0"
+              memory: "384Mi"
+            limits:
+              cpu: "8.0"
+              memory: "10Gi"
+      restartPolicy: Always
+      volumes:
+        - name: core-valid-runner-configmap-volume
+          configMap:
+            name: core-valid-runner-configmap
+        - name: core-valid-runner-itools-configmap-volume
+          configMap:
+            name: core-valid-runner-itools-configmap
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: core-valid-runner-itools-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-core-valid-runner
+    region: core
+    process: valid
+
+data:
+  config.yml: |-
+    rao:
+      default: SearchTreeRao
+    
+    rao-parameters:
+      objective-function: MAX_MIN_MARGIN_IN_MEGAWATT
+      max-number-of-iterations: 2
+      pst-penalty-cost: 0.01
+      pst-sensitivity-threshold : 0.0
+      sensitivity-fallback-overcost: 0.0
+      rao-with-loop-flow-limitation: false
+      perimeters-in-parallel: 2
+      load-flow-provider: "OpenLoadFlow"
+      sensitivity-provider: "Sensi2"
+    
+    search-tree-rao-parameters:
+      preventive-rao-stop-criterion: SECURE
+      curative-rao-stop-criterion: SECURE
+      maximum-search-depth: 5
+      relative-network-action-minimum-impact-threshold: 0.
+      absolute-network-action-minimum-impact-threshold: 10.
+      curative-rao-optimize-operators-not-sharing-cras: false
+      preventive-leaves-in-parallel: 8
+      curative-leaves-in-parallel: 1
+    
+    
+    linear-rao-parameters:
+      security-analysis-without-rao: false
+    
+    load-flow:
+      default-impl-name: "OpenLoadFlow"
+    
+    load-flow-default-parameters:
+      voltageInitMode: DC_VALUES
+      transformerVoltageControlOn: false
+      phaseShifterRegulationOn: false
+      noGeneratorReactiveLimits: false
+      twtSplitShuntAdmittance: true
+      simulShunt: false
+      readSlackBus: false
+      writeSlackBus: false
+      dc: true
+      distributedSlack: true
+      balanceType: PROPORTIONAL_TO_LOAD
+      countriesToBalance: AL,AT,BA,BE,BG,CH,CZ,DE,ES,FR,GR,HR,HU,IT,ME,MK,NL,PL,PT,RO,RS,SI,SK,TR,UA
+    
+    sensitivity-analysis:
+      default-impl-name: "Sensi2"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: core-valid-runner
+  labels:
+    app: gridcapa
+    component: gridcapa-core-valid-runner
+    region: core
+    process: valid
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: gridcapa-core-valid-runner
+    region: core
+    process: valid
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
+

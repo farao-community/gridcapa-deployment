@@ -1,0 +1,113 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: config-notification-server-configmap
+  labels:
+    app: gridcapa
+    component: config-notification-server-configmap
+data:
+  application.yml: |-
+    server:
+      port: 8080
+
+    spring:
+      rabbitmq:
+        addresses: gridcapa-rabbitmq:5672
+        username: ${GRIDCAPA_RABBITMQ_USER}
+        password: ${GRIDCAPA_RABBITMQ_PASSWORD}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-notification-server
+  labels:
+    app: gridcapa
+    component: config-notification-server
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: config-notification-server
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: config-notification-server
+    spec:
+      containers:
+        - name: config-notification-server
+          image: gridsuite/config-notification-server
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: GRIDCAPA_RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: GRIDCAPA_RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
+          volumeMounts:
+            - mountPath: /config
+              name: config-notification-server-configmap-volume
+            - mountPath: /tmp
+              name: tmp-emptydir
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            readOnlyRootFilesystem: true
+          resources:
+            requests:
+              cpu: "0.1"
+              memory: "384Mi"
+            limits:
+              cpu: "0.5"
+              memory: "384Mi"
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
+          args: ["--spring.config.additional-location=/config/"]
+      restartPolicy: Always
+      volumes:
+        - name: config-notification-server-configmap-volume
+          configMap:
+            name: config-notification-server-configmap
+        - name: tmp-emptydir
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-notification-server
+  labels:
+    app: gridcapa
+    component: config-notification-server
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: config-notification-server
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+

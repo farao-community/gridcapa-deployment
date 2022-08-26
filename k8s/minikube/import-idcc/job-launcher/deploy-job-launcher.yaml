@@ -1,0 +1,156 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-import-idcc-gridcapa-job-launcher-configmap
+  labels:
+    app: gridcapa-job-launcher
+    component: gridcapa-job-launcher
+    region: cse
+    process: import-idcc
+data:
+  application.yml: |-
+    logback:
+      amqp:
+        exchange: cse-import-idcc-task-manager-logs-exchange
+        routing-key: "#"
+    spring:
+      application:
+        name: cse-import-idcc-job-launcher
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+      cloud:
+        stream:
+          bindings:
+            default:
+              group: cse-import-idcc-job-launcher
+            run-task:
+              destination: cse-import-idcc-launch-task
+            run-task-auto:
+              destination: cse-import-idcc-launch-task
+            stop-task:
+              destination: cse-import-idcc-stop-task
+            consumeTaskDtoUpdate-in-0:
+              destination: cse-import-idcc-task-updated
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+            bindings:
+              consumeTaskDtoUpdate-in-0:
+                consumer:
+                  binding-routing-key: status
+
+    job-launcher:
+      auto: false
+      url:
+        task-manager-timestamp-url: http://cse-import-idcc-task-manager/tasks/
+        task-manager-business-date-url: http://cse-import-idcc-task-manager/tasks/businessdate/
+      process:
+        tag: CSE_IMPORT_IDCC
+        timezone: CET
+
+    scheduler:
+      enable: false
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: cse-import-idcc-gridcapa-job-launcher
+  labels:
+    app: gridcapa-job-launcher
+    component: gridcapa-job-launcher
+    region: cse
+    process: import-idcc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gridcapa-job-launcher
+      component: gridcapa-job-launcher
+      region: cse
+      process: import-idcc
+  template:
+    metadata:
+      labels:
+        app: gridcapa-job-launcher
+        component: gridcapa-job-launcher
+        region: cse
+        process: import-idcc
+    spec:
+      containers:
+        - name: cse-import-idcc-job-launcher
+          image: docker.io/farao/gridcapa-job-launcher
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: cse-import-idcc-job-launcher-configmap-volume
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              cpu: "0.1"
+              memory: "384Mi"
+            limits:
+              cpu: "0.5"
+              memory: "384Mi"
+      restartPolicy: Always
+      volumes:
+        - name: cse-import-idcc-job-launcher-configmap-volume
+          configMap:
+            name: cse-import-idcc-gridcapa-job-launcher-configmap
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cse-import-idcc-gridcapa-job-launcher
+  labels:
+    app: gridcapa
+    component: gridcapa-job-launcher
+    region: cse
+    process: import-idcc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa-job-launcher
+    component: gridcapa-job-launcher
+    region: cse
+    process: import-idcc
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
+

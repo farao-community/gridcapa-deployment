@@ -1,0 +1,173 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: azure-storage-class
+  labels:
+    app: gridcapa
+    component: gridcapa-storage
+provisioner: k8s.io/minikube-hostpath
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1001
+  - gid=1001
+  - mfsymlinks
+  - cache=strict
+  - actimeo=30
+parameters:
+  skuName: Standard_LRS
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: keycloak-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: azure-storage-class
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/data/keycloak"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: azure-storage-class
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data/minio"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: azure-storage-class
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/data/postgres"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: rabbitmq-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: azure-storage-class
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/data/rabbitmq"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ftp-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: azure-storage-class
+  capacity:
+    storage: 3Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/data/ftp"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: keycloak-storage
+  labels:
+    app: gridcapa
+    component: keycloak
+spec:
+  volumeName: keycloak-pv-volume
+  storageClassName: azure-storage-class
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gridcapa-minio-storage
+  labels:
+    app: gridcapa
+    component: gridcapa-minio-storage
+spec:
+  volumeName: minio-pv-volume
+  storageClassName: azure-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gridcapa-postgresql-storage
+  labels:
+    app: gridcapa
+    component: postgresql
+spec:
+  volumeName: postgres-pv-volume
+  storageClassName: azure-storage-class
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gridcapa-rabbitmq-data
+  labels:
+    app: gridcapa
+    component: rabbitmq
+spec:
+  volumeName: rabbitmq-pv-volume
+  storageClassName: azure-storage-class
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gridcapa-ftp-data
+  labels:
+    app: gridcapa
+    component: rabbitmq
+spec:
+  volumeName: ftp-pv-volume
+  storageClassName: azure-storage-class
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 3Gi

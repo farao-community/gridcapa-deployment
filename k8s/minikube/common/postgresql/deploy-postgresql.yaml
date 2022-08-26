@@ -1,0 +1,190 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: gridcapa-postgresql-configmap
+  labels:
+    app: gridcapa
+    component: postgresql
+data:
+  init.sh: |-
+    #!/bin/bash
+
+    psql << EOF
+    CREATE DATABASE config_server_db;
+    CREATE USER $POSTGRES_CONFIG_USER WITH ENCRYPTED PASSWORD '$POSTGRES_CONFIG_PASSWORD';
+    GRANT ALL PRIVILEGES ON DATABASE config_server_db TO $POSTGRES_CONFIG_USER;
+
+    CREATE DATABASE cse_import_idcc_tasks;
+    CREATE USER $POSTGRES_CSE_IMPORT_IDCC_USER WITH ENCRYPTED PASSWORD '$POSTGRES_CSE_IMPORT_IDCC_PASSWORD';
+    GRANT ALL PRIVILEGES ON DATABASE cse_import_idcc_tasks TO $POSTGRES_CSE_IMPORT_IDCC_USER;
+    CREATE DATABASE cse_import_d2cc_tasks;
+    CREATE USER $POSTGRES_CSE_IMPORT_D2CC_USER WITH ENCRYPTED PASSWORD '$POSTGRES_CSE_IMPORT_D2CC_PASSWORD';
+    GRANT ALL PRIVILEGES ON DATABASE cse_import_d2cc_tasks TO $POSTGRES_CSE_IMPORT_D2CC_USER;
+
+    CREATE DATABASE cse_export_idcc_tasks;
+    CREATE USER $POSTGRES_CSE_EXPORT_IDCC_USER WITH ENCRYPTED PASSWORD '$POSTGRES_CSE_EXPORT_IDCC_PASSWORD';
+    GRANT ALL PRIVILEGES ON DATABASE cse_export_idcc_tasks TO $POSTGRES_CSE_EXPORT_IDCC_USER;
+    CREATE DATABASE cse_export_d2cc_tasks;
+    CREATE USER $POSTGRES_CSE_EXPORT_D2CC_USER WITH ENCRYPTED PASSWORD '$POSTGRES_CSE_EXPORT_D2CC_PASSWORD';
+    GRANT ALL PRIVILEGES ON DATABASE cse_export_d2cc_tasks TO $POSTGRES_CSE_EXPORT_D2CC_USER;
+
+    CREATE DATABASE core_valid_tasks;
+    CREATE USER $POSTGRES_CORE_VALID_USER WITH ENCRYPTED PASSWORD '$POSTGRES_CORE_VALID_PASSWORD';
+    GRANT ALL PRIVILEGES ON DATABASE core_valid_tasks TO $POSTGRES_CORE_VALID_USER;
+    EOF
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gridcapa-postgresql
+  labels:
+    app: gridcapa
+    component: postgresql
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: postgresql
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: postgresql
+    spec:
+      initContainers:
+        - name: postgresql-data-permission-fix
+          image: busybox
+          command: ["/bin/chown","-R","1001:0", "/bitnami/postgresql"]
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /bitnami/postgresql
+          securityContext:
+            runAsUser: 0
+      containers:
+        - name: gridcapa-postgresql
+          image: docker.io/bitnami/postgresql
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+          env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: postgres-password
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: postgres-password
+            - name: POSTGRES_CONFIG_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: config-user
+            - name: POSTGRES_CONFIG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: config-password
+            - name: POSTGRES_CSE_IMPORT_IDCC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-import-idcc-user
+            - name: POSTGRES_CSE_IMPORT_IDCC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-import-idcc-password
+            - name: POSTGRES_CSE_IMPORT_D2CC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-import-d2cc-user
+            - name: POSTGRES_CSE_IMPORT_D2CC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-import-d2cc-password
+            - name: POSTGRES_CSE_EXPORT_IDCC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-export-idcc-user
+            - name: POSTGRES_CSE_EXPORT_IDCC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-export-idcc-password
+            - name: POSTGRES_CSE_EXPORT_D2CC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-export-d2cc-user
+            - name: POSTGRES_CSE_EXPORT_D2CC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-export-d2cc-password
+            - name: POSTGRES_CORE_VALID_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: core-valid-user
+            - name: POSTGRES_CORE_VALID_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: core-valid-password
+          livenessProbe:
+            tcpSocket:
+              port: 5432
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            tcpSocket:
+              port: 5432
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            limits:
+              cpu: "500m"
+              memory: 1Gi
+            requests:
+              cpu: "500m"
+              memory: 1Gi
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /bitnami/postgresql
+            - name: postgres-init
+              subPath: init.sh
+              mountPath: /docker-entrypoint-initdb.d/init.sh
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: gridcapa-postgresql-storage
+        - name: postgres-init
+          configMap:
+            name: gridcapa-postgresql-configmap
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gridcapa-postgresql
+  labels:
+    app: gridcapa
+    component: postgresql
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: postgresql
+  ports:
+    - port: 5432

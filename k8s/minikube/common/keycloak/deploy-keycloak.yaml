@@ -1,0 +1,154 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: keycloak
+  labels:
+    app: gridcapa
+    component: keycloak
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: keycloak
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: keycloak
+    spec:
+      initContainers:
+        - name: keycloak-data-permission-fix
+          image: busybox
+          command: ["/bin/chown","-R","1000:1000", "/opt/keycloak/data/h2"]
+          volumeMounts:
+            - name: keycloak-storage
+              mountPath: /opt/keycloak/data/h2
+          securityContext:
+            runAsUser: 0
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: keycloak
+          image: quay.io/keycloak/keycloak:18.0.0
+          args: ["start"]
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: "/opt/keycloak/data/h2"
+              name: keycloak-storage
+          env:
+            - name: KEYCLOAK_ADMIN
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-keycloak-credentials
+                  key: keycloak-user
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-keycloak-credentials
+                  key: keycloak-password
+            - name: KC_HOSTNAME
+              value: "auth.farao-local-community.com"
+            - name: KC_HOSTNAME_STRICT_HTTPS
+              value: "false"
+            - name: KC_PROXY
+              value: "passthrough"
+            - name: KC_HEALTH_ENABLED
+              value: "true"
+            - name: KC_HTTPS_PORT
+              value: "443"
+            - name: KC_HTTP_ENABLED
+              value: "true"
+            - name: PROXY_ADDRESS_FORWARDING
+              value: "true"
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              memory: "512Mi"
+            limits:
+              memory: "1Gi"
+      volumes:
+        - name: keycloak-storage
+          persistentVolumeClaim:
+            claimName: keycloak-storage
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: keycloak
+  labels:
+    app: gridcapa
+    component: keycloak
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: keycloak
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
+    - port: 443
+      targetPort: 443
+      name: https
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/client-max-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
+  labels:
+    app: gridcapa
+    component: gridcapa
+  name: keycloak
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - auth.farao-local-community.com
+      secretName: gridcapa-tls
+  rules:
+    - host: auth.farao-local-community.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: keycloak
+                port:
+                  number: 8080
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: keycloak
+                port:
+                  number: 443

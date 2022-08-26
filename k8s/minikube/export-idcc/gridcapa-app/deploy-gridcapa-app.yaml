@@ -1,0 +1,140 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-export-idcc-gridcapa-app-idp-settings-configmap
+  labels:
+    app: gridcapa
+    component: cse-export-idcc-gridcapa-app-idp-settings-configmap
+data:
+  idpSettings.json: |-
+    {
+      "authority": "https://auth.farao-local-community.com/realms/Gridcapa",
+      "client_id": "gridcapa-dev",
+      "redirect_uri": "https://gridcapa-dev.farao-local-community.com/cse/export/idcc/sign-in-callback",
+      "post_logout_redirect_uri": "https://gridcapa-dev.farao-local-community.com/cse/export/idcc/logout-callback",
+      "silent_redirect_uri": "https://gridcapa-dev.farao-local-community.com/cse/export/idcc/silent-renew-callback",
+      "scope": "openid profile email"
+    }
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: cse-export-idcc-gridcapa-app
+  labels:
+    app: gridcapa-app
+    component: gridcapa-app
+    region: cse
+    process: export-idcc
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gridcapa-app
+      component: gridcapa-app
+      region: cse
+      process: export-idcc
+  template:
+    metadata:
+      labels:
+        app: gridcapa-app
+        component: gridcapa-app
+        region: cse
+        process: export-idcc
+    spec:
+      containers:
+        - name: cse-export-idcc-gridcapa-app
+          image: docker.io/farao/gridcapa-app
+          imagePullPolicy: Always
+          env: 
+            - name: USE_KEYCLOAK_AUTHENTICATION
+              value: 'true'
+          ports:
+            - containerPort: 80
+          lifecycle:
+            postStart:
+              exec:
+                command: 
+                  - /bin/sh
+                  - -c
+                  - for file in $(grep -rcE  "[a-zA-Z]\.initializeAuthenticationProd" ./ | grep -v :0 | cut -d':' -f1 | grep main); do  if [ "$USE_KEYCLOAK_AUTHENTICATION" = false ]; then  echo $file; sed -i 's/initializeAuthenticationProd/initializeAuthenticationDev/g' "$file"; sed -i 's/,fetch("idpSettings.json"))/)/g' "$file"; fi done
+          volumeMounts:
+            - mountPath: /usr/local/apache2/htdocs/gridcapa/env.json
+              subPath: env.json
+              name: gridcapa-app-env-configmap-volume
+            - mountPath: /usr/local/apache2/htdocs/gridcapa/process-metadata.json
+              subPath: process-metadata.json
+              name: gridcapa-app-process-metadata-configmap-volume
+            - mountPath: /usr/local/apache2/htdocs/gridcapa/idpSettings.json
+              subPath: idpSettings.json
+              name: gridcapa-app-idp-configmap
+          livenessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              cpu: "0.1"
+              memory: "128Mi"
+            limits:
+              cpu: "0.5"
+              memory: "128Mi"
+      restartPolicy: Always
+      volumes:
+        - name: gridcapa-app-env-configmap-volume
+          configMap:
+            name: gridcapa-app-env-configmap
+        - name: gridcapa-app-process-metadata-configmap-volume
+          configMap:
+            name: cse-export-idcc-gridcapa-app-process-metadata-configmap
+        - name: gridcapa-app-idp-configmap
+          configMap:
+            name: cse-export-idcc-gridcapa-app-idp-settings-configmap
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-export-idcc-gridcapa-app-process-metadata-configmap
+  labels:
+    app: gridcapa
+    component: cse-export-idcc-gridcapa-app-process-metadata-configmap
+data:
+  process-metadata.json: |-
+    {
+      "processName": "CSE EXPORT IDCC"
+    }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cse-export-idcc-gridcapa-app
+  labels:
+    app: gridcapa-app
+    component: gridcapa-app
+    region: cse
+    process: export-idcc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa-app
+    component: gridcapa-app
+    region: cse
+    process: export-idcc
+  ports:
+    - port: 80
+      targetPort: 80
+      name: http
+
