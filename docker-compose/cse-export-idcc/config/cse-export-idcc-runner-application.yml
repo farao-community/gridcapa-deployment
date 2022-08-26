@@ -10,7 +10,16 @@ spring:
       reply-timeout: 7200000
   cloud:
     stream:
+      default:
+        binder: rabbit
+        group: cse-export-idcc-runner
       bindings:
+        interrupt-in-0:
+          destination: cse-export-idcc-interrupt
+        request-in-0:
+          destination: cse-export-idcc-request
+        request-out-0:
+          destination: cse-export-idcc-response
         task-status-update:
           destination: cse-export-idcc-task-status-updated
 
@@ -52,12 +61,5 @@ cse-cc-runner:
         - FFG.IL14 FFG.IL13 1
         - FFG.IL14 FFG.IL13 2
         - FFG.IL14 FFG.IL13 3
-  bindings:
-    request:
-      destination: cse-export-idcc-request
-      group: cse-export-idcc-runner
-    response:
-      destination: cse-export-idcc-response
-      expiration: 60000
   whitelist:
     - http://minio:9000/

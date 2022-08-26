@@ -30,6 +30,8 @@ data:
               destination: cse-export-idcc-launch-task
             run-task-auto:
               destination: cse-export-idcc-launch-task
+            stop-task:
+              destination: cse-export-idcc-stop-task
             consumeTaskDtoUpdate-in-0:
               destination: cse-export-idcc-task-updated
           rabbit:
@@ -41,8 +43,6 @@ data:
               consumeTaskDtoUpdate-in-0:
                 consumer:
                   binding-routing-key: status
-        function:
-          definition: consumeTaskDtoUpdate
 
     job-launcher:
       auto: true

@@ -29,6 +29,3 @@ resources:
   - cse-export-d2cc-rao-logs-dispatcher-configmap.yaml
   - cse-export-d2cc-rao-logs-dispatcher-deployment.yaml
   - cse-export-d2cc-rao-logs-dispatcher-service.yaml
-  - cse-export-d2cc-task-notification-server-configmap.yaml
-  - cse-export-d2cc-task-notification-server-deployment.yaml
-  - cse-export-d2cc-task-notification-server-service.yaml

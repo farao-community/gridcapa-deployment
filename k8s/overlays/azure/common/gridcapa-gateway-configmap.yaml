@@ -11,7 +11,7 @@ data:
       port: 8080
       ssl:
         enabled: false
-    
+
     spring:
       security:
         oauth2:
@@ -44,7 +44,7 @@ data:
               filters:
                 - StripPrefix=3
             - id: core-valid-task-notification-server
-              uri: http://core-valid-task-notification-server
+              uri: http://core-valid-task-manager
               predicates:
                 - Path=/core/valid/task-notification/**
               filters:
@@ -78,7 +78,7 @@ data:
               filters:
                 - StripPrefix=4
             - id: cse-import-d2cc-task-notification-server
-              uri: http://cse-import-d2cc-task-notification-server
+              uri: http://cse-import-d2cc-task-manager
               predicates:
                 - Path=/cse/import/d2cc/task-notification/**
               filters:
@@ -112,7 +112,7 @@ data:
               filters:
                 - StripPrefix=4
             - id: cse-import-idcc-task-notification-server
-              uri: http://cse-import-idcc-task-notification-server
+              uri: http://cse-import-idcc-task-manager
               predicates:
                 - Path=/cse/import/idcc/task-notification/**
               filters:
@@ -146,7 +146,7 @@ data:
               filters:
                 - StripPrefix=4
             - id: cse-export-d2cc-task-notification-server
-              uri: http://cse-export-d2cc-task-notification-server
+              uri: http://cse-export-d2cc-task-manager
               predicates:
                 - Path=/cse/export/d2cc/task-notification/**
               filters:
@@ -180,7 +180,7 @@ data:
               filters:
                 - StripPrefix=4
             - id: cse-export-idcc-task-notification-server
-              uri: http://cse-export-idcc-task-notification-server
+              uri: http://cse-export-idcc-task-manager
               predicates:
                 - Path=/cse/export/idcc/task-notification/**
               filters:

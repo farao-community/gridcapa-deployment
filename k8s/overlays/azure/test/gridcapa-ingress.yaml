@@ -52,7 +52,7 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: core-valid-task-notification-server
+                name: core-valid-task-manager
                 port:
                   number: 80
             path: /core/valid/task-notification(/|$)(.*)
@@ -94,7 +94,7 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: cse-import-idcc-task-notification-server
+                name: cse-import-idcc-task-manager
                 port:
                   number: 80
             path: /cse/import/idcc/task-notification(/|$)(.*)
@@ -136,7 +136,7 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: cse-import-d2cc-task-notification-server
+                name: cse-import-d2cc-task-manager
                 port:
                   number: 80
             path: /cse/import/d2cc/task-notification(/|$)(.*)
@@ -179,7 +179,7 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: cse-export-idcc-task-notification-server
+                name: cse-export-idcc-task-manager
                 port:
                   number: 80
             path: /cse/export/idcc/task-notification(/|$)(.*)
@@ -221,7 +221,7 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: cse-export-d2cc-task-notification-server
+                name: cse-export-d2cc-task-manager
                 port:
                   number: 80
             path: /cse/export/d2cc/task-notification(/|$)(.*)
