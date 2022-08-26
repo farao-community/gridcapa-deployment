@@ -1,0 +1,107 @@
+version: "3.7"
+services:
+  cse-valid-d2cc-gridcapa-app:
+    image: farao/gridcapa-app:latest
+    volumes:
+      - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ./config/cse-d2cc-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+    networks:
+      - gridcapa
+
+  cse-valid-d2cc-gridcapa-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./config/cse-valid-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-valid-d2cc-task-notification-server:
+    image: springcloudstream/websocket-sink-rabbit:latest
+    restart: always
+    volumes:
+      - ./config/cse-valid-d2cc-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
+    networks:
+      - gridcapa
+
+  data-bridge-d2cc-ttc-adjustment:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge-d2cc-ttc-adjustment.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  data-bridge-d2cc-output-ttc-validation:
+    image: farao/gridcapa-output-data-bridge:latest
+    volumes:
+      - ./config/data-bridge-d2cc-output-ttc-validation.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  data-bridge-d2cc-crac:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge-d2cc-crac.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  data-bridge-d2cc-glsk:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge-d2cc-glsk.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  data-bridge-d2cc-cgm:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge-d2cc-cgm.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-valid-d2cc-runner:
+    image: farao/gridcapa-cse-valid:latest
+    volumes:
+      - ./config/cse-valid-d2cc-runner-application.yml:/config/application.yml
+      - ./config/cse-valid-d2cc-itools-config.yml:/home/farao/.itools/config.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  cse-valid-d2cc-adapter:
+    image: farao/gridcapa-cse-valid-adapter:latest
+    volumes:
+      - ./config/cse-valid-d2cc-adapter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  cse-valid-d2cc-gridcapa-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    volumes:
+      - ./config/cse-valid-d2cc-gridcapa-job-launcher.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-valid-d2cc-publication:
+    image: farao/gridcapa-cse-valid-publication:latest
+    volumes:
+      - ./config/cse-valid-d2cc-publication-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+networks:
+  gridcapa:
+    name: gridcapa
