@@ -9,7 +9,7 @@ spring:
 
 minio:
   bucket: gridcapa
-  base-path: RAO/
+  base-path:
   access:
     name: gridcapa
     secret: gridcapa
