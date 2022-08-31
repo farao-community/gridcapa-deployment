@@ -9,6 +9,7 @@ bases:
   - ../cse/export-corner/idcc
   - ../cse/import-corner/d2cc
   - ../cse/import-corner/idcc
+  - ../cse/valid/
 
 resources:
   - apps-metadata-server-configmap.yaml
@@ -35,6 +36,9 @@ images:
     newTag: 2021.6.17
   - name: minio-mc
     newName: docker.io/minio/mc
+    newTag: latest
+  - name: centos
+    newName: docker.io/centos
     newTag: latest
   - name: gridsuite-config-notification-server
     newName: docker.io/gridsuite/config-notification-server
@@ -94,5 +98,26 @@ images:
     newName: docker.io/farao/gridcapa-core-valid
     newTag: latest
   - name: gridcapa-core-valid-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest
+  - name: gridcapa-cse-valid-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: latest
+  - name: gridcapa-cse-valid-output-data-bridge
+    newName: docker.io/farao/gridcapa-output-data-bridge
+    newTag: latest
+  - name: gridcapa-cse-valid-adapter
+    newName: docker.io/farao/gridcapa-cse-valid-adapter
+    newTag: latest
+  - name: gridcapa-cse-valid-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: latest
+  - name: gridcapa-cse-valid-runner
+    newName: docker.io/farao/gridcapa-cse-valid
+    newTag: latest
+  - name: gridcapa-cse-valid-publication
+    newName: docker.io/farao/gridcapa-cse-valid-publication
+    newTag: latest
+  - name: gridcapa-cse-valid-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: latest

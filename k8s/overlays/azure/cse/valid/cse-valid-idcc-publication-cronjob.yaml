@@ -1,0 +1,29 @@
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: cse-valid-idcc-publication-cronjob
+  labels:
+    app: farao
+    component: cse-idcc-process-publication-cronjob
+spec:
+  schedule: "5 5 * * *"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: cse-valid-idcc-publication-cronjob
+              image: centos
+              envFrom:
+                - secretRef:
+                    name: farao-secrets-dev
+                - secretRef:
+                    name: ftp-ecp-credentials
+              args:
+                - /bin/sh
+                - -c
+                - curl -X POST -d "process=IDCC&targetDate=$(date --iso-8601)" http://gridcapa-dev.farao-community.com/cse/valid/idcc/publication/publish
+          restartPolicy: OnFailure
