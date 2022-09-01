@@ -8,5 +8,20 @@ metadata:
 data:
   process-metadata.json: |-
     {
-      "processName": "CSE IMPORT IDCC"
+      "processName": "CSE IMPORT IDCC",
+      "globalViewTimestampFilter": [
+        "16:30",
+        "19:30",
+        "22:30"
+      ],
+      "eventPredefinedFilter": {
+        "Summary": [
+          "Summary :",
+          "Network at dichotomy step"
+        ],
+        "Summary-BD": [
+          "Summary-BD :",
+          "Network at dichotomy step"
+        ]
+      }
     }
