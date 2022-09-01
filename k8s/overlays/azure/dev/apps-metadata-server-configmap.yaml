@@ -33,14 +33,14 @@ data:
         "url"  : "/core/valid",
         "appColor" : "#F56908"
       },
-    {
-      "name" : "Capa CSE Validation IDCC",
-      "url"  : "/cse/valid/idcc",
-      "appColor" : "#F56908"
-    },
-    {
-      "name" : "Capa CSE Validation D2CC",
-      "url"  : "/cse/valid/d2cc",
-      "appColor" : "#F56908"
-    }
+      {
+        "name" : "Capa CSE Validation IDCC",
+        "url"  : "/cse/valid/idcc",
+        "appColor" : "#b22222"
+      },
+      {
+        "name" : "Capa CSE Validation D2CC",
+        "url"  : "/cse/valid/d2cc",
+        "appColor" : "#800000"
+      }
     ]

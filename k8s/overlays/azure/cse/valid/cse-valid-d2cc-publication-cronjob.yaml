@@ -1,14 +1,14 @@
 kind: CronJob
 apiVersion: batch/v1
 metadata:
-  name: cse-valid-idcc-publication-cronjob
+  name: cse-valid-d2cc-publication-cronjob
   labels:
     app: gridcapa
-    component: cse-valid-idcc-publication-cronjob
+    component: cse-valid-d2cc-publication-cronjob
     region: cse
-    process: valid-idcc
+    process: valid-d2cc
 spec:
-  schedule: "5 1 * * *"
+  schedule: "5 7 * * *"
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 3
@@ -17,10 +17,10 @@ spec:
       template:
         spec:
           containers:
-            - name: cse-valid-idcc-publication-cronjob
+            - name: cse-valid-d2cc-publication-cronjob
               image: centos
               args:
                 - /bin/sh
                 - -c
-                - curl -X POST -d "process=IDCC&targetDate=$(date --iso-8601)" http://gridcapa-dev.farao-community.com/cse/valid/idcc/publication/publish
+                - curl -X POST -d "process=D2CC&targetDate=$(date --iso-8601)&targetDateOffset=1" http://gridcapa-dev.farao-community.com/cse/valid/d2cc/publication/publish
           restartPolicy: OnFailure
