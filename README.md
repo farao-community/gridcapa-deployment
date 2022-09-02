@@ -139,9 +139,9 @@ Check that they have been correctly saved by listing current notifications enabl
 
 ### Using local gridcapa-app
 
-In order to be abble to use a local gridcapa-app and all elements deployed in the docker environnement, you have to deal with CORS limitation.
+In order to be able to use a local gridcapa-app and all elements deployed in the docker environment, you have to deal with CORS limitation.
 In react when you locally launch gridcapa-app, it will be available on localhost:3000 (typically) but all others services in dockers are available through the nginx server at localhost.
-The web browser see that "localhost:3000" and "localhost" are different so it is a cross dommain request and that's not allowed.
+The web browser see that "localhost:3000" and "localhost" are different, so it is a cross domain request and that's not allowed.
 
 In order to avoid this, a new docker-compose is available in the folder nginx-dev. This nginx acts as a proxy in order to redirect a request to the gridcapa-app to the local instance.
 
@@ -162,6 +162,7 @@ You can now view gridcapa-app in the browser.
   Local:            http://localhost:3000
   On Your Network:  http://10.135.83.74:3000
 ```
-For the example you have to use the second adress. **Do not use localhost:3000**.
+For the example you have to use the second address. **Do not use localhost:3000**.
 
-When the nginx-dev docker is up you can acces to the gridcapa-app with the url "http://localhost/cse/export/d2cc/"
+When the nginx-dev docker is up you can access to the gridcapa-app with the url "http://localhost/cse/export/d2cc/".
+Don't forget to change the REACT_APP_PUBLIC_URL variable in the .env.development file to the corresponding URL.
