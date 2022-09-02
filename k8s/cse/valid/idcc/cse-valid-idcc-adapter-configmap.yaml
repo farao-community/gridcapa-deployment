@@ -1,0 +1,38 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-valid-idcc-adapter-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-cse-valid-idcc-adapter
+    region: cse
+    process: valid-idcc
+data:
+  application.yml: |-
+    spring:
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+        template:
+          reply-timeout: 60000000
+      cloud:
+        stream:
+          bindings:
+            consumeTask-in-0:
+              binder: rabbit
+              destination: cse-valid-idcc-run-task
+              group: cse-valid
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+
+    cse-valid-runner:
+      amqp:
+        queue-name: cse-valid-idcc-requests
+
+    cse-valid-adapter:
+      target-process: IDCC

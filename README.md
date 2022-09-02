@@ -105,6 +105,7 @@ kubectl create secret generic rabbitmq-secrets --from-literal='rabbitmq-erlang-c
 kubectl create secret generic gridcapa-minio-credentials --from-literal='minio-access-key=<MINIO_ACCESS_KEY>' --from-literal='minio-secret-key=<MINIO_SECRET_KEY>'
 kubectl create secret generic gridcapa-ftp-credentials --from-literal='ftp-user=<FTP_USER>' --from-literal='ftp-password=<FTP_PASSWORD>'
 kubectl create secret generic gridcapa-postgresql-credentials --from-literal='postgres-password=<POSTGRES_PASSWORD>' --from-literal='config-user=<CONFIG_USER>' --from-literal='config-password=<CONFIG_PASSWORD>' --from-literal='cse-import-idcc-user=<CSE_IMPORT_IDCC_USER>' --from-literal='cse-import-idcc-password=<CSE_IMPORT_IDCC_PASSWORD>' --from-literal='cse-import-d2cc-user=<CSE_IMPORT_D2CC_USER>' --from-literal='cse-import-d2cc-password=<CSE_IMPORT_D2CC_PASSWORD>' --from-literal='cse-export-idcc-user=<CSE_EXPORT_IDCC_USER>' --from-literal='cse-export-idcc-password=<CSE_EXPORT_IDCC_PASSWORD>' --from-literal='cse-export-d2cc-user=<CSE_EXPORT_D2CC_USER>' --from-literal='cse-export-d2cc-password=<CSE_EXPORT_D2CC_PASSWORD>' --from-literal='core-valid-user=<CORE_VALID_USER>' --from-literal='core-valid-password=<CORE_VALID_PASSWORD>'
+--from-literal='cse-valid-idcc-user=<CSE_VALID_IDCC_USER>' --from-literal='cse-valid-idcc-password=<CSE_VALID_IDCC_PASSWORD>' --from-literal='cse-valid-d2cc-user=<CSE_VALID_D2CC_USER>' --from-literal='cse-valid-d2cc-password=<CSE_VALID_D2CC_PASSWORD>'
 kubectl create secret generic gridcapa-keycloak-credentials --from-literal='keycloak-user=<KEYCLOAK_USER>' --from-literal='keycloak-password=<KEYCLOAK_PASSWORD>'
 kubectl create secret tls gridcapa-tls --key <private key file> --cert <certificate file>
 ```
@@ -135,3 +136,51 @@ Check that they have been correctly saved by listing current notifications enabl
 ```bash
 ./mc event list gridcapa_k8s/gridcapa
 ```
+
+### Deployment on Azure DEV
+This environment is used for CI for all gridcapa processes
+
+- host: gridcapa-dev.farao-community.com
+- namespace: default
+
+kubectl kustomize k8s/overlays/azure/dev |  ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p"  farao@51.137.209.168 kubectl apply -f -
+
+
+### Deployment on Azure TEST
+This environment is used to test CSE gridcapa processes for CORESO
+
+- host: gridcapa.farao-community.com
+- namespace: gridcapa
+
+kubectl kustomize k8s/overlays/azure/test |  ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p"  farao@51.137.209.168 kubectl apply -n gridcapa -f -
+
+
+### Using local gridcapa-app
+
+In order to be able to use a local gridcapa-app and all elements deployed in the docker environment, you have to deal with CORS limitation.
+In react when you locally launch gridcapa-app, it will be available on localhost:3000 (typically) but all others services in dockers are available through the nginx server at localhost.
+The web browser see that "localhost:3000" and "localhost" are different, so it is a cross domain request and that's not allowed.
+
+In order to avoid this, a new docker-compose is available in the folder nginx-dev. This nginx acts as a proxy in order to redirect a request to the gridcapa-app to the local instance.
+
+Before using it you must modify the file nginx.conf in the folder nginx-dev.
+
+on line 22 you will find :
+```
+    upstream front-end-local-dev {
+        server 172.17.0.1:3000;
+    }
+```
+this line is responsible to redirect the request to your local instance of gridcapa-app. You have to put the correct IP adress.
+the correct IP is shown when the react gridcapa-app runs for example :
+
+```
+You can now view gridcapa-app in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://10.135.83.74:3000
+```
+For the example you have to use the second address. **Do not use localhost:3000**.
+
+When the nginx-dev docker is up you can access to the gridcapa-app with the url "http://localhost/cse/export/d2cc/".
+Don't forget to change the REACT_APP_PUBLIC_URL variable in the .env.development file to the corresponding URL.

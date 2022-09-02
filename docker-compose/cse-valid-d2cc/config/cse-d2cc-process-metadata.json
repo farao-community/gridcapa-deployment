@@ -1,3 +1,7 @@
 {
-  "processName": "CSE D2CC Validation"
+  "processName": "CSE D2CC Validation",
+  "globalViewTimestampFilter": [
+  ],
+  "eventPredefinedFilter": {
+  }
 }

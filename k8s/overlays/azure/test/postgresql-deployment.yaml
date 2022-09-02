@@ -83,16 +83,6 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: cse-export-d2cc-password
-            - name: POSTGRES_CORE_VALID_USER
-              valueFrom:
-                secretKeyRef:
-                  name: gridcapa-postgresql-credentials
-                  key: core-valid-user
-            - name: POSTGRES_CORE_VALID_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: gridcapa-postgresql-credentials
-                  key: core-valid-password
           livenessProbe:
             tcpSocket:
               port: 5432
