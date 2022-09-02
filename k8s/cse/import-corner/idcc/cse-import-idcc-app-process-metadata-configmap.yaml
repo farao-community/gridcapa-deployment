@@ -10,7 +10,14 @@ data:
     {
       "processName": "CSE IMPORT IDCC",
       "globalViewTimestampFilter": [
+        "16:30",
+        "19:30",
+        "22:30"
       ],
       "eventPredefinedFilter": {
+        "Summary": [
+          "Summary :",
+          "Network at dichotomy step"
+        ]
       }
     }
