@@ -44,7 +44,7 @@ data:
       perimeters-in-parallel: 7
 
     search-tree-rao-parameters:
-      maximum-search-depth: 5
+      maximum-search-depth: 3
       preventive-rao-stop-criterion: SECURE
       curative-rao-stop-criterion: SECURE
       absolute-network-action-minimum-impact-threshold: 2.0
