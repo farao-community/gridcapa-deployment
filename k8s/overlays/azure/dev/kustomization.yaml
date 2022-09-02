@@ -3,27 +3,41 @@ kind: Kustomization
 
 bases:
   - ../common
-  - ../core/valid
   - ../../../cse/common
   - ../cse/export-corner/d2cc
   - ../cse/export-corner/idcc
   - ../cse/import-corner/d2cc
   - ../cse/import-corner/idcc
+  - ../../../common-valid
+  - ../core/valid
+  - ../cse/valid/
 
 resources:
   - apps-metadata-server-configmap.yaml
   - auth-ingress.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
+  - filebrowser-configmap.yaml
+  - filebrowser-deployment.yaml
+  - filebrowser-pv-claim.yaml
+  - filebrowser-service.yaml
+  - ftp-pv-claim.yaml
+  - ftp-server-deployment.yaml
+  - ftp-server-service.yaml
+  - postgresql-configmap.yaml
+  - postgresql-deployment.yaml
+  - gridcapa-gateway-configmap.yaml
+  - gridcapa-gateway-deployment.yaml
+  - gridcapa-gateway-service.yaml
+  - keycloak-deployment.yaml
+  - keycloak-pv-claim.yaml
+  - keycloak-service.yaml
 
 configMapGenerator:
   - name: env-configmap
     env: env.properties
 
 images:
-  - name: gridcapa-task-notification-server
-    newName: docker.io/springcloudstream/websocket-sink-rabbit
-    newTag: latest
   - name: apps-metadata-server
     newName: docker.io/bitnami/apache
     newTag: latest
@@ -35,6 +49,15 @@ images:
     newTag: 2021.6.17
   - name: minio-mc
     newName: docker.io/minio/mc
+    newTag: latest
+  - name: centos
+    newName: docker.io/centos
+    newTag: latest
+  - name: filebrowser
+    newName: docker.io/filebrowser/filebrowser
+    newTag: latest
+  - name: ftp
+    newName: docker.io/delfer/alpine-ftp-server
     newTag: latest
   - name: gridsuite-config-notification-server
     newName: docker.io/gridsuite/config-notification-server
@@ -94,5 +117,26 @@ images:
     newName: docker.io/farao/gridcapa-core-valid
     newTag: latest
   - name: gridcapa-core-valid-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest
+  - name: gridcapa-cse-valid-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: latest
+  - name: gridcapa-cse-valid-output-data-bridge
+    newName: docker.io/farao/gridcapa-output-data-bridge
+    newTag: latest
+  - name: gridcapa-cse-valid-adapter
+    newName: docker.io/farao/gridcapa-cse-valid-adapter
+    newTag: latest
+  - name: gridcapa-cse-valid-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: latest
+  - name: gridcapa-cse-valid-runner
+    newName: docker.io/farao/gridcapa-cse-valid
+    newTag: latest
+  - name: gridcapa-cse-valid-publication
+    newName: docker.io/farao/gridcapa-cse-valid-publication
+    newTag: latest
+  - name: gridcapa-cse-valid-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: latest

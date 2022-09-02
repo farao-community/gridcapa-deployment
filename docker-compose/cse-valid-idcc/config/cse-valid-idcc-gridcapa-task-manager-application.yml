@@ -39,8 +39,6 @@ spring:
           task-status-updated:
             producer:
               routing-key-expression: '''status'''
-    function:
-      definition: consumeMinioEvent;consumeTaskStatusUpdate;consumeTaskEventUpdate
 
 task-server:
   process:
@@ -48,10 +46,11 @@ task-server:
     timezone: CET
     inputs:
       - TTC_ADJUSTMENT
-      - CRAC
       - CGM
+      - CRAC
       - GLSK
     outputs:
+      - TTC-VALIDATION
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
@@ -59,3 +58,9 @@ minio-adapter:
   url: ${GRIDCAPA_MINIO_URL:http://minio:9000}
   access-key: ${GRIDCAPA_MINIO_ACCESS_KEY:gridcapa}
   secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
+
+stomp:
+  allowed-origin: http://cse-import-idcc-gridcapa-app
+  starting-ws-endpoint: /tasks/notify
+  notify: /task
+  receive-request: /app

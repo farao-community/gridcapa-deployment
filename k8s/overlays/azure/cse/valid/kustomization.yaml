@@ -1,0 +1,28 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+  -  ../../../../cse/valid/idcc
+  -  ../../../../cse/valid/d2cc
+
+resources:
+  - cse-valid-runner-itools-configmap.yaml
+  - cse-valid-idcc-gridcapa-app-idp-settings-configmap.yaml
+  - cse-valid-d2cc-gridcapa-app-idp-settings-configmap.yaml
+  - cse-valid-minio-cleaning-cronjob.yaml
+  - cse-valid-idcc-publication-cronjob.yaml
+  - cse-valid-d2cc-publication-cronjob.yaml
+
+patchesJson6902:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-valid-idcc-gridcapa-app
+    path: patch-idcc.yaml
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-valid-d2cc-gridcapa-app
+    path: patch-d2cc.yaml

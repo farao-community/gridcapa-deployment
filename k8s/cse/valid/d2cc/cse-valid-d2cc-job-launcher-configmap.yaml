@@ -1,0 +1,58 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-valid-d2cc-gridcapa-job-launcher-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-job-launcher
+    region: cse
+    process: valid-d2cc
+data:
+  application.yml: |-
+    logback:
+      amqp:
+        exchange: cse-valid-d2cc-task-manager-logs-exchange
+        routing-key: "#"
+    spring:
+      application:
+        name: cse-valid-d2cc-gridcapa-job-launcher
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+        template:
+          reply-timeout: 7200000
+      cloud:
+        stream:
+          bindings:
+            default:
+              group: cse-valid-d2cc-job-launcher
+            run-task:
+              destination: cse-valid-d2cc-run-task
+            run-task-auto:
+              destination: cse-valid-d2cc-run-task
+            stop-task:
+              destination: cse-valid-d2cc-stop-task
+            consumeTaskDtoUpdate-in-0:
+              destination: cse-valid-d2cc-task-updated
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+            bindings:
+              consumeTaskDtoUpdate-in-0:
+                consumer:
+                  binding-routing-key: status
+    job-launcher:
+      auto: false
+      url:
+        task-manager-timestamp-url: http://cse-valid-d2cc-task-manager/tasks/
+        task-manager-business-date-url: http://cse-valid-d2cc-task-manager/tasks/businessdate/
+      process:
+        tag: CSE_VALID_D2CC
+        timezone: CET
+
+    scheduler:
+      enable: false

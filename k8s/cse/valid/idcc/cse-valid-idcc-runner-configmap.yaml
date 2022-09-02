@@ -1,0 +1,53 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-valid-idcc-runner-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-cse-valid-idcc-runner
+    region: cse
+    process: valid-idcc
+data:
+  application.yml: |-
+    logback:
+      amqp:
+        exchange: cse-valid-idcc-task-manager-logs-exchange
+        routing-key: "#"
+    spring:
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+        template:
+          reply-timeout: 7200000
+      cloud:
+        stream:
+          bindings:
+            task-status-update:
+              binder: rabbit
+              destination: cse-valid-idcc-task-status-updated
+
+    rao-runner-server:
+      amqp:
+        client-app-id: cse-valid-idcc-runner
+        queue-name: rao-request-queue
+
+    cse-valid-runner:
+      async-time-out: 600000
+      bindings:
+        request:
+          destination: cse-valid-idcc-requests
+          routing-key: "#"
+        response:
+          destination: cse-valid-idcc-response
+          expiration: 600000
+      whitelist:
+        - http://gridcapa-minio:9000/
+
+    minio-adapter:
+      bucket: gridcapa
+      base-path: /CSE/VALID
+      access-key: ${GRIDCAPA_MINIO_USER}
+      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+      url: http://gridcapa-minio:9000/

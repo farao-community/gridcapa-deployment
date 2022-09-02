@@ -1,3 +1,7 @@
 {
-  "processName": "CSE IDCC Validation"
+  "processName": "CSE IDCC Validation",
+  "globalViewTimestampFilter": [
+  ],
+  "eventPredefinedFilter": {
+  }
 }

@@ -8,5 +8,9 @@ metadata:
 data:
   process-metadata.json: |-
     {
-      "processName": "CSE IMPORT D2CC"
+      "processName": "CSE IMPORT D2CC",
+      "globalViewTimestampFilter": [
+      ],
+      "eventPredefinedFilter": {
+      }
     }

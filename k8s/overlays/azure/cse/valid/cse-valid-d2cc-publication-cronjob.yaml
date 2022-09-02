@@ -1,0 +1,26 @@
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: cse-valid-d2cc-publication-cronjob
+  labels:
+    app: gridcapa
+    component: cse-valid-d2cc-publication-cronjob
+    region: cse
+    process: valid-d2cc
+spec:
+  schedule: "5 7 * * *"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: cse-valid-d2cc-publication-cronjob
+              image: centos
+              args:
+                - /bin/sh
+                - -c
+                - curl -X POST -d "process=D2CC&targetDate=$(date --iso-8601)&targetDateOffset=1" http://gridcapa-dev.farao-community.com/cse/valid/d2cc/publication/publish
+          restartPolicy: OnFailure
