@@ -8,5 +8,9 @@ metadata:
 data:
   process-metadata.json: |-
     {
-      "processName": "CORE Validation"
+      "processName": "CORE Validation",
+      "globalViewTimestampFilter": [
+      ],
+      "eventPredefinedFilter": {
+      }
     }

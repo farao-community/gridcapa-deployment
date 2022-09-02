@@ -8,5 +8,9 @@ metadata:
 data:
   process-metadata.json: |-
     {
-      "processName": "CSE IMPORT IDCC"
+      "processName": "CSE IMPORT IDCC",
+      "globalViewTimestampFilter": [
+      ],
+      "eventPredefinedFilter": {
+      }
     }

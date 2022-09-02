@@ -1,3 +1,7 @@
 {
-  "processName": "CSE IMPORT D2CC"
+  "processName": "CSE IMPORT D2CC",
+  "globalViewTimestampFilter": [
+  ],
+  "eventPredefinedFilter": {
+  }
 }

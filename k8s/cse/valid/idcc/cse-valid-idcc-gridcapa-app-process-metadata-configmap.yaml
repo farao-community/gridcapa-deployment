@@ -8,5 +8,9 @@ metadata:
 data:
   process-metadata.json: |-
     {
-      "processName": "CSE Validation IDCC"
+      "processName": "CSE Validation IDCC",
+      "globalViewTimestampFilter": [
+      ],
+      "eventPredefinedFilter": {
+      }
     }
