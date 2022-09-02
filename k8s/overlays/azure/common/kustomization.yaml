@@ -17,6 +17,14 @@ resources:
   - postgresql-deployment.yaml
   - postgresql-pv-claim.yaml
   - postgresql-service.yaml
+  - filebrowser-configmap.yaml
+  - filebrowser-deployment.yaml
+  - filebrowser-pv-claim.yaml
+  - filebrowser-service.yaml
+  - ftp-pv-claim.yaml
+  - ftp-server-deployment.yaml
+  - ftp-server-service.yaml
+
 patches:
   - patch: |-
       apiVersion: apps/v1

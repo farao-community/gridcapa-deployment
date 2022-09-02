@@ -40,6 +40,12 @@ images:
   - name: centos
     newName: docker.io/centos
     newTag: latest
+  - name: filebrowser
+    newName: docker.io/filebrowser/filebrowser
+    newTag: latest
+  - name: ftp
+    newName: docker.io/delfer/alpine-ftp-server
+    newTag: latest
   - name: gridsuite-config-notification-server
     newName: docker.io/gridsuite/config-notification-server
     newTag: latest
