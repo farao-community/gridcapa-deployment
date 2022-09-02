@@ -29,9 +29,9 @@ data:
             default:
               group: cse-valid-idcc-job-launcher
             run-task:
-              destination: cse-valid-idcc-launch-task
+              destination: cse-valid-idcc-run-task
             run-task-auto:
-              destination: cse-valid-idcc-launch-task
+              destination: cse-valid-idcc-run-task
             stop-task:
               destination: cse-valid-idcc-stop-task
             consumeTaskDtoUpdate-in-0:
