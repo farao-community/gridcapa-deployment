@@ -136,6 +136,7 @@ Check that they have been correctly saved by listing current notifications enabl
 ```bash
 ./mc event list gridcapa_k8s/gridcapa
 ```
+
 ### Deployment on Azure DEV
 This environment is used for CI for all gridcapa processes
 
@@ -152,4 +153,34 @@ This environment is used to test CSE gridcapa processes for CORESO
 - namespace: gridcapa
 
 kubectl kustomize k8s/overlays/azure/test |  ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p"  farao@51.137.209.168 kubectl apply -n gridcapa -f -
+
+
+### Using local gridcapa-app
+
+In order to be abble to use a local gridcapa-app and all elements deployed in the docker environnement, you have to deal with CORS limitation.
+In react when you locally launch gridcapa-app, it will be available on localhost:3000 (typically) but all others services in dockers are available through the nginx server at localhost.
+The web browser see that "localhost:3000" and "localhost" are different so it is a cross dommain request and that's not allowed.
+
+In order to avoid this, a new docker-compose is available in the folder nginx-dev. This nginx acts as a proxy in order to redirect a request to the gridcapa-app to the local instance.
+
+Before using it you must modify the file nginx.conf in the folder nginx-dev.
+
+on line 22 you will find :
+```
+    upstream front-end-local-dev {
+        server 172.17.0.1:3000;
+    }
+```
+this line is responsible to redirect the request to your local instance of gridcapa-app. You have to put the correct IP adress.
+the correct IP is shown when the react gridcapa-app runs for example :
+
+```
+You can now view gridcapa-app in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://10.135.83.74:3000
+```
+For the example you have to use the second adress. **Do not use localhost:3000**.
+
+When the nginx-dev docker is up you can acces to the gridcapa-app with the url "http://localhost/cse/export/d2cc/"
 
