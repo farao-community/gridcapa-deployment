@@ -15,14 +15,6 @@ services:
     networks:
       - gridcapa
 
-  cse-valid-d2cc-task-notification-server:
-    image: springcloudstream/websocket-sink-rabbit:latest
-    restart: always
-    volumes:
-      - ./config/cse-valid-d2cc-gridcapa-task-notification-server-application.yml:/config/bootstrap.yml:Z
-    networks:
-      - gridcapa
-
   data-bridge-d2cc-ttc-adjustment:
     image: farao/gridcapa-data-bridge:latest
     volumes:

@@ -31,48 +31,6 @@ spec:
         paths:
           - backend:
               service:
-                name: core-valid-gridcapa-app
-                port:
-                  number: 80
-            path: /core/valid(/|$)(.*)
-            pathType: Prefix
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /()(core/valid/config/.*)
-            pathType: Prefix
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /()(core/valid/config-notification/.*)
-            pathType: Prefix
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /()(core/valid/task-notification/.*)
-            pathType: Prefix
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /()(core/valid/task-manager/.*)
-            pathType: Prefix
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /()(core/valid/gridcapa-job-launcher/.*)
-            pathType: Prefix
-          - backend:
-              service:
                 name: cse-import-idcc-gridcapa-app
                 port:
                   number: 80
@@ -268,6 +226,48 @@ spec:
                 port:
                   number: 9000
             path: /()(minio.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: core-valid-gridcapa-app
+                port:
+                  number: 80
+            path: /core/valid(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/valid/config/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/valid/config-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/valid/task-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/valid/task-manager/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/valid/gridcapa-job-launcher/.*)
             pathType: Prefix
           - backend:
               service:

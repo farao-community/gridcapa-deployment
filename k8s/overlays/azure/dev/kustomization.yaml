@@ -3,12 +3,13 @@ kind: Kustomization
 
 bases:
   - ../common
-  - ../core/valid
   - ../../../cse/common
   - ../cse/export-corner/d2cc
   - ../cse/export-corner/idcc
   - ../cse/import-corner/d2cc
   - ../cse/import-corner/idcc
+  - ../../../common-valid
+  - ../core/valid
   - ../cse/valid/
 
 resources:
@@ -16,15 +17,27 @@ resources:
   - auth-ingress.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
+  - filebrowser-configmap.yaml
+  - filebrowser-deployment.yaml
+  - filebrowser-pv-claim.yaml
+  - filebrowser-service.yaml
+  - ftp-pv-claim.yaml
+  - ftp-server-deployment.yaml
+  - ftp-server-service.yaml
+  - postgresql-configmap.yaml
+  - postgresql-deployment.yaml
+  - gridcapa-gateway-configmap.yaml
+  - gridcapa-gateway-deployment.yaml
+  - gridcapa-gateway-service.yaml
+  - keycloak-deployment.yaml
+  - keycloak-pv-claim.yaml
+  - keycloak-service.yaml
 
 configMapGenerator:
   - name: env-configmap
     env: env.properties
 
 images:
-  - name: gridcapa-task-notification-server
-    newName: docker.io/springcloudstream/websocket-sink-rabbit
-    newTag: latest
   - name: apps-metadata-server
     newName: docker.io/bitnami/apache
     newTag: latest

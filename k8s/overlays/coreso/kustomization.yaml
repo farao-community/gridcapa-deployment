@@ -125,9 +125,6 @@ configMapGenerator:
     env: env.properties
 
 images:
-  - name: gridcapa-task-notification-server
-    newName: docker.io/springcloudstream/websocket-sink-rabbit
-    newTag: 2021.0.x
   - name: apps-metadata-server
     newName: bitnami/apache
     newTag: "2.4"

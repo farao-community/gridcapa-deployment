@@ -136,3 +136,20 @@ Check that they have been correctly saved by listing current notifications enabl
 ```bash
 ./mc event list gridcapa_k8s/gridcapa
 ```
+### Deployment on Azure DEV
+This environment is used for CI for all gridcapa processes
+
+- host: gridcapa-dev.farao-community.com
+- namespace: default
+
+kubectl kustomize k8s/overlays/azure/dev |  ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p"  farao@51.137.209.168 kubectl apply -f -
+
+
+### Deployment on Azure TEST
+This environment is used to test CSE gridcapa processes for CORESO
+
+- host: gridcapa.farao-community.com
+- namespace: gridcapa
+
+kubectl kustomize k8s/overlays/azure/test |  ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p"  farao@51.137.209.168 kubectl apply -n gridcapa -f -
+
