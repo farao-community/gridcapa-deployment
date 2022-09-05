@@ -12,14 +12,7 @@ spring:
     stream:
       default:
         binder: rabbit
-        group: cse-export-idcc-runner
       bindings:
-        interrupt-in-0:
-          destination: cse-export-idcc-interrupt
-        request-in-0:
-          destination: cse-export-idcc-request
-        request-out-0:
-          destination: cse-export-idcc-response
         task-status-update:
           destination: cse-export-idcc-task-status-updated
 
