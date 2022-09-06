@@ -48,6 +48,7 @@ resources:
   - cse-import-idcc-job-launcher-service.yaml
   - cse-import-idcc-job-launcher-configmap.yaml
   - cse-import-idcc-runner-configmap.yaml
+  - cse-import-idcc-runner-itools-configmap.yaml
   - cse-import-idcc-runner-deployment.yaml
   - cse-import-idcc-runner-service.yaml
   - cse-import-idcc-task-manager-configmap.yaml

@@ -1,11 +1,12 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-runner-itools-configmap
+  name: cse-export-d2cc-runner-itools-configmap
   labels:
     app: gridcapa
     component: gridcapa-runner
     region: cse
+    process: export-d2cc
 
 data:
   config.yml: |-

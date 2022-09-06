@@ -90,6 +90,7 @@ spec:
             failureThreshold: 1
             successThreshold: 1
       restartPolicy: Always
+      imagePullSecrets: []
       volumes:
         - name: xpress-license
           secret:

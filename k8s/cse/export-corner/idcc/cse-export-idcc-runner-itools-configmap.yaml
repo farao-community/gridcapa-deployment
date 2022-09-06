@@ -1,0 +1,58 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-export-idcc-runner-itools-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-runner
+    region: cse
+    process: export-idcc
+
+data:
+  config.yml: |-
+    load-flow-default-parameters:
+      voltageInitMode: DC_VALUES
+      balanceType: PROPORTIONAL_TO_GENERATION_P
+      countriesToBalance: AL,AT,BA,BE,BG,CH,CZ,DE,ES,FR,GR,HR,HU,IT,ME,MK,NL,PL,PT,RO,RS,SI,SK,UA
+      phaseShifterRegulationOn: true
+
+    hades2:
+      homeDir: /home/farao/farao-dep/runtime/hades2
+      timeout: -1
+      debug: false
+
+    hades2-default-parameters:
+      nbThreads: 3
+
+    hades2-default-sensitivity-parameters:
+      computeInitialLoadflow: true
+      computeSensitivityToPsts: true
+      computeSensitivityToInjections: false
+      equationTypePst: ANGLE_SHIFT_EQ
+      resultsThreshold: 0.1
+      hubPtdf: -1
+
+    rao-parameters:
+      objective-function: MAX_MIN_MARGIN_IN_AMPERE
+      max-number-of-iterations: 5
+      optimization-solver: CBC
+      pst-optimization-approximation: CONTINUOUS
+      pst-penalty-cost: 0.01
+      pst-sensitivity-threshold : 0.01
+      sensitivity-fallback-overcost: 0.0
+      rao-with-loop-flow-limitation: false
+      rao-with-mnec-limitation: false
+      perimeters-in-parallel: 4
+
+    search-tree-rao-parameters:
+      maximum-search-depth: 3
+      preventive-rao-stop-criterion: SECURE
+      curative-rao-stop-criterion: SECURE
+      absolute-network-action-minimum-impact-threshold: 2.0
+      relative-network-action-minimum-impact-threshold: 0.0
+      preventive-leaves-in-parallel: 4
+      curative-leaves-in-parallel: 1
+      second-preventive-optimization-condition: POSSIBLE_CURATIVE_IMPROVEMENT
+      global-opt-in-second-preventive: true
+      second-preventive-hint-from-first-preventive: false
+      curative-rao-optimize-operators-not-sharing-cras : true
