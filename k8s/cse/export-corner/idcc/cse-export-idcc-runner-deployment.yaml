@@ -92,7 +92,7 @@ spec:
             name: cse-export-idcc-runner-configmap
         - name: cse-export-idcc-runner-itools-configmap-volume
           configMap:
-            name: cse-export-idcc-runner-itools-configmap
+            name: cse-runner-itools-configmap
         - name: cse-export-idcc-runner-xnodes-configmap-volume
           configMap:
             name: cse-runner-xnodes-configmap

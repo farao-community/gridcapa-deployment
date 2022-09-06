@@ -33,7 +33,6 @@ resources:
   - cse-import-d2cc-app-process-metadata-configmap.yaml
   - cse-import-d2cc-app-service.yaml
   - cse-import-d2cc-runner-configmap.yaml
-  - cse-import-d2cc-runner-itools-configmap.yaml
   - cse-import-d2cc-runner-deployment.yaml
   - cse-import-d2cc-runner-service.yaml
   - cse-import-d2cc-job-launcher-deployment.yaml

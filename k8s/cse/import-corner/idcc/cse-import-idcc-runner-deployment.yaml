@@ -95,7 +95,7 @@ spec:
             name: cse-import-idcc-runner-configmap
         - name: cse-import-idcc-runner-itools-configmap-volume
           configMap:
-            name: cse-import-idcc-runner-itools-configmap
+            name: cse-runner-itools-configmap
         - name: cse-import-idcc-runner-xnodes-configmap-volume
           configMap:
             name: cse-runner-xnodes-configmap

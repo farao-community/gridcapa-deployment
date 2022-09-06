@@ -18,7 +18,6 @@ resources:
   - cse-export-idcc-app-process-metadata-configmap.yaml
   - cse-export-idcc-app-service.yaml
   - cse-export-idcc-runner-configmap.yaml
-  - cse-export-idcc-runner-itools-configmap.yaml
   - cse-export-idcc-runner-deployment.yaml
   - cse-export-idcc-runner-service.yaml
   - cse-export-idcc-job-launcher-deployment.yaml

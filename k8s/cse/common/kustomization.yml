@@ -7,4 +7,5 @@ resources:
   - cse-gridcapa-rao-runner-deployment.yaml
   - cse-gridcapa-rao-runner-itools-configmap.yaml
   - cse-gridcapa-rao-runner-service.yaml
+  - cse-gridcapa-runner-itools-configmap.yaml
   - cse-gridcapa-runner-xnodes-configmap.yaml
