@@ -10,7 +10,7 @@ rao-parameters:
   rao-with-loop-flow-limitation: false
   perimeters-in-parallel: 2
   load-flow-provider: "OpenLoadFlow"
-  sensitivity-provider: "OpenSensitivityAnalysis"
+  sensitivity-provider: "OpenLoadFlow"
 
 search-tree-rao-parameters:
   preventive-rao-stop-criterion: SECURE
