@@ -50,6 +50,9 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: rao-runner-configmap-volume
+            - mountPath: /config/logback.xml
+              subPath: logback.xml
+              name: rao-runner-configmap-volume
             - mountPath: /tmp
               name: tmp-emptydir
           securityContext:
