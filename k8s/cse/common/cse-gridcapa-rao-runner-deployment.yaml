@@ -54,6 +54,9 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: cse-rao-runner-volume
+            - mountPath: /config/logback.xml
+              subPath: logback.xml
+              name: cse-rao-runner-volume
             - mountPath: /tmp
               name: tmp-emptydir
           securityContext:

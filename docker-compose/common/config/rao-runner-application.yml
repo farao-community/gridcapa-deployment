@@ -23,6 +23,9 @@ rao-runner:
     whitelist:
       - http://minio:9000/
 
+logging:
+  config: /config/logback.xml
+
 logback:
   amqp:
     exchange: rao-runners-logs-exchange  # common exchange for logs to all rao client applications
