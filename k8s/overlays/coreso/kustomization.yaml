@@ -160,7 +160,7 @@ images:
     newTag: v1.0.0
   - name: gridcapa-cse-rao-runner
     newName: inca.rte-france.com/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.3.0
+    newTag: v1.3.1
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
     newTag: v1.5.1

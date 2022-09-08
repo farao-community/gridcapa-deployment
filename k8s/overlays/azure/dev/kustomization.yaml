@@ -82,7 +82,7 @@ images:
     newTag: latest
   - name: gridcapa-cse-rao-runner
     newName: p2rte.azurecr.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.3.0
+    newTag: v1.3.1
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
     newTag: latest
