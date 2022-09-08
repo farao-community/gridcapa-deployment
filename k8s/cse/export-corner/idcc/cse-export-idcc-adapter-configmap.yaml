@@ -24,6 +24,8 @@ data:
               binder: rabbit
               destination: cse-export-idcc-launch-task
               group: cse-export-idcc-adapter
+            task-status-update:
+              destination: cse-export-idcc-task-status-updated
           rabbit:
             default:
               consumer:
@@ -48,3 +50,10 @@ data:
     cse-adapter:
       exchange-type: export
       process-type: IDCC
+
+    logging:
+      config: /config/logback.xml
+
+    logback:
+      amqp:
+        exchange: cse-export-idcc-task-manager-logs-exchange

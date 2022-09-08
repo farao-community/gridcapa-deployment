@@ -24,11 +24,17 @@ data:
                 binder: rabbit
                 destination: cse-import-idcc-launch-task
                 group: cse-import-idcc-adapter
+              task-status-update:
+                destination: cse-import-idcc-task-status-updated
             rabbit:
               default:
                 consumer:
                   auto-bind-dlq: true
                   max-attempts: 1
+
+    logback:
+      amqp:
+        exchange: cse-import-idcc-task-manager-logs-exchange
 
     cse-cc-runner:
       binding:
@@ -48,3 +54,6 @@ data:
     cse-adapter:
       exchange-type: import
       process-type: IDCC
+
+    logging:
+      config: /config/logback.xml
