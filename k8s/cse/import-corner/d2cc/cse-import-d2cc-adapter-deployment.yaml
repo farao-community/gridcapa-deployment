@@ -64,6 +64,9 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: cse-import-d2cc-adapter-configmap-volume
+            - mountPath: /config/logback.xml
+              subPath: logback.xml
+              name: cse-adapter-logback-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -94,3 +97,6 @@ spec:
         - name: cse-import-d2cc-adapter-configmap-volume
           configMap:
             name: cse-import-d2cc-gridcapa-adapter-configmap
+        - name: cse-adapter-logback-configmap-volume
+          configMap:
+            name: cse-adapter-logback-configmap

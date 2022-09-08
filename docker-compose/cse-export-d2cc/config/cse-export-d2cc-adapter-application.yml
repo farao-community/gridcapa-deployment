@@ -13,6 +13,8 @@ spring:
           binder: rabbit
           destination: cse-export-d2cc-launch-task
           group: cse-export-d2cc-adapter
+        task-status-update:
+          destination: cse-export-d2cc-task-status-updated
 
 cse-cc-runner:
   binding:
@@ -32,3 +34,10 @@ url-validation:
 cse-adapter:
   exchange-type: export
   process-type: D2CC
+
+logging:
+  config: /config/logback.xml
+
+logback:
+  amqp:
+    exchange: cse-export-d2cc-task-manager-logs-exchange
