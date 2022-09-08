@@ -59,6 +59,9 @@ spec:
               name: cse-rao-runner-volume
             - mountPath: /tmp
               name: tmp-emptydir
+            - mountPath: /home/farao/farao-dep/runtime/xpress/bin/xpauth.xpr
+              subPath: pauth.xpr
+              name: xpress-license
           securityContext:
             allowPrivilegeEscalation: false
             runAsNonRoot: true
@@ -90,7 +93,11 @@ spec:
             failureThreshold: 1
             successThreshold: 1
       restartPolicy: Always
+      imagePullSecrets: []
       volumes:
+        - name: xpress-license
+          secret:
+            secretName: xpress-license
         - name: cse-rao-runner-volume
           configMap:
             name: cse-rao-runner

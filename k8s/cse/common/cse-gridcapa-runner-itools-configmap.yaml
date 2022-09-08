@@ -34,8 +34,10 @@ data:
     rao-parameters:
       objective-function: MAX_MIN_MARGIN_IN_AMPERE
       max-number-of-iterations: 5
-      optimization-solver: CBC
-      pst-optimization-approximation: CONTINUOUS
+      optimization-solver: XPRESS
+      relative-mip-gap : 1.0E-3,
+      solver-specific-parameters : THREADS 1 MAXNODE 100000 MAXTIME 300,
+      pst-optimization-approximation: APPROXIMATED_INTEGERS
       pst-penalty-cost: 0.01
       pst-sensitivity-threshold : 0.01
       sensitivity-fallback-overcost: 0.0

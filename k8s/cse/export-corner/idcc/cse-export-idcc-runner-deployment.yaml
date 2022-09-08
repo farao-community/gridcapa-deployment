@@ -56,7 +56,7 @@ spec:
               name: cse-export-idcc-runner-configmap-volume
             - mountPath: /home/farao/.itools/config.yml
               subPath: config.yml
-              name: cse-runner-itools-configmap-volume
+              name: cse-export-idcc-runner-itools-configmap-volume
             - mountPath: /home/farao/xnodes/xnodes.xml
               subPath: xnodes.xml
               name: cse-export-idcc-runner-xnodes-configmap-volume
@@ -90,7 +90,7 @@ spec:
         - name: cse-export-idcc-runner-configmap-volume
           configMap:
             name: cse-export-idcc-runner-configmap
-        - name: cse-runner-itools-configmap-volume
+        - name: cse-export-idcc-runner-itools-configmap-volume
           configMap:
             name: cse-runner-itools-configmap
         - name: cse-export-idcc-runner-xnodes-configmap-volume

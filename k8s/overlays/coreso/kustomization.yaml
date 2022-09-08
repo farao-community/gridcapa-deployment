@@ -159,8 +159,8 @@ images:
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.0.0
   - name: gridcapa-cse-rao-runner
-    newName: docker.io/farao/gridcapa-rao-runner
-    newTag: v1.2.1
+    newName: inca.rte-france.com/farao/gridcapa-rao-runner-with-xpress
+    newTag: v1.3.1
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
     newTag: v1.5.1
