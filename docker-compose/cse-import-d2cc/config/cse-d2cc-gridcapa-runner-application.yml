@@ -12,12 +12,12 @@ spring:
     stream:
       default:
         binder: rabbit
-        group: cse-import-d2cc-runner
       bindings:
         interrupt-in-0:
           destination: cse-import-d2cc-stop-task
         request-in-0:
           destination: cse-import-d2cc-request
+          group: cse-import-d2cc-runner
         request-out-0:
           destination: cse-import-d2cc-response
         task-status-update:

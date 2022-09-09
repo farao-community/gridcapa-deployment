@@ -12,14 +12,7 @@ spring:
     stream:
       default:
         binder: rabbit
-        group: cse-export-d2cc-runner
       bindings:
-        interrupt-in-0:
-          destination: cse-export-d2cc-interrupt
-        request-in-0:
-          destination: cse-export-d2cc-request
-        request-out-0:
-          destination: cse-export-d2cc-response
         task-status-update:
           destination: cse-export-d2cc-task-status-updated
 
