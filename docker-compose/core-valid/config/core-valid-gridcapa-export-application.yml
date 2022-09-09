@@ -1,0 +1,31 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+  cloud:
+    stream:
+      default:
+        group: core-valid-outputs
+      bindings:
+        consumeTaskDtoUpdate-in-0:
+          destination: core-valid-task-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+        bindings:
+          consumeTaskDtoUpdate-in-0:
+            consumer:
+              binding-routing-key: status
+
+task-manager:
+  base-url: http://core-valid-gridcapa-task-manager:8080
+ftp:
+  host: ftp-server
+  port: 21
+  access-key: gridcapa
+  secret-key: gridcapa
+  remote-relative-destination-directory: data/gridcapa/core/valid/outputs
