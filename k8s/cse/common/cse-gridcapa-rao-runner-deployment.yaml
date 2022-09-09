@@ -60,7 +60,7 @@ spec:
             - mountPath: /tmp
               name: tmp-emptydir
             - mountPath: /home/farao/farao-dep/runtime/xpress/bin/xpauth.xpr
-              subPath: pauth.xpr
+              subPath: xpauth.xpr
               name: xpress-license
           securityContext:
             allowPrivilegeEscalation: false

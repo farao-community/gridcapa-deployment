@@ -14,7 +14,7 @@ rao-parameters:
   objective-function: MAX_MIN_MARGIN_IN_AMPERE
   max-number-of-iterations: 5
   optimization-solver: XPRESS
-  relative-mip-gap : 1.0E-3,
+  relative-mip-gap : 0.001
   solver-specific-parameters : THREADS 1 MAXNODE 100000 MAXTIME 300,
   pst-optimization-approximation: APPROXIMATED_INTEGERS
   pst-penalty-cost: 0.01
