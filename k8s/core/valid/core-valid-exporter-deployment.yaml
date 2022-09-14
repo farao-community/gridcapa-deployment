@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: core-import-idcc-exporter
+  name: core-valid-exporter
   labels:
     app: gridcapa
     component: export
