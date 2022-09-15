@@ -54,5 +54,12 @@ cse-cc-runner:
         - FFG.IL14 FFG.IL13 1
         - FFG.IL14 FFG.IL13 2
         - FFG.IL14 FFG.IL13 3
+  bindings:
+    request:
+      destination: cse-export-d2cc-request
+      group: cse-export-d2cc-runner
+    response:
+      destination: cse-export-d2cc-response
+      expiration: 60000
   whitelist:
     - http://minio:9000/
