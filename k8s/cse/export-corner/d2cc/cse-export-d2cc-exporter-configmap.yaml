@@ -38,9 +38,15 @@ data:
 
     task-manager:
       base-url: http://cse-export-d2cc-task-manager
+      fetch-task:
+        reties-number: 6
+        interval-in-seconds: 10
     ftp:
       host: ${SOURCE_HOST}
       port: 21
       access-key: ${SOURCE_USER}
       secret-key: ${SOURCE_PASSWORD}
       remote-relative-destination-directory: ${SINK_DIRECTORY}
+    logback:
+      amqp:
+        exchange: cse-export-2dcc-task-manager-logs-exchange
