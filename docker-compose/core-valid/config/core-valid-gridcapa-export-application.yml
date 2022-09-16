@@ -23,9 +23,16 @@ spring:
 
 task-manager:
   base-url: http://core-valid-gridcapa-task-manager:8080
+  fetch-task:
+    reties-number: 6
+    interval-in-seconds: 10
 ftp:
   host: ftp-server
   port: 21
   access-key: gridcapa
   secret-key: gridcapa
   remote-relative-destination-directory: data/gridcapa/core/valid/outputs
+
+logback:
+  amqp:
+    exchange: core-valid-task-manager-logs-exchange

@@ -23,9 +23,16 @@ spring:
 
 task-manager:
   base-url: http://cse-export-idcc-task-manager:8080
+  fetch-task:
+    reties-number: 6
+    interval-in-seconds: 10
 ftp:
   host: ftp-server
   port: 21
   access-key: gridcapa
   secret-key: gridcapa
   remote-relative-destination-directory: cse/export/idcc/outputs
+
+logback:
+  amqp:
+    exchange: cse-export-idcc-task-manager-logs-exchange
