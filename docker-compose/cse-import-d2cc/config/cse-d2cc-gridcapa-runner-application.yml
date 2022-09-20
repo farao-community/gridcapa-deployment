@@ -22,6 +22,8 @@ spring:
           destination: cse-import-d2cc-response
         task-status-update:
           destination: cse-import-d2cc-task-status-updated
+        stop-rao:
+          destination: stop-rao-runner
 
 logback:
   amqp:

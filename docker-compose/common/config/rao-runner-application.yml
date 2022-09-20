@@ -6,6 +6,12 @@ spring:
     password: gridcapa
     template:
       reply-timeout: 7200000
+  cloud:
+    stream:
+      bindings:
+        stop-in-0:
+          binder: rabbit
+          destination: stop-rao-runner
 
 minio:
   bucket: gridcapa
