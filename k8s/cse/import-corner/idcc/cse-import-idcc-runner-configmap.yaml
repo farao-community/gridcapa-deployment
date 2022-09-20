@@ -33,6 +33,8 @@ data:
               destination: cse-import-idcc-response
             task-status-update:
               destination: cse-import-idcc-task-status-updated
+            stop-rao:
+              destination: stop-rao-runner
 
     logback:
       amqp:
