@@ -24,6 +24,8 @@ data:
           bindings:
             task-status-update:
               destination: cse-export-idcc-task-status-updated
+            stop-rao:
+              destination: stop-rao-runner   
 
     logback:
       amqp:

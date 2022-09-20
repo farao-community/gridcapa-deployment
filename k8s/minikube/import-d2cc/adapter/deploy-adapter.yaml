@@ -48,6 +48,26 @@ data:
     cse-adapter:
       exchange-type: import
       process-type: D2CC
+    
+    logging:
+      config: /config/logback.xml
+
+  logback.xml: |-
+    <?xml version="1.0" encoding="UTF-8"?>
+    <configuration>
+    	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    		<encoder>
+    			<pattern>%d{yyyy-MM-dd'T'HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    		</encoder>
+    	</appender>
+    	<root level="info">
+    		<appender-ref ref="STDOUT" />
+    	</root>
+
+    	<logger name="com.powsybl" level="OFF"/>
+    	<logger name="com.rte_france.powsybl" level="OFF"/>
+
+    </configuration>
 ---
 kind: Deployment
 apiVersion: apps/v1
@@ -114,6 +134,9 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
+              name: cse-import-d2cc-adapter-configmap-volume
+            - mountPath: /config/logback.xml
+              subPath: logback.xml
               name: cse-import-d2cc-adapter-configmap-volume
           livenessProbe:
             httpGet:

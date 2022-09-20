@@ -111,6 +111,8 @@ data:
   process-metadata.json: |-
     {
       "processName": "CORE Validation"
+      "globalViewTimestampFilter": [],
+      "eventPredefinedFilter": {}
     }
 ---
 apiVersion: v1

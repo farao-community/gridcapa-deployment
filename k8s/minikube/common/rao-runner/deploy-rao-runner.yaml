@@ -15,7 +15,13 @@ data:
         password: ${RABBITMQ_PASSWORD}
         template:
           reply-timeout: 12000000
-
+    cloud:
+      stream:
+        bindings:
+          stop-in-0:
+            binder: rabbit
+            destination: stop-rao-runner
+            
     minio:
       bucket: gridcapa
       base-path:
