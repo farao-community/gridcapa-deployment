@@ -139,7 +139,7 @@ spec:
               cpu: "0.5"
               memory: "500Mi"
             limits:
-              cpu: "2.0"
+              cpu: "1.0"
               memory: "1Gi"
       restartPolicy: Always
       volumes:

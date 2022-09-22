@@ -98,10 +98,10 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              cpu: "1.0"
+              cpu: "0.5"
               memory: "350Mi"
             limits:
-              cpu: "2.0"
+              cpu: "1.0"
               memory: "350Mi"
       restartPolicy: Always
       volumes:

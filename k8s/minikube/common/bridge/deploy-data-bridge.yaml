@@ -8,23 +8,23 @@ metadata:
 data:
   application.yml: |-
     data-bridge:
+      zone-id: "Europe/Paris"
+      sources:
+        ftp:
+          active: true
+          host: ${FTP_SOURCE_IP}
+          port: ${FTP_SOURCE_PORT}
+          username: gridcapa
+          password: gridcapa
+          polling-delay-in-ms: 5000
       sinks:
         minio:
           url: http://gridcapa-minio:9000
           access-key: gridcapa
           secret-key: gridcapa
           bucket: gridcapa
-
-    data-bridges:
-      zone-id: "Europe/Paris"
-      ftp:
-        active: true
-        host: ${FTP_SOURCE_IP}
-        port: ${FTP_SOURCE_PORT}
-        username: gridcapa
-        password: gridcapa
-        polling-delay-in-ms: 5000
-      data-bridge-list:
+    
+      bridges:
         -
           target-process: CSE_IMPORT_D2CC
           file-type: CGM
@@ -303,7 +303,6 @@ data:
           minio-directory: /CORE/VALID/STUDYPOINTs
           remote-file-regex:
             - ".*"
-
 ---
 kind: Deployment
 apiVersion: apps/v1
@@ -331,7 +330,7 @@ spec:
             defaultMode: 420
       containers:
         - name: gridcapa-data-bridge
-          image: docker.io/farao/gridcapa-data-bridge:latest
+          image: 127.0.0.1:5000/farao-local/gridcapa-data-bridge
           env:
             - name: FTP_SOURCE_IP
               valueFrom:
