@@ -1,0 +1,24 @@
+minio-adapter:
+  bucket: gridcapa
+  base-path: /SWE/D2CC
+  access-key: gridcapa
+  secret-key: gridcapa
+  url: http://localhost:9000
+
+spring:
+  banner:
+    location: banner.txt
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+  cloud:
+    stream:
+      default:
+        binder: rabbit
+      bindings:
+        handleRequest-in-0:
+          destination: swe-preprocess-request
+        handleRequest-out-0:
+          destination: swe-preprocess-response

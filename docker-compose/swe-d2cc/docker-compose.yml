@@ -1,0 +1,78 @@
+version: "3.7"
+services:
+  swe-d2cc-app:
+    image: farao/gridcapa-app:latest
+    volumes:
+      - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ./config/swe-d2cc-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+    networks:
+      - gridcapa
+
+#  swe-d2cc-cgm-data-bridge:
+#    image: farao/gridcapa-data-bridge:latest
+#    volumes:
+#      - ./config/swe-d2cc-cgm-data-bridge-application.yml:/config/application.yml
+#    networks:
+#      - gridcapa
+
+  swe-d2cc-crac-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/swe-d2cc-crac-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-d2cc-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./config/swe-d2cc-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-d2cc-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    volumes:
+      - ./config/swe-d2cc-job-launcher.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-d2cc-adapter:
+    image: farao/gridcapa-swe-adapter:LOCAL
+    volumes:
+      - ./config/swe-d2cc-adapter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  swe-d2cc-runner:
+    image: farao/gridcapa-swe-runner:LOCAL
+    volumes:
+      - ./config/swe-d2cc-runner-application.yml:/config/application.yml
+#      - ./config/core-valid-itools-config-OLF.yml:/home/farao/.itools/config.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  swe-d2cc-preprocess:
+    image: farao/gridcapa-swe-preprocess:LOCAL
+    volumes:
+      - ./config/swe-d2cc-adapter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+networks:
+  gridcapa:
+    name: gridcapa

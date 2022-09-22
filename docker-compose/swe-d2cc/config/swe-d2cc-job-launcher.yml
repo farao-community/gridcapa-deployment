@@ -1,0 +1,43 @@
+logback:
+  amqp:
+    exchange: swe-d2cc-task-manager-logs-exchange
+    routing-key: "#"
+spring:
+  application:
+    name: swe-d2cc-job-launcher
+  rabbitmq:
+    host: rabbitmq
+    username: gridcapa
+    password: gridcapa
+    port: 5672
+  cloud:
+    stream:
+      bindings:
+        default:
+          group: swe-d2cc-job-launcher
+        run-task:
+          destination: swe-d2cc-run-task
+        stop-task:
+          destination: swe-d2cc-stop-task
+        consumeTaskDtoUpdate-in-0:
+          destination: swe-d2cc-task-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+        bindings:
+          consumeTaskDtoUpdate-in-0:
+            consumer:
+              binding-routing-key: status
+
+job-launcher:
+  url:
+    task-manager-timestamp-url: http://swe-d2cc-task-manager:8080/tasks/
+    task-manager-business-date-url: http://swe-d2cc-task-manager:8080/tasks/businessdate/
+  process:
+    tag: SWE_D2CC
+    timezone: CET
+
+scheduler:
+  enable: false
