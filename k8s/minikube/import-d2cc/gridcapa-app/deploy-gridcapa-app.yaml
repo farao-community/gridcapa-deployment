@@ -49,7 +49,7 @@ spec:
           imagePullPolicy: Always
           env: 
             - name: USE_KEYCLOAK_AUTHENTICATION
-              value: 'true'          
+              value: 'false'          
           ports:
             - containerPort: 80
           lifecycle:
@@ -115,7 +115,7 @@ metadata:
 data:
   process-metadata.json: |-
     {
-      "processName": "CSE IMPORT D2CC"
+      "processName": "CSE IMPORT D2CC",
       "globalViewTimestampFilter": ["00:30", "03:30", "07:30", "10:30", "13:30", "16:30", "19:30", "22:30"],
       "eventPredefinedFilter": {"Summary":["PRA_", "PRA ", "limiting element"], "Summary-BD":["dichotomy step", "GSK limitation", "no secure TTC found"]}    
     }

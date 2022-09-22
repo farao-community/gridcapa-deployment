@@ -331,7 +331,7 @@ spec:
             defaultMode: 420
       containers:
         - name: gridcapa-data-bridge
-          image: docker.io/farao/gridcapa-data-bridge:latest
+          image: 127.0.0.1:5000/farao-local/gridcapa-data-bridge
           env:
             - name: FTP_SOURCE_IP
               valueFrom:
