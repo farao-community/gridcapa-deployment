@@ -8,17 +8,81 @@ services:
     networks:
       - gridcapa
 
-#  swe-d2cc-cgm-data-bridge:
-#    image: farao/gridcapa-data-bridge:latest
-#    volumes:
-#      - ./config/swe-d2cc-cgm-data-bridge-application.yml:/config/application.yml
-#    networks:
-#      - gridcapa
+  swe-d2cc-cgm-coreso-sv-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-d2cc-cgm-coreso-sv-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-d2cc-cgm-ree-eq-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-d2cc-cgm-ree-eq-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-d2cc-cgm-ree-ssh-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-d2cc-cgm-ree-ssh-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+
+  swe-d2cc-cgm-ren-tp-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-d2cc-cgm-ren-tp-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-d2cc-cgm-ren-eq-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-d2cc-cgm-ren-eq-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-d2cc-cgm-ren-ssh-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-d2cc-cgm-ren-ssh-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-d2cc-cgm-rte-tp-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-d2cc-cgm-rte-tp-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-d2cc-cgm-rte-eq-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-d2cc-cgm-rte-eq-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-d2cc-cgm-rte-ssh-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-d2cc-cgm-rte-ssh-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-d2cc-cgm-ree-tp-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-d2cc-cgm-ree-tp-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
 
   swe-d2cc-crac-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/swe-d2cc-crac-data-bridge-application.yml:/config/application.yml
+      - ./config/data-bridge/swe-d2cc-crac-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -53,18 +117,8 @@ services:
     volumes:
       - ./config/swe-d2cc-runner-application.yml:/config/application.yml
 #      - ./config/core-valid-itools-config-OLF.yml:/home/farao/.itools/config.yml
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
-      interval: 30s
-      timeout: 30s
-      retries: 5
-    networks:
-      - gridcapa
-
-  swe-d2cc-preprocess:
-    image: farao/gridcapa-swe-preprocess:LOCAL
-    volumes:
-      - ./config/swe-d2cc-adapter-application.yml:/config/application.yml
+      - ./config/20220801_0230_rr1_UX1_EQX.xml:/home/farao/.itools/cgmes/boundary/20220801_0230_rr1_UX1_EQX.xml
+      - ./config/20220801_0230_rr1_UX1_TPX.xml:/home/farao/.itools/cgmes/boundary/20220801_0230_rr1_UX1_TPX.xml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s

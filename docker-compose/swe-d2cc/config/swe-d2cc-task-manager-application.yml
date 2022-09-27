@@ -46,6 +46,16 @@ task-server:
     timezone: CET
     inputs:
       - CRAC
+      - CORESO_SV
+      - REE_EQ
+      - REE_SSH
+      - REE_TP
+      - REN_EQ
+      - REN_SSH
+      - REN_TP
+      - RTE_EQ
+      - RTE_SSH
+      - RTE_TP
     outputs:
 
 minio-adapter:

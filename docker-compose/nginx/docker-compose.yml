@@ -5,7 +5,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx_swe_d2cc.conf:/etc/nginx/nginx.conf:Z
+      - ./nginx_swe_d2cc_tmp.conf:/etc/nginx/nginx.conf:Z
       - ../common/config/apps-metadata.json:/usr/share/nginx/html/apps-metadata.json:Z
     networks:
       - gridcapa

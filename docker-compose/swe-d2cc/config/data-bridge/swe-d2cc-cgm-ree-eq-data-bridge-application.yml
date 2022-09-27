@@ -1,11 +1,11 @@
 data-bridge:
   zone-id: "Europe/Paris"
   target-process: SWE_D2CC
-  file-type: CGM
-  file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2}).*.(xml|XML)
+  file-type: REE_EQ
+  file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REE_EQ_.*.xml
   time-validity: hourly
   remote-file-regex:
-    - "swe_cgmes.zip"
+    - ".*"
   sources:
     ftp:
       active: true
