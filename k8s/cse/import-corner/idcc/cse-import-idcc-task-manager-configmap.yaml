@@ -88,3 +88,7 @@ data:
       starting-ws-endpoint: /tasks/notify
       notify: /task
       receive-request: /app
+
+    logback:
+      amqp:
+        exchange: cse-import-idcc-task-manager-logs-exchange

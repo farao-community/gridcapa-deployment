@@ -67,3 +67,6 @@ stomp:
   notify: /task
   receive-request: /app
 
+logback:
+  amqp:
+    exchange: cse-export-idcc-task-manager-logs-exchange
