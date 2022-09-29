@@ -21,6 +21,10 @@ data:
       countriesToBalance: AL,AT,BA,BE,BG,CH,CZ,DE,ES,FR,GR,HR,HU,IT,ME,MK,NL,PL,PT,RO,RS,SI,SK,UA
       phaseShifterRegulationOn: true
 
+    open-loadflow-default-parameters:
+      minPlausibleTargetVoltage: 0.5
+      maxPlausibleTargetVoltage: 1.5
+
     rao-parameters:
       objective-function: MAX_MIN_MARGIN_IN_AMPERE
       max-number-of-iterations: 5
