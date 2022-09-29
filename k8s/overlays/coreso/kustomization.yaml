@@ -120,6 +120,16 @@ patches:
               - name: cse-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-coreso-configmap
+
+patchesJson6902:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-rao-runner
+    path: image-pull-secret-patch.yaml
+
+
 configMapGenerator:
   - name: env-configmap
     env: env.properties
