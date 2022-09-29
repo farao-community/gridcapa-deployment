@@ -114,13 +114,13 @@ images:
     newTag: 0.0.1
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
-    newTag: v1.4.0
+    newTag: v1.5.0
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: v1.2.0
   - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
-    newTag: v1.5.3
+    newTag: v1.6.0
   - name: gridcapa-cse-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
     newTag: v1.4.0
@@ -129,19 +129,19 @@ images:
     newTag: v1.0.0
   - name: gridcapa-cse-rao-runner
     newName: p2rte.azurecr.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.3.1
+    newTag: v1.6.0
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.7.3
+    newTag: v1.9.0
   - name: gridcapa-cse-export-runner
     newName: docker.io/farao/gridcapa-cse-cc-export-runner
-    newTag: v1.7.3
+    newTag: v1.9.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.5.0
+    newTag: v1.7.0
   - name: gridcapa-cse-exporter
     newName: docker.io/farao/gridcapa-export
-    newTag: v1.1.0
+    newTag: v1.2.0
 
 patchesJson6902:
   - target:
