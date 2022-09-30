@@ -120,6 +120,16 @@ patches:
               - name: cse-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-coreso-configmap
+
+patchesJson6902:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-rao-runner
+    path: image-pull-secret-patch.yaml
+
+
 configMapGenerator:
   - name: env-configmap
     env: env.properties
@@ -159,8 +169,8 @@ images:
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.0.0
   - name: gridcapa-cse-rao-runner
-    newName: inca.rte-france.com/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.6.0
+    newName: docker.io/farao/gridcapa-rao-runner-with-xpress
+    newTag: v1.6.1
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
     newTag: v1.9.0
