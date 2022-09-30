@@ -35,4 +35,5 @@ ftp:
 
 logback:
   amqp:
-    exchange: cse-export-2dcc-task-manager-logs-exchange
+    exchange: cse-export-d2cc-task-manager-logs-exchange
+    routing-key: "#"
