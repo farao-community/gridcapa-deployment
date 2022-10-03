@@ -12,8 +12,12 @@ bases:
 resources:
   - apps-metadata-server-configmap.yaml
   - cse-runner-itools-azure-test-configmap.yaml
+  - gateway-configmap.yaml
+  - gateway-deployment.yaml
+  - gateway-service.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
+  - idpsettings-configmap.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
 
@@ -114,7 +118,7 @@ images:
     newTag: 0.0.1
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
-    newTag: v1.5.0
+    newTag: v1.5.0-auth
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: v1.2.0
@@ -142,6 +146,9 @@ images:
   - name: gridcapa-cse-exporter
     newName: docker.io/farao/gridcapa-export
     newTag: v1.2.0
+  - name: gridcapa-gateway
+    newName: docker.io/farao/gridcapa-gateway
+    newTag: 1.0.0
 
 patchesJson6902:
   - target:
@@ -150,3 +157,55 @@ patchesJson6902:
       kind: Deployment
       name: cse-rao-runner
     path: patch.yaml
+
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-export-d2cc-gridcapa-app
+    path: ipdsettings-add-volume-patch.yaml
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-export-d2cc-gridcapa-app
+    path: idpsettings-mount-volume-patch-cse-export-d2cc.yaml
+
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-export-idcc-gridcapa-app
+    path: ipdsettings-add-volume-patch.yaml
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-export-idcc-gridcapa-app
+    path: idpsettings-mount-volume-patch-cse-export-idcc.yaml
+
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-import-d2cc-gridcapa-app
+    path: ipdsettings-add-volume-patch.yaml
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-import-d2cc-gridcapa-app
+    path: idpsettings-mount-volume-patch-cse-import-d2cc.yaml
+
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-import-idcc-gridcapa-app
+    path: ipdsettings-add-volume-patch.yaml
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-import-idcc-gridcapa-app
+    path: idpsettings-mount-volume-patch-cse-import-idcc.yaml

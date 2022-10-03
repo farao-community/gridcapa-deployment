@@ -26,9 +26,9 @@ resources:
   - ftp-server-service.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
-  - gridcapa-gateway-configmap.yaml
-  - gridcapa-gateway-deployment.yaml
-  - gridcapa-gateway-service.yaml
+  - gateway-configmap.yaml
+  - gateway-deployment.yaml
+  - gateway-service.yaml
   - keycloak-deployment.yaml
   - keycloak-pv-claim.yaml
   - keycloak-service.yaml
@@ -81,7 +81,7 @@ images:
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: latest
   - name: gridcapa-cse-rao-runner
-    newName: docker.io/farao/gridcapa-rao-runner-with-xpress
+    newName: docker.io/farao/gridcapa-rao-runner
     newTag: latest
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
