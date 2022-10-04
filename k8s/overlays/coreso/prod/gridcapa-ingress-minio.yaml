@@ -3,14 +3,15 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
-    ingress.kubernetes.io/custom-request-headers: userId:johnDoe
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
     app: gridcapa
     component: gridcapa
   name: gridcapa-minio
   namespace: default
 spec:
   rules:
-    - host: gridcapa.ingress-gridcapa.rh.1648.local
+    - host: gridcapa.ingress-gridcapa-vaas.rh.1648.local
       http:
         paths:
           - backend:
@@ -20,3 +21,7 @@ spec:
                   number: 9000
             path: /minio
             pathType: Prefix
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-vaas.rh.1648.local
+      secretName: gridcapa-tls

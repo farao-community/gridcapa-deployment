@@ -1,0 +1,44 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: gridcapa-coreso-prod-idpsettings-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-app
+data:
+  cse-import-idcc-idpsettings.json: |-
+    {
+      "authority": "https://keycloak-lomme.idc.coreso.eu/realms/Coreso",
+      "client_id": "gridcapa",
+      "redirect_uri": "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/cse/import/idcc/sign-in-callback",
+      "post_logout_redirect_uri": "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/cse/import/idcc/logout-callback",
+      "silent_redirect_uri": "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/cse/import/idcc/silent-renew-callback",
+      "scope": "openid profile email"
+    }
+  cse-import-d2cc-idpsettings.json: |-
+    {
+      "authority": "https://keycloak-lomme.idc.coreso.eu/realms/Coreso",
+      "client_id": "gridcapa",
+      "redirect_uri": "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/cse/import/d2cc/sign-in-callback",
+      "post_logout_redirect_uri": "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/cse/import/d2cc/logout-callback",
+      "silent_redirect_uri": "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/cse/import/d2cc/silent-renew-callback",
+      "scope": "openid profile email"
+    }
+  cse-export-idcc-idpsettings.json: |-
+    {
+      "authority": "https://keycloak-lomme.idc.coreso.eu/realms/Coreso",
+      "client_id": "gridcapa",
+      "redirect_uri": "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/cse/export/idcc/sign-in-callback",
+      "post_logout_redirect_uri": "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/cse/export/idcc/logout-callback",
+      "silent_redirect_uri": "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/cse/export/idcc/silent-renew-callback",
+      "scope": "openid profile email"
+    }
+  cse-export-d2cc-idpsettings.json: |-
+    {
+      "authority": "https://keycloak-lomme.idc.coreso.eu/realms/Coreso",
+      "client_id": "gridcapa",
+      "redirect_uri": "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/cse/export/d2cc/sign-in-callback",
+      "post_logout_redirect_uri": "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/cse/export/d2cc/logout-callback",
+      "silent_redirect_uri": "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/cse/export/d2cc/silent-renew-callback",
+      "scope": "openid profile email"
+    }
