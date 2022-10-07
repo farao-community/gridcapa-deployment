@@ -119,6 +119,9 @@ images:
   - name: gridcapa-core-valid-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: latest
+  - name: gridcapa-core-exporter
+    newName: docker.io/farao/gridcapa-export
+    newTag: latest
   - name: gridcapa-cse-valid-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: latest

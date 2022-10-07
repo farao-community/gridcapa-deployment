@@ -108,10 +108,10 @@ images:
     newTag: RELEASE.2022-05-09T04-08-26Z
   - name: gridsuite-config-notification-server
     newName: docker.io/gridsuite/config-notification-server
-    newTag: 0.0.1
+    newTag: 0.11.0
   - name: gridsuite-config-server
     newName: docker.io/gridsuite/config-server
-    newTag: 0.0.1
+    newTag: 0.11.0
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: v1.5.0
