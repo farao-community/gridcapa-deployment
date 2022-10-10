@@ -62,6 +62,7 @@ data:
         outputs:
           - TTC_RAO
           - FINAL_CGM
+        enable-export-logs: true
       whitelist:
         - http://gridcapa-minio:9000/
 
