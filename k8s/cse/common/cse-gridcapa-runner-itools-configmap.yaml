@@ -24,6 +24,7 @@ data:
     open-loadflow-default-parameters:
       minPlausibleTargetVoltage: 0.5
       maxPlausibleTargetVoltage: 1.5
+      plausibleActivePowerLimit: 10000
 
     rao-parameters:
       objective-function: MAX_MIN_MARGIN_IN_AMPERE
