@@ -69,6 +69,7 @@ data:
           - TTC_RES
           - INITIAL_CGM
           - FINAL_CGM
+        enable-export-logs: false
       whitelist:
         - http://gridcapa-minio:9000/
 
@@ -84,3 +85,7 @@ data:
       starting-ws-endpoint: /tasks/notify
       notify: /task
       receive-request: /app
+
+    logback:
+      amqp:
+        exchange: cse-import-d2cc-task-manager-logs-exchange

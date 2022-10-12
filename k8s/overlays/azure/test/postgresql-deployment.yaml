@@ -102,10 +102,10 @@ spec:
           resources:
             limits:
               cpu: "500m"
-              memory: 1Gi
+              memory: 10Gi
             requests:
               cpu: "500m"
-              memory: 1Gi
+              memory: 5Gi
           volumeMounts:
             - name: postgres-data
               mountPath: /bitnami/postgres # important to let postgres and not postgresql otherwise rights issues

@@ -62,6 +62,7 @@ task-server:
       - TTC_RES
       - INITIAL_CGM
       - FINAL_CGM
+    enable-export-logs: false
   whitelist:
     - http://minio:9000/
 
@@ -77,3 +78,7 @@ stomp:
   starting-ws-endpoint: /tasks/notify
   notify: /task
   receive-request: /app
+
+logback:
+  amqp:
+    exchange: cse-import-idcc-task-manager-logs-exchange

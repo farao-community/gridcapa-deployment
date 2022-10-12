@@ -64,7 +64,7 @@
             resources:
               requests:
                 cpu: "2.0"
-                memory: "1Gi"
+                memory: "5Gi"
             livenessProbe:
               exec:
                 # This is just an example. There is no "one true health check" but rather

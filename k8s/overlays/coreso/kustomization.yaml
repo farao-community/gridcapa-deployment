@@ -120,6 +120,16 @@ patches:
               - name: cse-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-coreso-configmap
+
+patchesJson6902:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-rao-runner
+    path: image-pull-secret-patch.yaml
+
+
 configMapGenerator:
   - name: env-configmap
     env: env.properties
@@ -139,19 +149,19 @@ images:
     newTag: RELEASE.2022-05-09T04-08-26Z
   - name: gridsuite-config-notification-server
     newName: docker.io/gridsuite/config-notification-server
-    newTag: 0.0.1
+    newTag: 0.11.0
   - name: gridsuite-config-server
     newName: docker.io/gridsuite/config-server
-    newTag: 0.0.1
+    newTag: 0.11.0
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
-    newTag: v1.4.0
+    newTag: v1.5.0
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: v1.2.0
   - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
-    newTag: v1.5.3
+    newTag: v1.6.0
   - name: gridcapa-cse-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
     newTag: v1.4.0
@@ -159,17 +169,17 @@ images:
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.0.0
   - name: gridcapa-cse-rao-runner
-    newName: inca.rte-france.com/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.3.1
+    newName: docker.io/farao/gridcapa-rao-runner-with-xpress
+    newTag: v1.6.1
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.7.3
+    newTag: v1.9.0
   - name: gridcapa-cse-export-runner
     newName: docker.io/farao/gridcapa-cse-cc-export-runner
-    newTag: v1.7.3
+    newTag: v1.9.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.5.0
+    newTag: v1.7.0
   - name: gridcapa-cse-exporter
     newName: docker.io/farao/gridcapa-export
-    newTag: v1.1.0
+    newTag: v1.2.0
