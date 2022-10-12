@@ -17,21 +17,24 @@ resources:
   - data-bridge/cse-valid-idcc-output-data-bridge-configmap.yaml
   - data-bridge/cse-valid-idcc-output-data-bridge-deployment.yaml
   - data-bridge/cse-valid-idcc-output-data-bridge-service.yaml
-  - cse-valid-idcc-gridcapa-app-deployment.yaml
-  - cse-valid-idcc-gridcapa-app-process-metadata-configmap.yaml
-  - cse-valid-idcc-gridcapa-app-service.yaml
-  - cse-valid-idcc-runner-configmap.yaml
-  - cse-valid-idcc-runner-deployment.yaml
-  - cse-valid-idcc-runner-service.yaml
   - cse-valid-idcc-adapter-configmap.yaml
   - cse-valid-idcc-adapter-deployment.yaml
   - cse-valid-idcc-adapter-service.yaml
-  - cse-valid-idcc-task-manager-configmap.yaml
-  - cse-valid-idcc-task-manager-deployment.yaml
-  - cse-valid-idcc-task-manager-service.yaml
+  - cse-valid-idcc-gridcapa-app-deployment.yaml
+  - cse-valid-idcc-gridcapa-app-process-metadata-configmap.yaml
+  - cse-valid-idcc-gridcapa-app-service.yaml
   - cse-valid-idcc-job-launcher-deployment.yaml
   - cse-valid-idcc-job-launcher-service.yaml
   - cse-valid-idcc-job-launcher-configmap.yaml
   - cse-valid-idcc-publication-configmap.yaml
   - cse-valid-idcc-publication-deployment.yaml
   - cse-valid-idcc-publication-service.yaml
+  - cse-valid-idcc-rao-logs-dispatcher-configmap.yaml
+  - cse-valid-idcc-rao-logs-dispatcher-deployment.yaml
+  - cse-valid-idcc-rao-logs-dispatcher-service.yaml
+  - cse-valid-idcc-runner-configmap.yaml
+  - cse-valid-idcc-runner-deployment.yaml
+  - cse-valid-idcc-runner-service.yaml
+  - cse-valid-idcc-task-manager-configmap.yaml
+  - cse-valid-idcc-task-manager-deployment.yaml
+  - cse-valid-idcc-task-manager-service.yaml
