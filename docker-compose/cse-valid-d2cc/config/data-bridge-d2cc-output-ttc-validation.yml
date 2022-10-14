@@ -9,10 +9,10 @@ data-bridge:
       base-directory: /CSE/VALID/D2CC/TTC_VALIDATION
       polling-delay-in-ms: 3000
   sinks:
-    sftp:
+    ftp:
       active: true
-      host: sftp
-      port: 22
+      host: ftp-server
+      port: 21
       username: gridcapa
       password: gridcapa
-      base-directory: /data/gridcapa/data/outputs/cia
+      base-directory: /data/gridcapa/cse/valid/outputs/cia
