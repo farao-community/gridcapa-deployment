@@ -54,6 +54,9 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: cse-valid-idcc-runner-configmap-volume
+            - mountPath: /config/logback.xml
+              subPath: logback.xml
+              name: cse-valid-idcc-runner-configmap-volume
             - mountPath: /home/farao/.itools/config.yml
               subPath: config.yml
               name: cse-valid-idcc-runner-itools-configmap-volume
