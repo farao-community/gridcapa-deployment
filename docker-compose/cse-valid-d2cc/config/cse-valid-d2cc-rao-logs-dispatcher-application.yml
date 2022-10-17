@@ -1,0 +1,23 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+  cloud:
+    stream:
+      default:
+        group: cse-valid-d2cc
+      bindings:
+        dispatchRaoEvents-in-0:
+          destination: rao-runners-logs-exchange
+        dispatchRaoEvents-out-0:
+          destination: cse-valid-d2cc-task-manager-logs-exchange
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+
+client:
+  name: cse-valid-d2cc-runner

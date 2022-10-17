@@ -54,6 +54,9 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: cse-valid-d2cc-runner-configmap-volume
+            - mountPath: /config/logback.xml
+              subPath: logback.xml
+              name: cse-valid-d2cc-runner-configmap-volume
             - mountPath: /home/farao/.itools/config.yml
               subPath: config.yml
               name: cse-valid-d2cc-runner-itools-configmap-volume
@@ -89,4 +92,4 @@ spec:
             name: cse-valid-d2cc-runner-configmap
         - name: cse-valid-d2cc-runner-itools-configmap-volume
           configMap:
-            name: cse-valid-runner-itools-configmap
+            name: cse-runner-itools-configmap

@@ -1,10 +1,10 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-valid-idcc-runner
+  name: cse-valid-idcc-rao-logs-dispatcher
   labels:
     app: gridcapa
-    component: gridcapa-cse-valid-idcc-runner
+    component: rao-logs-dispatcher
     region: cse
     process: valid-idcc
 spec:
@@ -12,20 +12,20 @@ spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-cse-valid-idcc-runner
+      component: rao-logs-dispatcher
       region: cse
       process: valid-idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-cse-valid-idcc-runner
+        component: rao-logs-dispatcher
         region: cse
         process: valid-idcc
     spec:
       containers:
-        - name: cse-valid-idcc-runner
-          image: gridcapa-cse-valid-runner
+        - name: cse-valid-idcc-rao-logs-dispatcher
+          image: gridcapa-cse-rao-logs-dispatcher
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -40,26 +40,10 @@ spec:
                 secretKeyRef:
                   name: gridcapa-rabbitmq-credentials
                   key: rabbitmq-password
-            - name: GRIDCAPA_MINIO_USER
-              valueFrom:
-                secretKeyRef:
-                  name: gridcapa-minio-credentials
-                  key: minio-access-key
-            - name: GRIDCAPA_MINIO_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: gridcapa-minio-credentials
-                  key: minio-secret-key
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: cse-valid-idcc-runner-configmap-volume
-            - mountPath: /config/logback.xml
-              subPath: logback.xml
-              name: cse-valid-idcc-runner-configmap-volume
-            - mountPath: /home/farao/.itools/config.yml
-              subPath: config.yml
-              name: cse-valid-idcc-runner-itools-configmap-volume
+              name: cse-valid-idcc-rao-logs-dispatcher-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -80,16 +64,13 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              cpu: "1.0"
-              memory: "384Mi"
+              cpu: "0.5"
+              memory: "500Mi"
             limits:
-              cpu: "8.0"
-              memory: "10Gi"
+              cpu: "2.0"
+              memory: "1Gi"
       restartPolicy: Always
       volumes:
-        - name: cse-valid-idcc-runner-configmap-volume
+        - name: cse-valid-idcc-rao-logs-dispatcher-configmap-volume
           configMap:
-            name: cse-valid-idcc-runner-configmap
-        - name: cse-valid-idcc-runner-itools-configmap-volume
-          configMap:
-            name: cse-runner-itools-configmap
+            name: cse-valid-idcc-rao-logs-dispatcher-configmap
