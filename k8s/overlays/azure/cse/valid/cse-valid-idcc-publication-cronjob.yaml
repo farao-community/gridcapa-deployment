@@ -22,5 +22,5 @@ spec:
               args:
                 - /bin/sh
                 - -c
-                - curl -X POST -d "process=IDCC&targetDate=$(date --iso-8601)" http://gridcapa-dev.farao-community.com/cse/valid/idcc/publication/publish
+                - curl -X POST -d "process=IDCC&targetDate=$(date --iso-8601)" http://cse-valid-idcc-publication/publish
           restartPolicy: OnFailure
