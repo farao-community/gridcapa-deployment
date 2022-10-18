@@ -1,0 +1,36 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-import-idcc-rao-logs-dispatcher-configmap
+  labels:
+    app: gridcapa
+    component: rao-logs-dispatcher
+    region: cse
+    process: import-idcc
+data:
+  application.yml: |-
+    spring:
+      application:
+        name: cse-import-idcc-rao-logs-dispatcher
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+      cloud:
+        stream:
+          default:
+            group: cse-import-idcc
+          bindings:
+            dispatchRaoEvents-in-0:
+              destination: rao-runners-logs
+            dispatchRaoEvents-out-0:
+              destination: cse-import-idcc-task-manager-logs-exchange
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+
+    client:
+      name: cse-import-idcc-runner

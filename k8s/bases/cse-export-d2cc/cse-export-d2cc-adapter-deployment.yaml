@@ -1,0 +1,101 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: cse-export-d2cc-adapter
+  labels:
+    app: gridcapa-cse-adpater
+    component: gridcapa-cse-adpater
+    region: cse
+    process: export-d2cc
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa-cse-adpater
+      component: gridcapa-cse-adpater
+      region: cse
+      process: export-d2cc
+  template:
+    metadata:
+      labels:
+        app: gridcapa-cse-adpater
+        component: gridcapa-cse-adpater
+        region: cse
+        process: export-d2cc
+    spec:
+      containers:
+        - name: cse-export-d2cc-adapter
+          image: gridcapa-cse-adapter
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+            - name: MINIO_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BUCKET_CSE_EXPORT_D2CC
+            - name: MINIO_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CSE_EXPORT_D2CC
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: cse-export-d2cc-adapter-configmap-volume
+            - mountPath: /config/logback.xml
+              subPath: logback.xml
+              name: cse-adapter-logback-configmap-volume
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              cpu: "0.1"
+              memory: "384Mi"
+            limits:
+              cpu: "1.0"
+              memory: "384Mi"
+      restartPolicy: Always
+      volumes:
+        - name: cse-export-d2cc-adapter-configmap-volume
+          configMap:
+            name: cse-export-d2cc-adapter-configmap
+        - name: cse-adapter-logback-configmap-volume
+          configMap:
+            name: cse-adapter-logback-configmap

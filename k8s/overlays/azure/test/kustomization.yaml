@@ -3,15 +3,18 @@ kind: Kustomization
 
 bases:
   - ../common
-  - ../../../cse/common
-  - ../../../cse/export-corner/d2cc
-  - ../../../cse/export-corner/idcc
-  - ../../../cse/import-corner/d2cc
-  - ../../../cse/import-corner/idcc
+  - ../../../bases/cse-common
+  - ../../../bases/cse-export-d2cc
+  - ../../../bases/cse-export-idcc
+  - ../../../bases/cse-import-d2cc
+  - ../../../bases/cse-import-idcc
 
 resources:
   - apps-metadata-server-configmap.yaml
-  - cse-runner-itools-azure-test-configmap.yaml
+  - cse-export-d2cc-app-idp-settings-configmap.yaml
+  - cse-export-idcc-app-idp-settings-configmap.yaml
+  - cse-import-d2cc-app-idp-settings-configmap.yaml
+  - cse-import-idcc-app-idp-settings-configmap.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
@@ -26,13 +29,13 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-rao-runner
+        name: rao-runner
       spec:
         replicas: 4
         template:
           spec:
             containers:
-              - name: cse-rao-runner
+              - name: rao-runner
                 resources:
                   requests:
                     cpu: "14.0"
@@ -40,58 +43,22 @@ patches:
                   limits:
                     cpu: "16.0"
                     memory: "64Gi"
+            imagePullSecrets:
+              - name: p2rte-acr-secret
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
         name: cse-import-idcc-gridcapa-runner
       spec:
-        replicas: 2
-        template:
-          spec:
-            volumes:
-              - name: cse-import-idcc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-azure-test-configmap
+        replicas: 4
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
         name: cse-import-d2cc-gridcapa-runner
       spec:
-        replicas: 2
-        template:
-          spec:
-            volumes:
-              - name: cse-import-d2cc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-azure-test-configmap
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-export-idcc-runner
-      spec:
-        replicas: 1
-        template:
-          spec:
-            volumes:
-              - name: cse-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-azure-test-configmap
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-export-d2cc-runner
-      spec:
-        replicas: 1
-        template:
-          spec:
-            volumes:
-              - name: cse-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-azure-test-configmap
+        replicas: 4
 
 images:
   - name: apps-metadata-server
@@ -112,9 +79,12 @@ images:
   - name: gridsuite-config-server
     newName: docker.io/gridsuite/config-server
     newTag: 0.11.0
+  - name: gridcapa-rao-runner
+    newName: p2rte.azurecr.io/farao/gridcapa-rao-runner-with-xpress
+    newTag: v1.6.1
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
-    newTag: v1.5.0
+    newTag: v1.5.0-auth
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: v1.2.0
@@ -127,9 +97,6 @@ images:
   - name: gridcapa-cse-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.0.0
-  - name: gridcapa-cse-rao-runner
-    newName: p2rte.azurecr.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.6.1
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
     newTag: v1.9.0
@@ -142,11 +109,3 @@ images:
   - name: gridcapa-cse-exporter
     newName: docker.io/farao/gridcapa-export
     newTag: v1.2.0
-
-patchesJson6902:
-  - target:
-      group: apps
-      version: v1
-      kind: Deployment
-      name: cse-rao-runner
-    path: patch.yaml

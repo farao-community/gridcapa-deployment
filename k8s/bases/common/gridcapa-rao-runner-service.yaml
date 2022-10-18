@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rao-runner
+  labels:
+    app: gridcapa
+    component: rao-runner
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: rao-runner
+    region: cse
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http

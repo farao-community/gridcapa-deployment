@@ -1,0 +1,18 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: core-valid-gridcapa-app-process-metadata-configmap
+  labels:
+    app: gridcapa
+    component: core-valid-gridcapa-app-process-metadata-configmap
+    region: core
+    process: valid
+data:
+  process-metadata.json: |-
+    {
+      "processName": "CORE Validation",
+      "globalViewTimestampFilter": [
+      ],
+      "eventPredefinedFilter": {
+      }
+    }
