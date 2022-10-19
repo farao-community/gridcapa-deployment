@@ -22,84 +22,84 @@ spec:
                 port:
                   number: 80
             path: /cse/import/idcc/
-            pathType: Prefix
+            pathType: ImplementationSpecific
           - backend:
               service:
                 name: gateway
                 port:
                   number: 80
             path: /cse/import/idcc/config/
-            pathType: Prefix
+            pathType: ImplementationSpecific
           - backend:
               service:
                 name: gateway
                 port:
                   number: 80
             path: /cse/import/idcc/config-notification/
-            pathType: Prefix
+            pathType: ImplementationSpecific
           - backend:
               service:
                 name: gateway
                 port:
                   number: 80
             path: /cse/import/idcc/task-notification/
-            pathType: Prefix
+            pathType: ImplementationSpecific
           - backend:
               service:
                 name: gateway
                 port:
                   number: 80
             path: /cse/import/idcc/task-manager/
-            pathType: Prefix
+            pathType: ImplementationSpecific
           - backend:
               service:
                 name: gateway
                 port:
                   number: 80
             path: /cse/import/idcc/gridcapa-job-launcher/
-            pathType: Prefix
+            pathType: ImplementationSpecific
           - backend:
               service:
                 name: cse-import-d2cc-gridcapa-app
                 port:
                   number: 80
             path: /cse/import/d2cc/
-            pathType: Prefix
+            pathType: ImplementationSpecific
           - backend:
               service:
                 name: gateway
                 port:
                   number: 80
             path: /cse/import/d2cc/config/
-            pathType: Prefix
+            pathType: ImplementationSpecific
           - backend:
               service:
                 name: gateway
                 port:
                   number: 80
             path: /cse/import/d2cc/config-notification/
-            pathType: Prefix
+            pathType: ImplementationSpecific
           - backend:
               service:
                 name: gateway
                 port:
                   number: 80
             path: /cse/import/d2cc/task-notification/
-            pathType: Prefix
+            pathType: ImplementationSpecific
           - backend:
               service:
                 name: gateway
                 port:
                   number: 80
             path: /cse/import/d2cc/task-manager/
-            pathType: Prefix
+            pathType: ImplementationSpecific
           - backend:
               service:
                 name: gateway
                 port:
                   number: 80
             path: /cse/import/d2cc/gridcapa-job-launcher/
-            pathType: Prefix
+            pathType: ImplementationSpecific
   tls:
     - hosts:
         - gridcapa.ingress-gridcapa-vaas.rh.1648.local

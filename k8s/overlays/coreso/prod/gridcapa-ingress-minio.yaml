@@ -20,7 +20,7 @@ spec:
                 port:
                   number: 9000
             path: /minio
-            pathType: Prefix
+            pathType: ImplementationSpecific
   tls:
     - hosts:
         - gridcapa.ingress-gridcapa-vaas.rh.1648.local
