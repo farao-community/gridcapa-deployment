@@ -103,4 +103,4 @@ spec:
   tls:
     - hosts:
         - gridcapa.ingress-gridcapa-vaas.rh.1648.local
-      secretName: gridcapa-tls
+      secretName: ingresswildcard
