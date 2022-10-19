@@ -9,6 +9,9 @@ bases:
 resources:
   - apps-metadata-server-configmap.yaml
   - cse-runner-itools-coreso-configmap.yaml
+  - gridcapa-gateway-configmap.yaml
+  - gridcapa-gateway-deployment.yaml
+  - gridcapa-gateway-service.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
   - gridcapa-ingress-minio.yaml
