@@ -73,6 +73,22 @@ patches:
               - name: cse-import-d2cc-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-coreso-configmap
+  - patch: |-
+      apiVersion: apps/v1
+      kind: StatefulSet
+      metadata:
+        name: gridcapa-rabbitmq
+      spec:
+        volumeClaimTemplates:
+          - metadata:
+              name: gridcapa-rabbitmq-data
+            spec:
+              storageClassName: vsphere-raw-block-sc
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: "5Gi"
 
 configMapGenerator:
   - name: env-configmap
