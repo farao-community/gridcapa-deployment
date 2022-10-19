@@ -7,8 +7,6 @@ metadata:
   name: gridcapa
   namespace: default
 spec:
-  entrypoints:
-    - websecure
   routes:
     - kind: Rule
       match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/idcc/`)
@@ -130,8 +128,6 @@ spec:
           name: gateway
           namespace: default
           port: 80
-  tls:
-    secretName: ingresswildcard
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
