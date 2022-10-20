@@ -21,7 +21,7 @@ spec:
                 name: cse-import-idcc-gridcapa-app
                 port:
                   number: 80
-            path: /cse/import/idcc/
+            path: /cse/import/idcc
             pathType: ImplementationSpecific
           - backend:
               service:
