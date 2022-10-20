@@ -51,6 +51,7 @@ task-server:
       - GLSK
     outputs:
       - TTC-VALIDATION
+    enable-export-logs: false
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
@@ -64,3 +65,7 @@ stomp:
   starting-ws-endpoint: /tasks/notify
   notify: /task
   receive-request: /app
+
+logback:
+  amqp:
+    exchange: cse-valid-idcc-task-manager-logs-exchange

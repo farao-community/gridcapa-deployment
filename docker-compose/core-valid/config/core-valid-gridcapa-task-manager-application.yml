@@ -54,6 +54,7 @@ task-server:
       - AUTO-RESULT
       - REMEDIAL-ACTIONS-RESULT
       - REX-RESULT
+    enable-export-logs: false
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
@@ -67,3 +68,7 @@ stomp:
   starting-ws-endpoint: /tasks/notify
   notify: /task
   receive-request: /app
+
+logback:
+  amqp:
+    exchange: core-valid-task-manager-logs-exchange
