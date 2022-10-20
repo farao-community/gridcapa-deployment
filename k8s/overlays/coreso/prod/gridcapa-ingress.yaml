@@ -1,106 +1,124 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
   annotations:
     kubernetes.io/ingress.class: kommander-traefik
-    traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
-  labels:
-    app: gridcapa
-    component: gridcapa
+  creationTimestamp: null
   name: gridcapa
   namespace: default
 spec:
-  rules:
-    - host: gridcapa.ingress-gridcapa-vaas.rh.1648.local
-      http:
-        paths:
-          - backend:
-              service:
-                name: cse-import-idcc-gridcapa-app
-                port:
-                  number: 80
-            path: /cse/import/idcc
-            pathType: ImplementationSpecific
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /cse/import/idcc/config/
-            pathType: ImplementationSpecific
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /cse/import/idcc/config-notification/
-            pathType: ImplementationSpecific
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /cse/import/idcc/task-notification/
-            pathType: ImplementationSpecific
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /cse/import/idcc/task-manager/
-            pathType: ImplementationSpecific
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /cse/import/idcc/gridcapa-job-launcher/
-            pathType: ImplementationSpecific
-          - backend:
-              service:
-                name: cse-import-d2cc-gridcapa-app
-                port:
-                  number: 80
-            path: /cse/import/d2cc/
-            pathType: ImplementationSpecific
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /cse/import/d2cc/config/
-            pathType: ImplementationSpecific
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /cse/import/d2cc/config-notification/
-            pathType: ImplementationSpecific
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /cse/import/d2cc/task-notification/
-            pathType: ImplementationSpecific
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /cse/import/d2cc/task-manager/
-            pathType: ImplementationSpecific
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /cse/import/d2cc/gridcapa-job-launcher/
-            pathType: ImplementationSpecific
-  tls:
-    - hosts:
-        - gridcapa.ingress-gridcapa-vaas.rh.1648.local
-      secretName: ingresswildcard
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/idcc/`)
+      middlewares:
+        - name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-idcc
+          namespace: default
+      services:
+        - kind: Service
+          name: cse-import-idcc-gridcapa-app
+          namespace: default
+          port: 80
+    - kind: Rule
+      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/idcc/config/`)
+      services:
+        - kind: Service
+          name: gateway
+          namespace: default
+          port: 80
+    - kind: Rule
+      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/idcc/config-notification/`)
+      services:
+        - kind: Service
+          name: gateway
+          namespace: default
+          port: 80
+    - kind: Rule
+      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/idcc/task-notification/`)
+      services:
+        - kind: Service
+          name: gateway
+          namespace: default
+          port: 80
+    - kind: Rule
+      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/idcc/task-manager/`)
+      services:
+        - kind: Service
+          name: gateway
+          namespace: default
+          port: 80
+    - kind: Rule
+      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/idcc/gridcapa-job-launcher/`)
+      services:
+        - kind: Service
+          name: gateway
+          namespace: default
+          port: 80
+    - kind: Rule
+      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/d2cc/`)
+      middlewares:
+        - name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-d2cc
+          namespace: default
+      services:
+        - kind: Service
+          name: cse-import-d2cc-gridcapa-app
+          namespace: default
+          port: 80
+    - kind: Rule
+      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/d2cc/config/`)
+      services:
+        - kind: Service
+          name: gateway
+          namespace: default
+          port: 80
+    - kind: Rule
+      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/d2cc/config-notification/`)
+      services:
+        - kind: Service
+          name: gateway
+          namespace: default
+          port: 80
+    - kind: Rule
+      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/d2cc/task-notification/`)
+      services:
+        - kind: Service
+          name: gateway
+          namespace: default
+          port: 80
+    - kind: Rule
+      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/d2cc/task-manager/`)
+      services:
+        - kind: Service
+          name: gateway
+          namespace: default
+          port: 80
+    - kind: Rule
+      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/d2cc/gridcapa-job-launcher/`)
+      services:
+        - kind: Service
+          name: gateway
+          namespace: default
+          port: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-d2cc
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /cse/import/d2cc/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-idcc
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /cse/import/idcc/
