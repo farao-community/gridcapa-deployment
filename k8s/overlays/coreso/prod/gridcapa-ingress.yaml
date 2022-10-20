@@ -9,6 +9,9 @@ metadata:
 spec:
   entryPoints:
     - websecure
+    - web
+    - metrics
+    - velero-minio
   routes:
     - kind: Rule
       match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/idcc/`)
