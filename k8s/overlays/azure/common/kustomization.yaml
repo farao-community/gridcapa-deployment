@@ -13,18 +13,6 @@ resources:
 patches:
   - patch: |-
       apiVersion: apps/v1
-      kind: Deployment
-      metadata:
-        name: gridcapa-minio
-      spec:
-        template:
-          spec:
-            volumes:
-              - name: gridcapa-minio-data
-                persistentVolumeClaim:
-                  claimName: gridcapa-minio-storage
-  - patch: |-
-      apiVersion: apps/v1
       kind: StatefulSet
       metadata:
         name: gridcapa-rabbitmq

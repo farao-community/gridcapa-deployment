@@ -94,3 +94,5 @@
           - name: gridcapa-rabbitmq-configmap-volume
             configMap:
               name: gridcapa-rabbitmq-configmap
+          - name: gridcapa-rabbitmq-data
+            emptyDir: { }
