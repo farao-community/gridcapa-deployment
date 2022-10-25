@@ -51,7 +51,6 @@ task-server:
       - REFPROG
       - STUDY-POINTS
     outputs:
-      - AUTO-RESULT
       - REMEDIAL-ACTIONS-RESULT
       - REX-RESULT
     enable-export-logs: false
