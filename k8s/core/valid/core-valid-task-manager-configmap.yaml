@@ -62,6 +62,9 @@ data:
           - REFPROG
           - STUDY-POINTS
         outputs:
+          - REMEDIAL-ACTIONS-RESULT
+          - REX-RESULT
+        enable-export-logs: false
       whitelist:
         - http://gridcapa-minio:9000/
 
@@ -77,3 +80,7 @@ data:
       starting-ws-endpoint: /tasks/notify
       notify: /task
       receive-request: /app
+
+    logback:
+      amqp:
+        exchange: core-valid-task-manager-logs-exchange
