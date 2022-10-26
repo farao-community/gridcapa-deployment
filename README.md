@@ -137,6 +137,16 @@ Check that they have been correctly saved by listing current notifications enabl
 ./mc event list gridcapa_k8s/gridcapa
 ```
 
+### Deployment of authentication for Azure
+There is a specific folder overlays/azure/authentication/ that enables to deploy a homemade keycloak solution. It will
+then be used by gridcapa-app with authentication to get a token, so that gateway can identify the user.
+
+It will be deployed in default namespace but is completely independent of azure dev deployment that concerns GridCapa 
+applications. 
+
+It is deployed on a different ingress controller and the address is auth.farao-community.com, on which you can reach
+admin keycloak UI.
+
 ### Deployment on Azure DEV
 This environment is used for CI for all gridcapa processes
 
