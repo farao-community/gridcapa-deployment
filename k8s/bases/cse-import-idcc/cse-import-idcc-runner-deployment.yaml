@@ -49,31 +49,6 @@ spec:
                 secretKeyRef:
                   name: gridcapa-minio-credentials
                   key: minio-secret-key
-            - name: OPTIMIZATION_SOLVER
-              valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: GRIDCAPA_CSE_OPTIMIZATION_SOLVER
-            - name: RELATIVE_MIP_GAP
-              valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: GRIDCAPA_CSE_RELATIVE_MIP_GAP
-            - name: SOLVER_SPECIFIC_PARAMETERS
-              valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: GRIDCAPA_CSE_SOLVER_SPECIFIC_PARAMETERS
-            - name: PST_OPTIMIZATION_APPROXIMATION
-              valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: GRIDCAPA_PST_OPTIMIZATION_APPROXIMATION
-            - name: SEARCH_TREE_PARALLELIZATION
-              valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: GRIDCAPA_CSE_SEARCH_TREE_PARALLELIZATION
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
