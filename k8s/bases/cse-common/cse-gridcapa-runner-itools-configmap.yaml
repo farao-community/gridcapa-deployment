@@ -29,16 +29,14 @@ data:
     rao-parameters:
       objective-function: MAX_MIN_MARGIN_IN_AMPERE
       max-number-of-iterations: 5
-      optimization-solver: ${OPTIMIZATION_SOLVER}
-      relative-mip-gap : ${RELATIVE_MIP_GAP}
-      solver-specific-parameters : ${SOLVER_SPECIFIC_PARAMETERS}
-      pst-optimization-approximation: ${PST_OPTIMIZATION_APPROXIMATION}
+      optimization-solver: CBC
+      pst-optimization-approximation: CONTINUOUS
       pst-penalty-cost: 0.01
       pst-sensitivity-threshold : 0.01
       sensitivity-fallback-overcost: 0.0
       rao-with-loop-flow-limitation: false
       rao-with-mnec-limitation: false
-      perimeters-in-parallel: ${SEARCH_TREE_PARALLELIZATION}
+      perimeters-in-parallel: 8
       load-flow-provider: OpenLoadFlow
       sensitivity-provider: OpenLoadFlow
 
@@ -48,7 +46,7 @@ data:
       curative-rao-stop-criterion: SECURE
       absolute-network-action-minimum-impact-threshold: 2.0
       relative-network-action-minimum-impact-threshold: 0.0
-      preventive-leaves-in-parallel: ${SEARCH_TREE_PARALLELIZATION}
+      preventive-leaves-in-parallel: 8
       curative-leaves-in-parallel: 1
       second-preventive-optimization-condition: POSSIBLE_CURATIVE_IMPROVEMENT
       global-opt-in-second-preventive: true
