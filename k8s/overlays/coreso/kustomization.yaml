@@ -59,7 +59,7 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-rao-runner
+        name: rao-runner
       spec:
         replicas: 2
         template:
