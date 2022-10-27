@@ -2,16 +2,16 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 bases:
-  - ../../common
-  - ../../cse/common
-  - ../../cse/export-corner/d2cc
-  - ../../cse/export-corner/idcc
-  - ../../cse/import-corner/d2cc
-  - ../../cse/import-corner/idcc
+  - ../../bases/common
+  - ../../bases/cse-common
+  - ../../bases/cse-export-d2cc
+  - ../../bases/cse-export-idcc
+  - ../../bases/cse-import-d2cc
+  - ../../bases/cse-import-idcc
 
 resources:
   - apps-metadata-server-configmap.yaml
-  - cse-runner-itools-coreso-configmap.yaml
+  - cse-gridcapa-runner-itools-coreso-configmap.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
   - gridcapa-ingress-minio.yaml
@@ -22,6 +22,7 @@ resources:
   - postgresql-service.yaml
 
 patches:
+  # Adapt pvc
   - patch: |-
       apiVersion: apps/v1
       kind: Deployment
@@ -34,6 +35,7 @@ patches:
               - name: gridcapa-minio-data
                 persistentVolumeClaim:
                   claimName: gridcapa-coreso-minio-storage
+  # Adapt storage class and storage request
   - patch: |-
       apiVersion: apps/v1
       kind: StatefulSet
@@ -50,11 +52,14 @@ patches:
               resources:
                 requests:
                   storage: "5Gi"
+  # - Scale-up to 2 instances
+  # - Adapt requests/limits
+  # - Add ImagePullSecrets to retrieve private gridcapa-rao-runner-with-xpress from dockerhub
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-rao-runner
+        name: rao-runner
       spec:
         replicas: 2
         template:
@@ -68,6 +73,9 @@ patches:
                   limits:
                     cpu: "12.0"
                     memory: "60Gi"
+            imagePullSecrets:
+              - name: dockerhub-acr-secret
+  # Scale-up to 2 instances and adapt CSE runner itools config
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -81,6 +89,7 @@ patches:
               - name: cse-import-idcc-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-coreso-configmap
+  # Scale-up to 2 instances and adapt CSE runner itools config
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -94,41 +103,32 @@ patches:
               - name: cse-import-d2cc-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-coreso-configmap
+  # Adapt CSE runner itools config
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
         name: cse-export-idcc-runner
       spec:
-        replicas: 1
         template:
           spec:
             volumes:
-              - name: cse-runner-itools-configmap-volume
+              - name: cse-export-idcc-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-coreso-configmap
+  # Adapt CSE runner itools config
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
         name: cse-export-d2cc-runner
       spec:
-        replicas: 1
         template:
           spec:
             volumes:
-              - name: cse-runner-itools-configmap-volume
+              - name: cse-export-d2cc-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-coreso-configmap
-
-patchesJson6902:
-  - target:
-      group: apps
-      version: v1
-      kind: Deployment
-      name: cse-rao-runner
-    path: image-pull-secret-patch.yaml
-
 
 configMapGenerator:
   - name: env-configmap

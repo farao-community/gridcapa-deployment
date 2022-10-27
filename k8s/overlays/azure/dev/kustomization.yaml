@@ -3,35 +3,35 @@ kind: Kustomization
 
 bases:
   - ../common
-  - ../../../cse/common
-  - ../cse/export-corner/d2cc
-  - ../cse/export-corner/idcc
-  - ../cse/import-corner/d2cc
-  - ../cse/import-corner/idcc
-  - ../../../common-valid
-  - ../core/valid
-  - ../cse/valid/
+  - ../../../bases/cse-common
+  - ../../../bases/cse-export-d2cc
+  - ../../../bases/cse-export-idcc
+  - ../../../bases/cse-import-d2cc
+  - ../../../bases/cse-import-idcc
+  - ../../../bases/cse-valid-d2cc
+  - ../../../bases/cse-valid-idcc
+  - ../../../bases/core-valid
 
 resources:
+  - ftp/filebrowser-configmap.yaml
+  - ftp/filebrowser-deployment.yaml
+  - ftp/filebrowser-pv-claim.yaml
+  - ftp/filebrowser-service.yaml
+  - ftp/ftp-pv-claim.yaml
+  - ftp/ftp-server-deployment.yaml
+  - ftp/ftp-server-service.yaml
   - apps-metadata-server-configmap.yaml
-  - auth-ingress.yaml
+  - core-valid-gridcapa-app-idp-settings-configmap.yaml
+  - cse-export-d2cc-app-idp-settings-configmap.yaml
+  - cse-export-idcc-app-idp-settings-configmap.yaml
+  - cse-import-d2cc-app-idp-settings-configmap.yaml
+  - cse-import-idcc-app-idp-settings-configmap.yaml
+  - cse-valid-d2cc-gridcapa-app-idp-settings-configmap.yaml
+  - cse-valid-idcc-gridcapa-app-idp-settings-configmap.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
-  - filebrowser-configmap.yaml
-  - filebrowser-deployment.yaml
-  - filebrowser-pv-claim.yaml
-  - filebrowser-service.yaml
-  - ftp-pv-claim.yaml
-  - ftp-server-deployment.yaml
-  - ftp-server-service.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
-  - gridcapa-gateway-configmap.yaml
-  - gridcapa-gateway-deployment.yaml
-  - gridcapa-gateway-service.yaml
-  - keycloak-deployment.yaml
-  - keycloak-pv-claim.yaml
-  - keycloak-service.yaml
 
 configMapGenerator:
   - name: env-configmap
@@ -65,6 +65,9 @@ images:
   - name: gridsuite-config-server
     newName: docker.io/gridsuite/config-server
     newTag: latest
+  - name: gridcapa-rao-runner
+    newName: docker.io/farao/gridcapa-rao-runner
+    newTag: latest
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: latest-auth
@@ -79,9 +82,6 @@ images:
     newTag: latest
   - name: gridcapa-cse-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: latest
-  - name: gridcapa-cse-rao-runner
-    newName: docker.io/farao/gridcapa-rao-runner
     newTag: latest
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
@@ -143,11 +143,3 @@ images:
   - name: gridcapa-cse-valid-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: latest
-
-patchesJson6902:
-  - target:
-      group: apps
-      version: v1
-      kind: Deployment
-      name: cse-rao-runner
-    path: patch.yaml

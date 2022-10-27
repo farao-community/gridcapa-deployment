@@ -7,15 +7,13 @@ metadata:
       rewrite ^/cse/import/d2cc$ /cse/import/d2cc/ permanent;
       rewrite ^/cse/export/idcc$ /cse/export/idcc/ permanent;
       rewrite ^/cse/export/d2cc$ /cse/export/d2cc/ permanent;
-      proxy_set_header X-Forwarded-Prefix /cse/import/d2cc/;
-      proxy_set_header userId "johnDoe";
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/server-snippet: |
       merge_slashes off;
     nginx.ingress.kubernetes.io/service-upstream: "true"
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/client-max-body-size: "50m"
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
   labels:
@@ -37,38 +35,38 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: config-server
+                name: gateway
                 port:
                   number: 80
-            path: /cse/import/idcc/config(/|$)(.*)
+            path: /()(cse/import/idcc/config/.*)
             pathType: Prefix
           - backend:
               service:
-                name: config-notification-server
+                name: gateway
                 port:
                   number: 80
-            path: /cse/import/idcc/config-notification(/|$)(.*)
+            path: /()(cse/import/idcc/config-notification/.*)
             pathType: Prefix
           - backend:
               service:
-                name: cse-import-idcc-task-manager
+                name: gateway
                 port:
                   number: 80
-            path: /cse/import/idcc/task-notification(/|$)(.*)
+            path: /()(cse/import/idcc/task-notification/.*)
             pathType: Prefix
           - backend:
               service:
-                name: cse-import-idcc-task-manager
+                name: gateway
                 port:
                   number: 80
-            path: /cse/import/idcc/task-manager(/|$)(.*)
+            path: /()(cse/import/idcc/task-manager/.*)
             pathType: Prefix
           - backend:
               service:
-                name: cse-import-idcc-gridcapa-job-launcher
+                name: gateway
                 port:
                   number: 80
-            path: /cse/import/idcc/gridcapa-job-launcher(/|$)(.*)
+            path: /()(cse/import/idcc/gridcapa-job-launcher/.*)
             pathType: Prefix
           - backend:
               service:
@@ -79,38 +77,38 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: config-server
+                name: gateway
                 port:
                   number: 80
-            path: /cse/import/d2cc/config(/|$)(.*)
+            path: /()(cse/import/d2cc/config/.*)
             pathType: Prefix
           - backend:
               service:
-                name: config-notification-server
+                name: gateway
                 port:
                   number: 80
-            path: /cse/import/d2cc/config-notification(/|$)(.*)
+            path: /()(cse/import/d2cc/config-notification/.*)
             pathType: Prefix
           - backend:
               service:
-                name: cse-import-d2cc-task-manager
+                name: gateway
                 port:
                   number: 80
-            path: /cse/import/d2cc/task-notification(/|$)(.*)
+            path: /()(cse/import/d2cc/task-notification/.*)
             pathType: Prefix
           - backend:
               service:
-                name: cse-import-d2cc-task-manager
+                name: gateway
                 port:
                   number: 80
-            path: /cse/import/d2cc/task-manager(/|$)(.*)
+            path: /()(cse/import/d2cc/task-manager/.*)
             pathType: Prefix
           - backend:
               service:
-                name: cse-import-d2cc-gridcapa-job-launcher
+                name: gateway
                 port:
                   number: 80
-            path: /cse/import/d2cc/gridcapa-job-launcher(/|$)(.*)
+            path: /()(cse/import/d2cc/gridcapa-job-launcher/.*)
             pathType: Prefix
 
           - backend:
@@ -122,38 +120,38 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: config-server
+                name: gateway
                 port:
                   number: 80
-            path: /cse/export/idcc/config(/|$)(.*)
+            path: /()(cse/export/idcc/config/.*)
             pathType: Prefix
           - backend:
               service:
-                name: config-notification-server
+                name: gateway
                 port:
                   number: 80
-            path: /cse/export/idcc/config-notification(/|$)(.*)
+            path: /()(cse/export/idcc/config-notification/.*)
             pathType: Prefix
           - backend:
               service:
-                name: cse-export-idcc-task-manager
+                name: gateway
                 port:
                   number: 80
-            path: /cse/export/idcc/task-notification(/|$)(.*)
+            path: /()(cse/export/idcc/task-notification/.*)
             pathType: Prefix
           - backend:
               service:
-                name: cse-export-idcc-task-manager
+                name: gateway
                 port:
                   number: 80
-            path: /cse/export/idcc/task-manager(/|$)(.*)
+            path: /()(cse/export/idcc/task-manager/.*)
             pathType: Prefix
           - backend:
               service:
-                name: cse-export-idcc-gridcapa-job-launcher
+                name: gateway
                 port:
                   number: 80
-            path: /cse/export/idcc/gridcapa-job-launcher(/|$)(.*)
+            path: /()(cse/export/idcc/gridcapa-job-launcher/.*)
             pathType: Prefix
           - backend:
               service:
@@ -164,47 +162,40 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: config-server
+                name: gateway
                 port:
                   number: 80
-            path: /cse/export/d2cc/config(/|$)(.*)
+            path: /()(cse/export/d2cc/config/.*)
             pathType: Prefix
           - backend:
               service:
-                name: config-notification-server
+                name: gateway
                 port:
                   number: 80
-            path: /cse/export/d2cc/config-notification(/|$)(.*)
+            path: /()(cse/export/d2cc/config-notification/.*)
             pathType: Prefix
           - backend:
               service:
-                name: cse-export-d2cc-task-manager
+                name: gateway
                 port:
                   number: 80
-            path: /cse/export/d2cc/task-notification(/|$)(.*)
+            path: /()(cse/export/d2cc/task-notification/.*)
             pathType: Prefix
           - backend:
               service:
-                name: cse-export-d2cc-task-manager
+                name: gateway
                 port:
                   number: 80
-            path: /cse/export/d2cc/task-manager(/|$)(.*)
+            path: /()(cse/export/d2cc/task-manager/.*)
             pathType: Prefix
           - backend:
               service:
-                name: cse-export-d2cc-gridcapa-job-launcher
+                name: gateway
                 port:
                   number: 80
-            path: /cse/export/d2cc/gridcapa-job-launcher(/|$)(.*)
+            path: /()(cse/export/d2cc/gridcapa-job-launcher/.*)
             pathType: Prefix
 
-          - backend:
-              service:
-                name: filebrowser
-                port:
-                  number: 80
-            path: /utils/filebrowser(/|$)(.*)
-            pathType: Prefix
           - backend:
               service:
                 name: gridcapa-rabbitmq
@@ -226,3 +217,7 @@ spec:
                   number: 9000
             path: /()(minio.*)
             pathType: Prefix
+  tls:
+    - hosts:
+        - gridcapa.farao-community.com
+      secretName: gridcapa-tls

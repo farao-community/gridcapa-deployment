@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - apps-metadata-server-deployment.yaml
+  - apps-metadata-server-service.yaml
+  - config-notification-server-configmap.yaml
+  - config-notification-server-deployment.yaml
+  - config-notification-server-service.yaml
+  - config-server-configmap.yaml
+  - config-server-deployment.yaml
+  - config-server-service.yaml
+  - gridcapa-gateway-configmap.yaml
+  - gridcapa-gateway-deployment.yaml
+  - gridcapa-gateway-service.yaml
+  - gridcapa-rao-runner-configmap.yaml
+  - gridcapa-rao-runner-deployment.yaml
+  - gridcapa-rao-runner-itools-configmap.yaml
+  - gridcapa-rao-runner-service.yaml
+  - minio-deployment.yaml
+  - minio-service.yaml
+  - rabbitmq-configmap.yaml
+  - rabbitmq-service.yaml
+  - rabbitmq-statefulset.yaml
