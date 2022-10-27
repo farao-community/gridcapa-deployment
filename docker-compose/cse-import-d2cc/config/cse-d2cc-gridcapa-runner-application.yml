@@ -66,6 +66,7 @@ cse-cc-runner:
         - FFG.IL12 FFG.IL11 1
         - FFG.IL12 FFG.IL11 2
         - FFG.IL12 FFG.IL11 3
+      pra-name: PRA_HVDC_GILE_PIOSSASCO_1
     link2:
       node-fr: FFG.IL14
       node-it: FFG.IL13
@@ -73,5 +74,6 @@ cse-cc-runner:
         - FFG.IL14 FFG.IL13 1
         - FFG.IL14 FFG.IL13 2
         - FFG.IL14 FFG.IL13 3
+      pra-name: PRA_HVDC_GILE_PIOSSASCO_2
   whitelist:
     - http://minio:9000/
