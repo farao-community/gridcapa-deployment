@@ -3,7 +3,7 @@ kind: IngressRoute
 metadata:
   annotations:
     kubernetes.io/ingress.class: kommander-traefik
-  name: gridcapa
+  name: gridcapa-web
   namespace: default
 spec:
   entryPoints:
