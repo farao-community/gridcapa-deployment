@@ -7,15 +7,12 @@ metadata:
   namespace: default
 spec:
   entryPoints:
-    - websecure
+    - web
   routes:
     - kind: Rule
-      match: Host(`test.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/`)
+      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/idcc/`)
       services:
         - kind: Service
           name: cse-import-idcc-gridcapa-app
           namespace: default
           port: 80
-          scheme: https
-  tls:
-    secretName: ingresswildcard
