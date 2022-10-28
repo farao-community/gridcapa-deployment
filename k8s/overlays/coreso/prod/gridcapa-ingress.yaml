@@ -3,127 +3,16 @@ kind: IngressRoute
 metadata:
   annotations:
     kubernetes.io/ingress.class: kommander-traefik
-  creationTimestamp: null
   name: gridcapa
   namespace: default
 spec:
   entryPoints:
-    - websecure
     - web
-    - metrics
-    - velero-minio
   routes:
     - kind: Rule
       match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/idcc/`)
-      middlewares:
-        - name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-idcc
-          namespace: default
       services:
         - kind: Service
           name: cse-import-idcc-gridcapa-app
           namespace: default
           port: 80
-    - kind: Rule
-      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/idcc/config/`)
-      services:
-        - kind: Service
-          name: gateway
-          namespace: default
-          port: 80
-    - kind: Rule
-      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/idcc/config-notification/`)
-      services:
-        - kind: Service
-          name: gateway
-          namespace: default
-          port: 80
-    - kind: Rule
-      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/idcc/task-notification/`)
-      services:
-        - kind: Service
-          name: gateway
-          namespace: default
-          port: 80
-    - kind: Rule
-      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/idcc/task-manager/`)
-      services:
-        - kind: Service
-          name: gateway
-          namespace: default
-          port: 80
-    - kind: Rule
-      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/idcc/gridcapa-job-launcher/`)
-      services:
-        - kind: Service
-          name: gateway
-          namespace: default
-          port: 80
-    - kind: Rule
-      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/d2cc/`)
-      middlewares:
-        - name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-d2cc
-          namespace: default
-      services:
-        - kind: Service
-          name: cse-import-d2cc-gridcapa-app
-          namespace: default
-          port: 80
-    - kind: Rule
-      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/d2cc/config/`)
-      services:
-        - kind: Service
-          name: gateway
-          namespace: default
-          port: 80
-    - kind: Rule
-      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/d2cc/config-notification/`)
-      services:
-        - kind: Service
-          name: gateway
-          namespace: default
-          port: 80
-    - kind: Rule
-      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/d2cc/task-notification/`)
-      services:
-        - kind: Service
-          name: gateway
-          namespace: default
-          port: 80
-    - kind: Rule
-      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/d2cc/task-manager/`)
-      services:
-        - kind: Service
-          name: gateway
-          namespace: default
-          port: 80
-    - kind: Rule
-      match: Host(`gridcapa.ingress-gridcapa-vaas.rh.1648.local`) && PathPrefix(`/cse/import/d2cc/gridcapa-job-launcher/`)
-      services:
-        - kind: Service
-          name: gateway
-          namespace: default
-          port: 80
-  tls:
-    secretName: ingresswildcard
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-d2cc
-  namespace: default
-spec:
-  stripPrefix:
-    prefixes:
-      - /cse/import/d2cc/
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-idcc
-  namespace: default
-spec:
-  stripPrefix:
-    prefixes:
-      - /cse/import/idcc/
