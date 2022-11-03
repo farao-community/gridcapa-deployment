@@ -86,6 +86,13 @@ services:
     networks:
       - gridcapa
 
+  swe-d2cc-glsk-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-d2cc-glsk-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
   swe-d2cc-boundary-eq-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
@@ -115,7 +122,7 @@ services:
       - gridcapa
 
   swe-d2cc-adapter:
-    image: farao/gridcapa-swe-adapter:LOCAL
+    image: farao/gridcapa-swe-adapter:latest
     volumes:
       - ./config/swe-d2cc-adapter-application.yml:/config/application.yml
     healthcheck:
@@ -127,10 +134,10 @@ services:
       - gridcapa
 
   swe-d2cc-runner:
-    image: farao/gridcapa-swe-runner:LOCAL
+    image: farao/gridcapa-swe:latest
     volumes:
       - ./config/swe-d2cc-runner-application.yml:/config/application.yml
-#      - ./config/core-valid-itools-config-OLF.yml:/home/farao/.itools/config.yml
+      - ./config/swe-itools-config.yml:/home/farao/.itools/config.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s

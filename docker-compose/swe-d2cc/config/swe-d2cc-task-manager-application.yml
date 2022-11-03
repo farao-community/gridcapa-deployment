@@ -46,6 +46,7 @@ task-server:
     timezone: CET
     inputs:
       - CRAC
+      - GLSK
       - CORESO_SV
       - REE_EQ
       - REE_SSH
