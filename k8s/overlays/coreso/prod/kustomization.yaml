@@ -16,7 +16,6 @@ resources:
   - gridcapa-ingress.yaml
   - gridcapa-ingress-middlewares.yaml
   - gridcapa-ingress-minio.yaml
-  - idpsettings-configmap.yaml
   - minio-pv-claim.yaml
   - postgresql-configmap.yaml
   - postgresql-pv-claim.yaml
@@ -120,7 +119,7 @@ images:
     newTag: 0.0.1
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
-    newTag: v1.5.0-auth
+    newTag: v1.5.0
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: v1.2.0
@@ -151,30 +150,3 @@ images:
   - name: gridcapa-gateway
     newName: docker.io/farao/gridcapa-gateway
     newTag: 1.0.0
-
-patchesJson6902:
-  - target:
-      group: apps
-      version: v1
-      kind: Deployment
-      name: cse-import-d2cc-gridcapa-app
-    path: ipdsettings-add-volume-patch.yaml
-  - target:
-      group: apps
-      version: v1
-      kind: Deployment
-      name: cse-import-d2cc-gridcapa-app
-    path: idpsettings-mount-volume-patch-cse-import-d2cc.yaml
-
-  - target:
-      group: apps
-      version: v1
-      kind: Deployment
-      name: cse-import-idcc-gridcapa-app
-    path: ipdsettings-add-volume-patch.yaml
-  - target:
-      group: apps
-      version: v1
-      kind: Deployment
-      name: cse-import-idcc-gridcapa-app
-    path: idpsettings-mount-volume-patch-cse-import-idcc.yaml
