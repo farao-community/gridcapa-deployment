@@ -150,3 +150,30 @@ images:
   - name: gridcapa-gateway
     newName: docker.io/farao/gridcapa-gateway
     newTag: 1.0.0
+
+patchesJson6902:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-import-d2cc-gridcapa-app
+    path: ipdsettings-add-volume-patch.yaml
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-import-d2cc-gridcapa-app
+    path: idpsettings-mount-volume-patch-cse-import-d2cc.yaml
+
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-import-idcc-gridcapa-app
+    path: ipdsettings-add-volume-patch.yaml
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cse-import-idcc-gridcapa-app
+    path: idpsettings-mount-volume-patch-cse-import-idcc.yaml

@@ -1,6 +1,0 @@
-- op: add
-  path: /spec/template/spec/containers/0/volumeMounts/-
-  value:
-    mountPath: /usr/local/apache2/htdocs/gridcapa/idpSettings.json
-    subPath: cse-export-idcc-idpsettings.json
-    name: gridcapa-coreso-prod-idpsettings-configmap-volume
