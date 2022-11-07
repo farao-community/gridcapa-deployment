@@ -2,7 +2,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-d2cc
+  name: gridcapa-cse-import-d2cc
   namespace: default
 spec:
   stripPrefix:
@@ -13,7 +13,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-d2cc-config
+  name: gridcapa-cse-import-d2cc-config
   namespace: default
 spec:
   stripPrefix:
@@ -24,7 +24,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-d2cc-config-notification
+  name: gridcapa-cse-import-d2cc-config-notification
   namespace: default
 spec:
   stripPrefix:
@@ -35,7 +35,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-d2cc-gridcapa-job-launcher
+  name: gridcapa-cse-import-d2cc-gridcapa-job-launcher
   namespace: default
 spec:
   stripPrefix:
@@ -46,7 +46,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-d2cc-task-manager
+  name: gridcapa-cse-import-d2cc-task-manager
   namespace: default
 spec:
   stripPrefix:
@@ -57,7 +57,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-d2cc-task-notification
+  name: gridcapa-cse-import-d2cc-task-notification
   namespace: default
 spec:
   stripPrefix:
@@ -68,7 +68,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-idcc
+  name: gridcapa-cse-import-idcc
   namespace: default
 spec:
   stripPrefix:
@@ -79,7 +79,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-idcc-config
+  name: gridcapa-cse-import-idcc-config
   namespace: default
 spec:
   stripPrefix:
@@ -90,7 +90,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-idcc-config-notification
+  name: gridcapa-cse-import-idcc-config-notification
   namespace: default
 spec:
   stripPrefix:
@@ -101,7 +101,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-idcc-gridcapa-job-launcher
+  name: gridcapa-cse-import-idcc-gridcapa-job-launcher
   namespace: default
 spec:
   stripPrefix:
@@ -112,7 +112,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-idcc-task-manager
+  name: gridcapa-cse-import-idcc-task-manager
   namespace: default
 spec:
   stripPrefix:
@@ -123,7 +123,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-cse-import-idcc-task-notification
+  name: gridcapa-cse-import-idcc-task-notification
   namespace: default
 spec:
   stripPrefix:
@@ -134,7 +134,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-apps-metadata
+  name: gridcapa-apps-metadata
   namespace: default
 spec:
   stripPrefix:
@@ -145,7 +145,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
-  name: gridcapa.ingress-gridcapa-vaas.rh.1648.local-utils-rabbitmq
+  name: gridcapa-utils-rabbitmq
   namespace: default
 spec:
   stripPrefix:
