@@ -43,10 +43,10 @@ spec:
       http:
         paths:
           - backend:
-            service:
-              name: config-server
-              port:
-                number: 80
+              service:
+                name: config-server
+                port:
+                  number: 80
             path: /cse/import/d2cc/config/
             pathType: ImplementationSpecific
   tls:
@@ -70,10 +70,10 @@ spec:
       http:
         paths:
           - backend:
-            service:
-              name: config-notification-server
-              port:
-                number: 80
+              service:
+                name: config-notification-server
+                port:
+                  number: 80
             path: /cse/import/d2cc/config-notification/
             pathType: ImplementationSpecific
   tls:
@@ -97,10 +97,10 @@ spec:
       http:
         paths:
           - backend:
-            service:
-              name: cse-import-d2cc-gridcapa-job-launcher
-              port:
-                number: 80
+              service:
+                name: cse-import-d2cc-gridcapa-job-launcher
+                port:
+                  number: 80
             path: /cse/import/d2cc/gridcapa-job-launcher/
             pathType: ImplementationSpecific
   tls:
@@ -124,10 +124,10 @@ spec:
       http:
         paths:
           - backend:
-            service:
-              name: cse-import-d2cc-task-manager
-              port:
-                number: 80
+              service:
+                name: cse-import-d2cc-task-manager
+                port:
+                  number: 80
             path: /cse/import/d2cc/task-manager/
             pathType: ImplementationSpecific
   tls:
@@ -151,10 +151,10 @@ spec:
       http:
         paths:
           - backend:
-            service:
-              name: cse-import-d2cc-task-manager
-              port:
-                number: 80
+              service:
+                name: cse-import-d2cc-task-manager
+                port:
+                  number: 80
             path: /cse/import/d2cc/task-notification/
             pathType: ImplementationSpecific
   tls:
@@ -205,10 +205,10 @@ spec:
       http:
         paths:
           - backend:
-            service:
-              name: config-server
-              port:
-                number: 80
+              service:
+                name: config-server
+                port:
+                  number: 80
             path: /cse/import/idcc/config/
             pathType: ImplementationSpecific
   tls:
@@ -232,10 +232,10 @@ spec:
       http:
         paths:
           - backend:
-            service:
-              name: config-notification-server
-              port:
-                number: 80
+              service:
+                name: config-notification-server
+                port:
+                  number: 80
             path: /cse/import/idcc/config-notification/
             pathType: ImplementationSpecific
   tls:
@@ -259,10 +259,10 @@ spec:
       http:
         paths:
           - backend:
-            service:
-              name: cse-import-idcc-gridcapa-job-launcher
-              port:
-                number: 80
+              service:
+                name: cse-import-idcc-gridcapa-job-launcher
+                port:
+                  number: 80
             path: /cse/import/idcc/gridcapa-job-launcher/
             pathType: ImplementationSpecific
   tls:
@@ -286,10 +286,10 @@ spec:
       http:
         paths:
           - backend:
-            service:
-              name: cse-import-idcc-task-manager
-              port:
-                number: 80
+              service:
+                name: cse-import-idcc-task-manager
+                port:
+                  number: 80
             path: /cse/import/idcc/task-manager/
             pathType: ImplementationSpecific
   tls:
@@ -313,10 +313,10 @@ spec:
       http:
         paths:
           - backend:
-            service:
-              name: cse-import-idcc-task-manager
-              port:
-                number: 80
+              service:
+                name: cse-import-idcc-task-manager
+                port:
+                  number: 80
             path: /cse/import/idcc/task-notification/
             pathType: ImplementationSpecific
   tls:
@@ -340,10 +340,10 @@ spec:
       http:
         paths:
           - backend:
-            service:
-              name: apps-metadata-server
-              port:
-                number: 80
+              service:
+                name: apps-metadata-server
+                port:
+                  number: 80
             path: /apps-metadata/
             pathType: ImplementationSpecific
   tls:
@@ -367,10 +367,10 @@ spec:
       http:
         paths:
           - backend:
-            service:
-              name: gridcapa-rabbitmq
-              port:
-                number: 15672
+              service:
+                name: gridcapa-rabbitmq
+                port:
+                  number: 15672
             path: /utils/rabbitmq/
             pathType: ImplementationSpecific
   tls:
