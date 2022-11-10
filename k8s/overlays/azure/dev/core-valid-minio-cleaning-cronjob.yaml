@@ -19,7 +19,7 @@ spec:
           containers:
             - name: minio-cleaning-cronjob
               image: minio-mc
-              args: [ "rm", "-r", "--force", "--older-than", "3d", "minio/gridcapa/CORE/VALID/" ]
+              args: [ "rm", "-r", "--force", "--older-than", "7d", "minio/gridcapa/CORE/VALID/" ]
               env:
                 - name: MINIO_ACCESS_KEY
                   valueFrom:
