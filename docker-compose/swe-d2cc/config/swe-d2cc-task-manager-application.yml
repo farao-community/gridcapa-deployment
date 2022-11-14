@@ -60,6 +60,11 @@ task-server:
       - BOUNDARY_EQ
       - BOUNDARY_TP
     outputs:
+      - TTC
+      - VOLTAGE_ESFR
+      - CNE_ESFR_FIRST_UNSECURE
+      - CNE_ESFR_LAST_SECURE
+      - CGM_ESFR
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
