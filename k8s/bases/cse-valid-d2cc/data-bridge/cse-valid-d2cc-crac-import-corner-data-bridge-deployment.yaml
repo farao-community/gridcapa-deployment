@@ -4,7 +4,7 @@ metadata:
   name: cse-valid-d2cc-crac-import-corner-data-bridge
   labels:
     app: gridcapa
-    component: ridcapa-crac-import-corner-data-bridge
+    component: gridcapa-crac-import-corner-data-bridge
     region: cse
     process: valid-d2cc
 
@@ -12,14 +12,14 @@ spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: ridcapa-crac-import-corner-data-bridge
+      component: gridcapa-crac-import-corner-data-bridge
       region: cse
       process: valid-d2cc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: ridcapa-crac-import-corner-data-bridge
+        component: gridcapa-crac-import-corner-data-bridge
         region: cse
         process: valid-d2cc
     spec:
