@@ -1,0 +1,28 @@
+spring:
+  banner:
+    location: banner.txt
+  rabbitmq:
+    username: gridcapa
+    password: gridcapa
+    host: rabbitmq
+    port: 5672
+  cloud:
+    stream:
+      bindings:
+        consumeTask-in-0:
+          binder: rabbit
+          destination: swe-d2cc-run-task
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+    function:
+      definition: consumeTask
+
+swe-adapter:
+  process-type: D2CC
+
+swe-runner:
+  binding:
+    destination: swe-d2cc-request

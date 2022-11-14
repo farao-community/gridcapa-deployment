@@ -16,6 +16,9 @@ GRANT ALL PRIVILEGES ON DATABASE cse_export_d2cc_tasks TO cse_export_d2cc_server
 CREATE DATABASE core_valid_tasks;
 CREATE USER core_valid_server WITH ENCRYPTED PASSWORD 'core-valid';
 GRANT ALL PRIVILEGES ON DATABASE core_valid_tasks TO core_valid_server;
+CREATE DATABASE swe_d2cc_tasks;
+CREATE USER swe_d2cc_server WITH ENCRYPTED PASSWORD 'swe-d2cc';
+GRANT ALL PRIVILEGES ON DATABASE swe_d2cc_tasks TO swe_d2cc_server;
 CREATE DATABASE cse_valid_d2cc_tasks;
 CREATE USER cse_valid_d2cc_server WITH ENCRYPTED PASSWORD 'cse-valid-d2cc';
 GRANT ALL PRIVILEGES ON DATABASE cse_valid_d2cc_tasks TO cse_valid_d2cc_server;
