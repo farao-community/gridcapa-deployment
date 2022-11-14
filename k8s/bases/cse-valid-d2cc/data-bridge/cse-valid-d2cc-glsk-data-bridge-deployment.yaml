@@ -44,12 +44,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-ftp-server-credentials
-                  key: ftp-user
+                  key: ecp-user
             - name: SOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-ftp-server-credentials
-                  key: ftp-password
+                  key: ecp-password
             - name: SOURCE_BASE_DIRECTORY
               valueFrom:
                 configMapKeyRef:

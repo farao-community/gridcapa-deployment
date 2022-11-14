@@ -39,7 +39,7 @@ data:
 
     minio-adapter:
       bucket: gridcapa
-      base-path: /CSE/VALID
+      base-path: CSE/VALID
       access-key: ${GRIDCAPA_MINIO_USER}
       secret-key: ${GRIDCAPA_MINIO_PASSWORD}
       url: http://gridcapa-minio:9000/
