@@ -1,17 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cse-valid-idcc-crac-data-bridge
+  name: cse-valid-idcc-crac-import-corner-data-bridge
   labels:
     app: gridcapa
-    component: gridcapa-crac-data-bridge
+    component: gridcapa-crac-import-corner-data-bridge
     region: cse
     process: valid-idcc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-crac-data-bridge
+    component: gridcapa-crac-import-corner-data-bridge
     region: cse
     process: valid-idcc
   ports:

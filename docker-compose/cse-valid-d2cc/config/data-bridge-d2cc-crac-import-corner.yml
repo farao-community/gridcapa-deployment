@@ -22,4 +22,4 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CSE/VALID/D2CC/CRACs
+      base-directory: /CSE/VALID/D2CC/IMPORT_CRACs

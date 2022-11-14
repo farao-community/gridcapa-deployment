@@ -1,10 +1,10 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-valid-idcc-crac-data-bridge-configmap
+  name: cse-valid-idcc-crac-import-corner-data-bridge-configmap
   labels:
     app: gridcapa
-    component: gridcapa-crac-data-bridge-configmap
+    component: gridcapa-crac-import-corner-data-bridge-configmap
     region: cse
     process: valid-idcc
 data:
@@ -33,4 +33,4 @@ data:
           access-key: ${MINIO_ACCESS_KEY}
           secret-key: ${MINIO_SECRET_KEY}
           bucket: ${MINIO_BUCKET}
-          base-directory: ${MINIO_BASE_DIRECTORY}/CRACs
+          base-directory: ${MINIO_BASE_DIRECTORY}/IMPORT_CRACs

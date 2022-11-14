@@ -8,9 +8,9 @@ resources:
   - data-bridge/cse-valid-idcc-glsk-data-bridge-configmap.yaml
   - data-bridge/cse-valid-idcc-glsk-data-bridge-deployment.yaml
   - data-bridge/cse-valid-idcc-glsk-data-bridge-service.yaml
-  - data-bridge/cse-valid-idcc-crac-data-bridge-configmap.yaml
-  - data-bridge/cse-valid-idcc-crac-data-bridge-deployment.yaml
-  - data-bridge/cse-valid-idcc-crac-data-bridge-service.yaml
+  - data-bridge/cse-valid-idcc-crac-import-corner-data-bridge-configmap.yaml
+  - data-bridge/cse-valid-idcc-crac-import-corner-data-bridge-deployment.yaml
+  - data-bridge/cse-valid-idcc-crac-import-corner-data-bridge-service.yaml
   - data-bridge/cse-valid-idcc-ttc-adjustment-data-bridge-configmap.yaml
   - data-bridge/cse-valid-idcc-ttc-adjustment-data-bridge-deployment.yaml
   - data-bridge/cse-valid-idcc-ttc-adjustment-data-bridge-service.yaml
