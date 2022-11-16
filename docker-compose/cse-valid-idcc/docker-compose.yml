@@ -29,10 +29,17 @@ services:
     networks:
       - gridcapa
 
-  data-bridge-idcc-crac:
+  data-bridge-idcc-crac-import-corner:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/data-bridge-idcc-crac.yml:/config/application.yml
+      - ./config/data-bridge-idcc-crac-import-corner.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  data-bridge-idcc-crac-export-corner:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge-idcc-crac-export-corner.yml:/config/application.yml
     networks:
       - gridcapa
 

@@ -58,7 +58,8 @@ data:
         inputs:
           - TTC_ADJUSTMENT
           - CGM
-          - CRAC
+          - IMPORT_CRAC
+          - EXPORT_CRAC
           - GLSK
         outputs:
           - TTC-VALIDATION

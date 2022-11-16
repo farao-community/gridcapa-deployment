@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cse-valid-d2cc-crac-export-corner-data-bridge
+  labels:
+    app: gridcapa
+    component: gridcapa-crac-export-corner-data-bridge
+    region: cse
+    process: valid-d2cc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: gridcapa-crac-export-corner-data-bridge
+    region: cse
+    process: valid-d2cc
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
