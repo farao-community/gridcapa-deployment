@@ -25,7 +25,7 @@ export:
   seperate-output-files: true
 
 task-manager:
-  base-url: http://swe-d2cc-gridcapa-task-manager:8080
+  base-url: http://swe-d2cc-task-manager:8080
   fetch-task:
     reties-number: 6
     interval-in-seconds: 10

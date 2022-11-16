@@ -149,9 +149,9 @@ services:
   swe-d2cc-outputs-exporter:
     image: farao/gridcapa-export:latest
     volumes:
-      - ./config/swe-d2cc-gridcapa-export-application.yml:/config/application.yml
+      - ./config/swe-d2cc-export-application.yml:/config/application.yml
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://swe-d2Cc-gridcapa-export/actuator/health" ]
+      test: [ "CMD", "curl", "-f", "http://swe-d2cc-outputs-exporter/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5
