@@ -1,0 +1,13 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-valid-idcc-publication-cronjob-configmap
+  labels:
+    app: gridcapa
+    component: gridcapa-cse-valid-idcc-publication-cronjob
+    region: cse
+    process: valid-idcc
+data:
+  cron.gridcapa_trigger_publication: |-
+    * * * * *   date > /var/log/liveness
+    5 1 * * *   curl -X POST -d "process=IDCC&targetDate=$(date --iso-8601)" http://cse-valid-idcc-publication/publish >> /var/log/cron.cse_valid_idcc_publication.log

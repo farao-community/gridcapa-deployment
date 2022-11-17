@@ -1,29 +1,29 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-valid-d2cc-publication-cronjob
+  name: cse-valid-idcc-publication-cronjob
   labels:
     app: gridcapa
-    component: gridcapa-cse-valid-d2cc-publication-cronjob
+    component: gridcapa-cse-valid-idcc-publication-cronjob
     region: cse
-    process: valid-d2cc
+    process: valid-idcc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-cse-valid-d2cc-publication-cronjob
+      component: gridcapa-cse-valid-idcc-publication-cronjob
       region: cse
-      process: valid-d2cc
+      process: valid-idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-cse-valid-d2cc-publication-cronjob
+        component: gridcapa-cse-valid-idcc-publication-cronjob
         region: cse
-        process: valid-d2cc
+        process: valid-idcc
     spec:
       containers:
-        - name: cse-valid-d2cc-publication-cronjob
+        - name: cse-valid-idcc-publication-cronjob
           image: alpine
           imagePullPolicy: Always
           ports:
@@ -31,7 +31,7 @@ spec:
           volumeMounts:
             - mountPath: /var/spool/cron/crontabs/root
               subPath: cron.gridcapa_trigger_publication
-              name: cse-valid-d2cc-publication-cronjob-configmap-volume
+              name: cse-valid-idcc-publication-cronjob-configmap-volume
           env:
             - name: TZ
               value: "Europe/Paris"
@@ -39,7 +39,7 @@ spec:
           command:
             - "/bin/sh"
             - "-c"
-            - "apk update; apk add tzdata; apk add curl; crond; touch /var/log/cron.cse_valid_d2cc_publication.log; tail -f /var/log/cron.cse_valid_d2cc_publication.log"
+            - "apk update; apk add tzdata; apk add curl; crond; touch /var/log/cron.cse_valid_idcc_publication.log; tail -f /var/log/cron.cse_valid_idcc_publication.log"
           livenessProbe:
             exec:
               command:
@@ -65,6 +65,6 @@ spec:
             successThreshold: 1
       restartPolicy: Always
       volumes:
-        - name: cse-valid-d2cc-publication-cronjob-configmap-volume
+        - name: cse-valid-idcc-publication-cronjob-configmap-volume
           configMap:
-            name: cse-valid-d2cc-publication-cronjob-configmap
+            name: cse-valid-idcc-publication-cronjob-configmap
