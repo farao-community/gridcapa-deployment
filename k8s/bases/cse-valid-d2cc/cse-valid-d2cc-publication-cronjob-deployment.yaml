@@ -1,0 +1,70 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: cse-valid-d2cc-publication-cronjob
+  labels:
+    app: gridcapa
+    component: gridcapa-cse-valid-d2cc-publication-cronjob
+    region: cse
+    process: valid-d2cc
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: gridcapa-cse-valid-d2cc-publication-cronjob
+      region: cse
+      process: valid-d2cc
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: gridcapa-cse-valid-d2cc-publication-cronjob
+        region: cse
+        process: valid-d2cc
+    spec:
+      containers:
+        - name: cse-valid-d2cc-publication-cronjob
+          image: alpine
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /var/spool/cron/crontabs/root
+              subPath: cron.gridcapa_trigger_publication
+              name: cse-valid-d2cc-publication-cronjob-configmap-volume
+          env:
+            - name: TZ
+              value: "Europe/Paris"
+
+          command:
+            - "/bin/sh"
+            - "-c"
+            - "apk update; apk add tzdata; apk add curl; crond; touch /var/log/liveness; touch /var/log/cron.cse_valid_d2cc_publication.log; tail -f /var/log/cron.cse_valid_d2cc_publication.log"
+          livenessProbe:
+            exec:
+              command:
+                - "/bin/sh"
+                - "-c"
+                - "test"
+                - "$(date -r /var/log/liveness +%s) -gt `expr $(date +%s) - 3600`"
+            initialDelaySeconds: 10
+            periodSeconds: 3600 # test once an hour
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
+          readinessProbe:
+            exec:
+              command:
+                - "/bin/sh"
+                - "-c"
+                - "test -f /var/log/liveness"
+            initialDelaySeconds: 5
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 4
+            successThreshold: 1
+      restartPolicy: Always
+      volumes:
+        - name: cse-valid-d2cc-publication-cronjob-configmap-volume
+          configMap:
+            name: cse-valid-d2cc-publication-cronjob-configmap

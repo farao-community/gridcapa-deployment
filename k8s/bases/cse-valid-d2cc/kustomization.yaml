@@ -30,9 +30,10 @@ resources:
   - cse-valid-d2cc-job-launcher-service.yaml
   - cse-valid-d2cc-job-launcher-configmap.yaml
   - cse-valid-d2cc-publication-configmap.yaml
-  - cse-valid-d2cc-publication-cronjob.yaml
   - cse-valid-d2cc-publication-deployment.yaml
   - cse-valid-d2cc-publication-service.yaml
+  - cse-valid-d2cc-publication-cronjob-configmap.yaml
+  - cse-valid-d2cc-publication-cronjob-deployment.yaml
   - cse-valid-d2cc-rao-logs-dispatcher-configmap.yaml
   - cse-valid-d2cc-rao-logs-dispatcher-deployment.yaml
   - cse-valid-d2cc-rao-logs-dispatcher-service.yaml
