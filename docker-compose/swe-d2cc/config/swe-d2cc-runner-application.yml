@@ -57,6 +57,7 @@ swe-runner:
         tolerance-Es-Pt: 10
   whitelist:
     - http://minio:9000/
+  zone-id: "Europe/Paris"
 
 minio-adapter:
   bucket: gridcapa
