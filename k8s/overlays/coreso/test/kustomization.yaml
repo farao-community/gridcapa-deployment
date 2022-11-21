@@ -59,7 +59,7 @@ patches:
         template:
           spec:
             volumes:
-              - name: cse-runner-itools-configmap-volume
+              - name: cse-import-idcc-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-coreso-configmap
   - patch: |-
@@ -72,7 +72,7 @@ patches:
         template:
           spec:
             volumes:
-              - name: cse-runner-itools-configmap-volume
+              - name: cse-import-d2cc-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-coreso-configmap
   - patch: |-
@@ -85,7 +85,7 @@ patches:
         template:
           spec:
             volumes:
-              - name: cse-runner-itools-configmap-volume
+              - name: cse-export-idcc-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-coreso-configmap
   - patch: |-
@@ -98,7 +98,7 @@ patches:
         template:
           spec:
             volumes:
-              - name: cse-runner-itools-configmap-volume
+              - name: cse-export-d2cc-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-coreso-configmap
 
