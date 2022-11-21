@@ -1,0 +1,41 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+  cloud:
+    stream:
+      default:
+        group: swe-d2cc-outputs
+      bindings:
+        consumeTaskDtoUpdate-in-0:
+          destination: swe-d2cc-task-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+        bindings:
+          consumeTaskDtoUpdate-in-0:
+            consumer:
+              binding-routing-key: status
+
+export:
+  seperate-output-files: true
+
+task-manager:
+  base-url: http://swe-d2cc-task-manager:8080
+  fetch-task:
+    reties-number: 6
+    interval-in-seconds: 10
+ftp:
+  host: ftp-server
+  port: 21
+  access-key: gridcapa
+  secret-key: gridcapa
+  remote-relative-destination-directory: data/gridcapa/swe/d2cc/outputs
+
+logback:
+  amqp:
+    exchange: swe-d2cc-task-manager-logs-exchange
