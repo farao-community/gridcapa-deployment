@@ -10,12 +10,12 @@ data:
     [
       {
         "name" : "Capa CSE IMPORT D2CC",
-        "url"  : "/cse/import/d2cc",
+        "url"  : "/cse/import/d2cc/",
         "appColor" : "#36cf29"
       },
       {
         "name" : "Capa CSE IMPORT IDCC",
-        "url"  : "/cse/import/idcc",
+        "url"  : "/cse/import/idcc/",
         "appColor" : "#21afe1"
       }
     ]
