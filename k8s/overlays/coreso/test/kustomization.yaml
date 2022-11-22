@@ -2,12 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 bases:
-  - ../../bases/common
-  - ../../bases/cse-common
-  - ../../bases/cse-export-d2cc
-  - ../../bases/cse-export-idcc
-  - ../../bases/cse-import-d2cc
-  - ../../bases/cse-import-idcc
+  - ../../../bases/common
+  - ../../../bases/cse-common
+  - ../../../bases/cse-export-d2cc
+  - ../../../bases/cse-export-idcc
+  - ../../../bases/cse-import-d2cc
+  - ../../../bases/cse-import-idcc
 
 resources:
   - apps-metadata-server-configmap.yaml
@@ -17,9 +17,7 @@ resources:
   - gridcapa-ingress-minio.yaml
   - minio-pv-claim.yaml
   - postgresql-configmap.yaml
-  - postgresql-deployment.yaml
   - postgresql-pv-claim.yaml
-  - postgresql-service.yaml
 
 patches:
   # Adapt pvc
@@ -65,7 +63,7 @@ patches:
         template:
           spec:
             containers:
-              - name: cse-rao-runner
+              - name: rao-runner
                 resources:
                   requests:
                     cpu: "10.0"
@@ -129,6 +127,39 @@ patches:
               - name: cse-export-d2cc-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-coreso-configmap
+  # Remove volumes related to authentication within application deployments
+  - target:
+      kind: Deployment
+      name: cse-import-idcc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: cse-import-d2cc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: cse-export-idcc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: cse-export-d2cc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
 
 configMapGenerator:
   - name: env-configmap
@@ -153,12 +184,15 @@ images:
   - name: gridsuite-config-server
     newName: docker.io/gridsuite/config-server
     newTag: 0.11.0
+  - name: gridcapa-rao-runner
+    newName: docker.io/farao/gridcapa-rao-runner-with-xpress
+    newTag: v1.6.1
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: v1.5.0
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v1.2.0
+    newTag: v1.2.1
   - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
     newTag: v1.6.0
@@ -168,9 +202,6 @@ images:
   - name: gridcapa-cse-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.0.0
-  - name: gridcapa-cse-rao-runner
-    newName: docker.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.6.1
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
     newTag: v1.9.0
