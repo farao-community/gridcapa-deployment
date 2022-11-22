@@ -41,6 +41,17 @@ data:
       perimeters-in-parallel: 14
       load-flow-provider: OpenLoadFlow
       sensitivity-provider: OpenLoadFlow
+      "sensitivity-parameters" : {
+          "version" : "1.0",
+          "load-flow-parameters" : {
+            "version" : "1.7",
+             "extensions" : {
+                "open-load-flow-parameters" : {
+                   "newtonRaphsonConvEpsPerEq" : 1.0E-2,
+                }
+             }
+          }
+      }
 
     search-tree-rao-parameters:
       maximum-search-depth: 3
