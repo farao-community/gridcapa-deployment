@@ -8,6 +8,12 @@ metadata:
     region: cse
     process: valid-d2cc
 data:
+  gridcapa_trigger_publication.sh: |-
+    date
+    echo "curl -X POST -d \"process=D2CC&targetDate=$(date +%Y-%m-%d)&targetDateOffset=1\" http://cse-valid-d2cc-publication/publish"
+    curl -X POST -d "curl -X POST -d "process=D2CC&targetDate=$(date +%Y-%m-%d)&targetDateOffset=1" http://cse-valid-d2cc-publication/publish
+    echo "----------"
+
   cron.gridcapa_trigger_publication: |-
     * * * * *   date > /var/log/liveness
-    5 3 * * *   curl -X POST -d "process=D2CC&targetDate=$(date +%Y-%m-%d)&targetDateOffset=1" http://cse-valid-d2cc-publication/publish >> /var/log/cron.cse_valid_d2cc_publication.log 2>&1
+    5 3 * * *   /gridcapa_trigger_publication.sh >> /var/log/cron.cse_valid_d2cc_publication.log 2>&1

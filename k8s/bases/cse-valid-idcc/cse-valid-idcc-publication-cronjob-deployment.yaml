@@ -32,6 +32,9 @@ spec:
             - mountPath: /var/spool/cron/crontabs/root
               subPath: cron.gridcapa_trigger_publication
               name: cse-valid-idcc-publication-cronjob-configmap-volume
+            - mountPath: /gridcapa_trigger_publication.sh
+              subPath: gridcapa_trigger_publication.sh
+              name: cse-valid-idcc-publication-cronjob-configmap-volume
           env:
             - name: TZ
               value: "Europe/Paris"
@@ -39,7 +42,7 @@ spec:
           command:
             - "/bin/sh"
             - "-c"
-            - "apk update; apk add tzdata; apk add curl; crond; touch /var/log/cron.cse_valid_idcc_publication.log; tail -f /var/log/cron.cse_valid_idcc_publication.log"
+            - "apk update; apk add tzdata; apk add curl; chmod +x /gridcapa_trigger_publication.sh; crond; touch /var/log/cron.cse_valid_idcc_publication.log; tail -f /var/log/cron.cse_valid_idcc_publication.log"
           livenessProbe:
             exec:
               command:
