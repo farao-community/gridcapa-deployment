@@ -16,4 +16,4 @@ data:
 
   cron.gridcapa_trigger_publication: |-
     * * * * *   date > /var/log/liveness
-    5 7 * * *   /gridcapa_trigger_publication.sh >> /var/log/cron.cse_valid_idcc_publication.log 2>&1
+    5 7 * * *   /home/gridcapa_trigger_publication.sh >> /var/log/cron.cse_valid_idcc_publication.log 2>&1
