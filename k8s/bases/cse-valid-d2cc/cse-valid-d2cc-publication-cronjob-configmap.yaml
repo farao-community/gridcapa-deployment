@@ -10,4 +10,4 @@ metadata:
 data:
   cron.gridcapa_trigger_publication: |-
     * * * * *   date > /var/log/liveness
-    5 7 * * *   curl -X POST -d "process=D2CC&targetDate=$(date --iso-8601)&targetDateOffset=1" http://cse-valid-d2cc-publication/publish >> /var/log/cron.cse_valid_d2cc_publication.log
+    5 3 * * *   curl -X POST -d "process=D2CC&targetDate=$(date --iso-8601)&targetDateOffset=1" http://cse-valid-d2cc-publication/publish >> /var/log/cron.cse_valid_d2cc_publication.log
