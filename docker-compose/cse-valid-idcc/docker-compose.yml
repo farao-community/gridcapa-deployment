@@ -75,6 +75,7 @@ services:
     image: farao/gridcapa-cse-valid-adapter:latest
     volumes:
       - ./config/cse-valid-idcc-adapter-application.yml:/config/application.yml
+      - ../cse-common/logback-cse-valid-adapter.xml:/config/logback.xml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s

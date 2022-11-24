@@ -13,6 +13,8 @@ spring:
           binder: rabbit
           destination: cse-valid-idcc-run-task
           group: cse-valid
+        task-status-update:
+          destination: cse-valid-idcc-task-status-updated
       rabbit:
         default:
           consumer:
@@ -27,3 +29,10 @@ cse-valid-runner:
 
 cse-valid-adapter:
   target-process: IDCC
+
+logging:
+  config: /config/logback.xml
+
+logback:
+  amqp:
+    exchange: cse-valid-idcc-task-manager-logs-exchange
