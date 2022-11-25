@@ -1,22 +1,22 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: swe-d2cc-glsk-data-bridge
+  name: swe-d2cc-rte-tp-data-bridge
   labels:
     app: gridcapa-data-bridge
-    component: gridcapa-glsk-data-bridge
+    component: gridcapa-rte-tp-data-bridge
     region: swe
     process: d2cc
 data:
   application.yml: |-
     data-bridge:
-      zone-id: "Europe/Paris"
+      zone-id: "UTC"
       target-process: SWE_D2CC
-      file-type: GLSK
-      file-regex: 10VCORSWEPR-ENDE_18V0000000005KUU_SWE-GLSK-B22-A48-F008_(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-111.(xml|XML)
-      time-validity: daily
+      file-type: RTE_TP
+      file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_RTEFRANCE_TP_[0-9]{3}.xml
+      time-validity: hourly
       remote-file-regex:
-        - ".*"
+        - "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_RTEFRANCE_TP_[0-9]{3}.zip"
       sources:
         ftp:
           active: true
@@ -24,7 +24,7 @@ data:
           port: ${SOURCE_PORT}
           username: ${SOURCE_USER}
           password: ${SOURCE_PASSWORD}
-          base-directory: ${SOURCE_BASE_DIRECTORY}/glsks
+          base-directory: ${SOURCE_BASE_DIRECTORY}/cgms
           polling-delay-in-ms: 5000
       sinks:
         minio:
@@ -32,7 +32,7 @@ data:
           access-key: ${MINIO_ACCESS_KEY}
           secret-key: ${MINIO_SECRET_KEY}
           bucket: ${MINIO_BUCKET}
-          base-directory: ${MINIO_BASE_DIRECTORY}/GLSKs
+          base-directory: ${MINIO_BASE_DIRECTORY}/CGMs
 
 
 ---
@@ -40,10 +40,10 @@ data:
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: swe-d2cc-glsk-data-bridge
+  name: swe-d2cc-rte-tp-data-bridge
   labels:
     app: gridcapa-data-bridge
-    component: gridcapa-glsk-data-bridge
+    component: gridcapa-rte-tp-data-bridge
     region: swe
     process: d2cc
 
@@ -51,19 +51,19 @@ spec:
   selector:
     matchLabels:
       app: gridcapa-data-bridge
-      component: gridcapa-glsk-data-bridge
+      component: gridcapa-rte-tp-data-bridge
       region: swe
       process: d2cc
   template:
     metadata:
       labels:
         app: gridcapa-data-bridge
-        component: gridcapa-glsk-data-bridge
+        component: gridcapa-rte-tp-data-bridge
         region: swe
         process: d2cc
     spec:
       containers:
-        - name: swe-d2cc-glsk-data-bridge
+        - name: swe-d2cc-rte-tp-data-bridge
           image: gridcapa-swe-d2cc-input-data-bridge
           imagePullPolicy: Always
           ports:
@@ -117,7 +117,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: swe-d2cc-glsk-data-bridge-volume
+              name: swe-d2cc-rte-tp-data-bridge-volume
           livenessProbe:
             tcpSocket:
               port: 8080
@@ -144,9 +144,9 @@ spec:
               memory: "384Mi"
       restartPolicy: Always
       volumes:
-        - name: swe-d2cc-glsk-data-bridge-volume
+        - name: swe-d2cc-rte-tp-data-bridge-volume
           configMap:
-            name: swe-d2cc-glsk-data-bridge
+            name: swe-d2cc-rte-tp-data-bridge
 
 
 ---
@@ -154,17 +154,17 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: swe-d2cc-glsk-data-bridge
+  name: swe-d2cc-rte-tp-data-bridge
   labels:
     app: gridcapa-data-bridge
-    component: gridcapa-glsk-data-bridge
+    component: gridcapa-rte-tp-data-bridge
     region: swe
     process: d2cc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa-data-bridge
-    component: gridcapa-glsk-data-bridge
+    component: gridcapa-rte-tp-data-bridge
     region: swe
     process: d2cc
   ports:

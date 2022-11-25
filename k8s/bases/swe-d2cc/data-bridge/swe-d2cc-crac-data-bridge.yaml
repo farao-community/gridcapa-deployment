@@ -16,7 +16,7 @@ data:
       file-regex: 10VCORSWEPR-ENDE_18V0000000005KUU_SWE-CRAC-B15-A48-F011_(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-111.(xml|XML)
       time-validity: daily
       remote-file-regex:
-        - ".*.zip"
+        - ".*"
       sources:
         ftp:
           active: true
