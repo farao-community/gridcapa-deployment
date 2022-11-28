@@ -135,7 +135,7 @@ images:
     newTag: 0.11.0
   - name: gridcapa-rao-runner
     newName:  docker.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.6.1
+    newTag: v1.7.0
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: v1.5.0
@@ -153,7 +153,7 @@ images:
     newTag: v1.0.0
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.9.0
+    newTag: v1.10.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.7.0
