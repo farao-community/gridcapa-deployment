@@ -1,0 +1,21 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: apps-metadata-server-configmap
+  labels:
+    app: gridcapa
+    component: apps-metadata-server-configmap
+data:
+  apps-metadata.json: |-
+    [
+      {
+        "name" : "Capa CSE IMPORT D2CC",
+        "url"  : "/cse/import/d2cc/",
+        "appColor" : "#36cf29"
+      },
+      {
+        "name" : "Capa CSE IMPORT IDCC",
+        "url"  : "/cse/import/idcc/",
+        "appColor" : "#21afe1"
+      }
+    ]

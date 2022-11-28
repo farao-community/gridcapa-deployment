@@ -3,39 +3,40 @@ kind: Kustomization
 
 bases:
   - ../common
-  - ../../../bases/cse-common
-  - ../../../bases/cse-export-d2cc
-  - ../../../bases/cse-export-idcc
   - ../../../bases/cse-import-d2cc
   - ../../../bases/cse-import-idcc
 
 resources:
   - apps-metadata-server-configmap.yaml
-  - cse-export-d2cc-app-idp-settings-configmap.yaml
-  - cse-export-idcc-app-idp-settings-configmap.yaml
-  - cse-gridcapa-runner-itools-azure-test-configmap.yaml
-  - cse-import-d2cc-app-idp-settings-configmap.yaml
-  - cse-import-idcc-app-idp-settings-configmap.yaml
+  - cse-gridcapa-runner-itools-coreso-configmap.yaml
   - gridcapa-app-env-configmap.yaml
-  - gridcapa-ingress.yaml
+  - ingress-gridcapa.yaml
+  - ingress-middlewares.yaml
+  - ingress-minio.yaml
+  - minio-pv-claim.yaml
   - postgresql-configmap.yaml
-  - postgresql-deployment.yaml
-
-configMapGenerator:
-  - name: env-configmap
-    env: env.properties
+  - postgresql-pv-claim.yaml
 
 patches:
-  # - Scale-up to 4 instances
-  # - Adapt requests/limits
-  # - Add ImagePullSecrets to retrieve private gridcapa-rao-runner-with-xpress from p2rte
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: gridcapa-minio
+      spec:
+        template:
+          spec:
+            volumes:
+              - name: gridcapa-minio-data
+                persistentVolumeClaim:
+                  claimName: gridcapa-coreso-minio-storage
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
         name: rao-runner
       spec:
-        replicas: 4
+        replicas: 8
         template:
           spec:
             containers:
@@ -46,10 +47,9 @@ patches:
                     memory: "50Gi"
                   limits:
                     cpu: "16.0"
-                    memory: "64Gi"
+                    memory: "60Gi"
             imagePullSecrets:
-              - name: p2rte-acr-secret
-  # Scale-up to 4 instances and adapt CSE runner itools config
+              - name: dockerhub-acr-secret
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -62,47 +62,57 @@ patches:
             volumes:
               - name: cse-import-idcc-runner-itools-configmap-volume
                 configMap:
-                  name: cse-runner-itools-azure-test-configmap
-  # Scale-up to 4 instances and adapt CSE runner itools config
+                  name: cse-runner-itools-coreso-configmap
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
         name: cse-import-d2cc-gridcapa-runner
       spec:
-        replicas: 4
+        replicas: 8
         template:
           spec:
             volumes:
               - name: cse-import-d2cc-runner-itools-configmap-volume
                 configMap:
-                  name: cse-runner-itools-azure-test-configmap
-  # Adapt CSE runner itools config
+                  name: cse-runner-itools-coreso-configmap
   - patch: |-
-      kind: Deployment
       apiVersion: apps/v1
+      kind: StatefulSet
       metadata:
-        name: cse-export-idcc-runner
+        name: gridcapa-rabbitmq
       spec:
-        template:
-          spec:
-            volumes:
-              - name: cse-export-idcc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-azure-test-configmap
-  # Adapt CSE runner itools config
-  - patch: |-
+        volumeClaimTemplates:
+          - metadata:
+              name: gridcapa-rabbitmq-data
+            spec:
+              storageClassName: vsphere-raw-block-sc
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: "5Gi"
+  # Remove volumes related to authentication within application deployments
+  - target:
       kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-export-d2cc-runner
-      spec:
-        template:
-          spec:
-            volumes:
-              - name: cse-export-d2cc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-azure-test-configmap
+      name: cse-import-idcc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: cse-import-d2cc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+
+configMapGenerator:
+  - name: env-configmap
+    env: env.properties
 
 images:
   - name: apps-metadata-server
@@ -124,11 +134,11 @@ images:
     newName: docker.io/gridsuite/config-server
     newTag: 0.11.0
   - name: gridcapa-rao-runner
-    newName: p2rte.azurecr.io/farao/gridcapa-rao-runner-with-xpress
+    newName:  docker.io/farao/gridcapa-rao-runner-with-xpress
     newTag: v1.6.1
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
-    newTag: v1.5.0-auth
+    newTag: v1.5.0
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: v1.2.1
@@ -143,9 +153,6 @@ images:
     newTag: v1.0.0
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.9.0
-  - name: gridcapa-cse-export-runner
-    newName: docker.io/farao/gridcapa-cse-cc-export-runner
     newTag: v1.9.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager

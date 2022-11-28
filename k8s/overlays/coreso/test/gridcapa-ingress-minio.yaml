@@ -10,7 +10,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: gridcapa.ingress-gridcapa.rh.1648.local
+    - host: gridcapa-test.ingress-gridcapa.rh.1648.local
       http:
         paths:
           - backend:
