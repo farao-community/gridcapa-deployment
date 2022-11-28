@@ -1,35 +1,27 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: swe-d2cc-gridcapa-job-launcher-configmap
+  name: swe-d2cc-exporter-configmap
   labels:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: export
     region: swe
     process: d2cc
 data:
   application.yml: |-
-    logback:
-      amqp:
-        exchange: swe-d2cc-task-manager-logs-exchange
-        routing-key: "#"
     spring:
       application:
-        name: swe-d2cc-job-launcher
+        name: swe-d2cc-exporter
       rabbitmq:
-        host: rabbitmq
+        host: gridcapa-rabbitmq
+        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        port: 5672
       cloud:
         stream:
+          default:
+            group: swe-d2cc-outputs
           bindings:
-            default:
-              group: swe-d2cc-job-launcher
-            run-task:
-              destination: swe-d2cc-run-task
-            stop-task:
-              destination: swe-d2cc-stop-task
             consumeTaskDtoUpdate-in-0:
               destination: swe-d2cc-task-updated
           rabbit:
@@ -42,51 +34,82 @@ data:
                 consumer:
                   binding-routing-key: status
     
-    job-launcher:
-      url:
-        task-manager-timestamp-url: http://swe-d2cc-task-manager/tasks/
-        task-manager-business-date-url: http://swe-d2cc-task-manager/tasks/businessdate/
-      process:
-        tag: SWE_D2CC
-        timezone: CET
+    export:
+      seperate-output-files: true
     
-    scheduler:
-      enable: false
-
+    task-manager:
+      base-url: http://swe-d2cc-task-manager
+      fetch-task:
+        reties-number: 6
+        interval-in-seconds: 10
+    ftp:
+      host: ${SOURCE_HOST}
+      port: ${SOURCE_PORT}
+      access-key: ${SOURCE_USER}
+      secret-key: ${SOURCE_PASSWORD}
+      remote-relative-destination-directory: ${SINK_DIRECTORY}
+    logback:
+      amqp:
+        exchange: swe-d2cc-task-manager-logs-exchange
 
 ---
 
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: swe-d2cc-gridcapa-job-launcher
+  name: swe-d2cc-exporter
   labels:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: export
     region: swe
     process: d2cc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-job-launcher
+      component: export
       region: swe
       process: d2cc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-job-launcher
+        component: export
         region: swe
         process: d2cc
     spec:
       containers:
-        - name: swe-d2cc-gridcapa-job-launcher
-          image: gridcapa-swe-d2cc-job-launcher
+        - name: swe-d2cc-exporter
+          image: gridcapa-swe-d2cc-exporter
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
+            - name: SOURCE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SOURCE_HOST_SWE_D2CC
+            - name: SOURCE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SOURCE_PORT_SWE_D2CC
+            - name: SOURCE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-server-credentials
+                  key: ftp-user
+            - name: SOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-server-credentials
+                  key: ftp-password
+            - name: SINK_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SINK_DIRECTORY_SWE_D2CC
             - name: RABBITMQ_USER
               valueFrom:
                 secretKeyRef:
@@ -100,7 +123,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: swe-d2cc-gridcapa-job-launcher-configmap-volume
+              name: swe-d2cc-exporter-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -121,16 +144,16 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              cpu: "0.1"
-              memory: "384Mi"
-            limits:
               cpu: "0.5"
-              memory: "384Mi"
+              memory: "500Mi"
+            limits:
+              cpu: "2.0"
+              memory: "1Gi"
       restartPolicy: Always
       volumes:
-        - name: swe-d2cc-gridcapa-job-launcher-configmap-volume
+        - name: swe-d2cc-exporter-configmap-volume
           configMap:
-            name: swe-d2cc-gridcapa-job-launcher-configmap
+            name: swe-d2cc-exporter-configmap
 
 
 ---
@@ -138,17 +161,17 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: swe-d2cc-gridcapa-job-launcher
+  name: swe-d2cc-exporter
   labels:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: export
     region: swe
     process: d2cc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: export
     region: swe
     process: d2cc
   ports:
