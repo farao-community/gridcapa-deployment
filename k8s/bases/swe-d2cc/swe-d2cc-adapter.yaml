@@ -32,7 +32,7 @@ data:
     swe-adapter:
       process-type: D2CC
     
-    swe-runner:
+    swe-d2cc-runner:
       binding:
         destination: swe-d2cc-request
   
