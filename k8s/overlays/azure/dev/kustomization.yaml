@@ -28,6 +28,7 @@ resources:
   - cse-import-idcc-app-idp-settings-configmap.yaml
   - cse-valid-d2cc-gridcapa-app-idp-settings-configmap.yaml
   - cse-valid-idcc-gridcapa-app-idp-settings-configmap.yaml
+  - swe-d2cc-gridcapa-app-idp-settings-configmap.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
