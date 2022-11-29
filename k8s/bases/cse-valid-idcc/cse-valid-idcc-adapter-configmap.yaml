@@ -30,6 +30,9 @@ data:
                 auto-bind-dlq: true
                 max-attempts: 1
 
+    logging:
+      config: /config/logback.xml
+
     logback:
       amqp:
         exchange: cse-valid-idcc-task-manager-logs-exchange
