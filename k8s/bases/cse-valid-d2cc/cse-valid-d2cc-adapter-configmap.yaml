@@ -29,6 +29,13 @@ data:
               consumer:
                 auto-bind-dlq: true
                 max-attempts: 1
+    
+    logging:
+      config: /config/logback.xml
+    
+    logback:
+      amqp:
+        exchange: cse-valid-d2cc-task-manager-logs-exchange
 
     cse-valid-runner:
       amqp:

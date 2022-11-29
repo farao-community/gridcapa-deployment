@@ -13,6 +13,8 @@ spring:
           binder: rabbit
           destination: cse-valid-d2cc-run-task
           group: cse-valid
+        task-status-update:
+          destination: cse-valid-d2cc-task-status-updated
       rabbit:
         default:
           consumer:
@@ -27,3 +29,10 @@ cse-valid-runner:
 
 cse-valid-adapter:
   target-process: D2CC
+
+logging:
+  config: /config/logback.xml
+
+logback:
+  amqp:
+    exchange: cse-valid-d2cc-task-manager-logs-exchange
