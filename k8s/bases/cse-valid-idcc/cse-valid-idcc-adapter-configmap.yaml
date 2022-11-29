@@ -30,6 +30,10 @@ data:
                 auto-bind-dlq: true
                 max-attempts: 1
 
+    logback:
+      amqp:
+        exchange: cse-valid-idcc-task-manager-logs-exchange
+
     cse-valid-runner:
       amqp:
         queue-name: cse-valid-idcc-requests

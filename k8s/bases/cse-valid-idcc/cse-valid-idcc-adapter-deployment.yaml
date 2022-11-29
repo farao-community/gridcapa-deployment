@@ -43,6 +43,9 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: cse-valid-idcc-adapter-configmap-volume
+            - mountPath: /config/logback.xml
+              subPath: logback.xml
+              name: cse-valid-adapter-logback-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -73,3 +76,6 @@ spec:
         - name: cse-valid-idcc-adapter-configmap-volume
           configMap:
             name: cse-valid-idcc-adapter-configmap
+        - name: cse-valid-adapter-logback-configmap-volume
+          configMap:
+            name: cse-valid-adapter-logback-configmap
