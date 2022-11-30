@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
         - name: gridcapa-postgresql
-          image: docker.io/bitnami/postgresql
-          imagePullPolicy: IfNotPresent
+          image: docker.io/bitnami/postgresql:14.6.0
+          imagePullPolicy: Always
           ports:
             - containerPort: 5432
           env:

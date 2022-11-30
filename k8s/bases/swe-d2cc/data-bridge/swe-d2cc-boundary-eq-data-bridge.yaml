@@ -64,7 +64,7 @@ spec:
     spec:
       containers:
         - name: swe-d2cc-boundary-eq-data-bridge
-          image: gridcapa-swe-d2cc-input-data-bridge
+          image: gridcapa-swe-input-data-bridge
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

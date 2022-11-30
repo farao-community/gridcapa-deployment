@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: swe-d2cc-adapter-configmap
   labels:
-    app: gridcapa-swe-adpater
+    app: gridcapa
     component: gridcapa-swe-adpater
     region: swe
     process: d2cc
@@ -11,9 +11,9 @@ data:
   application.yml: |-
     spring:
       rabbitmq:
-        username: gridcapa
-        password: gridcapa
-        host: rabbitmq
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
         port: 5672
       cloud:
         stream:
@@ -45,22 +45,22 @@ apiVersion: apps/v1
 metadata:
   name: swe-d2cc-adapter
   labels:
-    app: gridcapa-swe-adpater
-    component: gridcapa-swe-adpater
+    app: gridcapa
+    component: gridcapa-swe-d2cc-adapter
     region: swe
     process: d2cc
 spec:
   selector:
     matchLabels:
-      app: gridcapa-swe-adpater
-      component: gridcapa-swe-adpater
+      app: gridcapa
+      component: gridcapa-swe-d2cc-adapter
       region: swe
       process: d2cc
   template:
     metadata:
       labels:
-        app: gridcapa-swe-adpater
-        component: gridcapa-swe-adpater
+        app: gridcapa
+        component: gridcapa-swe-d2cc-adapter
         region: swe
         process: d2cc
     spec:
@@ -81,37 +81,14 @@ spec:
                 secretKeyRef:
                   name: gridcapa-rabbitmq-credentials
                   key: rabbitmq-password
-            - name: MINIO_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: gridcapa-minio-credentials
-                  key: minio-access-key
-            - name: MINIO_SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: gridcapa-minio-credentials
-                  key: minio-secret-key
-            - name: MINIO_BUCKET
-              valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: GRIDCAPA_MINIO_BUCKET_SWE_D2CC
-            - name: MINIO_BASE_DIRECTORY
-              valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_SWE_D2CC
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: swe-d2cc-adapter-configmap-volume
-            - mountPath: /config/logback.xml
-              subPath: logback.xml
-              name: swe-adapter-logback-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
-              port: 8080
+              port: 8093
             initialDelaySeconds: 25
             periodSeconds: 15
             timeoutSeconds: 2
@@ -120,7 +97,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /actuator/health
-              port: 8080
+              port: 8093
             initialDelaySeconds: 35
             timeoutSeconds: 2
             periodSeconds: 15
@@ -131,16 +108,13 @@ spec:
               cpu: "0.1"
               memory: "384Mi"
             limits:
-              cpu: "1.0"
+              cpu: "0.5"
               memory: "384Mi"
       restartPolicy: Always
       volumes:
         - name: swe-d2cc-adapter-configmap-volume
           configMap:
             name: swe-d2cc-adapter-configmap
-        - name: swe-adapter-logback-configmap-volume
-          configMap:
-            name: swe-adapter-logback-configmap
 
 
 ---
@@ -148,20 +122,21 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: swe-d2cc-adapter-configmap
+  name: swe-d2cc-adapter
   labels:
-    app: gridcapa-swe-adpater
-    component: gridcapa-swe-adpater
+    app: gridcapa
+    component: gridcapa-swe-d2cc-adapter
     region: swe
     process: d2cc
 spec:
   type: ClusterIP
   selector:
-    app: gridcapa-swe-adpater
-    component: gridcapa-swe-adpater
+    app: gridcapa
+    component: gridcapa-swe-d2cc-adapter
     region: swe
     process: d2cc
   ports:
     - port: 80
       targetPort: 8080
       name: http
+

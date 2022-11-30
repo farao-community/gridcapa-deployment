@@ -11,6 +11,7 @@ bases:
   - ../../../bases/cse-valid-d2cc
   - ../../../bases/cse-valid-idcc
   - ../../../bases/core-valid
+  - ../../../bases/swe-d2cc
 
 resources:
   - ftp/filebrowser-configmap.yaml
@@ -142,5 +143,26 @@ images:
     newName: docker.io/farao/gridcapa-cse-valid-publication
     newTag: latest
   - name: gridcapa-cse-valid-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest
+  - name: gridcapa-swe-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: latest
+  - name: gridcapa-swe-exporter
+    newName: docker.io/farao/gridcapa-export
+    newTag: latest
+  - name: gridcapa-swe-adapter
+    newName: docker.io/farao/gridcapa-swe-adapter
+    newTag: latest
+  - name: gridcapa-swe-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: latest
+  - name: gridcapa-swe-d2cc-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
+    newTag: latest
+  - name: gridcapa-swe-runner
+    newName: docker.io/farao/gridcapa-swe-runner
+    newTag: latest
+  - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: latest

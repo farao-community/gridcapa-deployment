@@ -126,7 +126,7 @@ spec:
     spec:
       containers:
         - name: swe-d2cc-task-manager
-          image: gridcapa-swe-d2cc-task-manager
+          image: gridcapa-swe-task-manager
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -156,6 +156,11 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: swe-d2cc-password
+            - name: POSTGRES_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POSTGRES_PORT
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:

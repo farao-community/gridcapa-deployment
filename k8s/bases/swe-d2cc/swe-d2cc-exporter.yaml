@@ -79,8 +79,8 @@ spec:
         process: d2cc
     spec:
       containers:
-        - name: swe-d2cc-exporter
-          image: gridcapa-swe-d2cc-exporter
+        - name: gridcapa-swe-d2cc-exporter
+          image: gridcapa-swe-exporter
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

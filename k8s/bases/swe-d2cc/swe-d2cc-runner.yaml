@@ -104,7 +104,7 @@ spec:
         process: d2cc
     spec:
       containers:
-        - name: swe-d2cc-runner
+        - name: gridcapa-swe-d2cc-runner
           image: gridcapa-swe-runner
           imagePullPolicy: Always
           ports:
