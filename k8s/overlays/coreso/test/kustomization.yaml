@@ -5,8 +5,6 @@ bases:
   - ../common
   - ../../../bases/cse-export-d2cc
   - ../../../bases/cse-export-idcc
-  - ../../../bases/cse-import-d2cc
-  - ../../../bases/cse-import-idcc
 
 resources:
   - apps-metadata-server-configmap.yaml
@@ -72,34 +70,6 @@ patches:
                     memory: "60Gi"
             imagePullSecrets:
               - name: dockerhub-acr-secret
-  # Scale-up to 2 instances and adapt CSE runner itools config
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-import-idcc-gridcapa-runner
-      spec:
-        replicas: 2
-        template:
-          spec:
-            volumes:
-              - name: cse-import-idcc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-coreso-configmap
-  # Scale-up to 2 instances and adapt CSE runner itools config
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-import-d2cc-gridcapa-runner
-      spec:
-        replicas: 2
-        template:
-          spec:
-            volumes:
-              - name: cse-import-d2cc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-coreso-configmap
   # Adapt CSE runner itools config
   - patch: |-
       kind: Deployment
@@ -127,22 +97,6 @@ patches:
                 configMap:
                   name: cse-runner-itools-coreso-configmap
   # Remove volumes related to authentication within application deployments
-  - target:
-      kind: Deployment
-      name: cse-import-idcc-gridcapa-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
-  - target:
-      kind: Deployment
-      name: cse-import-d2cc-gridcapa-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
       name: cse-export-idcc-gridcapa-app
@@ -201,12 +155,9 @@ images:
   - name: gridcapa-cse-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.0.0
-  - name: gridcapa-cse-import-runner
-    newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.10.0
   - name: gridcapa-cse-export-runner
     newName: docker.io/farao/gridcapa-cse-cc-export-runner
-    newTag: v1.10.0
+    newTag: v1.11.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.7.0
