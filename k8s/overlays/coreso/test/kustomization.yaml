@@ -41,7 +41,7 @@ patches:
           - metadata:
               name: gridcapa-rabbitmq-data
             spec:
-              storageClassName: csi-platinum-sc
+              storageClassName: vsphere-raw-block-sc
               accessModes:
                 - ReadWriteOnce
               resources:
