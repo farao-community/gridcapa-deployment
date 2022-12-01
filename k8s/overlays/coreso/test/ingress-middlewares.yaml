@@ -1,0 +1,164 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-cse-export-d2cc
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /cse/export/d2cc/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-cse-export-d2cc-config
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /cse/export/d2cc/config/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-cse-export-d2cc-config-notification
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /cse/export/d2cc/config-notification/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-cse-export-d2cc-gridcapa-job-launcher
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /cse/export/d2cc/gridcapa-job-launcher/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-cse-export-d2cc-task-manager
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /cse/export/d2cc/task-manager/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-cse-export-d2cc-task-notification
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /cse/export/d2cc/task-notification/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-cse-export-idcc
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /cse/export/idcc/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-cse-export-idcc-config
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /cse/export/idcc/config/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-cse-export-idcc-config-notification
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /cse/export/idcc/config-notification/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-cse-export-idcc-gridcapa-job-launcher
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /cse/export/idcc/gridcapa-job-launcher/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-cse-export-idcc-task-manager
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /cse/export/idcc/task-manager/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-cse-export-idcc-task-notification
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /cse/export/idcc/task-notification/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-apps-metadata
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /apps-metadata/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-utils-rabbitmq
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /utils/rabbitmq/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-user-id
+  namespace: default
+spec:
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
