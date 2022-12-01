@@ -1,6 +1,4 @@
 spring:
-  banner:
-    location: banner.txt
   rabbitmq:
     username: gridcapa
     password: gridcapa

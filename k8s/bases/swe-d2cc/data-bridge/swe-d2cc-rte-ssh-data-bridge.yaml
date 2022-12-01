@@ -1,0 +1,173 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: swe-d2cc-rte-ssh-data-bridge
+  labels:
+    app: gridcapa-data-bridge
+    component: gridcapa-rte-ssh-data-bridge
+    region: swe
+    process: d2cc
+data:
+  application.yml: |-
+    data-bridge:
+      zone-id: "UTC"
+      target-process: SWE_D2CC
+      file-type: RTE_SSH
+      file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*-RTEFRANCE_SSH_[0-9]{3}.xml
+      time-validity: hourly
+      remote-file-regex:
+        - "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*-RTEFRANCE_SSH_[0-9]{3}.zip"
+      sources:
+        ftp:
+          active: true
+          host: ${SOURCE_HOST}
+          port: ${SOURCE_PORT}
+          username: ${SOURCE_USER}
+          password: ${SOURCE_PASSWORD}
+          base-directory: ${SOURCE_BASE_DIRECTORY}/cgms
+          polling-delay-in-ms: 5000
+      sinks:
+        minio:
+          url: http://gridcapa-minio:9000
+          access-key: ${MINIO_ACCESS_KEY}
+          secret-key: ${MINIO_SECRET_KEY}
+          bucket: ${MINIO_BUCKET}
+          base-directory: ${MINIO_BASE_DIRECTORY}/CGMs
+
+
+---
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: swe-d2cc-rte-ssh-data-bridge
+  labels:
+    app: gridcapa-data-bridge
+    component: gridcapa-rte-ssh-data-bridge
+    region: swe
+    process: d2cc
+
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa-data-bridge
+      component: gridcapa-rte-ssh-data-bridge
+      region: swe
+      process: d2cc
+  template:
+    metadata:
+      labels:
+        app: gridcapa-data-bridge
+        component: gridcapa-rte-ssh-data-bridge
+        region: swe
+        process: d2cc
+    spec:
+      containers:
+        - name: swe-d2cc-rte-ssh-data-bridge
+          image: gridcapa-swe-input-data-bridge
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SOURCE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SOURCE_HOST_SWE_D2CC
+            - name: SOURCE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SOURCE_PORT_SWE_D2CC
+            - name: SOURCE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-user
+            - name: SOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-password
+            - name: SOURCE_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_SWE_D2CC
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+            - name: MINIO_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BUCKET_SWE_D2CC
+            - name: MINIO_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_SWE_D2CC
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: swe-d2cc-rte-ssh-data-bridge-volume
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              cpu: "0.1"
+              memory: "384Mi"
+            limits:
+              cpu: "0.5"
+              memory: "384Mi"
+      restartPolicy: Always
+      volumes:
+        - name: swe-d2cc-rte-ssh-data-bridge-volume
+          configMap:
+            name: swe-d2cc-rte-ssh-data-bridge
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: swe-d2cc-rte-ssh-data-bridge
+  labels:
+    app: gridcapa-data-bridge
+    component: gridcapa-rte-ssh-data-bridge
+    region: swe
+    process: d2cc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa-data-bridge
+    component: gridcapa-rte-ssh-data-bridge
+    region: swe
+    process: d2cc
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http

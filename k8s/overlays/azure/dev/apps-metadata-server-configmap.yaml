@@ -42,5 +42,10 @@ data:
         "name" : "Capa CSE Validation D2CC",
         "url"  : "/cse/valid/d2cc",
         "appColor" : "#800000"
+      },
+      {
+        "name" : "Capa SWE D2CC",
+        "url"  : "/swe/d2cc",
+        "appColor" : "#ebd82d"
       }
     ]

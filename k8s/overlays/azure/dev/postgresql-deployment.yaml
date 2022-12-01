@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
         - name: gridcapa-postgresql
-          image: docker.io/bitnami/postgresql
-          imagePullPolicy: IfNotPresent
+          image: docker.io/bitnami/postgresql:14.6.0
+          imagePullPolicy: Always
           ports:
             - containerPort: 5432
           env:
@@ -93,6 +93,16 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: core-valid-password
+            - name: POSTGRES_SWE_D2CC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: swe-d2cc-user
+            - name: POSTGRES_SWE_D2CC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: swe-d2cc-password
             - name: POSTGRES_CSE_VALID_IDCC_USER
               valueFrom:
                 secretKeyRef:

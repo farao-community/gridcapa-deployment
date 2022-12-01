@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - data-bridge/swe-d2cc-boundary-eq-data-bridge.yaml
+  - data-bridge/swe-d2cc-boundary-tp-data-bridge.yaml
+  - data-bridge/swe-d2cc-coreso-sv-data-bridge.yaml
+  - data-bridge/swe-d2cc-crac-data-bridge.yaml
+  - data-bridge/swe-d2cc-glsk-data-bridge.yaml
+  - data-bridge/swe-d2cc-ree-eq-data-bridge.yaml
+  - data-bridge/swe-d2cc-ree-ssh-data-bridge.yaml
+  - data-bridge/swe-d2cc-ree-tp-data-bridge.yaml
+  - data-bridge/swe-d2cc-ren-eq-data-bridge.yaml
+  - data-bridge/swe-d2cc-ren-ssh-data-bridge.yaml
+  - data-bridge/swe-d2cc-ren-tp-data-bridge.yaml
+  - data-bridge/swe-d2cc-rte-eq-data-bridge.yaml
+  - data-bridge/swe-d2cc-rte-ssh-data-bridge.yaml
+  - data-bridge/swe-d2cc-rte-tp-data-bridge.yaml
+  - swe-d2cc-adapter.yaml
+  - swe-d2cc-app.yaml
+  - swe-d2cc-exporter.yaml
+  - swe-d2cc-job-launcher.yaml
+  - swe-d2cc-rao-logs-dispatcher.yaml
+  - swe-d2cc-runner.yaml
+  - swe-d2cc-runner-itools-configmap.yaml
+  - swe-d2cc-task-manager.yaml

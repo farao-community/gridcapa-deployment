@@ -15,7 +15,7 @@ open-loadflow-default-parameters:
   maxPlausibleTargetVoltage: 1.5
   plausibleActivePowerLimit: 10000
   maxIteration: 100
-  newtonRaphsonConvEpsPerEq: 1.0E-3
+  newtonRaphsonConvEpsPerEq: 1.0E-2
 
 rao-parameters:
   objective-function: MAX_MIN_MARGIN_IN_AMPERE
