@@ -8,5 +8,5 @@ metadata:
 data:
   env.json: |-
     {
-      "appsMetadataServerUrl" : "http://gridcapa.ingress-gridcapa-test-vaas.rh.1648.local/apps-metadata"
+      "appsMetadataServerUrl" : "https://gridcapa.ingress-gridcapa-test-vaas.rh.1648.local/apps-metadata"
     }
