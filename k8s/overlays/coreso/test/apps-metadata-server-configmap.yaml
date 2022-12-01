@@ -9,16 +9,6 @@ data:
   apps-metadata.json: |-
     [
       {
-        "name" : "Capa CSE IMPORT D2CC",
-        "url"  : "/cse/import/d2cc/",
-        "appColor" : "#36cf29"
-      },
-      {
-        "name" : "Capa CSE IMPORT IDCC",
-        "url"  : "/cse/import/idcc/",
-        "appColor" : "#21afe1"
-      },
-      {
         "name" : "Capa CSE EXPORT D2CC",
         "url"  : "/cse/export/d2cc/",
         "appColor" : "#f4d03f"
