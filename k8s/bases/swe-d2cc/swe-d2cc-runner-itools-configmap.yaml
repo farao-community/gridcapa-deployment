@@ -39,7 +39,7 @@ data:
       sensitivity-fallback-overcost: 0.0
       rao-with-loop-flow-limitation: false
       rao-with-mnec-limitation: false
-      perimeters-in-parallel: 4
+      perimeters-in-parallel: 14
       load-flow-provider: OpenLoadFlow
       sensitivity-provider: OpenLoadFlow
     
@@ -51,7 +51,7 @@ data:
       relative-network-action-minimum-impact-threshold: 0.0
       preventive-leaves-in-parallel: 4
       curative-leaves-in-parallel: 1
-      second-preventive-optimization-condition: DISABLED
+      second-preventive-optimization-condition: POSSIBLE_CURATIVE_IMPROVEMENT
       global-opt-in-second-preventive: false
       second-preventive-hint-from-first-preventive: false
       curative-rao-optimize-operators-not-sharing-cras : true
