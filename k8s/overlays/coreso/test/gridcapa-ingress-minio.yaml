@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.class: traefik
+    kubernetes.io/ingress.class: kommander-traefik
     ingress.kubernetes.io/custom-request-headers: userId:johnDoe
     app: gridcapa
     component: gridcapa
