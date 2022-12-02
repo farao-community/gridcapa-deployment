@@ -57,8 +57,6 @@ patches:
       metadata:
         name: rao-runner
       spec:
-        strategy:
-          type: Recreate
         replicas: 4
         template:
           spec:
@@ -66,7 +64,7 @@ patches:
               - key: "rao-runners"
                 operator: "Equal"
                 value: "true"
-                effect: "PreferNoSchedule"
+                effect: "NoSchedule"
             containers:
               - name: rao-runner
                 resources:
