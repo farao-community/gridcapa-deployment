@@ -88,8 +88,19 @@ data:
     {
       "processName": "SWE D2CC",
       "globalViewTimestampFilter": [
+        "02:30",
+        "05:30",
+        "09:30",
+        "12:30",
+        "15:30",
+        "19:30"
       ],
       "eventPredefinedFilter": {
+        "Summary": [
+          "Summary ",
+          "Summary BD",
+          "dichotomy step"
+        ]
       }
     }
 

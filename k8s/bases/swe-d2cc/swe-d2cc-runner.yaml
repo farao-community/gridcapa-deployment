@@ -9,10 +9,6 @@ metadata:
     process: d2cc
 data:
   application.yml: |-
-    logback:
-      amqp:
-        exchange: swe-d2cc-task-manager-logs-exchange
-        routing-key: "#"
     spring:
       application:
         name: swe-d2cc-runner
@@ -38,7 +34,17 @@ data:
               destination: swe-d2cc-response
             task-status-update:
               destination: swe-d2cc-task-status-updated
-    
+
+    logback:
+      amqp:
+        exchange: swe-d2cc-task-manager-logs-exchange
+        routing-key: "#"
+
+    rao-runner-server:
+      amqp:
+        client-app-id: swe-d2cc-runner
+        queue-name: rao-request-queue
+
     swe-runner:
       zone-id: "Europe/Paris"
       dichotomy:

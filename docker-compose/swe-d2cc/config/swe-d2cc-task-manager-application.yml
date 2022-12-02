@@ -65,6 +65,9 @@ task-server:
       - CNE_ESFR_FIRST_UNSECURE
       - CNE_ESFR_LAST_SECURE
       - CGM_ESFR
+    enable-export-logs: true
+  whitelist:
+    - http:/minio:9000/
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
@@ -78,3 +81,7 @@ stomp:
   starting-ws-endpoint: /tasks/notify
   notify: /task
   receive-request: /app
+
+logback:
+  amqp:
+    exchange: swe-d2cc-task-manager-logs-exchange
