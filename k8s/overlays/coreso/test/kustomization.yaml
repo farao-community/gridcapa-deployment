@@ -57,9 +57,14 @@ patches:
       metadata:
         name: rao-runner
       spec:
-        replicas: 2
+        replicas: 4
         template:
           spec:
+            tolerations:
+              - key: "rao-runners"
+                operator: "Equal"
+                value: "true"
+                effect: "NoSchedule"
             containers:
               - name: rao-runner
                 resources:
@@ -78,6 +83,7 @@ patches:
       metadata:
         name: cse-export-idcc-runner
       spec:
+        replicas: 2
         template:
           spec:
             volumes:
@@ -91,6 +97,7 @@ patches:
       metadata:
         name: cse-export-d2cc-runner
       spec:
+        replicas: 2
         template:
           spec:
             volumes:
