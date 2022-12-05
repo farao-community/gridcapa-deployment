@@ -49,9 +49,9 @@ data:
       curative-rao-stop-criterion: SECURE
       absolute-network-action-minimum-impact-threshold: 2.0
       relative-network-action-minimum-impact-threshold: 0.0
-      preventive-leaves-in-parallel: 4
+      preventive-leaves-in-parallel: 14
       curative-leaves-in-parallel: 1
-      second-preventive-optimization-condition: POSSIBLE_CURATIVE_IMPROVEMENT
+      second-preventive-optimization-condition: DISABLED
       global-opt-in-second-preventive: false
       second-preventive-hint-from-first-preventive: false
       curative-rao-optimize-operators-not-sharing-cras : true
