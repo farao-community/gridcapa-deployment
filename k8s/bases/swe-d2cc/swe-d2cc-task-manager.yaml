@@ -78,6 +78,7 @@ data:
           - CNE_ESFR_FIRST_UNSECURE
           - CNE_ESFR_LAST_SECURE
           - CGM_ESFR
+        enable-export-logs: true
       whitelist:
         - http://gridcapa-minio:9000/
   
