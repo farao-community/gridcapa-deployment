@@ -62,8 +62,8 @@ images:
     newName: docker.io/delfer/alpine-ftp-server
     newTag: latest
   - name: publication-cronjob
-    newName: docker.io/alpine
-    newTag: latest
+    newName: docker.io/farao/cronjob-base
+    newTag: 1.0.0
   - name: gridsuite-config-notification-server
     newName: docker.io/gridsuite/config-notification-server
     newTag: latest
