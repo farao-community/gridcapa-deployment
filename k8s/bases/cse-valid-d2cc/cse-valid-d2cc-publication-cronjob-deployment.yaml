@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: cse-valid-d2cc-publication-cronjob
-          image: alpine
+          image: publication-cronjob
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
