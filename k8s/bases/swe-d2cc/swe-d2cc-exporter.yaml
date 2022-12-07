@@ -98,12 +98,12 @@ spec:
             - name: SOURCE_USER
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-ftp-server-credentials
+                  name: gridcapa-ftp-credentials
                   key: ftp-user
             - name: SOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-ftp-server-credentials
+                  name: gridcapa-ftp-credentials
                   key: ftp-password
             - name: SINK_DIRECTORY
               valueFrom:
