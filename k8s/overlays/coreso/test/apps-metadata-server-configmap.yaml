@@ -17,5 +17,10 @@ data:
         "name" : "Capa CSE EXPORT IDCC",
         "url"  : "/cse/export/idcc/",
         "appColor" : "#e629da"
+      },
+      {
+        "name" : "Capa SWE D2CC",
+        "url"  : "/swe/d2cc",
+        "appColor" : "#ebd82d"
       }
     ]
