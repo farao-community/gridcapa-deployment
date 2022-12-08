@@ -21,6 +21,7 @@ data:
             consumeTask-in-0:
               binder: rabbit
               destination: swe-d2cc-run-task
+              group: swe-d2cc-adapter
           rabbit:
             default:
               consumer:
@@ -35,10 +36,9 @@ data:
     swe-d2cc-runner:
       binding:
         destination: swe-d2cc-request
-  
-
+        
+        
 ---
-
 
 kind: Deployment
 apiVersion: apps/v1

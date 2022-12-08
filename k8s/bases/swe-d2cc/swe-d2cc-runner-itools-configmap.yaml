@@ -32,7 +32,7 @@ data:
     rao-parameters:
       objective-function: MAX_MIN_MARGIN_IN_AMPERE
       max-number-of-iterations: 5
-      optimization-solver: XPRESS
+      optimization-solver: CBC
       pst-optimization-approximation: CONTINUOUS
       pst-penalty-cost: 0.01
       pst-sensitivity-threshold : 0.01
