@@ -111,7 +111,7 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cswe-d2cc-runner
+        name: swe-d2cc-runner
       spec:
         replicas: 2
         template:
@@ -132,6 +132,14 @@ patches:
   - target:
       kind: Deployment
       name: cse-export-d2cc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: swe-d2cc-gridcapa-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
@@ -205,7 +213,7 @@ images:
     newTag: v1.0.0
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
-    newTag: v0.0.3
+    newTag: v0.0.4
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.9.0
