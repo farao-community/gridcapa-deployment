@@ -13,7 +13,7 @@ data:
       zone-id: "Europe/Paris"
       target-process: SWE_D2CC
       file-type: GLSK
-      file-regex: 10VCORSWEPR-ENDE_18V0000000005KUU_SWE-GLSK-B22-A48-F008_(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-111.(xml|XML)
+      file-regex: 10VCORSWEPR-ENDE_18V0000000005KUU_SWE-GLSK-B22-A48-F008_(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-[0-9]{3}.(xml|XML)
       time-validity: daily
       remote-file-regex:
         - ".*"

@@ -36,8 +36,7 @@ data:
     swe-d2cc-runner:
       binding:
         destination: swe-d2cc-request
-        
-        
+
 ---
 
 kind: Deployment
