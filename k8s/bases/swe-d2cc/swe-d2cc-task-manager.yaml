@@ -75,9 +75,19 @@ data:
         outputs:
           - TTC
           - VOLTAGE_ESFR
+          - VOLTAGE_FRES
           - CNE_ESFR_FIRST_UNSECURE
           - CNE_ESFR_LAST_SECURE
           - CGM_ESFR
+          - CNE_FRES_FIRST_UNSECURE
+          - CNE_FRES_LAST_SECURE
+          - CGM_FRES
+          - CNE_ESPT_FIRST_UNSECURE
+          - CNE_ESPT_LAST_SECURE
+          - CGM_ESPT
+          - CNE_PTES_FIRST_UNSECURE
+          - CNE_PTES_LAST_SECURE
+          - CGM_PTES 
         enable-export-logs: true
       whitelist:
         - http://gridcapa-minio:9000/
