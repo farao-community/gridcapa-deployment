@@ -64,7 +64,7 @@ spec:
     spec:
       containers:
         - name: swe-d2cc-rao-logs-dispatcher
-          image: gridcapa-swe-d2cc-rao-logs-dispatcher
+          image: gridcapa-cse-rao-logs-dispatcher
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
