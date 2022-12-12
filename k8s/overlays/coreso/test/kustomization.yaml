@@ -202,7 +202,7 @@ images:
   - name: gridcapa-swe-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: v1.2.1
-  - name: farao/gridcapa-swe-adapter
+  - name: gridcapa-swe-adapter
     newName: docker.io/farao/gridcapa-swe-adapter
     newTag: v0.0.4
   - name: gridcapa-swe-job-launcher
