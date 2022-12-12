@@ -134,6 +134,17 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
+  name: gridcapa-swe-d2cc
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /swe/d2cc/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
   name: gridcapa-swe-d2cc-config
   namespace: default
 spec:
