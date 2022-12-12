@@ -48,8 +48,9 @@ task-server:
       - TTC_ADJUSTMENT
       - CGM
       - IMPORT_CRAC
-      - EXPORT_CRAC
       - GLSK
+    optional-inputs:
+      - EXPORT_CRAC
     outputs:
       - TTC-VALIDATION
     enable-export-logs: false
