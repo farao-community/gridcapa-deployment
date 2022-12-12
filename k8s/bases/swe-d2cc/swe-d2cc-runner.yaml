@@ -30,6 +30,7 @@ data:
               destination: swe-d2cc-stop-task
             request-in-0:
               destination: swe-d2cc-request
+              group: swe-d2cc-runner
             request-out-0:
               destination: swe-d2cc-response
             task-status-update:
@@ -82,7 +83,7 @@ data:
       access-key: ${GRIDCAPA_MINIO_USER}
       secret-key: ${GRIDCAPA_MINIO_PASSWORD}
       url: http://gridcapa-minio:9000/
-
+      
 ---
 
 kind: Deployment
