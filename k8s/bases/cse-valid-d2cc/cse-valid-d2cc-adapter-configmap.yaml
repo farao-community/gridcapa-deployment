@@ -24,6 +24,8 @@ data:
               binder: rabbit
               destination: cse-valid-d2cc-run-task
               group: cse-valid
+            task-status-update:
+              destination: cse-valid-d2cc-task-status-updated
           rabbit:
             default:
               consumer:

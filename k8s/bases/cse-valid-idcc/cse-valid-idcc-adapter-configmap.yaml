@@ -24,6 +24,8 @@ data:
               binder: rabbit
               destination: cse-valid-idcc-run-task
               group: cse-valid
+            task-status-update:
+              destination: cse-valid-idcc-task-status-updated
           rabbit:
             default:
               consumer:
