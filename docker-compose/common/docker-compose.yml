@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   gridcapa-postgres:
-    image: bitnami/postgresql
+    image: bitnami/postgresql:14.6.0
     environment:
       ALLOW_EMPTY_PASSWORD: 'yes'
     ports:
