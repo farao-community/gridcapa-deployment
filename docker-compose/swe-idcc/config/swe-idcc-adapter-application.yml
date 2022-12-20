@@ -1,0 +1,27 @@
+spring:
+  rabbitmq:
+    username: gridcapa
+    password: gridcapa
+    host: rabbitmq
+    port: 5672
+  cloud:
+    stream:
+      bindings:
+        consumeTask-in-0:
+          binder: rabbit
+          destination: swe-idcc-run-task
+          group: swe-idcc-adapter
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+    function:
+      definition: consumeTask
+
+swe-adapter:
+  process-type: IDCC
+
+swe-runner:
+  binding:
+    destination: swe-idcc-request

@@ -1,0 +1,74 @@
+spring:
+  application:
+    name: swe-idcc-runner
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+    template:
+      reply-timeout: 7200000
+  cloud:
+    stream:
+      function:
+        definition: request;interrupt
+      default:
+        binder: rabbit
+      bindings:
+        interrupt-in-0:
+          destination: swe-idcc-stop-task
+        request-in-0:
+          destination: swe-idcc-request
+          group: swe-idcc-runner
+        request-out-0:
+          destination: swe-idcc-response
+        task-status-update:
+          destination: swe-idcc-task-status-updated
+
+logback:
+  amqp:
+    exchange: swe-idcc-task-manager-logs-exchange
+    routing-key: "#"
+
+rao-runner-server:
+  amqp:
+    client-app-id: swe-idcc-runner
+    queue-name: rao-request-queue
+
+swe-runner:
+  zone-id: "Europe/Paris"
+  dichotomy:
+    parameters:
+      ES_FR:
+        min-value: 0
+        max-value: 6400
+        precision: 50
+        tolerance-Es-Fr: 10
+        tolerance-Es-Pt: 50
+      FR_ES:
+        min-value: 0
+        max-value: 6400
+        precision: 50
+        tolerance-Es-Fr: 10
+        tolerance-Es-Pt: 50
+      ES_PT:
+        min-value: 0
+        max-value: 6400
+        precision: 50
+        tolerance-Es-Fr: 50
+        tolerance-Es-Pt: 10
+      PT_ES:
+        min-value: 0
+        max-value: 6400
+        precision: 50
+        tolerance-Es-Fr: 50
+        tolerance-Es-Pt: 10
+  whitelist:
+    - http://minio:9000/
+
+minio-adapter:
+  bucket: gridcapa
+  base-path: /SWE/IDCC
+  access-key: gridcapa
+  secret-key: gridcapa
+  url: http://minio:9000

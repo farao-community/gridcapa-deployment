@@ -1,0 +1,177 @@
+version: "3.7"
+services:
+  swe-idcc-gridcapa-app:
+    image: farao/gridcapa-app:latest
+    volumes:
+      - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ./config/swe-idcc-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+    networks:
+      - gridcapa
+
+  swe-idcc-cgm-coreso-sv-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-idcc-cgm-coreso-sv-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-idcc-cgm-ree-eq-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-idcc-cgm-ree-eq-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-idcc-cgm-ree-ssh-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-idcc-cgm-ree-ssh-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+
+  swe-idcc-cgm-ren-tp-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-idcc-cgm-ren-tp-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-idcc-cgm-ren-eq-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-idcc-cgm-ren-eq-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-idcc-cgm-ren-ssh-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-idcc-cgm-ren-ssh-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-idcc-cgm-rte-tp-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-idcc-cgm-rte-tp-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-idcc-cgm-rte-eq-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-idcc-cgm-rte-eq-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-idcc-cgm-rte-ssh-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-idcc-cgm-rte-ssh-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-idcc-cgm-ree-tp-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-idcc-cgm-ree-tp-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-idcc-crac-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-idcc-crac-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-idcc-glsk-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-idcc-glsk-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-idcc-boundary-eq-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-idcc-boundary-eq-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-idcc-boundary-tp-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/swe-idcc-boundary-tp-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-idcc-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./config/swe-idcc-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-idcc-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    volumes:
+      - ./config/swe-idcc-job-launcher.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-idcc-adapter:
+    image: farao/gridcapa-swe-adapter:latest
+    volumes:
+      - ./config/swe-idcc-adapter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  swe-idcc-runner:
+    image: farao/gridcapa-swe:latest
+    volumes:
+      - ./config/swe-idcc-runner-application.yml:/config/application.yml
+      - ./config/swe-itools-config.yml:/home/farao/.itools/config.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  swe-idcc-outputs-exporter:
+    image: farao/gridcapa-export:latest
+    volumes:
+      - ./config/swe-idcc-export-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://swe-idcc-outputs-exporter/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  swe-idcc-rao-logs-dispatcher:
+    image: farao/gridcapa-rao-logs-dispatcher:latest
+    volumes:
+      - ./config/swe-idcc-rao-logs-dispatcher-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://rao-logs-dispatcher/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - swe-idcc-task-manager
+    networks:
+      - gridcapa
+
+networks:
+  gridcapa:
+    name: gridcapa
