@@ -50,8 +50,13 @@ spec:
             limits:
               cpu: "0.5"
               memory: "384Mi"
+          startupProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
           livenessProbe:
-            tcpSocket:
+            httpGet:
+              path: /actuator/health/liveness
               port: 8080
             initialDelaySeconds: 15
             periodSeconds: 20
@@ -60,7 +65,7 @@ spec:
             successThreshold: 1
           readinessProbe:
             httpGet:
-              path: /actuator/health
+              path: /actuator/health/readiness
               port: 8080
             initialDelaySeconds: 15
             periodSeconds: 20
