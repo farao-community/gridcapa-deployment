@@ -6,6 +6,7 @@ bases:
   - ../../../bases/cse-export-d2cc
   - ../../../bases/cse-export-idcc
   - ../../../bases/swe-d2cc
+  - ../../../bases/swe-idcc
 
 resources:
   - apps-metadata-server-configmap.yaml
@@ -120,6 +121,20 @@ patches:
               - name: swe-d2cc-runner-itools-configmap-volume
                 configMap:
                   name: swe-runner-itools-coreso-configmap
+  # Adapt SWE IDCC runner itools config
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-runner
+      spec:
+        replicas: 2
+        template:
+          spec:
+            volumes:
+              - name: swe-idcc-runner-itools-configmap-volume
+                configMap:
+                  name: swe-runner-itools-coreso-configmap
   # Remove volumes related to authentication within application deployments
   - target:
       kind: Deployment
@@ -140,6 +155,14 @@ patches:
   - target:
       kind: Deployment
       name: swe-d2cc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: swe-idcc-gridcapa-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2

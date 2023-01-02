@@ -8,6 +8,7 @@ metadata:
       rewrite ^/cse/export/idcc$ /cse/export/idcc/ permanent;
       rewrite ^/cse/export/d2cc$ /cse/export/d2cc/ permanent;
       rewrite ^/swe/d2cc$ /swe/d2cc/ permanent;
+      rewrite ^/swe/idcc$ /swe/idcc/ permanent;
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
@@ -237,6 +238,48 @@ spec:
                 port:
                   number: 80
             path: /()(swe/d2cc/gridcapa-job-launcher/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: swe-idcc-gridcapa-app
+                port:
+                  number: 80
+            path: /swe/idcc(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/idcc/config/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/idcc/config-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/idcc/task-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/idcc/task-manager/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/idcc/gridcapa-job-launcher/.*)
             pathType: Prefix
 
           - backend:

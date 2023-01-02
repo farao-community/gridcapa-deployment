@@ -9,6 +9,8 @@ bases:
   - ../../../bases/cse-import-d2cc
   - ../../../bases/cse-import-idcc
   - ../../../bases/swe-d2cc
+  - ../../../bases/swe-idcc
+
 
 resources:
   - apps-metadata-server-configmap.yaml
@@ -19,6 +21,7 @@ resources:
   - cse-import-d2cc-app-idp-settings-configmap.yaml
   - cse-import-idcc-app-idp-settings-configmap.yaml
   - swe-d2cc-app-idp-settings-configmap.yaml
+  - swe-idcc-app-idp-settings-configmap.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
@@ -80,14 +83,22 @@ patches:
               - name: cse-import-d2cc-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-azure-test-configmap
-  # Scale-up to 4 instances and adapt CSE runner itools config
+  # Scale-up to 2 instances swe-d2cc-runner
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
         name: swe-d2cc-runner
       spec:
-        replicas: 4
+        replicas: 2
+  # Scale-up to 2 instances swe-idcc-runner
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-dicc-runner
+      spec:
+        replicas: 2
   # Adapt CSE runner itools config
   - patch: |-
       kind: Deployment
@@ -114,7 +125,7 @@ patches:
               - name: cse-export-d2cc-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-azure-test-configmap
-  # Adapt SWE runner itools config
+  # Adapt SWE D2CC runner itools config
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -125,6 +136,19 @@ patches:
           spec:
             volumes:
               - name: swe-d2cc-runner-itools-configmap-volume
+                configMap:
+                  name: swe-runner-itools-azure-test-configmap
+  # Adapt SWE IDCC runner itools config
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-runner
+      spec:
+        template:
+          spec:
+            volumes:
+              - name: swe-idcc-runner-itools-configmap-volume
                 configMap:
                   name: swe-runner-itools-azure-test-configmap
 
