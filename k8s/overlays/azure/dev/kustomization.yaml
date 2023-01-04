@@ -72,6 +72,9 @@ images:
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: latest-auth
+  - name: gridcapa-gateway
+    newName: docker.io/farao/gridcapa-gateway
+    newTag: latest
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: latest

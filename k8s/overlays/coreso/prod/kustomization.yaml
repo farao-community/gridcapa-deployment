@@ -139,6 +139,9 @@ images:
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: v1.6.1
+  - name: gridcapa-gateway
+    newName: docker.io/farao/gridcapa-gateway
+    newTag: 1.0.0
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: v1.2.1
