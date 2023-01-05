@@ -38,6 +38,12 @@ data:
         response:
           destination: cse-valid-idcc-response
           expiration: 600000
+        eic-codes:
+          austria: 10YAT-APG------L
+          france: 10YFR-RTE------C
+          italy: 10YIT-GRTN-----B
+          slovenia: 10YSI-ELES-----O
+          switzerland: 10YCH-SWISSGRIDZ
       whitelist:
         - http://gridcapa-minio:9000/
 
