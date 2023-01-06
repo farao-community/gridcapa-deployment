@@ -35,7 +35,9 @@ data:
               destination: swe-d2cc-response
             task-status-update:
               destination: swe-d2cc-task-status-updated
-
+            stop-rao:
+              destination: stop-rao-runner
+    
     logback:
       amqp:
         exchange: swe-d2cc-task-manager-logs-exchange
