@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  swe-d2cc-app:
+  swe-d2cc-gridcapa-app:
     image: farao/gridcapa-app:latest
     volumes:
       - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z

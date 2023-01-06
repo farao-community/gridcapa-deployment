@@ -7,3 +7,9 @@ spring:
     port: 5672
     username: gridcapa
     password: gridcapa
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true

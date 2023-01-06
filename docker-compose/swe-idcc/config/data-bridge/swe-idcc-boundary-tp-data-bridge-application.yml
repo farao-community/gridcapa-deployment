@@ -1,12 +1,12 @@
 data-bridge:
   zone-id: "Europe/Paris"
-  target-process: SWE_D2CC
-  file-type: BOUNDARY_EQ
-  file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2})_rr1_UX1_EQX.xml
+  target-process: SWE_IDCC
+  file-type: BOUNDARY_TP
+  file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2})_rr1_UX1_TPX.xml
   time-validity: yearly
   remote-file-regex:
     - ".*.zip"
-    - "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2})_rr1_UX1_EQX.xml"
+    - "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2})_rr1_UX1_TPX.xml"
   sources:
     ftp:
       active: true
@@ -14,7 +14,7 @@ data-bridge:
       port: 21
       username: gridcapa
       password: gridcapa
-      base-directory: /data/gridcapa/swe/d2cc/boundaries
+      base-directory: /data/gridcapa/swe/idcc/boundaries
       polling-delay-in-ms: 5000
   sinks:
     minio:
@@ -22,4 +22,4 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /SWE/D2CC/BOUNDARIES
+      base-directory: /SWE/IDCC/BOUNDARIES
