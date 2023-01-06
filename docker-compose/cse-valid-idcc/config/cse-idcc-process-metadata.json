@@ -1,6 +1,10 @@
 {
   "processName": "CSE IDCC Validation",
   "globalViewTimestampFilter": [
+    "13:30",
+    "16:30",
+    "19:30",
+    "22:30"
   ],
   "eventPredefinedFilter": {
   }
