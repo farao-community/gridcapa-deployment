@@ -33,7 +33,7 @@ data:
     swe-adapter:
       process-type: IDCC
     
-    swe-idcc-runner:
+    swe-runner:
       binding:
         destination: swe-idcc-request
 

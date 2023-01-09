@@ -300,3 +300,37 @@ data:
                 - Path=/swe/d2cc/gridcapa-job-launcher/**
               filters:
                 - StripPrefix=3
+            - id: swe-idcc-gridsuite-config
+              uri: http://config-server
+              predicates:
+                - Path=/swe/idcc/config/**
+              filters:
+                - StripPrefix=3
+                - AddRequestHeader=userId, johnDoe
+            - id: swe-idcc-gridsuite-config-notification
+              uri: http://config-notification-server
+              predicates:
+                - Path=/swe/idcc/config-notification/**
+              filters:
+                - StripPrefix=3
+                - AddRequestHeader=userId, johnDoe
+                - RemoveRequestParameter=access_token
+            - id: swe-idcc-task-manager
+              uri: http://swe-idcc-task-manager
+              predicates:
+                - Path=/swe/idcc/task-manager/**
+              filters:
+                - StripPrefix=3
+            - id: swe-idcc-task-notification-server
+              uri: http://swe-idcc-task-manager
+              predicates:
+                - Path=/swe/idcc/task-notification/**
+              filters:
+                - StripPrefix=3
+                - RemoveRequestParameter=access_token
+            - id: swe-idcc-gridcapa-job-launcher
+              uri: http://swe-idcc-gridcapa-job-launcher
+              predicates:
+                - Path=/swe/idcc/gridcapa-job-launcher/**
+              filters:
+                - StripPrefix=3
