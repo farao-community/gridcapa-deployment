@@ -103,6 +103,16 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: swe-d2cc-password
+            - name: POSTGRES_SWE_IDCC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: swe-idcc-user
+            - name: POSTGRES_SWE_IDCC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: swe-idcc-password
             - name: POSTGRES_CSE_VALID_IDCC_USER
               valueFrom:
                 secretKeyRef:

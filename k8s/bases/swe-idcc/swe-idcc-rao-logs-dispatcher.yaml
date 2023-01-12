@@ -1,15 +1,17 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: swe-d2cc-adapter-configmap
+  name: swe-idcc-rao-logs-dispatcher-configmap
   labels:
     app: gridcapa
-    component: gridcapa-swe-adpater
+    component: rao-logs-dispatcher
     region: swe
-    process: d2cc
+    process: idcc
 data:
   application.yml: |-
     spring:
+      application:
+        name: swe-idcc-rao-logs-dispatcher
       rabbitmq:
         host: gridcapa-rabbitmq
         username: ${RABBITMQ_USER}
@@ -17,55 +19,52 @@ data:
         port: 5672
       cloud:
         stream:
+          default:
+            group: swe-idcc
           bindings:
-            consumeTask-in-0:
-              binder: rabbit
-              destination: swe-d2cc-run-task
-              group: swe-d2cc-adapter
+            dispatchRaoEvents-in-0:
+              destination: rao-runners-logs
+            dispatchRaoEvents-out-0:
+              destination: swe-idcc-task-manager-logs-exchange
           rabbit:
             default:
               consumer:
                 auto-bind-dlq: true
                 max-attempts: 1
-        function:
-          definition: consumeTask
-    
-    swe-adapter:
-      process-type: D2CC
-    
-    swe-runner:
-      binding:
-        destination: swe-d2cc-request
+
+    client:
+      name: swe-idcc-runner
+
 
 ---
 
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: swe-d2cc-adapter
+  name: swe-idcc-rao-logs-dispatcher
   labels:
     app: gridcapa
-    component: gridcapa-swe-d2cc-adapter
+    component: rao-logs-dispatcher
     region: swe
-    process: d2cc
+    process: idcc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-swe-d2cc-adapter
+      component: rao-logs-dispatcher
       region: swe
-      process: d2cc
+      process: idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-swe-d2cc-adapter
+        component: rao-logs-dispatcher
         region: swe
-        process: d2cc
+        process: idcc
     spec:
       containers:
-        - name: swe-d2cc-adapter
-          image: gridcapa-swe-adapter
+        - name: swe-idcc-rao-logs-dispatcher
+          image: gridcapa-cse-rao-logs-dispatcher
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -83,7 +82,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: swe-d2cc-adapter-configmap-volume
+              name: swe-idcc-rao-logs-dispatcher-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -104,16 +103,16 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              cpu: "0.1"
-              memory: "384Mi"
-            limits:
               cpu: "0.5"
-              memory: "384Mi"
+              memory: "500Mi"
+            limits:
+              cpu: "2.0"
+              memory: "1Gi"
       restartPolicy: Always
       volumes:
-        - name: swe-d2cc-adapter-configmap-volume
+        - name: swe-idcc-rao-logs-dispatcher-configmap-volume
           configMap:
-            name: swe-d2cc-adapter-configmap
+            name: swe-idcc-rao-logs-dispatcher-configmap
 
 
 ---
@@ -121,21 +120,20 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: swe-d2cc-adapter
+  name: swe-idcc-rao-logs-dispatcher
   labels:
     app: gridcapa
-    component: gridcapa-swe-d2cc-adapter
+    component: rao-logs-dispatcher
     region: swe
-    process: d2cc
+    process: idcc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-swe-d2cc-adapter
+    component: rao-logs-dispatcher
     region: swe
-    process: d2cc
+    process: idcc
   ports:
     - port: 80
       targetPort: 8080
       name: http
-

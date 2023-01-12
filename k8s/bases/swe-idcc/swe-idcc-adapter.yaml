@@ -1,12 +1,12 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: swe-d2cc-adapter-configmap
+  name: swe-idcc-adapter-configmap
   labels:
     app: gridcapa
     component: gridcapa-swe-adpater
     region: swe
-    process: d2cc
+    process: idcc
 data:
   application.yml: |-
     spring:
@@ -20,8 +20,8 @@ data:
           bindings:
             consumeTask-in-0:
               binder: rabbit
-              destination: swe-d2cc-run-task
-              group: swe-d2cc-adapter
+              destination: swe-idcc-run-task
+              group: swe-idcc-adapter
           rabbit:
             default:
               consumer:
@@ -31,40 +31,40 @@ data:
           definition: consumeTask
     
     swe-adapter:
-      process-type: D2CC
+      process-type: IDCC
     
     swe-runner:
       binding:
-        destination: swe-d2cc-request
+        destination: swe-idcc-request
 
 ---
 
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: swe-d2cc-adapter
+  name: swe-idcc-adapter
   labels:
     app: gridcapa
-    component: gridcapa-swe-d2cc-adapter
+    component: gridcapa-swe-idcc-adapter
     region: swe
-    process: d2cc
+    process: idcc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-swe-d2cc-adapter
+      component: gridcapa-swe-idcc-adapter
       region: swe
-      process: d2cc
+      process: idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-swe-d2cc-adapter
+        component: gridcapa-swe-idcc-adapter
         region: swe
-        process: d2cc
+        process: idcc
     spec:
       containers:
-        - name: swe-d2cc-adapter
+        - name: swe-idcc-adapter
           image: gridcapa-swe-adapter
           imagePullPolicy: Always
           ports:
@@ -83,7 +83,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: swe-d2cc-adapter-configmap-volume
+              name: swe-idcc-adapter-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -111,9 +111,9 @@ spec:
               memory: "384Mi"
       restartPolicy: Always
       volumes:
-        - name: swe-d2cc-adapter-configmap-volume
+        - name: swe-idcc-adapter-configmap-volume
           configMap:
-            name: swe-d2cc-adapter-configmap
+            name: swe-idcc-adapter-configmap
 
 
 ---
@@ -121,19 +121,19 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: swe-d2cc-adapter
+  name: swe-idcc-adapter
   labels:
     app: gridcapa
-    component: gridcapa-swe-d2cc-adapter
+    component: gridcapa-swe-idcc-adapter
     region: swe
-    process: d2cc
+    process: idcc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-swe-d2cc-adapter
+    component: gridcapa-swe-idcc-adapter
     region: swe
-    process: d2cc
+    process: idcc
   ports:
     - port: 80
       targetPort: 8080
