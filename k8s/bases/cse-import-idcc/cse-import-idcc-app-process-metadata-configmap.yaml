@@ -10,6 +10,7 @@ data:
     {
       "processName": "CSE IMPORT IDCC",
       "globalViewTimestampFilter": [
+        "13:30",
         "16:30",
         "19:30",
         "22:30"
