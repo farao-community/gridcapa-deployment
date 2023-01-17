@@ -14,10 +14,10 @@
       "Summary BD",
       "dichotomy step"
     ],
-    "ES-FR": ["ES-FR"],
-    "FR-ES": ["FR-ES"],
-    "ES-PT": ["ES-PT"],
-    "PT-ES": ["PT-ES"],
+    "ES-FR": ["[ES-FR]"],
+    "FR-ES": ["[FR-ES]"],
+    "ES-PT": ["[ES-PT]"],
+    "PT-ES": ["[PT-ES]"],
     "Summary BD": [
       "Summary BD"
     ]
