@@ -45,8 +45,7 @@ spec:
               command:
                 - "/bin/sh"
                 - "-c"
-                - "test"
-                - "$(date -r /var/log/liveness +%s) -gt `expr $(date +%s) - 3600`"
+                - "test $(date -r /var/log/liveness +%s) -gt `expr $(date +%s) - 3600`"
             initialDelaySeconds: 10
             periodSeconds: 3600 # test once an hour
             timeoutSeconds: 2
