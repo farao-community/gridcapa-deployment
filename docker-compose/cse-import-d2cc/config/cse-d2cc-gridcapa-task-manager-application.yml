@@ -58,7 +58,7 @@ task-server:
       - TTC_RES
       - INITIAL_CGM
       - FINAL_CGM
-    enable-export-logs: false
+    enable-export-logs: true
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
   base-path: ${GRIDCAPA_MINIO_BASE_PATH:}

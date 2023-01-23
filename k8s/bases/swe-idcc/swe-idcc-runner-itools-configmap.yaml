@@ -28,6 +28,8 @@ data:
       plausibleActivePowerLimit: 10000
       maxIteration: 100
       newtonRaphsonConvEpsPerEq: 1.0E-2
+      minRealisticVoltage: 0.4
+      maxRealisticVoltage: 1.6
     
     rao-parameters:
       objective-function: MAX_MIN_MARGIN_IN_AMPERE
