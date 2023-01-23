@@ -75,7 +75,7 @@ data:
           - TTC_RES
           - INITIAL_CGM
           - FINAL_CGM
-        enable-export-logs: false
+        enable-export-logs: true
       whitelist:
         - http://gridcapa-minio:9000/
 
