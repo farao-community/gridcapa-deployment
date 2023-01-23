@@ -170,7 +170,7 @@ spec:
               memory: "384Mi"
             limits:
               cpu: "8.0"
-              memory: "10Gi"
+              memory: "12Gi"
       restartPolicy: Always
       volumes:
         - name: swe-d2cc-runner-configmap-volume
