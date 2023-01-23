@@ -62,7 +62,7 @@ task-server:
       - TTC_RES
       - INITIAL_CGM
       - FINAL_CGM
-    enable-export-logs: false
+    enable-export-logs: true
   whitelist:
     - http://minio:9000/
 
