@@ -203,7 +203,8 @@ spec:
               subPath: application.yml
               name: swe-idcc-task-manager-configmap-volume
           livenessProbe:
-            tcpSocket:
+            httpGet:
+              path: /actuator/health
               port: 8080
             initialDelaySeconds: 25
             periodSeconds: 15
