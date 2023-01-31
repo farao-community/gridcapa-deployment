@@ -19,10 +19,14 @@ data:
         "19:30",
         "22:30"
       ],
-      "eventPredefinedFilter": {
-        "Summary": [
-          "Summary :",
-          "dichotomy step"
-        ]
-      }
+      "eventPredefinedFilter": [
+        {
+          "filterName": "Summary",
+          "defaultChecked": true,
+          "filterValue": [
+            "Summary :",
+            "Network at dichotomy step"
+          ]
+        }
+      ]
     }
