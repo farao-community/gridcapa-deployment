@@ -1,0 +1,36 @@
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: swe-d2cc-cgm-minio-automatic-purge
+  labels:
+    app: gridcapa
+    component: cgm-minio-automatic-purge
+    region: swe
+    process: d2cc
+spec:
+  schedule: "0 0 * * *"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: swe-d2cc-cgm-minio-automatic-purge
+              image: minio-mc
+              args: [ "rm", "-r", "--force", "--older-than", "1d", "minio/gridcapa/SWE/D2CC/CGMs/" ]
+              env:
+                - name: MINIO_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-access-key
+                - name: MINIO_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-secret-key
+                - name: MC_HOST_minio
+                  value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
+          restartPolicy: Never

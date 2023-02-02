@@ -32,6 +32,14 @@ resources:
   - cse-valid-idcc-gridcapa-app-idp-settings-configmap.yaml
   - swe-d2cc-gridcapa-app-idp-settings-configmap.yaml
   - swe-idcc-gridcapa-app-idp-settings-configmap.yaml
+  - swe-d2cc-boundary-minio-automatic-purge.yaml
+  - swe-d2cc-cgm-minio-automatic-purge.yaml
+  - swe-d2cc-crac-minio-automatic-purge.yaml
+  - swe-d2cc-glsk-minio-automatic-purge.yaml
+  - swe-idcc-boundary-minio-automatic-purge.yaml
+  - swe-idcc-cgm-minio-automatic-purge.yaml
+  - swe-idcc-crac-minio-automatic-purge.yaml
+  - swe-idcc-glsk-minio-automatic-purge.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
