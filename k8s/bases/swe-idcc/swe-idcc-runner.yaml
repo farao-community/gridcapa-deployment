@@ -167,10 +167,10 @@ spec:
           resources:
             requests:
               cpu: "1.0"
-              memory: "384Mi"
+              memory: "20Gi"
             limits:
               cpu: "8.0"
-              memory: "10Gi"
+              memory: "60Gi"
       restartPolicy: Always
       volumes:
         - name: swe-idcc-runner-configmap-volume

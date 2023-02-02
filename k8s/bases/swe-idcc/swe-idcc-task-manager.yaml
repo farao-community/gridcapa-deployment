@@ -203,7 +203,8 @@ spec:
               subPath: application.yml
               name: swe-idcc-task-manager-configmap-volume
           livenessProbe:
-            tcpSocket:
+            httpGet:
+              path: /actuator/health
               port: 8080
             initialDelaySeconds: 25
             periodSeconds: 15
@@ -222,10 +223,10 @@ spec:
           resources:
             requests:
               cpu: "1.0"
-              memory: "1Gi"
+              memory: "5Gi"
             limits:
               cpu: "4.0"
-              memory: "2Gi"
+              memory: "20Gi"
       initContainers:
         - name: minio-notifications
           image: minio-mc
