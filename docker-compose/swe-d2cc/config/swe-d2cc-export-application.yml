@@ -34,7 +34,7 @@ ftp:
   port: 21
   access-key: gridcapa
   secret-key: gridcapa
-  remote-relative-destination-directory: swe/d2cc/outputs # avec ça swe/d2cc/outputs le ftp directory /data/gridcapa/swe/d2cc/outputs mais ça ne peut pas se connecter ?
+  remote-relative-destination-directory: swe/d2cc/outputs
 
 logback:
   amqp:
