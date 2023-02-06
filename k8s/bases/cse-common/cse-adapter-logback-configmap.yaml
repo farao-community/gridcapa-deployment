@@ -4,7 +4,6 @@ metadata:
   name: cse-adapter-logback-configmap
   labels:
     app: gridcapa
-    cse-common: true
     component: adapter
     region: cse
 data:

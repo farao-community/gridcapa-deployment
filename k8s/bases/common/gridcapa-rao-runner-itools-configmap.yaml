@@ -4,9 +4,7 @@ metadata:
   name: rao-runner-itools
   labels:
     app: gridcapa
-    common: true
     component: rao-runner
-
 data:
   config.yml: |-
     rao:

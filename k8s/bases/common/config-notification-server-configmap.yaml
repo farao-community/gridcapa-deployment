@@ -4,7 +4,6 @@ metadata:
   name: config-notification-server-configmap
   labels:
     app: gridcapa
-    common: true
     component: config-notification-server
 data:
   application.yml: |-

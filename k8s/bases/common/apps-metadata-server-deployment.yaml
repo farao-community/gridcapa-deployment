@@ -4,19 +4,16 @@ metadata:
   name: apps-metadata-server
   labels:
     app: gridcapa
-    common: true
     component: apps-metadata-server
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      common: true
       component: apps-metadata-server
   template:
     metadata:
       labels:
         app: gridcapa
-        common: true
         component: apps-metadata-server
     spec:
       containers:

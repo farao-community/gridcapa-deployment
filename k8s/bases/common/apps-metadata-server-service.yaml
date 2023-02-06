@@ -3,7 +3,6 @@ kind: Service
 metadata:
   labels:
     app: gridcapa
-    common: true
     component: apps-metadata-server
   name: apps-metadata-server
 spec:
@@ -14,5 +13,4 @@ spec:
       targetPort: 8080
   selector:
     app: gridcapa
-    common: true
     component: apps-metadata-server

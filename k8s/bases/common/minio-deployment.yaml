@@ -4,20 +4,17 @@ metadata:
   name: gridcapa-minio
   labels:
     app: gridcapa
-    common: true
     component: minio
 
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      common: true
       component: minio
   template:
     metadata:
       labels:
         app: gridcapa
-        common: true
         component: minio
     spec:
       securityContext:

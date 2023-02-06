@@ -13,14 +13,16 @@ spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-crac-data-bridge
+      component: data-bridge
+      file: crac
       region: cse
       process: export-d2cc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-crac-data-bridge
+        component: data-bridge
+        file: crac
         region: cse
         process: export-d2cc
     spec:

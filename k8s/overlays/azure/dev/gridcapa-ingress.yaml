@@ -24,7 +24,6 @@ metadata:
   labels:
     app: gridcapa
     component: ingress
-    env: azure-dev
   name: gridcapa-dev
   namespace: default
 spec:
@@ -202,13 +201,6 @@ spec:
             path: /()(cse/export/d2cc/gridcapa-job-launcher/.*)
             pathType: Prefix
 
-          - backend:
-              service:
-                name: filebrowser
-                port:
-                  number: 80
-            path: /utils/filebrowser(/|$)(.*)
-            pathType: Prefix
           - backend:
               service:
                 name: gridcapa-rabbitmq

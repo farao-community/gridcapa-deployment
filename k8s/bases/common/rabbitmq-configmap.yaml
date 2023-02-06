@@ -4,7 +4,6 @@ metadata:
   name: gridcapa-rabbitmq-configmap
   labels:
     app: gridcapa
-    common: true
     component: rabbitmq
 data:
   rabbitmq.conf: |-

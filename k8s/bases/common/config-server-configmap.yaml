@@ -4,7 +4,6 @@ metadata:
   name: config-server-configmap
   labels:
     app: gridcapa
-    common: true
     component: config-server
 data:
   application.yml: |-

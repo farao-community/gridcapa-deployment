@@ -4,19 +4,16 @@ metadata:
   name: config-notification-server
   labels:
     app: gridcapa
-    common: true
     component: config-notification-server
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      common: true
       component: config-notification-server
   template:
     metadata:
       labels:
         app: gridcapa
-        common: true
         component: config-notification-server
     spec:
       containers:
@@ -55,11 +52,11 @@ spec:
               memory: "384Mi"
           startupProbe:
             httpGet:
-              path: /actuator/health/liveness
+              path: /actuator/health
               port: 8080
           livenessProbe:
             httpGet:
-              path: /actuator/health/liveness
+              path: /actuator/health
               port: 8080
             initialDelaySeconds: 15
             periodSeconds: 20
@@ -68,7 +65,7 @@ spec:
             successThreshold: 1
           readinessProbe:
             httpGet:
-              path: /actuator/health/readiness
+              path: /actuator/health
               port: 8080
             initialDelaySeconds: 15
             periodSeconds: 20

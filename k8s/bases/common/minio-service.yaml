@@ -4,13 +4,11 @@ metadata:
   name: minio
   labels:
     app: gridcapa
-    common: true
     component: minio
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    common: true
     component: minio
   ports:
     - port: 9000

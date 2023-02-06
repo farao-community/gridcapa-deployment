@@ -5,7 +5,6 @@ metadata:
   labels:
     app: gridcapa
     component: front-app-idp-settings
-    env: azure-dev
     region: core
     process: valid
 data:

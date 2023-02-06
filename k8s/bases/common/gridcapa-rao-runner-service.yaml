@@ -4,15 +4,12 @@ metadata:
   name: rao-runner
   labels:
     app: gridcapa
-    common: true
     component: rao-runner
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    common: true
     component: rao-runner
-    region: cse
   ports:
     - port: 80
       targetPort: 8080

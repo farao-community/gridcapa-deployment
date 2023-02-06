@@ -4,13 +4,11 @@ metadata:
   name: config-notification-server
   labels:
     app: gridcapa
-    common: true
     component: config-notification-server
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    common: true
     component: config-notification-server
   ports:
     - name: http
