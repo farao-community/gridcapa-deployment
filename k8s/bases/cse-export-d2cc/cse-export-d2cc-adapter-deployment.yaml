@@ -3,22 +3,22 @@ apiVersion: apps/v1
 metadata:
   name: cse-export-d2cc-adapter
   labels:
-    app: gridcapa-cse-adpater
-    component: gridcapa-cse-adpater
+    app: gridcapa
+    component: adapter
     region: cse
     process: export-d2cc
 spec:
   selector:
     matchLabels:
-      app: gridcapa-cse-adpater
-      component: gridcapa-cse-adpater
+      app: gridcapa
+      component: adapter
       region: cse
       process: export-d2cc
   template:
     metadata:
       labels:
-        app: gridcapa-cse-adpater
-        component: gridcapa-cse-adpater
+        app: gridcapa
+        component: adapter
         region: cse
         process: export-d2cc
     spec:

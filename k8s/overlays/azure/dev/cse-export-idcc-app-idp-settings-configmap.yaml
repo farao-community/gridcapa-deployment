@@ -4,7 +4,8 @@ metadata:
   name: cse-export-idcc-app-idp-settings-configmap
   labels:
     app: gridcapa
-    component: cse-export-idcc-app-idp-settings-configmap
+    component: front-app-idp-settings
+    env: azure-dev
     region: cse
     process: export-idcc
 data:

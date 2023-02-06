@@ -4,7 +4,8 @@ metadata:
   name: keycloak-storage
   labels:
     app: gridcapa
-    component: keycloak
+    component: auth
+    env: azure-common
 spec:
   storageClassName: azure-storage-class
   accessModes:

@@ -4,16 +4,19 @@ metadata:
   name: gateway
   labels:
     app: gridcapa
+    common: true
     component: gateway
 spec:
   selector:
     matchLabels:
       app: gridcapa
+      common: true
       component: gateway
   template:
     metadata:
       labels:
         app: gridcapa
+        common: true
         component: gateway
     spec:
       containers:

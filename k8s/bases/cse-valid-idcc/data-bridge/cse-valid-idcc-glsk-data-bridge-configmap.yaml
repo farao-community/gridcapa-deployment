@@ -4,7 +4,8 @@ metadata:
   name: cse-valid-idcc-glsk-data-bridge-configmap
   labels:
     app: gridcapa
-    component: gridcapa-glsk-data-bridge-configmap
+    component: data-bridge
+    file: glsk
     region: cse
     process: valid-idcc
 data:

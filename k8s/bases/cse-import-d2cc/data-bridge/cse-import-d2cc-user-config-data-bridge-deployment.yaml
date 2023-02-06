@@ -3,23 +3,26 @@ apiVersion: apps/v1
 metadata:
   name: cse-import-d2cc-user-config-data-bridge
   labels:
-    app: gridcapa-data-bridge
-    component: gridcapa-user-config-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: user-config
     region: cse
     process: import-d2cc
 
 spec:
   selector:
     matchLabels:
-      app: gridcapa-data-bridge
-      component: gridcapa-user-config-data-bridge
+      app: gridcapa
+      component: data-bridge
+      file: user-config
       region: cse
       process: import-d2cc
   template:
     metadata:
       labels:
-        app: gridcapa-data-bridge
-        component: gridcapa-user-config-data-bridge
+        app: gridcapa
+        component: data-bridge
+        file: user-config
         region: cse
         process: import-d2cc
     spec:

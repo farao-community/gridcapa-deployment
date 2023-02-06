@@ -4,7 +4,8 @@ metadata:
   name: cse-import-d2cc-app-idp-settings-configmap
   labels:
     app: gridcapa
-    component: cse-import-d2cc-app-idp-settings-configmap
+    component: front-app-idp-settings
+    env: azure-dev
     region: cse
     process: import-d2cc
 data:

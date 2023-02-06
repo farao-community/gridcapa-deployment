@@ -5,16 +5,19 @@ metadata:
   labels:
     app: gridcapa
     component: postgresql
+    env: azure-dev
 spec:
   selector:
     matchLabels:
       app: gridcapa
       component: postgresql
+      env: test
   template:
     metadata:
       labels:
         app: gridcapa
         component: postgresql
+        env: test
     spec:
       containers:
         - name: gridcapa-postgresql

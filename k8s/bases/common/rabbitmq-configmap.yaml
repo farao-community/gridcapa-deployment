@@ -4,7 +4,8 @@ metadata:
   name: gridcapa-rabbitmq-configmap
   labels:
     app: gridcapa
-    component: gridcapa-rabbitmq
+    common: true
+    component: rabbitmq
 data:
   rabbitmq.conf: |-
     consumer_timeout = 86400000

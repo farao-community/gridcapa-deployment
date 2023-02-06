@@ -4,12 +4,14 @@ metadata:
   name: keycloak
   labels:
     app: gridcapa
-    component: keycloak
+    component: auth
+    env: azure-common
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: keycloak
+    component: auth
+    env: azure-common
   ports:
     - port: 80
       targetPort: 8080

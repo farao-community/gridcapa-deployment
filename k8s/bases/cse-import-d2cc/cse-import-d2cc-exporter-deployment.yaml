@@ -4,21 +4,21 @@ metadata:
   name: cse-import-d2cc-export
   labels:
     app: gridcapa
-    component: export
+    component: exporter
     region: cse
     process: import-d2cc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: export
+      component: exporter
       region: cse
       process: import-d2cc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: export
+        component: exporter
         region: cse
         process: import-d2cc
     spec:

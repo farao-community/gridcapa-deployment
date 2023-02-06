@@ -4,7 +4,8 @@ metadata:
   name: cse-runner-itools-configmap
   labels:
     app: gridcapa
-    component: gridcapa-runner
+    cse-common: true
+    component: runner
     region: cse
 
 data:

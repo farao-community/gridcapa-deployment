@@ -4,7 +4,7 @@ metadata:
   name: core-valid-exporter-configmap
   labels:
     app: gridcapa
-    component: export
+    component: exporter
     region: core
     process: valid
 data:

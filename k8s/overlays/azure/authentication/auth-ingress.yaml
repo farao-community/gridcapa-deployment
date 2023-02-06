@@ -10,7 +10,8 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
   labels:
     app: gridcapa
-    component: gridcapa
+    component: auth
+    env: azure-common
   name: auth
   namespace: default
 spec:

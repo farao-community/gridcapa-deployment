@@ -4,19 +4,21 @@ metadata:
   name: keycloak
   labels:
     app: gridcapa
-    component: keycloak
-
+    component: auth
+    env: azure-common
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: gridcapa
-      component: keycloak
+      component: auth
+      env: azure-common
   template:
     metadata:
       labels:
         app: gridcapa
-        component: keycloak
+        component: auth
+        env: azure-common
     spec:
       securityContext:
         runAsUser: 1000

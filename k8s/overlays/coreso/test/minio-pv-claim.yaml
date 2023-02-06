@@ -4,7 +4,8 @@ metadata:
   name: gridcapa-coreso-minio-storage
   labels:
     app: gridcapa
-    component: gridcapa-minio-storage
+    component: minio
+    env: coreso-test
 spec:
   storageClassName: vsphere-raw-block-sc
   accessModes:

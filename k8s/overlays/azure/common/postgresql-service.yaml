@@ -5,10 +5,12 @@ metadata:
   labels:
     app: gridcapa
     component: postgresql
+    env: azure-common
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
     component: postgresql
+    env: azure-common
   ports:
     - port: 5432

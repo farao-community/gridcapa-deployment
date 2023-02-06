@@ -3,8 +3,9 @@ apiVersion: v1
 metadata:
   name: cse-valid-adapter-logback-configmap
   labels:
-    app: gridcapa-cse-valid-adpater
-    component: gridcapa-cse-valid-adpater
+    app: gridcapa
+    cse-common: true
+    component: adapter
     region: cse
 data:
   logback.xml: |-

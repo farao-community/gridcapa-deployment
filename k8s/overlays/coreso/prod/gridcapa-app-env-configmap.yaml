@@ -4,7 +4,8 @@ metadata:
   name: gridcapa-app-env-configmap
   labels:
     app: gridcapa
-    component: gridcapa-app-env-configmap
+    component: app-env
+    env: coreso-prod
 data:
   env.json: |-
     {

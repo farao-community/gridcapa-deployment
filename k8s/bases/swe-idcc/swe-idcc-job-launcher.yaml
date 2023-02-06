@@ -4,7 +4,7 @@ metadata:
   name: swe-idcc-gridcapa-job-launcher-configmap
   labels:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: job-launcher
     region: swe
     process: idcc
 data:
@@ -62,21 +62,21 @@ metadata:
   name: swe-idcc-gridcapa-job-launcher
   labels:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: job-launcher
     region: swe
     process: idcc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-job-launcher
+      component: job-launcher
       region: swe
       process: idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-job-launcher
+        component: job-launcher
         region: swe
         process: idcc
     spec:
@@ -141,14 +141,14 @@ metadata:
   name: swe-idcc-gridcapa-job-launcher
   labels:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: job-launcher
     region: swe
     process: idcc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: job-launcher
     region: swe
     process: idcc
   ports:

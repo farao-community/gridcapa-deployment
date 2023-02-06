@@ -3,15 +3,17 @@ kind: Service
 metadata:
   name: cse-export-idcc-cgm-data-bridge
   labels:
-    app: gridcapa-data-bridge
-    component: gridcapa-cgm-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: cgm
     region: cse
     process: export-idcc
 spec:
   type: ClusterIP
   selector:
-    app: gridcapa-data-bridge
-    component: gridcapa-cgm-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: cgm
     region: cse
     process: export-idcc
   ports:

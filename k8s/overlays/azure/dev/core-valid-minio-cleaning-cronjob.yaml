@@ -4,7 +4,8 @@ metadata:
   name: core-valid-minio-cleaning-cronjob
   labels:
     app: gridcapa
-    component: gridcapa-core-valid-minio-cleaning-cronjob
+    component: minio-cleaning-cronjob
+    env: azure-dev
     region: core
     process: valid
 spec:

@@ -4,7 +4,8 @@ metadata:
   name: cse-runner-itools-coreso-configmap
   labels:
     app: gridcapa
-    component: gridcapa-runner
+    component: runner
+    env: coreso-test
     region: cse
 
 data:

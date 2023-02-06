@@ -4,11 +4,13 @@ metadata:
   name: gateway
   labels:
     app: gridcapa
+    common: true
     component: gateway
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
+    common: true
     component: gateway
   ports:
     - name: http

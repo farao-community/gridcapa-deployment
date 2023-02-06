@@ -7,7 +7,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-cse-export-d2cc-app
   namespace: default
 spec:
@@ -36,7 +37,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-cse-export-d2cc-config
   namespace: default
 spec:
@@ -65,7 +67,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-cse-export-d2cc-config-notification
   namespace: default
 spec:
@@ -94,7 +97,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-cse-export-d2cc-job-launcher
   namespace: default
 spec:
@@ -123,7 +127,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-cse-export-d2cc-task-manager
   namespace: default
 spec:
@@ -152,7 +157,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-cse-export-d2cc-task-notification
   namespace: default
 spec:
@@ -181,7 +187,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-cse-export-idcc-app
   namespace: default
 spec:
@@ -210,7 +217,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-cse-export-idcc-config
   namespace: default
 spec:
@@ -239,7 +247,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-cse-export-idcc-config-notification
   namespace: default
 spec:
@@ -268,7 +277,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-cse-export-idcc-job-launcher
   namespace: default
 spec:
@@ -297,7 +307,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-cse-export-idcc-task-manager
   namespace: default
 spec:
@@ -326,7 +337,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-cse-export-idcc-task-notification
   namespace: default
 spec:
@@ -355,7 +367,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-swe-d2cc-app
   namespace: default
 spec:
@@ -384,7 +397,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-swe-d2cc-config
   namespace: default
 spec:
@@ -413,7 +427,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-swe-d2cc-config-notification
   namespace: default
 spec:
@@ -442,7 +457,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-swe-d2cc-job-launcher
   namespace: default
 spec:
@@ -471,7 +487,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-swe-d2cc-task-manager
   namespace: default
 spec:
@@ -500,7 +517,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-swe-d2cc-task-notification
   namespace: default
 spec:
@@ -529,7 +547,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-swe-idcc-app
   namespace: default
 spec:
@@ -558,7 +577,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-swe-idcc-config
   namespace: default
 spec:
@@ -587,7 +607,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-swe-idcc-config-notification
   namespace: default
 spec:
@@ -616,7 +637,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-swe-idcc-job-launcher
   namespace: default
 spec:
@@ -645,7 +667,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-swe-idcc-task-manager
   namespace: default
 spec:
@@ -674,7 +697,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-swe-idcc-task-notification
   namespace: default
 spec:
@@ -703,7 +727,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test    
   name: gridcapa-ingress-apps-metadata
   namespace: default
 spec:
@@ -732,7 +757,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
-    component: gridcapa-ingress
+    component: ingress
+    env: coreso-test
   name: gridcapa-ingress-rabbitmq
   namespace: default
 spec:

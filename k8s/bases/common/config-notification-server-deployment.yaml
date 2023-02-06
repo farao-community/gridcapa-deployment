@@ -4,16 +4,19 @@ metadata:
   name: config-notification-server
   labels:
     app: gridcapa
+    common: true
     component: config-notification-server
 spec:
   selector:
     matchLabels:
       app: gridcapa
+      common: true
       component: config-notification-server
   template:
     metadata:
       labels:
         app: gridcapa
+        common: true
         component: config-notification-server
     spec:
       containers:

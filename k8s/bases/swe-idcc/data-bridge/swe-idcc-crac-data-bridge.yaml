@@ -3,8 +3,9 @@ apiVersion: v1
 metadata:
   name: swe-idcc-crac-data-bridge
   labels:
-    app: gridcapa-data-bridge
-    component: gridcapa-crac-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: crac
     region: swe
     process: idcc
 data:
@@ -42,23 +43,26 @@ apiVersion: apps/v1
 metadata:
   name: swe-idcc-crac-data-bridge
   labels:
-    app: gridcapa-data-bridge
-    component: gridcapa-crac-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: crac
     region: swe
     process: idcc
 
 spec:
   selector:
     matchLabels:
-      app: gridcapa-data-bridge
-      component: gridcapa-crac-data-bridge
+      app: gridcapa
+      component: data-bridge
+      file: crac
       region: swe
       process: idcc
   template:
     metadata:
       labels:
-        app: gridcapa-data-bridge
-        component: gridcapa-crac-data-bridge
+        app: gridcapa
+        component: data-bridge
+        file: crac
         region: swe
         process: idcc
     spec:
@@ -156,15 +160,17 @@ kind: Service
 metadata:
   name: swe-idcc-crac-data-bridge
   labels:
-    app: gridcapa-data-bridge
-    component: gridcapa-crac-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: crac
     region: swe
     process: idcc
 spec:
   type: ClusterIP
   selector:
-    app: gridcapa-data-bridge
-    component: gridcapa-crac-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: crac
     region: swe
     process: idcc
   ports:

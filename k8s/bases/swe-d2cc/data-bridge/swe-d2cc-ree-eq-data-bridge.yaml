@@ -3,8 +3,9 @@ apiVersion: v1
 metadata:
   name: swe-d2cc-ree-eq-data-bridge
   labels:
-    app: gridcapa-data-bridge
-    component: gridcapa-ree-eq-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: ree-eq
     region: swe
     process: d2cc
 data:

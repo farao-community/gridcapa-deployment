@@ -6,7 +6,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
     app: gridcapa
-    component: gridcapa
+    component: ingress
+    env: coreso-test
   name: gridcapa-minio
   namespace: default
 spec:

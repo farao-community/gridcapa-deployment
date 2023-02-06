@@ -4,7 +4,8 @@ metadata:
   name: swe-runner-itools-azure-test-configmap
   labels:
     app: gridcapa
-    component: gridcapa-runner
+    component: runner
+    env: azure-test
     region: swe
 
 data:

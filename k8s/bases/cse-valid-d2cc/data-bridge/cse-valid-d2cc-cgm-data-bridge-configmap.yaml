@@ -4,7 +4,8 @@ metadata:
   name: cse-valid-d2cc-cgm-data-bridge-configmap
   labels:
     app: gridcapa
-    component: gridcapa-cgm-data-bridge-configmap
+    component: data-bridge
+    file: cgm
     region: cse
     process: valid-d2cc
 data:

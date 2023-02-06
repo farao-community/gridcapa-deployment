@@ -4,7 +4,8 @@ metadata:
   name: azure-storage-class
   labels:
     app: gridcapa
-    component: gridcapa-storage
+    component: storage-class
+    env: azure-common
 provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777

@@ -5,6 +5,7 @@ metadata:
   labels:
     app: gridcapa
     component: postgresql
+    env: coreso-test
 data:
   init.sh: |-
     #!/bin/bash

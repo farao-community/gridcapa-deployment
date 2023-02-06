@@ -3,22 +3,23 @@ apiVersion: apps/v1
 metadata:
   name: cse-export-d2cc-crac-data-bridge
   labels:
-    app: gridcapa-data-bridge
-    component: gridcapa-crac-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: crac
     region: cse
     process: export-d2cc
 
 spec:
   selector:
     matchLabels:
-      app: gridcapa-data-bridge
+      app: gridcapa
       component: gridcapa-crac-data-bridge
       region: cse
       process: export-d2cc
   template:
     metadata:
       labels:
-        app: gridcapa-data-bridge
+        app: gridcapa
         component: gridcapa-crac-data-bridge
         region: cse
         process: export-d2cc

@@ -4,7 +4,8 @@ metadata:
   name: gridcapa-rabbitmq
   labels:
     app: gridcapa
-    component: gridcapa-rabbitmq
+    common: true
+    component: rabbitmq
 spec:
   type: ClusterIP
   ports:
@@ -19,4 +20,5 @@ spec:
       port: 5672
   selector:
     app: gridcapa
-    component: gridcapa-rabbitmq
+    common: true
+    component: rabbitmq

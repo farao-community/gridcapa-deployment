@@ -4,7 +4,8 @@ metadata:
   name: cse-import-idcc-cgm-data-bridge-configmap
   labels:
     app: gridcapa
-    component: gridcapa-cgm-data-bridge-configmap
+    component: data-bridge
+    file: cgm
     region: cse
     process: import-idcc
 data:

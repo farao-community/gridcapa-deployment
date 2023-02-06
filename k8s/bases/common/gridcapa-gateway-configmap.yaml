@@ -4,7 +4,8 @@ metadata:
   name: gateway-configmap
   labels:
     app: gridcapa
-    component: gateway-configmap
+    common: true
+    component: gateway
 data:
   application.yml: |-
     server:

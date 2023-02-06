@@ -107,7 +107,7 @@ services:
     networks:
       - gridcapa
 
-  cse-import-d2cc-adpater:
+  cse-import-d2cc-adapter:
     image: farao/gridcapa-cse-adapter:latest
     volumes:
       - ./config/cse-d2cc-gridcapa-adapter-application.yml:/config/application.yml

@@ -4,7 +4,8 @@ metadata:
   name: cse-valid-idcc-app-idp-settings-configmap
   labels:
     app: gridcapa
-    component: cse-valid-idcc-app-idp-settings-configmap
+    component: front-app-idp-settings
+    env: azure-dev
     region: cse
     process: valid-idcc
 data:

@@ -4,7 +4,8 @@ metadata:
   name: swe-d2cc-gridcapa-app-idp-settings-configmap
   labels:
     app: gridcapa
-    component: swe-d2cc-gridcapa-app-idp-settings-configmap
+    component: front-app-idp-settings
+    env: azure-test
     region: swe
     process: d2cc
 data:

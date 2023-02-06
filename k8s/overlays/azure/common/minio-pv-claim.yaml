@@ -4,7 +4,8 @@ metadata:
   name: gridcapa-minio-storage
   labels:
     app: gridcapa
-    component: gridcapa-minio-storage
+    component: minio
+    env: azure-common
 spec:
   storageClassName: azure-storage-class
   accessModes:

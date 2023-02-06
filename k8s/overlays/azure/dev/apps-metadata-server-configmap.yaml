@@ -4,7 +4,8 @@ metadata:
   name: apps-metadata-server-configmap
   labels:
     app: gridcapa
-    component: apps-metadata-server-configmap
+    component: apps-metadata-server
+    env: azure-dev
 data:
   apps-metadata.json: |-
     [

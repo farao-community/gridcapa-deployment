@@ -20,7 +20,8 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
   labels:
     app: gridcapa
-    component: gridcapa
+    component: ingress
+    env: azure-test
   name: gridcapa
   namespace: gridcapa
 spec:

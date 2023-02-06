@@ -4,16 +4,19 @@ metadata:
   name: rao-runner
   labels:
     app: gridcapa
+    common: true
     component: rao-runner
 spec:
   selector:
     matchLabels:
       app: gridcapa
+      common: true
       component: rao-runner
   template:
     metadata:
       labels:
         app: gridcapa
+        common: true
         component: rao-runner
     spec:
       containers:
