@@ -5,14 +5,14 @@ bases:
   - ../common
   - ../../../bases/cse-common
   - ../../../bases/cse-export-d2cc
-#  - ../../../bases/cse-export-idcc
-  #  - ../../../bases/cse-import-d2cc
-  # - ../../../bases/cse-import-idcc
-  #- ../../../bases/cse-valid-d2cc
-  # - ../../../bases/cse-valid-idcc
-  # - ../../../bases/core-valid
-  #- ../../../bases/swe-d2cc
-  #- ../../../bases/swe-idcc
+  - ../../../bases/cse-export-idcc
+  - ../../../bases/cse-import-d2cc
+  - ../../../bases/cse-import-idcc
+  - ../../../bases/cse-valid-d2cc
+  - ../../../bases/cse-valid-idcc
+  - ../../../bases/core-valid
+  - ../../../bases/swe-d2cc
+  - ../../../bases/swe-idcc
 
 resources:
   - apps-metadata-server-configmap.yaml
