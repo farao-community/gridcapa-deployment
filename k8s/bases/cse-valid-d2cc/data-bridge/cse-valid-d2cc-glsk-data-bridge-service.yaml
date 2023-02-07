@@ -4,14 +4,16 @@ metadata:
   name: cse-valid-d2cc-glsk-data-bridge
   labels:
     app: gridcapa
-    component: gridcapa-glsk-data-bridge
+    component: data-bridge
+    file: glsk
     region: cse
     process: valid-d2cc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-glsk-data-bridge
+    component: data-bridge
+    file: glsk
     region: cse
     process: valid-d2cc
   ports:

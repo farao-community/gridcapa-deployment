@@ -4,7 +4,8 @@ metadata:
   name: cse-import-idcc-vulcanus-data-bridge-configmap
   labels:
     app: gridcapa
-    component: gridcapa-vulcanus-data-bridge-configmap
+    component: data-bridge
+    file: vulcanus
     region: cse
     process: import-idcc
 data:

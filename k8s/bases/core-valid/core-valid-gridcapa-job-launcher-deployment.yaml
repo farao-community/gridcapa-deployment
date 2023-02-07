@@ -4,21 +4,21 @@ metadata:
   name: core-valid-gridcapa-job-launcher
   labels:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: job-launcher
     region: core
     process: valid
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-job-launcher
+      component: job-launcher
       region: core
       process: valid
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-job-launcher
+        component: job-launcher
         region: core
         process: valid
     spec:

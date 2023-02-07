@@ -4,7 +4,7 @@ metadata:
   name: cse-valid-d2cc-gridcapa-job-launcher-configmap
   labels:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: job-launcher
     region: cse
     process: valid-d2cc
 data:

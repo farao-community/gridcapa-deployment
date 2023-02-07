@@ -4,14 +4,14 @@ metadata:
   name: core-valid-exporter
   labels:
     app: gridcapa
-    component: export
+    component: exporter
     region: core
     process: valid
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: export
+    component: exporter
     region: core
     process: valid
   ports:

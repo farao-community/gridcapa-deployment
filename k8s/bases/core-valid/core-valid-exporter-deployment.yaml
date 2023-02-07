@@ -4,21 +4,21 @@ metadata:
   name: core-valid-exporter
   labels:
     app: gridcapa
-    component: export
+    component: exporter
     region: core
     process: valid
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: export
+      component: exporter
       region: core
       process: valid
   template:
     metadata:
       labels:
         app: gridcapa
-        component: export
+        component: exporter
         region: core
         process: valid
     spec:

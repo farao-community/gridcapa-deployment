@@ -4,21 +4,21 @@ metadata:
   name: cse-import-idcc-gridcapa-job-launcher
   labels:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: job-launcher
     region: cse
     process: import-idcc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-job-launcher
+      component: job-launcher
       region: cse
       process: import-idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-job-launcher
+        component: job-launcher
         region: cse
         process: import-idcc
     spec:

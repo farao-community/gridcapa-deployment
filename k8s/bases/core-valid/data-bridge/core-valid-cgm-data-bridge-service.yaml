@@ -4,14 +4,16 @@ metadata:
   name: core-valid-cgm-data-bridge
   labels:
     app: gridcapa
-    component: gridcapa-cgm-data-bridge
+    component: data-bridge
+    file: cgm
     region: core
     process: valid
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-cgm-data-bridge
+    component: data-bridge
+    file: cgm
     region: core
     process: valid
   ports:

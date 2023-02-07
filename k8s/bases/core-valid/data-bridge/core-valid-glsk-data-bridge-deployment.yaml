@@ -4,7 +4,8 @@ metadata:
   name: core-valid-glsk-data-bridge
   labels:
     app: gridcapa
-    component: gridcapa-glsk-data-bridge
+    component: data-bridge
+    file: glsk
     region: core
     process: valid
 
@@ -12,14 +13,16 @@ spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-glsk-data-bridge
+      component: data-bridge
+      file: glsk
       region: core
       process: valid
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-glsk-data-bridge
+        component: data-bridge
+        file: glsk
         region: core
         process: valid
     spec:

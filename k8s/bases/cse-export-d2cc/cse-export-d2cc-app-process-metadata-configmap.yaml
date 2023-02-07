@@ -4,7 +4,9 @@ metadata:
   name: cse-export-d2cc-gridcapa-app-process-metadata-configmap
   labels:
     app: gridcapa
-    component: cse-export-d2cc-gridcapa-app-process-metadata-configmap
+    component: front-app-process-metadata
+    region: cse
+    process: export-d2cc
 data:
   process-metadata.json: |-
     {

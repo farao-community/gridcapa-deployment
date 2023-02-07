@@ -4,7 +4,7 @@ metadata:
   name: swe-d2cc-adapter-configmap
   labels:
     app: gridcapa
-    component: gridcapa-swe-adpater
+    component: adapter
     region: swe
     process: d2cc
 data:
@@ -45,21 +45,21 @@ metadata:
   name: swe-d2cc-adapter
   labels:
     app: gridcapa
-    component: gridcapa-swe-d2cc-adapter
+    component: adapter
     region: swe
     process: d2cc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-swe-d2cc-adapter
+      component: adapter
       region: swe
       process: d2cc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-swe-d2cc-adapter
+        component: adapter
         region: swe
         process: d2cc
     spec:
@@ -124,14 +124,14 @@ metadata:
   name: swe-d2cc-adapter
   labels:
     app: gridcapa
-    component: gridcapa-swe-d2cc-adapter
+    component: adapter
     region: swe
     process: d2cc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-swe-d2cc-adapter
+    component: adapter
     region: swe
     process: d2cc
   ports:

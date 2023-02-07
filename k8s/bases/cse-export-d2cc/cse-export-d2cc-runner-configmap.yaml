@@ -3,8 +3,8 @@ apiVersion: v1
 metadata:
   name: cse-export-d2cc-runner-configmap
   labels:
-    app: gridcapa-runner
-    component: gridcapa-runner
+    app: gridcapa
+    component: runner
     region: cse
     process: export-d2cc
 data:

@@ -4,14 +4,16 @@ metadata:
   name: core-valid-refprog-data-bridge
   labels:
     app: gridcapa
-    component: gridcapa-refprog-data-bridge
+    component: data-bridge
+    file: refprog
     region: core
     process: valid
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-refprog-data-bridge
+    component: data-bridge
+    file: refprog
     region: core
     process: valid
   ports:

@@ -4,7 +4,8 @@ metadata:
   name: cse-import-idcc-glsk-data-bridge
   labels:
     app: gridcapa
-    component: gridcapa-glsk-data-bridge
+    component: data-bridge
+    file: glsk
     region: cse
     process: import-idcc
 
@@ -12,14 +13,16 @@ spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-glsk-data-bridge
+      component: data-bridge
+      file: glsk
       region: cse
       process: import-idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-glsk-data-bridge
+        component: data-bridge
+        file: glsk
         region: cse
         process: import-idcc
     spec:

@@ -3,22 +3,22 @@ apiVersion: apps/v1
 metadata:
   name: cse-export-d2cc-gridcapa-job-launcher
   labels:
-    app: gridcapa-job-launcher
-    component: gridcapa-job-launcher
+    app: gridcapa
+    component: job-launcher
     region: cse
     process: export-d2cc
 spec:
   selector:
     matchLabels:
-      app: gridcapa-job-launcher
-      component: gridcapa-job-launcher
+      app: gridcapa
+      component: job-launcher
       region: cse
       process: export-d2cc
   template:
     metadata:
       labels:
-        app: gridcapa-job-launcher
-        component: gridcapa-job-launcher
+        app: gridcapa
+        component: job-launcher
         region: cse
         process: export-d2cc
     spec:

@@ -4,21 +4,21 @@ metadata:
   name: swe-d2cc-gridcapa-app
   labels:
     app: gridcapa
-    component: gridcapa-app
+    component: front-app
     region: swe
     process: d2cc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-app
+      component: front-app
       region: swe
       process: d2cc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-app
+        component: front-app
         region: swe
         process: d2cc
     spec:
@@ -80,7 +80,7 @@ metadata:
   name: swe-d2cc-gridcapa-app-process-metadata-configmap
   labels:
     app: gridcapa
-    component: swe-d2cc-gridcapa-app-process-metadata-configmap
+    component: front-app-process-metadata
     region: swe
     process: d2cc
 data:
@@ -152,14 +152,14 @@ metadata:
   name: swe-d2cc-gridcapa-app
   labels:
     app: gridcapa
-    component: gridcapa-app
+    component: front-app
     region: swe
     process: d2cc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-app
+    component: front-app
     region: swe
     process: d2cc
   ports:

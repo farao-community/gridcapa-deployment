@@ -4,7 +4,8 @@ metadata:
   name: cse-import-idcc-ntc2-ch-data-bridge-configmap
   labels:
     app: gridcapa
-    component: gridcapa-ntc2-ch-data-bridge-configmap
+    component: data-bridge
+    file: ntc2-ch
     region: cse
     process: import-idcc
 data:

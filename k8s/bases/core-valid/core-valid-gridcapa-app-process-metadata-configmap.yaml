@@ -4,7 +4,7 @@ metadata:
   name: core-valid-gridcapa-app-process-metadata-configmap
   labels:
     app: gridcapa
-    component: core-valid-gridcapa-app-process-metadata-configmap
+    component: front-app-process-metadata
     region: core
     process: valid
 data:

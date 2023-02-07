@@ -3,15 +3,17 @@ kind: Service
 metadata:
   name: cse-import-d2cc-user-config-data-bridge
   labels:
-    app: gridcapa-data-bridge
-    component: gridcapa-user-config-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: user-config
     region: cse
     process: import-d2cc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-user-config-data-bridge
+    component: data-bridge
+    file: user-config
     region: cse
     process: import-d2cc
   ports:

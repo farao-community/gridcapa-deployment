@@ -4,14 +4,16 @@ metadata:
   name: core-valid-studypoint-data-bridge
   labels:
     app: gridcapa
-    component: gridcapa-studypoint-data-bridge
+    component: data-bridge
+    file: studypoint
     region: core
     process: valid
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-studypoint-data-bridge
+    component: data-bridge
+    file: studypoint
     region: core
     process: valid
   ports:

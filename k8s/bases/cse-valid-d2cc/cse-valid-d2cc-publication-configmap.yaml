@@ -4,7 +4,7 @@ metadata:
   name: cse-valid-d2cc-publication-configmap
   labels:
     app: gridcapa
-    component: gridcapa-cse-valid-d2cc-publication
+    component: publication
     region: cse
     process: valid-d2cc
 data:

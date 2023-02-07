@@ -4,14 +4,14 @@ metadata:
   name: cse-import-d2cc-gridcapa-runner
   labels:
     app: gridcapa
-    component: gridcapa-runner
+    component: runner
     region: cse
     process: import-d2cc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-runner
+    component: runner
     region: cse
     process: import-d2cc
   ports:

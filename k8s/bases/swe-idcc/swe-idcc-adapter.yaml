@@ -4,7 +4,7 @@ metadata:
   name: swe-idcc-adapter-configmap
   labels:
     app: gridcapa
-    component: gridcapa-swe-adpater
+    component: adapter
     region: swe
     process: idcc
 data:
@@ -45,21 +45,21 @@ metadata:
   name: swe-idcc-adapter
   labels:
     app: gridcapa
-    component: gridcapa-swe-idcc-adapter
+    component: adapter
     region: swe
     process: idcc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-swe-idcc-adapter
+      component: adapter
       region: swe
       process: idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-swe-idcc-adapter
+        component: adapter
         region: swe
         process: idcc
     spec:
@@ -124,14 +124,14 @@ metadata:
   name: swe-idcc-adapter
   labels:
     app: gridcapa
-    component: gridcapa-swe-idcc-adapter
+    component: adapter
     region: swe
     process: idcc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-swe-idcc-adapter
+    component: adapter
     region: swe
     process: idcc
   ports:

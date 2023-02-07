@@ -4,14 +4,14 @@ metadata:
   name: core-valid-runner
   labels:
     app: gridcapa
-    component: gridcapa-core-valid-runner
+    component: runner
     region: core
     process: valid
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-core-valid-runner
+    component: runner
     region: core
     process: valid
   ports:
