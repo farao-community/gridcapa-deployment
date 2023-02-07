@@ -25,3 +25,10 @@ swe-adapter:
 swe-runner:
   binding:
     destination: swe-idcc-request
+
+minio-adapter:
+  bucket: gridcapa
+  base-path: /SWE/IDCC
+  access-key: gridcapa
+  secret-key: gridcapa
+  url: http://minio:9000

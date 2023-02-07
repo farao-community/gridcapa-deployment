@@ -41,10 +41,3 @@ job-launcher:
 
 scheduler:
   enable: false
-
-minio-adapter:
-  bucket: gridcapa
-  base-path: /SWE/D2CC
-  access-key: gridcapa
-  secret-key: gridcapa
-  url: http://minio:9000
