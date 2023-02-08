@@ -12,7 +12,7 @@ metadata:
     app: gridcapa
     component: gridcapa
   name: auth
-  namespace: default
+  namespace: auth
 spec:
   rules:
     - host: auth.farao-community.com
