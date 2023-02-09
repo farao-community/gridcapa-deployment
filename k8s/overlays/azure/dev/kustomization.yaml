@@ -74,28 +74,28 @@ images:
     newTag: latest-auth
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v1.2.1
+    newTag: latest
   - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
-    newTag: v1.8.0
+    newTag: latest
   - name: gridcapa-cse-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
-    newTag: v1.4.0
+    newTag: latest
   - name: gridcapa-cse-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: latest
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.12.0
+    newTag: latest
   - name: gridcapa-cse-export-runner
     newName: docker.io/farao/gridcapa-cse-cc-export-runner
     newTag: latest
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.12.0
+    newTag: latest
   - name: gridcapa-cse-exporter
     newName: docker.io/farao/gridcapa-export
-    newTag: v1.2.0
+    newTag: latest
   - name: gridcapa-core-valid-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: latest
