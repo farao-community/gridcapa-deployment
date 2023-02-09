@@ -36,6 +36,13 @@ data:
     swe-runner:
       binding:
         destination: swe-d2cc-request
+        
+    minio-adapter:
+      bucket: ${MINIO_BUCKET}
+      base-path: ${MINIO_BASE_DIRECTORY}
+      access-key: ${GRIDCAPA_MINIO_USER}
+      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+      url: http://gridcapa-minio:9000/
 
 ---
 
