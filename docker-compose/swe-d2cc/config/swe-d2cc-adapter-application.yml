@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: swe-d2cc-adapter
   rabbitmq:
     username: gridcapa
     password: gridcapa
@@ -32,3 +34,8 @@ minio-adapter:
   access-key: gridcapa
   secret-key: gridcapa
   url: http://minio:9000
+
+logback:
+  amqp:
+    exchange: swe-d2cc-task-manager-logs-exchange
+    routing-key: "#"
