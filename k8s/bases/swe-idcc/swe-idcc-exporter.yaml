@@ -4,7 +4,7 @@ metadata:
   name: swe-idcc-exporter-configmap
   labels:
     app: gridcapa
-    component: export
+    component: exporter
     region: swe
     process: idcc
 data:
@@ -60,21 +60,21 @@ metadata:
   name: swe-idcc-exporter
   labels:
     app: gridcapa
-    component: export
+    component: exporter
     region: swe
     process: idcc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: export
+      component: exporter
       region: swe
       process: idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: export
+        component: exporter
         region: swe
         process: idcc
     spec:
@@ -164,14 +164,14 @@ metadata:
   name: swe-idcc-exporter
   labels:
     app: gridcapa
-    component: export
+    component: exporter
     region: swe
     process: idcc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: export
+    component: exporter
     region: swe
     process: idcc
   ports:

@@ -3,8 +3,9 @@ apiVersion: v1
 metadata:
   name: swe-d2cc-coreso-sv-data-bridge
   labels:
-    app: gridcapa-data-bridge
-    component: gridcapa-coreso-sv-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: coreso-sv
     region: swe
     process: d2cc
 data:
@@ -42,23 +43,26 @@ apiVersion: apps/v1
 metadata:
   name: swe-d2cc-coreso-sv-data-bridge
   labels:
-    app: gridcapa-data-bridge
-    component: gridcapa-coreso-sv-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: coreso-sv
     region: swe
     process: d2cc
 
 spec:
   selector:
     matchLabels:
-      app: gridcapa-data-bridge
-      component: gridcapa-coreso-sv-data-bridge
+      app: gridcapa
+      component: data-bridge
+      file: coreso-sv
       region: swe
       process: d2cc
   template:
     metadata:
       labels:
-        app: gridcapa-data-bridge
-        component: gridcapa-coreso-sv-data-bridge
+        app: gridcapa
+        component: data-bridge
+        file: coreso-sv
         region: swe
         process: d2cc
     spec:
@@ -156,15 +160,17 @@ kind: Service
 metadata:
   name: swe-d2cc-coreso-sv-data-bridge
   labels:
-    app: gridcapa-data-bridge
-    component: gridcapa-coreso-sv-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: coreso-sv
     region: swe
     process: d2cc
 spec:
   type: ClusterIP
   selector:
-    app: gridcapa-data-bridge
-    component: gridcapa-coreso-sv-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: coreso-sv
     region: swe
     process: d2cc
   ports:

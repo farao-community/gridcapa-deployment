@@ -4,14 +4,14 @@ metadata:
   name: core-valid-gridcapa-job-launcher
   labels:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: job-launcher
     region: core
     process: valid
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: job-launcher
     region: core
     process: valid
   ports:

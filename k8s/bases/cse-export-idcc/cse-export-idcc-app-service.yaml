@@ -3,15 +3,15 @@ kind: Service
 metadata:
   name: cse-export-idcc-gridcapa-app
   labels:
-    app: gridcapa-app
-    component: gridcapa-app
+    app: gridcapa
+    component: front-app
     region: cse
     process: export-idcc
 spec:
   type: ClusterIP
   selector:
-    app: gridcapa-app
-    component: gridcapa-app
+    app: gridcapa
+    component: front-app
     region: cse
     process: export-idcc
   ports:

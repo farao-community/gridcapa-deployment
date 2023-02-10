@@ -4,7 +4,9 @@ metadata:
   name: cse-valid-d2cc-crac-import-corner-data-bridge-configmap
   labels:
     app: gridcapa
-    component: gridcapa-crac-import-corner-data-bridge-configmap
+    component: data-bridge
+    file: crac
+    corner: import
     region: cse
     process: valid-d2cc
 data:

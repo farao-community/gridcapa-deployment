@@ -4,7 +4,7 @@ metadata:
   name: swe-idcc-runner-itools-configmap
   labels:
     app: gridcapa
-    component: gridcapa-swe-idcc-runner
+    component: runner
     region: swe
     process: idcc
 

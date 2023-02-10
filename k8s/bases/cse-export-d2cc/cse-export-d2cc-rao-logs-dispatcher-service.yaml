@@ -3,15 +3,15 @@ kind: Service
 metadata:
   name: cse-export-d2cc-rao-logs-dispatcher
   labels:
-    app: gridcapa-rao-logs-dispatcher
-    component: gridcapa-rao-logs-dispatcher
+    app: gridcapa
+    component: rao-logs-dispatcher
     region: cse
     process: export-d2cc
 spec:
   type: ClusterIP
   selector:
-    app: gridcapa-rao-logs-dispatcher
-    component: gridcapa-rao-logs-dispatcher
+    app: gridcapa
+    component: rao-logs-dispatcher
     region: cse
     process: export-d2cc
   ports:

@@ -4,14 +4,14 @@ metadata:
   name: cse-valid-idcc-gridcapa-app
   labels:
     app: gridcapa
-    component: gridcapa-app
+    component: front-app
     region: cse
     process: valid-idcc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-app
+    component: front-app
     region: cse
     process: valid-idcc
   ports:

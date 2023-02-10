@@ -4,14 +4,14 @@ metadata:
   name: core-valid-gridcapa-app
   labels:
     app: gridcapa
-    component: gridcapa-app
+    component: front-app
     region: core
     process: valid
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-app
+    component: front-app
     region: core
     process: valid
   ports:

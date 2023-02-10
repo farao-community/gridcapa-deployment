@@ -3,8 +3,8 @@ apiVersion: v1
 metadata:
   name: cse-export-d2cc-task-manager-configmap
   labels:
-    app: gridcapa-task-manager
-    component: gridcapa-task-manager
+    app: gridcapa
+    component: task-manager
     region: cse
     process: export-d2cc
 data:

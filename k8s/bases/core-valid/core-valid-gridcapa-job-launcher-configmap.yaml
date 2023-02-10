@@ -4,7 +4,7 @@ metadata:
   name: core-valid-gridcapa-job-launcher-configmap
   labels:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: job-launcher
     region: core
     process: valid
 data:

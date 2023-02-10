@@ -4,7 +4,7 @@ metadata:
   name: core-valid-runner-itools-configmap
   labels:
     app: gridcapa
-    component: gridcapa-core-valid-runner
+    component: runner
     region: core
     process: valid
 

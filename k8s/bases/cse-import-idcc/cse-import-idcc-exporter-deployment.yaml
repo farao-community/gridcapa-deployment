@@ -4,21 +4,21 @@ metadata:
   name: cse-import-idcc-exporter
   labels:
     app: gridcapa
-    component: export
+    component: exporter
     region: cse
     process: import-idcc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: export
+      component: exporter
       region: cse
       process: import-idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: export
+        component: exporter
         region: cse
         process: import-idcc
     spec:

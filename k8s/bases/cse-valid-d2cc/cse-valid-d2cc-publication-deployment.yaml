@@ -4,21 +4,21 @@ metadata:
   name: cse-valid-d2cc-publication
   labels:
     app: gridcapa
-    component: gridcapa-cse-valid-d2cc-publication
+    component: publication
     region: cse
     process: valid-d2cc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-cse-valid-d2cc-publication
+      component: publication
       region: cse
       process: valid-d2cc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-cse-valid-d2cc-publication
+        component: publication
         region: cse
         process: valid-d2cc
     spec:

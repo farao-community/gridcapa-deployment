@@ -3,22 +3,22 @@ apiVersion: apps/v1
 metadata:
   name: cse-export-idcc-gridcapa-job-launcher
   labels:
-    app: gridcapa-job-launcher
-    component: gridcapa-job-launcher
+    app: gridcapa
+    component: job-launcher
     region: cse
     process: export-idcc
 spec:
   selector:
     matchLabels:
-      app: gridcapa-job-launcher
-      component: gridcapa-job-launcher
+      app: gridcapa
+      component: job-launcher
       region: cse
       process: export-idcc
   template:
     metadata:
       labels:
-        app: gridcapa-job-launcher
-        component: gridcapa-job-launcher
+        app: gridcapa
+        component: job-launcher
         region: cse
         process: export-idcc
     spec:

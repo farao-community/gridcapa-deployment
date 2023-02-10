@@ -3,15 +3,17 @@ kind: Service
 metadata:
   name: cse-import-d2cc-ntc-red-data-bridge
   labels:
-    app: gridcapa-data-bridge
-    component: gridcapa-ntc-red-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: ntc-red
     region: cse
     process: import-d2cc
 spec:
   type: ClusterIP
   selector:
-    app: gridcapa-data-bridge
-    component: gridcapa-ntc-red-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: ntc-red
     region: cse
     process: import-d2cc
   ports:

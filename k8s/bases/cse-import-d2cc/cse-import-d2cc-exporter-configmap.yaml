@@ -4,7 +4,7 @@ metadata:
   name: cse-import-d2cc-export-configmap
   labels:
     app: gridcapa
-    component: export
+    component: exporter
     region: cse
     process: import-d2cc
 data:

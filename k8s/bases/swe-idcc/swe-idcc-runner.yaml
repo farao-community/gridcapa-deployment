@@ -4,7 +4,7 @@ metadata:
   name: swe-idcc-runner-configmap
   labels:
     app: gridcapa
-    component: gridcapa-swe-idcc-runner
+    component: runner
     region: swe
     process: idcc
 data:
@@ -94,21 +94,21 @@ metadata:
   name: swe-idcc-runner
   labels:
     app: gridcapa
-    component: gridcapa-swe-idcc-runner
+    component: runner
     region: swe
     process: idcc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-swe-idcc-runner
+      component: runner
       region: swe
       process: idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-swe-idcc-runner
+        component: runner
         region: swe
         process: idcc
     spec:
@@ -189,14 +189,14 @@ metadata:
   name: swe-idcc-runner
   labels:
     app: gridcapa
-    component: gridcapa-swe-idcc-runner
+    component: runner
     region: swe
     process: idcc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-swe-idcc-runner
+    component: runner
     region: swe
     process: idcc
   ports:
