@@ -4,7 +4,7 @@ metadata:
   name: cse-valid-idcc-runner-configmap
   labels:
     app: gridcapa
-    component: gridcapa-cse-valid-idcc-runner
+    component: runner
     region: cse
     process: valid-idcc
 data:

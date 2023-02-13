@@ -4,7 +4,7 @@ metadata:
   name: cse-import-d2cc-gridcapa-app
   labels:
     app: gridcapa
-    component: gridcapa-app
+    component: front-app
     region: cse
     process: import-d2cc
 
@@ -12,14 +12,14 @@ spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-app
+      component: front-app
       region: cse
       process: import-d2cc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-app
+        component: front-app
         region: cse
         process: import-d2cc
     spec:

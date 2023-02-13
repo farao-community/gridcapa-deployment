@@ -4,7 +4,9 @@ metadata:
   name: cse-export-idcc-gridcapa-app-process-metadata-configmap
   labels:
     app: gridcapa
-    component: cse-export-idcc-gridcapa-app-process-metadata-configmap
+    component: front-app-process-metadata
+    region: cse
+    process: export-idcc
 data:
   process-metadata.json: |-
     {

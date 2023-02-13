@@ -4,14 +4,16 @@ metadata:
   name: cse-import-idcc-crac-data-bridge
   labels:
     app: gridcapa
-    component: gridcapa-crac-data-bridge
+    component: data-bridge
+    file: crac
     region: cse
     process: import-idcc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-crac-data-bridge
+    component: data-bridge
+    file: crac
     region: cse
     process: import-idcc
   ports:

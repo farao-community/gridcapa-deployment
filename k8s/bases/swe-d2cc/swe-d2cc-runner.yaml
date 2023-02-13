@@ -4,7 +4,7 @@ metadata:
   name: swe-d2cc-runner-configmap
   labels:
     app: gridcapa
-    component: gridcapa-swe-d2cc-runner
+    component: runner
     region: swe
     process: d2cc
 data:
@@ -94,21 +94,21 @@ metadata:
   name: swe-d2cc-runner
   labels:
     app: gridcapa
-    component: gridcapa-swe-d2cc-runner
+    component: runner
     region: swe
     process: d2cc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-swe-d2cc-runner
+      component: runner
       region: swe
       process: d2cc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-swe-d2cc-runner
+        component: runner
         region: swe
         process: d2cc
     spec:
@@ -199,14 +199,14 @@ metadata:
   name: swe-d2cc-runner
   labels:
     app: gridcapa
-    component: gridcapa-swe-d2cc-runner
+    component: runner
     region: swe
     process: d2cc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-swe-d2cc-runner
+    component: runner
     region: swe
     process: d2cc
   ports:

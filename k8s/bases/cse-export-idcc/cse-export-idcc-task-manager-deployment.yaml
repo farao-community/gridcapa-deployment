@@ -3,22 +3,22 @@ apiVersion: apps/v1
 metadata:
   name: cse-export-idcc-task-manager
   labels:
-    app: gridcapa-task-manager
-    component: gridcapa-task-manager
+    app: gridcapa
+    component: task-manager
     region: cse
     process: export-idcc
 spec:
   selector:
     matchLabels:
-      app: gridcapa-task-manager
-      component: gridcapa-task-manager
+      app: gridcapa
+      component: task-manager
       region: cse
       process: export-idcc
   template:
     metadata:
       labels:
-        app: gridcapa-task-manager
-        component: gridcapa-task-manager
+        app: gridcapa
+        component: task-manager
         region: cse
         process: export-idcc
     spec:

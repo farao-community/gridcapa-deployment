@@ -4,7 +4,7 @@ metadata:
   name: cse-import-idcc-gridcapa-adapter-configmap
   labels:
     app: gridcapa
-    component: gridcapa-adapter
+    component: adapter
     region: cse
     process: import-idcc
 data:

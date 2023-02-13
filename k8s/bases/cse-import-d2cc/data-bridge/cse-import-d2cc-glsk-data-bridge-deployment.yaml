@@ -3,23 +3,26 @@ apiVersion: apps/v1
 metadata:
   name: cse-import-d2cc-glsk-data-bridge
   labels:
-    app: gridcapa-data-bridge
-    component: gridcapa-glsk-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: glsk
     region: cse
     process: import-d2cc
 
 spec:
   selector:
     matchLabels:
-      app: gridcapa-data-bridge
-      component: gridcapa-glsk-data-bridge
+      app: gridcapa
+      component: data-bridge
+      file: glsk
       region: cse
       process: import-d2cc
   template:
     metadata:
       labels:
-        app: gridcapa-data-bridge
-        component: gridcapa-glsk-data-bridge
+        app: gridcapa
+        component: data-bridge
+        file: glsk
         region: cse
         process: import-d2cc
     spec:
@@ -43,12 +46,12 @@ spec:
             - name: SOURCE_USER
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-ftp-credentials
+                  name: gridcapa-ftp-server-credentials
                   key: ftp-user
             - name: SOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-ftp-credentials
+                  name: gridcapa-ftp-server-credentials
                   key: ftp-password
             - name: SOURCE_BASE_DIRECTORY
               valueFrom:

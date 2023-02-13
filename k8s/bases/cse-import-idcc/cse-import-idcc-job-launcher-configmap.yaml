@@ -4,7 +4,7 @@ metadata:
   name: cse-import-idcc-gridcapa-job-launcher-configmap
   labels:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: job-launcher
     region: cse
     process: import-idcc
 data:

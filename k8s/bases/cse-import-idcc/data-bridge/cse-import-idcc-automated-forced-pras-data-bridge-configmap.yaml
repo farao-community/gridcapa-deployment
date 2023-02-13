@@ -4,7 +4,8 @@ metadata:
   name: cse-import-idcc-automated-forced-pras-data-bridge
   labels:
     app: gridcapa
-    component: gridcapa-automated-forced-pras-data-bridge-configmap
+    component: data-bridge
+    file: automated-forced-pras
     region: cse
     process: import-idcc
 data:
