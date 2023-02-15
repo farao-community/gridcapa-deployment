@@ -195,6 +195,12 @@ images:
   - name: gridcapa-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner-with-xpress
     newTag: v1.9.0
+  - name: gridcapa-app
+    newName: docker.io/farao/gridcapa-app
+    newTag: v1.6.1
+  - name: gridcapa-gateway
+    newName: docker.io/farao/gridcapa-gateway
+    newTag: 1.0.0
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: v1.2.1
@@ -216,9 +222,6 @@ images:
   - name: gridcapa-cse-exporter
     newName: docker.io/farao/gridcapa-export
     newTag: v1.2.0
-  - name: gridcapa-app
-    newName: docker.io/farao/gridcapa-app
-    newTag: v1.6.1
   - name: gridcapa-swe-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: v1.2.2

@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: docker.io/farao/gridcapa-gateway:latest
+          image: gridcapa-gateway
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
