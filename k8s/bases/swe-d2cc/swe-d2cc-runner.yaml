@@ -80,8 +80,8 @@ data:
         - http://gridcapa-minio:9000/
     
     minio-adapter:
-      bucket: gridcapa
-      base-path: /SWE/D2CC
+      bucket: ${MINIO_BUCKET}
+      base-path: ${MINIO_BASE_DIRECTORY}
       access-key: ${GRIDCAPA_MINIO_USER}
       secret-key: ${GRIDCAPA_MINIO_PASSWORD}
       url: http://gridcapa-minio:9000/
@@ -139,6 +139,16 @@ spec:
                 secretKeyRef:
                   name: gridcapa-minio-credentials
                   key: minio-secret-key
+            - name: MINIO_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BUCKET_SWE_D2CC
+            - name: MINIO_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_SWE_D2CC
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml

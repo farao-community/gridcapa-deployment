@@ -37,6 +37,13 @@ data:
       binding:
         destination: swe-idcc-request
 
+    minio-adapter:
+      bucket: ${MINIO_BUCKET}
+      base-path: ${MINIO_BASE_DIRECTORY}
+      access-key: ${GRIDCAPA_MINIO_USER}
+      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+      url: http://gridcapa-minio:9000/
+
 ---
 
 kind: Deployment
@@ -80,6 +87,26 @@ spec:
                 secretKeyRef:
                   name: gridcapa-rabbitmq-credentials
                   key: rabbitmq-password
+            - name: GRIDCAPA_MINIO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: GRIDCAPA_MINIO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+            - name: MINIO_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BUCKET_SWE_IDCC
+            - name: MINIO_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_SWE_IDCC
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
