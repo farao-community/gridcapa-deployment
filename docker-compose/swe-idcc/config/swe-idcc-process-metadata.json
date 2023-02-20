@@ -8,11 +8,50 @@
     "15:30",
     "19:30"
   ],
-  "eventPredefinedFilter": {
-    "Summary": [
-      "Summary ",
-      "Summary BD",
-      "dichotomy step"
-    ]
-  }
+  "eventPredefinedFilter": [
+    {
+      "filterName": "Summary",
+      "defaultChecked": true,
+      "filterValue": [
+        "Summary ",
+        "Summary BD",
+        "dichotomy step"
+      ]
+    },
+    {
+      "filterName": "ES-FR",
+      "defaultChecked": false,
+      "filterValue": [
+        "[ES-FR]"
+      ]
+    },
+    {
+      "filterName": "FR-ES",
+      "defaultChecked": false,
+      "filterValue": [
+        "[FR-ES]"
+      ]
+    },
+    {
+      "filterName": "ES-PT",
+      "defaultChecked": false,
+      "filterValue": [
+        "[ES-PT]"
+      ]
+    },
+    {
+      "filterName": "PT-ES",
+      "defaultChecked": false,
+      "filterValue":[
+        "[PT-ES]"
+      ]
+    },
+    {
+      "filterName": "Summary BD",
+      "defaultChecked": false,
+      "filterValue": [
+        "Summary BD"
+      ]
+    }
+  ]
 }

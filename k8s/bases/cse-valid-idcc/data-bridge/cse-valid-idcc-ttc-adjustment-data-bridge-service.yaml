@@ -4,14 +4,16 @@ metadata:
   name: cse-valid-idcc-ttc-adjustment-data-bridge
   labels:
     app: gridcapa
-    component: gridcapa-ttc-adjustment-data-bridge
+    component: data-bridge
+    file: ttc-adjustment
     region: cse
     process: valid-idcc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-ttc-adjustment-data-bridge
+    component: data-bridge
+    file: ttc-adjustment
     region: cse
     process: valid-idcc
   ports:

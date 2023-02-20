@@ -20,12 +20,12 @@ data:
       },
       {
         "name" : "Capa SWE D2CC",
-        "url"  : "/swe/d2cc",
+        "url"  : "/swe/d2cc/",
         "appColor" : "#ebd82d"
       },
       {
         "name" : "Capa SWE IDCC",
-        "url"  : "/swe/idcc",
+        "url"  : "/swe/idcc/",
         "appColor" : "#cfeb2d"
       }
     ]

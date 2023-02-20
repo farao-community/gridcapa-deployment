@@ -77,7 +77,7 @@ task-server:
       - CGM_PTES
     enable-export-logs: true
   whitelist:
-    - http:/minio:9000/
+    - http://minio:9000/
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}

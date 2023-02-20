@@ -4,7 +4,8 @@ metadata:
   name: cse-valid-idcc-ttc-adjustment-data-bridge-configmap
   labels:
     app: gridcapa
-    component: gridcapa-ttc-adjustment-data-bridge-configmap
+    component: data-bridge
+    file: ttc-adjustment
     region: cse
     process: valid-idcc
 data:

@@ -38,7 +38,10 @@ data:
       pst-sensitivity-threshold : 0.01
       sensitivity-fallback-overcost: 0.0
       rao-with-loop-flow-limitation: false
-      rao-with-mnec-limitation: false
+      rao-with-mnec-limitation : true
+      mnec-acceptable-margin-diminution : -99999
+      mnec-violation-cost : 100.0
+      mnec-constraint-adjustment-coefficient : 5.0
       perimeters-in-parallel: 10
       load-flow-provider: OpenLoadFlow
       sensitivity-provider: OpenLoadFlow

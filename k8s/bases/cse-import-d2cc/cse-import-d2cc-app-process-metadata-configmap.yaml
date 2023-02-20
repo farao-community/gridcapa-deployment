@@ -4,7 +4,9 @@ metadata:
   name: cse-import-d2cc-gridcapa-app-process-metadata-configmap
   labels:
     app: gridcapa
-    component: cse-import-d2cc-gridcapa-app-process-metadata-configmap
+    component: front-app-process-metadata
+    region: cse
+    process: import-d2cc
 data:
   process-metadata.json: |-
     {
@@ -19,10 +21,14 @@ data:
         "19:30",
         "22:30"
       ],
-      "eventPredefinedFilter": {
-        "Summary": [
-          "Summary :",
-          "dichotomy step"
-        ]
-      }
+      "eventPredefinedFilter": [
+        {
+          "filterName": "Summary",
+          "defaultChecked": true,
+          "filterValue": [
+            "Summary :",
+            "Network at dichotomy step"
+          ]
+        }
+      ]
     }

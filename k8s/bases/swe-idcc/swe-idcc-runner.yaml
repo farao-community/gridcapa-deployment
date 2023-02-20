@@ -4,7 +4,7 @@ metadata:
   name: swe-idcc-runner-configmap
   labels:
     app: gridcapa
-    component: gridcapa-swe-idcc-runner
+    component: runner
     region: swe
     process: idcc
 data:
@@ -80,8 +80,8 @@ data:
         - http://gridcapa-minio:9000/
     
     minio-adapter:
-      bucket: gridcapa
-      base-path: /SWE/IDCC
+      bucket: ${MINIO_BUCKET}
+      base-path: ${MINIO_BASE_DIRECTORY}
       access-key: ${GRIDCAPA_MINIO_USER}
       secret-key: ${GRIDCAPA_MINIO_PASSWORD}
       url: http://gridcapa-minio:9000/
@@ -94,21 +94,21 @@ metadata:
   name: swe-idcc-runner
   labels:
     app: gridcapa
-    component: gridcapa-swe-idcc-runner
+    component: runner
     region: swe
     process: idcc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-swe-idcc-runner
+      component: runner
       region: swe
       process: idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-swe-idcc-runner
+        component: runner
         region: swe
         process: idcc
     spec:
@@ -139,6 +139,16 @@ spec:
                 secretKeyRef:
                   name: gridcapa-minio-credentials
                   key: minio-secret-key
+            - name: MINIO_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BUCKET_SWE_IDCC
+            - name: MINIO_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_SWE_IDCC
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
@@ -167,10 +177,10 @@ spec:
           resources:
             requests:
               cpu: "1.0"
-              memory: "384Mi"
+              memory: "20Gi"
             limits:
               cpu: "8.0"
-              memory: "10Gi"
+              memory: "60Gi"
       restartPolicy: Always
       volumes:
         - name: swe-idcc-runner-configmap-volume
@@ -189,14 +199,14 @@ metadata:
   name: swe-idcc-runner
   labels:
     app: gridcapa
-    component: gridcapa-swe-idcc-runner
+    component: runner
     region: swe
     process: idcc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-swe-idcc-runner
+    component: runner
     region: swe
     process: idcc
   ports:

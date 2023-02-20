@@ -4,14 +4,18 @@ metadata:
   name: cse-valid-d2cc-crac-export-corner-data-bridge
   labels:
     app: gridcapa
-    component: gridcapa-crac-export-corner-data-bridge
+    component: data-bridge
+    file: crac
+    corner: export
     region: cse
     process: valid-d2cc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-crac-export-corner-data-bridge
+    component: data-bridge
+    file: crac
+    corner: export
     region: cse
     process: valid-d2cc
   ports:

@@ -4,14 +4,14 @@ metadata:
   name: core-valid-adapter
   labels:
     app: gridcapa
-    component: gridcapa-core-valid-adapter
+    component: adapter
     region: core
     process: valid
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-core-valid-adapter
+    component: adapter
     region: core
     process: valid
   ports:

@@ -3,22 +3,22 @@ apiVersion: apps/v1
 metadata:
   name: cse-export-idcc-runner
   labels:
-    app: gridcapa-runner
-    component: gridcapa-runner
+    app: gridcapa
+    component: runner
     region: cse
     process: export-idcc
 spec:
   selector:
     matchLabels:
-      app: gridcapa-runner
-      component: gridcapa-runner
+      app: gridcapa
+      component: runner
       region: cse
       process: export-idcc
   template:
     metadata:
       labels:
-        app: gridcapa-runner
-        component: gridcapa-runner
+        app: gridcapa
+        component: runner
         region: cse
         process: export-idcc
     spec:

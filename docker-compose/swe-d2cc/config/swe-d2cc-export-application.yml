@@ -34,8 +34,9 @@ ftp:
   port: 21
   access-key: gridcapa
   secret-key: gridcapa
-  remote-relative-destination-directory: data/gridcapa/swe/d2cc/outputs
+  remote-relative-destination-directory: swe/d2cc/outputs
 
 logback:
   amqp:
     exchange: swe-d2cc-task-manager-logs-exchange
+    routing-key: "#"

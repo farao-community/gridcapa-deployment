@@ -3,8 +3,9 @@ apiVersion: v1
 metadata:
   name: cse-import-d2cc-target-ch-data-bridge-configmap
   labels:
-    app: gridcapa-data-bridge
-    component: gridcapa-target-ch-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: target-ch
     region: cse
     process: import-d2cc
 data:

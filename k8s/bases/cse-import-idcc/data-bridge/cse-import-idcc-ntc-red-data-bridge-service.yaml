@@ -4,14 +4,16 @@ metadata:
   name: cse-import-idcc-ntc-red-data-bridge
   labels:
     app: gridcapa
-    component: gridcapa-ntc-red-data-bridge
+    component: data-bridge
+    file: ntc-red
     region: cse
     process: import-idcc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-ntc-red-data-bridge
+    component: data-bridge
+    file: ntc-red
     region: cse
     process: import-idcc
   ports:

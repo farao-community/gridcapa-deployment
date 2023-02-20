@@ -3,22 +3,22 @@ apiVersion: apps/v1
 metadata:
   name: cse-export-idcc-rao-logs-dispatcher
   labels:
-    app: gridcapa-rao-logs-dispatcher
-    component: gridcapa-rao-logs-dispatcher
+    app: gridcapa
+    component: rao-logs-dispatcher
     region: cse
     process: export-idcc
 spec:
   selector:
     matchLabels:
-      app: gridcapa-rao-logs-dispatcher
-      component: gridcapa-rao-logs-dispatcher
+      app: gridcapa
+      component: rao-logs-dispatcher
       region: cse
       process: export-idcc
   template:
     metadata:
       labels:
-        app: gridcapa-rao-logs-dispatcher
-        component: gridcapa-rao-logs-dispatcher
+        app: gridcapa
+        component: rao-logs-dispatcher
         region: cse
         process: export-idcc
     spec:

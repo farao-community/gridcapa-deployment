@@ -4,21 +4,21 @@ metadata:
   name: cse-valid-idcc-publication-cronjob
   labels:
     app: gridcapa
-    component: gridcapa-cse-valid-idcc-publication-cronjob
+    component: publication
     region: cse
     process: valid-idcc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-cse-valid-idcc-publication-cronjob
+      component: publication
       region: cse
       process: valid-idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-cse-valid-idcc-publication-cronjob
+        component: publication
         region: cse
         process: valid-idcc
     spec:
@@ -45,8 +45,7 @@ spec:
               command:
                 - "/bin/sh"
                 - "-c"
-                - "test"
-                - "$(date -r /var/log/liveness +%s) -gt `expr $(date +%s) - 3600`"
+                - "test $(date -r /var/log/liveness +%s) -gt `expr $(date +%s) - 3600`"
             initialDelaySeconds: 10
             periodSeconds: 3600 # test once an hour
             timeoutSeconds: 2

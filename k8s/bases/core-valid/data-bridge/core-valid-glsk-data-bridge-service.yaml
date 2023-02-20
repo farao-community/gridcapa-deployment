@@ -4,14 +4,16 @@ metadata:
   name: core-valid-glsk-data-bridge
   labels:
     app: gridcapa
-    component: gridcapa-glsk-data-bridge
+    component: data-bridge
+    file: glsk
     region: core
     process: valid
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-glsk-data-bridge
+    component: data-bridge
+    file: glsk
     region: core
     process: valid
   ports:

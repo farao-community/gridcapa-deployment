@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 bases:
+  - ../ftp
   - ../common
   - ../../../bases/cse-common
   - ../../../bases/cse-export-d2cc
@@ -15,13 +16,6 @@ bases:
   - ../../../bases/swe-idcc
 
 resources:
-  - ftp/filebrowser-configmap.yaml
-  - ftp/filebrowser-deployment.yaml
-  - ftp/filebrowser-pv-claim.yaml
-  - ftp/filebrowser-service.yaml
-  - ftp/ftp-pv-claim.yaml
-  - ftp/ftp-server-deployment.yaml
-  - ftp/ftp-server-service.yaml
   - apps-metadata-server-configmap.yaml
   - core-valid-gridcapa-app-idp-settings-configmap.yaml
   - cse-export-d2cc-app-idp-settings-configmap.yaml
@@ -86,6 +80,9 @@ images:
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: latest-auth
+  - name: gridcapa-gateway
+    newName: docker.io/farao/gridcapa-gateway
+    newTag: latest
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: latest

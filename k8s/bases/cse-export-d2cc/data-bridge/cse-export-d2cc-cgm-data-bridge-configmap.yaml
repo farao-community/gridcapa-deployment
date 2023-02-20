@@ -3,8 +3,9 @@ apiVersion: v1
 metadata:
   name: cse-export-d2cc-cgm-data-bridge-configmap
   labels:
-    app: gridcapa-data-bridge
-    component: gridcapa-cgm-data-bridge
+    app: gridcapa
+    component: data-bridge
+    file: cgm
     region: cse
     process: export-d2cc
 data:

@@ -34,7 +34,7 @@ ftp:
   port: 21
   access-key: gridcapa
   secret-key: gridcapa
-  remote-relative-destination-directory: data/gridcapa/swe/idcc/outputs
+  remote-relative-destination-directory: swe/idcc/outputs
 
 logback:
   amqp:

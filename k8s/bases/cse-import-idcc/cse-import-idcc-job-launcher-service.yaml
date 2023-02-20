@@ -4,14 +4,14 @@ metadata:
   name: cse-import-idcc-gridcapa-job-launcher
   labels:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: job-launcher
     region: cse
     process: import-idcc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
-    component: gridcapa-job-launcher
+    component: job-launcher
     region: cse
     process: import-idcc
   ports:
