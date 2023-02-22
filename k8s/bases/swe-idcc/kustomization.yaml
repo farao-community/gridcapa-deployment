@@ -24,3 +24,7 @@ resources:
   - swe-idcc-runner.yaml
   - swe-idcc-runner-itools-configmap.yaml
   - swe-idcc-task-manager.yaml
+  - swe-idcc-boundary-minio-automatic-purge.yaml
+  - swe-idcc-cgm-minio-automatic-purge.yaml
+  - swe-idcc-crac-minio-automatic-purge.yaml
+  - swe-idcc-glsk-minio-automatic-purge.yaml
