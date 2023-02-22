@@ -19,7 +19,7 @@ spec:
           containers:
             - name: swe-idcc-cgm-minio-automatic-purge
               image: minio-mc
-              args: [ "rm", "-r", "--force", "--older-than", "1d", "minio/gridcapa/SWE/IDCC/CGMs/" ]
+              args: [ "rm", "-r", "--force", "--older-than", "7d", "minio/gridcapa/SWE/IDCC/CGMs/" ]
               env:
                 - name: MINIO_ACCESS_KEY
                   valueFrom:
