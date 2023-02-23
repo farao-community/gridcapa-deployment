@@ -207,7 +207,7 @@ images:
     #SWE
   - name: gridcapa-swe-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v1.2.2
+    newTag: v1.2.3
   - name: gridcapa-swe-exporter
     newName: docker.io/farao/gridcapa-export
     newTag: v1.2.2
