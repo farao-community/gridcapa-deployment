@@ -1,0 +1,25 @@
+data-bridge:
+  zone-id: "Europe/Paris"
+  target-process: CSE_IMPORT_ADAPTED_D2CC
+  file-type: NTC-RED
+  file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*.(xml|XML)
+  time-validity: daily
+  remote-file-regex:
+    - ".*.zip"
+    - "[0-9]{8}.*.(xml|XML)"
+  sources:
+    ftp:
+      active: true
+      host: ftp-server
+      port: 21
+      username: gridcapa
+      password: gridcapa
+      base-directory: /data/gridcapa/cse/import-adapted/d2cc/ntcreds
+      polling-delay-in-ms: 5000
+  sinks:
+    minio:
+      url: http://minio:9000
+      access-key: gridcapa
+      secret-key: gridcapa
+      bucket: gridcapa
+      base-directory: /CSE/IMPORT-ADAPTED/D2CC/NTCREDs

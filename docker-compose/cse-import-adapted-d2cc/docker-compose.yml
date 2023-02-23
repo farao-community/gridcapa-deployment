@@ -1,0 +1,137 @@
+version: "3.7"
+services:
+  cse-import-adapted-d2cc-gridcapa-app:
+    image: farao/gridcapa-app:latest
+    volumes:
+      - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ./config/cse-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+    networks:
+      - gridcapa
+
+  cse-import-adapted-d2cc-cgm-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-d2cc-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-adapted-d2cc-crac-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-d2cc-gridcapa-crac-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-adapted-d2cc-glsk-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-d2cc-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-adapted-d2cc-ntc-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-d2cc-gridcapa-ntc-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-adapted-d2cc-ntc-red-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-d2cc-gridcapa-ntc-red-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-adapted-d2cc-targetch-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-d2cc-gridcapa-target-ch-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-adapted-d2cc-user-config-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-d2cc-user-config-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-adapted-d2cc-automated-forced-pras-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-d2cc-gridcapa-automated-forced-pras-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-adapted-d2cc-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./config/cse-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-adapted-d2cc-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    volumes:
+      - ./config/cse-d2cc-gridcapa-job-launcher.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  cse-import-adapted-d2cc-rao-logs-dispatcher:
+    image: farao/gridcapa-rao-logs-dispatcher:latest
+    volumes:
+      - ./config/cse-d2cc-rao-logs-dispatcher-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://rao-logs-dispatcher/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - cse-import-adapted-d2cc-task-manager
+    networks:
+      - gridcapa
+
+  cse-import-adapted-d2cc-runner:
+    image: farao/gridcapa-cse-cc-import-runner:latest
+    volumes:
+      - ../cse-common/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
+      - ../cse-common/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
+      - ../cse-common/combinedRAs.json:/home/farao/combinedRAs.json
+      - ./config/cse-d2cc-gridcapa-runner-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://cse-import-adapted-d2cc-runner/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  cse-import-adapted-d2cc-adpater:
+    image: farao/gridcapa-cse-adapter:latest
+    volumes:
+      - ./config/cse-d2cc-gridcapa-adapter-application.yml:/config/application.yml
+      - ../cse-common/logback-adapter.xml:/config/logback.xml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://cse-import-adapted-d2cc-adapter/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  cse-import-adapted-d2cc-outputs-exporter:
+    image: farao/gridcapa-export:latest
+    volumes:
+      - ./config/cse-d2cc-gridcapa-export-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://cse-import-adapted-d2cc-gridcapa-export/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+networks:
+  gridcapa:
+    name: gridcapa

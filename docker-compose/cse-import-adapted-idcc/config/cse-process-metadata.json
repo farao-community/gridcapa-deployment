@@ -1,0 +1,19 @@
+{
+  "processName": "CSE IMPORT ADAPTED IDCC",
+  "globalViewTimestampFilter": [
+    "13:30",
+    "16:30",
+    "19:30",
+    "22:30"
+  ],
+  "eventPredefinedFilter": [
+    {
+      "filterName": "Summary",
+      "defaultChecked": true,
+      "filterValue": [
+        "Summary :",
+        "Network at dichotomy step"
+      ]
+    }
+  ]
+}
