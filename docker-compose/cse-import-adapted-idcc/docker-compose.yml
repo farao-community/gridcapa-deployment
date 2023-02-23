@@ -120,7 +120,7 @@ services:
       - gridcapa
 
   cse-import-adapted-idcc-runner:
-    image: farao/gridcapa-cse-cc-import-runner:TEST-ADAPTED-1
+    image: farao/gridcapa-cse-cc-import-runner:latest
     volumes:
       - ../cse-common/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
       - ../cse-common/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
@@ -135,7 +135,7 @@ services:
       - gridcapa
 
   cse-import-adapted-idcc-adapter:
-    image: farao/gridcapa-cse-adapter:TEST-ADAPTED-1
+    image: farao/gridcapa-cse-adapter:latest
     volumes:
       - ./config/cse-idcc-adapter-application.yml:/config/application.yml
       - ../cse-common/logback-adapter.xml:/config/logback.xml
