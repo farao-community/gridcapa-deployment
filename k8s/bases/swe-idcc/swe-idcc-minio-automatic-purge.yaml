@@ -1,10 +1,10 @@
 kind: CronJob
 apiVersion: batch/v1
 metadata:
-  name: swe-idcc-cgm-minio-automatic-purge
+  name: swe-idcc-boundary-minio-automatic-purge
   labels:
     app: gridcapa
-    component: cgm-minio-automatic-purge
+    component: boundary-minio-automatic-purge
     region: swe
     process: idcc
 spec:
@@ -17,9 +17,17 @@ spec:
       template:
         spec:
           containers:
-            - name: swe-idcc-cgm-minio-automatic-purge
+            - name: swe-idcc-boundary-minio-automatic-purge
               image: minio-mc
-              args: [ "rm", "-r", "--force", "--older-than", "7d", "minio/gridcapa/SWE/IDCC/CGMs/" ]
+              command: [ "/bin/sh","-c" ]
+              args:
+                - rm -r --force --older-than 366d minio/gridcapa/SWE/IDCC/BOUNDARIES/;
+                  rm -r --force --older-than 7d minio/gridcapa/SWE/IDCC/CGMs/;
+                  rm -r --force --older-than 7d minio/gridcapa/SWE/IDCC/CRACs/;
+                  rm -r --force --older-than 7d minio/gridcapa/SWE/IDCC/GLSKs/;
+                  rm -r --force --older-than 7d minio/gridcapa/SWE/IDCC/XIIDM/;
+                  find minio/gridcapa/SWE/IDCC/20* -type f -mtime +7 -delete;
+                  find minio/gridcapa/SWE/IDCC/20* -type d -empty -delete;
               env:
                 - name: MINIO_ACCESS_KEY
                   valueFrom:
