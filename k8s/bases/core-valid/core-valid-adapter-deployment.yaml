@@ -39,6 +39,26 @@ spec:
                 secretKeyRef:
                   name: gridcapa-rabbitmq-credentials
                   key: rabbitmq-password
+            - name: GRIDCAPA_MINIO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: GRIDCAPA_MINIO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+            - name: MINIO_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BUCKET_CORE_VALID
+            - name: MINIO_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CORE_VALID
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
