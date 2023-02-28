@@ -17,6 +17,7 @@ resources:
   - cse-export-d2cc-app-idp-settings-configmap.yaml
   - cse-export-idcc-app-idp-settings-configmap.yaml
   - cse-gridcapa-runner-itools-azure-test-configmap.yaml
+  - cse-gridcapa-export-runner-itools-azure-test-configmap.yaml
   - swe-gridcapa-runner-itools-azure-test-configmap.yaml
   - cse-import-d2cc-app-idp-settings-configmap.yaml
   - cse-import-idcc-app-idp-settings-configmap.yaml
@@ -111,7 +112,7 @@ patches:
             volumes:
               - name: cse-export-idcc-runner-itools-configmap-volume
                 configMap:
-                  name: cse-runner-itools-azure-test-configmap
+                  name: cse-export-runner-itools-azure-test-configmap
   # Adapt CSE runner itools config
   - patch: |-
       kind: Deployment
@@ -124,7 +125,7 @@ patches:
             volumes:
               - name: cse-export-d2cc-runner-itools-configmap-volume
                 configMap:
-                  name: cse-runner-itools-azure-test-configmap
+                  name: cse-export-runner-itools-azure-test-configmap
   # Adapt SWE D2CC runner itools config
   - patch: |-
       kind: Deployment

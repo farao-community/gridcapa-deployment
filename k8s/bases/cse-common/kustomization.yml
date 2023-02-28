@@ -7,3 +7,4 @@ resources:
   - cse-gridcapa-runner-itools-configmap.yaml
   - cse-gridcapa-runner-xnodes-configmap.yaml
   - cse-valid-adapter-logback-configmap.yaml
+  - cse-gridcapa-export-runner-itools-configmap.yaml
