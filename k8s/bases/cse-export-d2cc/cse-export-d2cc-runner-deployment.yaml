@@ -91,7 +91,7 @@ spec:
             name: cse-export-d2cc-runner-configmap
         - name: cse-export-d2cc-runner-itools-configmap-volume
           configMap:
-            name: cse-runner-itools-configmap
+            name: cse-export-runner-itools-configmap
         - name: cse-export-d2cc-runner-xnodes-configmap-volume
           configMap:
             name: cse-runner-xnodes-configmap

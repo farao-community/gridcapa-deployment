@@ -53,7 +53,7 @@ services:
   cse-export-idcc-runner:
     image: farao/gridcapa-cse-cc-export-runner:latest
     volumes:
-      - ../cse-common/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
+      - ../cse-common/cse-gridcapa-export-itools-config.yml:/home/farao/.itools/config.yml
       - ../cse-common/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
       - ./config/cse-export-idcc-runner-application.yml:/config/application.yml
     healthcheck:
