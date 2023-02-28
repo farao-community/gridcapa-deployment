@@ -30,6 +30,13 @@ cse-valid-runner:
 cse-valid-adapter:
   target-process: D2CC
 
+minio-adapter:
+  bucket: gridcapa
+  base-path: /CSE/VALID
+  access-key: gridcapa
+  secret-key: gridcapa
+  url: http://minio:9000
+
 logging:
   config: /config/logback.xml
 
