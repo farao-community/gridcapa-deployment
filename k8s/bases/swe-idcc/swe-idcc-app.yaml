@@ -86,7 +86,7 @@ metadata:
 data:
   process-metadata.json: |-
     {
-      "processName": "SWE IDCC",
+      "processName": "SWE IDCC DACF",
       "globalViewTimestampFilter": [
         "02:30",
         "05:30",
