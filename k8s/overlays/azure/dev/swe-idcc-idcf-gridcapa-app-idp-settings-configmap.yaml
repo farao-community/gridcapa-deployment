@@ -1,0 +1,19 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: swe-idcc-idcf-gridcapa-app-idp-settings-configmap
+  labels:
+    app: gridcapa
+    component: swe-idcc-idcf-gridcapa-app-idp-settings-configmap
+    region: swe
+    process: idcc-idcf
+data:
+  idpSettings.json: |-
+    {
+      "authority": "https://auth.farao-community.com/realms/GridCapa",
+      "client_id": "gridcapa-dev",
+      "redirect_uri": "https://gridcapa-dev.farao-community.com/swe/idcc-idcf/sign-in-callback",
+      "post_logout_redirect_uri": "https://gridcapa-dev.farao-community.com/swe/idcc-idcf/logout-callback",
+      "silent_redirect_uri": "https://gridcapa-dev.farao-community.com/swe/idcc-idcf/silent-renew-callback",
+      "scope": "openid profile email"
+    }

@@ -1,0 +1,62 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: swe-idcc-idcf-runner-itools-configmap
+  labels:
+    app: gridcapa
+    component: runner
+    region: swe
+    process: idcc-idcf
+
+data:
+  config.yml: |-
+    load-flow:
+      default-impl-name: OpenLoadFlow
+    
+    sensitivity-analysis:
+      default-impl-name: OpenLoadFlow
+    
+    load-flow-default-parameters:
+      voltageInitMode: DC_VALUES
+      balanceType: PROPORTIONAL_TO_GENERATION_P
+      countriesToBalance: AL,AT,BA,BE,BG,CH,CZ,DE,ES,FR,GR,HR,HU,IT,ME,MK,NL,PL,PT,RO,RS,SI,SK,UA
+      phaseShifterRegulationOn: true
+    
+    open-loadflow-default-parameters:
+      minPlausibleTargetVoltage: 0.5
+      maxPlausibleTargetVoltage: 1.5
+      plausibleActivePowerLimit: 10000
+      maxIteration: 100
+      newtonRaphsonConvEpsPerEq: 1.0E-3
+      minRealisticVoltage: 0.5
+      maxRealisticVoltage: 1.5
+
+    rao-parameters:
+      objective-function: MAX_MIN_MARGIN_IN_AMPERE
+      max-number-of-iterations: 5
+      optimization-solver: CBC
+      relative-mip-gap : 0.001
+      pst-optimization-approximation: APPROXIMATED_INTEGERS
+      pst-penalty-cost: 0.01
+      pst-sensitivity-threshold : 0.0
+      sensitivity-fallback-overcost: 0.0
+      rao-with-loop-flow-limitation: false
+      rao-with-mnec-limitation: false
+      perimeters-in-parallel: 14
+      load-flow-provider: OpenLoadFlow
+      sensitivity-provider: OpenLoadFlow
+    
+    search-tree-rao-parameters:
+      maximum-search-depth: 2
+      preventive-rao-stop-criterion: SECURE
+      curative-rao-stop-criterion: SECURE
+      absolute-network-action-minimum-impact-threshold: 1.0
+      relative-network-action-minimum-impact-threshold: 0.0
+      preventive-leaves-in-parallel: 14
+      curative-leaves-in-parallel: 1
+      max-curative-ra : 10
+      max-curative-tso : 2
+      second-preventive-optimization-condition: POSSIBLE_CURATIVE_IMPROVEMENT
+      global-opt-in-second-preventive: false
+      second-preventive-hint-from-first-preventive: true
+      curative-rao-optimize-operators-not-sharing-cras : true

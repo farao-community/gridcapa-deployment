@@ -1,0 +1,24 @@
+data-bridge:
+  zone-id: "UTC"
+  target-process: SWE_IDCC_IDCF
+  file-type: RTE_TP
+  file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_1D_RTEFRANCE_TP_[0-9]{3}.xml
+  time-validity: hourly
+  remote-file-regex:
+    - "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_1D_RTEFRANCE_TP_[0-9]{3}.zip"
+  sources:
+    ftp:
+      active: true
+      host: ftp-server
+      port: 21
+      username: gridcapa
+      password: gridcapa
+      base-directory: /data/gridcapa/swe/idcc-idcf/cgms
+      polling-delay-in-ms: 5000
+  sinks:
+    minio:
+      url: http://minio:9000
+      access-key: gridcapa
+      secret-key: gridcapa
+      bucket: gridcapa
+      base-directory: /SWE/IDCC_IDCF/CGMs
