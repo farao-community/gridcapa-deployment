@@ -1,0 +1,23 @@
+data-bridge:
+  target-process: CSE_IMPORT_EC_IDCC
+  file-type: AUTOMATED-FORCED-PRAS
+  file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_.*automated_forced_pras.(json|JSON)
+  time-validity: yearly
+  remote-file-regex:
+    - "[0-9]{8}_.*automated_forced_pras.(json|JSON)"
+  sources:
+    ftp:
+      active: true
+      host: ftp-server
+      port: 21
+      username: gridcapa
+      password: gridcapa
+      base-directory: /data/gridcapa/cse/import-ec/idcc/automated-forced-pras
+      polling-delay-in-ms: 5000
+  sinks:
+    minio:
+      url: http://minio:9000
+      access-key: gridcapa
+      secret-key: gridcapa
+      bucket: gridcapa
+      base-directory: /CSE/IMPORT-EC/IDCC/AUTOMATED-FORCED-PRAs
