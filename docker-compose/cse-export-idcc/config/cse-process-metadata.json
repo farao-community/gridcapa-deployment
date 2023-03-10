@@ -1,5 +1,6 @@
 {
   "processName": "CSE EXPORT IDCC",
+  "dayIncrementInDate": 1,
   "globalViewTimestampFilter": [
   ],
   "eventPredefinedFilter": {
