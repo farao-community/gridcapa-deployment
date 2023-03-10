@@ -1,10 +1,10 @@
 kind: CronJob
 apiVersion: batch/v1
 metadata:
-  name: swe-idcc-boundary-minio-automatic-purge
+  name: swe-idcc-minio-automatic-purge
   labels:
     app: gridcapa
-    component: boundary-minio-automatic-purge
+    component: minio-automatic-purge
     region: swe
     process: idcc
 spec:
@@ -19,15 +19,39 @@ spec:
           containers:
             - name: swe-idcc-boundary-minio-automatic-purge
               image: minio-mc
-              command: [ "/bin/sh","-c" ]
-              args:
-                - rm -r --force --older-than 366d minio/gridcapa/SWE/IDCC/BOUNDARIES/;
-                  rm -r --force --older-than 7d minio/gridcapa/SWE/IDCC/CGMs/;
-                  rm -r --force --older-than 7d minio/gridcapa/SWE/IDCC/CRACs/;
-                  rm -r --force --older-than 7d minio/gridcapa/SWE/IDCC/GLSKs/;
-                  rm -r --force --older-than 7d minio/gridcapa/SWE/IDCC/XIIDM/;
-                  find minio/gridcapa/SWE/IDCC/20* -type f -mtime +7 -delete;
-                  find minio/gridcapa/SWE/IDCC/20* -type d -empty -delete;
+              args: [ "rm", "--recursive", "--force", "--older-than", "366d", "minio/gridcapa/SWE/IDCC/BOUNDARIES/" ]
+              env:
+                - name: MINIO_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-access-key
+                - name: MINIO_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-secret-key
+                - name: MC_HOST_minio
+                  value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
+            - name: swe-idcc-archives-minio-automatic-purge
+              image: minio-mc
+              args: [ "find", "--older-than", "7d", "--path", "minio/gridcapa/SWE/IDCC/20*", "--name", "*.xiidm", "*.json", "*.xml", "*.zip", "--exec \"mc rm {}\"" ]
+              env:
+                - name: MINIO_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-access-key
+                - name: MINIO_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-secret-key
+                - name: MC_HOST_minio
+                  value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
+            - name: swe-idcc-others-minio-automatic-purge
+              image: minio-mc
+              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/SWE/IDCC/CGMs/", "minio/gridcapa/SWE/IDCC/CRACs/", "minio/gridcapa/SWE/IDCC/GLSKs/", "minio/gridcapa/SWE/IDCC/XIIDM/" ]
               env:
                 - name: MINIO_ACCESS_KEY
                   valueFrom:
