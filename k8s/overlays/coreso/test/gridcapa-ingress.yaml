@@ -688,7 +688,7 @@ spec:
                 name: swe-idcc-idcf-gridcapa-app
                 port:
                   number: 80
-            path: /swe/idcc-idcf/
+            path: /swe/idcf/
             pathType: ImplementationSpecific
   tls:
     - hosts:
@@ -717,7 +717,7 @@ spec:
                 name: config-server
                 port:
                   number: 80
-            path: /swe/idcc-idcf/config/
+            path: /swe/idcf/config/
             pathType: ImplementationSpecific
   tls:
     - hosts:
@@ -746,7 +746,7 @@ spec:
                 name: config-notification-server
                 port:
                   number: 80
-            path: /swe/idcc-idcf/config-notification/
+            path: /swe/idcf/config-notification/
             pathType: ImplementationSpecific
   tls:
     - hosts:
@@ -775,7 +775,7 @@ spec:
                 name: swe-idcc-idcf-gridcapa-job-launcher
                 port:
                   number: 80
-            path: /swe/idcc-idcf/gridcapa-job-launcher/
+            path: /swe/idcf/gridcapa-job-launcher/
             pathType: ImplementationSpecific
   tls:
     - hosts:
@@ -804,7 +804,7 @@ spec:
                 name: swe-idcc-idcf-task-manager
                 port:
                   number: 80
-            path: /swe/idcc-idcf/task-manager/
+            path: /swe/idcf/task-manager/
             pathType: ImplementationSpecific
   tls:
     - hosts:
@@ -833,7 +833,7 @@ spec:
                 name: swe-idcc-idcf-task-manager
                 port:
                   number: 80
-            path: /swe/idcc-idcf/task-notification/
+            path: /swe/idcf/task-notification/
             pathType: ImplementationSpecific
   tls:
     - hosts:
