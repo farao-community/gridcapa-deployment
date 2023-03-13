@@ -13,7 +13,7 @@ data-bridge:
       port: 21
       username: gridcapa
       password: gridcapa
-      base-directory: /data/gridcapa/cse/import-ec/idcc/cgms
+      base-directory: /data/gridcapa/cse/import_ec/idcc/cgms
       polling-delay-in-ms: 5000
   sinks:
     minio:
@@ -21,4 +21,4 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CSE/IMPORT-EC/IDCC/CGMs
+      base-directory: /CSE/IMPORT_EC/IDCC/CGMs

@@ -31,7 +31,7 @@ ftp:
   port: 21
   access-key: gridcapa
   secret-key: gridcapa
-  remote-relative-destination-directory: cse/import-ec/d2cc/outputs
+  remote-relative-destination-directory: cse/import_ec/d2cc/outputs
 
 logback:
   amqp:

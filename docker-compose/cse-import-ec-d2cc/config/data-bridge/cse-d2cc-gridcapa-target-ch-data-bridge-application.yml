@@ -13,7 +13,7 @@ data-bridge:
       port: 21
       username: gridcapa
       password: gridcapa
-      base-directory: /data/gridcapa/cse/import-ec/d2cc/targetchs
+      base-directory: /data/gridcapa/cse/import_ec/d2cc/targetchs
       polling-delay-in-ms: 5000
   sinks:
     minio:
@@ -21,4 +21,4 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CSE/IMPORT-EC/D2CC/TARGETCHs
+      base-directory: /CSE/IMPORT_EC/D2CC/TARGETCHs

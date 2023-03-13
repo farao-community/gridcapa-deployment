@@ -12,7 +12,7 @@ data-bridge:
       port: 21
       username: gridcapa
       password: gridcapa
-      base-directory: /data/gridcapa/cse/import-ec/idcc/ntc2-ch
+      base-directory: /data/gridcapa/cse/import_ec/idcc/ntc2-ch
       polling-delay-in-ms: 5000
   sinks:
     minio:
@@ -20,4 +20,4 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CSE/IMPORT-EC/IDCC/NTC2-CH
+      base-directory: /CSE/IMPORT_EC/IDCC/NTC2-CH
