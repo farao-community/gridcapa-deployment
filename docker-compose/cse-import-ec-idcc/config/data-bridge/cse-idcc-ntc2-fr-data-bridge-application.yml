@@ -20,4 +20,4 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CSE/import_ec/IDCC/NTC2-FR
+      base-directory: /CSE/IMPORT_EC/IDCC/NTC2-FR
