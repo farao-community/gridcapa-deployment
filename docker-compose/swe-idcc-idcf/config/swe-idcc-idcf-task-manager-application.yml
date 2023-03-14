@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://gridcapa-postgres:5432/swe_idcc-idcf_tasks
+    url: jdbc:postgresql://gridcapa-postgres:5432/swe_idcc_idcf_tasks
     driverClassName: org.postgresql.Driver
-    username: swe_idcc-idcf_server
+    username: swe_idcc_idcf_server
     password: swe-idcc-idcf
   jpa:
     hibernate:

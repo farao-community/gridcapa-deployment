@@ -31,7 +31,7 @@ data:
           definition: consumeTask
     
     swe-adapter:
-      process-type: IDCC_IDCF
+      process-type: IDCC
     
     swe-runner:
       binding:
