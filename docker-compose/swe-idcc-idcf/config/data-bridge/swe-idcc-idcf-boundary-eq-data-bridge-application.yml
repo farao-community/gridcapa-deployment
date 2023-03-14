@@ -14,7 +14,7 @@ data-bridge:
       port: 21
       username: gridcapa
       password: gridcapa
-      base-directory: /data/gridcapa/swe/idcf/boundaries
+      base-directory: /data/gridcapa/swe/idcc-idcf/boundaries
       polling-delay-in-ms: 5000
   sinks:
     minio:

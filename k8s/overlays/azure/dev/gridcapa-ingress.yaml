@@ -12,7 +12,7 @@ metadata:
       rewrite ^/cse/valid/d2cc$ /cse/valid/d2cc/ permanent;
       rewrite ^/swe/d2cc$ /swe/d2cc/ permanent;
       rewrite ^/swe/idcc$ /swe/idcc/ permanent;
-      rewrite ^/swe/idcf$ /swe/idcf/ permanent;
+      rewrite ^/swe/idcc-idcf$ /swe/idcc-idcf/ permanent;
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
@@ -459,42 +459,42 @@ spec:
                 name: swe-idcc-idcf-gridcapa-app
                 port:
                   number: 80
-            path: /swe/idcf(/|$)(.*)
+            path: /swe/idcc-idcf(/|$)(.*)
             pathType: Prefix
           - backend:
               service:
                 name: gateway
                 port:
                   number: 80
-            path: /()(swe/idcf/config/.*)
+            path: /()(swe/idcc-idcf/config/.*)
             pathType: Prefix
           - backend:
               service:
                 name: gateway
                 port:
                   number: 80
-            path: /()(swe/idcf/config-notification/.*)
+            path: /()(swe/idcc-idcf/config-notification/.*)
             pathType: Prefix
           - backend:
               service:
                 name: gateway
                 port:
                   number: 80
-            path: /()(swe/idcf/task-notification/.*)
+            path: /()(swe/idcc-idcf/task-notification/.*)
             pathType: Prefix
           - backend:
               service:
                 name: gateway
                 port:
                   number: 80
-            path: /()(swe/idcf/task-manager/.*)
+            path: /()(swe/idcc-idcf/task-manager/.*)
             pathType: Prefix
           - backend:
               service:
                 name: gateway
                 port:
                   number: 80
-            path: /()(swe/idcf/gridcapa-job-launcher/.*)
+            path: /()(swe/idcc-idcf/gridcapa-job-launcher/.*)
             pathType: Prefix
   tls:
     - hosts:

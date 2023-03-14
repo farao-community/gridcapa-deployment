@@ -271,7 +271,7 @@ metadata:
 spec:
   stripPrefix:
     prefixes:
-      - /swe/idcf/
+      - /swe/idcc-idcf/
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -282,7 +282,7 @@ metadata:
 spec:
   stripPrefix:
     prefixes:
-      - /swe/idcf/config/
+      - /swe/idcc-idcf/config/
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -293,7 +293,7 @@ metadata:
 spec:
   stripPrefix:
     prefixes:
-      - /swe/idcf/config-notification/
+      - /swe/idcc-idcf/config-notification/
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -304,7 +304,7 @@ metadata:
 spec:
   stripPrefix:
     prefixes:
-      - /swe/idcf/gridcapa-job-launcher/
+      - /swe/idcc-idcf/gridcapa-job-launcher/
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -315,7 +315,7 @@ metadata:
 spec:
   stripPrefix:
     prefixes:
-      - /swe/idcf/task-manager/
+      - /swe/idcc-idcf/task-manager/
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -326,7 +326,7 @@ metadata:
 spec:
   stripPrefix:
     prefixes:
-      - /swe/idcf/task-notification/
+      - /swe/idcc-idcf/task-notification/
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
