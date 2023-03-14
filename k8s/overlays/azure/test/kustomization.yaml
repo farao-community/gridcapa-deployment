@@ -4,10 +4,6 @@ kind: Kustomization
 bases:
   - ../common
   - ../../../bases/cse-common
-  - ../../../bases/cse-export-d2cc
-  - ../../../bases/cse-export-idcc
-  - ../../../bases/cse-import-d2cc
-  - ../../../bases/cse-import-idcc
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
   - ../../../bases/swe-idcc-idcf
@@ -57,35 +53,7 @@ patches:
                     memory: "64Gi"
             imagePullSecrets:
               - name: p2rte-acr-secret
-  # Scale-up to 4 instances and adapt CSE runner itools config
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-import-idcc-gridcapa-runner
-      spec:
-        replicas: 4
-        template:
-          spec:
-            volumes:
-              - name: cse-import-idcc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-azure-test-configmap
-  # Scale-up to 4 instances and adapt CSE runner itools config
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-import-d2cc-gridcapa-runner
-      spec:
-        replicas: 4
-        template:
-          spec:
-            volumes:
-              - name: cse-import-d2cc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-azure-test-configmap
-  # Scale-up to 2 instances swe-d2cc-runner
+   # Scale-up to 2 instances swe-d2cc-runner
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -109,32 +77,7 @@ patches:
         name: swe-idcc-idcf-runner
       spec:
         replicas: 1
-  # Adapt CSE runner itools config
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-export-idcc-runner
-      spec:
-        template:
-          spec:
-            volumes:
-              - name: cse-export-idcc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-export-runner-itools-azure-test-configmap
-  # Adapt CSE runner itools config
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-export-d2cc-runner
-      spec:
-        template:
-          spec:
-            volumes:
-              - name: cse-export-d2cc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-export-runner-itools-azure-test-configmap
+
   # Adapt SWE D2CC runner itools config
   - patch: |-
       kind: Deployment
