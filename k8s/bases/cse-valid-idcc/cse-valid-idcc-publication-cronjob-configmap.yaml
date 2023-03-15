@@ -4,7 +4,7 @@ metadata:
   name: cse-valid-idcc-publication-cronjob-configmap
   labels:
     app: gridcapa
-    component: publication
+    component: publication-cronjob
     region: cse
     process: valid-idcc
 data:
