@@ -35,10 +35,10 @@ data:
       objective-function: MAX_MIN_MARGIN_IN_AMPERE
       max-number-of-iterations: 5
       optimization-solver: CBC
-      relative-mip-gap : 0.001
+      relative-mip-gap: 0.001
       pst-optimization-approximation: APPROXIMATED_INTEGERS
       pst-penalty-cost: 0.01
-      pst-sensitivity-threshold : 0.0
+      pst-sensitivity-threshold: 0.0
       sensitivity-fallback-overcost: 0.0
       rao-with-loop-flow-limitation: false
       rao-with-mnec-limitation: false
@@ -54,9 +54,12 @@ data:
       relative-network-action-minimum-impact-threshold: 0.0
       preventive-leaves-in-parallel: 14
       curative-leaves-in-parallel: 1
-      max-curative-ra : 10
-      max-curative-tso : 2
+      max-curative-ra: 10
+      max-curative-tso: 2
       second-preventive-optimization-condition: POSSIBLE_CURATIVE_IMPROVEMENT
       global-opt-in-second-preventive: false
       second-preventive-hint-from-first-preventive: true
-      curative-rao-optimize-operators-not-sharing-cras : true
+      curative-rao-optimize-operators-not-sharing-cras: true
+    
+    rao-ra-usage-limits-per-contingency:
+      max-curative-ra-per-tso: [ "{RTE}:5" ]
