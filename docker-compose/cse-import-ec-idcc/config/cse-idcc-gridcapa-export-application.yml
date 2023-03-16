@@ -1,0 +1,38 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+  cloud:
+    stream:
+      default:
+        group: cse-export-idcc-outputs
+      bindings:
+        consumeTaskDtoUpdate-in-0:
+          destination: cse-import-ec-idcc-task-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+        bindings:
+          consumeTaskDtoUpdate-in-0:
+            consumer:
+              binding-routing-key: status
+
+task-manager:
+  base-url: http://cse-import-ec-idcc-task-manager:8080
+  fetch-task:
+    reties-number: 6
+    interval-in-seconds: 10
+ftp:
+  host: ftp-server
+  port: 21
+  access-key: gridcapa
+  secret-key: gridcapa
+  remote-relative-destination-directory: cse/idcc/import_ec/outputs
+
+logback:
+  amqp:
+    exchange: cse-import-idcc-task-manager-logs-exchange

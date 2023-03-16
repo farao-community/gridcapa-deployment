@@ -33,5 +33,15 @@
     "name" : "Capa CSE Validation D2CC",
     "url"  : "/cse/valid/d2cc",
     "appColor" : "#800000"
+  },
+  {
+    "name" : "Capa CSE IMPORT EC IDCC",
+    "url"  : "/cse/import-ec/idcc",
+    "appColor" : "#808000"
+  },
+  {
+    "name" : "Capa CSE IMPORT EC D2CC",
+    "url"  : "/cse/import-ec/d2cc",
+    "appColor" : "#008080"
   }
 ]
