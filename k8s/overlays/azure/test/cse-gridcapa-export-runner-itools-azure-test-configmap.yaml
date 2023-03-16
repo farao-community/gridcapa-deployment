@@ -18,45 +18,56 @@ data:
     load-flow-default-parameters:
       voltageInitMode: DC_VALUES
       balanceType: PROPORTIONAL_TO_GENERATION_P
-      countriesToBalance: AL,AT,BA,BE,BG,CH,CZ,DE,ES,FR,GR,HR,HU,IT,ME,MK,NL,PL,PT,RO,RS,SI,SK,UA
       phaseShifterRegulationOn: true
+      countriesToBalance: AL,AT,BA,BE,BG,CH,CZ,DE,ES,FR,GR,HR,HU,IT,ME,MK,NL,PL,PT,RO,RS,SI,SK,UA
 
     open-loadflow-default-parameters:
       minPlausibleTargetVoltage: 0.5
       maxPlausibleTargetVoltage: 1.5
       plausibleActivePowerLimit: 10000
-      newtonRaphsonConvEpsPerEq : 1.0E-2
+      newtonRaphsonConvEpsPerEq: 1.0E-2
       minRealisticVoltage: 0.4
       maxRealisticVoltage: 1.6
 
-    rao-parameters:
-      objective-function: MAX_MIN_MARGIN_IN_AMPERE
-      max-number-of-iterations: 5
-      optimization-solver: XPRESS
+    rao-objective-function:
+      type: MAX_MIN_MARGIN_IN_AMPERE
+      preventive-stop-criterion: SECURE
+      curative-stop-criterion: SECURE
+
+    rao-range-actions-optimization:
+      max-mip-iterations: 5
+      pst-penalty-cost: 0.01
+      pst-sensitivity-threshold: 0.01
+      pst-model: APPROXIMATED_INTEGERS
+
+    rao-linear-optimization-solver:
+      solver: XPRESS
       relative-mip-gap : 0.001
       solver-specific-parameters : THREADS 1 MAXNODE 100000 MAXTIME 300
-      pst-optimization-approximation: APPROXIMATED_INTEGERS
-      pst-penalty-cost: 0.01
-      pst-sensitivity-threshold : 0.01
-      sensitivity-fallback-overcost: 0.0
-      rao-with-loop-flow-limitation: false
-      rao-with-mnec-limitation : true
-      mnec-acceptable-margin-diminution : -99999
-      mnec-violation-cost : 100.0
-      mnec-constraint-adjustment-coefficient : 5.0
-      perimeters-in-parallel: 14
+
+    rao-mnec-parameters:
+      acceptable-margin-decrease: -99999
+      violation-cost: 100.0
+      constraint-adjustment-coefficient: 5.0
+
+    rao-multi-threading:
+      contingency-scenarios-in-parallel: 14
+      preventive-leaves-in-parallel: 14
+      curative-leaves-in-parallel: 1
+
+    rao-load-flow-and-sensitivity-computation:
       load-flow-provider: OpenLoadFlow
       sensitivity-provider: OpenLoadFlow
 
-    search-tree-rao-parameters:
-      maximum-search-depth: 3
-      preventive-rao-stop-criterion: SECURE
-      curative-rao-stop-criterion: SECURE
-      absolute-network-action-minimum-impact-threshold: 2.0
-      relative-network-action-minimum-impact-threshold: 0.0
-      preventive-leaves-in-parallel: 14
-      curative-leaves-in-parallel: 1
-      second-preventive-optimization-condition: POSSIBLE_CURATIVE_IMPROVEMENT
-      global-opt-in-second-preventive: true
-      second-preventive-hint-from-first-preventive: true
-      curative-rao-optimize-operators-not-sharing-cras : true
+    rao-topological-actions-optimization:
+      max-search-tree-depth: 3
+      relative-minimum-impact-threshold: 0.0
+      absolute-minimum-impact-threshold: 2.0
+
+    rao-second-preventive-rao:
+      execution-condition: POSSIBLE_CURATIVE_IMPROVEMENT
+      re-optimize-curative-range-actions: true
+      hint-from-first-preventive-rao: true
+
+    rao-not-optimized-cnecs:
+      do-not-optimize-curative-cnecs-for-tsos-without-cras: false
