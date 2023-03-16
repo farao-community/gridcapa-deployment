@@ -12,6 +12,9 @@ data:
     load-flow:
       default-impl-name: OpenLoadFlow
 
+    sensitivity-analysis:
+      default-impl-name: OpenLoadFlow
+
     load-flow-default-parameters:
       voltageInitMode: DC_VALUES
       balanceType: PROPORTIONAL_TO_GENERATION_P
@@ -23,6 +26,8 @@ data:
       maxPlausibleTargetVoltage: 1.5
       plausibleActivePowerLimit: 10000
       newtonRaphsonConvEpsPerEq: 1.0E-2
+      minRealisticVoltage: 0.4
+      maxRealisticVoltage: 1.6
 
     rao-objective-function:
       type: MAX_MIN_MARGIN_IN_AMPERE
@@ -40,6 +45,11 @@ data:
       relative-mip-gap : 0.001
       solver-specific-parameters : THREADS 1 MAXNODE 100000 MAXTIME 300
 
+    rao-mnec-parameters:
+      acceptable-margin-decrease: -99999
+      violation-cost: 100.0
+      constraint-adjustment-coefficient: 5.0
+
     rao-multi-threading:
       contingency-scenarios-in-parallel: 10
       preventive-leaves-in-parallel: 10
@@ -51,7 +61,6 @@ data:
 
     rao-topological-actions-optimization:
       max-search-tree-depth: 3
-      predefined-combinations: [ "{PRA_2N_VALPELLINE}+{PRA_2N_AVISE}" ]
       relative-minimum-impact-threshold: 0.0
       absolute-minimum-impact-threshold: 2.0
 
@@ -62,11 +71,3 @@ data:
 
     rao-not-optimized-cnecs:
       do-not-optimize-curative-cnecs-for-tsos-without-cras: false
-
-    rao-mnec-parameters:
-      acceptable-margin-decrease: -99999
-      violation-cost : 100.0
-      constraint-adjustment-coefficient : 5.0
-      
-    rao-ra-usage-limits-per-contingency:
-      max-curative-ra-per-tso: [ "{IT}:6", "{FR}:5", "{CH}:1", "{AT}:3", "{SI}:3" ]
