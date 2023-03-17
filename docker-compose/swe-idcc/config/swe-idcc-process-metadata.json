@@ -1,6 +1,6 @@
 {
   "processName": "SWE IDCC DACF",
-  "dayIncrementInDate": 2,
+  "dayIncrementInDate": 0,
   "globalViewTimestampFilter": [
     "02:30",
     "05:30",
