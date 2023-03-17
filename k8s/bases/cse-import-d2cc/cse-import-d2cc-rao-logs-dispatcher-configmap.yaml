@@ -26,6 +26,11 @@ data:
               destination: rao-runners-logs
             dispatchRaoEvents-out-0:
               destination: cse-import-d2cc-task-manager-logs-exchange
+              producer:
+                batchingEnabled: true
+                batchSize: 200
+                batchBufferLimit: 1000000
+                batchTimeout: 5000
           rabbit:
             default:
               consumer:

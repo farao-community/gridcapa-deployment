@@ -40,6 +40,8 @@ data:
               destination: cse-valid-idcc-task-status-updated
             consumeTaskEventUpdate-in-0:
               destination: cse-valid-idcc-task-manager-logs-exchange
+              consumer:
+                batch-mode: true
             task-updated:
               destination: cse-valid-idcc-task-updated
             task-status-updated:

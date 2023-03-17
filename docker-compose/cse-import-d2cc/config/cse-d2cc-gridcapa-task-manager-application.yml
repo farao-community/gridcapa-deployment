@@ -23,6 +23,8 @@ spring:
           destination: cse-import-d2cc-task-status-updated
         consumeTaskEventUpdate-in-0:
           destination: cse-import-d2cc-task-manager-logs-exchange
+          consumer:
+            batch-mode: true
         task-updated:
           destination: cse-import-d2cc-task-updated
         task-status-updated:
