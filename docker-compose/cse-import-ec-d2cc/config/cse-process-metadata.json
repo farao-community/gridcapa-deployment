@@ -14,6 +14,7 @@
     {
       "filterName": "Summary",
       "defaultChecked": true,
+      "addErrors" : true,
       "filterValue": [
         "Summary :",
         "Network at dichotomy step"
