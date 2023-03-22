@@ -12,8 +12,8 @@ data:
     {
       "authority": "https://auth.farao-community.com/realms/GridCapa",
       "client_id": "gridcapa",
-      "redirect_uri": "https://gridcapa.farao-community.com/cse/import_ec/idcc/sign-in-callback",
-      "post_logout_redirect_uri": "https://gridcapa.farao-community.com/cse/import_ec/idcc/logout-callback",
-      "silent_redirect_uri": "https://gridcapa.farao-community.com/cse/import_ec/idcc/silent-renew-callback",
+      "redirect_uri": "https://gridcapa.farao-community.com/cse/import-ec/idcc/sign-in-callback",
+      "post_logout_redirect_uri": "https://gridcapa.farao-community.com/cse/import-ec/idcc/logout-callback",
+      "silent_redirect_uri": "https://gridcapa.farao-community.com/cse/import-ec/idcc/silent-renew-callback",
       "scope": "openid profile email"
     }

@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: cse-import-ec-idcc-gridcapa-runner
-          image: gridcapa-cse-import-ec-runner
+          image: gridcapa-cse-import-runner
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

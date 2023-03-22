@@ -5,8 +5,8 @@ metadata:
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^/cse/import/idcc$ /cse/import/idcc/ permanent;
       rewrite ^/cse/import/d2cc$ /cse/import/d2cc/ permanent;
-      rewrite ^/cse/import_ec/idcc$ /cse/import_ec/idcc/ permanent;
-      rewrite ^/cse/import_ec/d2cc$ /cse/import_ec/d2cc/ permanent;
+      rewrite ^/cse/import-ec/idcc$ /cse/import-ec/idcc/ permanent;
+      rewrite ^/cse/import-ec/d2cc$ /cse/import-ec/d2cc/ permanent;
       rewrite ^/cse/export/idcc$ /cse/export/idcc/ permanent;
       rewrite ^/cse/export/d2cc$ /cse/export/d2cc/ permanent;
       rewrite ^/swe/d2cc$ /swe/d2cc/ permanent;

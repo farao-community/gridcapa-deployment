@@ -1,13 +1,13 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-import-d2cc-cgm-data-bridge
+  name: cse-import-ec-d2cc-cgm-data-bridge
   labels:
     app: gridcapa
     component: data-bridge
     file: cgm
     region: cse
-    process: import-d2cc
+    process: import-ec-d2cc
 
 spec:
   selector:
@@ -16,7 +16,7 @@ spec:
       component: data-bridge
       file: cgm
       region: cse
-      process: import-d2cc
+      process: import-ec-d2cc
   template:
     metadata:
       labels:
@@ -24,10 +24,10 @@ spec:
         component: data-bridge
         file: cgm
         region: cse
-        process: import-d2cc
+        process: import-ec-d2cc
     spec:
       containers:
-        - name: cse-import-d2cc-cgm-data-bridge
+        - name: cse-import-ec-d2cc-cgm-data-bridge
           image: gridcapa-cse-input-data-bridge
           imagePullPolicy: Always
           ports:
@@ -37,12 +37,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SOURCE_HOST_CSE_IMPORT_D2CC
+                  key: GRIDCAPA_SOURCE_HOST_CSE_IMPORT_EC_D2CC
             - name: SOURCE_PORT
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SOURCE_PORT_CSE_IMPORT_D2CC
+                  key: GRIDCAPA_SOURCE_PORT_CSE_IMPORT_EC_D2CC
             - name: SOURCE_USER
               valueFrom:
                 secretKeyRef:
@@ -57,7 +57,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CSE_IMPORT_D2CC
+                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CSE_IMPORT_EC_D2CC
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
@@ -77,11 +77,11 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CSE_IMPORT_D2CC
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CSE_IMPORT_EC_D2CC
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: cse-import-d2cc-cgm-data-bridge-configmap-volume
+              name: cse-import-ec-d2cc-cgm-data-bridge-configmap-volume
           livenessProbe:
             tcpSocket:
               port: 8080
@@ -108,6 +108,6 @@ spec:
               memory: "384Mi"
       restartPolicy: Always
       volumes:
-        - name: cse-import-d2cc-cgm-data-bridge-configmap-volume
+        - name: cse-import-ec-d2cc-cgm-data-bridge-configmap-volume
           configMap:
-            name: cse-import-d2cc-cgm-data-bridge-configmap
+            name: cse-import-ec-d2cc-cgm-data-bridge-configmap

@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cse-import-d2cc-ntc-red-data-bridge
+  name: cse-import-ec-d2cc-ntc-red-data-bridge
   labels:
     app: gridcapa
     component: data-bridge
     file: ntc-red
     region: cse
-    process: import-d2cc
+    process: import-ec-d2cc
 spec:
   type: ClusterIP
   selector:
@@ -15,7 +15,7 @@ spec:
     component: data-bridge
     file: ntc-red
     region: cse
-    process: import-d2cc
+    process: import-ec-d2cc
   ports:
     - port: 80
       targetPort: 8080

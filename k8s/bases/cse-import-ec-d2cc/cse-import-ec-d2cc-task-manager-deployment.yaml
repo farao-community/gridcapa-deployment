@@ -43,7 +43,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_POSTGRES_CSE_import_EC_D2CC_DB
+                  key: GRIDCAPA_POSTGRES_CSE_IMPORT_EC_D2CC_DB
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
@@ -121,7 +121,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_MINIO_BUCKET_CSE_import_EC_D2CC
+                  key: GRIDCAPA_MINIO_BUCKET_CSE_IMPORT_EC_D2CC
           command: ['/bin/sh', "-c","mc alias set gridcapa http://gridcapa-minio:9000 $(MINIO_ACCESS_KEY) $(MINIO_SECRET_KEY) && (mc event add gridcapa/$(MINIO_BUCKET) arn:minio:sqs::_:amqp --event put,delete || true)"]
       restartPolicy: Always
       volumes:
