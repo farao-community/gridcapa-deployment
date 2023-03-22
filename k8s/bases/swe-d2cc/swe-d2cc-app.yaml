@@ -87,6 +87,7 @@ data:
   process-metadata.json: |-
     {
       "processName": "SWE D2CC",
+      "dayIncrementInDate": 2,
       "globalViewTimestampFilter": [
         "02:30",
         "05:30",
@@ -142,7 +143,7 @@ data:
         }
       ]
     }
-
+    
 
 ---
 

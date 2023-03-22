@@ -4,21 +4,21 @@ metadata:
   name: cse-valid-idcc-publication-cronjob
   labels:
     app: gridcapa
-    component: publication
+    component: publication-cronjob
     region: cse
     process: valid-idcc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: publication
+      component: publication-cronjob
       region: cse
       process: valid-idcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: publication
+        component: publication-cronjob
         region: cse
         process: valid-idcc
     spec:

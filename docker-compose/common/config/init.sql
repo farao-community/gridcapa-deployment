@@ -31,4 +31,10 @@ GRANT ALL PRIVILEGES ON DATABASE cse_valid_d2cc_tasks TO cse_valid_d2cc_server;
 CREATE DATABASE cse_valid_idcc_tasks;
 CREATE USER cse_valid_idcc_server WITH ENCRYPTED PASSWORD 'cse-valid-idcc';
 GRANT ALL PRIVILEGES ON DATABASE cse_valid_idcc_tasks TO cse_valid_idcc_server;
+CREATE DATABASE cse_import_ec_idcc_tasks;
+CREATE USER cse_import_ec_idcc_server WITH ENCRYPTED PASSWORD 'cse-import-ec-idcc';
+GRANT ALL PRIVILEGES ON DATABASE cse_import_ec_idcc_tasks TO cse_import_ec_idcc_server;
+CREATE DATABASE cse_import_ec_d2cc_tasks;
+CREATE USER cse_import_ec_d2cc_server WITH ENCRYPTED PASSWORD 'cse-import-ec-d2cc';
+GRANT ALL PRIVILEGES ON DATABASE cse_import_ec_d2cc_tasks TO cse_import_ec_d2cc_server;
 

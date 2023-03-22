@@ -1,5 +1,6 @@
 {
   "processName": "CSE IMPORT D2CC",
+  "dayIncrementInDate": 2,
   "globalViewTimestampFilter": [
     "00:30",
     "03:30",
