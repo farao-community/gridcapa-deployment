@@ -310,8 +310,8 @@ spec:
                 name: cse-import-ec-d2cc-gridcapa-app
                 port:
                   number: 80
-              path: /cse/import-ec/d2cc(/|$)(.*)
-              pathType: Prefix
+            path: /cse/import-ec/d2cc(/|$)(.*)
+            pathType: Prefix
           - backend:
               service:
                 name: gateway
