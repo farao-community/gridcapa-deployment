@@ -57,4 +57,5 @@ rao-mnec-parameters:
   violation-cost: 100.0
   constraint-adjustment-coefficient: 5.0
 
-
+rao-ra-usage-limits-per-contingency:
+  max-curative-ra-per-tso: [ "{IT}:6", "{FR}:5", "{CH}:1", "{AT}:3", "{SI}:3" ]
