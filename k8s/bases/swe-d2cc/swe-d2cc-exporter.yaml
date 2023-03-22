@@ -42,7 +42,9 @@ data:
       fetch-task:
         reties-number: 6
         interval-in-seconds: 10
+
     ftp:
+      active: true
       host: ${SOURCE_HOST}
       port: ${SOURCE_PORT}
       access-key: ${SOURCE_USER}
