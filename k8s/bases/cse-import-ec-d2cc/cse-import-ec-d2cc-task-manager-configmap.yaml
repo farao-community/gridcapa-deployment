@@ -59,7 +59,7 @@ data:
 
     task-server:
       process:
-        tag: CSE_import-ec_D2CC
+        tag: CSE_IMPORT_EC_D2CC
         timezone: CET
         inputs:
           - CGM
