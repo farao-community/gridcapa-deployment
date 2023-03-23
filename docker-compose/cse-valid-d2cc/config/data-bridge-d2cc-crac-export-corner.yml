@@ -6,7 +6,7 @@ data-bridge:
   time-validity: hourly
   remote-file-regex:
     - "CRAC_2D_CSE_Validation_Transit_[0-9]{8}V[0-9]{2}.zip"
-    - "[0-9]{8}_[0-9]{4}_2D[1-7]_CRAC_Validation_Transit_FR[0-9].(xml|XML)"
+    - "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2})_2D[1-7]_CRAC_Validation_Transit_FR[0-9].(xml|XML)"
   sources:
     ftp:
       active: true
