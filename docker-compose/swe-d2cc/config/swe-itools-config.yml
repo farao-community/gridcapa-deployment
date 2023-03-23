@@ -51,6 +51,6 @@ rao-load-flow-and-sensitivity-computation:
   sensitivity-provider: OpenLoadFlow
 
 rao-multi-threading:
-  contingency-scenarios-in-parallel: 4
-  preventive-leaves-in-parallel: 4
+  contingency-scenarios-in-parallel: 14
+  preventive-leaves-in-parallel: 14
   curative-leaves-in-parallel: 1
