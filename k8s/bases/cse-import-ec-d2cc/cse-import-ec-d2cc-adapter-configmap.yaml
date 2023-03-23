@@ -1,0 +1,60 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-import-ec-d2cc-gridcapa-adapter-configmap
+  labels:
+    app: gridcapa
+    component: adapter
+    region: cse
+    process: import-ec-d2cc
+data:
+  application.yml: |-
+    spring:
+      rabbitmq:
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        host: gridcapa-rabbitmq
+        port: 5672
+        template:
+          reply-timeout: 14400000
+      cloud:
+          stream:
+            bindings:
+              handleRun-in-0:
+                binder: rabbit
+                destination: cse-import-ec-d2cc-launch-task
+                group: cse-import-ec-d2cc-adapter
+              task-status-update:
+                destination: cse-import-ec-d2cc-task-status-updated
+            rabbit:
+              default:
+                consumer:
+                  auto-bind-dlq: true
+                  max-attempts: 1
+
+    logback:
+      amqp:
+        exchange: cse-import-ec-d2cc-task-manager-logs-exchange
+
+    cse-cc-runner:
+      binding:
+        destination: cse-import-ec-d2cc-request
+
+    minio-adapter:
+      url: http://gridcapa-minio:9000/
+      base-path: ${MINIO_BASE_DIRECTORY}
+      bucket: ${MINIO_BUCKET}
+      access-key: ${MINIO_ACCESS_KEY}
+      secret-key: ${MINIO_SECRET_KEY}
+
+    url-validation:
+      whitelist:
+        - http://gridcapa-minio:9000/
+
+    cse-adapter:
+      exchange-type: import
+      process-type: D2CC
+      is-ec-import: true
+
+    logging:
+      config: /config/logback.xml

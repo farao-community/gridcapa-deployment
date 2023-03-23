@@ -1,0 +1,19 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-import-ec-d2cc-app-idp-settings-configmap
+  labels:
+    app: gridcapa
+    component: cse-import-ec-d2cc-app-idp-settings-configmap
+    region: cse
+    process: import-ec-d2cc
+data:
+  idpSettings.json: |-
+    {
+      "authority": "https://auth.farao-community.com/realms/GridCapa",
+      "client_id": "gridcapa-dev",
+      "redirect_uri": "https://gridcapa-dev.farao-community.com/cse/import-ec/d2cc/sign-in-callback",
+      "post_logout_redirect_uri": "https://gridcapa-dev.farao-community.com/cse/import-ec/d2cc/logout-callback",
+      "silent_redirect_uri": "https://gridcapa-dev.farao-community.com/cse/import-ec/d2cc/silent-renew-callback",
+      "scope": "openid profile email"
+    }
