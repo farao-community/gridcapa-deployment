@@ -242,4 +242,4 @@ images:
     newTag: v1.13.0
   - name: gridcapa-swe-exporter
     newName: docker.io/farao/gridcapa-export
-    newTag: v1.2.2
+    newTag: v1.3.2
