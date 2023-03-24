@@ -7,10 +7,13 @@ bases:
   - ../../../bases/cse-export-idcc
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
+  - ../../../bases/cse-import-ec-d2cc
+  - ../../../bases/cse-import-ec-idcc
 
 resources:
   - apps-metadata-server-configmap.yaml
   - cse-gridcapa-runner-itools-coreso-configmap.yaml
+  - cse-gridcapa-import-runner-itools-coreso-test-configmap.yaml
   - swe-gridcapa-runner-itools-coreso-configmap.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
@@ -60,7 +63,7 @@ patches:
       metadata:
         name: rao-runner
       spec:
-        replicas: 4
+        replicas: 8
         template:
           spec:
             tolerations:
@@ -135,6 +138,36 @@ patches:
               - name: swe-idcc-runner-itools-configmap-volume
                 configMap:
                   name: swe-runner-itools-coreso-configmap
+  # adapt CSE Import EC runner itools config
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-d2cc-gridcapa-runner
+      spec:
+        replicas: 8
+        template:
+          spec:
+            volumes:
+              - name: cse-import-ec-d2cc-runner-itools-configmap-volume
+                configMap:
+                  name: cse-import-runner-itools-coreso-test-configmap
+  # adapt CSE Import EC runner itools config
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-idcc-gridcapa-runner
+      spec:
+        replicas: 4
+        template:
+          spec:
+            volumes:
+              - name: cse-import-ec-idcc-runner-itools-configmap-volume
+                configMap:
+                  name: cse-import-runner-itools-coreso-test-configmap
+
+
   # Remove volumes related to authentication within application deployments
   - target:
       kind: Deployment
@@ -163,6 +196,22 @@ patches:
   - target:
       kind: Deployment
       name: swe-idcc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: cse-import-ec-d2cc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: cse-import-ec-idcc-gridcapa-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
@@ -215,13 +264,16 @@ images:
     newTag: v1.1.0
   - name: gridcapa-cse-export-runner
     newName: docker.io/farao/gridcapa-cse-cc-export-runner
-    newTag: v1.12.1
+    newTag: v1.14.0
+  - name: gridcapa-cse-import-runner
+    newName: docker.io/farao/gridcapa-cse-cc-import-runner
+    newTag: v1.14.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.13.0
   - name: gridcapa-cse-exporter
     newName: docker.io/farao/gridcapa-export
-    newTag: v1.2.2
+    newTag: v1.3.2
   - name: gridcapa-swe-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: v1.2.3
