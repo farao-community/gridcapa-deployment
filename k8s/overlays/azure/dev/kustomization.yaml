@@ -8,6 +8,8 @@ bases:
   - ../../../bases/cse-export-d2cc
   - ../../../bases/cse-export-idcc
   - ../../../bases/cse-import-d2cc
+  - ../../../bases/cse-import-ec-d2cc
+  - ../../../bases/cse-import-ec-idcc
   - ../../../bases/cse-import-idcc
   - ../../../bases/cse-valid-d2cc
   - ../../../bases/cse-valid-idcc
@@ -23,6 +25,8 @@ resources:
   - cse-export-idcc-app-idp-settings-configmap.yaml
   - cse-import-d2cc-app-idp-settings-configmap.yaml
   - cse-import-idcc-app-idp-settings-configmap.yaml
+  - cse-import-ec-d2cc-app-idp-settings-configmap.yaml
+  - cse-import-ec-idcc-app-idp-settings-configmap.yaml
   - cse-valid-d2cc-gridcapa-app-idp-settings-configmap.yaml
   - cse-valid-idcc-gridcapa-app-idp-settings-configmap.yaml
   - swe-d2cc-gridcapa-app-idp-settings-configmap.yaml
