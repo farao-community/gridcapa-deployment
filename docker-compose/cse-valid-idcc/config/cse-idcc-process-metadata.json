@@ -6,6 +6,6 @@
     "19:30",
     "22:30"
   ],
-  "eventPredefinedFilter": {
-  }
+  "eventPredefinedFilter": [
+  ]
 }
