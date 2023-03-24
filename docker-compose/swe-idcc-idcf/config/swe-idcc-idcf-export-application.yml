@@ -30,6 +30,7 @@ task-manager:
     reties-number: 6
     interval-in-seconds: 10
 ftp:
+  active: true
   host: ftp-server
   port: 21
   access-key: gridcapa
