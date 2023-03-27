@@ -28,36 +28,36 @@ data:
       type: MAX_MIN_MARGIN_IN_AMPERE
       preventive-stop-criterion: SECURE
       curative-stop-criterion: SECURE
-    
+
     rao-range-actions-optimization:
       max-mip-iterations: 5
       pst-penalty-cost: 0.01
       pst-sensitivity-threshold : 0.0
       pst-model: APPROXIMATED_INTEGERS
-    
+
     rao-linear-optimization-solver:
       solver: XPRESS
       solver-specific-parameters: THREADS 1 MAXNODE 100000 MAXTIME 300
       relative-mip-gap: 0.001
-    
+
     rao-topological-actions-optimization:
       max-search-tree-depth: 2
       relative-minimum-impact-threshold: 0.0
       absolute-minimum-impact-threshold: 1.0
-    
+
     rao-second-preventive-rao:
       execution-condition: POSSIBLE_CURATIVE_IMPROVEMENT
       re-optimize-curative-range-actions: false
       hint-from-first-preventive-rao: true
-    
+
     rao-ra-usage-limits-per-contingency:
       max-curative-ra: 10
       max-curative-tso: 2
       max-curative-ra-per-tso: [ "{RTE}:5" ]
-    
+
     rao-not-optimized-cnecs:
       do-not-optimize-curative-cnecs-for-tsos-without-cras: false
-    
+
     rao-load-flow-and-sensitivity-computation:
       load-flow-provider: OpenLoadFlow
       sensitivity-provider: OpenLoadFlow
