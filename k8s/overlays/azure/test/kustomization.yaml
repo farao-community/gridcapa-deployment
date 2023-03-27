@@ -12,7 +12,7 @@ bases:
   - ../../../bases/cse-import-ec-idcc
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
-
+  - ../../../bases/swe-idcc-idcf
 
 resources:
   - apps-metadata-server-configmap.yaml
@@ -27,6 +27,7 @@ resources:
   - cse-import-ec-d2cc-app-idp-settings-configmap.yaml
   - swe-d2cc-app-idp-settings-configmap.yaml
   - swe-idcc-app-idp-settings-configmap.yaml
+  - swe-idcc-idcf-gridcapa-app-idp-settings-configmap.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
@@ -132,6 +133,14 @@ patches:
         name: swe-idcc-runner
       spec:
         replicas: 2
+  # Scale-up to x instances swe-idcc-idcf-runner
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-idcf-runner
+      spec:
+        replicas: 2
   # Adapt CSE runner itools config
   - patch: |-
       kind: Deployment
@@ -184,7 +193,19 @@ patches:
               - name: swe-idcc-runner-itools-configmap-volume
                 configMap:
                   name: swe-runner-itools-azure-test-configmap
-
+  # Adapt SWE IDCC IDCF runner itools config
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-idcf-runner
+      spec:
+        template:
+          spec:
+            volumes:
+              - name: swe-idcc-idcf-runner-itools-configmap-volume
+                configMap:
+                  name: swe-runner-itools-azure-test-configmap
 images:
   - name: apps-metadata-server
     newName: docker.io/bitnami/apache
@@ -246,7 +267,7 @@ images:
     newTag: v1.3.2
   - name: gridcapa-swe-adapter
     newName: docker.io/farao/gridcapa-swe-adapter
-    newTag: v1.0.4
+    newTag: v1.0.5
   - name: gridcapa-swe-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
     newTag: v1.5.0
@@ -255,7 +276,7 @@ images:
     newTag: v1.1.0
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
-    newTag: v1.0.7
+    newTag: v1.0.8
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.13.0

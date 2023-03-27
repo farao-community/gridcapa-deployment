@@ -7,7 +7,7 @@ bases:
   - ../../../bases/cse-export-idcc
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
-
+  - ../../../bases/swe-idcc-idcf
 resources:
   - apps-metadata-server-configmap.yaml
   - cse-gridcapa-runner-itools-coreso-configmap.yaml
@@ -135,6 +135,20 @@ patches:
               - name: swe-idcc-runner-itools-configmap-volume
                 configMap:
                   name: swe-runner-itools-coreso-configmap
+  # Adapt SWE IDCC runner itools config
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-idcf-runner
+      spec:
+        replicas: 1
+        template:
+          spec:
+            volumes:
+              - name: swe-idcc-idcf-runner-itools-configmap-volume
+                configMap:
+                  name: swe-runner-itools-coreso-configmap
   # Remove volumes related to authentication within application deployments
   - target:
       kind: Deployment
@@ -163,6 +177,14 @@ patches:
   - target:
       kind: Deployment
       name: swe-idcc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: swe-idcc-idcf-gridcapa-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
@@ -227,7 +249,7 @@ images:
     newTag: v1.2.3
   - name: gridcapa-swe-adapter
     newName: docker.io/farao/gridcapa-swe-adapter
-    newTag: v1.0.4
+    newTag: v1.0.5
   - name: gridcapa-swe-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
     newTag: v1.5.0
@@ -236,7 +258,7 @@ images:
     newTag: v1.1.0
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
-    newTag: v1.0.6
+    newTag: v1.0.8
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.13.0
