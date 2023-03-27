@@ -18,9 +18,11 @@ GridCapa currently contains the following applications:
 - GridCapa CSE EXPORT IDCC
 - GridCapa CORE Validation
 - GridCapa SWE D2CC
-- GridCapa SWE IDCC
+- GridCapa SWE IDCC DACF
+- GridCapa SWE IDCC IDCF
 - GridCapa CSE IMPORT_EC D2CC
 - GridCapa CSE IMPORT_EC IDCC
+
 
 ### Prerequisites
 

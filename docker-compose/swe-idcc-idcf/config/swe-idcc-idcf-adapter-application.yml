@@ -1,0 +1,34 @@
+spring:
+  rabbitmq:
+    username: gridcapa
+    password: gridcapa
+    host: rabbitmq
+    port: 5672
+  cloud:
+    stream:
+      bindings:
+        consumeTask-in-0:
+          binder: rabbit
+          destination: swe-idcc-idcf-run-task
+          group: swe-idcc-idcf-adapter
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+    function:
+      definition: consumeTask
+
+swe-adapter:
+  process-type: IDCC_IDCF
+
+swe-runner:
+  binding:
+    destination: swe-idcc-idcf-request
+
+minio-adapter:
+  bucket: gridcapa
+  base-path: /SWE/IDCC_IDCF
+  access-key: gridcapa
+  secret-key: gridcapa
+  url: http://minio:9000

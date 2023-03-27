@@ -47,5 +47,10 @@ data:
         "name" : "Capa SWE IDCC DACF",
         "url"  : "/swe/idcc",
         "appColor" : "#cfeb2d"
+      },
+      {
+        "name" : "Capa SWE IDCC IDCF",
+        "url"  : "/swe/idcf/",
+        "appColor" : "#659490"
       }
     ]
