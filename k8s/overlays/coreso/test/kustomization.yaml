@@ -118,7 +118,7 @@ patches:
       metadata:
         name: swe-d2cc-runner
       spec:
-        replicas: 1
+        replicas: 2
         template:
           spec:
             volumes:
@@ -132,7 +132,7 @@ patches:
       metadata:
         name: swe-idcc-runner
       spec:
-        replicas: 1
+        replicas: 2
         template:
           spec:
             volumes:
@@ -146,7 +146,7 @@ patches:
       metadata:
         name: swe-idcc-idcf-runner
       spec:
-        replicas: 1
+        replicas: 2
         template:
           spec:
             volumes:
