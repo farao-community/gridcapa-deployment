@@ -23,6 +23,8 @@ spring:
           destination: swe-idcc-idcf-task-status-updated
         consumeTaskEventUpdate-in-0:
           destination: swe-idcc-idcf-task-manager-logs-exchange
+          consumer:
+            batch-mode: true
         task-updated:
           destination: swe-idcc-idcf-task-updated
         task-status-updated:
