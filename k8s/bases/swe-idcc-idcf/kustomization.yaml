@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - data-bridge/swe-idcc-idcf-boundary-eq-data-bridge.yaml
+  - data-bridge/swe-idcc-idcf-boundary-tp-data-bridge.yaml
+  - data-bridge/swe-idcc-idcf-coreso-sv-data-bridge.yaml
+  - data-bridge/swe-idcc-idcf-crac-data-bridge.yaml
+  - data-bridge/swe-idcc-idcf-glsk-data-bridge.yaml
+  - data-bridge/swe-idcc-idcf-ree-eq-data-bridge.yaml
+  - data-bridge/swe-idcc-idcf-ree-ssh-data-bridge.yaml
+  - data-bridge/swe-idcc-idcf-ree-tp-data-bridge.yaml
+  - data-bridge/swe-idcc-idcf-ren-eq-data-bridge.yaml
+  - data-bridge/swe-idcc-idcf-ren-ssh-data-bridge.yaml
+  - data-bridge/swe-idcc-idcf-ren-tp-data-bridge.yaml
+  - data-bridge/swe-idcc-idcf-rte-eq-data-bridge.yaml
+  - data-bridge/swe-idcc-idcf-rte-ssh-data-bridge.yaml
+  - data-bridge/swe-idcc-idcf-rte-tp-data-bridge.yaml
+  - swe-idcc-idcf-adapter.yaml
+  - swe-idcc-idcf-app.yaml
+  - swe-idcc-idcf-exporter.yaml
+  - swe-idcc-idcf-job-launcher.yaml
+  - swe-idcc-idcf-rao-logs-dispatcher.yaml
+  - swe-idcc-idcf-runner.yaml
+  - swe-idcc-idcf-runner-itools-configmap.yaml
+  - swe-idcc-idcf-task-manager.yaml

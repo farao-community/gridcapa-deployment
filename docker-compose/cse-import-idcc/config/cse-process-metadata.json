@@ -1,6 +1,5 @@
 {
   "processName": "CSE IMPORT IDCC",
-  "dayIncrementInDate": 1,
   "globalViewTimestampFilter": [
     "13:30",
     "16:30",
@@ -13,7 +12,8 @@
       "defaultChecked": true,
       "filterValue": [
         "Summary :",
-        "Network at dichotomy step"
+        "dichotomy step",
+        "dichotomy index"
       ]
     }
   ]

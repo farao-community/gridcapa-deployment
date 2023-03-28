@@ -87,7 +87,6 @@ data:
   process-metadata.json: |-
     {
       "processName": "SWE IDCC DACF",
-      "dayIncrementInDate": 2,
       "globalViewTimestampFilter": [
         "02:30",
         "05:30",

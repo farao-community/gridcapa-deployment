@@ -334,3 +334,105 @@ data:
                 - Path=/swe/idcc/gridcapa-job-launcher/**
               filters:
                 - StripPrefix=3
+            - id: swe-idcc-idcf-gridsuite-config
+              uri: http://config-server
+              predicates:
+                - Path=/swe/idcf/config/**
+              filters:
+                - StripPrefix=3
+                - AddRequestHeader=userId, johnDoe
+            - id: swe-idcc-idcf-gridsuite-config-notification
+              uri: http://config-notification-server
+              predicates:
+                - Path=/swe/idcf/config-notification/**
+              filters:
+                - StripPrefix=3
+                - AddRequestHeader=userId, johnDoe
+                - RemoveRequestParameter=access_token
+            - id: swe-idcc-idcf-task-manager
+              uri: http://swe-idcc-idcf-task-manager
+              predicates:
+                - Path=/swe/idcf/task-manager/**
+              filters:
+                - StripPrefix=3
+            - id: swe-idcc-idcf-task-notification-server
+              uri: http://swe-idcc-idcf-task-manager
+              predicates:
+                - Path=/swe/idcf/task-notification/**
+              filters:
+                - StripPrefix=3
+                - RemoveRequestParameter=access_token
+            - id: swe-idcc-idcf-gridcapa-job-launcher
+              uri: http://swe-idcc-idcf-gridcapa-job-launcher
+              predicates:
+                - Path=/swe/idcf/gridcapa-job-launcher/**
+              filters:
+                - StripPrefix=3
+            - id: cse-import-ec-idcc-gridsuite-config
+              uri: http://config-server
+              predicates:
+                - Path=/cse/import-ec/idcc/config/**
+              filters:
+                - StripPrefix=4
+                - AddRequestHeader=userId, johnDoe
+            - id: cse-import-ec-idcc-gridsuite-config-notification
+              uri: http://config-notification-server
+              predicates:
+                - Path=/cse/import-ec/idcc/config-notification/**
+              filters:
+                - StripPrefix=4
+                - AddRequestHeader=userId, johnDoe
+                - RemoveRequestParameter=access_token
+            - id: cse-import-ec-idcc-task-manager
+              uri: http://cse-import-ec-idcc-task-manager
+              predicates:
+                - Path=/cse/import-ec/idcc/task-manager/**
+              filters:
+                - StripPrefix=4
+            - id: cse-import-ec-idcc-task-notification-server
+              uri: http://cse-import-ec-idcc-task-manager
+              predicates:
+                - Path=/cse/import-ec/idcc/task-notification/**
+              filters:
+                - StripPrefix=4
+                - RemoveRequestParameter=access_token
+            - id: cse-import-ec-idcc-gridcapa-job-launcher
+              uri: http://cse-import-ec-idcc-gridcapa-job-launcher
+              predicates:
+                - Path=/cse/import-ec/idcc/gridcapa-job-launcher/**
+              filters:
+                - StripPrefix=4
+            - id: cse-import-ec-d2cc-gridsuite-config
+              uri: http://config-server
+              predicates:
+                - Path=/cse/import-ec/d2cc/config/**
+              filters:
+                - StripPrefix=4
+                - AddRequestHeader=userId, johnDoe
+            - id: cse-import-ec-d2cc-gridsuite-config-notification
+              uri: http://config-notification-server
+              predicates:
+                - Path=/cse/import-ec/d2cc/config-notification/**
+              filters:
+                - StripPrefix=4
+                - AddRequestHeader=userId, johnDoe
+                - RemoveRequestParameter=access_token
+            - id: cse-import-ec-d2cc-task-manager
+              uri: http://cse-import-ec-d2cc-task-manager
+              predicates:
+                - Path=/cse/import-ec/d2cc/task-manager/**
+              filters:
+                - StripPrefix=4
+            - id: cse-import-ec-d2cc-task-notification-server
+              uri: http://cse-import-ec-d2cc-task-manager
+              predicates:
+                - Path=/cse/import-ec/d2cc/task-notification/**
+              filters:
+                - StripPrefix=4
+                - RemoveRequestParameter=access_token
+            - id: cse-import-ec-d2cc-gridcapa-job-launcher
+              uri: http://cse-import-ec-d2cc-gridcapa-job-launcher
+              predicates:
+                - Path=/cse/import-ec/d2cc/gridcapa-job-launcher/**
+              filters:
+                - StripPrefix=4
