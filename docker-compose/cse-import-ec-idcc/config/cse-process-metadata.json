@@ -12,7 +12,8 @@
       "defaultChecked": true,
       "filterValue": [
         "Summary :",
-        "Network at dichotomy step"
+        "dichotomy step",
+        "dichotomy index"
       ]
     }
   ]
