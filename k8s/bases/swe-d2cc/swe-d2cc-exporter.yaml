@@ -41,7 +41,7 @@ data:
       base-url: http://swe-d2cc-task-manager
       fetch-task:
         reties-number: 6
-        interval-in-seconds: 10
+        interval-in-seconds: 15
 
     ftp:
       active: true
