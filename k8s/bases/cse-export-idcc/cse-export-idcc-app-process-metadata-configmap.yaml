@@ -13,6 +13,6 @@ data:
       "processName": "CSE EXPORT IDCC",
       "globalViewTimestampFilter": [
       ],
-      "eventPredefinedFilter": {
-      }
+      "eventPredefinedFilter": [
+      ]
     }
