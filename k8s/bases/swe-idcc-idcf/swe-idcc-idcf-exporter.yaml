@@ -41,7 +41,7 @@ data:
       base-url: http://swe-idcc-idcf-task-manager
       fetch-task:
         reties-number: 6
-        interval-in-seconds: 15
+        interval-in-seconds: 10
     ftp:
       active: true
       host: ${SOURCE_HOST}
