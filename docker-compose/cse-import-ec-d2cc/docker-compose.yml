@@ -97,7 +97,6 @@ services:
     volumes:
       - ../cse-common/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
       - ../cse-common/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
-      - ../cse-common/combinedRAs.json:/home/farao/combinedRAs.json
       - ./config/cse-d2cc-gridcapa-runner-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://cse-import-ec-d2cc-runner/actuator/health" ]

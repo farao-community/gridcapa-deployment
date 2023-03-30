@@ -59,9 +59,6 @@ spec:
             - mountPath: /home/farao/xnodes/xnodes.xml
               subPath: xnodes.xml
               name: cse-import-d2cc-runner-xnodes-configmap-volume
-            - mountPath: /home/farao/combinedRAs.json
-              subPath: combinedRAs.json
-              name: cse-import-d2cc-combined-ras-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -98,6 +95,3 @@ spec:
         - name: cse-import-d2cc-runner-xnodes-configmap-volume
           configMap:
             name: cse-runner-xnodes-configmap
-        - name: cse-import-d2cc-combined-ras-configmap-volume
-          configMap:
-            name: cse-combined-ras-configmap
