@@ -91,4 +91,4 @@ spec:
             name: cse-valid-idcc-runner-configmap
         - name: cse-valid-idcc-runner-itools-configmap-volume
           configMap:
-            name: cse-runner-itools-configmap
+            name: cse-valid-runner-itools-configmap
