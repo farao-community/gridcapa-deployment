@@ -91,4 +91,4 @@ spec:
             name: cse-valid-d2cc-runner-configmap
         - name: cse-valid-d2cc-runner-itools-configmap-volume
           configMap:
-            name: cse-runner-itools-configmap
+            name: cse-valid-runner-itools-configmap
