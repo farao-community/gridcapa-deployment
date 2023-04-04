@@ -68,6 +68,7 @@ data:
           - NTC
           - TARGET-CH
           - NTC-RED
+          - VULCANUS
         optional-inputs:
           - AUTOMATED-FORCED-PRAS
           - USER-CONFIG
