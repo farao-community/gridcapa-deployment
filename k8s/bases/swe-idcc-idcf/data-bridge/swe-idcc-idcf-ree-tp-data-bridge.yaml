@@ -14,10 +14,10 @@ data:
       zone-id: "UTC"
       target-process: SWE_IDCC_IDCF
       file-type: REE_TP
-      file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_1D_REE_TP_[0-9]{3}.xml
+      file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_ID_REE_TP_[0-9]{3}.xml
       time-validity: hourly
       remote-file-regex:
-        - "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_1D_REE_TP_[0-9]{3}.zip"
+        - "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_ID_REE_TP_[0-9]{3}.zip"
       sources:
         ftp:
           active: true
