@@ -79,7 +79,7 @@ patches:
                     cpu: "14.0"
                     memory: "50Gi"
                   limits:
-                    cpu: "14.0"
+                    cpu: "16.0"
                     memory: "60Gi"
             imagePullSecrets:
               - name: dockerhub-acr-secret
