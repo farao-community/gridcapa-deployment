@@ -177,10 +177,10 @@ spec:
           resources:
             requests:
               cpu: "1.0"
-              memory: "15Gi"
+              memory: "17Gi"
             limits:
               cpu: "5.0"
-              memory: "20Gi"
+              memory: "50Gi"
       restartPolicy: Always
       volumes:
         - name: swe-d2cc-runner-configmap-volume
