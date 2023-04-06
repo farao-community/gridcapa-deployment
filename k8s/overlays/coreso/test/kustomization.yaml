@@ -64,7 +64,7 @@ patches:
       metadata:
         name: rao-runner
       spec:
-        replicas: 8
+        replicas: 12
         template:
           spec:
             tolerations:
@@ -76,10 +76,10 @@ patches:
               - name: rao-runner
                 resources:
                   requests:
-                    cpu: "10.0"
+                    cpu: "14.0"
                     memory: "50Gi"
                   limits:
-                    cpu: "12.0"
+                    cpu: "14.0"
                     memory: "60Gi"
             imagePullSecrets:
               - name: dockerhub-acr-secret
@@ -160,7 +160,7 @@ patches:
       metadata:
         name: cse-import-ec-d2cc-gridcapa-runner
       spec:
-        replicas: 8
+        replicas: 2
         template:
           spec:
             volumes:
@@ -174,7 +174,7 @@ patches:
       metadata:
         name: cse-import-ec-idcc-gridcapa-runner
       spec:
-        replicas: 4
+        replicas: 2
         template:
           spec:
             volumes:
