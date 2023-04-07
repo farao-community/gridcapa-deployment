@@ -64,6 +64,13 @@ services:
     networks:
       - gridcapa
 
+  cse-import-ec-d2cc-vulcanus-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-d2cc-gridcapa-vulcanus-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
   cse-import-ec-d2cc-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
