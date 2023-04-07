@@ -68,7 +68,7 @@ patches:
       metadata:
         name: cse-import-idcc-gridcapa-runner
       spec:
-        replicas: 4
+        replicas: 2
         template:
           spec:
             volumes:
@@ -82,7 +82,7 @@ patches:
       metadata:
         name: cse-import-d2cc-gridcapa-runner
       spec:
-        replicas: 4
+        replicas: 2
         template:
           spec:
             volumes:
@@ -96,7 +96,7 @@ patches:
       metadata:
         name: cse-import-ec-d2cc-gridcapa-runner
       spec:
-        replicas: 8
+        replicas: 2
         template:
           spec:
             volumes:
@@ -110,7 +110,7 @@ patches:
       metadata:
         name: cse-import-ec-idcc-gridcapa-runner
       spec:
-        replicas: 4
+        replicas: 2
         template:
           spec:
             volumes:
