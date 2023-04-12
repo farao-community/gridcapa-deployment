@@ -46,7 +46,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-server
+                name: gateway
                 port:
                   number: 80
             path: /cse/export/d2cc/config/
@@ -75,7 +75,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-notification-server
+                name: gateway
                 port:
                   number: 80
             path: /cse/export/d2cc/config-notification/
@@ -104,7 +104,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-export-d2cc-gridcapa-job-launcher
+                name: gateway
                 port:
                   number: 80
             path: /cse/export/d2cc/gridcapa-job-launcher/
@@ -133,7 +133,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-export-d2cc-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /cse/export/d2cc/task-manager/
@@ -162,7 +162,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-export-d2cc-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /cse/export/d2cc/task-notification/
@@ -171,6 +171,9 @@ spec:
     - hosts:
         - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
       secretName: ingresswildcard
+
+
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -220,7 +223,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-server
+                name: gateway
                 port:
                   number: 80
             path: /cse/export/idcc/config/
@@ -249,7 +252,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-notification-server
+                name: gateway
                 port:
                   number: 80
             path: /cse/export/idcc/config-notification/
@@ -278,7 +281,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-export-idcc-gridcapa-job-launcher
+                name: gateway
                 port:
                   number: 80
             path: /cse/export/idcc/gridcapa-job-launcher/
@@ -307,7 +310,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-export-idcc-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /cse/export/idcc/task-manager/
@@ -336,7 +339,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-export-idcc-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /cse/export/idcc/task-notification/
@@ -345,6 +348,9 @@ spec:
     - hosts:
         - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
       secretName: ingresswildcard
+
+
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -394,7 +400,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-server
+                name: gateway
                 port:
                   number: 80
             path: /cse/import-ec/d2cc/config/
@@ -423,7 +429,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-notification-server
+                name: gateway
                 port:
                   number: 80
             path: /cse/import-ec/d2cc/config-notification/
@@ -452,7 +458,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-ec-d2cc-gridcapa-job-launcher
+                name: gateway
                 port:
                   number: 80
             path: /cse/import-ec/d2cc/gridcapa-job-launcher/
@@ -481,7 +487,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-ec-d2cc-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /cse/import-ec/d2cc/task-manager/
@@ -510,7 +516,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-ec-d2cc-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /cse/import-ec/d2cc/task-notification/
@@ -519,6 +525,9 @@ spec:
     - hosts:
         - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
       secretName: ingresswildcard
+
+
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -568,7 +577,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-server
+                name: gateway
                 port:
                   number: 80
             path: /cse/import-ec/idcc/config/
@@ -597,7 +606,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-notification-server
+                name: gateway
                 port:
                   number: 80
             path: /cse/import-ec/idcc/config-notification/
@@ -626,7 +635,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-ec-idcc-gridcapa-job-launcher
+                name: gateway
                 port:
                   number: 80
             path: /cse/import-ec/idcc/gridcapa-job-launcher/
@@ -655,7 +664,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-ec-idcc-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /cse/import-ec/idcc/task-manager/
@@ -684,7 +693,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-ec-idcc-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /cse/import-ec/idcc/task-notification/
@@ -693,6 +702,9 @@ spec:
     - hosts:
         - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
       secretName: ingresswildcard
+
+
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -742,7 +754,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-server
+                name: gateway
                 port:
                   number: 80
             path: /swe/d2cc/config/
@@ -771,7 +783,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-notification-server
+                name: gateway
                 port:
                   number: 80
             path: /swe/d2cc/config-notification/
@@ -800,7 +812,7 @@ spec:
         paths:
           - backend:
               service:
-                name: swe-d2cc-gridcapa-job-launcher
+                name: gateway
                 port:
                   number: 80
             path: /swe/d2cc/gridcapa-job-launcher/
@@ -829,7 +841,7 @@ spec:
         paths:
           - backend:
               service:
-                name: swe-d2cc-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /swe/d2cc/task-manager/
@@ -858,7 +870,7 @@ spec:
         paths:
           - backend:
               service:
-                name: swe-d2cc-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /swe/d2cc/task-notification/
@@ -867,6 +879,9 @@ spec:
     - hosts:
         - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
       secretName: ingresswildcard
+
+
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -916,7 +931,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-server
+                name: gateway
                 port:
                   number: 80
             path: /swe/idcc/config/
@@ -945,7 +960,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-notification-server
+                name: gateway
                 port:
                   number: 80
             path: /swe/idcc/config-notification/
@@ -974,7 +989,7 @@ spec:
         paths:
           - backend:
               service:
-                name: swe-idcc-gridcapa-job-launcher
+                name: gateway
                 port:
                   number: 80
             path: /swe/idcc/gridcapa-job-launcher/
@@ -1003,7 +1018,7 @@ spec:
         paths:
           - backend:
               service:
-                name: swe-idcc-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /swe/idcc/task-manager/
@@ -1013,6 +1028,37 @@ spec:
         - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
       secretName: ingresswildcard
 ---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-swe-idcc-task-notification@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-swe-idcc-task-notification
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /swe/idcc/task-notification/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+
+
 
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -1062,7 +1108,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-server
+                name: gateway
                 port:
                   number: 80
             path: /swe/idcf/config/
@@ -1091,7 +1137,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-notification-server
+                name: gateway
                 port:
                   number: 80
             path: /swe/idcf/config-notification/
@@ -1120,7 +1166,7 @@ spec:
         paths:
           - backend:
               service:
-                name: swe-idcc-idcf-gridcapa-job-launcher
+                name: gateway
                 port:
                   number: 80
             path: /swe/idcf/gridcapa-job-launcher/
@@ -1149,7 +1195,7 @@ spec:
         paths:
           - backend:
               service:
-                name: swe-idcc-idcf-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /swe/idcf/task-manager/
@@ -1178,7 +1224,7 @@ spec:
         paths:
           - backend:
               service:
-                name: swe-idcc-idcf-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /swe/idcf/task-notification/
@@ -1187,36 +1233,8 @@ spec:
     - hosts:
         - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
       secretName: ingresswildcard
----
 
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    kubernetes.io/ingress.class: kommander-traefik
-    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-swe-idcc-task-notification@kubernetescrd,default-gridcapa-user-id@kubernetescrd
-    traefik.ingress.kubernetes.io/router.tls: "true"
-  labels:
-    app: gridcapa
-    component: gridcapa-ingress
-  name: gridcapa-ingress-swe-idcc-task-notification
-  namespace: default
-spec:
-  rules:
-    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
-      http:
-        paths:
-          - backend:
-              service:
-                name: swe-idcc-task-manager
-                port:
-                  number: 80
-            path: /swe/idcc/task-notification/
-            pathType: ImplementationSpecific
-  tls:
-    - hosts:
-        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
-      secretName: ingresswildcard
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
