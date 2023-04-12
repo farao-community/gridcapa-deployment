@@ -2,10 +2,10 @@ data-bridge:
   zone-id: "UTC"
   target-process: SWE_IDCC_IDCF
   file-type: CORESO_SV
-  file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_1D_.*_SV_[0-9]{3}.xml
+  file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_ID_.*_SV_[0-9]{3}.xml
   time-validity: hourly
   remote-file-regex:
-    - "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_1D_.*_SV_[0-9]{3}.zip"
+    - "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_ID_.*_SV_[0-9]{3}.zip"
   sources:
     ftp:
       active: true

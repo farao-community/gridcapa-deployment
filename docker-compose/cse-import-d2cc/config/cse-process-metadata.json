@@ -15,6 +15,7 @@
     {
       "filterName": "Summary",
       "defaultChecked": true,
+      "addErrors" : true,
       "filterValue": [
         "Summary :",
         "dichotomy step",
