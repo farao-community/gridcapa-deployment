@@ -43,8 +43,8 @@ data:
       solver-specific-parameters : THREADS 1 MAXNODE 100000 MAXTIME 300
 
     rao-multi-threading:
-      contingency-scenarios-in-parallel: 10
-      preventive-leaves-in-parallel: 10
+      contingency-scenarios-in-parallel: 14
+      preventive-leaves-in-parallel: 14
       curative-leaves-in-parallel: 1
 
     rao-load-flow-and-sensitivity-computation:

@@ -42,5 +42,15 @@ data:
         "name" : "Capa CSE IMPORT EC IDCC",
         "url"  : "/cse/import-ec/idcc/",
         "appColor" : "#808000"
+      },
+      {
+        "name" : "Capa CSE IMPORT D2CC",
+        "url"  : "/cse/import/d2cc/",
+        "appColor" : "#36cf29"
+      },
+      {
+        "name" : "Capa CSE IMPORT IDCC",
+        "url"  : "/cse/import/idcc/",
+        "appColor" : "#21afe1"
       }
     ]
