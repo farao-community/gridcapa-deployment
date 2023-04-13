@@ -1284,7 +1284,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-server
+                name: gateway
                 port:
                   number: 80
             path: /cse/import/d2cc/config/
@@ -1313,7 +1313,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-notification-server
+                name: gateway
                 port:
                   number: 80
             path: /cse/import/d2cc/config-notification/
@@ -1342,7 +1342,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-d2cc-gridcapa-job-launcher
+                name: gateway
                 port:
                   number: 80
             path: /cse/import/d2cc/gridcapa-job-launcher/
@@ -1371,7 +1371,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-d2cc-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /cse/import/d2cc/task-manager/
@@ -1400,7 +1400,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-d2cc-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /cse/import/d2cc/task-notification/
@@ -1458,7 +1458,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-server
+                name: gateway
                 port:
                   number: 80
             path: /cse/import/idcc/config/
@@ -1487,7 +1487,7 @@ spec:
         paths:
           - backend:
               service:
-                name: config-notification-server
+                name: gateway
                 port:
                   number: 80
             path: /cse/import/idcc/config-notification/
@@ -1516,7 +1516,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-idcc-gridcapa-job-launcher
+                name: gateway
                 port:
                   number: 80
             path: /cse/import/idcc/gridcapa-job-launcher/
@@ -1545,7 +1545,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-idcc-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /cse/import/idcc/task-manager/
@@ -1574,7 +1574,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-idcc-task-manager
+                name: gateway
                 port:
                   number: 80
             path: /cse/import/idcc/task-notification/

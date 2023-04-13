@@ -18,6 +18,8 @@ resources:
   - cse-export-idcc-app-idp-settings-configmap.yaml
   - cse-import-ec-d2cc-app-idp-settings-configmap.yaml
   - cse-import-ec-idcc-app-idp-settings-configmap.yaml
+  - cse-import-d2cc-app-idp-settings-configmap.yaml
+  - cse-import-idcc-app-idp-settings-configmap.yaml
   - swe-d2cc-app-idp-settings-configmap.yaml
   - swe-idcc-app-idp-settings-configmap.yaml
   - swe-idcc-idcf-app-idp-settings-configmap.yaml
