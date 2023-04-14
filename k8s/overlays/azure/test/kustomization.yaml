@@ -47,7 +47,7 @@ patches:
       metadata:
         name: rao-runner
       spec:
-        replicas: 8
+        replicas: 12
         template:
           spec:
             containers:
@@ -96,7 +96,7 @@ patches:
       metadata:
         name: cse-import-ec-d2cc-gridcapa-runner
       spec:
-        replicas: 2
+        replicas: 8
         template:
           spec:
             volumes:
@@ -110,7 +110,7 @@ patches:
       metadata:
         name: cse-import-ec-idcc-gridcapa-runner
       spec:
-        replicas: 2
+        replicas: 4
         template:
           spec:
             volumes:
@@ -148,6 +148,7 @@ patches:
       metadata:
         name: cse-export-idcc-runner
       spec:
+        replicas: 4
         template:
           spec:
             volumes:
@@ -161,6 +162,7 @@ patches:
       metadata:
         name: cse-export-d2cc-runner
       spec:
+        replicas: 8
         template:
           spec:
             volumes:
