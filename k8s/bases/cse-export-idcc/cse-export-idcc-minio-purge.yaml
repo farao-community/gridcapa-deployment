@@ -1,0 +1,36 @@
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: cse-export-idcc-minio-purge
+  labels:
+    app: gridcapa
+    component: minio-purge
+    region: cse
+    process: export-idcc
+spec:
+  schedule: "5 12 * * *"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: cse-export-idcc-others-minio-purge
+              image: minio-mc
+              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/CSE/EXPORT/IDCC/CGMs/", "minio/gridcapa/CSE/EXPORT/IDCC/CRACs/", "minio/gridcapa/CSE/EXPORT/IDCC/2021/", "minio/gridcapa/CSE/EXPORT/IDCC/2022/", "minio/gridcapa/CSE/EXPORT/IDCC/2023/", "minio/gridcapa/CSE/EXPORT/IDCC/2024/" ]
+              env:
+                - name: MINIO_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-access-key
+                - name: MINIO_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-secret-key
+                - name: MC_HOST_minio
+                  value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
+          restartPolicy: Never
