@@ -21,9 +21,11 @@ data:
         {
           "filterName": "Summary",
           "defaultChecked": true,
+          "addErrors" : true,
           "filterValue": [
             "Summary :",
-            "Network at dichotomy step"
+            "dichotomy step",
+            "dichotomy index"
           ]
         }
       ]

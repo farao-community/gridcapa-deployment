@@ -1,5 +1,6 @@
 {
   "processName": "SWE D2CC",
+  "dayIncrementInDate": 2,
   "globalViewTimestampFilter": [
     "02:30",
     "05:30",
@@ -12,6 +13,7 @@
     {
       "filterName": "Summary",
       "defaultChecked": true,
+      "addErrors" : true,
       "filterValue": [
         "Summary ",
         "Summary BD",

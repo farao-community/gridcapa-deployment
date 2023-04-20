@@ -1,0 +1,78 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://gridcapa-postgres:5432/cse_import_ec_d2cc_tasks
+    driverClassName: org.postgresql.Driver
+    username: cse_import_ec_d2cc_server
+    password: cse-import-ec-d2cc
+  jpa:
+    hibernate:
+      ddl-auto: update
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+  cloud:
+    stream:
+      default:
+        group: cse-import-ec-d2cc-task-manager
+      bindings:
+        consumeMinioEvent-in-0:
+          destination: gridcapa.minio.events
+        consumeTaskStatusUpdate-in-0:
+          destination: cse-import-ec-d2cc-task-status-updated
+        consumeTaskEventUpdate-in-0:
+          destination: cse-import-ec-d2cc-task-manager-logs-exchange
+        task-updated:
+          destination: cse-import-ec-d2cc-task-updated
+        task-status-updated:
+          destination: cse-import-ec-d2cc-task-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+        bindings:
+          consumeMinioEvent-in-0:
+            consumer:
+              exchange-type: fanout
+          task-status-updated:
+            producer:
+              routing-key-expression: '''status'''
+
+task-server:
+  process:
+    tag: CSE_IMPORT_EC_D2CC
+    timezone: CET
+    inputs:
+      - CGM
+      - CRAC
+      - GLSK
+      - NTC
+      - TARGET-CH
+      - NTC-RED
+      - VULCANUS
+    optional-inputs:
+      - AUTOMATED-FORCED-PRAS
+      - USER-CONFIG
+    outputs:
+      - TTC_RES
+      - INITIAL_CGM
+      - FINAL_CGM
+    enable-export-logs: true
+minio-adapter:
+  bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
+  base-path: ${GRIDCAPA_MINIO_BASE_PATH:}
+  url: ${GRIDCAPA_MINIO_URL:http://minio:9000}
+  access-key: ${GRIDCAPA_MINIO_ACCESS_KEY:gridcapa}
+  secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
+
+stomp:
+  allowed-origin: http://cse-import-ec-d2cc-gridcapa-app
+  starting-ws-endpoint: /tasks/notify
+  notify: /task
+  receive-request: /app
+
+logback:
+  amqp:
+    exchange: cse-import-ec-d2cc-task-manager-logs-exchange

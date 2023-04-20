@@ -5,6 +5,8 @@ metadata:
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^/cse/import/idcc$ /cse/import/idcc/ permanent;
       rewrite ^/cse/import/d2cc$ /cse/import/d2cc/ permanent;
+      rewrite ^/cse/import-ec/idcc$ /cse/import-ec/idcc/ permanent;
+      rewrite ^/cse/import-ec/d2cc$ /cse/import-ec/d2cc/ permanent;
       rewrite ^/cse/export/idcc$ /cse/export/idcc/ permanent;
       rewrite ^/cse/export/d2cc$ /cse/export/d2cc/ permanent;
       rewrite ^/core/valid$ /core/valid/ permanent;
@@ -12,6 +14,7 @@ metadata:
       rewrite ^/cse/valid/d2cc$ /cse/valid/d2cc/ permanent;
       rewrite ^/swe/d2cc$ /swe/d2cc/ permanent;
       rewrite ^/swe/idcc$ /swe/idcc/ permanent;
+      rewrite ^/swe/idcf$ /swe/idcf/ permanent;
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
@@ -452,6 +455,132 @@ spec:
                 port:
                   number: 80
             path: /()(swe/idcc/gridcapa-job-launcher/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: swe-idcc-idcf-gridcapa-app
+                port:
+                  number: 80
+            path: /swe/idcf(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/idcf/config/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/idcf/config-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/idcf/task-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/idcf/task-manager/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/idcf/gridcapa-job-launcher/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-import-ec-d2cc-gridcapa-app
+                port:
+                  number: 80
+            path: /cse/import-ec/d2cc(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(cse/import-ec/d2cc/config/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(cse/import-ec/d2cc/config-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(cse/import-ec/d2cc/task-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(cse/import-ec/d2cc/task-manager/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(cse/import-ec/d2cc/gridcapa-job-launcher/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: cse-import-ec-idcc-gridcapa-app
+                port:
+                  number: 80
+            path: /cse/import-ec/idcc(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(cse/import-ec/idcc/config/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(cse/import-ec/idcc/config-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(cse/import-ec/idcc/task-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(cse/import-ec/idcc/task-manager/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(cse/import-ec/idcc/gridcapa-job-launcher/.*)
             pathType: Prefix
   tls:
     - hosts:

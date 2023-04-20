@@ -1,5 +1,5 @@
 {
-  "processName": "SWE IDCC",
+  "processName": "SWE IDCC DACF",
   "globalViewTimestampFilter": [
     "02:30",
     "05:30",
@@ -12,6 +12,7 @@
     {
       "filterName": "Summary",
       "defaultChecked": true,
+      "addErrors" : true,
       "filterValue": [
         "Summary ",
         "Summary BD",

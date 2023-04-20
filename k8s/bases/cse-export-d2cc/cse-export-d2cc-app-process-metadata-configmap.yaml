@@ -11,8 +11,9 @@ data:
   process-metadata.json: |-
     {
       "processName": "CSE EXPORT D2CC",
+      "dayIncrementInDate": 2,
       "globalViewTimestampFilter": [
       ],
-      "eventPredefinedFilter": {
-      }
+      "eventPredefinedFilter": [
+      ]
     }

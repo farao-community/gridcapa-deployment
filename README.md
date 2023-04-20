@@ -18,7 +18,11 @@ GridCapa currently contains the following applications:
 - GridCapa CSE EXPORT IDCC
 - GridCapa CORE Validation
 - GridCapa SWE D2CC
-- GridCapa SWE IDCC
+- GridCapa SWE IDCC DACF
+- GridCapa SWE IDCC IDCF
+- GridCapa CSE IMPORT_EC D2CC
+- GridCapa CSE IMPORT_EC IDCC
+
 
 ### Prerequisites
 
@@ -49,7 +53,7 @@ docker-compose up -d
 **Be careful to your local resources if you try to deploy too many processes it could be quite heavy.**
 
 Multiple environment are available:
-- Main GridCapa UI on pages : http://localhost/cse/import/d2cc/, http://localhost/cse/import/idcc/, http://localhost/cse/export/d2cc/,http://localhost/cse/export/idcc/, http://localhost/core/valid/, according to what has been deployed.
+- Main GridCapa UI on pages : http://localhost/cse/import/d2cc/, http://localhost/cse/import/idcc/, http://localhost/cse/export/d2cc/,http://localhost/cse/export/idcc/, http://localhost/core/valid/,  http://localhost/cse/import-ec/d2cc/, http://localhost/cse/import-ec/idcc/according to what has been deployed.
 - FTP server file browser on page http://localhost/utils/filebrowser/. Default credentials are gridcapa/gridcapa.
 - SFTP server file browser on page http://localhost/utils/filebrowser/. Default credentials are gridcapa/gridcapa.
 - RabbitMQ management UI on page http://localhost/utils/rabbitmq/. Default credentials are gridcapa/gridcapa.

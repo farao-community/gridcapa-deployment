@@ -53,6 +53,26 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: cse-import-idcc-password
+            - name: POSTGRES_CSE_IMPORT_EC_IDCC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-import-ec-idcc-user
+            - name: POSTGRES_CSE_IMPORT_EC_IDCC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-import-ec-idcc-password
+            - name: POSTGRES_CSE_IMPORT_EC_D2CC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-import-ec-d2cc-user
+            - name: POSTGRES_CSE_IMPORT_EC_D2CC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: cse-import-ec-d2cc-password
             - name: POSTGRES_CSE_IMPORT_D2CC_USER
               valueFrom:
                 secretKeyRef:
@@ -113,6 +133,16 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: swe-idcc-password
+            - name: POSTGRES_SWE_IDCC_IDCF_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: swe-idcc-idcf-user
+            - name: POSTGRES_SWE_IDCC_IDCF_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: swe-idcc-idcf-password
             - name: POSTGRES_CSE_VALID_IDCC_USER
               valueFrom:
                 secretKeyRef:

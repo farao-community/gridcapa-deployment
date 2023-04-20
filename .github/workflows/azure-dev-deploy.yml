@@ -1,19 +1,7 @@
 name: Azure dev deployment
 
 on:
-  push:
   workflow_dispatch:
-  repository_dispatch:
-    types:
-      - gridcapa_app_updated
-      - gridcapa_data_bridge_updated
-      - gridcapa_task_manager_updated
-      - gridcapa_job_launcher_updated
-      - gridcapa_rao_logs_dispatcher_updated
-      - gridcapa_export_updated
-      - gridcapa_rao_runner_updated
-      - gridcapa_cse_updated
-      - gridcapa_cse_adapter_updated
 
 jobs:
   deploy-on-azure-dev:

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cse-import-ec-idcc-gridcapa-job-launcher
+  labels:
+    app: gridcapa
+    component: job-launcher
+    region: cse
+    process: import-ec-idcc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: job-launcher
+    region: cse
+    process: import-ec-idcc
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http

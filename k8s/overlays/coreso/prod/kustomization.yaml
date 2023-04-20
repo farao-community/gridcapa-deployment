@@ -1,12 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-bases:
+resources:
   - ../common
   - ../../../bases/cse-import-d2cc
   - ../../../bases/cse-import-idcc
-
-resources:
   - apps-metadata-server-configmap.yaml
   - cse-gridcapa-runner-itools-coreso-configmap.yaml
   - gridcapa-app-env-configmap.yaml
@@ -132,34 +130,34 @@ images:
     newTag: 0.11.0
   - name: gridsuite-config-server
     newName: docker.io/gridsuite/config-server
-    newTag: 0.11.0
+    newTag: 0.13.0
   - name: gridcapa-rao-runner
     newName:  docker.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.9.0
+    newTag: v1.12.0
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
-    newTag: v1.6.1
+    newTag: v1.6.2
   - name: gridcapa-gateway
     newName: docker.io/farao/gridcapa-gateway
     newTag: 1.0.0
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v1.2.1
+    newTag: v1.2.3
   - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
-    newTag: v1.8.0
+    newTag: v1.10.0
   - name: gridcapa-cse-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
-    newTag: v1.4.0
+    newTag: v1.5.0
   - name: gridcapa-cse-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.1.0
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.12.0
+    newTag: v1.14.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.12.0
+    newTag: v1.13.0
   - name: gridcapa-cse-exporter
     newName: docker.io/farao/gridcapa-export
-    newTag: v1.2.0
+    newTag: v1.2.2

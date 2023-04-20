@@ -64,6 +64,13 @@ services:
     networks:
       - gridcapa
 
+  cse-import-d2cc-vulcanus-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/cse-d2cc-gridcapa-vulcanus-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
   cse-import-d2cc-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
@@ -97,7 +104,6 @@ services:
     volumes:
       - ../cse-common/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
       - ../cse-common/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
-      - ../cse-common/combinedRAs.json:/home/farao/combinedRAs.json
       - ./config/cse-d2cc-gridcapa-runner-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://cse-cc-runner/actuator/health" ]

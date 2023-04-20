@@ -11,6 +11,7 @@ data:
   process-metadata.json: |-
     {
       "processName": "CSE IMPORT D2CC",
+      "dayIncrementInDate": 2,
       "globalViewTimestampFilter": [
         "00:30",
         "03:30",
@@ -25,9 +26,11 @@ data:
         {
           "filterName": "Summary",
           "defaultChecked": true,
+          "addErrors" : true,
           "filterValue": [
             "Summary :",
-            "Network at dichotomy step"
+            "dichotomy step",
+            "dichotomy index"
           ]
         }
       ]

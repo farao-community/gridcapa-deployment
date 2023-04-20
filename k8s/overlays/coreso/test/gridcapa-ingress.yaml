@@ -351,6 +351,354 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-ec-d2cc@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-ec-d2cc-app
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-ec-d2cc-gridcapa-app
+                port:
+                  number: 80
+            path: /cse/import-ec/d2cc/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-ec-d2cc-config@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-ec-d2cc-config
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: config-server
+                port:
+                  number: 80
+            path: /cse/import-ec/d2cc/config/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-ec-d2cc-config-notification@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-ec-d2cc-config-notification
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: config-notification-server
+                port:
+                  number: 80
+            path: /cse/import-ec/d2cc/config-notification/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-ec-d2cc-gridcapa-job-launcher@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-ec-d2cc-job-launcher
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-ec-d2cc-gridcapa-job-launcher
+                port:
+                  number: 80
+            path: /cse/import-ec/d2cc/gridcapa-job-launcher/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-ec-d2cc-task-manager@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-ec-d2cc-task-manager
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-ec-d2cc-task-manager
+                port:
+                  number: 80
+            path: /cse/import-ec/d2cc/task-manager/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-ec-d2cc-task-notification@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-ec-d2cc-task-notification
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-ec-d2cc-task-manager
+                port:
+                  number: 80
+            path: /cse/import-ec/d2cc/task-notification/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-ec-idcc@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-ec-idcc-app
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-ec-idcc-gridcapa-app
+                port:
+                  number: 80
+            path: /cse/import-ec/idcc/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-ec-idcc-config@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-ec-idcc-config
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: config-server
+                port:
+                  number: 80
+            path: /cse/import-ec/idcc/config/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-ec-idcc-config-notification@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-ec-idcc-config-notification
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: config-notification-server
+                port:
+                  number: 80
+            path: /cse/import-ec/idcc/config-notification/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-ec-idcc-gridcapa-job-launcher@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-ec-idcc-job-launcher
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-ec-idcc-gridcapa-job-launcher
+                port:
+                  number: 80
+            path: /cse/import-ec/idcc/gridcapa-job-launcher/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-ec-idcc-task-manager@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-ec-idcc-task-manager
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-ec-idcc-task-manager
+                port:
+                  number: 80
+            path: /cse/import-ec/idcc/task-manager/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-ec-idcc-task-notification@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-ec-idcc-task-notification
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-ec-idcc-task-manager
+                port:
+                  number: 80
+            path: /cse/import-ec/idcc/task-notification/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
     traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-swe-d2cc@kubernetescrd,default-gridcapa-user-id@kubernetescrd
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
@@ -665,6 +1013,182 @@ spec:
         - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
       secretName: ingresswildcard
 ---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-swe-idcc-idcf@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-swe-idcc-idcf-app
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: swe-idcc-idcf-gridcapa-app
+                port:
+                  number: 80
+            path: /swe/idcf/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-swe-idcc-idcf-config@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-swe-idcc-idcf-config
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: config-server
+                port:
+                  number: 80
+            path: /swe/idcf/config/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-swe-idcc-idcf-config-notification@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-swe-idcc-idcf-config-notification
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: config-notification-server
+                port:
+                  number: 80
+            path: /swe/idcf/config-notification/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-swe-idcc-idcf-gridcapa-job-launcher@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-swe-idcc-idcf-job-launcher
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: swe-idcc-idcf-gridcapa-job-launcher
+                port:
+                  number: 80
+            path: /swe/idcf/gridcapa-job-launcher/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-swe-idcc-idcf-task-manager@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-swe-idcc-idcf-task-manager
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: swe-idcc-idcf-task-manager
+                port:
+                  number: 80
+            path: /swe/idcf/task-manager/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-swe-idcc-idcf-task-notification@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-swe-idcc-idcf-task-notification
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: swe-idcc-idcf-task-manager
+                port:
+                  number: 80
+            path: /swe/idcf/task-notification/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -688,6 +1212,354 @@ spec:
                 port:
                   number: 80
             path: /swe/idcc/task-notification/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-d2cc@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-d2cc-app
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-d2cc-gridcapa-app
+                port:
+                  number: 80
+            path: /cse/import/d2cc/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-d2cc-config@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-d2cc-config
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: config-server
+                port:
+                  number: 80
+            path: /cse/import/d2cc/config/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-d2cc-config-notification@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-d2cc-config-notification
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: config-notification-server
+                port:
+                  number: 80
+            path: /cse/import/d2cc/config-notification/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-d2cc-gridcapa-job-launcher@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-d2cc-job-launcher
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-d2cc-gridcapa-job-launcher
+                port:
+                  number: 80
+            path: /cse/import/d2cc/gridcapa-job-launcher/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-d2cc-task-manager@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-d2cc-task-manager
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-d2cc-task-manager
+                port:
+                  number: 80
+            path: /cse/import/d2cc/task-manager/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-d2cc-task-notification@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-d2cc-task-notification
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-d2cc-task-manager
+                port:
+                  number: 80
+            path: /cse/import/d2cc/task-notification/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-idcc@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-idcc-app
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-idcc-gridcapa-app
+                port:
+                  number: 80
+            path: /cse/import/idcc/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-idcc-config@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-idcc-config
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: config-server
+                port:
+                  number: 80
+            path: /cse/import/idcc/config/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-idcc-config-notification@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-idcc-config-notification
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: config-notification-server
+                port:
+                  number: 80
+            path: /cse/import/idcc/config-notification/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-idcc-gridcapa-job-launcher@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-idcc-job-launcher
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-idcc-gridcapa-job-launcher
+                port:
+                  number: 80
+            path: /cse/import/idcc/gridcapa-job-launcher/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-idcc-task-manager@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-idcc-task-manager
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-idcc-task-manager
+                port:
+                  number: 80
+            path: /cse/import/idcc/task-manager/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-idcc-task-notification@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-cse-import-idcc-task-notification
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: cse-import-idcc-task-manager
+                port:
+                  number: 80
+            path: /cse/import/idcc/task-notification/
             pathType: ImplementationSpecific
   tls:
     - hosts:

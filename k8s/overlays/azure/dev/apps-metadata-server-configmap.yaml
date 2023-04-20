@@ -18,6 +18,16 @@ data:
         "url"  : "/cse/import/idcc",
         "appColor" : "#21afe1"
       },
+     {
+        "name" : "Capa CSE IMPORT EC D2CC",
+        "url"  : "/cse/import-ec/d2cc",
+        "appColor" : "#008080"
+      },
+      {
+        "name" : "Capa CSE IMPORT EC IDCC",
+        "url"  : "/cse/import-ec/idcc",
+        "appColor" : "#808000"
+      },
       {
         "name" : "Capa CSE EXPORT D2CC",
         "url"  : "/cse/export/d2cc",
@@ -49,8 +59,13 @@ data:
         "appColor" : "#ebd82d"
       },
       {
-        "name" : "Capa SWE IDCC",
+        "name" : "Capa SWE IDCC DACF",
         "url"  : "/swe/idcc",
         "appColor" : "#cfeb2d"
+      },
+      {
+        "name" : "Capa SWE IDCC IDCF",
+        "url"  : "/swe/idcf/",
+        "appColor" : "#659490"
       }
     ]

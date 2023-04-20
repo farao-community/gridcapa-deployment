@@ -1,0 +1,37 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-import-ec-d2cc-gridcapa-app-process-metadata-configmap
+  labels:
+    app: gridcapa
+    component: front-app-process-metadata
+    region: cse
+    process: import-ec-d2cc
+data:
+  process-metadata.json: |-
+    {
+      "processName": "CSE IMPORT EC D2CC",
+      "dayIncrementInDate": 2,
+      "globalViewTimestampFilter": [
+        "00:30",
+        "03:30",
+        "07:30",
+        "10:30",
+        "13:30",
+        "16:30",
+        "19:30",
+        "22:30"
+      ],
+      "eventPredefinedFilter": [
+        {
+          "filterName": "Summary",
+          "defaultChecked": true,
+          "addErrors" : true,
+          "filterValue": [
+            "Summary :",
+            "dichotomy step",
+            "dichotomy index"
+          ]
+        }
+      ]
+    }

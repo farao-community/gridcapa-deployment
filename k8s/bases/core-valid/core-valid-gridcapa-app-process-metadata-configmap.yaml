@@ -13,6 +13,6 @@ data:
       "processName": "CORE Validation",
       "globalViewTimestampFilter": [
       ],
-      "eventPredefinedFilter": {
-      }
+      "eventPredefinedFilter": [
+      ]
     }
