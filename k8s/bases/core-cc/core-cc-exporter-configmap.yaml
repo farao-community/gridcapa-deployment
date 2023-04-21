@@ -1,0 +1,53 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: core-cc-exporter-configmap
+  labels:
+    app: gridcapa
+    component: exporter
+    region: core
+    process: cc
+data:
+  application.yml: |-
+    server:
+      port: 8080
+    spring:
+      application:
+        name: core-cc-exporter
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        port: 5672
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+      cloud:
+        stream:
+          default:
+            group: core-cc-outputs
+          bindings:
+            consumeTaskDtoUpdate-in-0:
+              destination: core-cc-task-updated
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+            bindings:
+              consumeTaskDtoUpdate-in-0:
+                consumer:
+                  binding-routing-key: status
+
+    task-manager:
+      base-url: http://core-cc-task-manager
+      fetch-task:
+        reties-number: 6
+        interval-in-seconds: 10
+    ftp:
+      active: true
+      host: ${SOURCE_HOST}
+      port: ${SOURCE_PORT}
+      access-key: ${SOURCE_USER}
+      secret-key: ${SOURCE_PASSWORD}
+      remote-relative-destination-directory: ${SINK_DIRECTORY}
+    logback:
+      amqp:
+        exchange: core-cc-task-manager-logs-exchange
