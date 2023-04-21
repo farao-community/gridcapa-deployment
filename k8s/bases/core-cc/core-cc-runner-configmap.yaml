@@ -1,0 +1,53 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: core-cc-runner-configmap
+  labels:
+    app: gridcapa
+    component: runner
+    region: core
+    process: cc
+data:
+  application.yml: |-
+    logback:
+      amqp:
+        exchange: core-cc-task-manager-logs-exchange
+        routing-key: "#"
+    spring:
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+        template:
+          reply-timeout: 7200000
+      cloud:
+        stream:
+          bindings:
+            task-status-update:
+              binder: rabbit
+              destination: core-cc-task-status-updated
+
+    rao-runner-server:
+      amqp:
+        client-app-id: core-cc-runner
+        queue-name: rao-request-queue
+
+    core-cc-runner:
+      async-time-out: 7200000
+      bindings:
+        request:
+          destination: core-cc-requests
+          routing-key: "#"
+        response:
+          destination: core-cc-response
+          expiration: 6000000
+      whitelist:
+        - http://gridcapa-minio:9000/
+
+    minio-adapter:
+      bucket: gridcapa
+      base-path: /CORE/CC
+      access-key: ${GRIDCAPA_MINIO_USER}
+      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+      url: http://gridcapa-minio:9000/
