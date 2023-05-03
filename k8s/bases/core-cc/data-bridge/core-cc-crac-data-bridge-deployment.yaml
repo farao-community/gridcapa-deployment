@@ -1,11 +1,11 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: core-cc-cbcora-data-bridge
+  name: core-cc-crac-data-bridge
   labels:
     app: gridcapa
     component: data-bridge
-    file: cbcora
+    file: crac
     region: core
     process: cc
 
@@ -14,7 +14,7 @@ spec:
     matchLabels:
       app: gridcapa
       component: data-bridge
-      file: cbcora
+      file: crac
       region: core
       process: cc
   template:
@@ -22,12 +22,12 @@ spec:
       labels:
         app: gridcapa
         component: data-bridge
-        file: cbcora
+        file: crac
         region: core
         process: cc
     spec:
       containers:
-        - name: core-cc-cbcora-data-bridge
+        - name: core-cc-crac-data-bridge
           image: gridcapa-core-cc-input-data-bridge
           imagePullPolicy: Always
           ports:
@@ -57,7 +57,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CORE_CC_CBCORA
+                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CORE_CC_CRAC
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
@@ -81,7 +81,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: core-cc-cbcora-data-bridge-configmap-volume
+              name: core-cc-crac-data-bridge-configmap-volume
           livenessProbe:
             tcpSocket:
               port: 8080
@@ -108,6 +108,6 @@ spec:
               memory: "384Mi"
       restartPolicy: Always
       volumes:
-        - name: core-cc-cbcora-data-bridge-configmap-volume
+        - name: core-cc-crac-data-bridge-configmap-volume
           configMap:
-            name: core-cc-cbcora-data-bridge-configmap
+            name: core-cc-crac-data-bridge-configmap
