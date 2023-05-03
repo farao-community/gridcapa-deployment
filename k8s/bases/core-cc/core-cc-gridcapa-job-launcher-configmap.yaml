@@ -44,6 +44,7 @@ data:
                 consumer:
                   binding-routing-key: status
     job-launcher:
+      auto: true
       url:
         task-manager-timestamp-url: http://core-cc-task-manager/tasks/
         task-manager-business-date-url: http://core-cc-task-manager/tasks/businessdate/

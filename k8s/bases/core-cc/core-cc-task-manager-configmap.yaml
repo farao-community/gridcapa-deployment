@@ -65,7 +65,7 @@ data:
         timezone: CET
         inputs:
           - CGM
-          - CBCORA
+          - CRAC
           - GLSK
           - REFPROG
           - STUDY-POINTS
