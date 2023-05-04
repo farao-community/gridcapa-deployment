@@ -2,10 +2,10 @@ data-bridge:
   zone-id: "Europe/Paris"
   target-process: CORE_CC
   file-type: RAOREQUEST
-  file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F302.*.(xml|XML)
+  file-regex: .*CORESO-F302_F302-(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*\.xml
   time-validity: daily
   remote-file-regex:
-    - ".*"
+    - ".*CORESO-F302_F302-(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*\\.xml"
   sources:
     ftp:
       active: true
@@ -13,7 +13,7 @@ data-bridge:
       port: 21
       username: gridcapa
       password: gridcapa
-      base-directory: /data/gridcapa/core/cc
+      base-directory: /data/gridcapa/core/cc/
       polling-delay-in-ms: 5000
   sinks:
     minio:
