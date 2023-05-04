@@ -13,7 +13,7 @@ data-bridge:
       port: 21
       username: gridcapa
       password: gridcapa
-      base-directory: /data/gridcapa/core/cc/cbcoras
+      base-directory: /data/gridcapa/core/cc
       polling-delay-in-ms: 5000
   sinks:
     minio:
@@ -21,4 +21,4 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CORE/CC/CBCORAs
+      base-directory: /CORE/CC/ORIGINAL_INPUTS

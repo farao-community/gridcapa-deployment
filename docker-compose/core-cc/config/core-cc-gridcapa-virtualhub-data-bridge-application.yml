@@ -21,4 +21,4 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CORE/CC/VIRTUALHUBs
+      base-directory: /CORE/CC/ORIGINAL_INPUTS
