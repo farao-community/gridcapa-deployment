@@ -72,16 +72,16 @@ data:
           - CGM
           - CRAC
           - GLSK
-          - NTC2-AT
-          - NTC2-CH
-          - NTC2-FR
-          - NTC2-SI
           - NTC
-          - NTC-RED
           - VULCANUS
         optional-inputs:
           - AUTOMATED-FORCED-PRAS
           - USER-CONFIG
+          - NTC2-AT
+          - NTC2-CH
+          - NTC2-FR
+          - NTC2-SI
+          - NTC-RED
         outputs:
           - TTC_RES
           - INITIAL_CGM
