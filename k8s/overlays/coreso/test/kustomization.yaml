@@ -64,7 +64,7 @@ patches:
       metadata:
         name: rao-runner
       spec:
-        replicas: 10
+        replicas: 16
         template:
           spec:
             tolerations:
@@ -118,28 +118,28 @@ patches:
       metadata:
         name: swe-d2cc-runner
       spec:
-        replicas: 2
+        replicas: 4
         template:
           spec:
             volumes:
               - name: swe-d2cc-runner-itools-configmap-volume
                 configMap:
                   name: swe-runner-itools-coreso-configmap
-  # Adapt SWE IDCC runner itools config
+  # Adapt SWE IDCC DACF runner itools config
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
         name: swe-idcc-runner
       spec:
-        replicas: 2
+        replicas: 4
         template:
           spec:
             volumes:
               - name: swe-idcc-runner-itools-configmap-volume
                 configMap:
                   name: swe-runner-itools-coreso-configmap
-  # Adapt SWE IDCC runner itools config
+  # Adapt SWE IDCC IDCF runner itools config
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -330,13 +330,13 @@ images:
     newTag: v1.1.0
   - name: gridcapa-cse-export-runner
     newName: docker.io/farao/gridcapa-cse-cc-export-runner
-    newTag: v1.15.1
+    newTag: v1.17.0
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.15.1
+    newTag: v1.17.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.16.0
+    newTag: v1.17.0
   - name: gridcapa-cse-exporter
     newName: docker.io/farao/gridcapa-export
     newTag: v1.3.3
@@ -357,7 +357,7 @@ images:
     newTag: v1.0.8
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.16.0
+    newTag: v1.17.0
   - name: gridcapa-swe-exporter
     newName: docker.io/farao/gridcapa-export
     newTag: v1.3.3
