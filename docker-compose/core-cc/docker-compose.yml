@@ -64,6 +64,13 @@ services:
     networks:
       - gridcapa
 
+  core-cc-gridcapa-post-processing:
+    image: farao/gridcapa-core-cc-post-processing:latest
+    volumes:
+      - ./config/core-cc-gridcapa-post-processing.yml:/config/application.yml
+    networks:
+      - gridcapa
+
   core-cc-runner:
     image: farao/gridcapa-core-cc:latest
     volumes:

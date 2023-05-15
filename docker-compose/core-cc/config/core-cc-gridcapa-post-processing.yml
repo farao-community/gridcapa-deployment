@@ -4,7 +4,7 @@ logback:
     routing-key: "#"
 spring:
   application:
-    name: core-cc-gridcapa-job-launcher
+    name: core-cc-gridcapa-post-processing
   rabbitmq:
     host: rabbitmq
     username: gridcapa
@@ -14,13 +14,7 @@ spring:
     stream:
       bindings:
         default:
-          group: core-cc-job-launcher
-        run-task:
-          destination: core-cc-run-task
-        run-task-auto:
-          destination: core-cc-run-task-auto
-        stop-task:
-          destination: core-cc-stop-task
+          group: core-cc-post-processing
         consumeTaskDtoUpdate-in-0:
           destination: core-cc-task-updated
       rabbit:
@@ -33,8 +27,7 @@ spring:
             consumer:
               binding-routing-key: status
 
-job-launcher:
-  auto: true
+core-cc-post-processing:
   url:
     task-manager-timestamp-url: http://core-cc-gridcapa-task-manager:8080/tasks/
     task-manager-business-date-url: http://core-cc-gridcapa-task-manager:8080/tasks/businessdate/
@@ -42,5 +35,9 @@ job-launcher:
     tag: CORE_CC
     timezone: CET
 
-scheduler:
-  enable: false
+minio-adapter:
+  bucket: gridcapa
+  base-path: /CORE/CC
+  access-key: gridcapa
+  secret-key: gridcapa
+  url: http://minio:9000
