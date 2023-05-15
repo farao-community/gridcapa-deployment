@@ -55,7 +55,7 @@ task-server:
       - RAOREQUEST-ACK
       - RAO-RESPONSE
       - FLOWBASED
-      - CNE-REPORTS
+      - CNE
       - CGM
       - METADATA
       - LOGS
