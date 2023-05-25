@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: scale-down-rao
 spec:
-  schedule: "0 15 * * *"
+  schedule: "0 19 * * *"
   jobTemplate:
     spec:
       template:
