@@ -56,7 +56,8 @@ task-server:
       - RAO-RESPONSE
       - FLOWBASED
       - CNE
-      - CGM
+      - RAO_RESULT
+      - CGM_OUT
       - METADATA
       - LOGS
     enable-export-logs: false
