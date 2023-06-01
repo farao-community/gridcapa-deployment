@@ -11,11 +11,11 @@ metadata:
   labels:
     app: gridcapa
     component: gridcapa
-  name: auth
+  name: auth-tmp
   namespace: default
 spec:
   rules:
-    - host: auth.farao-community.com
+    - host: auth-tmp.farao-community.com
       http:
         paths:
           - backend:
@@ -27,5 +27,5 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - auth.farao-community.com
+        - auth-tmp.farao-community.com
       secretName: gridcapa-tls
