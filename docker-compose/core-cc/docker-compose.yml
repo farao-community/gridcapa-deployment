@@ -8,13 +8,6 @@ services:
     networks:
       - gridcapa
 
-  core-cc-ack-data-bridge:
-    image: farao/gridcapa-output-data-bridge:latest
-    volumes:
-      - ./config/core-cc-ack-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
   core-cc-gridcapa-cgm-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
