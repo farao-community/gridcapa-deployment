@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-bases:
+resources:
   - ../common
   - ../../../bases/cse-export-d2cc
   - ../../../bases/cse-export-idcc
@@ -10,8 +10,8 @@ bases:
   - ../../../bases/swe-idcc-idcf
   - ../../../bases/cse-import-ec-d2cc
   - ../../../bases/cse-import-ec-idcc
-
-resources:
+  - ../../../bases/cse-import-d2cc
+  - ../../../bases/cse-import-idcc
   - cse-export-d2cc-app-idp-settings-configmap.yaml
   - cse-export-idcc-app-idp-settings-configmap.yaml
   - cse-import-ec-d2cc-app-idp-settings-configmap.yaml
@@ -71,7 +71,7 @@ patches:
       metadata:
         name: rao-runner
       spec:
-        replicas: 12
+        replicas: 16
         template:
           spec:
             tolerations:
@@ -97,7 +97,7 @@ patches:
       metadata:
         name: cse-export-idcc-runner
       spec:
-        replicas: 2
+        replicas: 4
         template:
           spec:
             volumes:
@@ -111,7 +111,7 @@ patches:
       metadata:
         name: cse-export-d2cc-runner
       spec:
-        replicas: 2
+        replicas: 8
         template:
           spec:
             volumes:
@@ -125,28 +125,28 @@ patches:
       metadata:
         name: swe-d2cc-runner
       spec:
-        replicas: 2
+        replicas: 4
         template:
           spec:
             volumes:
               - name: swe-d2cc-runner-itools-configmap-volume
                 configMap:
                   name: swe-runner-itools-coreso-configmap
-  # Adapt SWE IDCC runner itools config
+  # Adapt SWE IDCC DACF runner itools config
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
         name: swe-idcc-runner
       spec:
-        replicas: 2
+        replicas: 4
         template:
           spec:
             volumes:
               - name: swe-idcc-runner-itools-configmap-volume
                 configMap:
                   name: swe-runner-itools-coreso-configmap
-  # Adapt SWE IDCC runner itools config
+  # Adapt SWE IDCC IDCF runner itools config
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -167,7 +167,7 @@ patches:
       metadata:
         name: cse-import-ec-d2cc-gridcapa-runner
       spec:
-        replicas: 2
+        replicas: 8
         template:
           spec:
             volumes:
@@ -181,11 +181,39 @@ patches:
       metadata:
         name: cse-import-ec-idcc-gridcapa-runner
       spec:
-        replicas: 2
+        replicas: 4
         template:
           spec:
             volumes:
               - name: cse-import-ec-idcc-runner-itools-configmap-volume
+                configMap:
+                  name: cse-import-runner-itools-coreso-test-configmap
+  # adapt CSE Import runner itools config
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-d2cc-gridcapa-runner
+      spec:
+        replicas: 4
+        template:
+          spec:
+            volumes:
+              - name: cse-import-d2cc-runner-itools-configmap-volume
+                configMap:
+                  name: cse-import-runner-itools-coreso-test-configmap
+  # adapt CSE Import runner itools config
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-idcc-gridcapa-runner
+      spec:
+        replicas: 4
+        template:
+          spec:
+            volumes:
+              - name: cse-import-idcc-runner-itools-configmap-volume
                 configMap:
                   name: cse-import-runner-itools-coreso-test-configmap
 
@@ -226,25 +254,25 @@ images:
     newTag: v1.2.3
   - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
-    newTag: v1.10.0
+    newTag: v1.11.0
   - name: gridcapa-cse-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
-    newTag: v1.5.0
+    newTag: v1.6.0
   - name: gridcapa-cse-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.1.0
   - name: gridcapa-cse-export-runner
     newName: docker.io/farao/gridcapa-cse-cc-export-runner
-    newTag: v1.14.0
+    newTag: v1.17.0
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.14.0
+    newTag: v1.17.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.13.0
+    newTag: v1.17.1
   - name: gridcapa-cse-exporter
     newName: docker.io/farao/gridcapa-export
-    newTag: v1.3.3
+    newTag: v1.4.0
   - name: gridcapa-swe-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: v1.2.3
@@ -253,7 +281,7 @@ images:
     newTag: v1.0.5
   - name: gridcapa-swe-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
-    newTag: v1.5.0
+    newTag: v1.6.0
   - name: gridcapa-swe-d2cc-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.1.0
@@ -262,7 +290,7 @@ images:
     newTag: v1.0.8
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.13.0
+    newTag: v1.17.1
   - name: gridcapa-swe-exporter
     newName: docker.io/farao/gridcapa-export
-    newTag: v1.3.3
+    newTag: v1.4.0

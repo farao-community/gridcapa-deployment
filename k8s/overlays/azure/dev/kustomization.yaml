@@ -1,24 +1,22 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-bases:
+resources:
   - ../ftp
   - ../common
   - ../../../bases/cse-common
   - ../../../bases/cse-export-d2cc
   - ../../../bases/cse-export-idcc
   - ../../../bases/cse-import-d2cc
+  - ../../../bases/cse-import-idcc
   - ../../../bases/cse-import-ec-d2cc
   - ../../../bases/cse-import-ec-idcc
-  - ../../../bases/cse-import-idcc
   - ../../../bases/cse-valid-d2cc
   - ../../../bases/cse-valid-idcc
   - ../../../bases/core-valid
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
   - ../../../bases/swe-idcc-idcf
-
-resources:
   - apps-metadata-server-configmap.yaml
   - core-valid-gridcapa-app-idp-settings-configmap.yaml
   - cse-export-d2cc-app-idp-settings-configmap.yaml
