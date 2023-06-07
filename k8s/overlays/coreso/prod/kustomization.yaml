@@ -160,4 +160,4 @@ images:
     newTag: v1.13.0
   - name: gridcapa-cse-exporter
     newName: docker.io/farao/gridcapa-export
-    newTag: v1.5.0
+    newTag: v1.4.0
