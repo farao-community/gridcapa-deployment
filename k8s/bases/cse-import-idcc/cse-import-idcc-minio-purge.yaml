@@ -8,7 +8,7 @@ metadata:
     region: cse
     process: import-idcc
 spec:
-  schedule: "25 12 * * *"
+  schedule: "0 12 * * *"
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 3
@@ -17,7 +17,7 @@ spec:
       template:
         spec:
           containers:
-            - name: cse-import-idcc-boundary-minio-purge
+            - name: cse-import-idcc-annual-minio-purge
               image: minio-mc
               args: [ "rm", "--recursive", "--force", "--older-than", "366d", "minio/gridcapa/CSE/IMPORT/IDCC/AUTOMATED-FORCED-PRAs/", "minio/gridcapa/CSE/IMPORT/IDCC/NTC/", "minio/gridcapa/CSE/IMPORT/IDCC/TARGETCHs/" ]
               env:
