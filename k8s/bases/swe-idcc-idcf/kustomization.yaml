@@ -24,3 +24,4 @@ resources:
   - swe-idcc-idcf-runner.yaml
   - swe-idcc-idcf-runner-itools-configmap.yaml
   - swe-idcc-idcf-task-manager.yaml
+  - swe-idcc-idcf-minio-purge.yaml
