@@ -27,6 +27,7 @@ metadata:
   name: gridcapa
   namespace: gridcapa
 spec:
+  ingressClassName: nginx
   rules:
     - host: gridcapa.farao-community.com
       http:
