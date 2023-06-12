@@ -15,8 +15,6 @@ spring:
       bindings:
         task-status-update:
           destination: core-cc-task-status-updated
-        handleTaskLogEventUpdate-in-0:
-            destination: core-cc-task-manager-logs-exchange
 
 rao-runner-server:
   amqp:
