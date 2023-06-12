@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: core-cc-gridcapa-task-manager
   datasource:
     url: jdbc:postgresql://gridcapa-postgres:5432/core_cc_tasks
     driverClassName: org.postgresql.Driver
