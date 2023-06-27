@@ -8,13 +8,6 @@ services:
     networks:
       - gridcapa
 
-  core-cc-ack-data-bridge:
-    image: farao/gridcapa-output-data-bridge:latest
-    volumes:
-      - ./config/core-cc-ack-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
   core-cc-gridcapa-cgm-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
@@ -103,24 +96,19 @@ services:
     networks:
       - gridcapa
 
+  core-cc-output-data-bridge:
+    image: farao/gridcapa-output-data-bridge:latest
+    volumes:
+      - ./config/core-cc-output-data-bridge.yml:/config/application.yml
+    networks:
+      - gridcapa
+
   rao-logs-dispatcher:
     image: farao/gridcapa-rao-logs-dispatcher:latest
     volumes:
       - ./config/core-cc-rao-logs-dispatcher-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://rao-logs-dispatcher/actuator/health" ]
-      interval: 30s
-      timeout: 30s
-      retries: 5
-    networks:
-      - gridcapa
-
-  core-cc-outputs-exporter:
-    image: farao/gridcapa-export:latest
-    volumes:
-      - ./config/core-cc-gridcapa-export-application.yml:/config/application.yml
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://core-cc-gridcapa-export/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5
