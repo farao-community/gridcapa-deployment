@@ -17,5 +17,15 @@ data:
         "name" : "Capa CSE IMPORT IDCC",
         "url"  : "/cse/import/idcc/",
         "appColor" : "#21afe1"
+      },
+      {
+        "name" : "Capa SWE D2CC",
+        "url"  : "/swe/d2cc/",
+        "appColor" : "#ebd82d"
+      },
+      {
+        "name" : "Capa SWE IDCC DACF",
+        "url"  : "/swe/idcc/",
+        "appColor" : "#cfeb2d"
       }
     ]

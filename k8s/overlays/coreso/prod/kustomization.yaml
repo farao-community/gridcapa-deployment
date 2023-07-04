@@ -5,8 +5,11 @@ resources:
   - ../common
   - ../../../bases/cse-import-d2cc
   - ../../../bases/cse-import-idcc
+  - ../../../bases/swe-d2cc
+  - ../../../bases/swe-idcc
   - apps-metadata-server-configmap.yaml
   - cse-gridcapa-runner-itools-coreso-configmap.yaml
+  - swe-gridcapa-runner-itools-coreso-configmap.yaml
   - gridcapa-app-env-configmap.yaml
   - ingress-gridcapa.yaml
   - ingress-middlewares.yaml
@@ -74,6 +77,34 @@ patches:
               - name: cse-import-d2cc-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-coreso-configmap
+  # Adapt SWE D2CC runner itools config
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-d2cc-runner
+      spec:
+        replicas: 6
+        template:
+          spec:
+            volumes:
+              - name: swe-d2cc-runner-itools-configmap-volume
+                configMap:
+                  name: swe-runner-itools-coreso-configmap
+  # Adapt SWE IDCC DACF runner itools config
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-runner
+      spec:
+        replicas: 6
+        template:
+          spec:
+            volumes:
+              - name: swe-idcc-runner-itools-configmap-volume
+                configMap:
+                  name: swe-runner-itools-coreso-configmap
   - patch: |-
       apiVersion: apps/v1
       kind: StatefulSet
@@ -107,6 +138,22 @@ patches:
         path: /spec/template/spec/containers/0/volumeMounts/2
       - op: remove
         path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: swe-d2cc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: swe-idcc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
 
 configMapGenerator:
   - name: env-configmap
@@ -133,10 +180,10 @@ images:
     newTag: 0.13.0
   - name: gridcapa-rao-runner
     newName:  docker.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.12.0
+    newTag: v1.13.0
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
-    newTag: v1.7.0
+    newTag: v1.8.0
   - name: gridcapa-gateway
     newName: docker.io/farao/gridcapa-gateway
     newTag: 1.0.0
@@ -159,5 +206,26 @@ images:
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.13.0
   - name: gridcapa-cse-exporter
+    newName: docker.io/farao/gridcapa-export
+    newTag: v1.4.0
+  - name: gridcapa-swe-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: v1.2.3
+  - name: gridcapa-swe-adapter
+    newName: docker.io/farao/gridcapa-swe-adapter
+    newTag: v1.0.5
+  - name: gridcapa-swe-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: v1.6.0
+  - name: gridcapa-swe-d2cc-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
+    newTag: v1.1.0
+  - name: gridcapa-swe-runner
+    newName: docker.io/farao/gridcapa-swe-runner
+    newTag: v1.0.9
+  - name: gridcapa-swe-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: v1.18.0
+  - name: gridcapa-swe-exporter
     newName: docker.io/farao/gridcapa-export
     newTag: v1.4.0
