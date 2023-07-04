@@ -1,0 +1,20 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: delete-deployment-cron
+spec:
+  schedule: "0 21 * * 5" # à 21h tous les vendredis
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: kubectl-container
+              image: bitnami/kubectl
+              command:
+                - "/bin/sh"
+                - "-c"
+                - |
+                  kubectl delete deployment -l region=swe
+                  kubectl delete deployment -l region=cse
+          restartPolicy: OnFailure

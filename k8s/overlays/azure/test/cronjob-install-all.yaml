@@ -1,0 +1,20 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: create-deployment-cron
+spec:
+  schedule: "0 7 * * 1" # à 7h tous les lundis
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: kubectl-container
+              image: bitnami/kubectl
+              command:
+                - "/bin/sh"
+                - "-c"
+                - |
+                  wget https://raw.githubusercontent.com/farao-community/gridcapa-deployment/master/k8s/overlays/azure/test/kustomization.yaml -O gridcapa/azure-test-kustomize.yaml
+                  kubectl kustomize /gridcapa/azure-test-kustomize.yaml
+          restartPolicy: OnFailure
