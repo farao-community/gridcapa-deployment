@@ -360,7 +360,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+    - host: gridcapa.ingress-gridcapa-vaas.rh.1648.local
       http:
         paths:
           - backend:
@@ -372,7 +372,7 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+        - gridcapa.ingress-gridcapa-vaas.rh.1648.local
       secretName: ingresswildcard
 ---
 apiVersion: networking.k8s.io/v1
@@ -389,7 +389,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+    - host: gridcapa.ingress-gridcapa-vaas.rh.1648.local
       http:
         paths:
           - backend:
@@ -401,7 +401,7 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+        - gridcapa.ingress-gridcapa-vaas.rh.1648.local
       secretName: ingresswildcard
 ---
 apiVersion: networking.k8s.io/v1
@@ -418,7 +418,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+    - host: gridcapa.ingress-gridcapa-vaas.rh.1648.local
       http:
         paths:
           - backend:
@@ -430,7 +430,7 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+        - gridcapa.ingress-gridcapa-vaas.rh.1648.local
       secretName: ingresswildcard
 ---
 apiVersion: networking.k8s.io/v1
@@ -447,7 +447,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+    - host: gridcapa.ingress-gridcapa-vaas.rh.1648.local
       http:
         paths:
           - backend:
@@ -459,7 +459,7 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+        - gridcapa.ingress-gridcapa-vaas.rh.1648.local
       secretName: ingresswildcard
 ---
 apiVersion: networking.k8s.io/v1
@@ -476,7 +476,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+    - host: gridcapa.ingress-gridcapa-vaas.rh.1648.local
       http:
         paths:
           - backend:
@@ -488,7 +488,7 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+        - gridcapa.ingress-gridcapa-vaas.rh.1648.local
       secretName: ingresswildcard
 ---
 apiVersion: networking.k8s.io/v1
@@ -505,7 +505,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+    - host: gridcapa.ingress-gridcapa-vaas.rh.1648.local
       http:
         paths:
           - backend:
@@ -517,7 +517,7 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+        - gridcapa.ingress-gridcapa-vaas.rh.1648.local
       secretName: ingresswildcard
 ---
 apiVersion: networking.k8s.io/v1
@@ -534,7 +534,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+    - host: gridcapa.ingress-gridcapa-vaas.rh.1648.local
       http:
         paths:
           - backend:
@@ -546,7 +546,7 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+        - gridcapa.ingress-gridcapa-vaas.rh.1648.local
       secretName: ingresswildcard
 ---
 apiVersion: networking.k8s.io/v1
@@ -563,7 +563,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+    - host: gridcapa.ingress-gridcapa-vaas.rh.1648.local
       http:
         paths:
           - backend:
@@ -575,7 +575,7 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+        - gridcapa.ingress-gridcapa-vaas.rh.1648.local
       secretName: ingresswildcard
 ---
 apiVersion: networking.k8s.io/v1
@@ -592,7 +592,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+    - host: gridcapa.ingress-gridcapa-vaas.rh.1648.local
       http:
         paths:
           - backend:
@@ -604,7 +604,7 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+        - gridcapa.ingress-gridcapa-vaas.rh.1648.local
       secretName: ingresswildcard
 ---
 apiVersion: networking.k8s.io/v1
@@ -621,7 +621,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+    - host: gridcapa.ingress-gridcapa-vaas.rh.1648.local
       http:
         paths:
           - backend:
@@ -633,7 +633,7 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+        - gridcapa.ingress-gridcapa-vaas.rh.1648.local
       secretName: ingresswildcard
 ---
 apiVersion: networking.k8s.io/v1
@@ -650,7 +650,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+    - host: gridcapa.ingress-gridcapa-vaas.rh.1648.local
       http:
         paths:
           - backend:
@@ -662,8 +662,38 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+        - gridcapa.ingress-gridcapa-vaas.rh.1648.local
       secretName: ingresswildcard
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-swe-idcc-task-notification@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-swe-idcc-task-notification
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-gridcapa-vaas.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: swe-idcc-task-manager
+                port:
+                  number: 80
+            path: /swe/idcc/task-notification/
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-gridcapa-vaas.rh.1648.local
+      secretName: ingresswildcard
+---
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
