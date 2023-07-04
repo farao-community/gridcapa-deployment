@@ -37,7 +37,7 @@ patches:
       metadata:
         name: rao-runner
       spec:
-        replicas: 8
+        replicas: 20
         template:
           spec:
             containers:
