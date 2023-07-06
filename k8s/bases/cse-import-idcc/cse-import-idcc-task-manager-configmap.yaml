@@ -75,13 +75,13 @@ data:
           - NTC
           - VULCANUS
         optional-inputs:
-          - AUTOMATED-FORCED-PRAS
-          - USER-CONFIG
           - NTC2-AT
           - NTC2-CH
           - NTC2-FR
           - NTC2-SI
           - NTC-RED
+          - AUTOMATED-FORCED-PRAS
+          - USER-CONFIG
         outputs:
           - TTC_RES
           - INITIAL_CGM
