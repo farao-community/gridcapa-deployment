@@ -24,11 +24,11 @@ metadata:
   labels:
     app: gridcapa
     component: gridcapa
-  name: gridcapa
-  namespace: gridcapa
+  name: gridcapa-test
+  namespace: gridcapa-t
 spec:
   rules:
-    - host: gridcapa.farao-community.com
+    - host: gridcapa-test-tmp.farao-community.com
       http:
         paths:
           - backend:
@@ -433,5 +433,5 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - gridcapa.farao-community.com
+        - gridcapa-test-tmp.farao-community.com
       secretName: gridcapa-tls

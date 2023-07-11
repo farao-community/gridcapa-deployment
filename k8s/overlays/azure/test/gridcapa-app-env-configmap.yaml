@@ -8,5 +8,5 @@ metadata:
 data:
   env.json: |-
     {
-      "appsMetadataServerUrl" : "https://gridcapa.farao-community.com/apps-metadata"
+      "appsMetadataServerUrl" : "https://gridcapa-test-tmp.farao-community.com/apps-metadata"
     }
