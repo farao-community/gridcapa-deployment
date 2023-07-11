@@ -14,6 +14,7 @@ metadata:
   name: auth-tmp
   namespace: default
 spec:
+  ingressClassName: nginx
   rules:
     - host: auth-tmp.farao-community.com
       http:

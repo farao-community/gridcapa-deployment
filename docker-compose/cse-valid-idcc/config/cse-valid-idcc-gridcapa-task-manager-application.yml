@@ -23,6 +23,8 @@ spring:
           destination: cse-valid-idcc-task-status-updated
         consumeTaskEventUpdate-in-0:
           destination: cse-valid-idcc-task-manager-logs-exchange
+          consumer:
+            batch-mode: true
         task-updated:
           destination: cse-valid-idcc-task-updated
         task-status-updated:
@@ -36,6 +38,11 @@ spring:
           consumeMinioEvent-in-0:
             consumer:
               exchange-type: fanout
+          consumeTaskEventUpdate-in-0:
+            consumer:
+              enable-batching: true
+              batch-size: 200
+              receive-timeout: 3000
           task-status-updated:
             producer:
               routing-key-expression: '''status'''

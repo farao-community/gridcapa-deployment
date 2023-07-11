@@ -19,7 +19,7 @@ data:
           secret-key: ${MINIO_SECRET_KEY}
           bucket: ${MINIO_BUCKET}
           base-directory: ${MINIO_BASE_DIRECTORY}/TTC_VALIDATION
-          polling-delay-in-ms: 5000
+          polling-delay-in-ms: 60000
       sinks:
         ftp:
           active: true

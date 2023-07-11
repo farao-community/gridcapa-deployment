@@ -8,7 +8,7 @@ metadata:
     region: cse
     process: import-ec-d2cc
 spec:
-  schedule: "15 12 * * *"
+  schedule: "0 12 * * *"
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 3
@@ -17,7 +17,7 @@ spec:
       template:
         spec:
           containers:
-            - name: cse-import-ec-d2cc-boundary-minio-purge
+            - name: cse-import-ec-d2cc-annual-minio-purge
               image: minio-mc
               args: [ "rm", "--recursive", "--force", "--older-than", "366d", "minio/gridcapa/CSE/IMPORT_EC/D2CC/AUTOMATED-FORCED-PRAs/", "minio/gridcapa/CSE/IMPORT_EC/D2CC/NTC/", "minio/gridcapa/CSE/IMPORT_EC/D2CC/TARGETCHs/" ]
               env:

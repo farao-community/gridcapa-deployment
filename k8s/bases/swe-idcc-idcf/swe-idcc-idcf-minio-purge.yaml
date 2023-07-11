@@ -1,12 +1,12 @@
 kind: CronJob
 apiVersion: batch/v1
 metadata:
-  name: cse-import-ec-idcc-minio-purge
+  name: swe-idcc-idcf-minio-purge
   labels:
     app: gridcapa
     component: minio-purge
-    region: cse
-    process: import-ec-idcc
+    region: swe
+    process: idcc-idcf
 spec:
   schedule: "0 12 * * *"
   concurrencyPolicy: Forbid
@@ -17,9 +17,9 @@ spec:
       template:
         spec:
           containers:
-            - name: cse-import-ec-idcc-annual-minio-purge
+            - name: swe-idcc-idcf-annual-minio-purge
               image: minio-mc
-              args: [ "rm", "--recursive", "--force", "--older-than", "366d", "minio/gridcapa/CSE/IMPORT_EC/IDCC/AUTOMATED-FORCED-PRAs/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/NTC/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/TARGETCHs/" ]
+              args: [ "rm", "--recursive", "--force", "--older-than", "366d", "minio/gridcapa/SWE/IDCC_IDCF/BOUNDARIES/" ]
               env:
                 - name: MINIO_ACCESS_KEY
                   valueFrom:
@@ -33,9 +33,9 @@ spec:
                       key: minio-secret-key
                 - name: MC_HOST_minio
                   value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
-            - name: cse-import-ec-idcc-others-minio-purge
+            - name: swe-idcc-idcf-others-minio-purge
               image: minio-mc
-              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/CSE/IMPORT_EC/IDCC/CGMs/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/CRACs/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/GLSKs/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/NTC2-AT/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/NTC2-CH/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/NTC2-FR/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/NTC2-SI/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/NTCREDs/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/USER-CONFIGs/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/VULCANUS/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/2021/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/2022/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/2023/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/2024/"  ]
+              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/SWE/IDCC_IDCF/CGMs/", "minio/gridcapa/SWE/IDCC_IDCF/CRACs/", "minio/gridcapa/SWE/IDCC_IDCF/GLSKs/", "minio/gridcapa/SWE/IDCC_IDCF/XIIDM/", "minio/gridcapa/SWE/IDCC_IDCF/2022", "minio/gridcapa/SWE/IDCC_IDCF/2023", "minio/gridcapa/SWE/IDCC_IDCF/2024"]
               env:
                 - name: MINIO_ACCESS_KEY
                   valueFrom:
