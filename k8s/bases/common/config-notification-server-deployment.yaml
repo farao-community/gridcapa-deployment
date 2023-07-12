@@ -49,11 +49,11 @@ spec:
               memory: "384Mi"
             limits:
               cpu: "0.5"
-              memory: "384Mi"
+              memory: "768Mi"
           livenessProbe:
             tcpSocket:
               port: 8080
-            initialDelaySeconds: 15
+            initialDelaySeconds: 120
             periodSeconds: 20
             timeoutSeconds: 2
             failureThreshold: 1
@@ -62,7 +62,7 @@ spec:
             httpGet:
               path: /actuator/health
               port: 8080
-            initialDelaySeconds: 15
+            initialDelaySeconds: 120
             periodSeconds: 20
             timeoutSeconds: 2
             failureThreshold: 1

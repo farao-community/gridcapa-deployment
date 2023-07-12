@@ -8,12 +8,12 @@ resources:
   - ../../../bases/cse-export-idcc
   - ../../../bases/cse-import-d2cc
   - ../../../bases/cse-import-idcc
-  - ../../../bases/cse-import-ec-d2cc
-  - ../../../bases/cse-import-ec-idcc
+#  - ../../../bases/cse-import-ec-d2cc
+#  - ../../../bases/cse-import-ec-idcc
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
   - ../../../bases/swe-idcc-idcf
-  - apps-metadata-server-configmap.yaml
+#  - apps-metadata-server-configmap.yaml
   - cse-export-d2cc-app-idp-settings-configmap.yaml
   - cse-export-idcc-app-idp-settings-configmap.yaml
   - cse-gridcapa-runner-itools-azure-test-configmap.yaml
@@ -21,8 +21,8 @@ resources:
   - swe-gridcapa-runner-itools-azure-test-configmap.yaml
   - cse-import-d2cc-app-idp-settings-configmap.yaml
   - cse-import-idcc-app-idp-settings-configmap.yaml
-  - cse-import-ec-idcc-app-idp-settings-configmap.yaml
-  - cse-import-ec-d2cc-app-idp-settings-configmap.yaml
+#  - cse-import-ec-idcc-app-idp-settings-configmap.yaml
+#  - cse-import-ec-d2cc-app-idp-settings-configmap.yaml
   - swe-d2cc-app-idp-settings-configmap.yaml
   - swe-idcc-app-idp-settings-configmap.yaml
   - swe-idcc-idcf-gridcapa-app-idp-settings-configmap.yaml
@@ -34,7 +34,7 @@ resources:
 
 configMapGenerator:
   - name: env-configmap
-    env: env.properties
+    envs: [env.properties]
 
 patches:
   # - Scale-up to 4 instances
@@ -89,33 +89,33 @@ patches:
                 configMap:
                   name: cse-runner-itools-azure-test-configmap
   # adapt CSE Import EC runner itools config
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-import-ec-d2cc-gridcapa-runner
-      spec:
-        replicas: 2
-        template:
-          spec:
-            volumes:
-              - name: cse-import-ec-d2cc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-azure-test-configmap
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: cse-import-ec-d2cc-gridcapa-runner
+#      spec:
+#        replicas: 2
+#        template:
+#          spec:
+#            volumes:
+#              - name: cse-import-ec-d2cc-runner-itools-configmap-volume
+#                configMap:
+#                  name: cse-runner-itools-azure-test-configmap
   # adapt CSE Import EC runner itools config
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-import-ec-idcc-gridcapa-runner
-      spec:
-        replicas: 2
-        template:
-          spec:
-            volumes:
-              - name: cse-import-ec-idcc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-azure-test-configmap
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: cse-import-ec-idcc-gridcapa-runner
+#      spec:
+#        replicas: 2
+#        template:
+#          spec:
+#            volumes:
+#              - name: cse-import-ec-idcc-runner-itools-configmap-volume
+#                configMap:
+#                  name: cse-runner-itools-azure-test-configmap
   # Scale-up to 2 instances swe-d2cc-runner
   - patch: |-
       kind: Deployment
@@ -223,7 +223,7 @@ images:
     newTag: 0.11.0
   - name: gridsuite-config-server
     newName: docker.io/gridsuite/config-server
-    newTag: 0.13.0
+    newTag: 0.11.0
   - name: gridcapa-rao-runner
     newName: p2rte.azurecr.io/farao/gridcapa-rao-runner-with-xpress
     newTag: v1.12.0

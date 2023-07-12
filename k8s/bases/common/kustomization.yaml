@@ -2,8 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - apps-metadata-server-deployment.yaml
-  - apps-metadata-server-service.yaml
+#  - apps-metadata-server-deployment.yaml
+#  - apps-metadata-server-service.yaml
   - config-notification-server-configmap.yaml
   - config-notification-server-deployment.yaml
   - config-notification-server-service.yaml
