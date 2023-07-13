@@ -15,7 +15,7 @@ data-bridge:
       username: gridcapa
       password: gridcapa
       base-directory: /data/gridcapa/cse/valid/inputs/ecp
-      polling-delay-in-ms: 5000
+      polling-delay-in-ms: 60000
   sinks:
     minio:
       url: http://minio:9000
