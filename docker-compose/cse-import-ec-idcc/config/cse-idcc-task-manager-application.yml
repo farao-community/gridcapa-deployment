@@ -55,14 +55,14 @@ task-server:
       - CGM
       - CRAC
       - GLSK
+      - NTC
+      - VULCANUS
+    optional-inputs:
       - NTC2-AT
       - NTC2-CH
       - NTC2-FR
       - NTC2-SI
-      - NTC
       - NTC-RED
-      - VULCANUS
-    optional-inputs:
       - AUTOMATED-FORCED-PRAS
       - USER-CONFIG
     outputs:

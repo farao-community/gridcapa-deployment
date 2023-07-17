@@ -57,9 +57,9 @@ task-server:
       - GLSK
       - NTC
       - TARGET-CH
-      - NTC-RED
       - VULCANUS
     optional-inputs:
+      - NTC-RED
       - AUTOMATED-FORCED-PRAS
       - USER-CONFIG
     outputs:
