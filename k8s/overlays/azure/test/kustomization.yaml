@@ -4,28 +4,28 @@ kind: Kustomization
 resources:
   - ../common
   - ../../../bases/cse-common
-#  - ../../../bases/cse-export-d2cc
-#  - ../../../bases/cse-export-idcc
+  - ../../../bases/cse-export-d2cc
+  - ../../../bases/cse-export-idcc
   - ../../../bases/cse-import-d2cc
   - ../../../bases/cse-import-idcc
-#  - ../../../bases/cse-import-ec-d2cc
-#  - ../../../bases/cse-import-ec-idcc
-#  - ../../../bases/swe-d2cc
-#  - ../../../bases/swe-idcc
-#  - ../../../bases/swe-idcc-idcf
-#  - apps-metadata-server-configmap.yaml
-#  - cse-export-d2cc-app-idp-settings-configmap.yaml
+  - ../../../bases/cse-import-ec-d2cc
+  - ../../../bases/cse-import-ec-idcc
+  - ../../../bases/swe-d2cc
+  - ../../../bases/swe-idcc
+  - ../../../bases/swe-idcc-idcf
+  - apps-metadata-server-configmap.yaml
+  - cse-export-d2cc-app-idp-settings-configmap.yaml
   - cse-export-idcc-app-idp-settings-configmap.yaml
   - cse-gridcapa-runner-itools-azure-test-configmap.yaml
-#  - cse-gridcapa-export-runner-itools-azure-test-configmap.yaml
-#  - swe-gridcapa-runner-itools-azure-test-configmap.yaml
+  - cse-gridcapa-export-runner-itools-azure-test-configmap.yaml
+  - swe-gridcapa-runner-itools-azure-test-configmap.yaml
   - cse-import-d2cc-app-idp-settings-configmap.yaml
   - cse-import-idcc-app-idp-settings-configmap.yaml
-#  - cse-import-ec-idcc-app-idp-settings-configmap.yaml
-#  - cse-import-ec-d2cc-app-idp-settings-configmap.yaml
-#  - swe-d2cc-app-idp-settings-configmap.yaml
-#  - swe-idcc-app-idp-settings-configmap.yaml
-#  - swe-idcc-idcf-gridcapa-app-idp-settings-configmap.yaml
+  - cse-import-ec-idcc-app-idp-settings-configmap.yaml
+  - cse-import-ec-d2cc-app-idp-settings-configmap.yaml
+  - swe-d2cc-app-idp-settings-configmap.yaml
+  - swe-idcc-app-idp-settings-configmap.yaml
+  - swe-idcc-idcf-gridcapa-app-idp-settings-configmap.yaml
   - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
@@ -46,7 +46,7 @@ patches:
       metadata:
         name: rao-runner
       spec:
-        replicas: 1
+        replicas: 8
         template:
           spec:
             containers:
