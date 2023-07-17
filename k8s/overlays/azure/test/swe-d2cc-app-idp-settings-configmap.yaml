@@ -11,7 +11,7 @@ data:
   idpSettings.json: |-
     {
       "authority": "https://auth-tmp.farao-community.com/realms/GridCapa",
-      "client_id": "gridcapa-test",
+      "client_id": "gridcapa",
       "redirect_uri": "https://gridcapa-test-tmp.farao-community.com/swe/d2cc/sign-in-callback",
       "post_logout_redirect_uri": "https://gridcapa-test-tmp.farao-community.com/swe/d2cc/logout-callback",
       "silent_redirect_uri": "https://gridcapa-test-tmp.farao-community.com/swe/d2cc/silent-renew-callback",
