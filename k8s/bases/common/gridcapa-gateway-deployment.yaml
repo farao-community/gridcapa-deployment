@@ -45,7 +45,7 @@ spec:
             requests:
               memory: "384Mi"
             limits:
-              memory: "3Gi"
+              memory: "1Gi"
           livenessProbe:
             tcpSocket:
               port: 8080
