@@ -27,6 +27,7 @@ data:
           password: ${SOURCE_PASSWORD}
           base-directory: ${SOURCE_BASE_DIRECTORY}/cgms
           polling-delay-in-ms: 60000
+          file-list-persistence-file: /data/gridcapa/ftp-metadata-store.properties
       sinks:
         minio:
           url: http://gridcapa-minio:9000
@@ -122,6 +123,8 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: swe-d2cc-ree-eq-data-bridge-volume
+            - mountPath: /data/gridcapa
+              name: swe-d2cc-ree-eq-data-bridge-data
           livenessProbe:
             tcpSocket:
               port: 8080
@@ -151,6 +154,9 @@ spec:
         - name: swe-d2cc-ree-eq-data-bridge-volume
           configMap:
             name: swe-d2cc-ree-eq-data-bridge
+        - name: swe-d2cc-ree-eq-data-bridge-data
+          persistentVolumeClaim:
+            claimName: swe-d2cc-ree-eq-data-bridge-storage
 
 
 ---

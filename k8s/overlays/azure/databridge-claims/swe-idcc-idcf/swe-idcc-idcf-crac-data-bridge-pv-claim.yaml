@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: swe-idcc-idcf-crac-data-bridge-storage
+  labels:
+    app: gridcapa
+    component: data-bridge-storage
+    region: swe
+    process: idcc-idcf
+spec:
+  storageClassName: azure-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 16M

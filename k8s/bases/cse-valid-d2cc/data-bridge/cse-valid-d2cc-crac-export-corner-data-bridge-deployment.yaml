@@ -85,6 +85,8 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: cse-valid-d2cc-crac-export-corner-data-bridge-configmap-volume
+            - mountPath: /data/gridcapa
+              name: cse-valid-d2cc-crac-export-corner-data-bridge-data
           livenessProbe:
             tcpSocket:
               port: 8080
@@ -114,3 +116,6 @@ spec:
         - name: cse-valid-d2cc-crac-export-corner-data-bridge-configmap-volume
           configMap:
             name: cse-valid-d2cc-crac-export-corner-data-bridge-configmap
+        - name: cse-valid-d2cc-crac-export-corner-data-bridge-data
+          persistentVolumeClaim:
+            claimName: cse-valid-d2cc-crac-export-corner-data-bridge-storage

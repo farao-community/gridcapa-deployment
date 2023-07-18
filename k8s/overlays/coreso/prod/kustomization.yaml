@@ -7,6 +7,10 @@ resources:
   - ../../../bases/cse-import-idcc
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
+  - ../databridge-claims/cse-import-d2cc
+  - ../databridge-claims/cse-import-idcc
+  - ../databridge-claims/swe-d2cc
+  - ../databridge-claims/swe-idcc
   - apps-metadata-server-configmap.yaml
   - cse-gridcapa-runner-itools-coreso-configmap.yaml
   - swe-gridcapa-runner-itools-coreso-configmap.yaml

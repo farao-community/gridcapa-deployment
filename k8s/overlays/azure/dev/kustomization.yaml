@@ -17,6 +17,18 @@ resources:
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
   - ../../../bases/swe-idcc-idcf
+  - ../databridge-claims/cse-export-d2cc
+  - ../databridge-claims/cse-export-idcc
+  - ../databridge-claims/cse-import-d2cc
+  - ../databridge-claims/cse-import-idcc
+  - ../databridge-claims/cse-import-ec-d2cc
+  - ../databridge-claims/cse-import-ec-idcc
+  - ../databridge-claims/cse-valid-d2cc
+  - ../databridge-claims/cse-valid-idcc
+  - ../databridge-claims/core-valid
+  - ../databridge-claims/swe-d2cc
+  - ../databridge-claims/swe-idcc
+  - ../databridge-claims/swe-idcc-idcf
   - apps-metadata-server-configmap.yaml
   - core-valid-gridcapa-app-idp-settings-configmap.yaml
   - cse-export-d2cc-app-idp-settings-configmap.yaml

@@ -80,6 +80,8 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: cse-valid-idcc-cgm-data-bridge-configmap-volume
+            - mountPath: /data/gridcapa
+              name: cse-valid-idcc-cgm-data-bridge-data
           livenessProbe:
             tcpSocket:
               port: 8080
@@ -109,3 +111,6 @@ spec:
         - name: cse-valid-idcc-cgm-data-bridge-configmap-volume
           configMap:
             name: cse-valid-idcc-cgm-data-bridge-configmap
+        - name: cse-valid-idcc-cgm-data-bridge-data
+          persistentVolumeClaim:
+            claimName: cse-valid-idcc-cgm-data-bridge-storage

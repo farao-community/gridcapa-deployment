@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cse-import-ec-idcc-cgm-data-bridge-storage
+  labels:
+    app: gridcapa
+    component: data-bridge-storage
+    region: cse
+    process: import-ec-idcc
+spec:
+  storageClassName: azure-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 16M

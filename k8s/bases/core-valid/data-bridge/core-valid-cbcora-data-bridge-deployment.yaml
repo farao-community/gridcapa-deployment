@@ -82,6 +82,8 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: core-valid-cbcora-data-bridge-configmap-volume
+            - mountPath: /data/gridcapa
+              name: core-valid-cbcora-data-bridge-data
           livenessProbe:
             tcpSocket:
               port: 8080
@@ -111,3 +113,6 @@ spec:
         - name: core-valid-cbcora-data-bridge-configmap-volume
           configMap:
             name: core-valid-cbcora-data-bridge-configmap
+        - name: core-valid-cbcora-data-bridge-data
+          persistentVolumeClaim:
+            claimName: core-valid-cbcora-data-bridge-storage
