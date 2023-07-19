@@ -205,8 +205,8 @@ Don't forget to change the REACT_APP_PUBLIC_URL variable in the .env.development
 The new cluster is located at 51.105.211.238
 There is 3 namespaces :
 - the dafault one : contains only the keycloak
-- gridcapa-d : the dev namespace
-- gridcapa-t : the test namespace
+- gridcapa-d : the dev namespace https://gridcapa-dev-tmp.farao-community.com
+- gridcapa-t : the test namespace https://gridcapa-test-tmp.farao-community.com
 
 To access the new cluster, you need to connect via ssh with the usual command : 
 - ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168
