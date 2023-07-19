@@ -212,13 +212,9 @@ To access the new cluster, you need to connect via ssh with the usual command :
 - ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168
 
 To deploy to this cluster :
-- default namespace (for keycloak) : kubectl kustomize k8s/overlays/azure/authentication/ | ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168 kubectl --kubeconfig=.kube/config_new apply -f -
+- default namespace (for keycloak) : kubectl kustomize k8s/overlays/azure-new/authentication/ | ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168 kubectl --kubeconfig=.kube/config_new apply -f -
 - dev environnement : kubectl kustomize k8s/overlays/azure-new/dev/ | ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168 kubectl --kubeconfig=.kube/config_new apply -n gridcapa-d -f -
 - test environnement : kubectl kustomize k8s/overlays/azure-new/test/ | ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168 kubectl --kubeconfig=.kube/config_new apply -n gridcapa-t -f -
-
-
-there is a kubeconfig file located at .kube/config_new, you can use an alias to access the new cluster :
-- for the gridcapa-d namespace : alias k='kubectl --kubeconfig=.kube/config_new -n gridcapa-d' 
 
 Aliases are created :
 - kd : kubectl --kubeconfig=.kube/config_new -n default 
