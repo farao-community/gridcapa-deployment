@@ -73,8 +73,8 @@ spec:
               cpu: "0.1"
               memory: "384Mi"
             limits:
-              cpu: "0.5"
-              memory: "1Gi"
+              cpu: "2"
+              memory: "2Gi"
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -88,7 +88,7 @@ spec:
             httpGet:
               path: /actuator/health
               port: 8080
-            initialDelaySeconds: 60
+            initialDelaySeconds: 240
             periodSeconds: 20
             timeoutSeconds: 2
             failureThreshold: 1

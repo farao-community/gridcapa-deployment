@@ -45,11 +45,11 @@ spec:
             requests:
               memory: "384Mi"
             limits:
-              memory: "3Gi"
+              memory: "2Gi"
           livenessProbe:
             tcpSocket:
               port: 8080
-            initialDelaySeconds: 15
+            initialDelaySeconds: 60
             periodSeconds: 20
             timeoutSeconds: 2
             failureThreshold: 1
@@ -57,7 +57,7 @@ spec:
           readinessProbe:
             tcpSocket:
               port: 8080
-            initialDelaySeconds: 15
+            initialDelaySeconds: 60
             periodSeconds: 20
             timeoutSeconds: 2
             failureThreshold: 1
