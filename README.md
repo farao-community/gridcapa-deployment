@@ -215,7 +215,7 @@ there is a kubeconfig file located at .kube/config_new, you can use an alias to 
 - for the gridcapa-d namespace : alias k='kubectl --kubeconfig=.kube/config_new -n gridcapa-d' 
 
 Aliases are created :
-- kd : kubectl --kubeconfig=.kube/config_new -n default
-- kgd : kubectl --kubeconfig=.kube/config_new -n gridcapa-d
-- kgt : kubectl --kubeconfig=.kube/config_new -n gridcapa-t
+- kd : kubectl --kubeconfig=.kube/config_new -n default 
+- kgd : kubectl --kubeconfig=.kube/config_new -n gridcapa-d (for dev env)
+- kgt : kubectl --kubeconfig=.kube/config_new -n gridcapa-t (for test env)
 
