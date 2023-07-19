@@ -55,7 +55,7 @@ patches:
       metadata:
         name: rao-runner
       spec:
-        replicas: 1
+        replicas: 8
         template:
           spec:
             containers:
@@ -76,7 +76,7 @@ patches:
       metadata:
         name: cse-import-idcc-gridcapa-runner
       spec:
-        replicas: 1
+        replicas: 2
         template:
           spec:
             volumes:
@@ -90,7 +90,7 @@ patches:
       metadata:
         name: cse-import-d2cc-gridcapa-runner
       spec:
-        replicas: 1
+        replicas: 2
         template:
           spec:
             volumes:
@@ -104,7 +104,7 @@ patches:
       metadata:
         name: cse-import-ec-d2cc-gridcapa-runner
       spec:
-        replicas: 1
+        replicas: 2
         template:
           spec:
             volumes:
@@ -118,7 +118,7 @@ patches:
       metadata:
         name: cse-import-ec-idcc-gridcapa-runner
       spec:
-        replicas: 1
+        replicas: 2
         template:
           spec:
             volumes:
@@ -132,7 +132,7 @@ patches:
       metadata:
         name: swe-d2cc-runner
       spec:
-        replicas: 1
+        replicas: 2
   # Scale-up to 2 instances swe-idcc-runner
   - patch: |-
       kind: Deployment
@@ -140,7 +140,7 @@ patches:
       metadata:
         name: swe-idcc-runner
       spec:
-        replicas: 1
+        replicas: 2
   # Scale-up to x instances swe-idcc-idcf-runner
   - patch: |-
       kind: Deployment
@@ -148,7 +148,7 @@ patches:
       metadata:
         name: swe-idcc-idcf-runner
       spec:
-        replicas: 1
+        replicas: 2
   # Adapt CSE runner itools config
   - patch: |-
       kind: Deployment
@@ -244,7 +244,7 @@ images:
     newTag: 1.0.0
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: test-health-check-ftp
+    newTag: v1.2.4
   - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
     newTag: v1.11.0
@@ -269,7 +269,7 @@ images:
     #SWE
   - name: gridcapa-swe-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: test-health-check-ftp
+    newTag: v1.2.4
   - name: gridcapa-swe-exporter
     newName: docker.io/farao/gridcapa-export
     newTag: v1.5.0
