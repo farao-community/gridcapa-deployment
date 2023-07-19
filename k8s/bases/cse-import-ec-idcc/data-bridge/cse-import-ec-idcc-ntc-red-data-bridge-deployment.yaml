@@ -83,14 +83,14 @@ spec:
               subPath: application.yml
               name: cse-import-ec-idcc-ntc-red-data-bridge-configmap-volume
             - mountPath: /data/gridcapa
-              name: cse-import-ec-idcc-ntc-red-at-data-bridge-data
+              name: cse-import-ec-idcc-ntc-red-data-bridge-data
           livenessProbe:
             httpGet:
               path: /actuator/health
               port: 8080
             initialDelaySeconds: 35
             timeoutSeconds: 2
-            periodSeconds: 45
+            periodSeconds: 60
             failureThreshold: 3
             successThreshold: 1
           resources:

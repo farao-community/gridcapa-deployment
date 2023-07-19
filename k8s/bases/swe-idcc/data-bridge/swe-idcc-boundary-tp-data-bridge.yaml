@@ -132,7 +132,7 @@ spec:
               port: 8080
             initialDelaySeconds: 35
             timeoutSeconds: 2
-            periodSeconds: 45
+            periodSeconds: 60
             failureThreshold: 3
             successThreshold: 1
           resources:

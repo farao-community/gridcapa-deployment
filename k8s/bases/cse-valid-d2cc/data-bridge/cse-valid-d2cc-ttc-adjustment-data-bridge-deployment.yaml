@@ -82,8 +82,6 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: cse-valid-d2cc-ttc-adjustment-data-bridge-configmap-volume
-            - mountPath: /data/gridcapa
-              name: cse-valid-d2cc-ttc-adjustment-data-bridge-data
           livenessProbe:
             tcpSocket:
               port: 8080

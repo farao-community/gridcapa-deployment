@@ -11,8 +11,8 @@ resources:
   - swe-d2cc-ree-ssh-data-bridge-pv-claim.yaml
   - swe-d2cc-ree-tp-data-bridge-pv-claim.yaml
   - swe-d2cc-ren-eq-data-bridge-pv-claim.yaml
-  - swe-d2cc-ren-ssh-data-bridge-pv-claim.yaml.yaml
+  - swe-d2cc-ren-ssh-data-bridge-pv-claim.yaml
   - swe-d2cc-ren-tp-data-bridge-pv-claim.yaml
   - swe-d2cc-rte-eq-data-bridge-pv-claim.yaml
-  - swe-d2cc-rte-ssh-data-bridge-pv-claim.yaml.yaml
+  - swe-d2cc-rte-ssh-data-bridge-pv-claim.yaml
   - swe-d2cc-rte-tp-data-bridge-pv-claim.yaml

@@ -82,8 +82,6 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: core-valid-studypoint-data-bridge-configmap-volume
-            - mountPath: /data/gridcapa
-              name: core-valid-studypoint-data-bridge-data
           livenessProbe:
             tcpSocket:
               port: 8080

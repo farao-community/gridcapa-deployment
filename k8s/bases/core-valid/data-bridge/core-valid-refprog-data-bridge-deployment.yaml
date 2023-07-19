@@ -82,8 +82,6 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: core-valid-refprog-data-bridge-configmap-volume
-            - mountPath: /data/gridcapa
-              name: core-valid-refprog-data-bridge-data
           livenessProbe:
             tcpSocket:
               port: 8080

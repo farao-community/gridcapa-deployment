@@ -55,7 +55,7 @@ patches:
       metadata:
         name: rao-runner
       spec:
-        replicas: 8
+        replicas: 1
         template:
           spec:
             containers:
@@ -76,7 +76,7 @@ patches:
       metadata:
         name: cse-import-idcc-gridcapa-runner
       spec:
-        replicas: 2
+        replicas: 1
         template:
           spec:
             volumes:
@@ -90,7 +90,7 @@ patches:
       metadata:
         name: cse-import-d2cc-gridcapa-runner
       spec:
-        replicas: 2
+        replicas: 1
         template:
           spec:
             volumes:
@@ -104,7 +104,7 @@ patches:
       metadata:
         name: cse-import-ec-d2cc-gridcapa-runner
       spec:
-        replicas: 2
+        replicas: 1
         template:
           spec:
             volumes:
@@ -118,7 +118,7 @@ patches:
       metadata:
         name: cse-import-ec-idcc-gridcapa-runner
       spec:
-        replicas: 2
+        replicas: 1
         template:
           spec:
             volumes:
@@ -132,7 +132,7 @@ patches:
       metadata:
         name: swe-d2cc-runner
       spec:
-        replicas: 2
+        replicas: 1
   # Scale-up to 2 instances swe-idcc-runner
   - patch: |-
       kind: Deployment
@@ -140,7 +140,7 @@ patches:
       metadata:
         name: swe-idcc-runner
       spec:
-        replicas: 2
+        replicas: 1
   # Scale-up to x instances swe-idcc-idcf-runner
   - patch: |-
       kind: Deployment
@@ -148,7 +148,7 @@ patches:
       metadata:
         name: swe-idcc-idcf-runner
       spec:
-        replicas: 2
+        replicas: 1
   # Adapt CSE runner itools config
   - patch: |-
       kind: Deployment

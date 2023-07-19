@@ -8,7 +8,7 @@ resources:
   - cse-import-d2cc-glsk-data-bridge-pv-claim.yaml
   - cse-import-d2cc-ntc-data-bridge-pv-claim.yaml
   - cse-import-d2cc-ntc-red-data-bridge-pv-claim.yaml
-  - cse-import-d2cc-target-ch-data-bridge-pv-claim.yaml.yaml
-  - cse-import-d2cc-user-config-data-bridge-pv-claim.yaml.yaml
-  - cse-import-d2cc-vulcanus-data-bridge-pv-claim.yaml.yaml
+  - cse-import-d2cc-target-ch-data-bridge-pv-claim.yaml
+  - cse-import-d2cc-user-config-data-bridge-pv-claim.yaml
+  - cse-import-d2cc-vulcanus-data-bridge-pv-claim.yaml
 
