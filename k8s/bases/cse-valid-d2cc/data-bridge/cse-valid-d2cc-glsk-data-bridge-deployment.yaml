@@ -111,6 +111,3 @@ spec:
         - name: cse-valid-d2cc-glsk-data-bridge-configmap-volume
           configMap:
             name: cse-valid-d2cc-glsk-data-bridge-configmap
-        - name: cse-valid-d2cc-glsk-data-bridge-data
-          persistentVolumeClaim:
-            claimName: cse-valid-d2cc-glsk-data-bridge-storage
