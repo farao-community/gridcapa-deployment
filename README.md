@@ -214,3 +214,8 @@ To access the new cluster, you need to connect via ssh with the usual command :
 there is a kubeconfig file located at .kube/config_new, you can use an alias to access the new cluster :
 - for the gridcapa-d namespace : alias k='kubectl --kubeconfig=.kube/config_new -n gridcapa-d' 
 
+Aliases are created :
+- kd : kubectl --kubeconfig=.kube/config_new -n default
+- kgd : kubectl --kubeconfig=.kube/config_new -n gridcapa-d
+- kgt : kubectl --kubeconfig=.kube/config_new -n gridcapa-t
+
