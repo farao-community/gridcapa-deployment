@@ -23,9 +23,6 @@ resources:
   - ../databridge-claims/cse-import-idcc
   - ../databridge-claims/cse-import-ec-d2cc
   - ../databridge-claims/cse-import-ec-idcc
-  - ../databridge-claims/cse-valid-d2cc
-  - ../databridge-claims/cse-valid-idcc
-  - ../databridge-claims/core-valid
   - ../databridge-claims/swe-d2cc
   - ../databridge-claims/swe-idcc
   - ../databridge-claims/swe-idcc-idcf

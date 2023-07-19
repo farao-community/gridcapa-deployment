@@ -111,6 +111,3 @@ spec:
         - name: cse-valid-idcc-glsk-data-bridge-configmap-volume
           configMap:
             name: cse-valid-idcc-glsk-data-bridge-configmap
-        - name: cse-valid-idcc-glsk-data-bridge-data
-          persistentVolumeClaim:
-            claimName: cse-valid-idcc-glsk-data-bridge-storage

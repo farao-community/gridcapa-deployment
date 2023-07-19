@@ -111,6 +111,3 @@ spec:
         - name: cse-valid-idcc-ttc-adjustment-data-bridge-configmap-volume
           configMap:
             name: cse-valid-idcc-ttc-adjustment-data-bridge-configmap
-        - name: cse-valid-idcc-ttc-adjustment-data-bridge-data
-          persistentVolumeClaim:
-            claimName: cse-valid-idcc-ttc-adjustment-data-bridge-storage

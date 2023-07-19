@@ -114,6 +114,3 @@ spec:
         - name: cse-valid-idcc-crac-import-corner-data-bridge-configmap-volume
           configMap:
             name: cse-valid-idcc-crac-import-corner-data-bridge-configmap
-        - name: cse-valid-idcc-crac-import-corner-data-bridge-data
-          persistentVolumeClaim:
-            claimName: cse-valid-idcc-crac-import-corner-data-bridge-storage

@@ -111,6 +111,3 @@ spec:
         - name: core-valid-studypoint-data-bridge-configmap-volume
           configMap:
             name: core-valid-studypoint-data-bridge-configmap
-        - name: core-valid-studypoint-data-bridge-data
-          persistentVolumeClaim:
-            claimName: core-valid-studypoint-data-bridge-storage
