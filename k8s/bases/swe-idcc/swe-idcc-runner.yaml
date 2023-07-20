@@ -111,6 +111,8 @@ spec:
         component: runner
         region: swe
         process: idcc
+      annotations:
+        "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
     spec:
       containers:
         - name: gridcapa-swe-idcc-runner

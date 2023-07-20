@@ -226,7 +226,7 @@ images:
     newTag: 0.15.0
   - name: gridcapa-rao-runner
     newName: p2rte.azurecr.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.14.0
+    newTag: v1.15.0
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: v1.8.0-auth
@@ -275,7 +275,7 @@ images:
     newTag: v1.1.0
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
-    newTag: v1.10.0
+    newTag: mas
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.19.0

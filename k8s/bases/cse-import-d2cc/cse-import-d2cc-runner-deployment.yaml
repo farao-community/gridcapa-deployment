@@ -21,6 +21,8 @@ spec:
         component: runner
         region: cse
         process: import-d2cc
+      annotations:
+        "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
     spec:
       containers:
         - name: cse-import-d2cc-gridcapa-runner
