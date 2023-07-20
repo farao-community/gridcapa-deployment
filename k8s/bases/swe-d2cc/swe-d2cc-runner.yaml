@@ -50,6 +50,7 @@ data:
 
     swe-runner:
       zone-id: "Europe/Paris"
+      shift-max-iteration-number: 30
       dichotomy:
         parameters:
           ES_FR:
