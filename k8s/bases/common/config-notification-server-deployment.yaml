@@ -49,7 +49,7 @@ spec:
               memory: "384Mi"
             limits:
               cpu: "0.5"
-              memory: "768Mi"
+              memory: "1Gi"
           livenessProbe:
             tcpSocket:
               port: 8080
