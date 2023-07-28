@@ -40,6 +40,8 @@ data:
               destination: cse-import-ec-idcc-task-status-updated
             consumeTaskEventUpdate-in-0:
               destination: cse-import-ec-idcc-task-manager-logs-exchange
+              consumer:
+                batch-mode: true
             task-updated:
               destination: cse-import-ec-idcc-task-updated
             task-status-updated:
@@ -53,6 +55,11 @@ data:
               consumeMinioEvent-in-0:
                 consumer:
                   exchange-type: fanout
+              consumeTaskEventUpdate-in-0:
+                consumer:
+                  enable-batching: true
+                  batch-size: 200
+                  receive-timeout: 3000
               task-status-updated:
                 producer:
                   routing-key-expression: '''status'''
@@ -65,14 +72,14 @@ data:
           - CGM
           - CRAC
           - GLSK
+          - NTC
+          - VULCANUS
+        optional-inputs:
           - NTC2-AT
           - NTC2-CH
           - NTC2-FR
           - NTC2-SI
-          - NTC
           - NTC-RED
-          - VULCANUS
-        optional-inputs:
           - AUTOMATED-FORCED-PRAS
           - USER-CONFIG
         outputs:

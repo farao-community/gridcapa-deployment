@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: keycloak
+  labels:
+    app: gridcapa
+    component: keycloak
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: keycloak
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http

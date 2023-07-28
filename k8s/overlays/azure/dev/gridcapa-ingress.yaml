@@ -30,6 +30,7 @@ metadata:
   name: gridcapa-dev
   namespace: default
 spec:
+  ingressClassName: nginx
   rules:
     - host: gridcapa-dev.farao-community.com
       http:

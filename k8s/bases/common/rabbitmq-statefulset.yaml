@@ -19,6 +19,8 @@
         labels:
           app: gridcapa
           component: gridcapa-rabbitmq
+        annotations:
+          "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
       spec:
         containers:
           - name: rabbitmq
@@ -29,7 +31,6 @@
               - name: gridcapa-rabbitmq-configmap-volume
                 subPath: rabbitmq.conf
                 mountPath: /etc/rabbitmq/rabbitmq.conf
-
             env:
               - name: RABBITMQ_DEFAULT_PASS
                 valueFrom:

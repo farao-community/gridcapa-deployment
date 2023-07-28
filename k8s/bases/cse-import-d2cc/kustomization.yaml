@@ -50,3 +50,4 @@ resources:
   - cse-import-d2cc-exporter-configmap.yaml
   - cse-import-d2cc-exporter-deployment.yaml
   - cse-import-d2cc-exporter-service.yaml
+  - cse-import-d2cc-minio-purge.yaml

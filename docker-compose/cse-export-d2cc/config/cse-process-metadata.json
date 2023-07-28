@@ -2,6 +2,14 @@
   "processName": "CSE EXPORT D2CC",
   "dayIncrementInDate": 2,
   "globalViewTimestampFilter": [
+    "00:30",
+    "03:30",
+    "07:30",
+    "10:30",
+    "13:30",
+    "16:30",
+    "19:30",
+    "22:30"
   ],
   "eventPredefinedFilter": [
   ]

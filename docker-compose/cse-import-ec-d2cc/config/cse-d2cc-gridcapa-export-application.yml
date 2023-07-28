@@ -33,6 +33,8 @@ ftp:
   access-key: gridcapa
   secret-key: gridcapa
   remote-relative-destination-directory: cse/import_ec/d2cc/outputs
+  retry-count: 3
+  retry-sleep: 30
 
 logback:
   amqp:

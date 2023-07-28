@@ -21,6 +21,8 @@ spec:
         component: runner
         region: cse
         process: import-ec-idcc
+      annotations:
+        "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
     spec:
       containers:
         - name: cse-import-ec-idcc-gridcapa-runner

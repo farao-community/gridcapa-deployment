@@ -21,6 +21,8 @@ spec:
         component: runner
         region: cse
         process: export-idcc
+      annotations:
+        "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
     spec:
       containers:
         - name: cse-export-idcc-runner

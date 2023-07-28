@@ -25,6 +25,8 @@ data:
       newtonRaphsonConvEpsPerEq: 1.0E-2
       minRealisticVoltage: 0.4
       maxRealisticVoltage: 1.6
+      stateVectorScalingMode: MAX_VOLTAGE_CHANGE
+      ReactiveLimitsMaxPqPvSwitch: 2
 
     rao-objective-function:
       type: MAX_MIN_MARGIN_IN_AMPERE
@@ -66,4 +68,4 @@ data:
       do-not-optimize-curative-cnecs-for-tsos-without-cras: false
 
     rao-ra-usage-limits-per-contingency:
-      max-curative-ra-per-tso: [ "{IT}:6", "{FR}:5", "{CH}:1", "{AT}:3", "{SI}:3" ]
+      max-curative-ra-per-tso: [ "{IT}:6", "{FR}:5", "{CH}:0", "{AT}:3", "{SI}:3" ]

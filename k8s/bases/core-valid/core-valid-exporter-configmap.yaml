@@ -48,6 +48,8 @@ data:
       access-key: ${SOURCE_USER}
       secret-key: ${SOURCE_PASSWORD}
       remote-relative-destination-directory: ${SINK_DIRECTORY}
+      retry-count: 3
+      retry-sleep: 30
     logback:
       amqp:
         exchange: core-valid-task-manager-logs-exchange

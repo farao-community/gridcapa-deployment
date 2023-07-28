@@ -1,0 +1,52 @@
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: swe-idcc-idcf-minio-purge
+  labels:
+    app: gridcapa
+    component: minio-purge
+    region: swe
+    process: idcc-idcf
+spec:
+  schedule: "0 12 * * *"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: swe-idcc-idcf-annual-minio-purge
+              image: minio-mc
+              args: [ "rm", "--recursive", "--force", "--older-than", "366d", "minio/gridcapa/SWE/IDCC_IDCF/BOUNDARIES/" ]
+              env:
+                - name: MINIO_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-access-key
+                - name: MINIO_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-secret-key
+                - name: MC_HOST_minio
+                  value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
+            - name: swe-idcc-idcf-others-minio-purge
+              image: minio-mc
+              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/SWE/IDCC_IDCF/CGMs/", "minio/gridcapa/SWE/IDCC_IDCF/CRACs/", "minio/gridcapa/SWE/IDCC_IDCF/GLSKs/", "minio/gridcapa/SWE/IDCC_IDCF/XIIDM/", "minio/gridcapa/SWE/IDCC_IDCF/2022", "minio/gridcapa/SWE/IDCC_IDCF/2023", "minio/gridcapa/SWE/IDCC_IDCF/2024"]
+              env:
+                - name: MINIO_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-access-key
+                - name: MINIO_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-secret-key
+                - name: MC_HOST_minio
+                  value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
+          restartPolicy: Never

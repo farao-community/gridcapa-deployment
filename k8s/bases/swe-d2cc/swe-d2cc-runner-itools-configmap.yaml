@@ -47,7 +47,7 @@ data:
     
     rao-second-preventive-rao:
       execution-condition: POSSIBLE_CURATIVE_IMPROVEMENT
-      re-optimize-curative-range-actions: false
+      re-optimize-curative-range-actions: true
       hint-from-first-preventive-rao: true
     
     rao-ra-usage-limits-per-contingency:

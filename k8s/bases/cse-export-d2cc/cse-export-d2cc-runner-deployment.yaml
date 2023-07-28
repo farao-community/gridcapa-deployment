@@ -21,6 +21,8 @@ spec:
         component: runner
         region: cse
         process: export-d2cc
+      annotations:
+        "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
     spec:
       containers:
         - name: cse-export-d2cc-runner

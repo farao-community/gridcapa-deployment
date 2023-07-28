@@ -1,0 +1,52 @@
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: cse-import-ec-d2cc-minio-purge
+  labels:
+    app: gridcapa
+    component: minio-purge
+    region: cse
+    process: import-ec-d2cc
+spec:
+  schedule: "0 12 * * *"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: cse-import-ec-d2cc-annual-minio-purge
+              image: minio-mc
+              args: [ "rm", "--recursive", "--force", "--older-than", "366d", "minio/gridcapa/CSE/IMPORT_EC/D2CC/AUTOMATED-FORCED-PRAs/", "minio/gridcapa/CSE/IMPORT_EC/D2CC/NTC/", "minio/gridcapa/CSE/IMPORT_EC/D2CC/TARGETCHs/" ]
+              env:
+                - name: MINIO_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-access-key
+                - name: MINIO_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-secret-key
+                - name: MC_HOST_minio
+                  value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
+            - name: cse-import-ec-d2cc-others-minio-purge
+              image: minio-mc
+              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/CSE/IMPORT_EC/D2CC/CGMs/", "minio/gridcapa/CSE/IMPORT_EC/D2CC/CRACs/", "minio/gridcapa/CSE/IMPORT_EC/D2CC/GLSKs/", "minio/gridcapa/CSE/IMPORT_EC/D2CC/NTCREDs/", "minio/gridcapa/CSE/IMPORT_EC/D2CC/USER-CONFIGs/", "minio/gridcapa/CSE/IMPORT_EC/D2CC/VULCANUS/", "minio/gridcapa/CSE/IMPORT_EC/D2CC/2021/", "minio/gridcapa/CSE/IMPORT_EC/D2CC/2022/", "minio/gridcapa/CSE/IMPORT_EC/D2CC/2023/", "minio/gridcapa/CSE/IMPORT_EC/D2CC/2024/"  ]
+              env:
+                - name: MINIO_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-access-key
+                - name: MINIO_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-secret-key
+                - name: MC_HOST_minio
+                  value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
+          restartPolicy: Never
