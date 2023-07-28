@@ -303,13 +303,13 @@ images:
     newTag: RELEASE.2022-05-09T04-08-26Z
   - name: gridsuite-config-notification-server
     newName: docker.io/gridsuite/config-notification-server
-    newTag: 0.11.0
+    newTag: 0.15.0
   - name: gridsuite-config-server
     newName: docker.io/gridsuite/config-server
-    newTag: 0.13.0
+    newTag: 0.15.0
   - name: gridcapa-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.12.0
+    newTag: v1.15.0
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: v1.8.0
