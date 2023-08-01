@@ -14,5 +14,5 @@ spec:
               command:
                 - /bin/bash
                 - -c
-                - kubectl --kubeconfig=.kube/config_new -n gridcapa-t scale --replicas=1 deployment/rao-runner
+                - kubectl --kubeconfig=.kube/config_new -n gridcapa-d scale --replicas=1 deployment/rao-runner
           restartPolicy: OnFailure
