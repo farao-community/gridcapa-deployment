@@ -1,0 +1,174 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../ftp
+  - ../common
+#  - ../../../bases/cse-common
+#  - ../../../bases/cse-export-d2cc
+#  - ../../../bases/cse-export-idcc
+#  - ../../../bases/cse-import-d2cc
+#  - ../../../bases/cse-import-idcc
+#  - ../../../bases/cse-import-ec-d2cc
+#  - ../../../bases/cse-import-ec-idcc
+#  - ../../../bases/cse-valid-d2cc
+#  - ../../../bases/cse-valid-idcc
+#  - ../../../bases/core-valid
+  - ../../../bases/swe-d2cc
+#  - ../../../bases/swe-idcc
+#  - ../../../bases/swe-idcc-idcf
+  - apps-metadata-server-configmap.yaml
+#  - core-valid-gridcapa-app-idp-settings-configmap.yaml
+#  - cse-export-d2cc-app-idp-settings-configmap.yaml
+#  - cse-export-idcc-app-idp-settings-configmap.yaml
+#  - cse-import-d2cc-app-idp-settings-configmap.yaml
+#  - cse-import-idcc-app-idp-settings-configmap.yaml
+#  - cse-import-ec-d2cc-app-idp-settings-configmap.yaml
+#  - cse-import-ec-idcc-app-idp-settings-configmap.yaml
+#  - cse-valid-d2cc-gridcapa-app-idp-settings-configmap.yaml
+#  - cse-valid-idcc-gridcapa-app-idp-settings-configmap.yaml
+  - swe-d2cc-gridcapa-app-idp-settings-configmap.yaml
+#  - swe-idcc-gridcapa-app-idp-settings-configmap.yaml
+#  - swe-idcc-idcf-gridcapa-app-idp-settings-configmap.yaml
+  - gridcapa-app-env-configmap.yaml
+  - gridcapa-ingress.yaml
+  - postgresql-configmap.yaml
+  - postgresql-deployment.yaml
+
+configMapGenerator:
+  - name: env-configmap
+    envs: [env.properties]
+
+images:
+  - name: apps-metadata-server
+    newName: docker.io/bitnami/apache
+    newTag: latest
+  - name: rabbitmq
+    newName: docker.io/rabbitmq
+    newTag: management
+  - name: minio
+    newName: docker.io/bitnami/minio
+    newTag: 2021.6.17
+  - name: minio-mc
+    newName: docker.io/minio/mc
+    newTag: latest
+  - name: centos
+    newName: docker.io/centos
+    newTag: latest
+  - name: filebrowser
+    newName: docker.io/filebrowser/filebrowser
+    newTag: latest
+  - name: ftp
+    newName: docker.io/delfer/alpine-ftp-server
+    newTag: latest
+  - name: publication-cronjob
+    newName: docker.io/farao/cronjob-base
+    newTag: 1.0.0
+  - name: gridsuite-config-notification-server
+    newName: docker.io/gridsuite/config-notification-server
+    newTag: latest
+  - name: gridsuite-config-server
+    newName: docker.io/gridsuite/config-server
+    newTag: latest
+  - name: gridcapa-rao-runner
+    newName: docker.io/farao/gridcapa-rao-runner
+    newTag: latest
+  - name: gridcapa-app
+    newName: docker.io/farao/gridcapa-app
+    newTag: latest-auth
+  - name: gridcapa-gateway
+    newName: docker.io/farao/gridcapa-gateway
+    newTag: latest
+  - name: gridcapa-cse-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: latest
+  - name: gridcapa-cse-adapter
+    newName: docker.io/farao/gridcapa-cse-adapter
+    newTag: latest
+  - name: gridcapa-cse-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: latest
+  - name: gridcapa-cse-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
+    newTag: latest
+  - name: gridcapa-cse-import-runner
+    newName: docker.io/farao/gridcapa-cse-cc-import-runner
+    newTag: latest
+  - name: gridcapa-cse-export-runner
+    newName: docker.io/farao/gridcapa-cse-cc-export-runner
+    newTag: latest
+  - name: gridcapa-cse-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest
+  - name: gridcapa-cse-exporter
+    newName: docker.io/farao/gridcapa-export
+    newTag: latest
+  - name: gridcapa-core-valid-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: latest
+  - name: gridcapa-core-valid-output-data-bridge
+    newName: docker.io/farao/gridcapa-output-data-bridge
+    newTag: latest
+  - name: gridcapa-core-valid-adapter
+    newName: docker.io/farao/gridcapa-core-valid-adapter
+    newTag: latest
+  - name: gridcapa-core-valid-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: latest
+  - name: gridcapa-core-valid-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
+    newTag: latest
+  - name: gridcapa-core-valid-rao-runner
+    newName: docker.io/farao/gridcapa-rao-runner
+    newTag: latest
+  - name: gridcapa-core-valid-runner
+    newName: docker.io/farao/gridcapa-core-valid
+    newTag: latest
+  - name: gridcapa-core-valid-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest
+  - name: gridcapa-core-exporter
+    newName: docker.io/farao/gridcapa-export
+    newTag: latest
+  - name: gridcapa-cse-valid-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: latest
+  - name: gridcapa-cse-valid-output-data-bridge
+    newName: docker.io/farao/gridcapa-output-data-bridge
+    newTag: latest
+  - name: gridcapa-cse-valid-adapter
+    newName: docker.io/farao/gridcapa-cse-valid-adapter
+    newTag: latest
+  - name: gridcapa-cse-valid-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: latest
+  - name: gridcapa-cse-valid-runner
+    newName: docker.io/farao/gridcapa-cse-valid
+    newTag: latest
+  - name: gridcapa-cse-valid-publication
+    newName: docker.io/farao/gridcapa-cse-valid-publication
+    newTag: latest
+  - name: gridcapa-cse-valid-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest
+  - name: gridcapa-swe-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: latest
+  - name: gridcapa-swe-exporter
+    newName: docker.io/farao/gridcapa-export
+    newTag: latest
+  - name: gridcapa-swe-adapter
+    newName: docker.io/farao/gridcapa-swe-adapter
+    newTag: latest
+  - name: gridcapa-swe-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: latest
+  - name: gridcapa-swe-d2cc-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
+    newTag: latest
+  - name: gridcapa-swe-runner
+    newName: docker.io/farao/gridcapa-swe-runner
+    newTag: latest
+  - name: gridcapa-swe-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest

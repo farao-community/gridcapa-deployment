@@ -16,6 +16,8 @@ spec:
       labels:
         app: gridcapa
         component: gridcapa-minio
+      annotations:
+        "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
     spec:
       securityContext:
         fsGroup: 1001

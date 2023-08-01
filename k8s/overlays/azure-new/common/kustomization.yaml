@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../../bases/common
+  - azure-storage-class.yaml
+  - minio-pv-claim.yaml
+  - postgresql-pv-claim.yaml
+  - postgresql-service.yaml
+
+patches:
+  - patch: |-
+      apiVersion: apps/v1
+      kind: StatefulSet
+      metadata:
+        name: gridcapa-rabbitmq
+      spec:
+        volumeClaimTemplates:
+          - metadata:
+              name: gridcapa-rabbitmq-data
+            spec:
+              storageClassName: azure-storage-class
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: "5Gi"

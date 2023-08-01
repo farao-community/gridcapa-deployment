@@ -50,6 +50,7 @@ data:
 
     swe-runner:
       zone-id: "Europe/Paris"
+      shift-max-iteration-number: 30
       dichotomy:
         parameters:
           ES_FR:
@@ -111,6 +112,8 @@ spec:
         component: runner
         region: swe
         process: d2cc
+      annotations:
+        "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
     spec:
       containers:
         - name: gridcapa-swe-d2cc-runner
