@@ -6,7 +6,7 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CORE/CC/RAO_OUTPUT_DIR
+      base-directory: /CORE/CC/RAO_OUTPUTS_DIR
       polling-delay-in-ms: 3000
   sinks:
     ftp:
