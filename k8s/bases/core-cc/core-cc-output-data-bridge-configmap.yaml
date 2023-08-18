@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: core-cc-ack-output-data-bridge-configmap
+  name: core-cc-output-data-bridge-configmap
   labels:
     app: gridcapa
     component: data-bridge
@@ -11,7 +11,7 @@ metadata:
 data:
   application.yml: |-
     data-bridge:
-      file-regex: "CASTOR-RAO_22VCOR0CORE0PRDI_RTE-F302-ACK_(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F302-0V.xml"
+      file-regex: ".*"
       sources:
         minio:
           url: http://gridcapa-minio:9000
@@ -19,7 +19,7 @@ data:
           secret-key: ${MINIO_SECRET_KEY}
           bucket: ${MINIO_BUCKET}
           base-directory: ${MINIO_BASE_DIRECTORY}/RAO_OUTPUTS_DIR
-          polling-delay-in-ms: 5000
+          polling-delay-in-ms: 60000
       sinks:
         ftp:
           active: true
