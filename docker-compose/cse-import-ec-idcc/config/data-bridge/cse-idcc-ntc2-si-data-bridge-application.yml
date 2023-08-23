@@ -13,7 +13,7 @@ data-bridge:
       username: gridcapa
       password: gridcapa
       base-directory: /data/gridcapa/cse/import_ec/idcc/ntc2-si
-      polling-delay-in-ms: 60000
+      polling-delay-in-ms: 5000
   sinks:
     minio:
       url: http://minio:9000

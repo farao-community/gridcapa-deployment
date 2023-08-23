@@ -111,3 +111,6 @@ spec:
         - name: core-valid-cgm-data-bridge-configmap-volume
           configMap:
             name: core-valid-cgm-data-bridge-configmap
+        - name: core-valid-cgm-data-bridge-data
+          persistentVolumeClaim:
+            claimName: core-valid-cgm-data-bridge-storage

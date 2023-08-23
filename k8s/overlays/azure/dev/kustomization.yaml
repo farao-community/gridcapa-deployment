@@ -23,6 +23,9 @@ resources:
   - ../../azure-databridge-claims/cse-import-idcc
   - ../../azure-databridge-claims/cse-import-ec-d2cc
   - ../../azure-databridge-claims/cse-import-ec-idcc
+  - ../../azure-databridge-claims/cse-valid-d2cc
+  - ../../azure-databridge-claims/cse-valid-idcc
+  - ../../azure-databridge-claims/core-valid
   - ../../azure-databridge-claims/swe-d2cc
   - ../../azure-databridge-claims/swe-idcc
   - ../../azure-databridge-claims/swe-idcc-idcf

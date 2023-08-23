@@ -111,3 +111,6 @@ spec:
         - name: core-valid-refprog-data-bridge-configmap-volume
           configMap:
             name: core-valid-refprog-data-bridge-configmap
+        - name: core-valid-refprog-data-bridge-data
+          persistentVolumeClaim:
+            claimName: core-valid-refprog-data-bridge-storage
