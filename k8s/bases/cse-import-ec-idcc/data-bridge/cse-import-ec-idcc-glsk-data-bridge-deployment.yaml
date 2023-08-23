@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-import-ec-ec-idcc-glsk-data-bridge
+  name: cse-import-ec-idcc-glsk-data-bridge
   labels:
     app: gridcapa
     component: data-bridge
