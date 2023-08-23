@@ -83,7 +83,7 @@ spec:
               subPath: application.yml
               name: core-valid-cbcora-data-bridge-configmap-volume
             - mountPath: /data/gridcapa
-                name: core-valid-cbcora-data-bridge-data
+              name: core-valid-cbcora-data-bridge-data
           livenessProbe:
             httpGet:
               path: /actuator/health
