@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cse-import-ec-d2cc-vulcanus-data-bridge-storage
+  labels:
+    app: gridcapa
+    component: data-bridge-storage
+    region: cse
+    process: import-ec-d2cc
+spec:
+  storageClassName: vsphere-raw-block-sc
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 16M

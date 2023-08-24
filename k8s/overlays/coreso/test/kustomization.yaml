@@ -12,6 +12,15 @@ resources:
   - ../../../bases/cse-import-ec-idcc
   - ../../../bases/cse-import-d2cc
   - ../../../bases/cse-import-idcc
+  - ../coreso-databridge-claims/cse-export-d2cc
+  - ../coreso-databridge-claims/cse-export-idcc
+  - ../coreso-databridge-claims/swe-d2cc
+  - ../coreso-databridge-claims/swe-idcc
+  - ../coreso-databridge-claims/swe-idcc-idcf
+  - ../coreso-databridge-claims/cse-import-ec-d2cc
+  - ../coreso-databridge-claims/cse-import-ec-idcc
+  - ../coreso-databridge-claims/cse-import-d2cc
+  - ../coreso-databridge-claims/cse-import-idcc
   - apps-metadata-server-configmap.yaml
   - cse-gridcapa-runner-itools-coreso-configmap.yaml
   - cse-gridcapa-import-runner-itools-coreso-test-configmap.yaml

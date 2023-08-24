@@ -13,6 +13,15 @@ resources:
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
   - ../../../bases/swe-idcc-idcf
+  - ../../azure-databridge-claims/cse-export-d2cc
+  - ../../azure-databridge-claims/cse-export-idcc
+  - ../../azure-databridge-claims/cse-import-d2cc
+  - ../../azure-databridge-claims/cse-import-idcc
+  - ../../azure-databridge-claims/cse-import-ec-d2cc
+  - ../../azure-databridge-claims/cse-import-ec-idcc
+  - ../../azure-databridge-claims/swe-d2cc
+  - ../../azure-databridge-claims/swe-idcc
+  - ../../azure-databridge-claims/swe-idcc-idcf
   - apps-metadata-server-configmap.yaml
   - cse-export-d2cc-app-idp-settings-configmap.yaml
   - cse-export-idcc-app-idp-settings-configmap.yaml
@@ -235,7 +244,7 @@ images:
     newTag: 1.0.0
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v1.2.3
+    newTag: v1.2.4
   - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
     newTag: v1.11.0
@@ -260,7 +269,7 @@ images:
     #SWE
   - name: gridcapa-swe-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v1.2.3
+    newTag: v1.2.4
   - name: gridcapa-swe-exporter
     newName: docker.io/farao/gridcapa-export
     newTag: v1.5.0
