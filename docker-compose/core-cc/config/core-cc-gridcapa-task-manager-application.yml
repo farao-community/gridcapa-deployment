@@ -54,14 +54,10 @@ task-server:
       - RAOREQUEST
       - VIRTUALHUB
     outputs:
-      - RAOREQUEST-ACK
-      - RAO-RESPONSE
-      - FLOWBASED
       - CNE
       - RAO_RESULT
       - CGM_OUT
       - METADATA
-      - LOGS
     enable-export-logs: false
 
 minio-adapter:
