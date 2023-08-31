@@ -94,6 +94,18 @@ services:
     networks:
       - gridcapa
 
+  core-valid-outputs-exporter:
+    image: farao/gridcapa-export:latest
+    volumes:
+      - ./config/core-valid-gridcapa-export-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://core-valid-gridcapa-export/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
 networks:
   gridcapa:
     name: gridcapa
