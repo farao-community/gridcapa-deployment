@@ -38,7 +38,7 @@ resources:
   - core-cc-gridcapa-job-launcher-deployment.yaml
   - core-cc-gridcapa-job-launcher-service.yaml
   - core-cc-gridcapa-job-launcher-configmap.yaml
-  - - core-cc-gridcapa-output-data-bridge-deployment.yaml
-    - core-cc-gridcapa-output-data-bridge-service.yaml
-    - core-cc-gridcapa-output-data-bridge-configmap.yaml
+  - core-cc-gridcapa-output-data-bridge-deployment.yaml
+  - core-cc-gridcapa-output-data-bridge-service.yaml
+  - core-cc-gridcapa-output-data-bridge-configmap.yaml
   - core-cc-runner-itools-configmap.yaml
