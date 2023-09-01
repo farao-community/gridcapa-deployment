@@ -25,8 +25,8 @@ data:
           port: ${SOURCE_PORT}
           username: ${SOURCE_USER}
           password: ${SOURCE_PASSWORD}
-          base-directory: ${SOURCE_BASE_DIRECTORY}
-          polling-delay-in-ms: 5000
+          base-directory: ${SOURCE_BASE_DIRECTORY}/refprogs
+          polling-delay-in-ms: 60000
       sinks:
         minio:
           url: http://gridcapa-minio:9000

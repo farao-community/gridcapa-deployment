@@ -46,18 +46,18 @@ spec:
             - name: SOURCE_USER
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-ftp-server-credentials
+                  name: gridcapa-ftp-credentials
                   key: ftp-user
             - name: SOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-ftp-server-credentials
+                  name: gridcapa-ftp-credentials
                   key: ftp-password
             - name: SOURCE_BASE_DIRECTORY
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CORE_CC_CGM
+                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CORE_CC
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
