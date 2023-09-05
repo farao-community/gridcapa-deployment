@@ -39,11 +39,6 @@ spec:
                 secretKeyRef:
                   name: gridcapa-rabbitmq-credentials
                   key: rabbitmq-password
-            - name: ENABLE_SCHEDULER
-              valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: GRIDCAPA_CORE_CC_ENABLE_SCHEDULER
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml

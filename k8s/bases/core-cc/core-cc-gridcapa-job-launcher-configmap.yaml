@@ -53,7 +53,5 @@ data:
         timezone: CET
 
     scheduler:
-      enable: ${ENABLE_SCHEDULER}
-      start-hour: 0
-      end-hour: 8
-      frequency-in-minutes: 15
+      enable: false
+
