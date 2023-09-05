@@ -42,3 +42,6 @@ resources:
   - core-cc-gridcapa-output-data-bridge-service.yaml
   - core-cc-gridcapa-output-data-bridge-configmap.yaml
   - core-cc-runner-itools-configmap.yaml
+  - core-cc-gridcapa-post-processing-configmap.yml
+  - core-cc-gridcapa-post-processing-deployment.yml
+  - core-cc-gridcapa-post-processing-service.yml
