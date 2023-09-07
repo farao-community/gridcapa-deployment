@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: swe-idcc-idcf-ree-ssh-data-bridge-storage
+  labels:
+    app: gridcapa
+    component: data-bridge-storage
+    region: swe
+    process: idcc-idcf
+spec:
+  storageClassName: vsphere-raw-block-sc
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 16M

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cse-import-d2cc-glsk-data-bridge-storage
+  labels:
+    app: gridcapa
+    component: data-bridge-storage
+    region: cse
+    process: import-d2cc
+spec:
+  storageClassName: azure-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 16M
