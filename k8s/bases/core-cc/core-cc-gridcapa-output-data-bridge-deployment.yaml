@@ -37,27 +37,27 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_OUTPUT_HOST_CORE_CC
+                  key: GRIDCAPA_SOURCE_HOST_CORE_CC
             - name: OUTPUT_PORT
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_OUTPUT_PORT_CORE_CC
+                  key: GRIDCAPA_SOURCE_PORT_CORE_CC
             - name: OUTPUT_USER
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-ftp-server-credentials
-                  key: cia-user
+                  key: ftp-user
             - name: OUTPUT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-ftp-server-credentials
-                  key: cia-password
+                  name: gridcapa-ftp-credentials
+                  key: ftp-password
             - name: OUTPUT_BASE_DIRECTORY
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_OUTPUT_BASE_DIRECTORY_CORE_CC
+                  key: GRIDCAPA_SINK_DIRECTORY_CORE_CC
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
