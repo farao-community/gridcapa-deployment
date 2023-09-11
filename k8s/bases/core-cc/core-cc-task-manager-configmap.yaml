@@ -65,13 +65,16 @@ data:
         timezone: CET
         inputs:
           - CGM
-          - CRAC
+          - CBCORA
           - GLSK
           - REFPROG
-          - STUDY-POINTS
+          - RAOREQUEST
+          - VIRTUALHUB
         outputs:
-          - REMEDIAL-ACTIONS-RESULT
-          - REX-RESULT
+          - CNE
+          - RAO_RESULT
+          - CGM_OUT
+          - METADATA
         enable-export-logs: false
       whitelist:
         - http://gridcapa-minio:9000/
