@@ -42,7 +42,7 @@ data:
       relative-mip-gap: 0.001
 
     rao-topological-actions-optimization:
-      max-search-tree-depth: 2
+      max-search-tree-depth: 3
       relative-minimum-impact-threshold: 0.0
       absolute-minimum-impact-threshold: 1.0
 
