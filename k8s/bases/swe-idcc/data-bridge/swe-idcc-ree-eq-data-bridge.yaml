@@ -27,7 +27,7 @@ data:
           password: ${SOURCE_PASSWORD}
           base-directory: ${SOURCE_BASE_DIRECTORY}/cgms
           polling-delay-in-ms: 60000
-          file-list-persistence-file: /data/gridcapa/ftp-metadata-store.properties
+          file-list-persistence-file: /data/gridcapa/swe-idcc/ftp-metadata-store.ree-eq.properties
       sinks:
         minio:
           url: http://gridcapa-minio:9000
@@ -148,7 +148,7 @@ spec:
             name: swe-idcc-ree-eq-data-bridge
         - name: swe-idcc-ree-eq-data-bridge-data
           persistentVolumeClaim:
-            claimName: swe-idcc-ree-eq-data-bridge-storage
+            claimName: swe-idcc-data-bridge-storage
 
 
 ---

@@ -107,4 +107,4 @@ spec:
             name: cse-import-d2cc-target-ch-data-bridge-configmap
         - name: cse-import-d2cc-target-ch-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-import-d2cc-target-ch-data-bridge-storage
+            claimName: cse-import-d2cc-data-bridge-storage

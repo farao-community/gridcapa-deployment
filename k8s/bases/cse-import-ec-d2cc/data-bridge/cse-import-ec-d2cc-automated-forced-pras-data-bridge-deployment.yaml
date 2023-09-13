@@ -107,4 +107,4 @@ spec:
             name: cse-import-ec-d2cc-automated-forced-pras-data-bridge
         - name: cse-import-ec-d2cc-automated-forced-pras-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-import-ec-d2cc-automated-forced-pras-data-bridge-storage
+            claimName: cse-import-ec-d2cc-data-bridge-storage

@@ -27,7 +27,7 @@ data:
           password: ${SOURCE_PASSWORD}
           base-directory: ${SOURCE_BASE_DIRECTORY}/ntc2-at
           polling-delay-in-ms: 60000
-          file-list-persistence-file: /data/gridcapa/ftp-metadata-store.properties
+          file-list-persistence-file: /data/gridcapa/cse-import-idcc/ftp-metadata-store.ntc2-at.properties
       sinks:
         minio:
           url: http://gridcapa-minio:9000

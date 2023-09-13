@@ -107,4 +107,4 @@ spec:
             name: cse-import-ec-d2cc-crac-data-bridge-configmap
         - name: cse-import-ec-d2cc-crac-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-import-ec-d2cc-crac-data-bridge-storage
+            claimName: cse-import-ec-d2cc-data-bridge-storage

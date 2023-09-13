@@ -107,4 +107,4 @@ spec:
             name: cse-import-idcc-user-config-data-bridge-configmap
         - name: cse-import-idcc-user-config-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-import-idcc-user-config-data-bridge-storage
+            claimName: cse-import-idcc-data-bridge-storage

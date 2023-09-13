@@ -20,7 +20,7 @@ data:
           bucket: ${MINIO_BUCKET}
           base-directory: ${MINIO_BASE_DIRECTORY}/TTC_VALIDATION
           polling-delay-in-ms: 60000
-          file-list-persistence-file: /data/gridcapa/ftp-metadata-store.properties
+          file-list-persistence-file: /data/gridcapa/cse-valid-d2cc/ftp-metadata-store.output.properties
       sinks:
         ftp:
           active: true

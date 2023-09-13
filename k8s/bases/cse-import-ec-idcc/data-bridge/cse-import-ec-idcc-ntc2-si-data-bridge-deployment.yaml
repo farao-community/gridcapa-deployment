@@ -107,4 +107,4 @@ spec:
             name: cse-import-ec-idcc-ntc2-si-data-bridge-configmap
         - name: cse-import-ec-idcc-ntc2-si-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-import-ec-idcc-ntc2-si-data-bridge-storage
+            claimName: cse-import-ec-idcc-data-bridge-storage
