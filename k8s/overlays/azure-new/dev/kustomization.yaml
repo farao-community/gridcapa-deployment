@@ -14,6 +14,7 @@ resources:
   - ../../../bases/cse-valid-d2cc
   - ../../../bases/cse-valid-idcc
   - ../../../bases/core-valid
+  - ../../../bases/core-cc
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
   - ../../../bases/swe-idcc-idcf
@@ -29,8 +30,10 @@ resources:
   - ../../azure-databridge-claims/swe-d2cc
   - ../../azure-databridge-claims/swe-idcc
   - ../../azure-databridge-claims/swe-idcc-idcf
+  - ../../azure-databridge-claims/core-cc
   - apps-metadata-server-configmap.yaml
   - core-valid-gridcapa-app-idp-settings-configmap.yaml
+  - core-cc-gridcapa-app-idp-settings-configmap.yaml
   - cse-export-d2cc-app-idp-settings-configmap.yaml
   - cse-export-idcc-app-idp-settings-configmap.yaml
   - cse-import-d2cc-app-idp-settings-configmap.yaml
@@ -82,7 +85,7 @@ images:
     newTag: 0.15.0
   - name: gridcapa-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner
-    newTag: latest
+    newTag: v1.16.1
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: latest-auth
@@ -182,3 +185,27 @@ images:
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: latest
+  - name: gridcapa-core-cc-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: v1.2.5
+  - name: gridcapa-core-cc-output-data-bridge
+    newName: docker.io/farao/gridcapa-output-data-bridge
+    newTag: v1.1.0
+  - name: gridcapa-core-cc-adapter
+    newName: docker.io/farao/gridcapa-core-cc-adapter
+    newTag: v1.0.0
+  - name: gridcapa-core-cc-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: v1.6.0
+  - name: gridcapa-core-cc-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
+    newTag: v1.1.0
+  - name: gridcapa-core-cc-runner
+    newName: docker.io/farao/gridcapa-core-cc
+    newTag: v1.0.1
+  - name: gridcapa-core-cc-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: v1.20.0
+  - name: gridcapa-core-cc-post-processing
+    newName: docker.io/farao/gridcapa-core-cc-post-processing
+    newTag: v1.0.1
