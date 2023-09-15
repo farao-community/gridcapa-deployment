@@ -55,6 +55,18 @@ configMapGenerator:
   - name: env-configmap
     envs: [env.properties]
 
+patches:
+  # - Add ImagePullSecrets to retrieve private gridcapa-rao-runner-with-xpress from p2rte
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: rao-runner
+      spec:
+        template:
+          spec:
+            imagePullSecrets:
+              - name: p2rte-acr-secret
 images:
   - name: apps-metadata-server
     newName: docker.io/bitnami/apache
@@ -84,7 +96,7 @@ images:
     newName: docker.io/gridsuite/config-server
     newTag: 0.15.0
   - name: gridcapa-rao-runner
-    newName: docker.io/farao/gridcapa-rao-runner
+    newName: p2rte.azurecr.io/farao/gridcapa-rao-runner-with-xpress
     newTag: v1.16.1
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
@@ -185,6 +197,7 @@ images:
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: latest
+    # CORE CC
   - name: gridcapa-core-cc-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: v1.2.5
