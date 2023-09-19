@@ -14,5 +14,13 @@ spec:
               command:
                 - /bin/bash
                 - -c
-                - kubectl --kubeconfig=.kube/config_new -n gridcapa-d scale --replicas=1 deployment/rao-runner
+                - kubectl --kubeconfig=/.kube/config -n gridcapa-t scale --replicas=1 deployment/rao-runner
+              volumeMounts:
+                - mountPath: /.kube/config
+                  subPath: config_new
+                  name: farao-azure-kubeconfig
+          volumes:
+            - name: farao-azure-kubeconfig
+              secret:
+                secretName: farao-azure-kubeconfig
           restartPolicy: OnFailure
