@@ -29,7 +29,7 @@ data:
             default:
               group: core-cc-post-processing
             consumeTaskDtoUpdate-in-0:
-              destination: core-cc-task-status-updated
+              destination: core-cc-task-updated
           rabbit:
             default:
               consumer:
