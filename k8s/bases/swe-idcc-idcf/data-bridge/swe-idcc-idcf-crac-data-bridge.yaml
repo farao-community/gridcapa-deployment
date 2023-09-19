@@ -26,7 +26,7 @@ data:
           username: ${SOURCE_USER}
           password: ${SOURCE_PASSWORD}
           base-directory: ${SOURCE_BASE_DIRECTORY}/cracs
-          polling-delay-in-ms: 60000
+          polling-delay-in-ms: ${POLLING_DELAY}
           file-list-persistence-file: /data/gridcapa/swe-idcc-idcf/ftp-metadata-store.crac.properties
       sinks:
         minio:
@@ -99,6 +99,11 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: GRIDCAPA_SOURCE_BASE_DIRECTORY_SWE_IDCC_IDCF
+            - name: POLLING_DELAY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POLLING_DELAY_SWE_IDCC_IDCF
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
@@ -131,7 +136,7 @@ spec:
               port: 8080
             initialDelaySeconds: 35
             timeoutSeconds: 2
-            periodSeconds: 60
+            periodSeconds: 600
             failureThreshold: 3
             successThreshold: 1
           resources:

@@ -26,7 +26,7 @@ data:
           username: ${SOURCE_USER}
           password: ${SOURCE_PASSWORD}
           base-directory: ${SOURCE_BASE_DIRECTORY}/ntc2-ch
-          polling-delay-in-ms: 60000
+          polling-delay-in-ms: ${POLLING_DELAY}
           file-list-persistence-file: /data/gridcapa/cse-import-ec-idcc/ftp-metadata-store.ntc2-ch.properties
       sinks:
         minio:

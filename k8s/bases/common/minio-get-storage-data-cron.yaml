@@ -1,0 +1,44 @@
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: minio-get-storage-data-cron
+  labels:
+    app: gridcapa
+    component: minio-get-storage-data
+spec:
+  schedule: "*/10 * * * *"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: minio-get-storage-data-cron
+              image: minio-mc
+              command: ["/bin/sh"]
+              args: [ "-c", "mc alias set gridcapa-minio http://gridcapa-minio:9000 $(MINIO_ACCESS_KEY) $(MINIO_SECRET_KEY) | mc admin info gridcapa-minio --json &> /data/minioStorageData.json" ]
+              env:
+                - name: MINIO_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-access-key
+                - name: MINIO_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-secret-key
+                - name: MC_HOST_minio
+                  value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
+              volumeMounts:
+                - name: minio-get-storage-data-data
+                  mountPath: /data/
+
+          restartPolicy: Never
+          volumes:
+            - name: minio-get-storage-data-data
+              persistentVolumeClaim:
+                claimName: minio-get-storage-data-pv
+

@@ -8,5 +8,6 @@ metadata:
 data:
   env.json: |-
     {
-      "appsMetadataServerUrl" : "https://gridcapa-dev-tmp.farao-community.com/apps-metadata"
+      "appsMetadataServerUrl" : "https://gridcapa-dev-tmp.farao-community.com/apps-metadata",
+      "appsMinioStorageServerUrl": "https://gridcapa-dev-tmp.farao-community.com/apps-metadata/data/minioStorageData.json"
     }

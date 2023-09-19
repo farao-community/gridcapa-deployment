@@ -7,6 +7,7 @@ resources:
   - minio-pv-claim.yaml
   - postgresql-pv-claim.yaml
   - postgresql-service.yaml
+  - minio-get-storage-data-pv-claim.yaml
 
 patches:
   - patch: |-

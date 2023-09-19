@@ -238,7 +238,7 @@ images:
     newTag: v1.16.1
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
-    newTag: v1.8.0-auth
+    newTag: v1.9.0-auth
   - name: gridcapa-gateway
     newName: docker.io/farao/gridcapa-gateway
     newTag: 1.0.0
@@ -284,7 +284,7 @@ images:
     newTag: v1.1.0
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
-    newTag: v1.11.0
+    newTag: v1.12.0
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.19.0
