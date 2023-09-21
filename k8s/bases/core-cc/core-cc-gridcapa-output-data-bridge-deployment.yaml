@@ -101,11 +101,11 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              cpu: "0.1"
-              memory: "384Mi"
-            limits:
               cpu: "0.5"
-              memory: "384Mi"
+              memory: "2Gi"
+            limits:
+              cpu: "1.0"
+              memory: "2Gi"
       restartPolicy: Always
       volumes:
         - name: core-cc-output-data-bridge-configmap-volume
