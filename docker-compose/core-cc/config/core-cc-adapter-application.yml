@@ -1,0 +1,35 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+    template:
+      reply-timeout: 6000000
+  cloud:
+    stream:
+      bindings:
+        consumeTask-in-0:
+          binder: rabbit
+          destination: core-cc-run-task
+          group: core-cc
+        consumeAutoTask-in-0:
+          binder: rabbit
+          destination: core-cc-run-task-auto
+          group: core-cc
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+
+minio-adapter:
+  bucket: gridcapa
+  base-path: /CORE/CC
+  access-key: gridcapa
+  secret-key: gridcapa
+  url: http://minio:9000
+
+core-cc-runner:
+  amqp:
+    queue-name: core-cc-requests

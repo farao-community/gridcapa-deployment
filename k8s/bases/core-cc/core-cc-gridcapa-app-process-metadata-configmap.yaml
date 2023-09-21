@@ -1,0 +1,18 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: core-cc-gridcapa-app-process-metadata-configmap
+  labels:
+    app: gridcapa
+    component: front-app-process-metadata
+    region: core
+    process: cc
+data:
+  process-metadata.json: |-
+    {
+      "processName": "CORE Capacity Calculation",
+      "globalViewTimestampFilter": [
+      ],
+      "eventPredefinedFilter": [
+      ]
+    }

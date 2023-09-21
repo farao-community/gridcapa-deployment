@@ -1,0 +1,30 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: core-cc-output-data-bridge-configmap
+  labels:
+    app: gridcapa
+    component: data-bridge
+    file: output
+    region: core
+    process: cc
+data:
+  application.yml: |-
+    data-bridge:
+      file-regex: ".*"
+      sources:
+        minio:
+          url: http://gridcapa-minio:9000
+          access-key: ${MINIO_ACCESS_KEY}
+          secret-key: ${MINIO_SECRET_KEY}
+          bucket: ${MINIO_BUCKET}
+          base-directory: ${MINIO_BASE_DIRECTORY}/RAO_OUTPUTS_DIR
+          polling-delay-in-ms: 60000
+      sinks:
+        ftp:
+          active: true
+          host: ${OUTPUT_HOST}
+          port: ${OUTPUT_PORT}
+          username: ${OUTPUT_USER}
+          password: ${OUTPUT_PASSWORD}
+          base-directory: ${OUTPUT_BASE_DIRECTORY}

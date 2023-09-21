@@ -22,6 +22,7 @@ GridCapa currently contains the following applications:
 - GridCapa SWE IDCC IDCF
 - GridCapa CSE IMPORT_EC D2CC
 - GridCapa CSE IMPORT_EC IDCC
+- Gridcapa CORE CC
 
 
 ### Prerequisites

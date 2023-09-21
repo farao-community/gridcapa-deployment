@@ -43,5 +43,10 @@
     "name" : "Capa CSE IMPORT EC D2CC",
     "url"  : "/cse/import-ec/d2cc",
     "appColor" : "#008080"
+  },
+  {
+    "name" : "Capa CORE Capacity Calculation",
+    "url"  : "/core/cc",
+    "appColor" : "#AB7544"
   }
 ]

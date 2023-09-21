@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - core-cc-cbcora-data-bridge-pv-claim.yaml
+  - core-cc-cgm-data-bridge-pv-claim.yaml
+  - core-cc-glsk-data-bridge-pv-claim.yaml
+  - core-cc-raorequest-data-bridge-pv-claim.yaml
+  - core-cc-refprog-data-bridge-pv-claim.yaml
+  - core-cc-virtualhub-data-bridge-pv-claim.yaml

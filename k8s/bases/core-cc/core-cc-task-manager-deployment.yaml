@@ -1,0 +1,140 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: core-cc-task-manager
+  labels:
+    app: gridcapa
+    component: task-manager
+    region: core
+    process: cc
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: task-manager
+      region: core
+      process: cc
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: task-manager
+        region: core
+        process: cc
+    spec:
+      containers:
+        - name: core-cc-task-manager
+          image: gridcapa-core-cc-task-manager
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: APP_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_APP_URL
+            - name: POSTGRES_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POSTGRES_HOST
+            - name: POSTGRES_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POSTGRES_PORT
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POSTGRES_CORE_CC_DB
+            - name: POSTGRES_SSL_MODE
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POSTGRES_SSL_MODE_CORE_CC
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: core-cc-user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: core-cc-password
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: core-cc-task-manager-configmap-volume
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              cpu: "1.0"
+              memory: "384Mi"
+            limits:
+              cpu: "4.0"
+              memory: "1Gi"
+      initContainers:
+        - name: minio-notifications
+          image: minio-mc
+          env:
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+            - name: MINIO_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BUCKET_CORE_CC
+          command: ['/bin/sh', "-c","mc alias set gridcapa http://gridcapa-minio:9000 $(MINIO_ACCESS_KEY) $(MINIO_SECRET_KEY) && (mc event add gridcapa/$(MINIO_BUCKET) arn:minio:sqs::_:amqp --event put,delete || true)"]
+      restartPolicy: Always
+      volumes:
+        - name: core-cc-task-manager-configmap-volume
+          configMap:
+            name: core-cc-task-manager-configmap

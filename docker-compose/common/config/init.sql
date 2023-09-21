@@ -37,4 +37,7 @@ GRANT ALL PRIVILEGES ON DATABASE cse_import_ec_idcc_tasks TO cse_import_ec_idcc_
 CREATE DATABASE cse_import_ec_d2cc_tasks;
 CREATE USER cse_import_ec_d2cc_server WITH ENCRYPTED PASSWORD 'cse-import-ec-d2cc';
 GRANT ALL PRIVILEGES ON DATABASE cse_import_ec_d2cc_tasks TO cse_import_ec_d2cc_server;
+CREATE DATABASE core_cc_tasks;
+CREATE USER core_cc_server WITH ENCRYPTED PASSWORD 'core-cc';
+GRANT ALL PRIVILEGES ON DATABASE core_cc_tasks TO core_cc_server;
 

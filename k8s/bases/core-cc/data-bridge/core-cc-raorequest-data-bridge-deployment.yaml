@@ -1,0 +1,110 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: core-cc-raorequest-data-bridge
+  labels:
+    app: gridcapa
+    component: data-bridge
+    file: raorequest
+    region: core
+    process: cc
+
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: data-bridge
+      file: raorequest
+      region: core
+      process: cc
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: data-bridge
+        file: raorequest
+        region: core
+        process: cc
+    spec:
+      containers:
+        - name: core-cc-raorequest-data-bridge
+          image: gridcapa-core-cc-input-data-bridge
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SOURCE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SOURCE_HOST_CORE_CC
+            - name: SOURCE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SOURCE_PORT_CORE_CC
+            - name: SOURCE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-user
+            - name: SOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-password
+            - name: SOURCE_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CORE_CC
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+            - name: MINIO_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BUCKET_CORE_CC
+            - name: MINIO_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CORE_CC
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: core-cc-raorequest-data-bridge-configmap-volume
+            - mountPath: /data/gridcapa
+              name: core-cc-raorequest-data-bridge-data
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 60
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              cpu: "0.1"
+              memory: "384Mi"
+            limits:
+              cpu: "0.5"
+              memory: "384Mi"
+      restartPolicy: Always
+      volumes:
+        - name: core-cc-raorequest-data-bridge-configmap-volume
+          configMap:
+            name: core-cc-raorequest-data-bridge-configmap
+        - name: core-cc-raorequest-data-bridge-data
+          persistentVolumeClaim:
+            claimName: core-cc-raorequest-data-bridge-storage

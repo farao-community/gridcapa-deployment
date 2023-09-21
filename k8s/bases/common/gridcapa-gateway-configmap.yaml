@@ -22,6 +22,40 @@ data:
       cloud:
         gateway:
           routes:
+            - id: core-cc-gridsuite-config
+              uri: http://config-server
+              predicates:
+                - Path=/core/cc/config/**
+              filters:
+                - StripPrefix=3
+                - AddRequestHeader=userId, johnDoe
+            - id: core-cc-gridsuite-config-notification
+              uri: http://config-notification-server
+              predicates:
+                - Path=/core/cc/config-notification/**
+              filters:
+                - StripPrefix=3
+                - AddRequestHeader=userId, johnDoe
+                - RemoveRequestParameter=access_token
+            - id: core-cc-task-manager
+              uri: http://core-cc-task-manager
+              predicates:
+                - Path=/core/cc/task-manager/**
+              filters:
+                - StripPrefix=3
+            - id: core-cc-task-notification-server
+              uri: http://core-cc-task-manager
+              predicates:
+                - Path=/core/cc/task-notification/**
+              filters:
+                - StripPrefix=3
+                - RemoveRequestParameter=access_token
+            - id: core-cc-gridcapa-job-launcher
+              uri: http://core-cc-gridcapa-job-launcher
+              predicates:
+                - Path=/core/cc/gridcapa-job-launcher/**
+              filters:
+                - StripPrefix=3
             - id: core-valid-gridsuite-config
               uri: http://config-server
               predicates:
