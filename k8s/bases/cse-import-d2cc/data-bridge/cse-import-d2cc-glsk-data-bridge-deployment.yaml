@@ -58,6 +58,11 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CSE_IMPORT_D2CC
+            - name: POLLING_DELAY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POLLING_DELAY_CSE_IMPORT_D2CC
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
@@ -107,4 +112,4 @@ spec:
             name: cse-import-d2cc-glsk-data-bridge-configmap
         - name: cse-import-d2cc-glsk-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-import-d2cc-glsk-data-bridge-storage
+            claimName: cse-import-d2cc-data-bridge-storage

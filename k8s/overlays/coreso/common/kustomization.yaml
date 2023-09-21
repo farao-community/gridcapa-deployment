@@ -6,3 +6,4 @@ resources:
   - ../../../bases/cse-common
   - postgresql-deployment.yaml
   - postgresql-service.yaml
+  - minio-get-storage-data-pv-claim.yaml

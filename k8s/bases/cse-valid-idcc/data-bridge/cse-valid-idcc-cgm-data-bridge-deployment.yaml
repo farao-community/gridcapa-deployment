@@ -56,6 +56,11 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CSE_VALID_ECP
+            - name: POLLING_DELAY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POLLING_DELAY_CSE_VALID
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
@@ -88,7 +93,7 @@ spec:
               port: 8080
             initialDelaySeconds: 35
             timeoutSeconds: 2
-            periodSeconds: 60
+            periodSeconds: 600
             failureThreshold: 3
             successThreshold: 1
           resources:
@@ -105,4 +110,4 @@ spec:
             name: cse-valid-idcc-cgm-data-bridge-configmap
         - name: cse-valid-idcc-cgm-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-valid-idcc-cgm-data-bridge-storage
+            claimName: cse-valid-idcc-data-bridge-storage

@@ -8,5 +8,6 @@ metadata:
 data:
   env.json: |-
     {
-      "appsMetadataServerUrl" : "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/apps-metadata"
+      "appsMetadataServerUrl" : "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/apps-metadata",
+      "appsMinioStorageServerUrl": "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/apps-metadata/data/minioStorageData.json"
     }

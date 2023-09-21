@@ -27,8 +27,8 @@ data:
           username: ${SOURCE_USER}
           password: ${SOURCE_PASSWORD}
           base-directory: ${SOURCE_BASE_DIRECTORY}/boundaries
-          polling-delay-in-ms: 60000
-          file-list-persistence-file: /data/gridcapa/ftp-metadata-store.properties
+          polling-delay-in-ms: ${POLLING_DELAY}
+          file-list-persistence-file: /data/gridcapa/swe-d2cc/ftp-metadata-store.boundary-eq.properties
       sinks:
         minio:
           url: http://gridcapa-minio:9000
@@ -100,6 +100,11 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: GRIDCAPA_SOURCE_BASE_DIRECTORY_SWE_D2CC
+            - name: POLLING_DELAY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POLLING_DELAY_SWE_D2CC
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
@@ -132,7 +137,7 @@ spec:
               port: 8080
             initialDelaySeconds: 35
             timeoutSeconds: 2
-            periodSeconds: 60
+            periodSeconds: 600
             failureThreshold: 3
             successThreshold: 1
           resources:
@@ -149,7 +154,7 @@ spec:
             name: swe-d2cc-boundary-eq-data-bridge
         - name: swe-d2cc-boundary-eq-data-bridge-data
           persistentVolumeClaim:
-            claimName: swe-d2cc-boundary-eq-data-bridge-storage
+            claimName: swe-d2cc-data-bridge-storage
 
 
 ---

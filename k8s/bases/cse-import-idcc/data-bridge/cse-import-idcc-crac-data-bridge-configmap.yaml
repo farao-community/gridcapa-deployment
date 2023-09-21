@@ -27,8 +27,8 @@ data:
           username: ${SOURCE_USER}
           password: ${SOURCE_PASSWORD}
           base-directory: ${SOURCE_BASE_DIRECTORY}/cracs
-          polling-delay-in-ms: 60000
-          file-list-persistence-file: /data/gridcapa/ftp-metadata-store.properties
+          polling-delay-in-ms: ${POLLING_DELAY}
+          file-list-persistence-file: /data/gridcapa/cse-import-idcc/ftp-metadata-store.crac.properties
       sinks:
         minio:
           url: http://gridcapa-minio:9000
