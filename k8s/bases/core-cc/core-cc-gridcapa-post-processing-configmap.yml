@@ -42,8 +42,8 @@ data:
 
     core-cc-post-processing:
       url:
-        task-manager-timestamp-url: http://core-cc-gridcapa-task-manager:8080/tasks/
-        task-manager-business-date-url: http://core-cc-gridcapa-task-manager:8080/tasks/businessdate/
+        task-manager-timestamp-url: http://core-cc-task-manager/tasks/
+        task-manager-business-date-url: http://core-cc-task-manager/tasks/businessdate/
       process:
         tag: CORE_CC
         timezone: CET
