@@ -11,11 +11,6 @@ rao-range-actions-optimization:
     pst-sensitivity-threshold: 0.0001
     pst-model: APPROXIMATED_INTEGERS
 
-rao-linear-optimization-solver:
-  #XPRESS pas compatible en local
-    relative-mip-gap: 0.001
-    solver-specific-parameters: THREADS 1 MAXNODE 100000 MAXTIME 300
-
 rao-topological-actions-optimization:
     max-search-tree-depth: 4
     relative-minimum-impact-threshold: 0.0

@@ -11,42 +11,42 @@ services:
   core-cc-gridcapa-cgm-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/core-cc-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
+      - ./config/data-bridge/core-cc-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
   core-cc-gridcapa-cbcora-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/core-cc-gridcapa-cbcora-data-bridge-application.yml:/config/application.yml
+      - ./config/data-bridge/core-cc-gridcapa-cbcora-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
   core-cc-gridcapa-glsk-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/core-cc-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
+      - ./config/data-bridge/core-cc-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
   core-cc-gridcapa-refprog-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/core-cc-gridcapa-refprog-data-bridge-application.yml:/config/application.yml
+      - ./config/data-bridge/core-cc-gridcapa-refprog-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
   core-cc-gridcapa-raorequest-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/core-cc-gridcapa-raorequest-data-bridge-application.yml:/config/application.yml
+      - ./config/data-bridge/core-cc-gridcapa-raorequest-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
   core-cc-gridcapa-virtualhub-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/core-cc-gridcapa-virtualhub-data-bridge-application.yml:/config/application.yml
+      - ./config/data-bridge/core-cc-gridcapa-virtualhub-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
