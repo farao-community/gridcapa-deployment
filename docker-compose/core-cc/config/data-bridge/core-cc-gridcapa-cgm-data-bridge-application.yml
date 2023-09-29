@@ -1,11 +1,12 @@
 data-bridge:
   zone-id: "Europe/Paris"
   target-process: CORE_CC
-  file-type: GLSK
-  file-regex: .*CORESO-F319_F319-(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*\.xml
+  file-type: CGM
+  file-regex: .*CORESO-F119_F119-(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*\.zip
   time-validity: daily
   remote-file-regex:
-    - ".*CORESO-F319_F319-(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*\\.xml"
+    - ".*CORESO-F119_F119-(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*\\.zip"
+  do-unzip: false
   sources:
     ftp:
       active: true
@@ -13,7 +14,7 @@ data-bridge:
       port: 21
       username: gridcapa
       password: gridcapa
-      base-directory: /data/gridcapa/core/cc
+      base-directory: /data/gridcapa/core/cc/cgms
       polling-delay-in-ms: 5000
   sinks:
     minio:
@@ -21,4 +22,4 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CORE/CC/ORIGINAL_INPUTS
+      base-directory: /CORE/CC/CGMs
