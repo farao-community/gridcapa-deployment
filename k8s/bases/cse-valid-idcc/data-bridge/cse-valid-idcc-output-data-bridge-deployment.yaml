@@ -112,4 +112,4 @@ spec:
             name: cse-valid-idcc-output-data-bridge-configmap
         - name: cse-valid-idcc-output-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-valid-idcc-data-bridge-storage
+            claimName: cse-valid-idcc-output-data-bridge-storage

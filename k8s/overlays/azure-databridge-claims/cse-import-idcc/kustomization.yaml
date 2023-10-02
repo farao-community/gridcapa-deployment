@@ -2,4 +2,16 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - cse-import-idcc-data-bridge-pv-claim.yaml
+  - cse-import-idcc-automated-forced-pras-data-bridge-pv-claim.yaml
+  - cse-import-idcc-cgm-data-bridge-pv-claim.yaml
+  - cse-import-idcc-crac-data-bridge-pv-claim.yaml
+  - cse-import-idcc-glsk-data-bridge-pv-claim.yaml
+  - cse-import-idcc-ntc2-at-data-bridge-pv-claim.yaml
+  - cse-import-idcc-ntc2-ch-data-bridge-pv-claim.yaml
+  - cse-import-idcc-ntc2-fr-data-bridge-pv-claim.yaml
+  - cse-import-idcc-ntc2-si-data-bridge-pv-claim.yaml
+  - cse-import-idcc-ntc-data-bridge-pv-claim.yaml
+  - cse-import-idcc-ntc-red-data-bridge-pv-claim.yaml
+  - cse-import-idcc-target-ch-data-bridge-pv-claim.yaml
+  - cse-import-idcc-user-config-data-bridge-pv-claim.yaml
+  - cse-import-idcc-vulcanus-data-bridge-pv-claim.yaml

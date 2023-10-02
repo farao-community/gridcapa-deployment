@@ -112,4 +112,4 @@ spec:
             name: cse-import-idcc-ntc-red-data-bridge-configmap
         - name: cse-import-idcc-ntc-red-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-import-idcc-data-bridge-storage
+            claimName: cse-import-idcc-ntc-red-data-bridge-storage
