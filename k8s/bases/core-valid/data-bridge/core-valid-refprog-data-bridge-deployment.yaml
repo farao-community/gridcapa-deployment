@@ -112,4 +112,4 @@ spec:
             name: core-valid-refprog-data-bridge-configmap
         - name: core-valid-refprog-data-bridge-data
           persistentVolumeClaim:
-            claimName: core-valid-data-bridge-storage
+            claimName: core-valid-refprog-data-bridge-storage

@@ -112,4 +112,4 @@ spec:
             name: cse-valid-d2cc-ttc-adjustment-data-bridge-configmap
         - name: cse-valid-d2cc-ttc-adjustment-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-valid-d2cc-data-bridge-storage
+            claimName: cse-valid-d2cc-ttc-adjustment-data-bridge-storage

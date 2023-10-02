@@ -115,4 +115,4 @@ spec:
             name: cse-valid-d2cc-crac-import-corner-data-bridge-configmap
         - name: cse-valid-d2cc-crac-import-corner-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-valid-d2cc-data-bridge-storage
+            claimName: cse-valid-d2cc-crac-import-corner-data-bridge-storage

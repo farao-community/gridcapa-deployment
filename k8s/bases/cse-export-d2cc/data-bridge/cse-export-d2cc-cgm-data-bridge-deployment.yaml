@@ -112,4 +112,4 @@ spec:
             name: cse-export-d2cc-cgm-data-bridge-configmap
         - name: cse-export-d2cc-cgm-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-export-d2cc-data-bridge-storage
+            claimName: cse-export-d2cc-cgm-data-bridge-storage
