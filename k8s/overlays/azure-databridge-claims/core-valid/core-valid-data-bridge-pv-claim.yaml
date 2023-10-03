@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: core-valid-refprog-data-bridge-storage
+  name: core-valid-data-bridge-storage
   labels:
     app: gridcapa
     component: data-bridge-storage
@@ -10,7 +10,7 @@ metadata:
 spec:
   storageClassName: azure-storage-class
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
-      storage: 16M
+      storage: 80M

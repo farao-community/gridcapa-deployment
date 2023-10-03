@@ -112,4 +112,4 @@ spec:
             name: core-valid-cbcora-data-bridge-configmap
         - name: core-valid-cbcora-data-bridge-data
           persistentVolumeClaim:
-            claimName: core-valid-cbcora-data-bridge-storage
+            claimName: core-valid-data-bridge-storage
