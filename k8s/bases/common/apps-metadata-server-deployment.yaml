@@ -29,6 +29,7 @@ spec:
               name: run-emptydir
             - mountPath: /opt/bitnami/apache/htdocs/data/
               name: minio-get-storage-data-data
+              readOnly: true
           securityContext:
             allowPrivilegeEscalation: false
             runAsNonRoot: true
