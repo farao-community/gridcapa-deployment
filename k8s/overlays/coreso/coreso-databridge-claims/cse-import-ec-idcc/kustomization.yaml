@@ -12,6 +12,6 @@ resources:
   - cse-import-ec-idcc-ntc2-si-data-bridge-pv-claim.yaml
   - cse-import-ec-idcc-ntc-data-bridge-pv-claim.yaml
   - cse-import-ec-idcc-ntc-red-data-bridge-pv-claim.yaml
-  - cse-import-ec-idcc-target-ch-data-bridge-pv-claim.yaml.yaml
-  - cse-import-ec-idcc-user-config-data-bridge-pv-claim.yaml.yaml
-  - cse-import-ec-idcc-vulcanus-data-bridge-pv-claim.yaml.yaml
+  - cse-import-ec-idcc-target-ch-data-bridge-pv-claim.yaml
+  - cse-import-ec-idcc-user-config-data-bridge-pv-claim.yaml
+  - cse-import-ec-idcc-vulcanus-data-bridge-pv-claim.yaml

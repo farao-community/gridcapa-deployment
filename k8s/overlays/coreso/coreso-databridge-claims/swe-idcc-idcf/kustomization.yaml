@@ -11,8 +11,8 @@ resources:
   - swe-idcc-idcf-ree-ssh-data-bridge-pv-claim.yaml
   - swe-idcc-idcf-ree-tp-data-bridge-pv-claim.yaml
   - swe-idcc-idcf-ren-eq-data-bridge-pv-claim.yaml
-  - swe-idcc-idcf-ren-ssh-data-bridge-pv-claim.yaml.yaml
+  - swe-idcc-idcf-ren-ssh-data-bridge-pv-claim.yaml
   - swe-idcc-idcf-ren-tp-data-bridge-pv-claim.yaml
   - swe-idcc-idcf-rte-eq-data-bridge-pv-claim.yaml
-  - swe-idcc-idcf-rte-ssh-data-bridge-pv-claim.yaml.yaml
+  - swe-idcc-idcf-rte-ssh-data-bridge-pv-claim.yaml
   - swe-idcc-idcf-rte-tp-data-bridge-pv-claim.yaml
