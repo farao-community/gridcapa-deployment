@@ -162,6 +162,7 @@ This environment is used for CI for all gridcapa processes
 
 kubectl kustomize k8s/overlays/azure/dev |  ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p"  farao@51.137.209.168 kubectl apply -f -
 
+Info: need to install connect-proxy with "dzdo apt install connect-proxy"
 
 ### Deployment on Azure TEST
 This environment is used to test CSE gridcapa processes for CORESO

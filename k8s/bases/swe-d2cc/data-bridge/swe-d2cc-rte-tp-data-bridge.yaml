@@ -27,7 +27,7 @@ data:
           password: ${SOURCE_PASSWORD}
           base-directory: ${SOURCE_BASE_DIRECTORY}/cgms
           polling-delay-in-ms: ${POLLING_DELAY}
-          file-list-persistence-file: /data/gridcapa/swe-d2cc/ftp-metadata-store.rte-tp.properties
+          file-list-persistence-file: /data/gridcapa/ftp-metadata-store.properties
       sinks:
         minio:
           url: http://gridcapa-minio:9000
@@ -153,7 +153,7 @@ spec:
             name: swe-d2cc-rte-tp-data-bridge
         - name: swe-d2cc-rte-tp-data-bridge-data
           persistentVolumeClaim:
-            claimName: swe-d2cc-data-bridge-storage
+            claimName: swe-d2cc-rte-tp-data-bridge-storage
 
 
 ---

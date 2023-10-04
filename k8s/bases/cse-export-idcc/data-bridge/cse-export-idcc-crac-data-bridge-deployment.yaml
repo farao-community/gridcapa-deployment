@@ -112,4 +112,4 @@ spec:
             name: cse-export-idcc-crac-data-bridge-configmap
         - name: cse-export-idcc-crac-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-export-idcc-data-bridge-storage
+            claimName: cse-export-idcc-crac-data-bridge-storage

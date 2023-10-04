@@ -28,7 +28,7 @@ data:
           password: ${SOURCE_PASSWORD}
           base-directory: ${SOURCE_BASE_DIRECTORY}/boundaries
           polling-delay-in-ms: ${POLLING_DELAY}
-          file-list-persistence-file: /data/gridcapa/swe-idcc/ftp-metadata-store.boundary-tp.properties
+          file-list-persistence-file: /data/gridcapa/ftp-metadata-store.properties
       sinks:
         minio:
           url: http://gridcapa-minio:9000
@@ -154,7 +154,7 @@ spec:
             name: swe-idcc-boundary-tp-data-bridge
         - name: swe-idcc-boundary-tp-data-bridge-data
           persistentVolumeClaim:
-            claimName: swe-idcc-data-bridge-storage
+            claimName: swe-idcc-boundary-tp-data-bridge-storage
 
 
 ---
