@@ -24,6 +24,9 @@ data:
       <xnode name="XDU_SL11" area1="AT" area2="CZ" />
       <xnode name="XDU_SL12" area1="AT" area2="CZ" />
       <xnode name="XZA_SO21" area1="AT" area2="CZ" />
+      <xnode name="XNA_PR11" area1="CH" area2="AT" />
+      <xnode name="XNA_PR12" area1="CH" area2="AT" />
+      <xnode name="XNA_GL21" area1="AT" area2="IT" />
       <xnode name="XWE_VO21" area1="AT" area2="DE" subarea2="D7" />
       <xnode name="XPE_AH21" area1="AT" area2="DE" subarea2="D2" />
       <xnode name="XPE_PI21" area1="AT" area2="DE" subarea2="D2" />
