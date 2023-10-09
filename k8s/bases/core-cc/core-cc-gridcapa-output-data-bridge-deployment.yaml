@@ -88,7 +88,7 @@ spec:
               port: 8080
             initialDelaySeconds: 35
             timeoutSeconds: 2
-            periodSeconds: 60
+            periodSeconds: 600
             failureThreshold: 3
             successThreshold: 1
           resources:

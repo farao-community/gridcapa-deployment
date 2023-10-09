@@ -19,7 +19,7 @@ data:
           secret-key: ${MINIO_SECRET_KEY}
           bucket: ${MINIO_BUCKET}
           base-directory: ${MINIO_BASE_DIRECTORY}/RAO_OUTPUTS_DIR
-          polling-delay-in-ms: 60000
+          polling-delay-in-ms: ${POLLING_DELAY}
       sinks:
         ftp:
           active: true
