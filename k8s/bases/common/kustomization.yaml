@@ -22,3 +22,4 @@ resources:
   - rabbitmq-configmap.yaml
   - rabbitmq-service.yaml
   - rabbitmq-statefulset.yaml
+  - minio-get-storage-data-cron.yaml

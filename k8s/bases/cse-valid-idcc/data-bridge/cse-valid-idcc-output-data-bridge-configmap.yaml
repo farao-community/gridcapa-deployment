@@ -19,7 +19,8 @@ data:
           secret-key: ${MINIO_SECRET_KEY}
           bucket: ${MINIO_BUCKET}
           base-directory: ${MINIO_BASE_DIRECTORY}/TTC_VALIDATION
-          polling-delay-in-ms: 60000
+          polling-delay-in-ms: ${POLLING_DELAY}
+          file-list-persistence-file: /data/gridcapa/cse-valid-idcc/ftp-metadata-store.output.properties
       sinks:
         ftp:
           active: true

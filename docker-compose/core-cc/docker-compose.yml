@@ -1,0 +1,120 @@
+version: "3.7"
+services:
+  core-cc-gridcapa-app:
+    image: farao/gridcapa-app:latest
+    volumes:
+      - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ./config/core-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+    networks:
+      - gridcapa
+
+  core-cc-gridcapa-cgm-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/core-cc-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-cc-gridcapa-cbcora-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/core-cc-gridcapa-cbcora-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-cc-gridcapa-glsk-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/core-cc-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-cc-gridcapa-refprog-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/core-cc-gridcapa-refprog-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-cc-gridcapa-raorequest-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/core-cc-gridcapa-raorequest-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-cc-gridcapa-virtualhub-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/data-bridge/core-cc-gridcapa-virtualhub-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-cc-gridcapa-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./config/core-cc-gridcapa-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-cc-gridcapa-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    volumes:
+      - ./config/core-cc-gridcapa-job-launcher.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-cc-gridcapa-post-processing:
+    image: farao/gridcapa-core-cc-post-processing:latest
+    volumes:
+      - ./config/core-cc-gridcapa-post-processing.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-cc-runner:
+    image: farao/gridcapa-core-cc:latest
+    volumes:
+      - ./config/core-cc-runner-application.yml:/config/application.yml
+      - ./config/core-cc-itools-config.yml:/home/farao/.itools/config.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  core-cc-adapter:
+    image: farao/gridcapa-core-cc-adapter:latest
+    volumes:
+      - ./config/core-cc-adapter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  core-cc-output-data-bridge:
+    image: farao/gridcapa-output-data-bridge:latest
+    volumes:
+      - ./config/core-cc-output-data-bridge.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  rao-logs-dispatcher:
+    image: farao/gridcapa-rao-logs-dispatcher:latest
+    volumes:
+      - ./config/core-cc-rao-logs-dispatcher-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://rao-logs-dispatcher/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+networks:
+  gridcapa:
+    name: gridcapa

@@ -27,7 +27,8 @@ data:
           username: ${SOURCE_USER}
           password: ${SOURCE_PASSWORD}
           base-directory: ${SOURCE_BASE_DIRECTORY}/glsks
-          polling-delay-in-ms: 60000
+          polling-delay-in-ms: ${POLLING_DELAY}
+          file-list-persistence-file: /data/gridcapa/ftp-metadata-store.properties
       sinks:
         minio:
           url: http://gridcapa-minio:9000

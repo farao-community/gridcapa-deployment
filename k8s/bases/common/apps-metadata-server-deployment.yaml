@@ -27,6 +27,9 @@ spec:
               name: apps-metadata-server-configmap-volume
             - mountPath: /opt/bitnami/apache/var/run/
               name: run-emptydir
+            - mountPath: /opt/bitnami/apache/htdocs/data/
+              name: minio-get-storage-data-data
+              readOnly: true
           securityContext:
             allowPrivilegeEscalation: false
             runAsNonRoot: true
@@ -63,3 +66,6 @@ spec:
             name: apps-metadata-server-configmap
         - name: run-emptydir
           emptyDir: {}
+        - name: minio-get-storage-data-data
+          persistentVolumeClaim:
+            claimName: minio-get-storage-data-pv

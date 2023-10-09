@@ -27,6 +27,7 @@ data:
       maxRealisticVoltage: 1.6
       stateVectorScalingMode: MAX_VOLTAGE_CHANGE
       ReactiveLimitsMaxPqPvSwitch: 2
+      throwsExceptionInCaseOfSlackDistributionFailure: true
 
     rao-objective-function:
       type: MAX_MIN_MARGIN_IN_AMPERE

@@ -1,0 +1,57 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: core-cc-gridcapa-job-launcher-configmap
+  labels:
+    app: gridcapa
+    component: job-launcher
+    region: core
+    process: cc
+data:
+  application.yml: |-
+    logback:
+      amqp:
+        exchange: core-cc-task-manager-logs-exchange
+        routing-key: "#"
+    spring:
+      application:
+        name: core-cc-gridcapa-job-launcher
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+      cloud:
+        stream:
+          bindings:
+            default:
+              group: core-cc-job-launcher
+            run-task:
+              destination: core-cc-run-task
+            run-task-auto:
+              destination: core-cc-run-task-auto
+            stop-task:
+              destination: core-cc-stop-task
+            consumeTaskDtoUpdate-in-0:
+              destination: core-cc-task-updated
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+            bindings:
+              consumeTaskDtoUpdate-in-0:
+                consumer:
+                  binding-routing-key: status
+    job-launcher:
+      auto: true
+      url:
+        task-manager-timestamp-url: http://core-cc-task-manager/tasks/
+        task-manager-business-date-url: http://core-cc-task-manager/tasks/businessdate/
+      process:
+        tag: CORE_CC
+        timezone: CET
+
+    scheduler:
+      enable: false
+

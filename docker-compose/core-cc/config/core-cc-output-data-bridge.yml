@@ -1,0 +1,18 @@
+data-bridge:
+  file-regex: ".*"
+  sources:
+    minio:
+      url: http://minio:9000
+      access-key: gridcapa
+      secret-key: gridcapa
+      bucket: gridcapa
+      base-directory: /CORE/CC/RAO_OUTPUTS_DIR
+      polling-delay-in-ms: 3000
+  sinks:
+    ftp:
+      active: true
+      host: ftp-server
+      port: 21
+      username: gridcapa
+      password: gridcapa
+      base-directory: /data/gridcapa/core/cc/outputs

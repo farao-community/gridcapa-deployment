@@ -5,13 +5,22 @@ resources:
   - ../common
   - ../../../bases/cse-export-d2cc
   - ../../../bases/cse-export-idcc
+  - ../../../bases/cse-import-d2cc
+  - ../../../bases/cse-import-idcc
+  - ../../../bases/cse-import-ec-d2cc
+  - ../../../bases/cse-import-ec-idcc
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
   - ../../../bases/swe-idcc-idcf
-  - ../../../bases/cse-import-ec-d2cc
-  - ../../../bases/cse-import-ec-idcc
-  - ../../../bases/cse-import-d2cc
-  - ../../../bases/cse-import-idcc
+  - ../coreso-databridge-claims/cse-export-d2cc
+  - ../coreso-databridge-claims/cse-export-idcc
+  - ../coreso-databridge-claims/cse-import-d2cc
+  - ../coreso-databridge-claims/cse-import-idcc
+  - ../coreso-databridge-claims/cse-import-ec-d2cc
+  - ../coreso-databridge-claims/cse-import-ec-idcc
+  - ../coreso-databridge-claims/swe-d2cc
+  - ../coreso-databridge-claims/swe-idcc
+  - ../coreso-databridge-claims/swe-idcc-idcf
   - apps-metadata-server-configmap.yaml
   - cse-gridcapa-runner-itools-coreso-configmap.yaml
   - cse-gridcapa-import-runner-itools-coreso-test-configmap.yaml
@@ -309,31 +318,31 @@ images:
     newTag: 0.15.0
   - name: gridcapa-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.15.0
+    newTag: v1.16.1
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
-    newTag: v1.8.0
+    newTag: v1.9.0
   - name: gridcapa-gateway
     newName: docker.io/farao/gridcapa-gateway
     newTag: 1.0.0
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v1.2.3
+    newTag: v1.2.4
   - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
-    newTag: v1.12.0
+    newTag: v1.13.0
   - name: gridcapa-cse-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
     newTag: v1.6.0
   - name: gridcapa-cse-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.1.0
-  - name: gridcapa-cse-export-runner
-    newName: docker.io/farao/gridcapa-cse-cc-export-runner
-    newTag: v1.19.2
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.19.2
+    newTag: v1.20.0
+  - name: gridcapa-cse-export-runner
+    newName: docker.io/farao/gridcapa-cse-cc-export-runner
+    newTag: v1.20.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.19.0
@@ -342,10 +351,13 @@ images:
     newTag: v1.5.0
   - name: gridcapa-swe-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v1.2.3
+    newTag: v1.2.4
+  - name: gridcapa-swe-exporter
+    newName: docker.io/farao/gridcapa-export
+    newTag: v1.5.0
   - name: gridcapa-swe-adapter
     newName: docker.io/farao/gridcapa-swe-adapter
-    newTag: v1.0.5
+    newTag: v1.1.0
   - name: gridcapa-swe-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
     newTag: v1.6.0
@@ -354,10 +366,7 @@ images:
     newTag: v1.1.0
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
-    newTag: v1.10.2
+    newTag: v1.12.0
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.19.0
-  - name: gridcapa-swe-exporter
-    newName: docker.io/farao/gridcapa-export
-    newTag: v1.5.0

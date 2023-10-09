@@ -24,6 +24,7 @@ data:
       newtonRaphsonConvEpsPerEq: 1.0E-3
       minRealisticVoltage : 0.5
       maxRealisticVoltage : 1.5
+      throwsExceptionInCaseOfSlackDistributionFailure: true
     
     rao-objective-function:
       type: MAX_MIN_MARGIN_IN_AMPERE
@@ -41,7 +42,7 @@ data:
       relative-mip-gap: 0.001
     
     rao-topological-actions-optimization:
-      max-search-tree-depth: 2
+      max-search-tree-depth: 3
       relative-minimum-impact-threshold: 0.0
       absolute-minimum-impact-threshold: 1.0
     

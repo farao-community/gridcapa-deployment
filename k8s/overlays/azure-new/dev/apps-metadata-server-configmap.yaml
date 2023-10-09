@@ -44,6 +44,11 @@ data:
         "appColor" : "#F56908"
       },
       {
+        "name" : "Capa CORE CC",
+        "url"  : "/core/cc",
+        "appColor" : "#0894f5"
+      },
+      {
         "name" : "Capa CSE Validation IDCC",
         "url"  : "/cse/valid/idcc",
         "appColor" : "#b22222"

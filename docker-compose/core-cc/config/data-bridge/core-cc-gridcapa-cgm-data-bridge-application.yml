@@ -1,0 +1,25 @@
+data-bridge:
+  zone-id: "Europe/Paris"
+  target-process: CORE_CC
+  file-type: CGM
+  file-regex: .*CORESO-F119_F119-(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*\.zip
+  time-validity: daily
+  remote-file-regex:
+    - ".*CORESO-F119_F119-(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2}).*\\.zip"
+  do-unzip: false
+  sources:
+    ftp:
+      active: true
+      host: ftp-server
+      port: 21
+      username: gridcapa
+      password: gridcapa
+      base-directory: /data/gridcapa/core/cc/cgms
+      polling-delay-in-ms: 5000
+  sinks:
+    minio:
+      url: http://minio:9000
+      access-key: gridcapa
+      secret-key: gridcapa
+      bucket: gridcapa
+      base-directory: /CORE/CC/CGMs
