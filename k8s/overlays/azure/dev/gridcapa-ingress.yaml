@@ -15,6 +15,7 @@ metadata:
       rewrite ^/swe/d2cc$ /swe/d2cc/ permanent;
       rewrite ^/swe/idcc$ /swe/idcc/ permanent;
       rewrite ^/swe/idcf$ /swe/idcf/ permanent;
+      rewrite ^/core/cc$ /core/cc/ permanent;
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
@@ -27,12 +28,12 @@ metadata:
   labels:
     app: gridcapa
     component: gridcapa
-  name: gridcapa-dev
-  namespace: default
+  name: gridcapa-dev-tmp
+  namespace: gridcapa-d
 spec:
   ingressClassName: nginx
   rules:
-    - host: gridcapa-dev.farao-community.com
+    - host: gridcapa-dev-tmp.farao-community.com
       http:
         paths:
           - backend:
@@ -207,6 +208,91 @@ spec:
 
           - backend:
               service:
+                name: core-cc-gridcapa-app
+                port:
+                  number: 80
+            path: /core/cc(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/cc/config/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/cc/config-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/cc/task-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/cc/task-manager/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/cc/gridcapa-job-launcher/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: core-cc-gridcapa-app
+                port:
+                  number: 80
+            path: /core/cc(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/cc/config/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/cc/config-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/cc/task-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/cc/task-manager/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/cc/gridcapa-job-launcher/.*)
+            pathType: Prefix
+
+          - backend:
+              service:
                 name: filebrowser
                 port:
                   number: 80
@@ -275,6 +361,7 @@ spec:
                   number: 80
             path: /()(core/valid/gridcapa-job-launcher/.*)
             pathType: Prefix
+
           - backend:
               service:
                 name: cse-valid-idcc-gridcapa-app
@@ -585,5 +672,5 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - gridcapa-dev.farao-community.com
+        - gridcapa-dev-tmp.farao-community.com
       secretName: gridcapa-tls
