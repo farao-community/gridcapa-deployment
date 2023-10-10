@@ -25,9 +25,6 @@ resources:
   - apps-metadata-server-configmap.yaml
   - cse-export-d2cc-app-idp-settings-configmap.yaml
   - cse-export-idcc-app-idp-settings-configmap.yaml
-  - cse-gridcapa-runner-itools-azure-test-configmap.yaml
-  - cse-gridcapa-export-runner-itools-azure-test-configmap.yaml
-  - swe-gridcapa-runner-itools-azure-test-configmap.yaml
   - cse-import-d2cc-app-idp-settings-configmap.yaml
   - cse-import-idcc-app-idp-settings-configmap.yaml
   - cse-import-ec-idcc-app-idp-settings-configmap.yaml
@@ -43,10 +40,25 @@ resources:
 
 configMapGenerator:
   - name: env-configmap
-    envs: [env.properties]
+    envs:
+      - env.properties
+  - name: cse-export-runner-itools-configmap
+    files:
+      - config.yml=./configuration/cse-export-runner-itools-config.yml
+  - name: cse-import-runner-itools-configmap
+    files:
+      - config.yml=./configuration/cse-import-runner-itools-config.yml
+  - name: rao-runner-itools-configmap
+    files:
+      - config.yml=./configuration/rao-runner-itools-config.yml
+  - name: swe-runner-itools-configmap
+    files:
+      - config.yml=./configuration/cse-import-runner-itools-config.yml
+
+
 
 patches:
-  # - Scale-up to 4 instances
+  # - Scale-up to 8 instances
   # - Adapt requests/limits
   # - Add ImagePullSecrets to retrieve private gridcapa-rao-runner-with-xpress from dockerhub
   - patch: |-
@@ -69,7 +81,7 @@ patches:
                     memory: "64Gi"
             imagePullSecrets:
               - name: dockerhub-acr-secret
-# Scale-up to 4 instances and adapt CSE runner itools config
+# Scale-up to 2 instances of CSE import IDCC runner
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -77,13 +89,7 @@ patches:
         name: cse-import-idcc-gridcapa-runner
       spec:
         replicas: 2
-        template:
-          spec:
-            volumes:
-              - name: cse-import-idcc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-azure-test-configmap
-  # Scale-up to 4 instances and adapt CSE runner itools config
+  # Scale-up to 2 instances of CSE import D2CC runner
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -91,13 +97,7 @@ patches:
         name: cse-import-d2cc-gridcapa-runner
       spec:
         replicas: 2
-        template:
-          spec:
-            volumes:
-              - name: cse-import-d2cc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-azure-test-configmap
-  # adapt CSE Import EC runner itools config
+  # Scale-up to 2 instances of CSE import EC D2CC runner
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -105,13 +105,7 @@ patches:
         name: cse-import-ec-d2cc-gridcapa-runner
       spec:
         replicas: 2
-        template:
-          spec:
-            volumes:
-              - name: cse-import-ec-d2cc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-azure-test-configmap
-  # adapt CSE Import EC runner itools config
+  # Scale-up to 2 instances of CSE import EC IDCC runner
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -119,12 +113,6 @@ patches:
         name: cse-import-ec-idcc-gridcapa-runner
       spec:
         replicas: 2
-        template:
-          spec:
-            volumes:
-              - name: cse-import-ec-idcc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-azure-test-configmap
   # Scale-up to 2 instances swe-d2cc-runner
   - patch: |-
       kind: Deployment
@@ -149,71 +137,7 @@ patches:
         name: swe-idcc-idcf-runner
       spec:
         replicas: 2
-  # Adapt CSE runner itools config
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-export-idcc-runner
-      spec:
-        template:
-          spec:
-            volumes:
-              - name: cse-export-idcc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-export-runner-itools-azure-test-configmap
-  # Adapt CSE runner itools config
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-export-d2cc-runner
-      spec:
-        template:
-          spec:
-            volumes:
-              - name: cse-export-d2cc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-export-runner-itools-azure-test-configmap
-  # Adapt SWE D2CC runner itools config
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: swe-d2cc-runner
-      spec:
-        template:
-          spec:
-            volumes:
-              - name: swe-d2cc-runner-itools-configmap-volume
-                configMap:
-                  name: swe-runner-itools-azure-test-configmap
-  # Adapt SWE IDCC runner itools config
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: swe-idcc-runner
-      spec:
-        template:
-          spec:
-            volumes:
-              - name: swe-idcc-runner-itools-configmap-volume
-                configMap:
-                  name: swe-runner-itools-azure-test-configmap
-  # Adapt SWE IDCC IDCF runner itools config
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: swe-idcc-idcf-runner
-      spec:
-        template:
-          spec:
-            volumes:
-              - name: swe-idcc-idcf-runner-itools-configmap-volume
-                configMap:
-                  name: swe-runner-itools-azure-test-configmap
+
 images:
   - name: apps-metadata-server
     newName: docker.io/bitnami/apache

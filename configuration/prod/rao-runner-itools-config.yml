@@ -1,0 +1,10 @@
+rao:
+  default: SearchTreeRao
+
+computation-local:
+  availableCore: 20
+
+hades2:
+  homeDir: /home/farao/farao-dep/runtime/hades2
+  timeout: -1
+  debug: false

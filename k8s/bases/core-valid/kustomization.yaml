@@ -35,7 +35,6 @@ resources:
   - core-valid-gridcapa-job-launcher-deployment.yaml
   - core-valid-gridcapa-job-launcher-service.yaml
   - core-valid-gridcapa-job-launcher-configmap.yaml
-  - core-valid-runner-itools-configmap.yaml
   - core-valid-exporter-configmap.yaml
   - core-valid-exporter-deployment.yaml
   - core-valid-exporter-service.yaml

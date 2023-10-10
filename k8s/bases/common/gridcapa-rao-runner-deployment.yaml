@@ -101,6 +101,6 @@ spec:
             name: rao-runner
         - name: rao-runner-itools-volume
           configMap:
-            name: rao-runner-itools
+            name: rao-runner-itools-configmap
         - name: tmp-emptydir
           emptyDir: {}

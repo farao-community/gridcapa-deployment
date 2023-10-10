@@ -12,8 +12,6 @@ resources:
   - ../coreso-databridge-claims/swe-d2cc
   - ../coreso-databridge-claims/swe-idcc
   - apps-metadata-server-configmap.yaml
-  - cse-gridcapa-runner-itools-coreso-configmap.yaml
-  - swe-gridcapa-runner-itools-coreso-configmap.yaml
   - gridcapa-app-env-configmap.yaml
   - ingress-gridcapa.yaml
   - ingress-middlewares.yaml
@@ -62,12 +60,6 @@ patches:
         name: cse-import-idcc-gridcapa-runner
       spec:
         replicas: 4
-        template:
-          spec:
-            volumes:
-              - name: cse-import-idcc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-coreso-configmap
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -75,13 +67,6 @@ patches:
         name: cse-import-d2cc-gridcapa-runner
       spec:
         replicas: 8
-        template:
-          spec:
-            volumes:
-              - name: cse-import-d2cc-runner-itools-configmap-volume
-                configMap:
-                  name: cse-runner-itools-coreso-configmap
-  # Adapt SWE D2CC runner itools config
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -89,13 +74,6 @@ patches:
         name: swe-d2cc-runner
       spec:
         replicas: 6
-        template:
-          spec:
-            volumes:
-              - name: swe-d2cc-runner-itools-configmap-volume
-                configMap:
-                  name: swe-runner-itools-coreso-configmap
-  # Adapt SWE IDCC DACF runner itools config
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -103,12 +81,6 @@ patches:
         name: swe-idcc-runner
       spec:
         replicas: 6
-        template:
-          spec:
-            volumes:
-              - name: swe-idcc-runner-itools-configmap-volume
-                configMap:
-                  name: swe-runner-itools-coreso-configmap
   - patch: |-
       apiVersion: apps/v1
       kind: StatefulSet
@@ -161,7 +133,17 @@ patches:
 
 configMapGenerator:
   - name: env-configmap
-    env: env.properties
+    envs:
+      - env.properties
+  - name: cse-import-runner-itools-configmap
+    files:
+      - config.yml=configuration/cse-import-runner-itools-config.yml
+  - name: rao-runner-itools-configmap
+    files:
+      - config.yml=configuration/rao-runner-itools-config.yml
+  - name: swe-runner-itools-configmap
+    files:
+      - config.yml=configuration/cse-import-runner-itools-config.yml
 
 images:
   - name: apps-metadata-server

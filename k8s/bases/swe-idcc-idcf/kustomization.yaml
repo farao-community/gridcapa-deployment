@@ -22,6 +22,5 @@ resources:
   - swe-idcc-idcf-job-launcher.yaml
   - swe-idcc-idcf-rao-logs-dispatcher.yaml
   - swe-idcc-idcf-runner.yaml
-  - swe-idcc-idcf-runner-itools-configmap.yaml
   - swe-idcc-idcf-task-manager.yaml
   - swe-idcc-idcf-minio-purge.yaml

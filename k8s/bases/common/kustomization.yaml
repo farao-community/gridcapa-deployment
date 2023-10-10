@@ -15,7 +15,6 @@ resources:
   - gridcapa-gateway-service.yaml
   - gridcapa-rao-runner-configmap.yaml
   - gridcapa-rao-runner-deployment.yaml
-  - gridcapa-rao-runner-itools-configmap.yaml
   - gridcapa-rao-runner-service.yaml
   - minio-deployment.yaml
   - minio-service.yaml
