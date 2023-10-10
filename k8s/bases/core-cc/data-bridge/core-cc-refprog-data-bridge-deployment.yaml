@@ -58,6 +58,11 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CORE_CC
+            - name: POLLING_DELAY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POLLING_DELAY_CORE_CC
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
