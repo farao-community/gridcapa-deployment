@@ -55,6 +55,9 @@ configMapGenerator:
   - name: env-configmap
     envs:
       - env.properties
+  - name: core-cc-runner-itools-configmap
+    files:
+      - config.yml=configuration/core-cc-runner-itools-config.yml
   - name: core-valid-runner-itools-configmap
     files:
       - config.yml=configuration/core-valid-runner-itools-config.yml
