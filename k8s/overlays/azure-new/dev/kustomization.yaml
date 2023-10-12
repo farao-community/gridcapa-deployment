@@ -56,7 +56,7 @@ configMapGenerator:
     envs: [env.properties]
 
 patches:
-  # Add ImagePullSecrets to retrieve private gridcapa-rao-runner-with-xpress from p2rte
+  # Add ImagePullSecrets to retrieve private gridcapa-rao-runner-with-xpress from dockerhub
   # Adapt requests/limits
   - patch: |-
       kind: Deployment
@@ -76,7 +76,7 @@ patches:
                     cpu: "16.0"
                     memory: "64Gi"
             imagePullSecrets:
-              - name: p2rte-acr-secret
+              - name: dockerhub-acr-secret
 images:
   - name: apps-metadata-server
     newName: docker.io/bitnami/apache
@@ -106,7 +106,7 @@ images:
     newName: docker.io/gridsuite/config-server
     newTag: 0.15.0
   - name: gridcapa-rao-runner
-    newName: p2rte.azurecr.io/farao/gridcapa-rao-runner-with-xpress
+    newName: docker.io/farao/gridcapa-rao-runner-with-xpress
     newTag: v1.16.1
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
