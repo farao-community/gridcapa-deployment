@@ -10,10 +10,10 @@ metadata:
 data:
   idpSettings.json: |-
     {
-      "authority": "https://auth-tmp.farao-community.com/realms/GridCapa",
+      "authority": "https://auth.farao-community.com/realms/GridCapa",
       "client_id": "gridcapa-dev",
-      "redirect_uri": "https://gridcapa-dev-tmp.farao-community.com/cse/import-ec/d2cc/sign-in-callback",
-      "post_logout_redirect_uri": "https://gridcapa-dev-tmp.farao-community.com/cse/import-ec/d2cc/logout-callback",
-      "silent_redirect_uri": "https://gridcapa-dev-tmp.farao-community.com/cse/import-ec/d2cc/silent-renew-callback",
+      "redirect_uri": "https://gridcapa-dev.farao-community.com/cse/import-ec/d2cc/sign-in-callback",
+      "post_logout_redirect_uri": "https://gridcapa-dev.farao-community.com/cse/import-ec/d2cc/logout-callback",
+      "silent_redirect_uri": "https://gridcapa-dev.farao-community.com/cse/import-ec/d2cc/silent-renew-callback",
       "scope": "openid profile email"
     }
