@@ -53,7 +53,7 @@ configMapGenerator:
       - config.yml=./configuration/rao-runner-itools-config.yml
   - name: swe-runner-itools-configmap
     files:
-      - config.yml=./configuration/cse-import-runner-itools-config.yml
+      - config.yml=./configuration/swe-runner-itools-config.yml
 
 
 
