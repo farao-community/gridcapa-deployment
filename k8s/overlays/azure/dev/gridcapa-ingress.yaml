@@ -28,12 +28,12 @@ metadata:
   labels:
     app: gridcapa
     component: gridcapa
-  name: gridcapa-dev
+  name: gridcapa-dev-tmp
   namespace: gridcapa-d
 spec:
   ingressClassName: nginx
   rules:
-    - host: gridcapa-dev.farao-community.com
+    - host: gridcapa-dev-tmp.farao-community.com
       http:
         paths:
           - backend:
@@ -672,5 +672,5 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - gridcapa-dev.farao-community.com
+        - gridcapa-dev-tmp.farao-community.com
       secretName: gridcapa-tls
