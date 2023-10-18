@@ -69,7 +69,7 @@ patches:
                     memory: "64Gi"
             imagePullSecrets:
               - name: dockerhub-acr-secret
-  # Scale-up to 4 instances and adapt CSE runner itools config
+# Scale-up to 4 instances and adapt CSE runner itools config
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -111,7 +111,7 @@ patches:
               - name: cse-import-ec-d2cc-runner-itools-configmap-volume
                 configMap:
                   name: cse-runner-itools-azure-test-configmap
-#   adapt CSE Import EC runner itools config
+  # adapt CSE Import EC runner itools config
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -284,7 +284,7 @@ images:
     newTag: v1.1.0
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
-    newTag: v1.11.0
+    newTag: v1.12.0
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.19.0

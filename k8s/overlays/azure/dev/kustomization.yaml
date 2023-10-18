@@ -14,6 +14,7 @@ resources:
   - ../../../bases/cse-valid-d2cc
   - ../../../bases/cse-valid-idcc
   - ../../../bases/core-valid
+  - ../../../bases/core-cc
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
   - ../../../bases/swe-idcc-idcf
@@ -29,8 +30,10 @@ resources:
   - ../../azure-databridge-claims/swe-d2cc
   - ../../azure-databridge-claims/swe-idcc
   - ../../azure-databridge-claims/swe-idcc-idcf
+  - ../../azure-databridge-claims/core-cc
   - apps-metadata-server-configmap.yaml
   - core-valid-gridcapa-app-idp-settings-configmap.yaml
+  - core-cc-gridcapa-app-idp-settings-configmap.yaml
   - cse-export-d2cc-app-idp-settings-configmap.yaml
   - cse-export-idcc-app-idp-settings-configmap.yaml
   - cse-import-d2cc-app-idp-settings-configmap.yaml
@@ -46,15 +49,38 @@ resources:
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
+  - rao-auto-scale-down.yaml
 
 configMapGenerator:
   - name: env-configmap
     envs: [env.properties]
 
+patches:
+  # Add ImagePullSecrets to retrieve private gridcapa-rao-runner-with-xpress from dockerhub
+  # Adapt requests/limits
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: rao-runner
+      spec:
+        template:
+          spec:
+            containers:
+              - name: rao-runner
+                resources:
+                  requests:
+                    cpu: "14.0"
+                    memory: "50Gi"
+                  limits:
+                    cpu: "16.0"
+                    memory: "64Gi"
+            imagePullSecrets:
+              - name: dockerhub-acr-secret
 images:
   - name: apps-metadata-server
     newName: docker.io/bitnami/apache
-    newTag: latest
+    newTag: "2.4"
   - name: rabbitmq
     newName: docker.io/rabbitmq
     newTag: management
@@ -63,10 +89,7 @@ images:
     newTag: 2021.6.17
   - name: minio-mc
     newName: docker.io/minio/mc
-    newTag: latest
-  - name: centos
-    newName: docker.io/centos
-    newTag: latest
+    newTag: RELEASE.2022-05-09T04-08-26Z
   - name: filebrowser
     newName: docker.io/filebrowser/filebrowser
     newTag: latest
@@ -78,13 +101,13 @@ images:
     newTag: 1.0.0
   - name: gridsuite-config-notification-server
     newName: docker.io/gridsuite/config-notification-server
-    newTag: latest
+    newTag: 0.15.0
   - name: gridsuite-config-server
     newName: docker.io/gridsuite/config-server
-    newTag: latest
+    newTag: 0.15.0
   - name: gridcapa-rao-runner
-    newName: docker.io/farao/gridcapa-rao-runner
-    newTag: latest
+    newName: docker.io/farao/gridcapa-rao-runner-with-xpress
+    newTag: v1.16.1
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: latest-auth
@@ -184,3 +207,28 @@ images:
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: latest
+    # CORE CC
+  - name: gridcapa-core-cc-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: v1.2.5
+  - name: gridcapa-core-cc-output-data-bridge
+    newName: docker.io/farao/gridcapa-output-data-bridge
+    newTag: v1.1.0
+  - name: gridcapa-core-cc-adapter
+    newName: docker.io/farao/gridcapa-core-cc-adapter
+    newTag: v1.0.1
+  - name: gridcapa-core-cc-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: v1.7.0
+  - name: gridcapa-core-cc-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
+    newTag: v1.1.0
+  - name: gridcapa-core-cc-runner
+    newName: docker.io/farao/gridcapa-core-cc
+    newTag: v1.0.3
+  - name: gridcapa-core-cc-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: v1.20.0
+  - name: gridcapa-core-cc-post-processing
+    newName: docker.io/farao/gridcapa-core-cc-post-processing
+    newTag: v1.0.2
