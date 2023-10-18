@@ -208,7 +208,7 @@ images:
     newTag: v1.19.2
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.19.0
+    newTag: v1.21.1
   - name: gridcapa-cse-exporter
     newName: docker.io/farao/gridcapa-export
     newTag: v1.5.0
@@ -229,7 +229,7 @@ images:
     newTag: v1.10.2
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.19.0
+    newTag: v1.21.1
   - name: gridcapa-swe-exporter
     newName: docker.io/farao/gridcapa-export
     newTag: v1.5.0
