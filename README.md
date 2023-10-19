@@ -111,8 +111,7 @@ kubectl create secret generic admin-rabbitmq-credentials --from-literal='rabbitm
 kubectl create secret generic rabbitmq-secrets --from-literal='rabbitmq-erlang-cookie=<RABBITMQ_ERLANG_COOKIE>'
 kubectl create secret generic gridcapa-minio-credentials --from-literal='minio-access-key=<MINIO_ACCESS_KEY>' --from-literal='minio-secret-key=<MINIO_SECRET_KEY>'
 kubectl create secret generic gridcapa-ftp-credentials --from-literal='ftp-user=<FTP_USER>' --from-literal='ftp-password=<FTP_PASSWORD>'
-kubectl create secret generic gridcapa-postgresql-credentials --from-literal='postgres-password=<POSTGRES_PASSWORD>' --from-literal='config-user=<CONFIG_USER>' --from-literal='config-password=<CONFIG_PASSWORD>' --from-literal='cse-import-idcc-user=<CSE_IMPORT_IDCC_USER>' --from-literal='cse-import-idcc-password=<CSE_IMPORT_IDCC_PASSWORD>' --from-literal='cse-import-d2cc-user=<CSE_IMPORT_D2CC_USER>' --from-literal='cse-import-d2cc-password=<CSE_IMPORT_D2CC_PASSWORD>' --from-literal='cse-export-idcc-user=<CSE_EXPORT_IDCC_USER>' --from-literal='cse-export-idcc-password=<CSE_EXPORT_IDCC_PASSWORD>' --from-literal='cse-export-d2cc-user=<CSE_EXPORT_D2CC_USER>' --from-literal='cse-export-d2cc-password=<CSE_EXPORT_D2CC_PASSWORD>' --from-literal='core-valid-user=<CORE_VALID_USER>' --from-literal='core-valid-password=<CORE_VALID_PASSWORD>'
---from-literal='cse-valid-idcc-user=<CSE_VALID_IDCC_USER>' --from-literal='cse-valid-idcc-password=<CSE_VALID_IDCC_PASSWORD>' --from-literal='cse-valid-d2cc-user=<CSE_VALID_D2CC_USER>' --from-literal='cse-valid-d2cc-password=<CSE_VALID_D2CC_PASSWORD>'
+kubectl create secret generic gridcapa-postgresql-credentials --from-literal='postgres-password=<POSTGRES_PASSWORD>' --from-literal='config-user=<CONFIG_USER>' --from-literal='config-password=<CONFIG_PASSWORD>' --from-literal='cse-import-idcc-user=<CSE_IMPORT_IDCC_USER>' --from-literal='cse-import-idcc-password=<CSE_IMPORT_IDCC_PASSWORD>' --from-literal='cse-import-d2cc-user=<CSE_IMPORT_D2CC_USER>' --from-literal='cse-import-d2cc-password=<CSE_IMPORT_D2CC_PASSWORD>' --from-literal='cse-export-idcc-user=<CSE_EXPORT_IDCC_USER>' --from-literal='cse-export-idcc-password=<CSE_EXPORT_IDCC_PASSWORD>' --from-literal='cse-export-d2cc-user=<CSE_EXPORT_D2CC_USER>' --from-literal='cse-export-d2cc-password=<CSE_EXPORT_D2CC_PASSWORD>' --from-literal='core-valid-user=<CORE_VALID_USER>' --from-literal='core-valid-password=<CORE_VALID_PASSWORD>' --from-literal='cse-valid-idcc-user=<CSE_VALID_IDCC_USER>' --from-literal='cse-valid-idcc-password=<CSE_VALID_IDCC_PASSWORD>' --from-literal='cse-valid-d2cc-user=<CSE_VALID_D2CC_USER>' --from-literal='cse-valid-d2cc-password=<CSE_VALID_D2CC_PASSWORD>'
 kubectl create secret generic gridcapa-keycloak-credentials --from-literal='keycloak-user=<KEYCLOAK_USER>' --from-literal='keycloak-password=<KEYCLOAK_PASSWORD>'
 kubectl create secret tls gridcapa-tls --key <private key file> --cert <certificate file>
 ```
@@ -124,7 +123,6 @@ First, start by downloading [MinIO client application](https://docs.min.io/docs/
 Then add the MinIO server to the list of servers available:
 ```bash
 ./mc alias set gridcapa_k8s <minio-url> <minio-user> <minio-password>
-
 ```
 Check correct connectivity:
 ```bash
@@ -160,7 +158,9 @@ This environment is used for CI for all gridcapa processes
 - host: gridcapa-dev.farao-community.com
 - namespace: default
 
-kubectl kustomize k8s/overlays/azure/dev |  ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p"  farao@51.137.209.168 kubectl apply -f -
+```bash
+kubectl kustomize k8s/overlays/azure/dev --load-restrictor LoadRestrictionsNone |  ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p"  farao@51.137.209.168 kubectl apply -f -
+```
 
 Info: need to install connect-proxy with "dzdo apt install connect-proxy"
 
@@ -170,7 +170,9 @@ This environment is used to test CSE gridcapa processes for CORESO
 - host: gridcapa.farao-community.com
 - namespace: gridcapa
 
-kubectl kustomize k8s/overlays/azure/test |  ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p"  farao@51.137.209.168 kubectl apply -n gridcapa -f -
+```bash
+kubectl kustomize k8s/overlays/azure/test --load-restrictor LoadRestrictionsNone |  ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p"  farao@51.137.209.168 kubectl apply -n gridcapa -f -
+```
 
 
 ### Using local gridcapa-app
@@ -211,12 +213,23 @@ There is 3 namespaces :
 - gridcapa-t : the test namespace https://gridcapa-test-tmp.farao-community.com
 
 To access the new cluster, you need to connect via ssh with the usual command : 
-- ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168
+```bash
+ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168
+```
 
 To deploy to this cluster :
-- default namespace (for keycloak) : kubectl kustomize k8s/overlays/azure/authentication/ | ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168 kubectl --kubeconfig=.kube/config_new apply -f -
-- dev environnement : kubectl kustomize k8s/overlays/azure/dev/ | ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168 kubectl --kubeconfig=.kube/config_new apply -n gridcapa-d -f -
-- test environnement : kubectl kustomize k8s/overlays/azure/test/ | ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168 kubectl --kubeconfig=.kube/config_new apply -n gridcapa-t -f -
+- default namespace (for keycloak) :
+  ```bash
+  kubectl kustomize k8s/overlays/azure/authentication/ --load-restrictor LoadRestrictionsNone | ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168 kubectl --kubeconfig=.kube/config_new apply -f -
+  ```
+- dev environnement :
+  ```bash
+  kubectl kustomize k8s/overlays/azure/dev/ --load-restrictor LoadRestrictionsNone | ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168 kubectl --kubeconfig=.kube/config_new apply -n gridcapa-d -f -
+  ```
+- test environnement :
+  ```bash
+  kubectl kustomize k8s/overlays/azure/test/ --load-restrictor LoadRestrictionsNone | ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168 kubectl --kubeconfig=.kube/config_new apply -n gridcapa-t -f -
+  ```
 
 Aliases are created :
 - kd : kubectl --kubeconfig=.kube/config_new -n default 
