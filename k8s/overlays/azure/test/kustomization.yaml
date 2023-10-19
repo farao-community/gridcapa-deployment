@@ -89,7 +89,13 @@ patches:
         name: cse-import-idcc-gridcapa-runner
       spec:
         replicas: 2
-  # Scale-up to 2 instances of CSE import D2CC runner
+        template:
+          spec:
+            volumes:
+              - name: cse-import-idcc-runner-itools-configmap-volume
+                configMap:
+                  name: cse-runner-itools-azure-test-configmap
+  # Scale-up to 4 instances and adapt CSE runner itools config
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1

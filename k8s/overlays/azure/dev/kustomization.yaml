@@ -100,6 +100,28 @@ patches:
             imagePullSecrets:
               - name: dockerhub-acr-secret
 
+patches:
+  # Add ImagePullSecrets to retrieve private gridcapa-rao-runner-with-xpress from dockerhub
+  # Adapt requests/limits
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: rao-runner
+      spec:
+        template:
+          spec:
+            containers:
+              - name: rao-runner
+                resources:
+                  requests:
+                    cpu: "14.0"
+                    memory: "50Gi"
+                  limits:
+                    cpu: "16.0"
+                    memory: "64Gi"
+            imagePullSecrets:
+              - name: dockerhub-acr-secret
 images:
   - name: apps-metadata-server
     newName: docker.io/bitnami/apache
