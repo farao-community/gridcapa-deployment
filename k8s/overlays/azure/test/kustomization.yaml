@@ -136,4 +136,4 @@ patches:
 # Enable auth on Azure
 images:
   - name: docker.io/farao/gridcapa-app
-    newTag: v1.10.0-auth
+    newName: docker.io/farao/gridcapa-app-auth
