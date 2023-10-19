@@ -191,7 +191,7 @@ spec:
             name: swe-d2cc-runner-configmap
         - name: swe-d2cc-runner-itools-configmap-volume
           configMap:
-            name: swe-d2cc-runner-itools-configmap
+            name: swe-runner-itools-configmap
 
 
 ---

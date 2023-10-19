@@ -53,7 +53,52 @@ resources:
 
 configMapGenerator:
   - name: env-configmap
-    envs: [env.properties]
+    envs:
+      - env.properties
+  - name: core-cc-runner-itools-configmap
+    files:
+      - config.yml=configuration/core-cc-runner-itools-config.yml
+  - name: core-valid-runner-itools-configmap
+    files:
+      - config.yml=configuration/core-valid-runner-itools-config.yml
+  - name: cse-export-runner-itools-configmap
+    files:
+      - config.yml=configuration/cse-export-runner-itools-config.yml
+  - name: cse-import-runner-itools-configmap
+    files:
+      - config.yml=configuration/cse-import-runner-itools-config.yml
+  - name: cse-valid-runner-itools-configmap
+    files:
+      - config.yml=configuration/cse-valid-runner-itools-config.yml
+  - name: rao-runner-itools-configmap
+    files:
+      - config.yml=configuration/rao-runner-itools-config.yml
+  - name: swe-runner-itools-configmap
+    files:
+      - config.yml=configuration/cse-import-runner-itools-config.yml
+
+patches:
+  # Add ImagePullSecrets to retrieve private gridcapa-rao-runner-with-xpress from dockerhub
+  # Adapt requests/limits
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: rao-runner
+      spec:
+        template:
+          spec:
+            containers:
+              - name: rao-runner
+                resources:
+                  requests:
+                    cpu: "14.0"
+                    memory: "50Gi"
+                  limits:
+                    cpu: "16.0"
+                    memory: "64Gi"
+            imagePullSecrets:
+              - name: dockerhub-acr-secret
 
 patches:
   # Add ImagePullSecrets to retrieve private gridcapa-rao-runner-with-xpress from dockerhub

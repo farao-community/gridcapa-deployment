@@ -191,7 +191,7 @@ spec:
             name: swe-idcc-idcf-runner-configmap
         - name: swe-idcc-idcf-runner-itools-configmap-volume
           configMap:
-            name: swe-idcc-idcf-runner-itools-configmap
+            name: swe-runner-itools-configmap
 
 
 ---
