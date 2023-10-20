@@ -154,8 +154,8 @@ images:
     newName: docker.io/farao/gridcapa-rao-runner-with-xpress
     newTag: v1.16.1
   - name: gridcapa-app
-    newName: docker.io/farao/gridcapa-app
-    newTag: latest-auth
+    newName: docker.io/farao/gridcapa-app-auth
+    newTag: latest
   - name: gridcapa-gateway
     newName: docker.io/farao/gridcapa-gateway
     newTag: latest
