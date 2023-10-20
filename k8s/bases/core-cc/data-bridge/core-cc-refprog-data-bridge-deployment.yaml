@@ -112,4 +112,4 @@ spec:
             name: core-cc-refprog-data-bridge-configmap
         - name: core-cc-refprog-data-bridge-data
           persistentVolumeClaim:
-            claimName: core-cc-refprog-data-bridge-storage
+            claimName: core-cc-data-bridge-storage

@@ -112,4 +112,4 @@ spec:
             name: cse-export-d2cc-crac-data-bridge-configmap
         - name: cse-export-d2cc-crac-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-export-d2cc-crac-data-bridge-storage
+            claimName: cse-export-d2cc-data-bridge-storage

@@ -112,4 +112,4 @@ spec:
             name: core-cc-cbcora-data-bridge-configmap
         - name: core-cc-cbcora-data-bridge-data
           persistentVolumeClaim:
-            claimName: core-cc-cbcora-data-bridge-storage
+            claimName: core-cc-data-bridge-storage
