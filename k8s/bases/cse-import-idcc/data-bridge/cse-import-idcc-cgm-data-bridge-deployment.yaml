@@ -112,4 +112,4 @@ spec:
             name: cse-import-idcc-cgm-data-bridge-configmap
         - name: cse-import-idcc-cgm-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-import-idcc-cgm-data-bridge-storage
+            claimName: cse-import-idcc-data-bridge-storage

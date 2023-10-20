@@ -107,4 +107,4 @@ spec:
             name: core-cc-glsk-data-bridge-configmap
         - name: core-cc-glsk-data-bridge-data
           persistentVolumeClaim:
-            claimName: core-cc-glsk-data-bridge-storage
+            claimName: core-cc-data-bridge-storage

@@ -107,4 +107,4 @@ spec:
             name: core-cc-raorequest-data-bridge-configmap
         - name: core-cc-raorequest-data-bridge-data
           persistentVolumeClaim:
-            claimName: core-cc-raorequest-data-bridge-storage
+            claimName: core-cc-data-bridge-storage

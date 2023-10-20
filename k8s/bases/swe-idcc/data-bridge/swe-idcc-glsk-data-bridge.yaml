@@ -27,7 +27,7 @@ data:
           password: ${SOURCE_PASSWORD}
           base-directory: ${SOURCE_BASE_DIRECTORY}/glsks
           polling-delay-in-ms: ${POLLING_DELAY}
-          file-list-persistence-file: /data/gridcapa/ftp-metadata-store.properties
+          file-list-persistence-file: /data/gridcapa/swe-idcc/ftp-metadata-store.glsk.properties
       sinks:
         minio:
           url: http://gridcapa-minio:9000
@@ -153,7 +153,7 @@ spec:
             name: swe-idcc-glsk-data-bridge
         - name: swe-idcc-glsk-data-bridge-data
           persistentVolumeClaim:
-            claimName: swe-idcc-glsk-data-bridge-storage
+            claimName: swe-idcc-data-bridge-storage
 
 
 ---

@@ -112,4 +112,4 @@ spec:
             name: cse-import-ec-idcc-vulcanus-data-bridge-configmap
         - name: cse-import-ec-idcc-vulcanus-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-import-ec-idcc-vulcanus-data-bridge-storage
+            claimName: cse-import-ec-idcc-data-bridge-storage
