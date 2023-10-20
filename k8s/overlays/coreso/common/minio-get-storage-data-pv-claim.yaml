@@ -6,9 +6,9 @@ metadata:
     app: gridcapa
     component: minio-get-storage-data
 spec:
-  storageClassName: vsphere-raw-block-sc
+  storageClassName: nfs-gold
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1M
