@@ -106,8 +106,8 @@ data:
         <logger name="com.farao_community.farao.commons.logs.RaoBusinessWarns" level="WARN">
             <appender-ref ref="amqp-business-events"/>
         </logger>
-        <logger name="com.farao_community.farao.commons.logs.TechnicalLogs" level="TRACE">
-            <appender-ref ref="STDOUT" />
+        <logger name="com.farao_community.farao.commons.logs.TechnicalLogs" level="OFF">
+            <appender-ref ref="amqp-business-events" />
         </logger>
 
         <root level="info">
