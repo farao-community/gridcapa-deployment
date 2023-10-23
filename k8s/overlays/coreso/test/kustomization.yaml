@@ -336,7 +336,7 @@ images:
     newTag: v1.6.0
   - name: gridcapa-cse-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: v1.1.0
+    newTag: v1.3.1
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
     newTag: v1.20.0
@@ -363,7 +363,7 @@ images:
     newTag: v1.6.0
   - name: gridcapa-swe-d2cc-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: v1.1.0
+    newTag: v1.3.1
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
     newTag: v1.12.0
