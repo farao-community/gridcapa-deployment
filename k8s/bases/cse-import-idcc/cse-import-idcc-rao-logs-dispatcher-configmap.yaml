@@ -31,6 +31,6 @@ data:
               consumer:
                 auto-bind-dlq: true
                 max-attempts: 1
-
+                dlq-ttl: 5000                
     client:
       name: cse-import-idcc-runner
