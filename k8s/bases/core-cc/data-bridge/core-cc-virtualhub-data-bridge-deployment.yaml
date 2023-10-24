@@ -112,4 +112,4 @@ spec:
             name: core-cc-virtualhub-data-bridge-configmap
         - name: core-cc-virtualhub-data-bridge-data
           persistentVolumeClaim:
-            claimName: core-cc-virtualhub-data-bridge-storage
+            claimName: core-cc-data-bridge-storage

@@ -8,7 +8,7 @@ metadata:
 spec:
   storageClassName: azure-storage-class
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1M
