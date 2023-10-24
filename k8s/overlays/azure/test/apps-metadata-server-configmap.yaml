@@ -52,5 +52,10 @@ data:
         "name" : "Capa SWE IDCC IDCF",
         "url"  : "/swe/idcf/",
         "appColor" : "#659490"
+      },
+      {
+        "name" : "Capa CORE CC",
+        "url"  : "/core/cc",
+        "appColor" : "#0894f5"
       }
     ]

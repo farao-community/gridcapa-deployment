@@ -135,6 +135,16 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: swe-idcc-idcf-password
+            - name: POSTGRES_CORE_CC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: core-cc-user
+            - name: POSTGRES_CORE_CC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: core-cc-password
           livenessProbe:
             tcpSocket:
               port: 5432
