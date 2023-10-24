@@ -2,10 +2,11 @@ spring:
   application:
     name: swe-d2cc-adapter
   rabbitmq:
-    username: gridcapa
-    password: gridcapa
     host: rabbitmq
     port: 5672
+    username: gridcapa
+    password: gridcapa
+    virtual-host: gridcapa
   cloud:
     stream:
       bindings:

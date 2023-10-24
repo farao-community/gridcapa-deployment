@@ -6,6 +6,7 @@ spring:
     port: 5672
     username: gridcapa
     password: gridcapa
+    virtual-host: gridcapa
     template:
       reply-timeout: 6000000
 
