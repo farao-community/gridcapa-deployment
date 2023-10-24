@@ -110,6 +110,6 @@ spec:
         - name: cse-import-ec-d2cc-user-config-data-bridge-configmap-volume
           configMap:
             name: cse-import-ec-d2cc-user-config-data-bridge-configmap
-        - name: cse-import-ec-d2cc-data-bridge-data
+        - name: cse-import-ec-d2cc-user-config-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-import-ec-d2cc-user-config-data-bridge-storage
+            claimName: cse-import-ec-d2cc-data-bridge-storage
