@@ -14,9 +14,10 @@ data:
         name: swe-d2cc-rao-logs-dispatcher
       rabbitmq:
         host: gridcapa-rabbitmq
+        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        port: 5672
+        virtual-host: gridcapa
       cloud:
         stream:
           default:
