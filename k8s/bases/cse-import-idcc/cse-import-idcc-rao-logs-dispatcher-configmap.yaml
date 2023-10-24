@@ -31,6 +31,8 @@ data:
               consumer:
                 auto-bind-dlq: true
                 max-attempts: 1
+                dlqMaxLength: 100
+                dlqOverflowBehavior: drop-head
 
     client:
       name: cse-import-idcc-runner
