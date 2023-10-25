@@ -7,9 +7,10 @@ spring:
     name: swe-idcc-job-launcher
   rabbitmq:
     host: rabbitmq
+    port: 5672
     username: gridcapa
     password: gridcapa
-    port: 5672
+    virtual-host: gridcapa
   cloud:
     stream:
       bindings:

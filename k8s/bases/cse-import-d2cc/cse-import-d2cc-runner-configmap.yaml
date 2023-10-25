@@ -14,9 +14,10 @@ data:
         name: cse-import-d2cc-runner
       rabbitmq:
         host: gridcapa-rabbitmq
+        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        port: 5672
+        virtual-host: gridcapa
         template:
           reply-timeout: 7200000
       cloud:

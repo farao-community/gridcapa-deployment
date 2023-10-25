@@ -18,9 +18,10 @@ data:
         name: swe-idcc-job-launcher
       rabbitmq:
         host: gridcapa-rabbitmq
+        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        port: 5672
+        virtual-host: gridcapa
       cloud:
         stream:
           bindings:

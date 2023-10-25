@@ -13,6 +13,7 @@ data:
         port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
+        virtual-host: gridcapa
       cloud:
         stream:
           bindings:
