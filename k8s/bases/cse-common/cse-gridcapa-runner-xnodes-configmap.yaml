@@ -468,4 +468,10 @@ data:
       <xnode name="XAUSTR11" area1="AT" area2="IT" />
       <xnode name="XSWISS11" area1="CH" area2="IT" />
 
+    <!--
+      XNODE CREATED following CORESO request
+      on 24 OCTOBER 2023
+    -->
+      <xnode name="XLI_AU21" area1="IT" area2="AT" />
+
     </xnodes>
