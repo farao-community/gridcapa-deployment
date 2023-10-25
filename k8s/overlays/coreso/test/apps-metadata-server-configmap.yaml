@@ -52,5 +52,10 @@ data:
         "name" : "Capa CSE IMPORT IDCC",
         "url"  : "/cse/import/idcc/",
         "appColor" : "#21afe1"
+      },
+      {
+        "name" : "Capa CORE CC",
+        "url"  : "/core/cc",
+        "appColor" : "#0894f5"
       }
     ]
