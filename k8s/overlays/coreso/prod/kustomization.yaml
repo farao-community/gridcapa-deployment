@@ -6,11 +6,13 @@ resources:
   - ../../../bases/cse-export-idcc
   - ../../../bases/cse-import-d2cc
   - ../../../bases/cse-import-idcc
+  - ../../../bases/cse-import-ec-idcc
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
   - ../coreso-databridge-claims/cse-export-idcc
   - ../coreso-databridge-claims/cse-import-d2cc
   - ../coreso-databridge-claims/cse-import-idcc
+  - ../coreso-databridge-claims/cse-import-ec-idcc
   - ../coreso-databridge-claims/swe-d2cc
   - ../coreso-databridge-claims/swe-idcc
   - apps-metadata-server-configmap.yaml
@@ -69,6 +71,13 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
+        name: cse-import-ec-idcc-gridcapa-runner
+      spec:
+        replicas: 4
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
         name: cse-import-idcc-gridcapa-runner
       spec:
         replicas: 4
@@ -113,6 +122,14 @@ patches:
   - target:
       kind: Deployment
       name: cse-export-idcc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: cse-import-ec-idcc-gridcapa-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
