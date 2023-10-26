@@ -15,4 +15,3 @@ data:
         addresses: gridcapa-rabbitmq:5672
         username: ${GRIDCAPA_RABBITMQ_USER}
         password: ${GRIDCAPA_RABBITMQ_PASSWORD}
-        virtual-host: gridcapa
