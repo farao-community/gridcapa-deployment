@@ -16,3 +16,4 @@ spring:
     addresses: rabbitmq:5672
     username: gridcapa
     password: gridcapa
+    virtual-host: gridcapa
