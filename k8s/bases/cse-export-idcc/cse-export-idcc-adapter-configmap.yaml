@@ -11,11 +11,10 @@ data:
   application.yml: |-
     spring:
       rabbitmq:
-        host: gridcapa-rabbitmq
-        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        virtual-host: gridcapa
+        host: gridcapa-rabbitmq
+        port: 5672
         template:
           reply-timeout: 14400000
       cloud:

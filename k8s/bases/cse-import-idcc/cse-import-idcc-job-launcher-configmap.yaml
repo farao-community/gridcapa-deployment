@@ -18,10 +18,9 @@ data:
         name: cse-import-idcc-gridcapa-job-launcher
       rabbitmq:
         host: gridcapa-rabbitmq
-        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        virtual-host: gridcapa
+        port: 5672
         template:
           reply-timeout: 7200000
       cloud:

@@ -14,10 +14,9 @@ data:
         name: core-cc-rao-logs-dispatcher
       rabbitmq:
         host: gridcapa-rabbitmq
-        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        virtual-host: gridcapa
+        port: 5672
       cloud:
         stream:
           default:

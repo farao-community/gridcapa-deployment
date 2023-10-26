@@ -7,10 +7,9 @@ spring:
     name: swe-d2cc-job-launcher
   rabbitmq:
     host: rabbitmq
-    port: 5672
     username: gridcapa
     password: gridcapa
-    virtual-host: gridcapa
+    port: 5672
   cloud:
     stream:
       bindings:

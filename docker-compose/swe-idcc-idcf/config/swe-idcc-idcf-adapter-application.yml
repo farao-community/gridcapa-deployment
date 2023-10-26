@@ -1,10 +1,9 @@
 spring:
   rabbitmq:
-    host: rabbitmq
-    port: 5672
     username: gridcapa
     password: gridcapa
-    virtual-host: gridcapa
+    host: rabbitmq
+    port: 5672
   cloud:
     stream:
       bindings:

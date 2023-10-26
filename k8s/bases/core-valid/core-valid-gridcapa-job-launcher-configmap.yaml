@@ -18,10 +18,9 @@ data:
         name: core-valid-gridcapa-job-launcher
       rabbitmq:
         host: gridcapa-rabbitmq
-        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        virtual-host: gridcapa
+        port: 5672
       cloud:
         stream:
           bindings:
