@@ -80,7 +80,7 @@ services:
       MINIO_SECRET_KEY: gridcapa
       MINIO_DEFAULT_BUCKETS: gridcapa
       MINIO_NOTIFY_AMQP_ENABLE: "on"
-      MINIO_NOTIFY_AMQP_URL: amqp://gridcapa:gridcapa@rabbitmq:5672/gridcapa
+      MINIO_NOTIFY_AMQP_URL: amqp://gridcapa:gridcapa@rabbitmq:5672
       MINIO_NOTIFY_AMQP_EXCHANGE: gridcapa.minio.events
       MINIO_NOTIFY_AMQP_EXCHANGE_TYPE: fanout
       MINIO_NOTIFY_AMQP_DELIVERY_MODE: 2

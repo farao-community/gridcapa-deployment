@@ -58,7 +58,7 @@ spec:
             - name: MINIO_NOTIFY_AMQP_ENABLE
               value: on
             - name: MINIO_NOTIFY_AMQP_URL
-              value: amqp://$(RABBITMQ_DEFAULT_USER):$(RABBITMQ_DEFAULT_PASS)@gridcapa-rabbitmq:5672/gridcapa
+              value: amqp://$(RABBITMQ_DEFAULT_USER):$(RABBITMQ_DEFAULT_PASS)@gridcapa-rabbitmq:5672
             - name: MINIO_NOTIFY_AMQP_EXCHANGE
               value: gridcapa.minio.events
             - name: MINIO_NOTIFY_AMQP_EXCHANGE_TYPE
