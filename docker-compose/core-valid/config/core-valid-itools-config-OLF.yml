@@ -11,7 +11,7 @@ rao-ra-usage-limits-per-contingency:
 rao-range-actions-optimization:
   max-mip-iterations: 2
   pst-penalty-cost: 0.01
-  pst-sensitivity-threshold: 0.0
+  pst-sensitivity-threshold: 1.0E-6
 
 rao-topological-actions-optimization:
   max-search-tree-depth: 5
