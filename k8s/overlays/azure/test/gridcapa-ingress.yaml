@@ -13,6 +13,12 @@ metadata:
       rewrite ^/swe/idcc$ /swe/idcc/ permanent;
       rewrite ^/swe/idcf$ /swe/idcf/ permanent;
       rewrite ^/core/cc$ /core/cc/ permanent;
+      
+      rewrite ^/utils/rabbitmq$ /utils/rabbitmq/ permanent;
+      if ($request_uri ~ "^/utils/rabbitmq(/.*)") {
+        proxy_pass http://upstream_balancer$1;
+        break;
+      }
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
