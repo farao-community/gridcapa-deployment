@@ -250,49 +250,6 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: core-cc-gridcapa-app
-                port:
-                  number: 80
-            path: /core/cc(/|$)(.*)
-            pathType: Prefix
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /()(core/cc/config/.*)
-            pathType: Prefix
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /()(core/cc/config-notification/.*)
-            pathType: Prefix
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /()(core/cc/task-notification/.*)
-            pathType: Prefix
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /()(core/cc/task-manager/.*)
-            pathType: Prefix
-          - backend:
-              service:
-                name: gateway
-                port:
-                  number: 80
-            path: /()(core/cc/gridcapa-job-launcher/.*)
-            pathType: Prefix
-
-          - backend:
-              service:
                 name: filebrowser
                 port:
                   number: 80
