@@ -596,6 +596,72 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
+  name: gridcapa-core-cc-idcc
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /core/cc/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-core-cc-config
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /core/cc/config/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-core-cc-config-notification
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /core/cc/config-notification/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-core-cc-gridcapa-job-launcher
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /core/cc/gridcapa-job-launcher/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-core-cc-task-manager
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /core/cc/task-manager/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-core-cc-task-notification
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /cse/import/idcc/task-notification/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
   name: gridcapa-apps-metadata
   namespace: default
 spec:

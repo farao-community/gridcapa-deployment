@@ -25,7 +25,7 @@ data:
           port: ${SOURCE_PORT}
           username: ${SOURCE_USER}
           password: ${SOURCE_PASSWORD}
-          base-directory: ${SOURCE_BASE_DIRECTORY}/raorequests
+          base-directory: ${SOURCE_BASE_DIRECTORY}/F302
           polling-delay-in-ms: ${POLLING_DELAY}
           file-list-persistence-file: /data/gridcapa/core-cc/ftp-metadata-store.raorequest.properties
       sinks:

@@ -221,7 +221,7 @@ images:
   - name: gridcapa-swe-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
     newTag: latest
-  - name: gridcapa-swe-d2cc-rao-logs-dispatcher
+  - name: gridcapa-swe-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: latest
   - name: gridcapa-swe-runner
