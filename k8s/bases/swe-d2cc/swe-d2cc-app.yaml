@@ -96,30 +96,7 @@ data:
         "15:30",
         "19:30"
       ],
-      "eventLevelPredefinedFilter": [
-        {
-          "filterName": "INFO",
-          "defaultChecked": false,
-          "filterValue": [
-            "INFO"
-          ]
-        },
-        {
-          "filterName": "WARN",
-          "defaultChecked": false,
-          "filterValue": [
-            "WARN"
-          ]
-        },
-        {
-          "filterName": "ERROR",
-          "defaultChecked": false,
-          "filterValue": [
-            "ERROR"
-          ]
-        }
-      ],
-      "eventLogPredefinedFilter": [
+      "eventPredefinedFilter": [
         {
           "filterName": "Summary",
           "defaultChecked": true,
