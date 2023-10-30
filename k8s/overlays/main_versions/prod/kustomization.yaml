@@ -72,7 +72,7 @@ images:
     newTag: v1.2.4
   - name: gridcapa-swe-adapter
     newName: docker.io/farao/gridcapa-swe-adapter
-    newTag: v1.5.0
+    newTag: v1.1.0
   - name: gridcapa-swe-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
     newTag: v1.6.0
