@@ -9,6 +9,7 @@
     "15:30",
     "19:30"
   ],
+  "manualExportEnabled": true,
   "eventLevelPredefinedFilter": [
     {
       "filterName": "INFO",
@@ -32,7 +33,7 @@
       ]
     }
   ],
-  "eventLogPredefinedFilter": [
+  "eventPredefinedFilter": [
     {
       "filterName": "Summary",
       "defaultChecked": true,

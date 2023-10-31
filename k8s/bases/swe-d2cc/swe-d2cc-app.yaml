@@ -96,6 +96,7 @@ data:
         "15:30",
         "19:30"
       ],
+      "manualExportEnabled": true,
       "eventLevelPredefinedFilter": [
         {
           "filterName": "INFO",
