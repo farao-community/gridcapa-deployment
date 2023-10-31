@@ -164,9 +164,6 @@ images:
   - name: gridcapa-core-valid-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: latest
-  - name: gridcapa-core-valid-output-data-bridge
-    newName: docker.io/farao/gridcapa-output-data-bridge
-    newTag: latest
   - name: gridcapa-core-valid-adapter
     newName: docker.io/farao/gridcapa-core-valid-adapter
     newTag: latest
