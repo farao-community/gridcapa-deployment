@@ -2,9 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
 
 configMapGenerator:
-  - name: cse-export-runner-itools-configmap
-    files:
-      - config.yml=configuration/cse-export-runner-itools-config.yml
   - name: cse-import-runner-itools-configmap
     files:
       - config.yml=configuration/cse-import-runner-itools-config.yml
@@ -57,9 +54,6 @@ images:
     newTag: v1.3.1
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.20.0
-  - name: gridcapa-cse-export-runner
-    newName: docker.io/farao/gridcapa-cse-cc-export-runner
     newTag: v1.20.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager

@@ -4,16 +4,12 @@ kind: Kustomization
 resources:
   - ../ftp
   - ../common
-  - ../../../bases/cse-export-idcc
   - ../../../bases/cse-import-d2cc
   - ../../../bases/cse-import-idcc
-  - ../../../bases/cse-import-ec-idcc
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
-  - ../azure-databridge-claims/cse-export-idcc
   - ../azure-databridge-claims/cse-import-d2cc
   - ../azure-databridge-claims/cse-import-idcc
-  - ../azure-databridge-claims/cse-import-ec-idcc
   - ../azure-databridge-claims/swe-d2cc
   - ../azure-databridge-claims/swe-idcc
   - ../../coreso/prod/apps-metadata-server-configmap.yaml
@@ -48,20 +44,6 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-export-idcc-runner
-      spec:
-        replicas: 1
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-import-ec-idcc-gridcapa-runner
-      spec:
-        replicas: 1
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
         name: cse-import-idcc-gridcapa-runner
       spec:
         replicas: 1
@@ -91,9 +73,6 @@ configMapGenerator:
   - name: env-configmap
     envs:
       - env.properties
-  - name: cse-export-runner-itools-configmap
-    files:
-      - config.yml=../../main_versions/prod/configuration/cse-export-runner-itools-config.yml
   - name: cse-import-runner-itools-configmap
     files:
       - config.yml=../../main_versions/prod/configuration/cse-import-runner-itools-config.yml
@@ -147,9 +126,6 @@ images:
     newTag: v1.3.1
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.20.0
-  - name: gridcapa-cse-export-runner
-    newName: docker.io/farao/gridcapa-cse-cc-export-runner
     newTag: v1.20.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
