@@ -63,6 +63,16 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: GRIDCAPA_POLLING_DELAY_CORE_CC
+            - name: MAX_POLLED_FILES
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MAX_POLLED_FILES_CORE_CC
+            - name: MAX_POLLED_FILES
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MAX_POLLED_FILES_CORE_CC
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:

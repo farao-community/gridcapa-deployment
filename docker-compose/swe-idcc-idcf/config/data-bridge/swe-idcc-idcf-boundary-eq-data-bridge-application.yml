@@ -16,6 +16,7 @@ data-bridge:
       password: gridcapa
       base-directory: /data/gridcapa/swe/idcf/boundaries
       polling-delay-in-ms: 5000
+      max-messages-per-poll: 10
   sinks:
     minio:
       url: http://minio:9000

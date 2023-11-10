@@ -63,6 +63,11 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: GRIDCAPA_POLLING_DELAY_CSE_EXPORT_IDCC
+            - name: MAX_POLLED_FILES
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MAX_POLLED_FILES_CSE_EXPORT_IDCC
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
