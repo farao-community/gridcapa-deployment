@@ -28,6 +28,7 @@ data:
           base-directory: ${SOURCE_BASE_DIRECTORY}/ntc2-fr
           polling-delay-in-ms: ${POLLING_DELAY}
           file-list-persistence-file: /data/gridcapa/cse-import-ec-idcc/ftp-metadata-store.ntc2-fr.properties
+          max-messages-per-poll: ${MAX_POLLED_FILES}
       sinks:
         minio:
           url: http://gridcapa-minio:9000
