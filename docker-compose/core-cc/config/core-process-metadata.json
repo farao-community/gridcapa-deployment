@@ -2,6 +2,7 @@
   "processName": "CORE Capacity Calculation",
   "globalViewTimestampFilter": [
   ],
+  "manualExportEnabled": false,
   "eventLevelPredefinedFilter": [
     {
       "filterName": "INFO",

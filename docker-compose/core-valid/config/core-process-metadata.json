@@ -2,6 +2,7 @@
   "processName": "CORE Validation",
   "globalViewTimestampFilter": [
   ],
+  "manualExportEnabled": true,
   "eventLevelPredefinedFilter": [
     {
       "filterName": "INFO",
