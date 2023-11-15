@@ -44,3 +44,4 @@ resources:
   - core-cc-gridcapa-post-processing-configmap.yml
   - core-cc-gridcapa-post-processing-deployment.yml
   - core-cc-gridcapa-post-processing-service.yml
+  - core-cc-minio-purge.yaml
