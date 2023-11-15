@@ -65,20 +65,14 @@ def show_tasks_diagram(tasks_to_show):
 def parse_args():
     arg_parser = argparse.ArgumentParser()
     arg_parser.add_argument("-i", "--input", help="Kubernetes log file for rao-runner pods", required=True)
-    arg_parser.add_argument("--from-instant", help="Initial date for logs filtering")
-    arg_parser.add_argument("--to-instant", help="Final date for logs filtering")
     args = arg_parser.parse_args()
     input_log_file = args.input
-    from_instant = args.from_instant
-    to_instant = args.to_instant
     logging.info(f"Input logs file is '{input_log_file}'")
-    if from_instant or to_instant:
-        logging.info(f"Filtering events from instant {from_instant} to instant {to_instant}")
-    return input_log_file, from_instant, to_instant
+    return input_log_file
 
 
 if __name__ == '__main__':
-    input_log_file, from_instant, to_instant = parse_args()
+    input_log_file = parse_args()
     file = open(input_log_file, "r")
     all_tasks = extract_tasks_from_logs_file(file)
     show_tasks_diagram(all_tasks)
