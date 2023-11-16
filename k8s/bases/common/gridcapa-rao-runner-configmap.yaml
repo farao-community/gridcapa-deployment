@@ -20,12 +20,11 @@ data:
               binder: rabbit
               destination: stop-rao-runner
 
-    minio:
+    minio-adapter:
       bucket: gridcapa
       base-path:
-      access:
-        name: ${MINIO_ACCESS_KEY}
-        secret: ${MINIO_SECRET_KEY}
+      access-key: ${MINIO_ACCESS_KEY}
+      secret-key: ${MINIO_SECRET_KEY}
       url: http://gridcapa-minio:9000/
 
     logback:
