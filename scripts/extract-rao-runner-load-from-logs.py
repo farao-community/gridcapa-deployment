@@ -8,8 +8,8 @@ import logging
 HELP_MESSAGE = "extract-rao-runner-load-from-logs.py -i <logs-file>"
 TIMESTAMP_REGEX = "\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}"
 RAO_REQUEST_RECEIVED = "RAO request received"
-RAO_REQUEST_SENT = "RAO response sent"
-RAO_REQUEST_REGEXP = f"({RAO_REQUEST_RECEIVED}|{RAO_REQUEST_SENT})"
+RAO_RESPONSE_SENT = "RAO response sent"
+RAO_REQUEST_REGEXP = f"({RAO_REQUEST_RECEIVED}|{RAO_RESPONSE_SENT})"
 PROCESS_LIST = ["CSE/IMPORT/D2CC",
                 "CSE/IMPORT/IDCC",
                 "CSE/EXPORT/D2CC",
@@ -36,7 +36,7 @@ def extract_tasks_from_logs_file(logs_file):
         event_type, pod, process, timestamp = extract_log_event_info(result)
         if event_type == RAO_REQUEST_RECEIVED:
             tasks_started[pod] = dict(Pod=pod, Start=timestamp, Process=process)
-        elif event_type == RAO_REQUEST_SENT and pod in tasks_started:
+        elif event_type == RAO_RESPONSE_SENT and pod in tasks_started:
             task = tasks_started[pod]
             task["Finish"] = timestamp
             tasks_finished.append(task)
