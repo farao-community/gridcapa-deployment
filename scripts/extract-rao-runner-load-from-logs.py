@@ -30,18 +30,20 @@ def extract_tasks_from_logs_file(logs_file):
     for line in logs_file:
         result = LOG_REGEX.match(line)
         if not result:
-            logging.warning(f"Line '{line}' does not match regex")
+            logging.info(f"Line '{line}' does not match regex")
             continue
 
         event_type, pod, process, timestamp = extract_log_event_info(result)
         if event_type == RAO_REQUEST_RECEIVED:
             tasks_started[pod] = dict(Pod=pod, Start=timestamp, Process=process)
         elif event_type == RAO_RESPONSE_SENT and pod in tasks_started:
-            task = tasks_started[pod]
+            task = tasks_started.pop(pod)
             task["Finish"] = timestamp
             tasks_finished.append(task)
         else:
             logging.info(f"Line '{line}' pod does first finish a previous task. Ignored.")
+    for pod, task in tasks_started.items():
+        logging.error(f"Pod {pod} started task for process {task['Process']} at {task['Start']} but did not finish.")
     return tasks_finished
 
 
