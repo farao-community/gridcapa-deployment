@@ -13,12 +13,11 @@ spring:
           binder: rabbit
           destination: stop-rao-runner
 
-minio:
+minio-adapter:
   bucket: gridcapa
-  base-path: RAO/
-  access:
-    name: gridcapa
-    secret: gridcapa
+  base-path:
+  access-key: gridcapa
+  secret-key: gridcapa
   url: http://minio:9000/
 
 rao-runner:

@@ -15,6 +15,7 @@ data-bridge:
       password: gridcapa
       base-directory: /data/gridcapa/swe/d2cc/cgms
       polling-delay-in-ms: 5000
+      max-messages-per-poll: 10
   sinks:
     minio:
       url: http://minio:9000
