@@ -43,3 +43,4 @@ resources:
   - cse-valid-idcc-task-manager-configmap.yaml
   - cse-valid-idcc-task-manager-deployment.yaml
   - cse-valid-idcc-task-manager-service.yaml
+  - cse-valid-idcc-minio-purge.yaml

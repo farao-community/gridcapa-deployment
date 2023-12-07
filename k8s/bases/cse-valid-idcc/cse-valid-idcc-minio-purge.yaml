@@ -1,14 +1,14 @@
 kind: CronJob
 apiVersion: batch/v1
 metadata:
-  name: cse-export-idcc-minio-purge
+  name: cse-valid-idcc-minio-purge
   labels:
     app: gridcapa
     component: minio-purge
     region: cse
-    process: export-idcc
+    process: valid
 spec:
-  schedule: "0 12 * * *"
+  schedule: "0 0 * * *"
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 3
@@ -17,9 +17,9 @@ spec:
       template:
         spec:
           containers:
-            - name: cse-export-idcc-others-minio-purge
+            - name: cse-valid-idcc-minio-purge
               image: minio-mc
-              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/CSE/EXPORT/IDCC/" ]
+              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/CSE/VALID/IDCC/" ]
               env:
                 - name: MINIO_ACCESS_KEY
                   valueFrom:

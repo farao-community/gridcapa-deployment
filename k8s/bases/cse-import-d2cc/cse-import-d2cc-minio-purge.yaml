@@ -35,7 +35,7 @@ spec:
                   value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
             - name: cse-import-d2cc-others-minio-purge
               image: minio-mc
-              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/CSE/IMPORT/D2CC/CGMs/", "minio/gridcapa/CSE/IMPORT/D2CC/CRACs/", "minio/gridcapa/CSE/IMPORT/D2CC/GLSKs/", "minio/gridcapa/CSE/IMPORT/D2CC/NTCREDs/", "minio/gridcapa/CSE/IMPORT/D2CC/USER-CONFIGs/", "minio/gridcapa/CSE/IMPORT/D2CC/VULCANUS/", "minio/gridcapa/CSE/IMPORT/D2CC/2021/", "minio/gridcapa/CSE/IMPORT/D2CC/2022/", "minio/gridcapa/CSE/IMPORT/D2CC/2023/", "minio/gridcapa/CSE/IMPORT/D2CC/2024/"  ]
+              args: [ "find", "--older-than", "7d", "--regex", ".*/(CGMs|CRACs|GLSKs|NTCREDs|USER-CONFIGs|VULCANUS|\\d{4})/*", "--exec", "mc rm --force {}", "minio/gridcapa/CSE/IMPORT/D2CC/" ]
               env:
                 - name: MINIO_ACCESS_KEY
                   valueFrom:

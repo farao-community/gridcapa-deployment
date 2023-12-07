@@ -19,7 +19,7 @@ spec:
           containers:
             - name: cse-export-d2cc-others-minio-purge
               image: minio-mc
-              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/CSE/EXPORT/D2CC/CGMs/", "minio/gridcapa/CSE/EXPORT/D2CC/CRACs/", "minio/gridcapa/CSE/EXPORT/D2CC/2021/", "minio/gridcapa/CSE/EXPORT/D2CC/2022/", "minio/gridcapa/CSE/EXPORT/D2CC/2023/", "minio/gridcapa/CSE/EXPORT/D2CC/2024/" ]
+              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/CSE/EXPORT/D2CC/" ]
               env:
                 - name: MINIO_ACCESS_KEY
                   valueFrom:
