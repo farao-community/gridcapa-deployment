@@ -19,7 +19,7 @@ spec:
           containers:
             - name: cse-export-idcc-others-minio-purge
               image: minio-mc
-              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/CSE/EXPORT/IDCC/CGMs/", "minio/gridcapa/CSE/EXPORT/IDCC/CRACs/", "minio/gridcapa/CSE/EXPORT/IDCC/2021/", "minio/gridcapa/CSE/EXPORT/IDCC/2022/", "minio/gridcapa/CSE/EXPORT/IDCC/2023/", "minio/gridcapa/CSE/EXPORT/IDCC/2024/" ]
+              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/CSE/EXPORT/IDCC/" ]
               env:
                 - name: MINIO_ACCESS_KEY
                   valueFrom:
