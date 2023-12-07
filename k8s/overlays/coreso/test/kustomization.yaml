@@ -164,7 +164,7 @@ patches:
       metadata:
         name: core-cc-runner
       spec:
-        replicas: 4
+        replicas: 6
 
   # Remove volumes related to authentication within application deployments
   - target:

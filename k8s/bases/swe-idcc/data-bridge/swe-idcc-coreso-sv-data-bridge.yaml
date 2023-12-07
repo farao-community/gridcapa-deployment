@@ -28,6 +28,7 @@ data:
           base-directory: ${SOURCE_BASE_DIRECTORY}/cgms
           polling-delay-in-ms: ${POLLING_DELAY}
           file-list-persistence-file: /data/gridcapa/swe-idcc/ftp-metadata-store.coreso-sv.properties
+          max-messages-per-poll: ${MAX_POLLED_FILES}
       sinks:
         minio:
           url: http://gridcapa-minio:9000
@@ -104,6 +105,11 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: GRIDCAPA_POLLING_DELAY_SWE_IDCC
+            - name: MAX_POLLED_FILES
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MAX_POLLED_FILES_SWE_IDCC
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:

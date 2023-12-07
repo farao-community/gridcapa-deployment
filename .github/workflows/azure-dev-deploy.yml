@@ -35,9 +35,3 @@ jobs:
 
       - name: Delete key
         run: rm key
-
-      - name: Broadcast update event
-        uses: farao-community/broadcast-event@master
-        with:
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          event-type: gridcapa_deployed_on_azure

@@ -1,3 +1,9 @@
+load-flow:
+  default-impl-name: OpenLoadFlow
+
+sensitivity-analysis:
+  default-impl-name: OpenLoadFlow
+
 load-flow-default-parameters:
   voltageInitMode: DC_VALUES
   balanceType: PROPORTIONAL_TO_GENERATION_P
@@ -36,7 +42,7 @@ rao-topological-actions-optimization:
 
 rao-second-preventive-rao:
   execution-condition: POSSIBLE_CURATIVE_IMPROVEMENT
-  re-optimize-curative-range-actions: false
+  re-optimize-curative-range-actions: true
   hint-from-first-preventive-rao: true
 
 rao-ra-usage-limits-per-contingency:

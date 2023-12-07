@@ -80,7 +80,7 @@ spec:
               memory: "384Mi"
             limits:
               cpu: "8.0"
-              memory: "10Gi"
+              memory: "15Gi"
       restartPolicy: Always
       volumes:
         - name: core-cc-runner-configmap-volume

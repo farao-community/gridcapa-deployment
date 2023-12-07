@@ -55,7 +55,7 @@ data:
       },
       {
         "name" : "Capa CORE CC",
-        "url"  : "/core/cc",
+        "url"  : "/core/cc/",
         "appColor" : "#0894f5"
       }
     ]
