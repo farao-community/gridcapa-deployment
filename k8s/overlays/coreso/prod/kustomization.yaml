@@ -51,11 +51,6 @@ patches:
         replicas: 32
         template:
           spec:
-            tolerations:
-              - key: "rao-runners"
-                operator: "Equal"
-                value: "true"
-                effect: "NoSchedule"
             containers:
               - name: rao-runner
                 resources:
