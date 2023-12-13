@@ -27,7 +27,7 @@ rao-objective-function:
 rao-range-actions-optimization:
   max-mip-iterations: 5
   pst-penalty-cost: 0.01
-  pst-sensitivity-threshold : 0.0
+  pst-sensitivity-threshold : 1e-6
   pst-model: APPROXIMATED_INTEGERS
 
 rao-linear-optimization-solver:
@@ -36,7 +36,7 @@ rao-linear-optimization-solver:
   relative-mip-gap: 0.001
 
 rao-topological-actions-optimization:
-  max-search-tree-depth: 2
+  max-search-tree-depth: 3
   relative-minimum-impact-threshold: 0.0
   absolute-minimum-impact-threshold: 1.0
 
@@ -58,6 +58,6 @@ rao-load-flow-and-sensitivity-computation:
   sensitivity-provider: OpenLoadFlow
 
 rao-multi-threading:
-  contingency-scenarios-in-parallel: 10
-  preventive-leaves-in-parallel: 10
+  contingency-scenarios-in-parallel: 14
+  preventive-leaves-in-parallel: 14
   curative-leaves-in-parallel: 1
