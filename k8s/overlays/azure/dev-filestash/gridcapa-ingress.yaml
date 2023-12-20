@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/server-snippet: |
+      merge_slashes off;
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/client-max-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+  labels:
+    app: gridcapa
+    component: gridcapa
+  name: gridcapa-dev-tmp
+  namespace: gridcapa-d
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: gridcapa-dev-tmp.farao-community.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: filestash
+                port:
+                  number: 80
+            path: /(.*)
+            pathType: Prefix
+  tls:
+    - hosts:
+        - gridcapa-dev-tmp.farao-community.com
+      secretName: gridcapa-tls
