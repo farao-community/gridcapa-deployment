@@ -24,7 +24,7 @@ spec:
             - containerPort: 8334
           env:
             - name: APPLICATION_URL
-              value: gridcapa-dev-tmp.farao-community.com
+              value: filestash.farao-community.com
           volumeMounts:
             - mountPath: /app/data/state/config/config.json
               subPath: config.json
@@ -34,23 +34,3 @@ spec:
         - name: filestash-config-volume
           secret:
             secretName: filestash-config
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: filestash
-  labels:
-    app: gridcapa
-    component: filestash
-spec:
-  type: ClusterIP
-  selector:
-    app: gridcapa
-    component: filestash
-  ports:
-    - port: 80
-      targetPort: 8334
-      name: http
-      protocol: TCP
