@@ -48,9 +48,12 @@ data:
         client-app-id: swe-idcc-runner
         queue-name: rao-request-queue
 
-    swe-runner:
+    swe-commons:
       zone-id: "Europe/Paris"
       shift-max-iteration-number: 30
+      modeling-authority-set: ${MONITORING_AUTHORITY_SET}
+    
+    swe-runner:
       dichotomy:
         parameters:
           ES_FR:
@@ -152,6 +155,11 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: GRIDCAPA_MINIO_BASE_DIRECTORY_SWE_IDCC
+            - name: MONITORING_AUTHORITY_SET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MONITORING_AUTHORITY_SET
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml

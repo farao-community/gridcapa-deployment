@@ -35,9 +35,12 @@ rao-runner-server:
     client-app-id: swe-idcc-idcf-runner
     queue-name: rao-request-queue
 
-swe-runner:
+swe-commons:
   zone-id: "Europe/Paris"
   shift-max-iteration-number: 30
+  modeling-authority-set: "https://farao-community.github.io/"
+
+swe-runner:
   dichotomy:
     parameters:
       ES_FR:
