@@ -28,6 +28,8 @@ data:
               group: swe-idcc-idcf-job-launcher
             run-task:
               destination: swe-idcc-idcf-run-task
+            run-task-auto:
+              destination: swe-idcc-idcf-run-task
             stop-task:
               destination: swe-idcc-idcf-stop-task
             consumeTaskDtoUpdate-in-0:
@@ -43,6 +45,7 @@ data:
                   binding-routing-key: status
     
     job-launcher:
+      auto: true
       url:
         task-manager-timestamp-url: http://swe-idcc-idcf-task-manager/tasks/
         task-manager-business-date-url: http://swe-idcc-idcf-task-manager/tasks/businessdate/
