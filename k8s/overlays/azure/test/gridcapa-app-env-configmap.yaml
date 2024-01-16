@@ -10,4 +10,5 @@ data:
     {
       "appsMetadataServerUrl" : "https://gridcapa-test-tmp.farao-community.com/apps-metadata",
       "appsMinioStorageServerUrl": "https://gridcapa-test-tmp.farao-community.com/apps-metadata/data/minioStorageData.json"
+      "appVersionAndEnvironnement": "Azure Test : 1.2.3"
     }

@@ -1,0 +1,36 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: filestash
+  labels:
+    app: gridcapa
+    component: filestash
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: filestash
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: filestash
+    spec:
+      containers:
+        - name: filestash
+          image: machines/filestash
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8334
+          env:
+            - name: APPLICATION_URL
+              value: filestash.farao-community.com
+          volumeMounts:
+            - mountPath: /app/data/state/config/config.json
+              subPath: config.json
+              name: filestash-config-volume
+      restartPolicy: Always
+      volumes:
+        - name: filestash-config-volume
+          secret:
+            secretName: filestash-config

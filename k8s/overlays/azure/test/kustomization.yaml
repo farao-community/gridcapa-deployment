@@ -40,6 +40,8 @@ resources:
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
   - rao-auto-scale-down.yaml
+  - filestash-deployment.yaml
+  - filestash-service.yaml
 
 components:
   - ../../main_versions/test
