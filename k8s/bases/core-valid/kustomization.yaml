@@ -38,3 +38,4 @@ resources:
   - core-valid-exporter-configmap.yaml
   - core-valid-exporter-deployment.yaml
   - core-valid-exporter-service.yaml
+  - core-valid-minio-purge.yaml

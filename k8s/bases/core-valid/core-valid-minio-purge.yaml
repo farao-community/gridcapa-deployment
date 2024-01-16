@@ -1,10 +1,10 @@
 kind: CronJob
 apiVersion: batch/v1
 metadata:
-  name: core-valid-minio-cleaning-cronjob
+  name: core-valid-minio-purge
   labels:
     app: gridcapa
-    component: gridcapa-core-valid-minio-cleaning-cronjob
+    component: minio-purge
     region: core
     process: valid
 spec:
@@ -17,9 +17,9 @@ spec:
       template:
         spec:
           containers:
-            - name: minio-cleaning-cronjob
+            - name: core-valid-minio-purge
               image: minio-mc
-              args: [ "rm", "-r", "--force", "--older-than", "7d", "minio/gridcapa/CORE/VALID/" ]
+              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/CORE/VALID/" ]
               env:
                 - name: MINIO_ACCESS_KEY
                   valueFrom:

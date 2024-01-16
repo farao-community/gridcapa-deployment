@@ -43,3 +43,4 @@ resources:
   - cse-valid-d2cc-task-manager-configmap.yaml
   - cse-valid-d2cc-task-manager-deployment.yaml
   - cse-valid-d2cc-task-manager-service.yaml
+  - cse-valid-d2cc-minio-purge.yaml

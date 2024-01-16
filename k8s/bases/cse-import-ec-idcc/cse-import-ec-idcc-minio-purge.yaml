@@ -35,7 +35,7 @@ spec:
                   value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
             - name: cse-import-ec-idcc-others-minio-purge
               image: minio-mc
-              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/CSE/IMPORT_EC/IDCC/CGMs/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/CRACs/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/GLSKs/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/NTC2-AT/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/NTC2-CH/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/NTC2-FR/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/NTC2-SI/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/NTCREDs/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/USER-CONFIGs/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/VULCANUS/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/2021/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/2022/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/2023/", "minio/gridcapa/CSE/IMPORT_EC/IDCC/2024/"  ]
+              args: [ "find", "--older-than", "7d", "--regex", ".*/(CGMs|CRACs|GLSKs|NTC2-AT|NTC2-CH|NTC2-FR|NTC2-SI|NTCREDs|USER-CONFIGs|VULCANUS|MANUAL_UPLOAD|\\d{4})/*", "--exec", "mc rm --force {}", "minio/gridcapa/CSE/IMPORT_EC/IDCC/" ]
               env:
                 - name: MINIO_ACCESS_KEY
                   valueFrom:

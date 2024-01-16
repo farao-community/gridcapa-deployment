@@ -65,6 +65,10 @@ data:
               task-status-updated:
                 producer:
                   routing-key-expression: '''status'''
+    servlet:
+      multipart:
+        max-file-size: 100MB
+        max-request-size: 100MB
     
     task-server:
       process:
@@ -107,7 +111,7 @@ data:
   
     minio-adapter:
       bucket: gridcapa
-      base-path:
+      base-path: ${MINIO_BASE_DIRECTORY}
       url: http://gridcapa-minio:9000/
       access-key: ${MINIO_ACCESS_KEY}
       secret-key: ${MINIO_SECRET_KEY}
@@ -190,6 +194,11 @@ spec:
                 secretKeyRef:
                   name: gridcapa-minio-credentials
                   key: minio-access-key
+            - name: MINIO_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_SWE_D2CC
             - name: MINIO_SECRET_KEY
               valueFrom:
                 secretKeyRef:
