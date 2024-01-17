@@ -5,8 +5,13 @@ spring:
     username: swe_d2cc_server
     password: swe-d2cc
   jpa:
+    defer-datasource-initialization: true
     hibernate:
       ddl-auto: update
+  sql:
+    init:
+      mode: always
+      data-locations: file:/config/data.sql
   rabbitmq:
     host: rabbitmq
     port: 5672
@@ -106,3 +111,11 @@ stomp:
 logback:
   amqp:
     exchange: swe-d2cc-task-manager-logs-exchange
+
+runner:
+  parameters:
+    RUN_ES-FR: true
+    RUN_ES-PT: true
+    RUN_FR-ES: true
+    RUN_PT-ES: true
+

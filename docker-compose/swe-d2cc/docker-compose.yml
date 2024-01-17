@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   swe-d2cc-gridcapa-app:
-    image: farao/gridcapa-app:latest
+    image: farao/gridcapa-app:test-configuration-01
     volumes:
       - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
       - ./config/swe-d2cc-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
@@ -108,21 +108,22 @@ services:
       - gridcapa
 
   swe-d2cc-task-manager:
-    image: farao/gridcapa-task-manager:latest
+    image: farao/gridcapa-task-manager:test-configuration-01
     volumes:
       - ./config/swe-d2cc-task-manager-application.yml:/config/application.yml
+      - ./config/data.sql:/config/data.sql
     networks:
       - gridcapa
 
   swe-d2cc-job-launcher:
-    image: farao/gridcapa-job-launcher:latest
+    image: farao/gridcapa-job-launcher:test-configuration-01
     volumes:
       - ./config/swe-d2cc-job-launcher.yml:/config/application.yml
     networks:
       - gridcapa
 
   swe-d2cc-adapter:
-    image: farao/gridcapa-swe-adapter:latest
+    image: farao/gridcapa-swe-adapter:test-configuration-01
     volumes:
       - ./config/swe-d2cc-adapter-application.yml:/config/application.yml
     healthcheck:
@@ -134,7 +135,7 @@ services:
       - gridcapa
 
   swe-d2cc-runner:
-    image: farao/gridcapa-swe-runner:latest
+    image: farao/gridcapa-swe-runner:test-configuration-02
     volumes:
       - ./config/swe-d2cc-runner-application.yml:/config/application.yml
       - ../swe-common/swe-itools-config.yml:/home/farao/.itools/config.yml
