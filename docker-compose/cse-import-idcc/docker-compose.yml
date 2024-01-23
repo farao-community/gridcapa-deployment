@@ -122,7 +122,7 @@ services:
   cse-import-idcc-runner:
     image: farao/gridcapa-cse-cc-import-runner:latest
     volumes:
-      - ../cse-common/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
+      - ../../configuration/test/cse-import-runner-itools-config.yml:/home/farao/.itools/config.yml
       - ../cse-common/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
       - ./config/cse-idcc-runner-application.yml:/config/application.yml
     healthcheck:
