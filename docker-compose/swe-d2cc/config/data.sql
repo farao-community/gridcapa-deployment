@@ -96,3 +96,8 @@ INSERT INTO parameter (id, name, display_order, parameter_type, section_title, s
 VALUES ('MAX_CRA', 'Max amount of Curative RA', 30, 'INT', 'RAO Parameters', 5, '10')
     ON CONFLICT (id) DO
 UPDATE SET name = 'Max amount of Curative RA', display_order = 30, parameter_type = 'INT', section_title = 'RAO Parameters', section_order = 5, value = '10';
+
+INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+VALUES ('MAX_NEWTON_RAPHSON_ITERATIONS', 'Max number of iterations', 10, 'INT', 'LoadFlow Parameters', 6, '15')
+    ON CONFLICT (id) DO
+UPDATE SET name = 'Max number of iterations', display_order = 10, parameter_type = 'INT', section_title = 'LoadFlow Parameters', section_order = 6, value = '15';
