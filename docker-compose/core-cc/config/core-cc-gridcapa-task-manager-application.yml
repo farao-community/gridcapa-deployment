@@ -41,6 +41,10 @@ spring:
           task-status-updated:
             producer:
               routing-key-expression: '''status'''
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
 
 task-server:
   process:
@@ -62,7 +66,7 @@ task-server:
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
-  base-path: ${GRIDCAPA_MINIO_BASE_PATH:}
+  base-path: ${GRIDCAPA_MINIO_BASE_PATH:/CORE/CC}
   url: ${GRIDCAPA_MINIO_URL:http://minio:9000}
   access-key: ${GRIDCAPA_MINIO_ACCESS_KEY:gridcapa}
   secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
