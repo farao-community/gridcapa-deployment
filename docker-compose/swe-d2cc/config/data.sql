@@ -20,66 +20,66 @@ UPDATE SET name = 'Run PT -> ES', display_order = 10, parameter_type = 'BOOLEAN'
 
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
-VALUES ('STARTING_POINT_ES-FR', 'Starting point', 20, 'INT', 'ES -> FR', 1, '6400')
+VALUES ('MAX_TTC_ES-FR', 'Max TTC (MW)', 20, 'INT', 'ES -> FR', 1, '6400')
     ON CONFLICT (id) DO
-UPDATE SET name = 'Starting point', display_order = 20, parameter_type = 'INT', section_title = 'ES -> FR', section_order = 1;
+UPDATE SET name = 'Max TTC', display_order = 20, parameter_type = 'INT', section_title = 'ES -> FR', section_order = 1;
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
-VALUES ('STARTING_POINT_FR-ES', 'Starting point', 20, 'INT', 'FR -> ES', 2, '6400')
+VALUES ('MAX_TTC_FR-ES', 'Max TTC (MW)', 20, 'INT', 'FR -> ES', 2, '6400')
     ON CONFLICT (id) DO
-UPDATE SET name = 'Starting point', display_order = 20, parameter_type = 'INT', section_title = 'FR -> ES', section_order = 2;
+UPDATE SET name = 'Max TTC (MW)', display_order = 20, parameter_type = 'INT', section_title = 'FR -> ES', section_order = 2;
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
-VALUES ('STARTING_POINT_ES-PT', 'Starting point', 20, 'INT', 'ES -> PT', 3, '6400')
+VALUES ('MAX_TTC_ES-PT', 'Max TTC (MW)', 20, 'INT', 'ES -> PT', 3, '6400')
     ON CONFLICT (id) DO
-UPDATE SET name = 'Starting point', display_order = 20, parameter_type = 'INT', section_title = 'ES -> PT', section_order = 3;
+UPDATE SET name = 'Max TTC (MW)', display_order = 20, parameter_type = 'INT', section_title = 'ES -> PT', section_order = 3;
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
-VALUES ('STARTING_POINT_PT-ES', 'Starting point', 20, 'INT', 'PT -> ES', 4, '6400')
+VALUES ('MAX_TTC_PT-ES', 'Max TTC (MW)', 20, 'INT', 'PT -> ES', 4, '6400')
     ON CONFLICT (id) DO
-UPDATE SET name = 'Starting point', display_order = 20, parameter_type = 'INT', section_title = 'PT -> ES', section_order = 4;
-
-
-INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
-VALUES ('MIN_POINT_ES-FR', 'Minimum point', 30, 'INT', 'ES -> FR', 1, '0')
-    ON CONFLICT (id) DO
-UPDATE SET name = 'Minimum point', display_order = 30, parameter_type = 'INT', section_title = 'ES -> FR', section_order = 1;
-
-INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
-VALUES ('MIN_POINT_FR-ES', 'Minimum point', 30, 'INT', 'FR -> ES', 2, '0')
-    ON CONFLICT (id) DO
-UPDATE SET name = 'Minimum point', display_order = 30, parameter_type = 'INT', section_title = 'FR -> ES', section_order = 2;
-
-INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
-VALUES ('MIN_POINT_ES-PT', 'Minimum point', 30, 'INT', 'ES -> PT', 3, '0')
-    ON CONFLICT (id) DO
-UPDATE SET name = 'Minimum point', display_order = 30, parameter_type = 'INT', section_title = 'ES -> PT', section_order = 3;
-
-INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
-VALUES ('MIN_POINT_PT-ES', 'Minimum point', 30, 'INT', 'PT -> ES', 4, '0')
-    ON CONFLICT (id) DO
-UPDATE SET name = 'Minimum point', display_order = 30, parameter_type = 'INT', section_title = 'PT -> ES', section_order = 4;
+UPDATE SET name = 'Max TTC (MW)', display_order = 20, parameter_type = 'INT', section_title = 'PT -> ES', section_order = 4;
 
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
-VALUES ('SENSITIVITY_ES-FR', 'Sensitivity', 40, 'INT', 'ES -> FR', 1, '50')
+VALUES ('MIN_TTC_ES-FR', 'Min TTC (MW)', 30, 'INT', 'ES -> FR', 1, '0')
     ON CONFLICT (id) DO
-UPDATE SET name = 'Sensitivity', display_order = 40, parameter_type = 'INT', section_title = 'ES -> FR', section_order = 1;
+UPDATE SET name = 'Min TTC (MW)', display_order = 30, parameter_type = 'INT', section_title = 'ES -> FR', section_order = 1;
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
-VALUES ('SENSITIVITY_FR-ES', 'Sensitivity', 40, 'INT', 'FR -> ES', 2, '50')
+VALUES ('MIN_TTC_FR-ES', 'Min TTC (MW)', 30, 'INT', 'FR -> ES', 2, '0')
     ON CONFLICT (id) DO
-UPDATE SET name = 'Sensitivity', display_order = 40, parameter_type = 'INT', section_title = 'FR -> ES', section_order = 2;
+UPDATE SET name = 'Min TTC (MW)', display_order = 30, parameter_type = 'INT', section_title = 'FR -> ES', section_order = 2;
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
-VALUES ('SENSITIVITY_ES-PT', 'Sensitivity', 40, 'INT', 'ES -> PT', 3, '50')
+VALUES ('MIN_TTC_ES-PT', 'Min TTC (MW)', 30, 'INT', 'ES -> PT', 3, '0')
     ON CONFLICT (id) DO
-UPDATE SET name = 'Sensitivity', display_order = 40, parameter_type = 'INT', section_title = 'ES -> PT', section_order = 3;
+UPDATE SET name = 'Min TTC (MW)', display_order = 30, parameter_type = 'INT', section_title = 'ES -> PT', section_order = 3;
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
-VALUES ('SENSITIVITY_PT-ES', 'Sensitivity', 40, 'INT', 'PT -> ES', 4, '50')
+VALUES ('MIN_TTC_PT-ES', 'Min TTC (MW)', 30, 'INT', 'PT -> ES', 4, '0')
     ON CONFLICT (id) DO
-UPDATE SET name = 'Sensitivity', display_order = 40, parameter_type = 'INT', section_title = 'PT -> ES', section_order = 4;
+UPDATE SET name = 'Min TTC (MW)', display_order = 30, parameter_type = 'INT', section_title = 'PT -> ES', section_order = 4;
+
+
+INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+VALUES ('DICHOTOMY_PRECISION_ES-FR', 'Dichotomy precision (MW)', 40, 'INT', 'ES -> FR', 1, '50')
+    ON CONFLICT (id) DO
+UPDATE SET name = 'Dichotomy precision (MW)', display_order = 40, parameter_type = 'INT', section_title = 'ES -> FR', section_order = 1;
+
+INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+VALUES ('DICHOTOMY_PRECISION_FR-ES', 'Dichotomy precision (MW)', 40, 'INT', 'FR -> ES', 2, '50')
+    ON CONFLICT (id) DO
+UPDATE SET name = 'Dichotomy precision (MW)', display_order = 40, parameter_type = 'INT', section_title = 'FR -> ES', section_order = 2;
+
+INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+VALUES ('DICHOTOMY_PRECISION_ES-PT', 'Dichotomy precision (MW)', 40, 'INT', 'ES -> PT', 3, '50')
+    ON CONFLICT (id) DO
+UPDATE SET name = 'Dichotomy precision (MW)', display_order = 40, parameter_type = 'INT', section_title = 'ES -> PT', section_order = 3;
+
+INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+VALUES ('DICHOTOMY_PRECISION_PT-ES', 'Dichotomy precision (MW)', 40, 'INT', 'PT -> ES', 4, '50')
+    ON CONFLICT (id) DO
+UPDATE SET name = 'Dichotomy precision (MW)', display_order = 40, parameter_type = 'INT', section_title = 'PT -> ES', section_order = 4;
 
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
