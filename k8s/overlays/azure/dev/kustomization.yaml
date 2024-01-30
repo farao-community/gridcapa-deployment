@@ -130,7 +130,7 @@ images:
     newTag: 0.15.0
   - name: gridcapa-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.19.1
+    newTag: latest
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app-auth
     newTag: latest
@@ -223,7 +223,7 @@ images:
     newTag: latest
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
-    newTag: test-hybrid-cgmes-export-01
+    newTag: latest
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: latest

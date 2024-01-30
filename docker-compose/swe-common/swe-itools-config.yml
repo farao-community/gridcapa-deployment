@@ -28,7 +28,7 @@ rao-objective-function:
 rao-range-actions-optimization:
   max-mip-iterations: 5
   pst-penalty-cost: 0.01
-  pst-sensitivity-threshold : 0.01
+  pst-sensitivity-threshold : 1e-6
   pst-model: APPROXIMATED_INTEGERS
 
 rao-linear-optimization-solver:
