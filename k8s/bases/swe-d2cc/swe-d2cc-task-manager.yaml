@@ -65,10 +65,10 @@ data:
               task-status-updated:
                 producer:
                   routing-key-expression: '''status'''
-    servlet:
-      multipart:
-        max-file-size: 100MB
-        max-request-size: 100MB
+      servlet:
+        multipart:
+          max-file-size: 100MB
+          max-request-size: 100MB
     
     task-server:
       process:
