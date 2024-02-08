@@ -54,7 +54,6 @@ services:
     image: farao/gridcapa-cse-cc-export-runner:latest
     volumes:
       - ../../configuration/test/cse-export-runner-itools-config.yml:/home/farao/.itools/config.yml
-      - ../cse-common/cvg_xnodes_20200714.xml:/home/farao/xnodes/xnodes.xml
       - ./config/cse-export-idcc-runner-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://cse-cc-runner/actuator/health" ]

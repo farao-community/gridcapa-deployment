@@ -44,8 +44,6 @@ data:
       outputs:
         final-cgm: FINAL_CGM
         ttc-rao: TTC_RAO
-      xnodes:
-        file-path: /home/farao/xnodes/xnodes.xml
       mendrisio:
         mendrisio-pst-id: SMENDR3T SMENDR32 1
         mendrisio-node-id: SMENDR3T
