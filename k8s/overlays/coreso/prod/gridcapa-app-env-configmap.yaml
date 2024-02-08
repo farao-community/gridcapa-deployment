@@ -9,6 +9,6 @@ data:
   env.json: |-
     {
       "appsMetadataServerUrl" : "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/apps-metadata",
-      "appsMinioStorageServerUrl": "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/apps-metadata/data/minioStorageData.json"
-      "appVersionAndEnvironnement": "Coreso Prod : 1.2.3"
+      "appsMinioStorageServerUrl": "https://gridcapa.ingress-gridcapa-vaas.rh.1648.local/apps-metadata/data/minioStorageData.json",
+      "appVersionAndEnvironnement": "Coreso Prod : 5.5.0"
     }
