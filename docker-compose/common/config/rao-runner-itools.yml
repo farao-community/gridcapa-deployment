@@ -1,7 +1,8 @@
 computation-local:
   availableCore: 8
 
-hades2:
-  homeDir: /home/farao/farao-dep/runtime/hades2
-  timeout: -1
-  debug: false
+load-flow:
+  default-impl-name: OpenLoadFlow
+
+sensitivity-analysis:
+  default-impl-name: OpenLoadFlow
