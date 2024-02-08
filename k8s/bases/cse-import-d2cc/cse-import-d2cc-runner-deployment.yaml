@@ -58,9 +58,6 @@ spec:
             - mountPath: /home/farao/.itools/config.yml
               subPath: config.yml
               name: cse-import-d2cc-runner-itools-configmap-volume
-            - mountPath: /home/farao/xnodes/xnodes.xml
-              subPath: xnodes.xml
-              name: cse-import-d2cc-runner-xnodes-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -94,6 +91,3 @@ spec:
         - name: cse-import-d2cc-runner-itools-configmap-volume
           configMap:
             name: cse-import-runner-itools-configmap
-        - name: cse-import-d2cc-runner-xnodes-configmap-volume
-          configMap:
-            name: cse-runner-xnodes-configmap
