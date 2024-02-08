@@ -35,6 +35,15 @@ rao-runner-server:
     client-app-id: swe-idcc-runner
     queue-name: rao-request-queue
 
+swe-commons:
+  zone-id: "Europe/Paris"
+  shift-max-iteration-number: 20
+  modeling-authority-set:
+    REE: "http://www.ree.es/OperationalPlanning"
+    REN: "http://www.ren.pt/OperationalPlanning"
+    RTEFRANCE: "http://www.rte-france.com/OperationalPlanning"
+    SV: "http://www.coreso.eu/OperationalPlanning"
+
 swe-runner:
   zone-id: "Europe/Paris"
   shift-max-iteration-number: 30
