@@ -102,7 +102,7 @@ services:
   cse-import-ec-d2cc-runner:
     image: farao/gridcapa-cse-cc-import-runner:latest
     volumes:
-      - ../cse-common/cse-gridcapa-itools-config.yml:/home/farao/.itools/config.yml
+      - ../../configuration/test/cse-import-runner-itools-config.yml:/home/farao/.itools/config.yml
       - ./config/cse-d2cc-gridcapa-runner-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://cse-import-ec-d2cc-runner/actuator/health" ]
