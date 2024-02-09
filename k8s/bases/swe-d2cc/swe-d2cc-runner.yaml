@@ -50,7 +50,7 @@ data:
     
     swe-commons:
       zone-id: "Europe/Paris"
-      shift-max-iteration-number: 20
+      shift-max-iteration-number: 30
       modeling-authority-set:
         REE: "http://www.ree.es/OperationalPlanning"
         REN: "http://www.ren.pt/OperationalPlanning"
@@ -58,8 +58,6 @@ data:
         SV: "http://www.coreso.eu/OperationalPlanning"    
 
     swe-runner:
-      zone-id: "Europe/Paris"
-      shift-max-iteration-number: 30
       dichotomy:
         parameters:
           ES_FR:
