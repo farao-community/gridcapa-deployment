@@ -106,7 +106,7 @@ data:
           - CNE_PTES_LAST_SECURE
           - CGM_PTES
         enable-export-logs: true
-        manual-upload-base-path: SWE/IDCC
+        manual-upload-base-path: ${MINIO_BASE_DIRECTORY:SWE/IDCC}
       whitelist:
         - http://gridcapa-minio:9000/
 
@@ -195,6 +195,11 @@ spec:
                 secretKeyRef:
                   name: gridcapa-minio-credentials
                   key: minio-access-key
+            - name: MINIO_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_SWE_IDCC
             - name: MINIO_SECRET_KEY
               valueFrom:
                 secretKeyRef:

@@ -84,7 +84,7 @@ data:
           - REMEDIAL-ACTIONS-RESULT
           - REX-RESULT
         enable-export-logs: false
-        manual-upload-base-path: CORE/VALID
+        manual-upload-base-path: ${MINIO_BASE_DIRECTORY:CORE/VALID}
       whitelist:
         - http://gridcapa-minio:9000/
 

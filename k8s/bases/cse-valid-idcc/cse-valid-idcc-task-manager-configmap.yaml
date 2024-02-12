@@ -82,7 +82,7 @@ data:
         outputs:
           - TTC-VALIDATION
         enable-export-logs: false
-        manual-upload-base-path: CSE/VALID/IDCC
+        manual-upload-base-path: ${MINIO_BASE_DIRECTORY:CSE/VALID/IDCC}
       whitelist:
         - http://gridcapa-minio:9000/
 
