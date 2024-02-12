@@ -87,12 +87,13 @@ task-server:
       - CNE_PTES_LAST_SECURE
       - CGM_PTES
     enable-export-logs: true
+    manual-upload-base-path: SWE/IDCC
   whitelist:
     - http:/minio:9000/
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
-  base-path: ${GRIDCAPA_MINIO_BASE_PATH:/SWE/IDCC}
+  base-path: ${GRIDCAPA_MINIO_BASE_PATH:}
   url: ${GRIDCAPA_MINIO_URL:http://minio:9000}
   access-key: ${GRIDCAPA_MINIO_ACCESS_KEY:gridcapa}
   secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}

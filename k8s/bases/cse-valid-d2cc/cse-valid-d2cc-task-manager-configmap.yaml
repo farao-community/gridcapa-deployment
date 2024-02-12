@@ -82,12 +82,13 @@ data:
         outputs:
           - TTC-VALIDATION
         enable-export-logs: false
+        manual-upload-base-path: CSE/VALID/D2CC
       whitelist:
         - http://gridcapa-minio:9000/
 
     minio-adapter:
       bucket: gridcapa
-      base-path: ${MINIO_BASE_DIRECTORY}
+      base-path:
       url: http://gridcapa-minio:9000/
       access-key: ${MINIO_ACCESS_KEY}
       secret-key: ${MINIO_SECRET_KEY}

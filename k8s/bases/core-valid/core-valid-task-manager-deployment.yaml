@@ -69,11 +69,6 @@ spec:
                 secretKeyRef:
                   name: gridcapa-minio-credentials
                   key: minio-access-key
-            - name: MINIO_BASE_DIRECTORY
-              valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CORE_VALID
             - name: MINIO_SECRET_KEY
               valueFrom:
                 secretKeyRef:
