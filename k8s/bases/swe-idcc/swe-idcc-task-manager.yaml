@@ -106,12 +106,13 @@ data:
           - CNE_PTES_LAST_SECURE
           - CGM_PTES
         enable-export-logs: true
+        manual-upload-base-path: ${MINIO_BASE_DIRECTORY}
       whitelist:
         - http://gridcapa-minio:9000/
 
     minio-adapter:
       bucket: gridcapa
-      base-path: ${MINIO_BASE_DIRECTORY}
+      base-path: 
       url: http://gridcapa-minio:9000/
       access-key: ${MINIO_ACCESS_KEY}
       secret-key: ${MINIO_SECRET_KEY}
