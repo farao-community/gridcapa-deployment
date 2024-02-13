@@ -88,7 +88,7 @@ data:
           - INITIAL_CGM
           - FINAL_CGM
         enable-export-logs: true
-        manual-upload-base-path: ${MINIO_BASE_DIRECTORY:CSE/IMPORT/D2CC}
+        manual-upload-base-path: ${MINIO_BASE_DIRECTORY}
       whitelist:
         - http://gridcapa-minio:9000/
 

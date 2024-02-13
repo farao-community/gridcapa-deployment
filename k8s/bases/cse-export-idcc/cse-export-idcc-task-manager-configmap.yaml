@@ -80,7 +80,7 @@ data:
           - TTC_RAO
           - FINAL_CGM
         enable-export-logs: true
-        manual-upload-base-path: ${MINIO_BASE_DIRECTORY:CSE/EXPORT/IDCC}
+        manual-upload-base-path: ${MINIO_BASE_DIRECTORY}
       whitelist:
         - http://gridcapa-minio:9000/
 
