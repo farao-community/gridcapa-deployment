@@ -2,3 +2,5 @@
 .idea
 venv
 
+# Licence XPRESS, à ne pas commiter
+docker-compose/common/xpr-licence/*.xpr

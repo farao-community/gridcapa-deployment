@@ -9,6 +9,6 @@ data:
   env.json: |-
     {
       "appsMetadataServerUrl" : "https://gridcapa-test-tmp.farao-community.com/apps-metadata",
-      "appsMinioStorageServerUrl": "https://gridcapa-test-tmp.farao-community.com/apps-metadata/data/minioStorageData.json"
-      "appVersionAndEnvironnement": "Azure Test : 1.2.3"
+      "appsMinioStorageServerUrl": "https://gridcapa-test-tmp.farao-community.com/apps-metadata/data/minioStorageData.json",
+      "appVersionAndEnvironnement": "Azure Test : 5.5.0"
     }

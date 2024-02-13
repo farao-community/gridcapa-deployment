@@ -37,9 +37,16 @@ rao-runner-server:
     client-app-id: swe-d2cc-runner
     queue-name: rao-request-queue
 
-swe-runner:
+swe-commons:
   zone-id: "Europe/Paris"
   shift-max-iteration-number: 30
+  modeling-authority-set:
+    REE: "http://www.ree.es/OperationalPlanning"
+    REN: "http://www.ren.pt/OperationalPlanning"
+    RTEFRANCE: "http://www.rte-france.com/OperationalPlanning"
+    SV: "http://www.coreso.eu/OperationalPlanning"
+
+swe-runner:
   dichotomy:
     parameters:
       ES_FR:

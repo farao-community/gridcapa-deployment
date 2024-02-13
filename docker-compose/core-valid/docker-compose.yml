@@ -61,7 +61,7 @@ services:
     image: farao/gridcapa-core-valid:latest
     volumes:
       - ./config/core-valid-runner-application.yml:/config/application.yml
-      - ./config/core-valid-itools-config-OLF.yml:/home/farao/.itools/config.yml
+      - ../../configuration/test/core-valid-runner-itools-config.yml:/home/farao/.itools/config.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s
