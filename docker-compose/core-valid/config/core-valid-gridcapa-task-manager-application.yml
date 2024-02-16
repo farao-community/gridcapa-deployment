@@ -5,13 +5,8 @@ spring:
     username: core_valid_server
     password: core-valid
   jpa:
-    defer-datasource-initialization: true
     hibernate:
       ddl-auto: update
-  sql:
-    init:
-      mode: always
-      data-locations: file:/config/data.sql
   rabbitmq:
     host: rabbitmq
     port: 5672
