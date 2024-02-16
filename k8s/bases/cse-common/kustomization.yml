@@ -3,5 +3,4 @@ kind: Kustomization
 
 resources:
   - cse-adapter-logback-configmap.yaml
-  - cse-gridcapa-runner-xnodes-configmap.yaml
   - cse-valid-adapter-logback-configmap.yaml

@@ -54,7 +54,7 @@ docker-compose up -d
 **Be careful to your local resources if you try to deploy too many processes it could be quite heavy.**
 
 Multiple environment are available:
-- Main GridCapa UI on pages : http://localhost/cse/import/d2cc/, http://localhost/cse/import/idcc/, http://localhost/cse/export/d2cc/,http://localhost/cse/export/idcc/, http://localhost/core/valid/,  http://localhost/cse/import-ec/d2cc/, http://localhost/cse/import-ec/idcc/according to what has been deployed.
+- Main GridCapa UI on pages : http://localhost/cse/import/d2cc/, http://localhost/cse/import/idcc/, http://localhost/cse/export/d2cc/, http://localhost/cse/export/idcc/, http://localhost/core/valid/,  http://localhost/cse/import-ec/d2cc/, http://localhost/cse/import-ec/idcc/according to what has been deployed.
 - FTP server file browser on page http://localhost/utils/filebrowser/. Default credentials are gridcapa/gridcapa.
 - SFTP server file browser on page http://localhost/utils/filebrowser/. Default credentials are gridcapa/gridcapa.
 - RabbitMQ management UI on page http://localhost/utils/rabbitmq/. Default credentials are gridcapa/gridcapa.
@@ -96,6 +96,15 @@ Check that they have been correctly saved by listing current notifications enabl
 ```bash
 ./mc event list gridcapa_compose/gridcapa
 ```
+
+### XPRESS Solver licence
+Xpress is a commercial solver and as such requires a licence to be used. 
+Please copy yours (xprauth.xpr file) inside the following folder :
+
+```bash
+docker-compose/common/xpr-licence
+```
+
 
 ## Deploying using Kubernetes
 
@@ -204,35 +213,3 @@ For the example you have to use the second address. **Do not use localhost:3000*
 
 When the nginx-dev docker is up you can access to the gridcapa-app with the url "http://localhost/cse/export/d2cc/".
 Don't forget to change the REACT_APP_PUBLIC_URL variable in the .env.development file to the corresponding URL.
-
-# Migration cluster
-The new cluster is located at 51.105.211.238
-There is 3 namespaces :
-- the dafault one : contains only the keycloak
-- gridcapa-d : the dev namespace https://gridcapa-dev-tmp.farao-community.com
-- gridcapa-t : the test namespace https://gridcapa-test-tmp.farao-community.com
-
-To access the new cluster, you need to connect via ssh with the usual command : 
-```bash
-ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168
-```
-
-To deploy to this cluster :
-- default namespace (for keycloak) :
-  ```bash
-  kubectl kustomize k8s/overlays/azure/authentication/ --load-restrictor LoadRestrictionsNone | ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168 kubectl --kubeconfig=.kube/config_new apply -f -
-  ```
-- dev environnement :
-  ```bash
-  kubectl kustomize k8s/overlays/azure/dev/ --load-restrictor LoadRestrictionsNone | ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168 kubectl --kubeconfig=.kube/config_new apply -n gridcapa-d -f -
-  ```
-- test environnement :
-  ```bash
-  kubectl kustomize k8s/overlays/azure/test/ --load-restrictor LoadRestrictionsNone | ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p" farao@51.137.209.168 kubectl --kubeconfig=.kube/config_new apply -n gridcapa-t -f -
-  ```
-
-Aliases are created :
-- kd : kubectl --kubeconfig=.kube/config_new -n default 
-- kgd : kubectl --kubeconfig=.kube/config_new -n gridcapa-d (for dev env)
-- kgt : kubectl --kubeconfig=.kube/config_new -n gridcapa-t (for test env)
-
