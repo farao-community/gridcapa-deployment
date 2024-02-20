@@ -98,7 +98,7 @@ task-server:
     enable-export-logs: true
     manual-upload-base-path: SWE/IDCC_IDCF
   whitelist:
-    - http:/minio:9000/
+    - http://minio:9000/
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}

@@ -58,7 +58,7 @@ spring:
 
 task-server:
   process:
-    tag: SWE_IDCC
+    tag: SWE_BTCC
     timezone: CET
     inputs:
       - CRAC
@@ -94,7 +94,7 @@ task-server:
     enable-export-logs: true
     manual-upload-base-path: SWE/BTCC
   whitelist:
-    - http:/minio:9000/
+    - http://minio:9000/
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
@@ -135,3 +135,4 @@ runner:
     RUN_VOLTAGE_CHECK: true
     MAX_CRA: 10
     MAX_NEWTON_RAPHSON_ITERATIONS: 15
+    DISABLE_SECOND_PREVENTIVE_RAO: false
