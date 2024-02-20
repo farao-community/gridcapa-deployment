@@ -1,0 +1,70 @@
+spring:
+  application:
+    name: swe-btcc-runner
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+    template:
+      reply-timeout: 7200000
+  cloud:
+    stream:
+      function:
+        definition: request;interrupt
+      default:
+        binder: rabbit
+      bindings:
+        interrupt-in-0:
+          destination: swe-btcc-stop-task
+        request-in-0:
+          destination: swe-btcc-request
+          group: swe-btcc-runner
+        request-out-0:
+          destination: swe-btcc-response
+        task-status-update:
+          destination: swe-btcc-task-status-updated
+
+logback:
+  amqp:
+    exchange: swe-btcc-task-manager-logs-exchange
+    routing-key: "#"
+
+rao-runner-server:
+  amqp:
+    client-app-id: swe-btcc-runner
+    queue-name: rao-request-queue
+
+swe-commons:
+  zone-id: "Europe/Paris"
+  shift-max-iteration-number: 30
+  modeling-authority-set:
+    REE: "http://www.ree.es/OperationalPlanning"
+    REN: "http://www.ren.pt/OperationalPlanning"
+    RTEFRANCE: "http://www.rte-france.com/OperationalPlanning"
+    SV: "http://www.coreso.eu/OperationalPlanning"
+
+swe-runner:
+  dichotomy:
+    parameters:
+      ES_FR:
+        tolerance-Es-Fr: 10
+        tolerance-Es-Pt: 50
+      FR_ES:
+        tolerance-Es-Fr: 10
+        tolerance-Es-Pt: 50
+      ES_PT:
+        tolerance-Es-Fr: 50
+        tolerance-Es-Pt: 10
+      PT_ES:
+        tolerance-Es-Fr: 50
+        tolerance-Es-Pt: 10
+  whitelist:
+    - http://minio:9000/
+
+minio-adapter:
+  bucket: gridcapa
+  base-path: /SWE/BTCC
+  access-key: gridcapa
+  secret-key: gridcapa
+  url: http://minio:9000
