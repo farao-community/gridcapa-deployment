@@ -98,6 +98,12 @@ VALUES ('MAX_CRA', 'Max amount of Curative RA', 30, 'INT', 'RAO Parameters', 5, 
 UPDATE SET name = 'Max amount of Curative RA', display_order = 30, parameter_type = 'INT', section_title = 'RAO Parameters', section_order = 5;
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+VALUES ('DISABLE_SECOND_PREVENTIVE_RAO', 'Disable second preventive RAO', 40, 'BOOLEAN', 'RAO Parameters', 5, 'false')
+ON CONFLICT (id) DO
+    UPDATE SET name = 'Disable second preventive RAO', display_order = 40, parameter_type = 'BOOLEAN', section_title = 'RAO Parameters', section_order = 5;
+
+
+INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
 VALUES ('MAX_NEWTON_RAPHSON_ITERATIONS', 'Max number of iterations', 10, 'INT', 'LoadFlow Parameters', 6, '15')
     ON CONFLICT (id) DO
 UPDATE SET name = 'Max number of iterations', display_order = 10, parameter_type = 'INT', section_title = 'LoadFlow Parameters', section_order = 6;
