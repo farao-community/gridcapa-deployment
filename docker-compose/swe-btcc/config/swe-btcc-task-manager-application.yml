@@ -1,0 +1,137 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://gridcapa-postgres:5432/swe_btcc_tasks
+    driverClassName: org.postgresql.Driver
+    username: swe_btcc_server
+    password: swe-btcc
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      mode: always
+      data-locations: file:/config/data.sql
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+  cloud:
+    stream:
+      default:
+        group: swe-btcc-task-manager
+      bindings:
+        consumeMinioEvent-in-0:
+          destination: gridcapa.minio.events
+        consumeTaskStatusUpdate-in-0:
+          destination: swe-btcc-task-status-updated
+        consumeTaskEventUpdate-in-0:
+          destination: swe-btcc-task-manager-logs-exchange
+          consumer:
+            batch-mode: true
+        task-updated:
+          destination: swe-btcc-task-updated
+        task-status-updated:
+          destination: swe-btcc-task-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+        bindings:
+          consumeMinioEvent-in-0:
+            consumer:
+              exchange-type: fanout
+          consumeTaskEventUpdate-in-0:
+            consumer:
+              enable-batching: true
+              batch-size: 200
+              receive-timeout: 3000
+          task-status-updated:
+            producer:
+              routing-key-expression: '''status'''
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+task-server:
+  process:
+    tag: SWE_IDCC
+    timezone: CET
+    inputs:
+      - CRAC
+      - GLSK
+      - CORESO_SV
+      - REE_EQ
+      - REE_SSH
+      - REE_TP
+      - REN_EQ
+      - REN_SSH
+      - REN_TP
+      - RTE_EQ
+      - RTE_SSH
+      - RTE_TP
+      - BOUNDARY_EQ
+      - BOUNDARY_TP
+    outputs:
+      - TTC
+      - VOLTAGE_ESFR
+      - VOLTAGE_FRES
+      - CNE_ESFR_FIRST_UNSECURE
+      - CNE_ESFR_LAST_SECURE
+      - CGM_ESFR
+      - CNE_FRES_FIRST_UNSECURE
+      - CNE_FRES_LAST_SECURE
+      - CGM_FRES
+      - CNE_ESPT_FIRST_UNSECURE
+      - CNE_ESPT_LAST_SECURE
+      - CGM_ESPT
+      - CNE_PTES_FIRST_UNSECURE
+      - CNE_PTES_LAST_SECURE
+      - CGM_PTES
+    enable-export-logs: true
+    manual-upload-base-path: SWE/BTCC
+  whitelist:
+    - http:/minio:9000/
+
+minio-adapter:
+  bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
+  base-path:
+  url: ${GRIDCAPA_MINIO_URL:http://minio:9000}
+  access-key: ${GRIDCAPA_MINIO_ACCESS_KEY:gridcapa}
+  secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
+
+stomp:
+  allowed-origin: http://swe-btcc-gridcapa-app
+  starting-ws-endpoint: /tasks/notify
+  notify: /task
+  receive-request: /app
+
+logback:
+  amqp:
+    exchange: swe-btcc-task-manager-logs-exchange
+
+runner:
+  parameters:
+    RUN_ES-FR: true
+    RUN_FR-ES: true
+    RUN_ES-PT: true
+    RUN_PT-ES: true
+    MAX_TTC_ES-FR: 400
+    MAX_TTC_FR-ES: 400
+    MAX_TTC_ES-PT: 400
+    MAX_TTC_PT-ES: 400
+    MIN_TTC_ES-FR: 0
+    MIN_TTC_FR-ES: 0
+    MIN_TTC_ES-PT: 0
+    MIN_TTC_PT-ES: 0
+    DICHOTOMY_PRECISION_ES-FR: 50
+    DICHOTOMY_PRECISION_FR-ES: 50
+    DICHOTOMY_PRECISION_ES-PT: 50
+    DICHOTOMY_PRECISION_PT-ES: 50
+    RUN_ANGLE_CHECK: true
+    RUN_VOLTAGE_CHECK: true
+    MAX_CRA: 10
+    MAX_NEWTON_RAPHSON_ITERATIONS: 15

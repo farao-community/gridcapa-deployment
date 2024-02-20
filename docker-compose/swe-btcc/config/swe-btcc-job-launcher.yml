@@ -1,0 +1,43 @@
+logback:
+  amqp:
+    exchange: swe-btcc-task-manager-logs-exchange
+    routing-key: "#"
+spring:
+  application:
+    name: swe-btcc-job-launcher
+  rabbitmq:
+    host: rabbitmq
+    username: gridcapa
+    password: gridcapa
+    port: 5672
+  cloud:
+    stream:
+      bindings:
+        default:
+          group: swe-btcc-job-launcher
+        run-task:
+          destination: swe-btcc-run-task
+        stop-task:
+          destination: swe-btcc-stop-task
+        consumeTaskDtoUpdate-in-0:
+          destination: swe-btcc-task-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+        bindings:
+          consumeTaskDtoUpdate-in-0:
+            consumer:
+              binding-routing-key: status
+
+job-launcher:
+  url:
+    task-manager-timestamp-url: http://swe-btcc-task-manager:8080/tasks/
+    task-manager-business-date-url: http://swe-btcc-task-manager:8080/tasks/businessdate/
+  process:
+    tag: SWE_BTCC
+    timezone: CET
+
+scheduler:
+  enable: false
