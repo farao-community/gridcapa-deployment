@@ -2,7 +2,7 @@
   "processName": "SWE BTCC",
   "globalViewTimestampFilter": [
   ],
-  "manualExportEnabled": true,
+  "manualExportEnabled": false,
   "parametersEnabled": true,
   "eventLevelPredefinedFilter": [
     {

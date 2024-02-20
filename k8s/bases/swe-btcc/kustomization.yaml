@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - swe-btcc-adapter.yaml
+  - swe-btcc-app.yaml
+  - swe-btcc-job-launcher.yaml
+  - swe-btcc-minio-purge.yaml
+  - swe-btcc-rao-logs-dispatcher.yaml
+  - swe-btcc-runner.yaml
+  - swe-btcc-task-manager.yaml

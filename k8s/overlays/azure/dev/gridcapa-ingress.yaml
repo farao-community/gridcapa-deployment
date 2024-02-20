@@ -12,6 +12,7 @@ metadata:
       rewrite ^/core/valid$ /core/valid/ permanent;
       rewrite ^/cse/valid/idcc$ /cse/valid/idcc/ permanent;
       rewrite ^/cse/valid/d2cc$ /cse/valid/d2cc/ permanent;
+      rewrite ^/swe/btcc$ /swe/btcc/ permanent;
       rewrite ^/swe/d2cc$ /swe/d2cc/ permanent;
       rewrite ^/swe/idcc$ /swe/idcc/ permanent;
       rewrite ^/swe/idcf$ /swe/idcf/ permanent;
@@ -422,6 +423,48 @@ spec:
                 port:
                   number: 80
             path: /()(cse/valid/d2cc/publication/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: swe-btcc-gridcapa-app
+                port:
+                  number: 80
+            path: /swe/btcc(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/btcc/config/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/btcc/config-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/btcc/task-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/btcc/task-manager/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/btcc/gridcapa-job-launcher/.*)
             pathType: Prefix
           - backend:
               service:

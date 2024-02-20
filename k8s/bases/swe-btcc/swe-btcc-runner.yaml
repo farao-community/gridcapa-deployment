@@ -1,0 +1,213 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: swe-btcc-runner-configmap
+  labels:
+    app: gridcapa
+    component: runner
+    region: swe
+    process: btcc
+data:
+  application.yml: |-
+    spring:
+      application:
+        name: swe-btcc-runner
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+        template:
+          reply-timeout: 7200000
+      cloud:
+        stream:
+          function:
+            definition: request;interrupt
+          default:
+            binder: rabbit
+          bindings:
+            interrupt-in-0:
+              destination: swe-btcc-stop-task
+            request-in-0:
+              destination: swe-btcc-request
+              group: swe-btcc-runner
+            request-out-0:
+              destination: swe-btcc-response
+            task-status-update:
+              destination: swe-btcc-task-status-updated
+            stop-rao:
+              destination: stop-rao-runner
+
+    logback:
+      amqp:
+        exchange: swe-btcc-task-manager-logs-exchange
+        routing-key: "#"
+
+    rao-runner-server:
+      amqp:
+        client-app-id: swe-btcc-runner
+        queue-name: rao-request-queue
+
+    swe-commons:
+      zone-id: "Europe/Paris"
+      shift-max-iteration-number: 30
+      modeling-authority-set:
+        REE: "http://www.ree.es/OperationalPlanning"
+        REN: "http://www.ren.pt/OperationalPlanning"
+        RTEFRANCE: "http://www.rte-france.com/OperationalPlanning"
+        SV: "http://www.coreso.eu/OperationalPlanning"
+    
+    swe-runner:
+      dichotomy:
+        parameters:
+          ES_FR:
+            tolerance-Es-Fr: 10
+            tolerance-Es-Pt: 50
+          FR_ES:
+            tolerance-Es-Fr: 10
+            tolerance-Es-Pt: 50
+          ES_PT:
+            tolerance-Es-Fr: 50
+            tolerance-Es-Pt: 10
+          PT_ES:
+            tolerance-Es-Fr: 50
+            tolerance-Es-Pt: 10
+      whitelist:
+        - http://gridcapa-minio:9000/
+    
+    minio-adapter:
+      bucket: ${MINIO_BUCKET}
+      base-path: ${MINIO_BASE_DIRECTORY}
+      access-key: ${GRIDCAPA_MINIO_USER}
+      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+      url: http://gridcapa-minio:9000/
+      
+---
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: swe-btcc-runner
+  labels:
+    app: gridcapa
+    component: runner
+    region: swe
+    process: btcc
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: runner
+      region: swe
+      process: btcc
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: runner
+        region: swe
+        process: btcc
+      annotations:
+        "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
+    spec:
+      containers:
+        - name: gridcapa-swe-btcc-runner
+          image: gridcapa-swe-runner
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
+            - name: GRIDCAPA_MINIO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: GRIDCAPA_MINIO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+            - name: MINIO_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BUCKET_SWE_BTCC
+            - name: MINIO_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_SWE_BTCC
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: swe-btcc-runner-configmap-volume
+            - mountPath: /home/farao/.itools/config.yml
+              subPath: config.yml
+              name: swe-btcc-runner-itools-configmap-volume
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 25
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              cpu: "1.0"
+              memory: "17Gi"
+            limits:
+              cpu: "5.0"
+              memory: "50Gi"
+      restartPolicy: Always
+      volumes:
+        - name: swe-btcc-runner-configmap-volume
+          configMap:
+            name: swe-btcc-runner-configmap
+        - name: swe-btcc-runner-itools-configmap-volume
+          configMap:
+            name: swe-runner-itools-configmap
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: swe-btcc-runner
+  labels:
+    app: gridcapa
+    component: runner
+    region: swe
+    process: btcc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: runner
+    region: swe
+    process: btcc
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http

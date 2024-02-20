@@ -113,6 +113,16 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: core-valid-password
+            - name: POSTGRES_SWE_BTCC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: swe-btcc-user
+            - name: POSTGRES_SWE_BTCC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: swe-btcc-password
             - name: POSTGRES_SWE_D2CC_USER
               valueFrom:
                 secretKeyRef:
