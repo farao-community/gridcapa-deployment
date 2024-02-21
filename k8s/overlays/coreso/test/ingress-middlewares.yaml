@@ -266,6 +266,72 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
+  name: gridcapa-swe-btcc
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /swe/btcc/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-swe-btcc-config
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /swe/btcc/config/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-swe-btcc-config-notification
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /swe/btcc/config-notification/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-swe-btcc-gridcapa-job-launcher
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /swe/btcc/gridcapa-job-launcher/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-swe-btcc-task-manager
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /swe/btcc/task-manager/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-swe-btcc-task-notification
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /swe/btcc/task-notification/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
   name: gridcapa-swe-d2cc
   namespace: default
 spec:

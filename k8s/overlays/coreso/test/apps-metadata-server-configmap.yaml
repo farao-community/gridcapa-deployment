@@ -57,5 +57,10 @@ data:
         "name" : "Capa CORE CC",
         "url"  : "/core/cc/",
         "appColor" : "#0894f5"
+      },
+      {
+        "name" : "Capa SWE BTCC",
+        "url"  : "/swe/btcc",
+        "appColor" : "#A74FFF"
       }
     ]
