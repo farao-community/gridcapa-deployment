@@ -1223,7 +1223,7 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: kommander-traefik
-    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-d2cc@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-d2cc@kubernetescrd
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
@@ -1310,7 +1310,7 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: kommander-traefik
-    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-d2cc-gridcapa-job-launcher@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-d2cc-gridcapa-job-launcher@kubernetescrd
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
@@ -1339,7 +1339,7 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: kommander-traefik
-    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-d2cc-task-manager@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-d2cc-task-manager@kubernetescrd
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
@@ -1368,7 +1368,7 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: kommander-traefik
-    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-d2cc-task-notification@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-cse-import-d2cc-task-notification@kubernetescrd
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
