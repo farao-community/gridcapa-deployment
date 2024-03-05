@@ -245,9 +245,3 @@ configMapGenerator:
   - name: env-configmap
     envs:
       - env.properties
-
-# Enable auth only for cse import d2cc
-images:
-  - name: gridcapa-cse-import-d2cc-app
-    newName: docker.io/farao/gridcapa-app-auth
-    newTag: v1.13.0
