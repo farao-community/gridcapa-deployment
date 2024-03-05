@@ -31,6 +31,7 @@ resources:
   - minio-pv-claim.yaml
   - postgresql-configmap.yaml
   - postgresql-pv-claim.yaml
+  - cse-import-d2cc-app-idp-settings-configmap.yaml
 
 components:
   - ../../main_versions/test
@@ -225,14 +226,6 @@ patches:
         path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
-      name: cse-import-d2cc-gridcapa-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
-  - target:
-      kind: Deployment
       name: cse-import-idcc-gridcapa-app
     patch: |-
       - op: remove
@@ -252,3 +245,9 @@ configMapGenerator:
   - name: env-configmap
     envs:
       - env.properties
+
+# Enable auth only for cse import d2cc
+images:
+  - name: docker.io/farao/gridcapa-cse-import-d2cc-app
+    newName: docker.io/farao/gridcapa-app-auth
+    newTag: v1.13.0
