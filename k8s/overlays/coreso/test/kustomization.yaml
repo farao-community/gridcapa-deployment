@@ -226,6 +226,14 @@ patches:
         path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
+      name: cse-import-d2cc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
       name: cse-import-idcc-gridcapa-app
     patch: |-
       - op: remove
