@@ -19,6 +19,9 @@ spec:
   stripPrefix:
     prefixes:
       - /cse/export/d2cc/config/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -30,6 +33,9 @@ spec:
   stripPrefix:
     prefixes:
       - /cse/export/d2cc/config-notification/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -85,6 +91,9 @@ spec:
   stripPrefix:
     prefixes:
       - /cse/export/idcc/config/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -96,6 +105,9 @@ spec:
   stripPrefix:
     prefixes:
       - /cse/export/idcc/config-notification/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -151,6 +163,9 @@ spec:
   stripPrefix:
     prefixes:
       - /cse/import-ec/d2cc/config/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -162,6 +177,9 @@ spec:
   stripPrefix:
     prefixes:
       - /cse/import-ec/d2cc/config-notification/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -217,6 +235,9 @@ spec:
   stripPrefix:
     prefixes:
       - /cse/import-ec/idcc/config/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -228,6 +249,9 @@ spec:
   stripPrefix:
     prefixes:
       - /cse/import-ec/idcc/config-notification/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -283,6 +307,9 @@ spec:
   stripPrefix:
     prefixes:
       - /swe/d2cc/config/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -294,6 +321,9 @@ spec:
   stripPrefix:
     prefixes:
       - /swe/d2cc/config-notification/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -349,6 +379,9 @@ spec:
   stripPrefix:
     prefixes:
       - /swe/idcc/config/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -360,6 +393,9 @@ spec:
   stripPrefix:
     prefixes:
       - /swe/idcc/config-notification/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -415,6 +451,9 @@ spec:
   stripPrefix:
     prefixes:
       - /swe/idcf/config/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -426,6 +465,9 @@ spec:
   stripPrefix:
     prefixes:
       - /swe/idcf/config-notification/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -481,6 +523,9 @@ spec:
   stripPrefix:
     prefixes:
       - /cse/import/d2cc/config/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -492,6 +537,9 @@ spec:
   stripPrefix:
     prefixes:
       - /cse/import/d2cc/config-notification/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -547,6 +595,9 @@ spec:
   stripPrefix:
     prefixes:
       - /cse/import/idcc/config/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -558,6 +609,9 @@ spec:
   stripPrefix:
     prefixes:
       - /cse/import/idcc/config-notification/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -613,6 +667,9 @@ spec:
   stripPrefix:
     prefixes:
       - /core/cc/config/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -624,6 +681,9 @@ spec:
   stripPrefix:
     prefixes:
       - /core/cc/config-notification/
+  headers:
+    customRequestHeaders:
+      userId: johnDoe
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
