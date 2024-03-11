@@ -115,3 +115,6 @@ images:
   - name: gridcapa-core-cc-post-processing
     newName: docker.io/farao/gridcapa-core-cc-post-processing
     newTag: v1.3.1
+  - name: gridcapa-cse-import-d2cc-app
+    newName: docker.io/farao/gridcapa-app-auth
+    newTag: v1.13.0
