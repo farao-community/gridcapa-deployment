@@ -87,6 +87,8 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: core-cc-output-data-bridge-configmap-volume
+            - mountPath: /data/gridcapa
+              name: core-cc-output-data-bridge-data
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -108,3 +110,6 @@ spec:
         - name: core-cc-output-data-bridge-configmap-volume
           configMap:
             name: core-cc-output-data-bridge-configmap
+        - name: core-cc-output-data-bridge-data
+          persistentVolumeClaim:
+            claimName: core-cc-data-bridge-storage
