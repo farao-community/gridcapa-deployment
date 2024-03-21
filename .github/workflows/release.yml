@@ -1,0 +1,37 @@
+name: Release job
+
+on:
+  workflow_dispatch:
+    inputs:
+      releaseVersion:
+        description: 'Release version'
+        required: true
+      environment:
+        description: 'Environment (coreso/azure)'
+        required: true
+      namespace:
+        description: 'Namespace (dev/test/prod)'
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' || startsWith(github.ref_name, 'hotfix')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Change  version of gridcapa app to release version
+        uses: jossef/action-set-json-field@v2.1
+        with:
+          file: test-file.json
+          field: version
+          value: ${{ github.event.inputs.releaseVersion }}
+
+      - name: Commit and tag release version
+        uses: stefanzweifel/git-auto-commit-action@master
+        with:
+          branch: release-v${{ github.event.inputs.releaseVersion }}
+          create_branch: true
+          commit_message: Prepare release ${{ github.event.inputs.releaseVersion }} for ${{ github.event.inputs.environment }}-${{ github.event.inputs.namespace }}
+          tagging_message: v${{ github.event.inputs.releaseVersion }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.namespace }}
