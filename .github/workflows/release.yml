@@ -9,13 +9,16 @@ on:
     inputs:
       releaseVersion:
         description: 'Release version'
-        required: true
+        required: false
+        default: 1.0.0 #todo remove and set required
       environment:
         description: 'Environment (coreso/azure)'
-        required: true
+        required: false
+        default: azure #todo remove and set required
       namespace:
         description: 'Namespace (dev/test/prod)'
-        required: true
+        required: false
+        default: dev #todo remove and set required
 
 jobs:
   release:
