@@ -1,6 +1,10 @@
 name: Release job
 
 on:
+  push:
+    branches:
+      - add_release_job
+
   workflow_dispatch:
     inputs:
       releaseVersion:
