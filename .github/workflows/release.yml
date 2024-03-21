@@ -9,16 +9,13 @@ on:
     inputs:
       releaseVersion:
         description: 'Release version'
-        required: false
-        default: 1.0.0 #todo remove and set required
+        required: true
       environment:
         description: 'Environment (coreso/azure)'
-        required: false
-        default: azure #todo remove and set required
+        required: true
       namespace:
         description: 'Namespace (dev/test/prod)'
-        required: false
-        default: dev #todo remove and set required
+        required: true
 
 jobs:
   release:
@@ -30,9 +27,9 @@ jobs:
       - name: Change  version of gridcapa app to release version
         uses: jossef/action-set-json-field@v2.1
         with:
-          file: test-file.json
-          field: version
-          value: 1.0.0
+          file: test-file.json #todo add files selon l'environment
+          field: appVersionAndEnvironnement
+          value: v${{ github.event.inputs.releaseVersion }}'
 
       - name: Commit and tag release version
         uses: stefanzweifel/git-auto-commit-action@master
@@ -41,3 +38,5 @@ jobs:
           create_branch: true
           commit_message: Prepare release ${{ github.event.inputs.releaseVersion }} for ${{ github.event.inputs.environment }}-${{ github.event.inputs.namespace }}
           tagging_message: v${{ github.event.inputs.releaseVersion }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.namespace }}
+
+      # todo creer la PR apres le tag mais pas la merger automatiquement
