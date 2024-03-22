@@ -35,7 +35,7 @@ spec:
                   value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
             - name: swe-idcc-others-minio-purge
               image: minio-mc
-              args: [ "find", "--older-than", "7d", "--ignore", "*/BOUNDARIES/*", "--exec", "mc rm --force {}", "minio/gridcapa/SWE/IDCC/" ]
+              args: [ "find", "--older-than", "7d", "--ignore", ".*/BOUNDARIES/.*", "--exec", "mc rm --force {}", "minio/gridcapa/SWE/IDCC/" ]
               env:
                 - name: MINIO_ACCESS_KEY
                   valueFrom:
