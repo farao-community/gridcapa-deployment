@@ -6,8 +6,8 @@ sensitivity-analysis:
 
 load-flow-default-parameters:
   voltageInitMode: DC_VALUES
-  balanceType: PROPORTIONAL_TO_GENERATION_P
-  countriesToBalance: AL,AT,BA,BE,BG,CH,CZ,DE,ES,FR,GR,HR,HU,IT,ME,MK,NL,PL,PT,RO,RS,SI,SK,UA
+  balanceType: PROPORTIONAL_TO_LOAD
+  countriesToBalance: ES,FR,PT
   phaseShifterRegulationOn: true
 
 open-loadflow-default-parameters:
