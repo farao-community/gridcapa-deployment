@@ -30,6 +30,7 @@ resources:
   - minio-pv-claim.yaml
   - postgresql-configmap.yaml
   - postgresql-pv-claim.yaml
+  - ../../../../configuration/gridcapa-gateway-johndoe-configmap.yaml
 
 components:
   - ../../main_versions/test
@@ -246,6 +247,20 @@ patches:
         path: /spec/template/spec/containers/0/volumeMounts/2
       - op: remove
         path: /spec/template/spec/volumes/2
+
+  # Use "John Doe" gateway config to share UI config across all users
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: gateway
+      spec:
+        template:
+          spec:
+            volumes:
+              - name: gateway-configmap-volume
+                configMap:
+                  name: gateway-johndoe-configmap
 
 configMapGenerator:
   - name: env-configmap
