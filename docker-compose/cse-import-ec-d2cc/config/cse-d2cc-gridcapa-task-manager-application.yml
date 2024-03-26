@@ -71,9 +71,10 @@ task-server:
       - INITIAL_CGM
       - FINAL_CGM
     enable-export-logs: true
+    manual-upload-base-path: CSE/IMPORT_EC/D2CC
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
-  base-path: ${GRIDCAPA_MINIO_BASE_PATH:/CSE/IMPORT_EC/D2CC}
+  base-path:
   url: ${GRIDCAPA_MINIO_URL:http://minio:9000}
   access-key: ${GRIDCAPA_MINIO_ACCESS_KEY:gridcapa}
   secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}

@@ -35,33 +35,33 @@ rao-runner-server:
     client-app-id: swe-idcc-idcf-runner
     queue-name: rao-request-queue
 
-swe-runner:
+swe-commons:
   zone-id: "Europe/Paris"
   shift-max-iteration-number: 30
+  modeling-authority-set:
+    REE: "http://www.ree.es/OperationalPlanning"
+    REN: "http://www.ren.pt/OperationalPlanning"
+    RTEFRANCE: "http://www.rte-france.com/OperationalPlanning"
+    SV: "http://www.coreso.eu/OperationalPlanning"
+
+swe-runner:
+  pst:
+    pst1-id: _e071a1d4-fef5-1bd9-5278-d195c5597b6e
+    pst2-id: _7824bc48-fc86-51db-8f9c-01b44933839e
+  unoptimized-cnecs-with-pst-es-fr:
+    active: false
   dichotomy:
     parameters:
       ES_FR:
-        min-value: 0
-        max-value: 6400
-        precision: 50
         tolerance-Es-Fr: 10
         tolerance-Es-Pt: 50
       FR_ES:
-        min-value: 0
-        max-value: 6400
-        precision: 50
         tolerance-Es-Fr: 10
         tolerance-Es-Pt: 50
       ES_PT:
-        min-value: 0
-        max-value: 6400
-        precision: 50
         tolerance-Es-Fr: 50
         tolerance-Es-Pt: 10
       PT_ES:
-        min-value: 0
-        max-value: 6400
-        precision: 50
         tolerance-Es-Fr: 50
         tolerance-Es-Pt: 10
   whitelist:

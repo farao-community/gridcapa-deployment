@@ -5,8 +5,13 @@ spring:
     username: swe_idcc_idcf_server
     password: swe-idcc-idcf
   jpa:
+    defer-datasource-initialization: true
     hibernate:
       ddl-auto: update
+  sql:
+    init:
+      mode: always
+      data-locations: file:/config/data.sql
   rabbitmq:
     host: rabbitmq
     port: 5672
@@ -87,12 +92,13 @@ task-server:
       - CNE_PTES_LAST_SECURE
       - CGM_PTES
     enable-export-logs: true
+    manual-upload-base-path: SWE/IDCC_IDCF
   whitelist:
     - http:/minio:9000/
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
-  base-path: ${GRIDCAPA_MINIO_BASE_PATH:/SWE/IDCC_IDCF}
+  base-path:
   url: ${GRIDCAPA_MINIO_URL:http://minio:9000}
   access-key: ${GRIDCAPA_MINIO_ACCESS_KEY:gridcapa}
   secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
@@ -106,3 +112,26 @@ stomp:
 logback:
   amqp:
     exchange: swe-idcc-idcf-task-manager-logs-exchange
+
+runner:
+  parameters:
+    RUN_ES-FR: true
+    RUN_FR-ES: true
+    RUN_ES-PT: true
+    RUN_PT-ES: true
+    MAX_TTC_ES-FR: 6400
+    MAX_TTC_FR-ES: 6400
+    MAX_TTC_ES-PT: 6400
+    MAX_TTC_PT-ES: 6400
+    MIN_TTC_ES-FR: 0
+    MIN_TTC_FR-ES: 0
+    MIN_TTC_ES-PT: 0
+    MIN_TTC_PT-ES: 0
+    DICHOTOMY_PRECISION_ES-FR: 50
+    DICHOTOMY_PRECISION_FR-ES: 50
+    DICHOTOMY_PRECISION_ES-PT: 50
+    DICHOTOMY_PRECISION_PT-ES: 50
+    RUN_ANGLE_CHECK: true
+    RUN_VOLTAGE_CHECK: true
+    MAX_CRA: 10
+    MAX_NEWTON_RAPHSON_ITERATIONS: 15

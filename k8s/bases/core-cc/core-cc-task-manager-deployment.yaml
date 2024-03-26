@@ -114,10 +114,10 @@ spec:
           resources:
             requests:
               cpu: "1.0"
-              memory: "384Mi"
+              memory: "5Gi"
             limits:
               cpu: "4.0"
-              memory: "1Gi"
+              memory: "10Gi"
       initContainers:
         - name: minio-notifications
           image: minio-mc

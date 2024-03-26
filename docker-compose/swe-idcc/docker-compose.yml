@@ -111,6 +111,7 @@ services:
     image: farao/gridcapa-task-manager:latest
     volumes:
       - ./config/swe-idcc-task-manager-application.yml:/config/application.yml
+      - ./config/data.sql:/config/data.sql
     networks:
       - gridcapa
 
@@ -137,7 +138,7 @@ services:
     image: farao/gridcapa-swe-runner:latest
     volumes:
       - ./config/swe-idcc-runner-application.yml:/config/application.yml
-      - ../swe-common/swe-itools-config.yml:/home/farao/.itools/config.yml
+      - ../../configuration/test/swe-runner-itools-config.yml:/home/farao/.itools/config.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s

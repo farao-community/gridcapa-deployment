@@ -48,13 +48,11 @@ cse-cc-runner:
     initial-cgm: INITIAL_CGM
     final-cgm: FINAL_CGM
     ttc-res: TTC_RES
-  xnodes:
-    file-path: /home/farao/xnodes/xnodes.xml
   mendrisio:
     mendrisio-cagno-line:
       target-ch-id: ml_0001
       ntc-id: ml_mendrisio-cagno
-    mendrisio-pst-id: SMENDR3T SMENDR32 1
+    mendrisio-voltage-level: SMENDR3
     mendrisio-node-id: SMENDR3T
   pisa:
     link1:
