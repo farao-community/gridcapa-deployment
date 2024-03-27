@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: gateway-configmap
+  name: gateway-johndoe-configmap
   labels:
     app: gridcapa
     component: gateway-configmap
@@ -28,14 +28,14 @@ data:
                 - Path=/core/cc/config/**
               filters:
                 - StripPrefix=3
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
             - id: core-cc-gridsuite-config-notification
               uri: http://config-notification-server
               predicates:
                 - Path=/core/cc/config-notification/**
               filters:
                 - StripPrefix=3
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
                 - RemoveRequestParameter=access_token
             - id: core-cc-task-manager
               uri: http://core-cc-task-manager
@@ -62,14 +62,14 @@ data:
                 - Path=/core/valid/config/**
               filters:
                 - StripPrefix=3
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
             - id: core-valid-gridsuite-config-notification
               uri: http://config-notification-server
               predicates:
                 - Path=/core/valid/config-notification/**
               filters:
                 - StripPrefix=3
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
                 - RemoveRequestParameter=access_token
             - id: core-valid-task-manager
               uri: http://core-valid-task-manager
@@ -96,14 +96,14 @@ data:
                 - Path=/cse/import/d2cc/config/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
             - id: cse-import-d2cc-gridsuite-config-notification
               uri: http://config-notification-server
               predicates:
                 - Path=/cse/import/d2cc/config-notification/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
                 - RemoveRequestParameter=access_token
             - id: cse-import-d2cc-task-manager
               uri: http://cse-import-d2cc-task-manager
@@ -130,14 +130,14 @@ data:
                 - Path=/cse/import/idcc/config/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
             - id: cse-import-idcc-gridsuite-config-notification
               uri: http://config-notification-server
               predicates:
                 - Path=/cse/import/idcc/config-notification/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
                 - RemoveRequestParameter=access_token
             - id: cse-import-idcc-task-manager
               uri: http://cse-import-idcc-task-manager
@@ -164,14 +164,14 @@ data:
                 - Path=/cse/export/d2cc/config/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
             - id: cse-export-d2cc-gridsuite-config-notification
               uri: http://config-notification-server
               predicates:
                 - Path=/cse/export/d2cc/config-notification/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
                 - RemoveRequestParameter=access_token
             - id: cse-export-d2cc-task-manager
               uri: http://cse-export-d2cc-task-manager
@@ -198,14 +198,14 @@ data:
                 - Path=/cse/export/idcc/config/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
             - id: cse-export-idcc-gridsuite-config-notification
               uri: http://config-notification-server
               predicates:
                 - Path=/cse/export/idcc/config-notification/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
                 - RemoveRequestParameter=access_token
             - id: cse-export-idcc-task-manager
               uri: http://cse-export-idcc-task-manager
@@ -238,14 +238,14 @@ data:
                 - Path=/cse/valid/idcc/config/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
             - id: cse-valid-idcc-gridsuite-config-notification
               uri: http://config-notification-server
               predicates:
                 - Path=/cse/valid/idcc/config-notification/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
                 - RemoveRequestParameter=access_token
             - id: cse-valid-idcc-task-manager
               uri: http://cse-valid-idcc-task-manager
@@ -272,14 +272,14 @@ data:
                 - Path=/cse/valid/d2cc/config/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
             - id: cse-valid-d2cc-gridsuite-config-notification
               uri: http://config-notification-server
               predicates:
                 - Path=/cse/valid/d2cc/config-notification/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
                 - RemoveRequestParameter=access_token
             - id: cse-valid-d2cc-task-manager
               uri: http://cse-valid-d2cc-task-manager
@@ -306,14 +306,14 @@ data:
                 - Path=/swe/d2cc/config/**
               filters:
                 - StripPrefix=3
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
             - id: swe-d2cc-gridsuite-config-notification
               uri: http://config-notification-server
               predicates:
                 - Path=/swe/d2cc/config-notification/**
               filters:
                 - StripPrefix=3
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
                 - RemoveRequestParameter=access_token
             - id: swe-d2cc-task-manager
               uri: http://swe-d2cc-task-manager
@@ -340,14 +340,14 @@ data:
                 - Path=/swe/idcc/config/**
               filters:
                 - StripPrefix=3
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
             - id: swe-idcc-gridsuite-config-notification
               uri: http://config-notification-server
               predicates:
                 - Path=/swe/idcc/config-notification/**
               filters:
                 - StripPrefix=3
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
                 - RemoveRequestParameter=access_token
             - id: swe-idcc-task-manager
               uri: http://swe-idcc-task-manager
@@ -374,14 +374,14 @@ data:
                 - Path=/swe/idcf/config/**
               filters:
                 - StripPrefix=3
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
             - id: swe-idcc-idcf-gridsuite-config-notification
               uri: http://config-notification-server
               predicates:
                 - Path=/swe/idcf/config-notification/**
               filters:
                 - StripPrefix=3
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
                 - RemoveRequestParameter=access_token
             - id: swe-idcc-idcf-task-manager
               uri: http://swe-idcc-idcf-task-manager
@@ -408,14 +408,14 @@ data:
                 - Path=/cse/import-ec/idcc/config/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
             - id: cse-import-ec-idcc-gridsuite-config-notification
               uri: http://config-notification-server
               predicates:
                 - Path=/cse/import-ec/idcc/config-notification/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
                 - RemoveRequestParameter=access_token
             - id: cse-import-ec-idcc-task-manager
               uri: http://cse-import-ec-idcc-task-manager
@@ -442,14 +442,14 @@ data:
                 - Path=/cse/import-ec/d2cc/config/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
             - id: cse-import-ec-d2cc-gridsuite-config-notification
               uri: http://config-notification-server
               predicates:
                 - Path=/cse/import-ec/d2cc/config-notification/**
               filters:
                 - StripPrefix=4
-                - TokenValidator
+                - AddRequestHeader=userId, johnDoe
                 - RemoveRequestParameter=access_token
             - id: cse-import-ec-d2cc-task-manager
               uri: http://cse-import-ec-d2cc-task-manager
