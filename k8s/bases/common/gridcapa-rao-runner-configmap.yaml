@@ -107,8 +107,8 @@ data:
             <appender-ref ref="amqp-business-events"/>
             <appender-ref ref="STDOUT" />
         </logger>
-        <logger name="com.powsybl.openrao.commons.logs.TechnicalLogs" level="OFF">
-            <appender-ref ref="amqp-business-events"/>
+        <logger name="com.powsybl.openrao.commons.logs.TechnicalLogs" level="INFO">
+            <appender-ref ref="STDOUT" />
         </logger>
 
 

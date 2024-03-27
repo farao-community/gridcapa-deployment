@@ -45,7 +45,6 @@ resources:
   - swe-d2cc-gridcapa-app-idp-settings-configmap.yaml
   - swe-idcc-gridcapa-app-idp-settings-configmap.yaml
   - swe-idcc-idcf-gridcapa-app-idp-settings-configmap.yaml
-  - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
@@ -55,6 +54,9 @@ configMapGenerator:
   - name: env-configmap
     envs:
       - env.properties
+  - name: gridcapa-app-env-configmap
+    files:
+      - env.json=gridcapa-app-env-config.json
   - name: core-cc-runner-itools-configmap
     files:
       - config.yml=configuration/core-cc-runner-itools-config.yml

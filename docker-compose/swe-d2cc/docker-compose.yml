@@ -111,6 +111,7 @@ services:
     image: farao/gridcapa-task-manager:latest
     volumes:
       - ./config/swe-d2cc-task-manager-application.yml:/config/application.yml
+      - ./config/data.sql:/config/data.sql
     networks:
       - gridcapa
 

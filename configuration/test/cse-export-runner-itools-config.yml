@@ -50,7 +50,9 @@ rao-load-flow-and-sensitivity-computation:
   sensitivity-provider: OpenLoadFlow
 
 rao-topological-actions-optimization:
-  max-search-tree-depth: 3
+  max-preventive-search-tree-depth: 3
+  max-auto-search-tree-depth: 3
+  max-curative-search-tree-depth: 3
   relative-minimum-impact-threshold: 0.0
   absolute-minimum-impact-threshold: 2.0
 
@@ -61,6 +63,3 @@ rao-second-preventive-rao:
 
 rao-not-optimized-cnecs:
   do-not-optimize-curative-cnecs-for-tsos-without-cras: false
-
-rao-ra-usage-limits-per-contingency:
-  max-curative-ra-per-tso: [ "{IT}:6", "{FR}:5", "{CH}:1", "{AT}:3", "{SI}:3" ]

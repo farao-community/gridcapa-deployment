@@ -24,7 +24,6 @@ resources:
   - ../coreso-databridge-claims/swe-idcc-idcf
   - ../coreso-databridge-claims/core-cc
   - apps-metadata-server-configmap.yaml
-  - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
   - gridcapa-ingress-minio.yaml
   - ingress-middlewares.yaml
@@ -252,3 +251,6 @@ configMapGenerator:
   - name: env-configmap
     envs:
       - env.properties
+  - name: gridcapa-app-env-configmap
+    files:
+      - env.json=gridcapa-app-env-config.json

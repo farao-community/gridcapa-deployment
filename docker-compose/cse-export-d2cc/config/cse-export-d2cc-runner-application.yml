@@ -38,7 +38,7 @@ cse-cc-runner:
     final-cgm: FINAL_CGM
     ttc-rao: TTC_RAO
   mendrisio:
-    mendrisio-pst-id: SMENDR3T SMENDR32 1
+    mendrisio-voltage-level: SMENDR3
     mendrisio-node-id: SMENDR3T
   pisa:
     link1:

@@ -28,13 +28,6 @@ rao-second-preventive-rao:
     re-optimize-curative-range-actions: false
     hint-from-first-preventive-rao: false
 
-rao-ra-usage-limits-per-contingency:
-    max-curative-ra: 2147483647
-    max-curative-tso: 2147483647
-    max-curative-topo-per-tso: [ ]
-    max-curative-pst-per-tso: [ ]
-    max-curative-ra-per-tso: [ ]
-
 rao-not-optimized-cnecs:
     do-not-optimize-curative-cnecs-for-tsos-without-cras: true
 
@@ -71,3 +64,4 @@ rao-mnec-parameters:
 rao-relative-margins-parameters:
     ptdf-boundaries: [ "{FR}-{BE}", "{FR}-{DE}", "{BE}-{NL}", "{NL}-{DE}", "{DE}-{PL}", "{DE}-{CZ}", "{DE}-{AT}", "{PL}-{CZ}", "{PL}-{SK}", "{CZ}-{SK}", "{CZ}-{AT}", "{AT}-{HU}", "{AT}-{SI}", "{SI}-{HR}", "{SK}-{HU}", "{HU}-{RO}", "{HU}-{HR}", "{HU}-{SI}", "{BE}-{22Y201903144---9}-{DE}+{22Y201903145---4}" ]
     ptdf-sum-lower-bound: 0.01
+    ptdf-approximation: UPDATE_PTDF_WITH_TOPO
