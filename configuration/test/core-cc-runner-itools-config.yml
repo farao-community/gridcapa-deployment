@@ -17,7 +17,9 @@ rao-linear-optimization-solver:
   solver-specific-parameters: THREADS 1 MAXNODE 100000 MAXTIME 300
 
 rao-topological-actions-optimization:
-  max-search-tree-depth: 4
+  max-preventive-search-tree-depth: 4
+  max-auto-search-tree-depth: 4
+  max-curative-search-tree-depth: 4
   relative-minimum-impact-threshold: 0.0
   absolute-minimum-impact-threshold: 10.0
   skip-actions-far-from-most-limiting-element: true
