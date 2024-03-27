@@ -17,6 +17,8 @@ spring:
           group: swe-idcc-job-launcher
         run-task:
           destination: swe-idcc-run-task
+        run-task-auto:
+          destination: swe-idcc-run-task
         stop-task:
           destination: swe-idcc-stop-task
         consumeTaskDtoUpdate-in-0:
@@ -32,6 +34,7 @@ spring:
               binding-routing-key: status
 
 job-launcher:
+  auto: true
   url:
     task-manager-timestamp-url: http://swe-idcc-task-manager:8080/tasks/
     task-manager-business-date-url: http://swe-idcc-task-manager:8080/tasks/businessdate/
