@@ -36,7 +36,9 @@ rao-linear-optimization-solver:
   relative-mip-gap: 0.001
 
 rao-topological-actions-optimization:
-  max-search-tree-depth: 3
+  max-preventive-search-tree-depth: 3
+  max-auto-search-tree-depth: 3
+  max-curative-search-tree-depth: 3
   relative-minimum-impact-threshold: 0.0
   absolute-minimum-impact-threshold: 1.0
 
