@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: swe-idcc-exporter
+  labels:
+    app: gridcapa
+    component: exporter
+    region: swe
+    process: idcc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: exporter
+    region: swe
+    process: idcc
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http

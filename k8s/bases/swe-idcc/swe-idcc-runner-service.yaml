@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: swe-idcc-runner
+  labels:
+    app: gridcapa
+    component: runner
+    region: swe
+    process: idcc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: runner
+    region: swe
+    process: idcc
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
