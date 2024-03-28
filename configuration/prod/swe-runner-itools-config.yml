@@ -50,7 +50,7 @@ rao-second-preventive-rao:
 rao-ra-usage-limits-per-contingency:
   max-curative-ra: 10
   max-curative-tso: 2
-  max-curative-ra-per-tso: [ "{RTE}:5" ]
+  max-curative-ra-per-tso: [ "{RTE}:3" ]
 
 rao-not-optimized-cnecs:
   do-not-optimize-curative-cnecs-for-tsos-without-cras: false
