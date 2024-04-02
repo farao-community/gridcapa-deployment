@@ -5,6 +5,10 @@ spring:
     username: cse_export_d2cc_server
     password: cse-export-d2cc
   jpa:
+    properties:
+      hibernate:
+        timezone:
+          default_storage: NORMALIZE
     hibernate:
       ddl-auto: update
   rabbitmq:

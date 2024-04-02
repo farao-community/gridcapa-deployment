@@ -25,6 +25,10 @@ data:
       jpa:
         database-platform: org.hibernate.dialect.PostgreSQLDialect
         defer-datasource-initialization: true
+        properties:
+          hibernate:
+            timezone:
+              default_storage: NORMALIZE
         hibernate:
           ddl-auto: update
       sql:

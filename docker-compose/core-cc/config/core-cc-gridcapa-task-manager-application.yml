@@ -9,6 +9,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        timezone:
+          default_storage: NORMALIZE
   rabbitmq:
     host: rabbitmq
     port: 5672

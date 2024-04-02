@@ -5,6 +5,10 @@ spring:
     username: cse_export_idcc_server
     password: cse-export-idcc
   jpa:
+    properties:
+      hibernate:
+        timezone:
+          default_storage: NORMALIZE
     hibernate:
       ddl-auto: update
   rabbitmq:

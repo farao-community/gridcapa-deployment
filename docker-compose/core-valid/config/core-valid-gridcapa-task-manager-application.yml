@@ -5,6 +5,10 @@ spring:
     username: core_valid_server
     password: core-valid
   jpa:
+    properties:
+      hibernate:
+        timezone:
+          default_storage: NORMALIZE
     hibernate:
       ddl-auto: update
   rabbitmq:
