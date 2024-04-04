@@ -45,7 +45,7 @@ images:
     newTag: v1.14.0
   - name: gridcapa-gateway
     newName: docker.io/farao/gridcapa-gateway
-    newTag: 1.1.0
+    newTag: 1.2.0
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: v1.4.0
@@ -78,7 +78,7 @@ images:
     newTag: v1.6.2
   - name: gridcapa-swe-adapter
     newName: docker.io/farao/gridcapa-swe-adapter
-    newTag: v1.4.0
+    newTag: v1.5.0
   - name: gridcapa-swe-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
     newTag: v1.10.0
@@ -87,7 +87,7 @@ images:
     newTag: v1.3.1
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
-    newTag: v1.16.1
+    newTag: v1.17.0
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.26.0
