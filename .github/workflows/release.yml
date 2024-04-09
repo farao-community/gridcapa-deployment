@@ -67,5 +67,5 @@ jobs:
           commit-message: "chore: Update version in ConfigMap file"
           title: "Update version to v${RELEASE_VERSION} for ${ENVIRONMENT}-${NAMESPACE}"
           branch: release-v${RELEASE_VERSION}-${ENVIRONMENT}-${NAMESPACE}
-          base: main
+          base: master
           labels: "auto-generated"
