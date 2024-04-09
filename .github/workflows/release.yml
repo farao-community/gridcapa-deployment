@@ -13,7 +13,7 @@ on:
       environment:
         description: 'Environment (coreso/azure)'
         required: true
-        default: azure
+        default: 'azure'
       namespace:
         description: 'Namespace (dev/test/prod)'
         required: true
