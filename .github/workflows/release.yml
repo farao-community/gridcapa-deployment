@@ -12,23 +12,20 @@ on:
       releaseVersion:
         description: 'Release version'
         required: true
-        default: '99.99.99'
       environment:
         description: 'Environment (coreso/azure)'
         required: true
-        default: 'azure'
       namespace:
         description: 'Namespace (dev/test/prod)'
         required: true
-        default: 'dev'
 
 jobs:
   release:
     runs-on: ubuntu-latest
     env:
-      RELEASE_VERSION: ${{ github.event.inputs.releaseVersion }}
-      ENVIRONMENT: ${{ github.event.inputs.environment }}
-      NAMESPACE: ${{ github.event.inputs.namespace }}
+      RELEASE_VERSION: ${{ github.event.inputs.releaseVersion || '99.99.99' }}
+      ENVIRONMENT: ${{ github.event.inputs.environment || 'azure' }}
+      NAMESPACE: ${{ github.event.inputs.namespace || 'dev' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
