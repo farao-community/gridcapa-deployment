@@ -72,3 +72,6 @@ load-flow-default-parameters:
   distributedSlack: true
   balanceType: PROPORTIONAL_TO_LOAD
   countriesToBalance: AL,AT,BA,BE,BG,CH,CZ,DE,ES,FR,GR,HR,HU,IT,ME,MK,NL,PL,PT,RO,RS,SI,SK,TR,UA
+
+open-loadflow-default-parameters:
+  maxNewtonRaphsonIterations: 30
