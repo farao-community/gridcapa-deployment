@@ -1,5 +1,8 @@
 name: Release job
 
+# Description: This workflow updates the version in the ConfigMap file,
+# creates a commit with the updated version, and creates a pull request.
+
 on:
   push:
     branches:
@@ -26,15 +29,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Save release version to state file
+        run: echo "releaseVersion=${{ github.event.inputs.releaseVersion }}" >> $GITHUB_STATE
+
+      - name: Save environment to state file
+        run: echo "environment=${{ github.event.inputs.environment }}" >> $GITHUB_STATE
+
+      - name: Save namespace to state file
+        run: echo "namespace=${{ github.event.inputs.namespace }}" >> $GITHUB_STATE
+
       - name: Find ConfigMap file
         id: find_configmap_file
         run: |
-          if [ "${{ github.event.inputs.environment }}" == "azure" ]; then
-            path="k8s/overlays/azure/${{ github.event.inputs.namespace }}/gridcapa-app-env-configmap.yaml"
-            sed_pattern="s/Azure .* : [0-9.]\+/Azure ${{ github.event.inputs.namespace }} : ${{ github.event.inputs.releaseVersion }}/g"
+          if [ "${{ env.environment }}" == "azure" ]; then
+            path="k8s/overlays/azure/${{ env.namespace }}/gridcapa-app-env-configmap.yaml"
+            sed_pattern="s/Azure .* : [0-9.]\+/Azure ${{ env.namespace }} : ${{ env.releaseVersion }}/g"
           else
-            path="k8s/overlays/coreso/${{ github.event.inputs.namespace }}/gridcapa-app-env-configmap.yaml"
-            sed_pattern="s/Coreso .* : [0-9.]\+/Coreso ${{ github.event.inputs.namespace }} : ${{ github.event.inputs.releaseVersion }}/g"
+            path="k8s/overlays/coreso/${{ env.namespace }}/gridcapa-app-env-configmap.yaml"
+            sed_pattern="s/Coreso .* : [0-9.]\+/Coreso ${{ env.namespace }} : ${{ env.releaseVersion }}/g"
           fi
           echo "::set-output name=configmap_file::$path"
           echo "::set-output name=sed_pattern::$sed_pattern"
@@ -46,7 +58,7 @@ jobs:
       - name: Commit and tag release version
         uses: stefanzweifel/git-auto-commit-action@master
         with:
-          branch: release-v${{ github.event.inputs.releaseVersion }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.namespace }}
+          branch: release-v${{ env.releaseVersion }}-${{ env.environment }}-${{ env.namespace }}
           create_branch: true
           commit_message: Prepare release ${{ github.event.inputs.releaseVersion }} for ${{ github.event.inputs.environment }}-${{ github.event.inputs.namespace }}
           tagging_message: v${{ github.event.inputs.releaseVersion }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.namespace }}
@@ -55,7 +67,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "chore: Update version in ConfigMap file"
-          title: "Update version to v${{ github.event.inputs.releaseVersion }} for ${{ github.event.inputs.environment }}-${{ github.event.inputs.namespace }}"
-          branch: release-v${{ github.event.inputs.releaseVersion }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.namespace }}
+          title: "Update version to v${{ env.releaseVersion }} for ${{ env.environment }}-${{ env.namespace }}"
+          branch: release-v${{ env.releaseVersion }}-${{ env.environment }}-${{ env.namespace }}
           base: main
           labels: "auto-generated"
