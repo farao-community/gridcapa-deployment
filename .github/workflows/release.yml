@@ -56,10 +56,10 @@ jobs:
       - name: Commit and tag release version
         uses: stefanzweifel/git-auto-commit-action@master
         with:
-          branch: release-v${RELEASE_VERSION}-${ENVIRONMENT}-${NAMESPACE}
+          branch: "release-v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
           create_branch: true
-          commit_message: Prepare release ${RELEASE_VERSION} for ${ENVIRONMENT}-${NAMESPACE}
-          tagging_message: v${RELEASE_VERSION}-${ENVIRONMENT}-${NAMESPACE}
+          commit_message: "Prepare release ${{ env.RELEASE_VERSION }} for ${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
+          tagging_message: "v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
