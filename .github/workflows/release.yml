@@ -1,17 +1,23 @@
 name: Release job
 
 on:
+  push:
+    branches:
+      - add_release_job
   workflow_dispatch:
     inputs:
       releaseVersion:
         description: 'Release version'
         required: true
+        default: '99.99.99'
       environment:
         description: 'Environment (coreso/azure)'
         required: true
+        default: azure
       namespace:
         description: 'Namespace (dev/test/prod)'
         required: true
+        default: 'dev'
 
 jobs:
   release:
