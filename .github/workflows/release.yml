@@ -25,49 +25,50 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      RELEASE_VERSION: ${{ github.event.inputs.releaseVersion }}
+      ENVIRONMENT: ${{ github.event.inputs.environment }}
+      NAMESPACE: ${{ github.event.inputs.namespace }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Save release version to state file
-        run: echo "releaseVersion=${{ github.event.inputs.releaseVersion }}" >> $GITHUB_STATE
-
-      - name: Save environment to state file
-        run: echo "environment=${{ github.event.inputs.environment }}" >> $GITHUB_STATE
-
-      - name: Save namespace to state file
-        run: echo "namespace=${{ github.event.inputs.namespace }}" >> $GITHUB_STATE
+      - name: Save environment variables to file
+        run: |
+          echo "RELEASE_VERSION=${RELEASE_VERSION}" >> $GITHUB_ENV
+          echo "ENVIRONMENT=${ENVIRONMENT}" >> $GITHUB_ENV
+          echo "NAMESPACE=${NAMESPACE}" >> $GITHUB_ENV
 
       - name: Find ConfigMap file
         id: find_configmap_file
         run: |
-          if [ "${{ env.environment }}" == "azure" ]; then
-            path="k8s/overlays/azure/${{ env.namespace }}/gridcapa-app-env-configmap.yaml"
-            sed_pattern="s/Azure .* : [0-9.]\+/Azure ${{ env.namespace }} : ${{ env.releaseVersion }}/g"
+          if [ "${ENVIRONMENT}" == "azure" ]; then
+            path="k8s/overlays/azure/${NAMESPACE}/gridcapa-app-env-configmap.yaml"
+            sed_pattern="s/Azure .* : [0-9.]\+/Azure ${NAMESPACE} : ${RELEASE_VERSION}/g"
           else
-            path="k8s/overlays/coreso/${{ env.namespace }}/gridcapa-app-env-configmap.yaml"
-            sed_pattern="s/Coreso .* : [0-9.]\+/Coreso ${{ env.namespace }} : ${{ env.releaseVersion }}/g"
+            path="k8s/overlays/coreso/${NAMESPACE}/gridcapa-app-env-configmap.yaml"
+            sed_pattern="s/Coreso .* : [0-9.]\+/Coreso ${NAMESPACE} : ${RELEASE_VERSION}/g"
           fi
-          echo "::set-output name=configmap_file::$path"
-          echo "::set-output name=sed_pattern::$sed_pattern"
+          echo "configmap_file=${path}" >> $GITHUB_ENV
+          echo "sed_pattern=${sed_pattern}" >> $GITHUB_ENV
 
       - name: Change version in ConfigMap file
         run: |
-          sed -i "${{ steps.find_configmap_file.outputs.sed_pattern }}" ${{ steps.find_configmap_file.outputs.configmap_file }}
+          sed -i "${{ env.sed_pattern }}" "${{ env.configmap_file }}"
 
       - name: Commit and tag release version
         uses: stefanzweifel/git-auto-commit-action@master
         with:
-          branch: release-v${{ env.releaseVersion }}-${{ env.environment }}-${{ env.namespace }}
+          branch: release-v${RELEASE_VERSION}-${ENVIRONMENT}-${NAMESPACE}
           create_branch: true
-          commit_message: Prepare release ${{ github.event.inputs.releaseVersion }} for ${{ github.event.inputs.environment }}-${{ github.event.inputs.namespace }}
-          tagging_message: v${{ github.event.inputs.releaseVersion }}-${{ github.event.inputs.environment }}-${{ github.event.inputs.namespace }}
+          commit_message: Prepare release ${RELEASE_VERSION} for ${ENVIRONMENT}-${NAMESPACE}
+          tagging_message: v${RELEASE_VERSION}-${ENVIRONMENT}-${NAMESPACE}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "chore: Update version in ConfigMap file"
-          title: "Update version to v${{ env.releaseVersion }} for ${{ env.environment }}-${{ env.namespace }}"
-          branch: release-v${{ env.releaseVersion }}-${{ env.environment }}-${{ env.namespace }}
+          title: "Update version to v${RELEASE_VERSION} for ${ENVIRONMENT}-${NAMESPACE}"
+          branch: release-v${RELEASE_VERSION}-${ENVIRONMENT}-${NAMESPACE}
           base: main
           labels: "auto-generated"
