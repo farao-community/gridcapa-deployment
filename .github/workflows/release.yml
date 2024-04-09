@@ -77,6 +77,9 @@ jobs:
           commit_message: "Prepare release ${{ env.RELEASE_VERSION }} for ${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
           tagging_message: "v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
 
+      - name: Set up tracking branch
+        run: git branch -u origin/${{ github.ref }}
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
