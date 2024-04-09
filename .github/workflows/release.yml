@@ -67,7 +67,7 @@ jobs:
           eval "$sed_command"
 
       - name: Display modified ConfigMap content
-        run: cat ${configmap_fil}
+        run: cat ${configmap_file}
 
       - name: Commit and tag release version
         uses: stefanzweifel/git-auto-commit-action@master
