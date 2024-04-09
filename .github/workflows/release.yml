@@ -40,14 +40,24 @@ jobs:
         id: find_configmap_file
         run: |
           if [ "${ENVIRONMENT}" == "azure" ]; then
-            path="k8s/overlays/azure/${NAMESPACE}/gridcapa-app-env-configmap.yaml"
+            path="gridcapa-deployment/k8s/overlays/azure/${NAMESPACE}/gridcapa-app-env-configmap.yaml"
             sed_pattern="s/Azure .* : [0-9.]\+/Azure ${NAMESPACE} : ${RELEASE_VERSION}/g"
           else
-            path="k8s/overlays/coreso/${NAMESPACE}/gridcapa-app-env-configmap.yaml"
+            path="gridcapa-deployment/k8s/overlays/coreso/${NAMESPACE}/gridcapa-app-env-configmap.yaml"
             sed_pattern="s/Coreso .* : [0-9.]\+/Coreso ${NAMESPACE} : ${RELEASE_VERSION}/g"
           fi
           echo "configmap_file=${path}" >> $GITHUB_ENV
           echo "sed_pattern=${sed_pattern}" >> $GITHUB_ENV
+
+      - name: Check if ConfigMap file exists
+        run: |
+          if [ -f "${{ env.configmap_file }}" ]; then
+            echo "ConfigMap file exists."
+          else
+            echo "Error: ConfigMap file does not exist."
+            exit 1
+          fi
+        shell: bash
 
       - name: Change version in ConfigMap file
         run: |
