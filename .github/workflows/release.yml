@@ -51,7 +51,10 @@ jobs:
 
       - name: Change version in ConfigMap file
         run: |
-          sed -i "${{ env.sed_pattern }}" "${{ env.configmap_file }}"
+          echo "Executing sed command:"
+          sed_command="sed -i '${{ env.sed_pattern }}' '${{ env.configmap_file }}'"
+          echo "$sed_command"
+          eval "$sed_command"
 
       - name: Commit and tag release version
         uses: stefanzweifel/git-auto-commit-action@master
@@ -65,7 +68,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "chore: Update version in ConfigMap file"
-          title: "Update version to v${RELEASE_VERSION} for ${ENVIRONMENT}-${NAMESPACE}"
+          title: "Update version to v${{ env.RELEASE_VERSION }} for ${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
           branch: "release-v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
           base: master
           labels: "auto-generated"
