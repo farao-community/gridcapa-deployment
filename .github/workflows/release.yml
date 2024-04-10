@@ -70,19 +70,19 @@ jobs:
       - name: Display modified ConfigMap content
         run: cat ${configmap_file}
 
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: "chore: Update version in ConfigMap file"
+          title: "Update version to v${{ env.RELEASE_VERSION }} for ${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
+          branch: "release-v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
+          base: master
+          labels: "auto-generated"
+
       - name: Commit and tag release version
         uses: stefanzweifel/git-auto-commit-action@master
         with:
           branch: "release-v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
           create_branch: true
-          commit_message: "Prepare release ${{ env.RELEASE_VERSION }} for ${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
+          commit_message: "Update HMI version ${{ env.RELEASE_VERSION }} for ${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
           tagging_message: "v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
-
-#      - name: Create Pull Request
-#        uses: peter-evans/create-pull-request@v3
-#        with:
-#          commit-message: "chore: Update version in ConfigMap file"
-#          title: "Update version to v${{ env.RELEASE_VERSION }} for ${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
-#          branch: "release-v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
-#          base: master
-#          labels: "auto-generated"
