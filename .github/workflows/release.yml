@@ -25,7 +25,7 @@ jobs:
     env:
       RELEASE_VERSION: ${{ github.event.inputs.releaseVersion || '99.99.99' }}
       ENVIRONMENT: ${{ github.event.inputs.environment || 'azure' }}
-      NAMESPACE: ${{ github.event.inputs.namespace || 'dev' }}
+      NAMESPACE: ${{ github.event.inputs.namespace || 'test' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
