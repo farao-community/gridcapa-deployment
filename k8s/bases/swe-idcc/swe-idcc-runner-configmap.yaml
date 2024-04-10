@@ -1,0 +1,88 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: swe-idcc-runner-configmap
+  labels:
+    app: gridcapa
+    component: runner
+    region: swe
+    process: idcc
+data:
+  application.yml: |-
+    spring:
+      application:
+        name: swe-idcc-runner
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+        template:
+          reply-timeout: 7200000
+      cloud:
+        stream:
+          function:
+            definition: request;interrupt
+          default:
+            binder: rabbit
+          bindings:
+            interrupt-in-0:
+              destination: swe-idcc-stop-task
+            request-in-0:
+              destination: swe-idcc-request
+              group: swe-idcc-runner
+            request-out-0:
+              destination: swe-idcc-response
+            task-status-update:
+              destination: swe-idcc-task-status-updated
+            stop-rao:
+              destination: stop-rao-runner
+
+    logback:
+      amqp:
+        exchange: swe-idcc-task-manager-logs-exchange
+        routing-key: "#"
+
+    rao-runner-server:
+      amqp:
+        client-app-id: swe-idcc-runner
+        queue-name: rao-request-queue
+
+    swe-commons:
+      zone-id: "Europe/Paris"
+      shift-max-iteration-number: 30
+      modeling-authority-set:
+        REE: "http://www.ree.es/OperationalPlanning"
+        REN: "http://www.ren.pt/OperationalPlanning"
+        RTEFRANCE: "http://www.rte-france.com/OperationalPlanning"
+        SV: "http://www.coreso.eu/OperationalPlanning"
+
+    swe-runner:
+      pst:
+        pst1-id: _e071a1d4-fef5-1bd9-5278-d195c5597b6e
+        pst2-id: _7824bc48-fc86-51db-8f9c-01b44933839e
+      unoptimized-cnecs-with-pst-es-fr:
+        active: false
+      dichotomy:
+        parameters:
+          ES_FR:
+            tolerance-Es-Fr: 10
+            tolerance-Es-Pt: 50
+          FR_ES:
+            tolerance-Es-Fr: 10
+            tolerance-Es-Pt: 50
+          ES_PT:
+            tolerance-Es-Fr: 50
+            tolerance-Es-Pt: 10
+          PT_ES:
+            tolerance-Es-Fr: 50
+            tolerance-Es-Pt: 10
+      whitelist:
+        - http://gridcapa-minio:9000/
+
+    minio-adapter:
+      bucket: ${MINIO_BUCKET}
+      base-path: ${MINIO_BASE_DIRECTORY}
+      access-key: ${GRIDCAPA_MINIO_USER}
+      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+      url: http://gridcapa-minio:9000/

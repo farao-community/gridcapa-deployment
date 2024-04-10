@@ -24,13 +24,13 @@ resources:
   - ../coreso-databridge-claims/swe-idcc-idcf
   - ../coreso-databridge-claims/core-cc
   - apps-metadata-server-configmap.yaml
-  - gridcapa-app-env-configmap.yaml
   - gridcapa-ingress.yaml
   - gridcapa-ingress-minio.yaml
   - ingress-middlewares.yaml
   - minio-pv-claim.yaml
   - postgresql-configmap.yaml
   - postgresql-pv-claim.yaml
+  - ../../../../configuration/gridcapa-gateway-johndoe-configmap.yaml
 
 components:
   - ../../main_versions/test
@@ -248,7 +248,24 @@ patches:
       - op: remove
         path: /spec/template/spec/volumes/2
 
+  # Use "John Doe" gateway config to share UI config across all users
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: gateway
+      spec:
+        template:
+          spec:
+            volumes:
+              - name: gateway-configmap-volume
+                configMap:
+                  name: gateway-johndoe-configmap
+
 configMapGenerator:
   - name: env-configmap
     envs:
       - env.properties
+  - name: gridcapa-app-env-configmap
+    files:
+      - env.json=gridcapa-app-env-config.json

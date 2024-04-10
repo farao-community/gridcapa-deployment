@@ -1,0 +1,55 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: swe-idcc-idcf-gridcapa-job-launcher-configmap
+  labels:
+    app: gridcapa
+    component: job-launcher
+    region: swe
+    process: idcc-idcf
+data:
+  application.yml: |-
+    logback:
+      amqp:
+        exchange: swe-idcc-idcf-task-manager-logs-exchange
+        routing-key: "#"
+    spring:
+      application:
+        name: swe-idcc-idcf-job-launcher
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+      cloud:
+        stream:
+          bindings:
+            default:
+              group: swe-idcc-idcf-job-launcher
+            run-task:
+              destination: swe-idcc-idcf-run-task
+            stop-task:
+              destination: swe-idcc-idcf-stop-task
+            consumeTaskDtoUpdate-in-0:
+              destination: swe-idcc-idcf-task-updated
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+            bindings:
+              consumeTaskDtoUpdate-in-0:
+                consumer:
+                  binding-routing-key: status
+
+    job-launcher:
+      url:
+        task-manager-timestamp-url: http://swe-idcc-idcf-task-manager/tasks/
+        task-manager-business-date-url: http://swe-idcc-idcf-task-manager/tasks/businessdate/
+      process:
+        tag: SWE_IDCC_IDCF
+        timezone: CET
+
+    scheduler:
+      enable: false
+

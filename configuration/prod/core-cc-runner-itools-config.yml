@@ -17,7 +17,9 @@ rao-linear-optimization-solver:
   solver-specific-parameters: THREADS 1 MAXNODE 100000 MAXTIME 300
 
 rao-topological-actions-optimization:
-  max-search-tree-depth: 4
+  max-preventive-search-tree-depth: 4
+  max-auto-search-tree-depth: 4
+  max-curative-search-tree-depth: 4
   relative-minimum-impact-threshold: 0.0
   absolute-minimum-impact-threshold: 10.0
   skip-actions-far-from-most-limiting-element: true
@@ -62,6 +64,7 @@ rao-mnec-parameters:
 rao-relative-margins-parameters:
   ptdf-boundaries: [ "{FR}-{BE}", "{FR}-{DE}", "{BE}-{NL}", "{NL}-{DE}", "{DE}-{PL}", "{DE}-{CZ}", "{DE}-{AT}", "{PL}-{CZ}", "{PL}-{SK}", "{CZ}-{SK}", "{CZ}-{AT}", "{AT}-{HU}", "{AT}-{SI}", "{SI}-{HR}", "{SK}-{HU}", "{HU}-{RO}", "{HU}-{HR}", "{HU}-{SI}", "{BE}-{22Y201903144---9}-{DE}+{22Y201903145---4}" ]
   ptdf-sum-lower-bound: 0.01
+  ptdf-approximation: UPDATE_PTDF_WITH_TOPO
 
 load-flow-default-parameters:
   voltageInitMode: DC_VALUES

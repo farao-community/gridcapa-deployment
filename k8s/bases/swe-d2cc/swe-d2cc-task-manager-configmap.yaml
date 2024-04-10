@@ -1,0 +1,268 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: swe-d2cc-task-manager-configmap
+  labels:
+    app: gridcapa
+    component: task-manager
+    region: swe
+    process: d2cc
+data:
+  application.yml: |-
+    spring:
+      datasource:
+        url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+        driverClassName: org.postgresql.Driver
+        username: ${POSTGRES_USER}
+        password: ${POSTGRES_PASSWORD}
+        sslmode: ${POSTGRES_SSL_MODE:disable}
+        hikari:
+          connectionTimeout: 30000
+          idleTimeout: 30000
+          maxLifetime: 2000000
+          maximumPoolSize: ${HIKARI_MAX_POOL_SIZE:10}
+          minimumIdle: ${HIKARI_MIN_IDLE:5}
+      jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        defer-datasource-initialization: true
+        hibernate:
+          ddl-auto: update
+      sql:
+        init:
+          mode: always
+          data-locations: file:/config/data.sql
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        port: 5672
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+      cloud:
+        stream:
+          default:
+            group: swe-d2cc-task-manager
+          bindings:
+            consumeMinioEvent-in-0:
+              destination: gridcapa.minio.events
+            consumeTaskStatusUpdate-in-0:
+              destination: swe-d2cc-task-status-updated
+            consumeTaskEventUpdate-in-0:
+              destination: swe-d2cc-task-manager-logs-exchange
+              consumer:
+                batch-mode: true
+            task-updated:
+              destination: swe-d2cc-task-updated
+            task-status-updated:
+              destination: swe-d2cc-task-updated
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+            bindings:
+              consumeMinioEvent-in-0:
+                consumer:
+                  exchange-type: fanout
+              consumeTaskEventUpdate-in-0:
+                consumer:
+                  enable-batching: true
+                  batch-size: 200
+                  receive-timeout: 3000
+              task-status-updated:
+                producer:
+                  routing-key-expression: '''status'''
+      servlet:
+        multipart:
+          max-file-size: 100MB
+          max-request-size: 100MB
+
+    task-server:
+      process:
+        tag: SWE_D2CC
+        timezone: CET
+        inputs:
+          - CRAC
+          - GLSK
+          - CORESO_SV
+          - REE_EQ
+          - REE_SSH
+          - REE_TP
+          - REN_EQ
+          - REN_SSH
+          - REN_TP
+          - RTE_EQ
+          - RTE_SSH
+          - RTE_TP
+          - BOUNDARY_EQ
+          - BOUNDARY_TP
+        outputs:
+          - TTC
+          - VOLTAGE_ESFR
+          - VOLTAGE_FRES
+          - CNE_ESFR_FIRST_UNSECURE
+          - CNE_ESFR_LAST_SECURE
+          - CGM_ESFR
+          - CNE_FRES_FIRST_UNSECURE
+          - CNE_FRES_LAST_SECURE
+          - CGM_FRES
+          - CNE_ESPT_FIRST_UNSECURE
+          - CNE_ESPT_LAST_SECURE
+          - CGM_ESPT
+          - CNE_PTES_FIRST_UNSECURE
+          - CNE_PTES_LAST_SECURE
+          - CGM_PTES
+        enable-export-logs: true
+        manual-upload-base-path: ${MINIO_BASE_DIRECTORY}
+      whitelist:
+        - http://gridcapa-minio:9000/
+
+    minio-adapter:
+      bucket: gridcapa
+      base-path:
+      url: http://gridcapa-minio:9000/
+      access-key: ${MINIO_ACCESS_KEY}
+      secret-key: ${MINIO_SECRET_KEY}
+
+    stomp:
+      allowed-origin: ${APP_URL}
+      starting-ws-endpoint: /tasks/notify
+      notify: /task
+      receive-request: /app
+
+    logback:
+      amqp:
+        exchange: swe-d2cc-task-manager-logs-exchange
+
+    runner:
+      parameters:
+        RUN_ES-FR: true
+        RUN_FR-ES: true
+        RUN_ES-PT: true
+        RUN_PT-ES: true
+        MAX_TTC_ES-FR: 6400
+        MAX_TTC_FR-ES: 6400
+        MAX_TTC_ES-PT: 6400
+        MAX_TTC_PT-ES: 6400
+        MIN_TTC_ES-FR: 0
+        MIN_TTC_FR-ES: 0
+        MIN_TTC_ES-PT: 0
+        MIN_TTC_PT-ES: 0
+        DICHOTOMY_PRECISION_ES-FR: 50
+        DICHOTOMY_PRECISION_FR-ES: 50
+        DICHOTOMY_PRECISION_ES-PT: 50
+        DICHOTOMY_PRECISION_PT-ES: 50
+        RUN_ANGLE_CHECK: true
+        RUN_VOLTAGE_CHECK: true
+        MAX_CRA: 10
+        MAX_NEWTON_RAPHSON_ITERATIONS: 15
+        DISABLE_SECOND_PREVENTIVE_RAO: false
+
+  data.sql: |-
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('RUN_ES-FR', 'Run ES -> FR', 10, 'BOOLEAN', 'ES -> FR', 1, 'true')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Run ES -> FR', display_order = 10, parameter_type = 'BOOLEAN', section_title = 'ES -> FR', section_order = 1;
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('RUN_FR-ES', 'Run FR -> ES', 10, 'BOOLEAN', 'FR -> ES', 2, 'true')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Run FR -> ES', display_order = 10, parameter_type = 'BOOLEAN', section_title = 'FR -> ES', section_order = 2;
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('RUN_ES-PT', 'Run ES -> PT', 10, 'BOOLEAN', 'ES -> PT', 3, 'true')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Run ES -> PT', display_order = 10, parameter_type = 'BOOLEAN', section_title = 'ES -> PT', section_order = 3;
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('RUN_PT-ES', 'Run PT -> ES', 10, 'BOOLEAN', 'PT -> ES', 4, 'true')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Run PT -> ES', display_order = 10, parameter_type = 'BOOLEAN', section_title = 'PT -> ES', section_order = 4;
+
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('MAX_TTC_ES-FR', 'Max TTC (MW)', 20, 'INT', 'ES -> FR', 1, '6400')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Max TTC', display_order = 20, parameter_type = 'INT', section_title = 'ES -> FR', section_order = 1;
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('MAX_TTC_FR-ES', 'Max TTC (MW)', 20, 'INT', 'FR -> ES', 2, '6400')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Max TTC (MW)', display_order = 20, parameter_type = 'INT', section_title = 'FR -> ES', section_order = 2;
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('MAX_TTC_ES-PT', 'Max TTC (MW)', 20, 'INT', 'ES -> PT', 3, '6400')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Max TTC (MW)', display_order = 20, parameter_type = 'INT', section_title = 'ES -> PT', section_order = 3;
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('MAX_TTC_PT-ES', 'Max TTC (MW)', 20, 'INT', 'PT -> ES', 4, '6400')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Max TTC (MW)', display_order = 20, parameter_type = 'INT', section_title = 'PT -> ES', section_order = 4;
+
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('MIN_TTC_ES-FR', 'Min TTC (MW)', 30, 'INT', 'ES -> FR', 1, '0')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Min TTC (MW)', display_order = 30, parameter_type = 'INT', section_title = 'ES -> FR', section_order = 1;
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('MIN_TTC_FR-ES', 'Min TTC (MW)', 30, 'INT', 'FR -> ES', 2, '0')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Min TTC (MW)', display_order = 30, parameter_type = 'INT', section_title = 'FR -> ES', section_order = 2;
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('MIN_TTC_ES-PT', 'Min TTC (MW)', 30, 'INT', 'ES -> PT', 3, '0')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Min TTC (MW)', display_order = 30, parameter_type = 'INT', section_title = 'ES -> PT', section_order = 3;
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('MIN_TTC_PT-ES', 'Min TTC (MW)', 30, 'INT', 'PT -> ES', 4, '0')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Min TTC (MW)', display_order = 30, parameter_type = 'INT', section_title = 'PT -> ES', section_order = 4;
+
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('DICHOTOMY_PRECISION_ES-FR', 'Dichotomy precision (MW)', 40, 'INT', 'ES -> FR', 1, '50')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Dichotomy precision (MW)', display_order = 40, parameter_type = 'INT', section_title = 'ES -> FR', section_order = 1;
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('DICHOTOMY_PRECISION_FR-ES', 'Dichotomy precision (MW)', 40, 'INT', 'FR -> ES', 2, '50')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Dichotomy precision (MW)', display_order = 40, parameter_type = 'INT', section_title = 'FR -> ES', section_order = 2;
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('DICHOTOMY_PRECISION_ES-PT', 'Dichotomy precision (MW)', 40, 'INT', 'ES -> PT', 3, '50')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Dichotomy precision (MW)', display_order = 40, parameter_type = 'INT', section_title = 'ES -> PT', section_order = 3;
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('DICHOTOMY_PRECISION_PT-ES', 'Dichotomy precision (MW)', 40, 'INT', 'PT -> ES', 4, '50')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Dichotomy precision (MW)', display_order = 40, parameter_type = 'INT', section_title = 'PT -> ES', section_order = 4;
+
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('RUN_ANGLE_CHECK', 'Run angle check', 10, 'BOOLEAN', 'RAO Parameters', 5, 'true')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Run angle check', display_order = 10, parameter_type = 'BOOLEAN', section_title = 'RAO Parameters', section_order = 5;
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('RUN_VOLTAGE_CHECK', 'Run voltage check', 20, 'BOOLEAN', 'RAO Parameters', 5, 'true')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Run voltage check', display_order = 20, parameter_type = 'BOOLEAN', section_title = 'RAO Parameters', section_order = 5;
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('MAX_CRA', 'Max amount of Curative RA', 30, 'INT', 'RAO Parameters', 5, '10')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Max amount of Curative RA', display_order = 30, parameter_type = 'INT', section_title = 'RAO Parameters', section_order = 5;
+
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('DISABLE_SECOND_PREVENTIVE_RAO', 'Disable second preventive RAO', 40, 'BOOLEAN', 'RAO Parameters', 5, 'false')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Disable second preventive RAO', display_order = 40, parameter_type = 'BOOLEAN', section_title = 'RAO Parameters', section_order = 5;
+    
+    
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, value)
+    VALUES ('MAX_NEWTON_RAPHSON_ITERATIONS', 'Max number of iterations', 10, 'INT', 'LoadFlow Parameters', 6, '15')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'Max number of iterations', display_order = 10, parameter_type = 'INT', section_title = 'LoadFlow Parameters', section_order = 6;
