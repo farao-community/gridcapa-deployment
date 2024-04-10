@@ -78,9 +78,17 @@ jobs:
           commit_message: "Prepare release ${{ env.RELEASE_VERSION }} for ${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
           tagging_message: "v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
 
+#      - name: Create Pull Request
+#        uses: peter-evans/create-pull-request@v3
+#        with:
+#          title: "Update version to v${{ env.RELEASE_VERSION }} for ${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
+#          branch: "release-v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
+#          base: master
+
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: pascalgn/automerge-action@main
         with:
+          delete_branch: true
           title: "Update version to v${{ env.RELEASE_VERSION }} for ${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
           branch: "release-v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
-          base: master
+          base: "master"
