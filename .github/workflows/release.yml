@@ -40,10 +40,10 @@ jobs:
         id: find_configmap_file
         run: |
           if [ "${ENVIRONMENT}" == "azure" ]; then
-            path="k8s/overlays/azure/${NAMESPACE}/gridcapa-app-env-configmap.json"
+            path="k8s/overlays/azure/${NAMESPACE}/gridcapa-app-env-config.json"
             sed_pattern="s/Azure .* : [0-9.]\+/Azure ${NAMESPACE} : ${RELEASE_VERSION}/g"
           else
-            path="k8s/overlays/coreso/${NAMESPACE}/gridcapa-app-env-configmap.json"
+            path="k8s/overlays/coreso/${NAMESPACE}/gridcapa-app-env-config.json"
             sed_pattern="s/Coreso .* : [0-9.]\+/Coreso ${NAMESPACE} : ${RELEASE_VERSION}/g"
           fi
           echo "configmap_file=${path}" >> $GITHUB_ENV
