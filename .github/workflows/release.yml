@@ -1,7 +1,7 @@
 name: Release job
 
-# Description: This workflow updates the version in the ConfigMap file,
-# creates a commit with the updated version, and creates a pull request.
+# This workflow updates the HMI displayed version in the ConfigMap file,
+# creates a commit with the updated version, tag it and creates a pull request to merge it into master.
 
 on:
   push:
@@ -26,25 +26,22 @@ jobs:
       RELEASE_VERSION: ${{ github.event.inputs.releaseVersion || '99.99.99' }}
       ENVIRONMENT: ${{ github.event.inputs.environment || 'azure' }}
       NAMESPACE: ${{ github.event.inputs.namespace || 'test' }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+   #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Save environment variables to file
+      - name: Save environment variable to file
         run: |
-          echo "RELEASE_VERSION=${RELEASE_VERSION}" >> $GITHUB_ENV
-          echo "ENVIRONMENT=${ENVIRONMENT}" >> $GITHUB_ENV
-          echo "NAMESPACE=${NAMESPACE}" >> $GITHUB_ENV
+          echo "COMPLETE_VERSION=v${RELEASE_VERSION}-${ENVIRONMENT}-${NAMESPACE}" >> $GITHUB_ENV
 
       - name: Find ConfigMap file
         id: find_configmap_file
         run: |
+          path="k8s/overlays/${ENVIRONMENT}/${NAMESPACE}/gridcapa-app-env-config.json"
           if [ "${ENVIRONMENT}" == "azure" ]; then
-            path="k8s/overlays/azure/${NAMESPACE}/gridcapa-app-env-config.json"
             sed_pattern="s/Azure .* : [0-9.]\+/Azure ${NAMESPACE} : ${RELEASE_VERSION}/g"
           else
-            path="k8s/overlays/coreso/${NAMESPACE}/gridcapa-app-env-config.json"
             sed_pattern="s/Coreso .* : [0-9.]\+/Coreso ${NAMESPACE} : ${RELEASE_VERSION}/g"
           fi
           echo "configmap_file=${path}" >> $GITHUB_ENV
@@ -74,10 +71,10 @@ jobs:
       - name: Commit and tag release version
         uses: stefanzweifel/git-auto-commit-action@master
         with:
-          branch: "release-v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
+          branch: "release-${{ env.COMPLETE_VERSION }}"
           create_branch: true
-          commit_message: "Prepare release ${{ env.RELEASE_VERSION }} for ${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
-          tagging_message: "v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
+          commit_message: "Prepare release ${{ env.COMPLETE_VERSION }}"
+          tagging_message: "${{ env.COMPLETE_VERSION }}"
 
       - name: Create pull Request
-        run: gh pr create -B master -H "release-v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}" --title 'Update HMI version' --body 'Created by Github action'#
+        run: gh pr create -B master -H "release-${{ env.COMPLETE_VERSION }}" --title 'Update HMI version of ${ENVIRONMENT}-${NAMESPACE} to ${RELEASE_VERSION}'
