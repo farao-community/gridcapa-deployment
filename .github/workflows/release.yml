@@ -4,9 +4,6 @@ name: Release job
 # creates a commit with the updated version, tag it and creates a pull request to merge it into master.
 
 on:
-  push:
-    branches:
-      - add_release_job
   workflow_dispatch:
     inputs:
       releaseVersion:
@@ -23,8 +20,8 @@ jobs:
   release:
     runs-on: ubuntu-latest
     env:
-      RELEASE_VERSION: ${{ github.event.inputs.releaseVersion || '99.99.99' }}
-      NAMESPACE: ${{ github.event.inputs.namespace || 'TEST' }}
+      RELEASE_VERSION: ${{ github.event.inputs.releaseVersion}}
+      NAMESPACE: ${{ github.event.inputs.namespace}}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
@@ -50,13 +47,12 @@ jobs:
           commit_message: "Prepare release ${{ env.COMPLETE_VERSION }}"
           tagging_message: "${{ env.COMPLETE_VERSION }}"
 
-#Merging on a dummy master to try merge
       - name: Merge automatically into source branch
         uses: devmasx/merge-branch@master
         with:
           type: now
           from_branch: release-${{ env.COMPLETE_VERSION }}
-          target_branch: dummy_branch_test_merge
+          target_branch: master
           message: Automatic merge after release ${{ github.event.inputs.releaseVersion }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
