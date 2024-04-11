@@ -50,20 +50,18 @@ jobs:
           commit_message: "Prepare release ${{ env.COMPLETE_VERSION }}"
           tagging_message: "${{ env.COMPLETE_VERSION }}"
 
-      - name: Create pull Request
-        run: |
-          gh pr create -B master -H "release-${{ env.COMPLETE_VERSION }}" --title "Update HMI version of ${{ env.COMPLETE_VERSION }}" --body "Created by Github action"
-#      - name: Merge automatically into source branch
-#        uses: devmasx/merge-branch@master
-#        with:
-#          type: now
-#          from_branch: release-${{ env.COMPLETE_VERSION }}
-#          target_branch: master
-#          message: Automatic merge after release ${{ github.event.inputs.releaseVersion }}
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#
-#      - name: Delete merged branch
-#        uses: dawidd6/action-delete-branch@v3
-#        with:
-#          branches: release-${{ env.COMPLETE_VERSION }}
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#Merging on a dummy master to try merge
+      - name: Merge automatically into source branch
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: release-${{ env.COMPLETE_VERSION }}
+          target_branch: dummy_branch_test_merge
+          message: Automatic merge after release ${{ github.event.inputs.releaseVersion }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Delete merged branch
+        uses: dawidd6/action-delete-branch@v3
+        with:
+          branches: release-${{ env.COMPLETE_VERSION }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
