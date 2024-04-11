@@ -26,7 +26,7 @@ jobs:
       RELEASE_VERSION: ${{ github.event.inputs.releaseVersion || '99.99.99' }}
       ENVIRONMENT: ${{ github.event.inputs.environment || 'azure' }}
       NAMESPACE: ${{ github.event.inputs.namespace || 'test' }}
-   #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
