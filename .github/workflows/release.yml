@@ -78,4 +78,4 @@ jobs:
 
       - name: Create pull Request
         run: |
-         gh pr create -B master -H "release-${{ env.COMPLETE_VERSION }}" --title 'Update HMI version of \"$ENVIRONMENT\"-\"$NAMESPACE\" to \"$RELEASE_VERSION\"' --body 'Created by Github action'#
+          gh pr create -B master -H "release-${{ env.COMPLETE_VERSION }}" --title "Update HMI version of ${{ env.COMPLETE_VERSION }}" --body "Created by Github action"
