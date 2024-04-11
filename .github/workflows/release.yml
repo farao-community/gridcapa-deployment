@@ -10,21 +10,21 @@ on:
   workflow_dispatch:
     inputs:
       releaseVersion:
-        description: 'Release version'
+        description: 'Release version, of pattern XX.YY.ZZ'
         required: true
       namespace:
         type: choice
-        description: 'Namespace'
+        description: 'Namespace, used only in tag name.'
         required: true
         options:
-          - test
-          - prod
+          - TEST
+          - PROD
 jobs:
   release:
     runs-on: ubuntu-latest
     env:
       RELEASE_VERSION: ${{ github.event.inputs.releaseVersion || '99.99.99' }}
-      NAMESPACE: ${{ github.event.inputs.namespace || 'test' }}
+      NAMESPACE: ${{ github.event.inputs.namespace || 'TEST' }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
@@ -32,14 +32,15 @@ jobs:
 
       - name: Save environment variable to file
         run: |
-          echo "COMPLETE_VERSION=v${RELEASE_VERSION}-CORESO-${NAMESPACE}" | tr '[:lower:]' '[:upper:]' >> $GITHUB_ENV
+          echo "COMPLETE_VERSION=v${RELEASE_VERSION}-CORESO-${NAMESPACE}" >> $GITHUB_ENV
 
       - name: Change version displayed in every environment
         run: |
-          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" k8s/overlays/azure/dev/gridcapa-app-env-config.json
-          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" k8s/overlays/azure/test/gridcapa-app-env-config.json
-          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" k8s/overlays/coreso/test/gridcapa-app-env-config.json
-          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" k8s/overlays/coreso/prod/gridcapa-app-env-config.json
+          sedPattern=sed -i "ss/[1-9][0-9]*\(\.[1-9][0-9]*\)\{2\}/${RELEASE_VERSION}/g" k8s/overlays
+          eval $sedPattern/azure/dev/gridcapa-app-env-config.json
+          eval $sedPattern/azure/test/gridcapa-app-env-config.json
+          eval $sedPattern/coreso/test/gridcapa-app-env-config.json
+          eval $sedPattern/coreso/prod/gridcapa-app-env-config.json
 
       - name: Commit and tag release version
         uses: stefanzweifel/git-auto-commit-action@master
