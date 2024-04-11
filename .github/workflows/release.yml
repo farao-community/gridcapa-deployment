@@ -36,7 +36,6 @@ jobs:
           echo "COMPLETE_VERSION=v${RELEASE_VERSION}-${ENVIRONMENT}-${NAMESPACE}" >> $GITHUB_ENV
 
       - name: Find ConfigMap file
-        id: find_configmap_file
         run: |
           path="k8s/overlays/${ENVIRONMENT}/${NAMESPACE}/gridcapa-app-env-config.json"
           if [ "${ENVIRONMENT}" == "azure" ]; then
@@ -63,10 +62,6 @@ jobs:
           sed_command="sed -i '${{ env.sed_pattern }}' '${{ env.configmap_file }}'"
           echo "$sed_command"
           eval "$sed_command"
-
-#TO DELETE AFTER DEBUG
-      - name: Display modified ConfigMap content
-        run: cat ${configmap_file}
 
       - name: Commit and tag release version
         uses: stefanzweifel/git-auto-commit-action@master
