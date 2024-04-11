@@ -12,19 +12,18 @@ on:
       releaseVersion:
         description: 'Release version'
         required: true
-      environment:
-        description: 'Environment (coreso/azure)'
-        required: true
       namespace:
-        description: 'Namespace (dev/test/prod)'
+        type: choice
+        description: 'Namespace'
         required: true
-
+        options:
+          - test
+          - prod
 jobs:
   release:
     runs-on: ubuntu-latest
     env:
       RELEASE_VERSION: ${{ github.event.inputs.releaseVersion || '99.99.99' }}
-      ENVIRONMENT: ${{ github.event.inputs.environment || 'azure' }}
       NAMESPACE: ${{ github.event.inputs.namespace || 'test' }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -33,40 +32,19 @@ jobs:
 
       - name: Save environment variable to file
         run: |
-          echo "COMPLETE_VERSION=v${RELEASE_VERSION}-${ENVIRONMENT}-${NAMESPACE}" | tr '[:lower:]' '[:upper:]' >> $GITHUB_ENV
+          echo "COMPLETE_VERSION=v${RELEASE_VERSION}-CORESO-${NAMESPACE}" | tr '[:lower:]' '[:upper:]' >> $GITHUB_ENV
 
-      - name: Find ConfigMap file
+      - name: Change version displayed in every environment
         run: |
-          path="k8s/overlays/${ENVIRONMENT}/${NAMESPACE}/gridcapa-app-env-config.json"
-          if [ "${ENVIRONMENT}" == "azure" ]; then
-            sed_pattern="s/Azure .* : [0-9.]\+/Azure ${NAMESPACE} : ${RELEASE_VERSION}/g"
-          else
-            sed_pattern="s/Coreso .* : [0-9.]\+/Coreso ${NAMESPACE} : ${RELEASE_VERSION}/g"
-          fi
-          echo "configmap_file=${path}" >> $GITHUB_ENV
-          echo "sed_pattern=${sed_pattern}" >> $GITHUB_ENV
-
-      - name: Check if ConfigMap file exists
-        run: |
-          if [ -f "${{ env.configmap_file }}" ]; then
-            echo "ConfigMap file exists."
-          else
-            echo "Error: ConfigMap file does not exist."
-            exit 1
-          fi
-        shell: bash
-
-      - name: Change version in ConfigMap file
-        run: |
-          echo "Executing sed command:"
-          sed_command="sed -i '${{ env.sed_pattern }}' '${{ env.configmap_file }}'"
-          echo "$sed_command"
-          eval "$sed_command"
+          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" /k8s/overlays/azure/dev/gridcapa-app-env-config.json
+          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" /k8s/overlays/azure/test/gridcapa-app-env-config.json
+          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" /k8s/overlays/coreso/test/gridcapa-app-env-config.json
+          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" /k8s/overlays/coreso/prod/gridcapa-app-env-config.json
 
       - name: Commit and tag release version
         uses: stefanzweifel/git-auto-commit-action@master
         with:
-          branch: "release-${{ env.COMPLETE_VERSION }}"
+          branch: release-${{ env.COMPLETE_VERSION }}
           create_branch: true
           commit_message: "Prepare release ${{ env.COMPLETE_VERSION }}"
           tagging_message: "${{ env.COMPLETE_VERSION }}"
@@ -74,3 +52,17 @@ jobs:
       - name: Create pull Request
         run: |
           gh pr create -B master -H "release-${{ env.COMPLETE_VERSION }}" --title "Update HMI version of ${{ env.COMPLETE_VERSION }}" --body "Created by Github action"
+#      - name: Merge automatically into source branch
+#        uses: devmasx/merge-branch@master
+#        with:
+#          type: now
+#          from_branch: release-${{ env.COMPLETE_VERSION }}
+#          target_branch: master
+#          message: Automatic merge after release ${{ github.event.inputs.releaseVersion }}
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#
+#      - name: Delete merged branch
+#        uses: dawidd6/action-delete-branch@v3
+#        with:
+#          branches: release-${{ env.COMPLETE_VERSION }}
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
