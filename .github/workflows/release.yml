@@ -33,7 +33,7 @@ jobs:
 
       - name: Save environment variable to file
         run: |
-          echo "COMPLETE_VERSION=v${RELEASE_VERSION}-${ENVIRONMENT}-${NAMESPACE}" >> $GITHUB_ENV
+          echo "COMPLETE_VERSION=v${RELEASE_VERSION}-${ENVIRONMENT}-${NAMESPACE}" | tr '[:lower:]' '[:upper:]' >> $GITHUB_ENV
 
       - name: Find ConfigMap file
         run: |
@@ -69,7 +69,7 @@ jobs:
           branch: "release-${{ env.COMPLETE_VERSION }}"
           create_branch: true
           commit_message: "Prepare release ${{ env.COMPLETE_VERSION }}"
-          tagging_message: "${{ env.COMPLETE_VERSION }}".toUpperCase()
+          tagging_message: "${{ env.COMPLETE_VERSION }}"
 
       - name: Create pull Request
         run: |
