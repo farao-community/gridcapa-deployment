@@ -36,10 +36,10 @@ jobs:
 
       - name: Change version displayed in every environment
         run: |
-          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" /k8s/overlays/azure/dev/gridcapa-app-env-config.json
-          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" /k8s/overlays/azure/test/gridcapa-app-env-config.json
-          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" /k8s/overlays/coreso/test/gridcapa-app-env-config.json
-          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" /k8s/overlays/coreso/prod/gridcapa-app-env-config.json
+          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" k8s/overlays/azure/dev/gridcapa-app-env-config.json
+          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" k8s/overlays/azure/test/gridcapa-app-env-config.json
+          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" k8s/overlays/coreso/test/gridcapa-app-env-config.json
+          sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${RELEASE_VERSION}/g" k8s/overlays/coreso/prod/gridcapa-app-env-config.json
 
       - name: Commit and tag release version
         uses: stefanzweifel/git-auto-commit-action@master
