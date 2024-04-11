@@ -26,6 +26,8 @@ jobs:
       RELEASE_VERSION: ${{ github.event.inputs.releaseVersion || '99.99.99' }}
       ENVIRONMENT: ${{ github.event.inputs.environment || 'azure' }}
       NAMESPACE: ${{ github.event.inputs.namespace || 'test' }}
+      BRANCH: "release-v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -35,6 +37,7 @@ jobs:
           echo "RELEASE_VERSION=${RELEASE_VERSION}" >> $GITHUB_ENV
           echo "ENVIRONMENT=${ENVIRONMENT}" >> $GITHUB_ENV
           echo "NAMESPACE=${NAMESPACE}" >> $GITHUB_ENV
+          echo "BRANCH=${BRANCH}" >> $GITHUB_BRANCH
 
       - name: Find ConfigMap file
         id: find_configmap_file
@@ -73,22 +76,10 @@ jobs:
       - name: Commit and tag release version
         uses: stefanzweifel/git-auto-commit-action@master
         with:
-          branch: "release-v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
+          branch: ${{ env.GITHUB_BRANCH }}
           create_branch: true
           commit_message: "Prepare release ${{ env.RELEASE_VERSION }} for ${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
           tagging_message: "v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
 
-#      - name: Create Pull Request
-#        uses: peter-evans/create-pull-request@v3
-#        with:
-#          title: "Update version to v${{ env.RELEASE_VERSION }} for ${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
-#          branch: "release-v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
-#          base: master
-
-      - name: Create Pull Request
-        uses: pascalgn/automerge-action@main
-        with:
-          delete_branch: true
-          title: "Update version to v${{ env.RELEASE_VERSION }} for ${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
-          branch: "release-v${{ env.RELEASE_VERSION }}-${{ env.ENVIRONMENT }}-${{ env.NAMESPACE }}"
-          base: "master"
+      - name: Create pull Request
+        run: gh pr create -B master -H ${{ env.GITHUB_BRANCH }} --title 'Update HMI version' --body 'Created by Github action'#
