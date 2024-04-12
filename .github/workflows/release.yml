@@ -53,7 +53,7 @@ jobs:
           type: now
           from_branch: release-${{ env.COMPLETE_VERSION }}
           target_branch: master
-          message: Automatic merge after release ${{ github.event.inputs.releaseVersion }}
+          message: Automatic merge after release ${{ env.RELEASE_VERSION }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Delete merged branch
