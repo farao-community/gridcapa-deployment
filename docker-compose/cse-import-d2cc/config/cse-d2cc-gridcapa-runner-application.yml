@@ -13,7 +13,7 @@ spring:
       default:
         binder: rabbit
       bindings:
-        interrupt-in-0:
+        softInterrupt-in-0:
           destination: cse-import-d2cc-stop-task
         request-in-0:
           destination: cse-import-d2cc-request
