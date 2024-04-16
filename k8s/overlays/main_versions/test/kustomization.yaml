@@ -87,7 +87,7 @@ images:
     newTag: v1.4.0
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
-    newTag: 1.18.0
+    newTag: v1.18.0
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.26.1
