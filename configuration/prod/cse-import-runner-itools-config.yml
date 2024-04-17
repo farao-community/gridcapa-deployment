@@ -60,6 +60,3 @@ rao-second-preventive-rao:
 
 rao-not-optimized-cnecs:
   do-not-optimize-curative-cnecs-for-tsos-without-cras: false
-
-rao-ra-usage-limits-per-contingency:
-  max-curative-ra-per-tso: [ "{IT}:6", "{FR}:5", "{CH}:1", "{AT}:3", "{SI}:3" ]
