@@ -1,0 +1,63 @@
+name: Release job
+
+# This workflow updates the HMI displayed version in the ConfigMap file,
+# creates a commit with the updated version, tag it and creates a pull request to merge it into master.
+
+on:
+  workflow_dispatch:
+    inputs:
+      releaseVersion:
+        description: 'Release version, of pattern XX.YY.ZZ'
+        required: true
+      namespace:
+        type: choice
+        description: 'Namespace, used only in tag name.'
+        required: true
+        options:
+          - TEST
+          - PROD
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_VERSION: ${{ github.event.inputs.releaseVersion}}
+      NAMESPACE: ${{ github.event.inputs.namespace}}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Save environment variable to file
+        run: |
+          echo "COMPLETE_VERSION=v${RELEASE_VERSION}-CORESO-${NAMESPACE}" >> $GITHUB_ENV
+
+      - name: Change version displayed in every environment
+        run: |
+          sedPattern="sed -i 's/[0-9][0-9]*\(\.[0-9][0-9]*\)\{2\}/${RELEASE_VERSION}/g' k8s/overlays"
+          eval "$sedPattern/azure/dev/gridcapa-app-env-config.json"
+          eval "$sedPattern/azure/test/gridcapa-app-env-config.json"
+          eval "$sedPattern/coreso/test/gridcapa-app-env-config.json"
+          eval "$sedPattern/coreso/prod/gridcapa-app-env-config.json"
+
+      - name: Commit and tag release version
+        uses: stefanzweifel/git-auto-commit-action@master
+        with:
+          branch: release-${{ env.COMPLETE_VERSION }}
+          create_branch: true
+          commit_message: "Prepare release ${{ env.COMPLETE_VERSION }}"
+          tagging_message: "${{ env.COMPLETE_VERSION }}"
+
+      - name: Merge automatically into source branch
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: release-${{ env.COMPLETE_VERSION }}
+          target_branch: master
+          message: Automatic merge after release ${{ env.RELEASE_VERSION }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Delete merged branch
+        uses: dawidd6/action-delete-branch@v3
+        with:
+          branches: release-${{ env.COMPLETE_VERSION }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
