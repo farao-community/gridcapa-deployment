@@ -52,7 +52,7 @@ jobs:
         with:
           type: now
           from_branch: release-${{ env.COMPLETE_VERSION }}
-          target_branch: master
+          target_branch: ${{ github.ref_name }}
           message: Automatic merge after release ${{ env.RELEASE_VERSION }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
