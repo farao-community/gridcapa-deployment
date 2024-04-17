@@ -21,12 +21,12 @@ data:
           reply-timeout: 7200000
       cloud:
         function:
-          definition: request;interrupt
+          definition: request;softInterrupt
         stream:
           default:
             binder: rabbit
           bindings:
-            interrupt-in-0:
+            softInterrupt-in-0:
               destination: swe-idcc-stop-task
             request-in-0:
               destination: swe-idcc-request

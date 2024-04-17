@@ -54,7 +54,8 @@ data:
           "filterValue": [
             "Summary :",
             "dichotomy step",
-            "dichotomy index"
+            "dichotomy index",
+            "has been interrupted"
           ]
         }
       ]

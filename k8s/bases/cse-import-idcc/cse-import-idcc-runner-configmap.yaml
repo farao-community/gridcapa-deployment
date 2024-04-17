@@ -24,7 +24,7 @@ data:
           default:
             binder: rabbit
           bindings:
-            interrupt-in-0:
+            softInterrupt-in-0:
               destination: cse-import-idcc-stop-task
             request-in-0:
               destination: cse-import-idcc-request
