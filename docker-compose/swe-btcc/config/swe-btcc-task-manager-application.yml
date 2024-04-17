@@ -6,6 +6,10 @@ spring:
     password: swe-btcc
   jpa:
     defer-datasource-initialization: true
+    properties:
+      hibernate:
+        timezone:
+          default_storage: NORMALIZE
     hibernate:
       ddl-auto: update
   sql:

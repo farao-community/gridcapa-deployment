@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: swe-btcc-task-manager
+  labels:
+    app: gridcapa
+    component: task-manager
+    region: swe
+    process: btcc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: task-manager
+    region: swe
+    process: btcc
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http

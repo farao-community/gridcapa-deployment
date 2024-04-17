@@ -1,0 +1,38 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: swe-btcc-rao-logs-dispatcher-configmap
+  labels:
+    app: gridcapa
+    component: rao-logs-dispatcher
+    region: swe
+    process: btcc
+data:
+  application.yml: |-
+    spring:
+      application:
+        name: swe-btcc-rao-logs-dispatcher
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+      cloud:
+        stream:
+          default:
+            group: swe-btcc
+          bindings:
+            dispatchRaoEvents-in-0:
+              destination: rao-runners-logs
+            dispatchRaoEvents-out-0:
+              destination: swe-btcc-task-manager-logs-exchange
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+                dlqMaxLength: 100
+                dlqOverflowBehavior: drop-head
+
+    client:
+      name: swe-btcc-runner

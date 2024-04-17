@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: swe-btcc-adapter
   rabbitmq:
     username: gridcapa
     password: gridcapa

@@ -1,0 +1,45 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: swe-btcc-adapter-configmap
+  labels:
+    app: gridcapa
+    component: adapter
+    region: swe
+    process: btcc
+data:
+  application.yml: |-
+    spring:
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+      cloud:
+        stream:
+          bindings:
+            consumeTask-in-0:
+              binder: rabbit
+              destination: swe-btcc-run-task
+              group: swe-btcc-adapter
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+        function:
+          definition: consumeTask
+    
+    swe-adapter:
+      process-type: BTCC
+    
+    swe-runner:
+      binding:
+        destination: swe-btcc-request
+
+    minio-adapter:
+      bucket: ${MINIO_BUCKET}
+      base-path: ${MINIO_BASE_DIRECTORY}
+      access-key: ${GRIDCAPA_MINIO_USER}
+      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+      url: http://gridcapa-minio:9000/

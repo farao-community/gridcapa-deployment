@@ -1,78 +1,32 @@
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: swe-btcc-adapter-configmap
-  labels:
-    app: gridcapa
-    component: adapter
-    region: swe
-    process: btcc
-data:
-  application.yml: |-
-    spring:
-      rabbitmq:
-        host: gridcapa-rabbitmq
-        username: ${RABBITMQ_USER}
-        password: ${RABBITMQ_PASSWORD}
-        port: 5672
-      cloud:
-        stream:
-          bindings:
-            consumeTask-in-0:
-              binder: rabbit
-              destination: swe-btcc-run-task
-              group: swe-btcc-adapter
-          rabbit:
-            default:
-              consumer:
-                auto-bind-dlq: true
-                max-attempts: 1
-        function:
-          definition: consumeTask
-    
-    swe-adapter:
-      process-type: BTCC
-    
-    swe-runner:
-      binding:
-        destination: swe-btcc-request
-
-    minio-adapter:
-      bucket: ${MINIO_BUCKET}
-      base-path: ${MINIO_BASE_DIRECTORY}
-      access-key: ${GRIDCAPA_MINIO_USER}
-      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
-      url: http://gridcapa-minio:9000/
-
----
-
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: swe-btcc-adapter
+  name: swe-btcc-runner
   labels:
     app: gridcapa
-    component: adapter
+    component: runner
     region: swe
     process: btcc
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: adapter
+      component: runner
       region: swe
       process: btcc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: adapter
+        component: runner
         region: swe
         process: btcc
+      annotations:
+        "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
     spec:
       containers:
-        - name: swe-btcc-adapter
-          image: gridcapa-swe-adapter
+        - name: gridcapa-swe-btcc-runner
+          image: gridcapa-swe-runner
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -110,7 +64,10 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: swe-btcc-adapter-configmap-volume
+              name: swe-btcc-runner-configmap-volume
+            - mountPath: /home/farao/.itools/config.yml
+              subPath: config.yml
+              name: swe-btcc-runner-itools-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -131,38 +88,16 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              cpu: "0.1"
-              memory: "384Mi"
+              cpu: "1.0"
+              memory: "17Gi"
             limits:
-              cpu: "0.5"
-              memory: "384Mi"
+              cpu: "5.0"
+              memory: "50Gi"
       restartPolicy: Always
       volumes:
-        - name: swe-btcc-adapter-configmap-volume
+        - name: swe-btcc-runner-configmap-volume
           configMap:
-            name: swe-btcc-adapter-configmap
-
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: swe-btcc-adapter
-  labels:
-    app: gridcapa
-    component: adapter
-    region: swe
-    process: btcc
-spec:
-  type: ClusterIP
-  selector:
-    app: gridcapa
-    component: adapter
-    region: swe
-    process: btcc
-  ports:
-    - port: 80
-      targetPort: 8080
-      name: http
-
+            name: swe-btcc-runner-configmap
+        - name: swe-btcc-runner-itools-configmap-volume
+          configMap:
+            name: swe-runner-itools-configmap

@@ -1,0 +1,83 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: swe-btcc-runner-configmap
+  labels:
+    app: gridcapa
+    component: runner
+    region: swe
+    process: btcc
+data:
+  application.yml: |-
+    spring:
+      application:
+        name: swe-btcc-runner
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        port: 5672
+        template:
+          reply-timeout: 7200000
+      cloud:
+        function:
+          definition: request;interrupt
+        stream:
+          default:
+            binder: rabbit
+          bindings:
+            interrupt-in-0:
+              destination: swe-btcc-stop-task
+            request-in-0:
+              destination: swe-btcc-request
+              group: swe-btcc-runner
+            request-out-0:
+              destination: swe-btcc-response
+            task-status-update:
+              destination: swe-btcc-task-status-updated
+            stop-rao:
+              destination: stop-rao-runner
+
+    logback:
+      amqp:
+        exchange: swe-btcc-task-manager-logs-exchange
+        routing-key: "#"
+
+    rao-runner-server:
+      amqp:
+        client-app-id: swe-btcc-runner
+        queue-name: rao-request-queue
+
+    swe-commons:
+      zone-id: "Europe/Paris"
+      shift-max-iteration-number: 30
+      modeling-authority-set:
+        REE: "http://www.ree.es/OperationalPlanning"
+        REN: "http://www.ren.pt/OperationalPlanning"
+        RTEFRANCE: "http://www.rte-france.com/OperationalPlanning"
+        SV: "http://www.coreso.eu/OperationalPlanning"
+    
+    swe-runner:
+      dichotomy:
+        parameters:
+          ES_FR:
+            tolerance-Es-Fr: 10
+            tolerance-Es-Pt: 50
+          FR_ES:
+            tolerance-Es-Fr: 10
+            tolerance-Es-Pt: 50
+          ES_PT:
+            tolerance-Es-Fr: 50
+            tolerance-Es-Pt: 10
+          PT_ES:
+            tolerance-Es-Fr: 50
+            tolerance-Es-Pt: 10
+      whitelist:
+        - http://gridcapa-minio:9000/
+    
+    minio-adapter:
+      bucket: ${MINIO_BUCKET}
+      base-path: ${MINIO_BASE_DIRECTORY}
+      access-key: ${GRIDCAPA_MINIO_USER}
+      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+      url: http://gridcapa-minio:9000/
