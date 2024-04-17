@@ -22,6 +22,10 @@ data:
           maximumPoolSize: ${HIKARI_MAX_POOL_SIZE:10}
           minimumIdle: ${HIKARI_MIN_IDLE:5}
       jpa:
+        properties:
+          hibernate:
+            timezone:
+              default_storage: NORMALIZE
         hibernate:
           ddl-auto: update
       rabbitmq:

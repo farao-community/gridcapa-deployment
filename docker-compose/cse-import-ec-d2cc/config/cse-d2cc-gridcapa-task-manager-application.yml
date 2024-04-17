@@ -5,6 +5,10 @@ spring:
     username: cse_import_ec_d2cc_server
     password: cse-import-ec-d2cc
   jpa:
+    properties:
+      hibernate:
+        timezone:
+          default_storage: NORMALIZE
     hibernate:
       ddl-auto: update
   rabbitmq:

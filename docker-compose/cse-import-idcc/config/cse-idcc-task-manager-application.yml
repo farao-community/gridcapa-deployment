@@ -5,6 +5,10 @@ spring:
     username: cse_import_idcc_server
     password: cse-import-idcc
   jpa:
+    properties:
+      hibernate:
+        timezone:
+          default_storage: NORMALIZE
     hibernate:
       ddl-auto: update
   rabbitmq:
