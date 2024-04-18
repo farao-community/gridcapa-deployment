@@ -1,0 +1,89 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: swe-btcc-gridcapa-app-process-metadata-configmap
+  labels:
+    app: gridcapa
+    component: front-app-process-metadata
+    region: swe
+    process: btcc
+data:
+  process-metadata.json: |-
+    {
+      "processName": "SWE BTCC",
+      "globalViewTimestampFilter": [
+      ],
+      "manualExportEnabled": false,
+      "parametersEnabled": true,
+      "eventLevelPredefinedFilter": [
+        {
+          "filterName": "INFO",
+          "defaultChecked": false,
+          "filterValue": [
+            "INFO"
+          ]
+        },
+        {
+          "filterName": "WARN",
+          "defaultChecked": false,
+          "filterValue": [
+            "WARN"
+          ]
+        },
+        {
+          "filterName": "ERROR",
+          "defaultChecked": false,
+          "filterValue": [
+            "ERROR"
+          ]
+        }
+      ],
+      "eventLogPredefinedFilter": [
+        {
+          "filterName": "Summary",
+          "defaultChecked": true,
+          "addErrors" : true,
+          "filterValue": [
+            "Summary ",
+            "Summary BD",
+            "dichotomy step",
+            "has been interrupted"
+          ]
+        },
+        {
+          "filterName": "ES-FR",
+          "defaultChecked": false,
+          "filterValue": [
+            "[ES-FR]"
+          ]
+        },
+        {
+          "filterName": "FR-ES",
+          "defaultChecked": false,
+          "filterValue": [
+            "[FR-ES]"
+          ]
+        },
+        {
+          "filterName": "ES-PT",
+          "defaultChecked": false,
+          "filterValue": [
+            "[ES-PT]"
+          ]
+        },
+        {
+          "filterName": "PT-ES",
+          "defaultChecked": false,
+          "filterValue":[
+            "[PT-ES]"
+          ]
+        },
+        {
+          "filterName": "Summary BD",
+          "defaultChecked": false,
+          "filterValue": [
+            "Summary BD"
+          ]
+        }
+      ]
+    }

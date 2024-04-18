@@ -1,0 +1,67 @@
+version: "3.7"
+services:
+  swe-btcc-gridcapa-app:
+    image: farao/gridcapa-app:latest
+    volumes:
+      - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ./config/swe-btcc-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+    networks:
+      - gridcapa
+
+  swe-btcc-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./config/swe-btcc-task-manager-application.yml:/config/application.yml
+      - ./config/data.sql:/config/data.sql
+    networks:
+      - gridcapa
+
+  swe-btcc-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    volumes:
+      - ./config/swe-btcc-job-launcher.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  swe-btcc-adapter:
+    image: farao/gridcapa-swe-adapter:latest
+    volumes:
+      - ./config/swe-btcc-adapter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  swe-btcc-runner:
+    image: farao/gridcapa-swe-runner:latest
+    volumes:
+      - ./config/swe-btcc-runner-application.yml:/config/application.yml
+      - ../../configuration/test/swe-runner-itools-config.yml:/home/farao/.itools/config.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  swe-btcc-rao-logs-dispatcher:
+    image: farao/gridcapa-rao-logs-dispatcher:latest
+    volumes:
+      - ./config/swe-btcc-rao-logs-dispatcher-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://rao-logs-dispatcher/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      - swe-btcc-task-manager
+    networks:
+      - gridcapa
+
+networks:
+  gridcapa:
+    name: gridcapa

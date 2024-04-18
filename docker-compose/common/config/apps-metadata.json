@@ -48,5 +48,10 @@
     "name" : "Capa CORE Capacity Calculation",
     "url"  : "/core/cc",
     "appColor" : "#AB7544"
+  },
+  {
+    "name" : "Capa SWE BT Capacity Calculation",
+    "url"  : "/swe/btcc",
+    "appColor" : "#A74FFF"
   }
 ]

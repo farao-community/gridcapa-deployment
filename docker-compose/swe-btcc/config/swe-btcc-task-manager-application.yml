@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://gridcapa-postgres:5432/swe_idcc_idcf_tasks
+    url: jdbc:postgresql://gridcapa-postgres:5432/swe_btcc_tasks
     driverClassName: org.postgresql.Driver
-    username: swe_idcc_idcf_server
-    password: swe-idcc-idcf
+    username: swe_btcc_server
+    password: swe-btcc
   jpa:
     defer-datasource-initialization: true
     properties:
@@ -24,20 +24,20 @@ spring:
   cloud:
     stream:
       default:
-        group: swe-idcc-idcf-task-manager
+        group: swe-btcc-task-manager
       bindings:
         consumeMinioEvent-in-0:
           destination: gridcapa.minio.events
         consumeTaskStatusUpdate-in-0:
-          destination: swe-idcc-idcf-task-status-updated
+          destination: swe-btcc-task-status-updated
         consumeTaskEventUpdate-in-0:
-          destination: swe-idcc-idcf-task-manager-logs-exchange
+          destination: swe-btcc-task-manager-logs-exchange
           consumer:
             batch-mode: true
         task-updated:
-          destination: swe-idcc-idcf-task-updated
+          destination: swe-btcc-task-updated
         task-status-updated:
-          destination: swe-idcc-idcf-task-updated
+          destination: swe-btcc-task-updated
       rabbit:
         default:
           consumer:
@@ -62,7 +62,7 @@ spring:
 
 task-server:
   process:
-    tag: SWE_IDCC_IDCF
+    tag: SWE_BTCC
     timezone: CET
     inputs:
       - CRAC
@@ -96,7 +96,7 @@ task-server:
       - CNE_PTES_LAST_SECURE
       - CGM_PTES
     enable-export-logs: true
-    manual-upload-base-path: SWE/IDCC_IDCF
+    manual-upload-base-path: SWE/BTCC
   whitelist:
     - http://minio:9000/
 
@@ -108,14 +108,14 @@ minio-adapter:
   secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
 
 stomp:
-  allowed-origin: http://swe-idcc-idcf-gridcapa-app
+  allowed-origin: http://swe-btcc-gridcapa-app
   starting-ws-endpoint: /tasks/notify
   notify: /task
   receive-request: /app
 
 logback:
   amqp:
-    exchange: swe-idcc-idcf-task-manager-logs-exchange
+    exchange: swe-btcc-task-manager-logs-exchange
 
 runner:
   parameters:
@@ -123,10 +123,10 @@ runner:
     RUN_FR-ES: true
     RUN_ES-PT: true
     RUN_PT-ES: true
-    MAX_TTC_ES-FR: 6400
-    MAX_TTC_FR-ES: 6400
-    MAX_TTC_ES-PT: 6400
-    MAX_TTC_PT-ES: 6400
+    MAX_TTC_ES-FR: 400
+    MAX_TTC_FR-ES: 400
+    MAX_TTC_ES-PT: 400
+    MAX_TTC_PT-ES: 400
     MIN_TTC_ES-FR: 0
     MIN_TTC_FR-ES: 0
     MIN_TTC_ES-PT: 0

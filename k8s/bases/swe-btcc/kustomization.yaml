@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - swe-btcc-adapter-configmap.yaml
+  - swe-btcc-adapter-deployment.yaml
+  - swe-btcc-adapter-service.yaml
+  - swe-btcc-app-configmap.yaml
+  - swe-btcc-app-deployment.yaml
+  - swe-btcc-app-service.yaml
+  - swe-btcc-job-launcher-configmap.yaml
+  - swe-btcc-job-launcher-deployment.yaml
+  - swe-btcc-job-launcher-service.yaml
+  - swe-btcc-minio-purge.yaml
+  - swe-btcc-rao-logs-dispatcher-configmap.yaml
+  - swe-btcc-rao-logs-dispatcher-deployment.yaml
+  - swe-btcc-rao-logs-dispatcher-service.yaml
+  - swe-btcc-runner-configmap.yaml
+  - swe-btcc-runner-deployment.yaml
+  - swe-btcc-runner-service.yaml
+  - swe-btcc-task-manager-configmap.yaml
+  - swe-btcc-task-manager-deployment.yaml
+  - swe-btcc-task-manager-service.yaml
