@@ -6,8 +6,8 @@ sensitivity-analysis:
 
 load-flow-default-parameters:
   voltageInitMode: DC_VALUES
-  balanceType: PROPORTIONAL_TO_GENERATION_P
-  countriesToBalance: AL,AT,BA,BE,BG,CH,CZ,DE,ES,FR,GR,HR,HU,IT,ME,MK,NL,PL,PT,RO,RS,SI,SK,UA
+  balanceType: PROPORTIONAL_TO_LOAD
+  countriesToBalance: ES,FR,PT
   phaseShifterRegulationOn: true
 
 open-loadflow-default-parameters:
@@ -27,7 +27,7 @@ rao-objective-function:
 rao-range-actions-optimization:
   max-mip-iterations: 5
   pst-penalty-cost: 0.01
-  pst-sensitivity-threshold : 1e-6
+  pst-sensitivity-threshold : 1.0
   pst-model: APPROXIMATED_INTEGERS
 
 rao-linear-optimization-solver:
@@ -46,11 +46,6 @@ rao-second-preventive-rao:
   execution-condition: POSSIBLE_CURATIVE_IMPROVEMENT
   re-optimize-curative-range-actions: true
   hint-from-first-preventive-rao: true
-
-rao-ra-usage-limits-per-contingency:
-  max-curative-ra: 10
-  max-curative-tso: 2
-  max-curative-ra-per-tso: [ "{RTE}:5" ]
 
 rao-not-optimized-cnecs:
   do-not-optimize-curative-cnecs-for-tsos-without-cras: false
