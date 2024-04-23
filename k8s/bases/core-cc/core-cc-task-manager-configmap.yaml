@@ -27,7 +27,7 @@ data:
         properties:
           hibernate:
             timezone:
-              default_storage: NORMALIZE
+              default_storage: NORMALIZE_UTC
         hibernate:
           ddl-auto: update
       rabbitmq:
