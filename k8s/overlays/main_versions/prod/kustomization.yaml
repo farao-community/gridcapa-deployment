@@ -60,7 +60,7 @@ images:
     newTag: v1.3.1
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.25.1
+    newTag: v1.25.2
   - name: gridcapa-cse-export-runner
     newName: docker.io/farao/gridcapa-cse-cc-export-runner
     newTag: v1.25.1
