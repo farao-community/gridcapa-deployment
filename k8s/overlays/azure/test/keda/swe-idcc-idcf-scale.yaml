@@ -1,0 +1,377 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-adapter-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-adapter
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-boundary-eq-data-bridge-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-boundary-eq-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-boundary-tp-data-bridge-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-boundary-tp-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-coreso-sv-data-bridge-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-coreso-sv-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-crac-data-bridge-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-crac-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-exporter-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-exporter
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-glsk-data-bridge-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-glsk-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-gridcapa-app-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-gridcapa-app
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-gridcapa-job-launcher-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-gridcapa-job-launcher
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-rao-logs-dispatcher-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-rao-logs-dispatcher
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-ree-eq-data-bridge-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-ree-eq-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-ree-ssh-data-bridge-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-ree-ssh-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-ree-tp-data-bridge-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-ree-tp-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-ren-eq-data-bridge-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-ren-eq-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-ren-ssh-data-bridge-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-ren-ssh-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-ren-tp-data-bridge-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-ren-tp-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-rte-eq-data-bridge-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-rte-eq-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-rte-ssh-data-bridge-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-rte-ssh-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-idcf-rte-tp-data-bridge-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-idcc-idcf-rte-tp-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
