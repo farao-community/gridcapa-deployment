@@ -1,0 +1,278 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: core-cc-adapter-scale
+  namespace: gridcapa-d
+spec:
+  scaleTargetRef:
+    name: core-cc-adapter
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * *"
+        end: "0 17 * * *"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: core-cc-cbcora-data-bridge-scale
+  namespace: gridcapa-d
+spec:
+  scaleTargetRef:
+    name: core-cc-cbcora-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * *"
+        end: "0 17 * * *"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: core-cc-cgm-data-bridge-scale
+  namespace: gridcapa-d
+spec:
+  scaleTargetRef:
+    name: core-cc-cgm-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * *"
+        end: "0 17 * * *"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: core-cc-glsk-data-bridge-scale
+  namespace: gridcapa-d
+spec:
+  scaleTargetRef:
+    name: core-cc-glsk-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * *"
+        end: "0 17 * * *"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: core-cc-gridcapa-app-scale
+  namespace: gridcapa-d
+spec:
+  scaleTargetRef:
+    name: core-cc-gridcapa-app
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * *"
+        end: "0 17 * * *"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: core-cc-gridcapa-job-launcher-scale
+  namespace: gridcapa-d
+spec:
+  scaleTargetRef:
+    name: core-cc-gridcapa-job-launcher
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * *"
+        end: "0 17 * * *"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: core-cc-gridcapa-post-processing-scale
+  namespace: gridcapa-d
+spec:
+  scaleTargetRef:
+    name: core-cc-gridcapa-post-processing
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * *"
+        end: "0 17 * * *"
+        desiredReplicas: "1"
+
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: core-cc-output-data-bridge-scale
+  namespace: gridcapa-d
+spec:
+  scaleTargetRef:
+    name: core-cc-output-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * *"
+        end: "0 17 * * *"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: core-cc-rao-logs-dispatcher-scale
+  namespace: gridcapa-d
+spec:
+  scaleTargetRef:
+    name: core-cc-rao-logs-dispatcher
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * *"
+        end: "0 17 * * *"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: core-cc-raorequest-data-bridge-scale
+  namespace: gridcapa-d
+spec:
+  scaleTargetRef:
+    name: core-cc-raorequest-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * *"
+        end: "0 17 * * *"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: core-cc-refprog-data-bridge-scale
+  namespace: gridcapa-d
+spec:
+  scaleTargetRef:
+    name: core-cc-refprog-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * *"
+        end: "0 17 * * *"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: core-cc-runner-scale
+  namespace: gridcapa-d
+spec:
+  scaleTargetRef:
+    name: core-cc-runner
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * *"
+        end: "0 17 * * *"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: core-cc-task-manager-scale
+  namespace: gridcapa-d
+spec:
+  scaleTargetRef:
+    name: core-cc-task-manager
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * *"
+        end: "0 17 * * *"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: core-cc-virtualhub-data-bridge-scale
+  namespace: gridcapa-d
+spec:
+  scaleTargetRef:
+    name: core-cc-virtualhub-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * *"
+        end: "0 17 * * *"
+        desiredReplicas: "1"

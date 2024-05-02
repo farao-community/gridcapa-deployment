@@ -1,0 +1,17 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: rao-runner-scale
+  namespace: gridcapa-d
+spec:
+  scaleTargetRef:
+    name: rao-runner
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * *"
+        end: "0 17 * * *"
+        desiredReplicas: "1"
