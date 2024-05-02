@@ -65,7 +65,6 @@ resources:
   - keda/cse-import-ec-idcc-scale.yaml
   - keda/cse-valid-d2cc-scale.yaml
   - keda/cse-valid-idcc-scale.yaml
-  - keda/rao-runner-scale.yaml
 
 
 configMapGenerator:
