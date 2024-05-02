@@ -12,8 +12,8 @@ spec:
     - type: cron
       metadata:
         timezone: "UTC"
-        start: "0 7 * * *"
-        end: "0 17 * * *"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -32,8 +32,8 @@ spec:
     - type: cron
       metadata:
         timezone: "UTC"
-        start: "0 7 * * *"
-        end: "0 17 * * *"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -52,8 +52,8 @@ spec:
     - type: cron
       metadata:
         timezone: "UTC"
-        start: "0 7 * * *"
-        end: "0 17 * * *"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -72,8 +72,8 @@ spec:
     - type: cron
       metadata:
         timezone: "UTC"
-        start: "0 7 * * *"
-        end: "0 17 * * *"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -92,8 +92,8 @@ spec:
     - type: cron
       metadata:
         timezone: "UTC"
-        start: "0 7 * * *"
-        end: "0 17 * * *"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -112,8 +112,8 @@ spec:
     - type: cron
       metadata:
         timezone: "UTC"
-        start: "0 7 * * *"
-        end: "0 17 * * *"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -132,8 +132,8 @@ spec:
     - type: cron
       metadata:
         timezone: "UTC"
-        start: "0 7 * * *"
-        end: "0 17 * * *"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -152,8 +152,8 @@ spec:
     - type: cron
       metadata:
         timezone: "UTC"
-        start: "0 7 * * *"
-        end: "0 17 * * *"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -172,8 +172,8 @@ spec:
     - type: cron
       metadata:
         timezone: "UTC"
-        start: "0 7 * * *"
-        end: "0 17 * * *"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -192,8 +192,8 @@ spec:
     - type: cron
       metadata:
         timezone: "UTC"
-        start: "0 7 * * *"
-        end: "0 17 * * *"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -212,8 +212,8 @@ spec:
     - type: cron
       metadata:
         timezone: "UTC"
-        start: "0 7 * * *"
-        end: "0 17 * * *"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -232,8 +232,8 @@ spec:
     - type: cron
       metadata:
         timezone: "UTC"
-        start: "0 7 * * *"
-        end: "0 17 * * *"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -252,8 +252,8 @@ spec:
     - type: cron
       metadata:
         timezone: "UTC"
-        start: "0 7 * * *"
-        end: "0 17 * * *"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -272,6 +272,6 @@ spec:
     - type: cron
       metadata:
         timezone: "UTC"
-        start: "0 7 * * *"
-        end: "0 17 * * *"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
         desiredReplicas: "1"
