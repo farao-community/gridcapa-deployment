@@ -1,6 +1,6 @@
 spring:
   application:
-    name: cse-export-idcc-runner
+    name: cse-export-d2cc-runner
   rabbitmq:
     host: rabbitmq
     port: 5672

@@ -71,6 +71,5 @@ data:
             - FFG.IL14 FFG.IL13 1
             - FFG.IL14 FFG.IL13 2
             - FFG.IL14 FFG.IL13 3
-          expiration: 60000
       whitelist:
         - http://gridcapa-minio:9000/
