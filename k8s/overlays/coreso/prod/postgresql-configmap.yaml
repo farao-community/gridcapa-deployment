@@ -9,7 +9,7 @@ data:
   init.sh: |-
     #!/bin/bash
 
-    psql << EOF
+    psql -U postgres << EOF
     CREATE DATABASE config_server_db;
     CREATE USER $POSTGRES_CONFIG_USER WITH ENCRYPTED PASSWORD '$POSTGRES_CONFIG_PASSWORD';
     GRANT ALL PRIVILEGES ON DATABASE config_server_db TO $POSTGRES_CONFIG_USER;
