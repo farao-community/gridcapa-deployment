@@ -23,6 +23,7 @@ rao-objective-function:
   type: MAX_MIN_MARGIN_IN_AMPERE
   preventive-stop-criterion: SECURE
   curative-stop-criterion: SECURE
+  optimize-curative-if-preventive-unsecure : true
 
 rao-range-actions-optimization:
   max-mip-iterations: 5
