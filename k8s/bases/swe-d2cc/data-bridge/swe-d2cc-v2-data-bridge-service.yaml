@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: swe-d2cc-v2-data-bridge
+  labels:
+    app: gridcapa
+    component: data-bridge
+    region: swe
+    process: d2cc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: data-bridge
+    region: swe
+    process: d2cc
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
