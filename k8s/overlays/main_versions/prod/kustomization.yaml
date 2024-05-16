@@ -48,7 +48,7 @@ images:
     newTag: 1.2.0
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v1.4.0
+    newTag: v2.0.0
   - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
     newTag: v1.14.1
@@ -72,7 +72,7 @@ images:
     newTag: v1.6.2
   - name: gridcapa-swe-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v1.4.0
+    newTag: v2.0.0
   - name: gridcapa-swe-adapter
     newName: docker.io/farao/gridcapa-swe-adapter
     newTag: v1.5.1
@@ -93,7 +93,7 @@ images:
     newTag: v1.6.2
   - name: gridcapa-core-cc-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v1.4.0
+    newTag: v2.0.0
   - name: gridcapa-core-cc-output-data-bridge
     newName: docker.io/farao/gridcapa-output-data-bridge
     newTag: v1.3.0

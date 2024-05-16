@@ -1,11 +1,10 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: swe-idcc-boundary-tp-data-bridge
+  name: swe-idcc-data-bridge
   labels:
     app: gridcapa
     component: data-bridge
-    file: boundary-tp
     region: swe
     process: idcc
 
@@ -14,7 +13,6 @@ spec:
     matchLabels:
       app: gridcapa
       component: data-bridge
-      file: boundary-tp
       region: swe
       process: idcc
   template:
@@ -22,12 +20,11 @@ spec:
       labels:
         app: gridcapa
         component: data-bridge
-        file: boundary-tp
         region: swe
         process: idcc
     spec:
       containers:
-        - name: swe-idcc-boundary-tp-data-bridge
+        - name: swe-idcc-data-bridge
           image: gridcapa-swe-input-data-bridge
           imagePullPolicy: Always
           ports:
@@ -68,6 +65,11 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: GRIDCAPA_MAX_POLLED_FILES_SWE_IDCC
+            - name: MAX_POOL_SIZE
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MAX_POOL_SIZE_SWE_IDCC
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
@@ -91,9 +93,9 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: swe-idcc-boundary-tp-data-bridge-volume
+              name: swe-idcc-data-bridge-volume
             - mountPath: /data/gridcapa
-              name: swe-idcc-boundary-tp-data-bridge-data
+              name: swe-idcc-data-bridge-data
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -112,10 +114,10 @@ spec:
               memory: "384Mi"
       restartPolicy: Always
       volumes:
-        - name: swe-idcc-boundary-tp-data-bridge-volume
+        - name: swe-idcc-data-bridge-volume
           configMap:
-            name: swe-idcc-boundary-tp-data-bridge
-        - name: swe-idcc-boundary-tp-data-bridge-data
+            name: swe-idcc-data-bridge
+        - name: swe-idcc-data-bridge-data
           persistentVolumeClaim:
             claimName: swe-idcc-data-bridge-storage
 
