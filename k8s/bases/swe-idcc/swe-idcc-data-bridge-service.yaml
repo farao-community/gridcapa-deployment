@@ -1,21 +1,19 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: swe-idcc-idcf-crac-data-bridge
+  name: swe-idcc-data-bridge
   labels:
     app: gridcapa
     component: data-bridge
-    file: crac
     region: swe
-    process: idcc-idcf
+    process: idcc
 spec:
   type: ClusterIP
   selector:
     app: gridcapa
     component: data-bridge
-    file: crac
     region: swe
-    process: idcc-idcf
+    process: idcc
   ports:
     - port: 80
       targetPort: 8080
