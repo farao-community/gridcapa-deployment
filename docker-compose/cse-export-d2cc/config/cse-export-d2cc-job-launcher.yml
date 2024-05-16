@@ -19,6 +19,8 @@ spring:
           destination: cse-export-d2cc-launch-task
         run-task-auto:
           destination: cse-export-d2cc-launch-task
+        stop-task:
+          destination: cse-export-d2cc-stop-task
         consumeTaskDtoUpdate-in-0:
           destination: cse-export-d2cc-task-updated
       rabbit:

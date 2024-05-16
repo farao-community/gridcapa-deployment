@@ -20,8 +20,17 @@ data:
       cloud:
         stream:
           bindings:
+            softInterrupt-in-0:
+              destination: cse-export-idcc-stop-task
+            request-in-0:
+              destination: cse-export-idcc-request
+              group: cse-export-idcc-runner
+            request-out-0:
+              destination: cse-export-idcc-response
             task-status-update:
               destination: cse-export-idcc-task-status-updated
+            stop-rao:
+              destination: stop-rao-runner
 
     logback:
       amqp:
@@ -62,12 +71,5 @@ data:
             - FFG.IL14 FFG.IL13 1
             - FFG.IL14 FFG.IL13 2
             - FFG.IL14 FFG.IL13 3
-      bindings:
-        request:
-          destination: cse-export-idcc-request
-          group: cse-export-idcc-runner
-        response:
-          destination: cse-export-idcc-response
-          expiration: 60000
       whitelist:
         - http://gridcapa-minio:9000/
