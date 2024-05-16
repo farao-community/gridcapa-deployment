@@ -2,9 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - data-bridge/swe-d2cc-v2-data-bridge-configmap.yaml
-  - data-bridge/swe-d2cc-v2-data-bridge-deployment.yaml
-  - data-bridge/swe-d2cc-v2-data-bridge-service.yaml
+  - swe-d2cc-data-bridge-configmap.yaml
+  - swe-d2cc-data-bridge-deployment.yaml
+  - swe-d2cc-data-bridge-service.yaml
   - swe-d2cc-adapter-configmap.yaml
   - swe-d2cc-adapter-deployment.yaml
   - swe-d2cc-adapter-service.yaml

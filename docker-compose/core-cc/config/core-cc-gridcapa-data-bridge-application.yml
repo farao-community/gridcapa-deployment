@@ -1,0 +1,66 @@
+data-bridge:
+  configuration:
+    zone-id: "Europe/Paris"
+    target-process: CORE_CC
+    files:
+      - file-type: CBCORA
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F301-.*CORESO.*\.xml
+        time-validity: daily
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F301-.*CORESO.*\\.xml"
+        source-directory: "/cracs"
+        sink-directory: "/CRACs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.crac.properties
+      - file-type: CGM
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F119-.*CORESO.*\.zip
+        time-validity: daily
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F119-.*CORESO.*\\.zip"
+        do-unzip: false
+        source-directory: "/cgms"
+        sink-directory: "/CGMs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.cgm.properties
+      - file-type: GLSK
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F319-.*CORESO.*\.xml
+        time-validity: daily
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F319-.*CORESO.*\\.xml"
+        source-directory: "/glsks"
+        sink-directory: "/GLSKs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.glsk.properties
+      - file-type: RAOREQUEST
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F302-.*CORESO.*\.xml
+        time-validity: daily
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F302-.*CORESO.*\\.xml"
+        source-directory: "/raorequests"
+        sink-directory: "/RAOREQUESTs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.raorequest.properties
+      - file-type: REFPROG
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F120-.*CORESO.*\.xml
+        time-validity: daily
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F120-.*CORESO.*\\.xml"
+        source-directory: "/refprogs"
+        sink-directory: "/REFPROGs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.refprog.properties
+      - file-type: VIRTUALHUB
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F327-.*CORESO.*\.xml
+        time-validity: daily
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})(?:-F327-.*CORESO)?.*\\.xml"
+        source-directory: "/virtualhubs"
+        sink-directory: "/VIRTUALHUBs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.virtualhub.properties
+  sources:
+    ftp:
+      active: true
+      host: ftp-server
+      port: 21
+      username: gridcapa
+      password: gridcapa
+      base-directory: /data/gridcapa/core/cc
+      polling-delay-in-ms: 5000
+      max-messages-per-poll: 10
+      max-pool-size: 2
+  sinks:
+    minio:
+      url: http://minio:9000
+      access-key: gridcapa
+      secret-key: gridcapa
+      bucket: gridcapa
+      base-directory: /CORE/CC

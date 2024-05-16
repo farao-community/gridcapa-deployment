@@ -8,17 +8,10 @@ services:
     networks:
       - gridcapa
 
-  cse-export-d2cc-cgm-data-bridge:
+  cse-export-d2cc-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/data-bridge/cse-export-d2cc-cgm-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-export-d2cc-crac-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-export-d2cc-crac-data-bridge-application.yml:/config/application.yml
+      - ./config/cse-export-d2cc-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 

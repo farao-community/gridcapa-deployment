@@ -1,0 +1,120 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: swe-d2cc-data-bridge
+  labels:
+    app: gridcapa
+    component: data-bridge
+    region: swe
+    process: d2cc
+data:
+  application.yml: |-
+    data-bridge:
+      configuration:
+        zone-id: "UTC"
+        target-process: SWE_D2CC
+        files:
+          - file-type: BOUNDARY_EQ
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z__ENTSOE_EQBD_[0-9]{3}.(xml|XML)
+            time-validity: yearly
+            remote-file-regex: ".*.zip|(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z__ENTSOE_EQBD_[0-9]{3}.(xml|XML)"
+            source-directory: "/boundaries"
+            sink-directory: "/BOUNDARIES"
+          - file-type: BOUNDARY_TP
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z__ENTSOE_TPBD_[0-9]{3}.(xml|XML)
+            time-validity: yearly
+            remote-file-regex: ".*.zip|(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z__ENTSOE_TPBD_[0-9]{3}.(xml|XML)"
+            source-directory: "/boundaries"
+            sink-directory: "/BOUNDARIES"
+          - file-type: CORESO_SV
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*_SV_[0-9]{3}.xml
+            time-validity: hourly
+            remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*_SV_[0-9]{3}.zip"
+            source-directory: "/cgms"
+            sink-directory: "/CGMs"
+          - file-type: REE_EQ
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REE_EQ_[0-9]{3}.xml
+            time-validity: hourly
+            remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REE_EQ_[0-9]{3}.zip"
+            source-directory: "/cgms"
+            sink-directory: "/CGMs"
+          - file-type: REE_SSH
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*-REE_SSH_[0-9]{3}.xml
+            time-validity: hourly
+            remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*-REE_SSH_[0-9]{3}.zip"
+            source-directory: "/cgms"
+            sink-directory: "/CGMs"
+          - file-type: REE_TP
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REE_TP_[0-9]{3}.xml
+            time-validity: hourly
+            remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REE_TP_[0-9]{3}.zip"
+            source-directory: "/cgms"
+            sink-directory: "/CGMs"
+          - file-type: REN_EQ
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REN_EQ_[0-9]{3}.xml
+            time-validity: hourly
+            remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REN_EQ_[0-9]{3}.zip"
+            source-directory: "/cgms"
+            sink-directory: "/CGMs"
+          - file-type: REN_SSH
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*-REN_SSH_[0-9]{3}.xml
+            time-validity: hourly
+            remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*-REN_SSH_[0-9]{3}.zip"
+            source-directory: "/cgms"
+            sink-directory: "/CGMs"
+          - file-type: REN_TP
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REN_TP_[0-9]{3}.xml
+            time-validity: hourly
+            remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REN_TP_[0-9]{3}.zip"
+            source-directory: "/cgms"
+            sink-directory: "/CGMs"
+          - file-type: RTE_EQ
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_RTEFRANCE_EQ_[0-9]{3}.xml
+            time-validity: hourly
+            remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_RTEFRANCE_EQ_[0-9]{3}.zip"
+            source-directory: "/cgms"
+            sink-directory: "/CGMs"
+          - file-type: RTE_SSH
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*-RTEFRANCE_SSH_[0-9]{3}.xml
+            time-validity: hourly
+            remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*-RTEFRANCE_SSH_[0-9]{3}.zip"
+            source-directory: "/cgms"
+            sink-directory: "/CGMs"
+          - file-type: RTE_TP
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_RTEFRANCE_TP_[0-9]{3}.xml
+            time-validity: hourly
+            remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_RTEFRANCE_TP_[0-9]{3}.zip"
+            source-directory: "/cgms"
+            sink-directory: "/CGMs"
+          - file-type: CRAC
+            file-regex: 10VCORSWEPR-ENDE_18V0000000005KUU_SWE-CRAC-B15-A48-F011_(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-[0-9]{3}.xml
+            time-validity: daily
+            remote-file-regex: ".*"
+            source-directory: "/cracs"
+            sink-directory: "/CRACs"
+          - file-type: GLSK
+            file-regex: 10VCORSWEPR-ENDE_18V0000000005KUU_SWE-GLSK-B22-A48-F008_(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-[0-9]{3}.xml
+            time-validity: daily
+            remote-file-regex: ".*"
+            source-directory: "/glsks"
+            sink-directory: "/GLSKs"
+      sources:
+        ftp:
+          active: true
+          host: ${SOURCE_HOST}
+          port: ${SOURCE_PORT}
+          username: ${SOURCE_USER}
+          password: ${SOURCE_PASSWORD}
+          base-directory: ${SOURCE_BASE_DIRECTORY}/cgms
+          polling-delay-in-ms: ${POLLING_DELAY}
+          file-list-persistence-file: /data/gridcapa/swe-d2cc/ftp-metadata-store.properties
+          max-messages-per-poll: ${MAX_POLLED_FILES}
+          max-pool-size: ${MAX_POOL_SIZE}
+      sinks:
+        minio:
+          url: http://gridcapa-minio:9000
+          access-key: ${MINIO_ACCESS_KEY}
+          secret-key: ${MINIO_SECRET_KEY}
+          bucket: ${MINIO_BUCKET}
+          base-directory: ${MINIO_BASE_DIRECTORY}/CGMs
+    

@@ -1,0 +1,121 @@
+data-bridge:
+  configuration: 
+    zone-id: "UTC"
+    target-process: SWE_D2CC
+    files:
+      - file-type: BOUNDARY_EQ
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z__ENTSOE_EQBD_[0-9]{3}.(xml|XML)
+        time-validity: yearly
+        remote-file-regex: ".*.zip|(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z__ENTSOE_EQBD_[0-9]{3}.(xml|XML)"
+        source-directory: "/boundaries"
+        sink-directory: "/BOUNDARIES"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.boundary-eq.properties
+      - file-type: BOUNDARY_TP
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z__ENTSOE_TPBD_[0-9]{3}.(xml|XML)
+        time-validity: yearly
+        remote-file-regex: ".*.zip|(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z__ENTSOE_TPBD_[0-9]{3}.(xml|XML)"
+        source-directory: "/boundaries"
+        sink-directory: "/BOUNDARIES"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.boundary-tp.properties
+      - file-type: CORESO_SV
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*_SV_[0-9]{3}.xml
+        time-validity: hourly
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*_SV_[0-9]{3}.zip"
+        source-directory: "/cgms"
+        sink-directory: "/CGMs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.coreso-sv.properties
+      - file-type: REE_EQ
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REE_EQ_[0-9]{3}.xml
+        time-validity: hourly
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REE_EQ_[0-9]{3}.zip"
+        source-directory: "/cgms"
+        sink-directory: "/CGMs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.ree-eq.properties
+      - file-type: REE_SSH
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*-REE_SSH_[0-9]{3}.xml
+        time-validity: hourly
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*-REE_SSH_[0-9]{3}.zip"
+        source-directory: "/cgms"
+        sink-directory: "/CGMs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.ree-ssh.properties
+      - file-type: REE_TP
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REE_TP_[0-9]{3}.xml
+        time-validity: hourly
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REE_TP_[0-9]{3}.zip"
+        source-directory: "/cgms"
+        sink-directory: "/CGMs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.ree-tp.properties
+      - file-type: REN_EQ
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REN_EQ_[0-9]{3}.xml
+        time-validity: hourly
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REN_EQ_[0-9]{3}.zip"
+        source-directory: "/cgms"
+        sink-directory: "/CGMs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.ren-eq.properties
+      - file-type: REN_SSH
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*-REN_SSH_[0-9]{3}.xml
+        time-validity: hourly
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*-REN_SSH_[0-9]{3}.zip"
+        source-directory: "/cgms"
+        sink-directory: "/CGMs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.ren-ssh.properties
+      - file-type: REN_TP
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REN_TP_[0-9]{3}.xml
+        time-validity: hourly
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_REN_TP_[0-9]{3}.zip"
+        source-directory: "/cgms"
+        sink-directory: "/CGMs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.ren-tp.properties
+      - file-type: RTE_EQ
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_RTEFRANCE_EQ_[0-9]{3}.xml
+        time-validity: hourly
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_RTEFRANCE_EQ_[0-9]{3}.zip"
+        source-directory: "/cgms"
+        sink-directory: "/CGMs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.rte-eq.properties
+      - file-type: RTE_SSH
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*-RTEFRANCE_SSH_[0-9]{3}.xml
+        time-validity: hourly
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_.*-RTEFRANCE_SSH_[0-9]{3}.zip"
+        source-directory: "/cgms"
+        sink-directory: "/CGMs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.rte-ssh.properties
+      - file-type: RTE_TP
+        file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_RTEFRANCE_TP_[0-9]{3}.xml
+        time-validity: hourly
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z_2D_RTEFRANCE_TP_[0-9]{3}.zip"
+        source-directory: "/cgms"
+        sink-directory: "/CGMs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.rte-tp.properties
+      - file-type: CRAC
+        file-regex: 10VCORSWEPR-ENDE_18V0000000005KUU_SWE-CRAC-B15-A48-F011_(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-[0-9]{3}.xml
+        time-validity: daily
+        remote-file-regex: ".*"
+        source-directory: "/cracs"
+        sink-directory: "/CRACs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.crac.properties
+      - file-type: GLSK
+        file-regex: 10VCORSWEPR-ENDE_18V0000000005KUU_SWE-GLSK-B22-A48-F008_(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-[0-9]{3}.xml
+        time-validity: daily
+        remote-file-regex: ".*"
+        source-directory: "/glsks"
+        sink-directory: "/GLSKs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.glsk.properties
+  sources:
+    ftp:
+      active: true
+      host: ftp-server
+      port: 21
+      username: gridcapa
+      password: gridcapa
+      base-directory: /data/gridcapa/swe/d2cc
+      polling-delay-in-ms: 5000
+      max-messages-per-poll: 10
+      max-pool-size: 2
+  sinks:
+    minio:
+      url: http://minio:9000
+      access-key: gridcapa
+      secret-key: gridcapa
+      bucket: gridcapa
+      base-directory: /SWE/D2CC

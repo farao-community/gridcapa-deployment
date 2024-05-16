@@ -8,66 +8,10 @@ services:
     networks:
       - gridcapa
 
-  cse-import-d2cc-cgm-data-bridge:
+  cse-import-d2cc-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/data-bridge/cse-d2cc-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-d2cc-crac-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-d2cc-gridcapa-crac-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-d2cc-glsk-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-d2cc-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-d2cc-ntc-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-d2cc-gridcapa-ntc-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-d2cc-ntc-red-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-d2cc-gridcapa-ntc-red-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-d2cc-targetch-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-d2cc-gridcapa-target-ch-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-d2cc-user-config-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-d2cc-user-config-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-d2cc-automated-forced-pras-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-d2cc-gridcapa-automated-forced-pras-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-d2cc-vulcanus-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-d2cc-gridcapa-vulcanus-data-bridge-application.yml:/config/application.yml
+      - ./config/cse-d2cc-gridcapa-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
