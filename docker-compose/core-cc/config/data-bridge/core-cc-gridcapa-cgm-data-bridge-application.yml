@@ -5,7 +5,8 @@ data-bridge:
   file-regex: (?:.*CORESO-F119_F119-)?(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})(?:-F119-.*CORESO)?.*\.zip
   time-validity: daily
   remote-file-regex:
-    - "(?:.*CORESO-F119_F119-)?(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})(?:-F119-.*CORESO)?.*\\.zip"
+    - "[0-9]{8}-F119-.*CORESO.*\\.zip"
+    - ".*CORESO-F119_F119-[0-9]{8}.*\\.zip"
   do-unzip: false
   sources:
     ftp:

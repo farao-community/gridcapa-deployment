@@ -17,7 +17,8 @@ data:
       file-regex: (?:.*CORESO-F301_F301-)?(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})(?:-F301-.*CORESO)?.*\.xml
       time-validity: daily
       remote-file-regex:
-        - "(?:.*CORESO-F301_F301-)?(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})(?:-F301-.*CORESO)?.*\\.xml"
+        - ".*CORESO-F301_F301-[0-9]{8}.*\\.xml"
+        - "[0-9]{8}-F301-.*CORESO.*\\.xml"
       sources:
         ftp:
           active: true
