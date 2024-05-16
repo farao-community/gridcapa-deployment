@@ -8,7 +8,7 @@ services:
     networks:
       - gridcapa
 
-  core-cc-gridcapa-v2-data-bridge:
+  core-cc-gridcapa-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
       - ./config/core-cc-gridcapa-data-bridge-application.yml:/config/application.yml
