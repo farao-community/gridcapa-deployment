@@ -121,7 +121,6 @@ data:
           password: ${SOURCE_PASSWORD}
           base-directory: ${SOURCE_BASE_DIRECTORY}/cgms
           polling-delay-in-ms: ${POLLING_DELAY}
-          file-list-persistence-file: /data/gridcapa/swe-d2cc/ftp-metadata-store.properties
           max-messages-per-poll: ${MAX_POLLED_FILES}
           max-pool-size: ${MAX_POOL_SIZE}
       sinks:

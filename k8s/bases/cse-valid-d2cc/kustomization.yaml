@@ -2,21 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - data-bridge/cse-valid-d2cc-cgm-data-bridge-configmap.yaml
-  - data-bridge/cse-valid-d2cc-cgm-data-bridge-deployment.yaml
-  - data-bridge/cse-valid-d2cc-cgm-data-bridge-service.yaml
-  - data-bridge/cse-valid-d2cc-glsk-data-bridge-configmap.yaml
-  - data-bridge/cse-valid-d2cc-glsk-data-bridge-deployment.yaml
-  - data-bridge/cse-valid-d2cc-glsk-data-bridge-service.yaml
-  - data-bridge/cse-valid-d2cc-crac-export-corner-data-bridge-configmap.yaml
-  - data-bridge/cse-valid-d2cc-crac-export-corner-data-bridge-deployment.yaml
-  - data-bridge/cse-valid-d2cc-crac-export-corner-data-bridge-service.yaml
-  - data-bridge/cse-valid-d2cc-crac-import-corner-data-bridge-configmap.yaml
-  - data-bridge/cse-valid-d2cc-crac-import-corner-data-bridge-deployment.yaml
-  - data-bridge/cse-valid-d2cc-crac-import-corner-data-bridge-service.yaml
-  - data-bridge/cse-valid-d2cc-ttc-adjustment-data-bridge-configmap.yaml
-  - data-bridge/cse-valid-d2cc-ttc-adjustment-data-bridge-deployment.yaml
-  - data-bridge/cse-valid-d2cc-ttc-adjustment-data-bridge-service.yaml
+  - data-bridge/cse-valid-d2cc-data-bridge-configmap.yaml
+  - data-bridge/cse-valid-d2cc-data-bridge-deployment.yaml
+  - data-bridge/cse-valid-d2cc-data-bridge-service.yaml
   - data-bridge/cse-valid-d2cc-output-data-bridge-configmap.yaml
   - data-bridge/cse-valid-d2cc-output-data-bridge-deployment.yaml
   - data-bridge/cse-valid-d2cc-output-data-bridge-service.yaml

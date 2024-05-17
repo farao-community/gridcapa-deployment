@@ -1,12 +1,12 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-export-d2cc-data-bridge
+  name: cse-valid-d2cc-data-bridge
   labels:
     app: gridcapa
     component: data-bridge
     region: cse
-    process: export-d2cc
+    process: valid-d2cc
 
 spec:
   selector:
@@ -14,18 +14,18 @@ spec:
       app: gridcapa
       component: data-bridge
       region: cse
-      process: export-d2cc
+      process: valid-d2cc
   template:
     metadata:
       labels:
         app: gridcapa
         component: data-bridge
         region: cse
-        process: export-d2cc
+        process: valid-d2cc
     spec:
       containers:
-        - name: cse-export-d2cc-data-bridge
-          image: gridcapa-cse-input-data-bridge
+        - name: cse-valid-d2cc-data-bridge
+          image: gridcapa-cse-valid-input-data-bridge
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -34,42 +34,42 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SOURCE_HOST_CSE_EXPORT_D2CC
+                  key: GRIDCAPA_SOURCE_HOST_CSE_VALID
             - name: SOURCE_PORT
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SOURCE_PORT_CSE_EXPORT_D2CC
+                  key: GRIDCAPA_SOURCE_PORT_CSE_VALID
             - name: SOURCE_USER
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-ftp-credentials
-                  key: ftp-user
+                  name: gridcapa-ftp-server-credentials
+                  key: ecp-user
             - name: SOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: gridcapa-ftp-credentials
-                  key: ftp-password
+                  name: gridcapa-ftp-server-credentials
+                  key: ecp-password
             - name: SOURCE_BASE_DIRECTORY
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CSE_EXPORT_D2CC
+                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CSE_VALID_ECP
             - name: POLLING_DELAY
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_POLLING_DELAY_CSE_EXPORT_D2CC
+                  key: GRIDCAPA_POLLING_DELAY_CSE_VALID
             - name: MAX_POLLED_FILES
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_MAX_POLLED_FILES_CSE_EXPORT_D2CC
+                  key: GRIDCAPA_MAX_POLLED_FILES_CSE_VALID
             - name: MAX_POOL_SIZE
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_MAX_POOL_SIZE_CSE_EXPORT_D2CC
+                  key: GRIDCAPA_MAX_POOL_SIZE_CSE_VALID
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
@@ -84,18 +84,18 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_MINIO_BUCKET_CSE_EXPORT_D2CC
+                  key: GRIDCAPA_MINIO_BUCKET_CSE_VALID
             - name: MINIO_BASE_DIRECTORY
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CSE_EXPORT_D2CC
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CSE_VALID_D2CC
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: cse-export-d2cc-data-bridge-configmap-volume
+              name: cse-valid-d2cc-data-bridge-configmap-volume
             - mountPath: /data/gridcapa
-              name: cse-export-d2cc-data-bridge-data
+              name: cse-valid-d2cc-data-bridge-data
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -114,9 +114,9 @@ spec:
               memory: "384Mi"
       restartPolicy: Always
       volumes:
-        - name: cse-export-d2cc-data-bridge-configmap-volume
+        - name: cse-valid-d2cc-data-bridge-configmap-volume
           configMap:
-            name: cse-export-d2cc-data-bridge-configmap
-        - name: cse-export-d2cc-data-bridge-data
+            name: cse-valid-d2cc-data-bridge-configmap
+        - name: cse-valid-d2cc-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-export-d2cc-data-bridge-storage
+            claimName: cse-valid-d2cc-data-bridge-storage
