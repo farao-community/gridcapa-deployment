@@ -51,7 +51,7 @@ cse-cc-runner:
   mendrisio:
     mendrisio-cagno-line:
       target-ch-id: ml_0001
-      ntc-id: ml_mendrisio-cagno
+      ntc-id: mendrisio-cagno
     mendrisio-voltage-level: SMENDR3
     mendrisio-node-id: SMENDR3T
   pisa:
