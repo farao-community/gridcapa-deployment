@@ -12,9 +12,9 @@ spring:
     port: 5672
   cloud:
     stream:
+      default:
+        group: cse-import-idcc-job-launcher
       bindings:
-        default:
-          group: cse-import-idcc-job-launcher
         run-task:
           destination: cse-import-idcc-launch-task
         run-task-auto:

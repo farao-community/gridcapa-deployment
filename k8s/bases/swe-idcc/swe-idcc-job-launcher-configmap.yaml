@@ -23,9 +23,9 @@ data:
         port: 5672
       cloud:
         stream:
+          default:
+            group: swe-idcc-job-launcher
           bindings:
-            default:
-              group: swe-idcc-job-launcher
             run-task:
               destination: swe-idcc-run-task
             stop-task:

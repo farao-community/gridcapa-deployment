@@ -23,9 +23,9 @@ data:
         port: 5672
       cloud:
         stream:
+          default:
+            group: core-valid-job-launcher
           bindings:
-            default:
-              group: core-valid-job-launcher
             run-task:
               destination: core-valid-run-task
             run-task-auto:
