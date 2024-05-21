@@ -119,7 +119,7 @@ data:
           port: ${SOURCE_PORT}
           username: ${SOURCE_USER}
           password: ${SOURCE_PASSWORD}
-          base-directory: ${SOURCE_BASE_DIRECTORY}/cgms
+          base-directory: ${SOURCE_BASE_DIRECTORY}
           polling-delay-in-ms: ${POLLING_DELAY}
           max-messages-per-poll: ${MAX_POLLED_FILES}
           max-pool-size: ${MAX_POOL_SIZE}
@@ -129,5 +129,5 @@ data:
           access-key: ${MINIO_ACCESS_KEY}
           secret-key: ${MINIO_SECRET_KEY}
           bucket: ${MINIO_BUCKET}
-          base-directory: ${MINIO_BASE_DIRECTORY}/CGMs
+          base-directory: ${MINIO_BASE_DIRECTORY}
           
