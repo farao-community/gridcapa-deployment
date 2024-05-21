@@ -20,7 +20,7 @@ open-loadflow-default-parameters:
   minRealisticVoltage: 0.4
   maxRealisticVoltage: 1.6
   stateVectorScalingMode: MAX_VOLTAGE_CHANGE
-  ReactiveLimitsMaxPqPvSwitch: 2
+  reactiveLimitsMaxPqPvSwitch: 2
 
 rao-objective-function:
   type: MAX_MIN_MARGIN_IN_AMPERE
