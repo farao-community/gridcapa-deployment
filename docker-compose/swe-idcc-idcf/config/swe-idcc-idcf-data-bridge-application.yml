@@ -111,6 +111,7 @@ data-bridge:
       base-directory: /data/gridcapa/swe/idcf
       polling-delay-in-ms: 5000
       max-messages-per-poll: 10
+      max-pool-size: 2
   sinks:
     minio:
       url: http://minio:9000
