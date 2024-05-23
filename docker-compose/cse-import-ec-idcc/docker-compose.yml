@@ -8,7 +8,7 @@ services:
     networks:
       - gridcapa
 
-  cse-import-ec-idcc-ec-data-bridge:
+  cse-import-ec-idcc-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
       - ./config/cse-idcc-ec-data-bridge-application.yml:/config/application.yml
