@@ -1,6 +1,6 @@
 data-bridge:
   configuration:
-    zone-id: "Europe/Paris"
+    zone-id: "UTC"
     target-process: SWE_IDCC_IDCF
     files:
       - file-type: BOUNDARY_EQ
