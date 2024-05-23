@@ -15,10 +15,10 @@ services:
     networks:
       - gridcapa
 
-  data-bridge-d2cc-ttc-adjustment:
+  data-bridge-valid-d2cc:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/data-bridge-d2cc-ttc-adjustment.yml:/config/application.yml
+      - ./config/data-bridge-valid-d2cc.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -26,34 +26,6 @@ services:
     image: farao/gridcapa-output-data-bridge:latest
     volumes:
       - ./config/data-bridge-d2cc-output-ttc-validation.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  data-bridge-d2cc-crac-import-corner:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge-d2cc-crac-import-corner.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  data-bridge-d2cc-crac-export-corner:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge-d2cc-crac-export-corner.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  data-bridge-d2cc-glsk:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge-d2cc-glsk.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  data-bridge-d2cc-cgm:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge-d2cc-cgm.yml:/config/application.yml
     networks:
       - gridcapa
 

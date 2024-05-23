@@ -2,12 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - data-bridge/cse-export-idcc-cgm-data-bridge-configmap.yaml
-  - data-bridge/cse-export-idcc-cgm-data-bridge-deployment.yaml
-  - data-bridge/cse-export-idcc-cgm-data-bridge-service.yaml
-  - data-bridge/cse-export-idcc-crac-data-bridge-configmap.yaml
-  - data-bridge/cse-export-idcc-crac-data-bridge-deployment.yaml
-  - data-bridge/cse-export-idcc-crac-data-bridge-service.yaml
+  - cse-export-idcc-data-bridge-configmap.yaml
+  - cse-export-idcc-data-bridge-deployment.yaml
+  - cse-export-idcc-data-bridge-service.yaml
   - cse-export-idcc-exporter-configmap.yaml
   - cse-export-idcc-exporter-deployment.yaml
   - cse-export-idcc-exporter-service.yaml

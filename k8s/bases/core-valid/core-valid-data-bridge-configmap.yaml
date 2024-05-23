@@ -1,0 +1,69 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: core-valid-data-bridge-configmap
+  labels:
+    app: gridcapa
+    component: data-bridge
+    region: core
+    process: valid
+data:
+  application.yml: |-
+    data-bridge:  
+      configuration:
+        zone-id: "Europe/Paris"
+        target-process: CORE_VALID
+        files:
+          - file-type: CBCORA
+            file-regex: .*(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F301-[0-9]{1,2}.(xml|XML)
+            time-validity: daily
+            remote-file-regex: .*(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F301-[0-9]{1,2}.(xml|XML)
+            source-directory: "/cbcoras"
+            sink-directory: "/CBCORAs"
+            file-list-persistence-file: /data/gridcapa/core-valid/ftp-metadata-store.cbcora.properties
+          - file-type: CGM
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2}).*.(uct|UCT)
+            time-validity: hourly
+            remote-file-regex: .*.zip|(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})_(?<hour>[0-9]{2})(?<minute>[0-9]{2}).*.(uct|UCT)
+            source-directory: "/cgms"
+            sink-directory: "/CGMs"
+            file-list-persistence-file: /data/gridcapa/core-valid/ftp-metadata-store.cgm.properties
+          - file-type: GLSK
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F226-.*.(xml|XML)
+            time-validity: daily
+            remote-file-regex: .*-F226-.*.(zip|ZIP)|(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F226-.*.(xml|XML)
+            source-directory: "/glsks"
+            sink-directory: "/GLSKs"
+            file-list-persistence-file: /data/gridcapa/core-valid/ftp-metadata-store.glsk.properties
+          - file-type: REFPROG
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F110.*.(xml|XML)
+            time-validity: daily
+            remote-file-regex: .*-F110.*.(zip|ZIP)|(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F110.*.(xml|XML)
+            source-directory: "/refprogs"
+            sink-directory: "/REFPROGs"
+            file-list-persistence-file: /data/gridcapa/core-valid/ftp-metadata-store.refprog.properties
+          - file-type: STUDY-POINTS
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-Points_Etude-.*.(csv|CSV)
+            time-validity: daily
+            remote-file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-Points_Etude-.*.(csv|CSV)
+            source-directory: "/studypoints"
+            sink-directory: "/STUDYPOINTs"
+            file-list-persistence-file: /data/gridcapa/core-valid/ftp-metadata-store.studypoint.properties
+      sources:
+        ftp:
+          active: true
+          host: ${SOURCE_HOST}
+          port: ${SOURCE_PORT}
+          username: ${SOURCE_USER}
+          password: ${SOURCE_PASSWORD}
+          base-directory: ${SOURCE_BASE_DIRECTORY}
+          polling-delay-in-ms: ${POLLING_DELAY}
+          max-messages-per-poll: ${MAX_POLLED_FILES}          
+          max-pool-size: ${MAX_POOL_SIZE}
+      sinks:
+        minio:
+          url: http://gridcapa-minio:9000
+          access-key: ${MINIO_ACCESS_KEY}
+          secret-key: ${MINIO_SECRET_KEY}
+          bucket: ${MINIO_BUCKET}
+          base-directory: ${MINIO_BASE_DIRECTORY}

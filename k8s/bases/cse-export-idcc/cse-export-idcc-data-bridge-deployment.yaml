@@ -1,0 +1,122 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: cse-export-idcc-data-bridge
+  labels:
+    app: gridcapa
+    component: data-bridge
+    region: cse
+    process: export-idcc
+
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: data-bridge
+      region: cse
+      process: export-idcc
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: data-bridge
+        region: cse
+        process: export-idcc
+    spec:
+      containers:
+        - name: cse-export-idcc-data-bridge
+          image: gridcapa-cse-input-data-bridge
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SOURCE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SOURCE_HOST_CSE_EXPORT_IDCC
+            - name: SOURCE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SOURCE_PORT_CSE_EXPORT_IDCC
+            - name: SOURCE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-user
+            - name: SOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-password
+            - name: SOURCE_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CSE_EXPORT_IDCC
+            - name: POLLING_DELAY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POLLING_DELAY_CSE_EXPORT_IDCC
+            - name: MAX_POLLED_FILES
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MAX_POLLED_FILES_CSE_EXPORT_IDCC
+            - name: MAX_POOL_SIZE
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MAX_POOL_SIZE_CSE_EXPORT_IDCC
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+            - name: MINIO_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BUCKET_CSE_EXPORT_IDCC
+            - name: MINIO_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CSE_EXPORT_IDCC
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: cse-export-idcc-data-bridge-configmap-volume
+            - mountPath: /data/gridcapa
+              name: cse-export-idcc-data-bridge-data
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 600
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              cpu: "0.1"
+              memory: "384Mi"
+            limits:
+              cpu: "0.5"
+              memory: "384Mi"
+      restartPolicy: Always
+      volumes:
+        - name: cse-export-idcc-data-bridge-configmap-volume
+          configMap:
+            name: cse-export-idcc-data-bridge-configmap
+        - name: cse-export-idcc-data-bridge-data
+          persistentVolumeClaim:
+            claimName: cse-export-idcc-data-bridge-storage
