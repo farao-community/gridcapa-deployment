@@ -1,30 +1,30 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-valid-idcc-data-bridge
+  name: cse-valid-d2cc-data-bridge
   labels:
     app: gridcapa
     component: data-bridge
     region: cse
-    process: valid-idcc
+    process: valid-d2cc
 
 spec:
   selector:
     matchLabels:
       app: gridcapa
-      component: gridcapa-data-bridge
+      component: data-bridge
       region: cse
-      process: valid-idcc
+      process: valid-d2cc
   template:
     metadata:
       labels:
         app: gridcapa
-        component: gridcapa-data-bridge
+        component: data-bridge
         region: cse
-        process: valid-idcc
+        process: valid-d2cc
     spec:
       containers:
-        - name: cse-valid-idcc-data-bridge
+        - name: cse-valid-d2cc-data-bridge
           image: gridcapa-cse-valid-input-data-bridge
           imagePullPolicy: Always
           ports:
@@ -54,7 +54,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CSE_VALID_ECP
+                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_CSE_VALID
             - name: POLLING_DELAY
               valueFrom:
                 configMapKeyRef:
@@ -89,13 +89,13 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CSE_VALID_IDCC
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CSE_VALID_D2CC
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: cse-valid-idcc-data-bridge-configmap-volume
+              name: cse-valid-d2cc-data-bridge-configmap-volume
             - mountPath: /data/gridcapa
-              name: cse-valid-idcc-data-bridge-data
+              name: cse-valid-d2cc-data-bridge-data
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -114,9 +114,9 @@ spec:
               memory: "384Mi"
       restartPolicy: Always
       volumes:
-        - name: cse-valid-idcc-data-bridge-configmap-volume
+        - name: cse-valid-d2cc-data-bridge-configmap-volume
           configMap:
-            name: cse-valid-idcc-data-bridge-configmap
-        - name: cse-valid-idcc-data-bridge-data
+            name: cse-valid-d2cc-data-bridge-configmap
+        - name: cse-valid-d2cc-data-bridge-data
           persistentVolumeClaim:
-            claimName: cse-valid-idcc-data-bridge-storage
+            claimName: cse-valid-d2cc-data-bridge-storage
