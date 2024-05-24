@@ -9,7 +9,7 @@ spring:
   cloud:
     stream:
       default:
-        group: cse-import-d2cc-adapter
+        group: cse-import-ec-d2cc-adapter
       bindings:
         handleRun-in-0:
           binder: rabbit

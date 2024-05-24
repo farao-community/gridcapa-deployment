@@ -7,7 +7,7 @@ spring:
   cloud:
     stream:
       default:
-        group: cse-valid-d2cc-exporter
+        group: cse-valid-d2cc-rao-logs-dispatcher
       bindings:
         dispatchRaoEvents-in-0:
           destination: rao-runners-logs-exchange
