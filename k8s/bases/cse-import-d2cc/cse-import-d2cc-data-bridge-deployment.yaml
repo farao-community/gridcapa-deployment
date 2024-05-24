@@ -32,14 +32,14 @@ spec:
           env:
             - name: SOURCE_HOST
               valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: GRIDCAPA_SOURCE_HOST_CSE_IMPORT_D2CC
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-host
             - name: SOURCE_PORT
               valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: GRIDCAPA_SOURCE_PORT_CSE_IMPORT_D2CC
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-port
             - name: SOURCE_USER
               valueFrom:
                 secretKeyRef:
