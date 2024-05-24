@@ -35,14 +35,14 @@ spec:
           env:
             - name: OUTPUT_HOST
               valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: GRIDCAPA_SOURCE_HOST_CORE_CC
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-host
             - name: OUTPUT_PORT
               valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: GRIDCAPA_SOURCE_PORT_CORE_CC
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-port
             - name: OUTPUT_USER
               valueFrom:
                 secretKeyRef:

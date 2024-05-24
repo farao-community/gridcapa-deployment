@@ -31,14 +31,14 @@ spec:
           env:
             - name: SOURCE_HOST
               valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: GRIDCAPA_SOURCE_HOST_SWE_IDCC_IDCF
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-host_IDCF
             - name: SOURCE_PORT
               valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: GRIDCAPA_SOURCE_PORT_SWE_IDCC_IDCF
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-port
             - name: SOURCE_USER
               valueFrom:
                 secretKeyRef:
