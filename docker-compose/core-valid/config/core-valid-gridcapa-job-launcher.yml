@@ -40,6 +40,7 @@ job-launcher:
   process:
     tag: CORE_VALID
     timezone: CET
+    days-to-add: 1
 
 scheduler:
   enable: true

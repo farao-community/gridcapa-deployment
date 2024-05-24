@@ -49,6 +49,7 @@ data:
       process:
         tag: SWE_IDCC_IDCF
         timezone: CET
+        days-to-add: 0
 
     scheduler:
       enable: false

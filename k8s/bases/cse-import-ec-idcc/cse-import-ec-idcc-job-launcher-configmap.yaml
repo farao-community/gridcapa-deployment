@@ -53,6 +53,7 @@ data:
       process:
         tag: CSE_IMPORT_EC_IDCC
         timezone: CET
+        days-to-add: 0
 
     scheduler:
       enable: false

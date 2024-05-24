@@ -53,6 +53,7 @@ data:
       process:
         tag: CORE_CC
         timezone: CET
+        days-to-add: 0
 
     scheduler:
       enable: false

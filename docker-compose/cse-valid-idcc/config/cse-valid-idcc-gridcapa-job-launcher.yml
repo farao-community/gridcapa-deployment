@@ -27,6 +27,7 @@ job-launcher:
   process:
     tag: CSE_VALID_IDCC
     timezone: CET
+    days-to-add: 0
 
 scheduler:
   enable: false

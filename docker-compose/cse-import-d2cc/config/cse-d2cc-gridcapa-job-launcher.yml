@@ -41,6 +41,7 @@ job-launcher:
   process:
     tag: CSE_IMPORT_D2CC
     timezone: CET
+    days-to-add: 0
 
 scheduler:
   enable: false
