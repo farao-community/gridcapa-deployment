@@ -7,7 +7,7 @@ spring:
   cloud:
     stream:
       default:
-        group: cse-import-d2cc-outputs
+        group: cse-import-d2cc-exporter
       bindings:
         consumeTaskDtoUpdate-in-0:
           destination: cse-import-d2cc-task-updated

@@ -1,10 +1,11 @@
 spring:
   cloud:
     stream:
+      default:
+        group: cse-valid-idcc-task-notification
       bindings:
         input:
           destination: cse-valid-idcc-task-updated
-          group: cse-valid-idcc-task-notification
       rabbit:
         default:
           consumer:
