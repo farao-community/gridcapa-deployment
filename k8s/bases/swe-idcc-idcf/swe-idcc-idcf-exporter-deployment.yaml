@@ -33,7 +33,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-ftp-credentials
-                  key: ftp-host_IDCF
+                  key: ftp-host
             - name: SOURCE_PORT
               valueFrom:
                 secretKeyRef:
