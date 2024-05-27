@@ -52,6 +52,8 @@ data:
               destination: core-valid-task-updated
             task-status-updated:
               destination: core-valid-task-updated
+            task-input-updated:
+              destination: core-valid-task-updated
           rabbit:
             default:
               consumer:
@@ -69,6 +71,9 @@ data:
               task-status-updated:
                 producer:
                   routing-key-expression: '''status'''
+              task-input-updated:
+                producer:
+                  routing-key-expression: '''input'''
       servlet:
         multipart:
           max-file-size: 100MB

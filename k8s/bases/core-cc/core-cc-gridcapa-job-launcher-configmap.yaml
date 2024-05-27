@@ -42,9 +42,11 @@ data:
             bindings:
               consumeTaskDtoUpdate-in-0:
                 consumer:
-                  binding-routing-key: status
+                  binding-routing-key: input
     job-launcher:
       auto: true
+      auto-trigger-filetypes:
+        - RAOREQUEST
       url:
         task-manager-timestamp-url: http://core-cc-task-manager/tasks/
         task-manager-business-date-url: http://core-cc-task-manager/tasks/businessdate/

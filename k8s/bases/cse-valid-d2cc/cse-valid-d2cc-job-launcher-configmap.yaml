@@ -44,7 +44,7 @@ data:
             bindings:
               consumeTaskDtoUpdate-in-0:
                 consumer:
-                  binding-routing-key: status
+                  binding-routing-key: input
     job-launcher:
       auto: false
       url:
