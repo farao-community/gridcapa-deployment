@@ -25,7 +25,6 @@ job-launcher:
     task-manager-timestamp-url: http://cse-valid-idcc-gridcapa-task-manager:8080/tasks/
     task-manager-business-date-url: http://cse-valid-idcc-gridcapa-task-manager:8080/tasks/businessdate/
   process:
-    tag: CSE_VALID_IDCC
     timezone: CET
     days-to-add: 0
 

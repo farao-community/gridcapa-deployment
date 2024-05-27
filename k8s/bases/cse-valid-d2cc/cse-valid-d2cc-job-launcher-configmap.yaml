@@ -51,7 +51,6 @@ data:
         task-manager-timestamp-url: http://cse-valid-d2cc-task-manager/tasks/
         task-manager-business-date-url: http://cse-valid-d2cc-task-manager/tasks/businessdate/
       process:
-        tag: CSE_VALID_D2CC
         timezone: CET
         days-to-add: 0
 

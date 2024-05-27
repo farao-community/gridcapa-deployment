@@ -47,7 +47,6 @@ data:
         task-manager-timestamp-url: http://swe-d2cc-task-manager/tasks/
         task-manager-business-date-url: http://swe-d2cc-task-manager/tasks/businessdate/
       process:
-        tag: SWE_D2CC
         timezone: CET
         days-to-add: 0
 
