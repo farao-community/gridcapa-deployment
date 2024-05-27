@@ -42,10 +42,11 @@ data:
             bindings:
               consumeTaskDtoUpdate-in-0:
                 consumer:
-                  binding-routing-key: status
+                  binding-routing-key: input
 
     job-launcher:
       auto: true
+      auto-trigger-filetypes:
       url:
         task-manager-timestamp-url: http://cse-export-d2cc-task-manager/tasks/
         task-manager-business-date-url: http://cse-export-d2cc-task-manager/tasks/businessdate/

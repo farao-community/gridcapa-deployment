@@ -2,33 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - data-bridge/cse-import-d2cc-automated-forced-pras-data-bridge-configmap.yaml
-  - data-bridge/cse-import-d2cc-automated-forced-pras-data-bridge-deployment.yaml
-  - data-bridge/cse-import-d2cc-automated-forced-pras-data-bridge-service.yaml
-  - data-bridge/cse-import-d2cc-cgm-data-bridge-configmap.yaml
-  - data-bridge/cse-import-d2cc-cgm-data-bridge-deployment.yaml
-  - data-bridge/cse-import-d2cc-cgm-data-bridge-service.yaml
-  - data-bridge/cse-import-d2cc-crac-data-bridge-configmap.yaml
-  - data-bridge/cse-import-d2cc-crac-data-bridge-deployment.yaml
-  - data-bridge/cse-import-d2cc-crac-data-bridge-service.yaml
-  - data-bridge/cse-import-d2cc-glsk-data-bridge-configmap.yaml
-  - data-bridge/cse-import-d2cc-glsk-data-bridge-deployment.yaml
-  - data-bridge/cse-import-d2cc-glsk-data-bridge-service.yaml
-  - data-bridge/cse-import-d2cc-ntc-data-bridge-configmap.yaml
-  - data-bridge/cse-import-d2cc-ntc-data-bridge-deployment.yaml
-  - data-bridge/cse-import-d2cc-ntc-data-bridge-service.yaml
-  - data-bridge/cse-import-d2cc-target-ch-data-bridge-configmap.yaml
-  - data-bridge/cse-import-d2cc-target-ch-data-bridge-deployment.yaml
-  - data-bridge/cse-import-d2cc-target-ch-data-bridge-service.yaml
-  - data-bridge/cse-import-d2cc-ntc-red-data-bridge-configmap.yaml
-  - data-bridge/cse-import-d2cc-ntc-red-data-bridge-deployment.yaml
-  - data-bridge/cse-import-d2cc-ntc-red-data-bridge-service.yaml
-  - data-bridge/cse-import-d2cc-user-config-data-bridge-configmap.yaml
-  - data-bridge/cse-import-d2cc-user-config-data-bridge-deployment.yaml
-  - data-bridge/cse-import-d2cc-user-config-data-bridge-service.yaml
-  - data-bridge/cse-import-d2cc-vulcanus-data-bridge-configmap.yaml
-  - data-bridge/cse-import-d2cc-vulcanus-data-bridge-deployment.yaml
-  - data-bridge/cse-import-d2cc-vulcanus-data-bridge-service.yaml
+  - cse-import-d2cc-data-bridge-configmap.yaml
+  - cse-import-d2cc-data-bridge-deployment.yaml
+  - cse-import-d2cc-data-bridge-service.yaml
   - cse-import-d2cc-adapter-configmap.yaml
   - cse-import-d2cc-adapter-deployment.yaml
   - cse-import-d2cc-adapter-service.yaml

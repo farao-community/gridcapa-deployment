@@ -42,7 +42,7 @@ data:
             bindings:
               consumeTaskDtoUpdate-in-0:
                 consumer:
-                  binding-routing-key: status
+                  binding-routing-key: input
     job-launcher:
       url:
         task-manager-timestamp-url: http://core-valid-task-manager/tasks/
