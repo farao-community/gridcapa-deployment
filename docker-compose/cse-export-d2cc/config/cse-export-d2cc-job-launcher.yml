@@ -12,9 +12,9 @@ spring:
     port: 5672
   cloud:
     stream:
+      default:
+        group: cse-export-d2cc-job-launcher
       bindings:
-        default:
-          group: cse-export-d2cc-job-launcher
         run-task:
           destination: cse-export-d2cc-launch-task
         run-task-auto:

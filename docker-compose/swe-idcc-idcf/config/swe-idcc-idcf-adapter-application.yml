@@ -6,11 +6,12 @@ spring:
     port: 5672
   cloud:
     stream:
+      default:
+        group: swe-idcc-idcf-adapter
       bindings:
         consumeTask-in-0:
           binder: rabbit
           destination: swe-idcc-idcf-run-task
-          group: swe-idcc-idcf-adapter
       rabbit:
         default:
           consumer:

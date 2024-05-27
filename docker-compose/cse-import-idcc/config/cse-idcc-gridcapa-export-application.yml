@@ -7,7 +7,7 @@ spring:
   cloud:
     stream:
       default:
-        group: cse-export-idcc-outputs
+        group: cse-import-idcc-exporter
       bindings:
         consumeTaskDtoUpdate-in-0:
           destination: cse-import-idcc-task-updated

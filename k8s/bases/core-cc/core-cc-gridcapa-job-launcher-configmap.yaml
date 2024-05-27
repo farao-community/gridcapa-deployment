@@ -23,9 +23,9 @@ data:
         port: 5672
       cloud:
         stream:
+          default:
+            group: core-cc-job-launcher
           bindings:
-            default:
-              group: core-cc-job-launcher
             run-task:
               destination: core-cc-run-task
             run-task-auto:

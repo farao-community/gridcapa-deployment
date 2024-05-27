@@ -20,7 +20,7 @@ data:
       cloud:
         stream:
           default:
-            group: swe-d2cc-outputs
+            group: swe-d2cc-exporter
           bindings:
             consumeTaskDtoUpdate-in-0:
               destination: swe-d2cc-task-updated

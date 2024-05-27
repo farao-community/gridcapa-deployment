@@ -23,9 +23,9 @@ data:
         port: 5672
       cloud:
         stream:
+          default:
+            group: swe-btcc-job-launcher
           bindings:
-            default:
-              group: swe-btcc-job-launcher
             run-task:
               destination: swe-btcc-run-task
             stop-task:

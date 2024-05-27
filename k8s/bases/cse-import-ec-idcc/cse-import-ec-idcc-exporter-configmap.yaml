@@ -22,7 +22,7 @@ data:
       cloud:
         stream:
           default:
-            group: cse-import-ec-idcc-outputs
+            group: cse-import-ec-idcc-exporter
           bindings:
             consumeTaskDtoUpdate-in-0:
               destination: cse-import-ec-idcc-task-updated

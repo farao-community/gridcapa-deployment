@@ -14,12 +14,12 @@ spring:
     stream:
       default:
         binder: rabbit
+        group: swe-idcc-runner
       bindings:
         softInterrupt-in-0:
           destination: swe-idcc-stop-task
         request-in-0:
           destination: swe-idcc-request
-          group: swe-idcc-runner
         request-out-0:
           destination: swe-idcc-response
         task-status-update:

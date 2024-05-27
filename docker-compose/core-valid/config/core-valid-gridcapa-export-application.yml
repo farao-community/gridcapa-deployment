@@ -7,7 +7,7 @@ spring:
   cloud:
     stream:
       default:
-        group: core-valid-outputs
+        group: core-valid-exporter
       bindings:
         consumeTaskDtoUpdate-in-0:
           destination: core-valid-task-updated
