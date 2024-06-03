@@ -19,6 +19,7 @@ services:
     image: farao/gridcapa-task-manager:latest
     volumes:
       - ./config/core-cc-gridcapa-task-manager-application.yml:/config/application.yml
+      - ./config/data.sql:/config/data.sql
     networks:
       - gridcapa
 

@@ -30,6 +30,10 @@ data:
               default_storage: NORMALIZE_UTC
         hibernate:
           ddl-auto: update
+      sql:
+        init:
+          mode: always
+          data-locations: file:/config/data.sql
       rabbitmq:
         host: gridcapa-rabbitmq
         port: 5672
@@ -88,6 +92,8 @@ data:
           - REFPROG
           - RAOREQUEST
           - VIRTUALHUB
+        optional-inputs:
+          - DCCGM
         outputs:
           - CNE
           - RAO_RESULT
@@ -114,3 +120,12 @@ data:
     logback:
       amqp:
         exchange: core-cc-task-manager-logs-exchange
+        
+    runner:
+      parameters:
+        USE_DC_CGM_INPUT: false
+  data.sql: |-
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
+    VALUES ('USE_DC_CGM_INPUT', 'USE DC CGM INPUT', 1, 'BOOLEAN', 'DC CGM INPUT ', 1, 'false')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'USE DC CGM INPUT', display_order = 1, parameter_type = 'BOOLEAN', section_title = 'DC CGM INPUT', section_order = 1;

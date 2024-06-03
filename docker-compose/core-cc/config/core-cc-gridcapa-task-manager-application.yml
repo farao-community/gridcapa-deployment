@@ -13,6 +13,10 @@ spring:
       hibernate:
         timezone:
           default_storage: NORMALIZE_UTC
+  sql:
+    init:
+      mode: always
+      data-locations: file:/config/data.sql
   rabbitmq:
     host: rabbitmq
     port: 5672
@@ -66,6 +70,8 @@ task-server:
       - REFPROG
       - RAOREQUEST
       - VIRTUALHUB
+    optional-inputs:
+      - DCCGM
     outputs:
       - CNE
       - RAO_RESULT
@@ -90,3 +96,7 @@ stomp:
 logback:
   amqp:
     exchange: core-cc-task-manager-logs-exchange
+
+runner:
+  parameters:
+    USE_DC_CGM_INPUT: false
