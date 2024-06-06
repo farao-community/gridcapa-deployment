@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: swe-btcc-data-bridge-storage
+  labels:
+    app: gridcapa
+    component: data-bridge-storage
+    region: swe
+    process: btcc
+spec:
+  storageClassName: nfs-gold
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 224M
