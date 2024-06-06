@@ -8,6 +8,13 @@ services:
     networks:
       - gridcapa
 
+  swe-btcc-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/swe-btcc-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
   swe-btcc-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
