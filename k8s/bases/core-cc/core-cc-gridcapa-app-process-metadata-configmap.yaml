@@ -14,6 +14,7 @@ data:
       "globalViewTimestampFilter": [
       ],
       "manualExportEnabled": false,
+      "parametersEnabled": true,
       "eventLevelPredefinedFilter": [
         {
           "filterName": "INFO",
