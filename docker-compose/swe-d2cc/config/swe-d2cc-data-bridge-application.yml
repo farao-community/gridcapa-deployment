@@ -112,6 +112,11 @@ data-bridge:
       polling-delay-in-ms: 5000
       max-messages-per-poll: 10
       max-pool-size: 2
+      timeouts:
+        data-timeout: 60000
+        default-timeout: 500
+        connect-timeout: 1000
+        session-wait-timeout: 1000
   sinks:
     minio:
       url: http://minio:9000
@@ -119,3 +124,5 @@ data-bridge:
       secret-key: gridcapa
       bucket: gridcapa
       base-directory: /SWE/D2CC
+logging.level:
+  org.springframework.integration: TRACE
