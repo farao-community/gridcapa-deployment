@@ -123,6 +123,11 @@ data:
           polling-delay-in-ms: ${POLLING_DELAY}
           max-messages-per-poll: ${MAX_POLLED_FILES}
           max-pool-size: ${MAX_POOL_SIZE}
+          timeouts:
+            data-timeout: ${DATA_TIMEOUT}
+            default-timeout: ${DEFAULT_TIMEOUT}
+            connect-timeout: ${CONNECTION_TIMEOUT}
+            session-wait-timeout: ${SESSION_WAIT_TIMEOUT}
       sinks:
         minio:
           url: http://gridcapa-minio:9000
