@@ -40,8 +40,8 @@ job-launcher:
     task-manager-timestamp-url: http://cse-export-idcc-task-manager:8080/tasks/
     task-manager-business-date-url: http://cse-export-idcc-task-manager:8080/tasks/businessdate/
   process:
-    tag: CSE_EXPORT_IDCC
     timezone: CET
+    days-to-add: 0
 
 scheduler:
   enable: false
