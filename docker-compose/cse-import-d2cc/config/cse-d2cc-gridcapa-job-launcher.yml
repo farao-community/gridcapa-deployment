@@ -39,8 +39,8 @@ job-launcher:
     task-manager-timestamp-url: http://cse-import-d2cc-task-manager:8080/tasks/
     task-manager-business-date-url: http://cse-import-d2cc-task-manager:8080/tasks/businessdate/
   process:
-    tag: CSE_IMPORT_D2CC
     timezone: CET
+    days-to-add: 0
 
 scheduler:
   enable: false
