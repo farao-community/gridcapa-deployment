@@ -70,6 +70,26 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: GRIDCAPA_MAX_POOL_SIZE_CSE_IMPORT_EC_D2CC
+            - name: DEFAULT_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_DEFAULT_TIMEOUT_DATA_BRIDGE
+            - name: DATA_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_DATA_TIMEOUT_DATA_BRIDGE
+            - name: CONNECTION_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_CONNECTION_TIMEOUT_DATA_BRIDGE
+            - name: SESSION_WAIT_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SESSION_WAIT_TIMEOUT_DATA_BRIDGE
             - name: MINIO_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
