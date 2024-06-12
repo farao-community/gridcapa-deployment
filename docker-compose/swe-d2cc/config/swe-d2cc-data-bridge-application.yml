@@ -124,5 +124,3 @@ data-bridge:
       secret-key: gridcapa
       bucket: gridcapa
       base-directory: /SWE/D2CC
-logging.level:
-  org.springframework.integration: TRACE
