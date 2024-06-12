@@ -28,10 +28,10 @@ resources:
   - minio-pv-claim.yaml
   - postgresql-configmap.yaml
   - postgresql-pv-claim.yaml
-  - ../../../../configuration/gridcapa-gateway-johndoe-configmap.yaml
+  - ../../main_versions/configuration/gridcapa-gateway-johndoe-configmap.yaml
 
 components:
-  - ../../main_versions/prod
+  - ../../main_versions
 
 patches:
   - patch: |-
