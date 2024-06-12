@@ -114,4 +114,4 @@ images:
     newTag: v1.28.0
   - name: gridcapa-core-cc-post-processing
     newName: docker.io/farao/gridcapa-core-cc-post-processing
-    newTag: v1.7.0
+    newTag: v1.8.0
