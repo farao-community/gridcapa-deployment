@@ -23,6 +23,11 @@ spring:
 
 export:
   seperate-output-files: true
+  unzip-files:
+    - CGM_ESFR
+    - CGM_FRES
+    - CGM_PTES
+    - CGM_ESPT
 
 task-manager:
   base-url: http://swe-idcc-task-manager:8080
