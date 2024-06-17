@@ -77,7 +77,7 @@ patches:
       metadata:
         name: cse-export-d2cc-runner
       spec:
-        replicas: 2
+        replicas: 8
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -91,7 +91,7 @@ patches:
       metadata:
         name: cse-import-ec-d2cc-gridcapa-runner
       spec:
-        replicas: 2
+        replicas: 8
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
