@@ -46,7 +46,7 @@ services:
   cse-export-idcc-runner:
     image: farao/gridcapa-cse-cc-export-runner:latest
     volumes:
-      - ../../configuration/test/cse-export-runner-itools-config.yml:/home/farao/.itools/config.yml
+      - ../../configuration/cse-export-runner-itools-config.yml:/home/farao/.itools/config.yml
       - ./config/cse-export-idcc-runner-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://cse-cc-runner/actuator/health" ]
