@@ -33,7 +33,7 @@ services:
     image: farao/gridcapa-cse-valid:latest
     volumes:
       - ./config/cse-valid-d2cc-runner-application.yml:/config/application.yml
-      - ../../configuration/test/cse-valid-runner-itools-config.yml:/home/farao/.itools/config.yml
+      - ../../configuration/cse-valid-runner-itools-config.yml:/home/farao/.itools/config.yml
       - ./config/cse-valid-d2cc-runner-logback.xml:/config/logback.xml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]

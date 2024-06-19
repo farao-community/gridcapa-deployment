@@ -39,7 +39,7 @@ resources:
 
 
 components:
-  - ../../main_versions/prod
+  - ../../main_versions
 
 patches:
   - patch: |-

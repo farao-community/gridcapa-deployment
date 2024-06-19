@@ -46,7 +46,7 @@ services:
     image: farao/gridcapa-swe-runner:latest
     volumes:
       - ./config/swe-idcc-runner-application.yml:/config/application.yml
-      - ../../configuration/test/swe-runner-itools-config.yml:/home/farao/.itools/config.yml
+      - ../../configuration/swe-runner-itools-config.yml:/home/farao/.itools/config.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s

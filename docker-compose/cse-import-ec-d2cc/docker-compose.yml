@@ -46,7 +46,7 @@ services:
   cse-import-ec-d2cc-runner:
     image: farao/gridcapa-cse-cc-import-runner:latest
     volumes:
-      - ../../configuration/test/cse-import-runner-itools-config.yml:/home/farao/.itools/config.yml
+      - ../../configuration/cse-import-runner-itools-config.yml:/home/farao/.itools/config.yml
       - ./config/cse-d2cc-gridcapa-runner-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://cse-import-ec-d2cc-runner/actuator/health" ]
