@@ -7,8 +7,6 @@ spring:
     username: core_cc_server
     password: core-cc
   jpa:
-    hibernate:
-      ddl-auto: update
     properties:
       hibernate:
         timezone:

@@ -9,8 +9,6 @@ spring:
       hibernate:
         timezone:
           default_storage: NORMALIZE_UTC
-    hibernate:
-      ddl-auto: update
   rabbitmq:
     host: rabbitmq
     port: 5672

@@ -29,8 +29,6 @@ data:
           hibernate:
             timezone:
               default_storage: NORMALIZE_UTC
-        hibernate:
-          ddl-auto: update
       sql:
         init:
           mode: always
