@@ -68,13 +68,13 @@ images:
     newTag: v1.28.0
   - name: gridcapa-cse-exporter
     newName: docker.io/farao/gridcapa-export
-    newTag: v1.7.0
+    newTag: v1.8.0
   - name: gridcapa-swe-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
     newTag: v2.1.0
   - name: gridcapa-swe-exporter
     newName: docker.io/farao/gridcapa-export
-    newTag: v1.7.0
+    newTag: v1.8.0
   - name: gridcapa-swe-adapter
     newName: docker.io/farao/gridcapa-swe-adapter
     newTag: v1.6.1
