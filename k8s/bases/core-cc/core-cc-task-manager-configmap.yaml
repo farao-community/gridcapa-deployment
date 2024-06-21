@@ -10,6 +10,8 @@ metadata:
 data:
   application.yml: |-
     spring:
+      liquibase:
+        change-log: classpath:/db/changelog-master.xml
       datasource:
         url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
         driverClassName: org.postgresql.Driver
