@@ -1,3 +1,8 @@
+logback:
+  amqp:
+    exchange: core-cc-task-manager-logs-exchange
+    routing-key: "#"
+
 spring:
   rabbitmq:
     host: rabbitmq
@@ -9,9 +14,10 @@ spring:
   cloud:
     stream:
       default:
-        binder: rabbit
         group: core-cc-adapter
       bindings:
+        consumeTaskDtoUpdate-in-0:
+          destination: core-cc-task-updated
         consumeTask-in-0:
           destination: core-cc-run-task
         consumeAutoTask-in-0:
@@ -21,10 +27,10 @@ spring:
           consumer:
             auto-bind-dlq: true
             max-attempts: 1
-
-core-cc-runner:
-  amqp:
-    queue-name: core-cc-requests
+        bindings:
+          consumeTaskDtoUpdate-in-0:
+            consumer:
+              binding-routing-key: input
 
 minio-adapter:
   bucket: gridcapa
@@ -34,5 +40,12 @@ minio-adapter:
   url: http://minio:9000
 
 core-cc-adapter:
+  auto-trigger-filetypes:
+    - RAOREQUEST
+  task-manager-timestamp-url: http://core-cc-gridcapa-task-manager:8080/tasks/
   whitelist:
     - http://minio:9000/
+
+core-cc-runner:
+  amqp:
+    queue-name: core-cc-requests

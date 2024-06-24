@@ -20,9 +20,6 @@ resources:
   - core-cc-rao-logs-dispatcher-configmap.yaml
   - core-cc-rao-logs-dispatcher-deployment.yaml
   - core-cc-rao-logs-dispatcher-service.yaml
-  - core-cc-job-launcher-deployment.yaml
-  - core-cc-job-launcher-service.yaml
-  - core-cc-job-launcher-configmap.yaml
   - core-cc-output-data-bridge-deployment.yaml
   - core-cc-output-data-bridge-service.yaml
   - core-cc-output-data-bridge-configmap.yaml

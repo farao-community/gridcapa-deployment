@@ -9,7 +9,7 @@ services:
       - gridcapa
 
   core-cc-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
+    image: farao/gridcapa-core-cc-data-bridge:latest
     volumes:
       - ./config/core-cc-data-bridge-application.yml:/config/application.yml
     networks:
@@ -20,13 +20,6 @@ services:
     volumes:
       - ./config/core-cc-task-manager-application.yml:/config/application.yml
       - ./config/data.sql:/config/data.sql
-    networks:
-      - gridcapa
-
-  core-cc-job-launcher:
-    image: farao/gridcapa-job-launcher:latest
-    volumes:
-      - ./config/core-cc-job-launcher-application.yml:/config/application.yml
     networks:
       - gridcapa
 
