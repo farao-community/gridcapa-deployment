@@ -4,12 +4,6 @@ spring:
     driverClassName: org.postgresql.Driver
     username: swe_btcc_server
     password: swe-btcc
-  jpa:
-    defer-datasource-initialization: true
-    properties:
-      hibernate:
-        timezone:
-          default_storage: NORMALIZE_UTC
   sql:
     init:
       mode: always

@@ -4,12 +4,6 @@ spring:
     driverClassName: org.postgresql.Driver
     username: swe_idcc_idcf_server
     password: swe-idcc-idcf
-  jpa:
-    defer-datasource-initialization: true
-    properties:
-      hibernate:
-        timezone:
-          default_storage: NORMALIZE_UTC
   sql:
     init:
       mode: always

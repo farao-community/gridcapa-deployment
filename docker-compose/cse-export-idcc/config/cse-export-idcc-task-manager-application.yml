@@ -4,11 +4,6 @@ spring:
     driverClassName: org.postgresql.Driver
     username: cse_export_idcc_server
     password: cse-export-idcc
-  jpa:
-    properties:
-      hibernate:
-        timezone:
-          default_storage: NORMALIZE_UTC
   rabbitmq:
     host: rabbitmq
     port: 5672
