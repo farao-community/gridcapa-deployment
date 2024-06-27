@@ -24,12 +24,6 @@ data:
           minimumIdle: ${HIKARI_MIN_IDLE:5}
       jpa:
         database-platform: org.hibernate.dialect.PostgreSQLDialect
-        properties:
-          hibernate:
-            timezone:
-              default_storage: NORMALIZE_UTC
-        hibernate:
-          ddl-auto: update
       rabbitmq:
         host: gridcapa-rabbitmq
         port: 5672

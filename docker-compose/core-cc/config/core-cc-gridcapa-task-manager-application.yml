@@ -6,13 +6,6 @@ spring:
     driverClassName: org.postgresql.Driver
     username: core_cc_server
     password: core-cc
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        timezone:
-          default_storage: NORMALIZE_UTC
   sql:
     init:
       mode: always

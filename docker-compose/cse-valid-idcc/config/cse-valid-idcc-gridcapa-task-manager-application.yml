@@ -4,13 +4,6 @@ spring:
     driverClassName: org.postgresql.Driver
     username: cse_valid_idcc_server
     password: cse-valid-idcc
-  jpa:
-    properties:
-      hibernate:
-        timezone:
-          default_storage: NORMALIZE_UTC
-    hibernate:
-      ddl-auto: update
   rabbitmq:
     host: rabbitmq
     port: 5672

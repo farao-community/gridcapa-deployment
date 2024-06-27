@@ -24,13 +24,6 @@ data:
           minimumIdle: ${HIKARI_MIN_IDLE:5}
       jpa:
         database-platform: org.hibernate.dialect.PostgreSQLDialect
-        defer-datasource-initialization: true
-        properties:
-          hibernate:
-            timezone:
-              default_storage: NORMALIZE_UTC
-        hibernate:
-          ddl-auto: update
       sql:
         init:
           mode: always
