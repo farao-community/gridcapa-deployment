@@ -8,6 +8,9 @@ resources:
   - swe-btcc-app-configmap.yaml
   - swe-btcc-app-deployment.yaml
   - swe-btcc-app-service.yaml
+  - swe-btcc-data-bridge-configmap.yaml
+  - swe-btcc-data-bridge-deployment.yaml
+  - swe-btcc-data-bridge-service.yaml
   - swe-btcc-job-launcher-configmap.yaml
   - swe-btcc-job-launcher-deployment.yaml
   - swe-btcc-job-launcher-service.yaml

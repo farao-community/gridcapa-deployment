@@ -12,9 +12,9 @@ spring:
     port: 5672
   cloud:
     stream:
+      default:
+        group: cse-import-ec-idcc-job-launcher
       bindings:
-        default:
-          group: cse-import-ec-idcc-job-launcher
         run-task:
           destination: cse-import-ec-idcc-launch-task
         run-task-auto:
@@ -31,7 +31,7 @@ spring:
         bindings:
           consumeTaskDtoUpdate-in-0:
             consumer:
-              binding-routing-key: status
+              binding-routing-key: input
 
 job-launcher:
   auto: false
@@ -39,8 +39,8 @@ job-launcher:
     task-manager-timestamp-url: http://cse-import-ec-idcc-task-manager:8080/tasks/
     task-manager-business-date-url: http://cse-import-ec-idcc-task-manager:8080/tasks/businessdate/
   process:
-    tag: CSE_IMPORT_EC_IDCC
     timezone: CET
+    days-to-add: 0
 
 scheduler:
   enable: false

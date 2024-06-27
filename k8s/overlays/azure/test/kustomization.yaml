@@ -21,6 +21,7 @@ resources:
   - ../azure-databridge-claims/cse-import-idcc
   - ../azure-databridge-claims/cse-import-ec-d2cc
   - ../azure-databridge-claims/cse-import-ec-idcc
+  - ../azure-databridge-claims/swe-btcc
   - ../azure-databridge-claims/swe-d2cc
   - ../azure-databridge-claims/swe-idcc
   - ../azure-databridge-claims/swe-idcc-idcf
@@ -45,7 +46,7 @@ resources:
   - filestash-service.yaml
 
 components:
-  - ../../main_versions/test
+  - ../../main_versions
 
 configMapGenerator:
   - name: env-configmap

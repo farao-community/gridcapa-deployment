@@ -7,7 +7,7 @@ spring:
   cloud:
     stream:
       default:
-        group: swe-idcc-idcf-outputs
+        group: swe-idcc-idcf-exporter
       bindings:
         consumeTaskDtoUpdate-in-0:
           destination: swe-idcc-idcf-task-updated

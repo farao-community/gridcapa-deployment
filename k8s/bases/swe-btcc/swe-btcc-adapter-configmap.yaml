@@ -17,11 +17,12 @@ data:
         port: 5672
       cloud:
         stream:
+          default:
+            group: swe-btcc-adapter
           bindings:
             consumeTask-in-0:
               binder: rabbit
               destination: swe-btcc-run-task
-              group: swe-btcc-adapter
           rabbit:
             default:
               consumer:

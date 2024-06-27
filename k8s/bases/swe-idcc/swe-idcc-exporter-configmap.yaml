@@ -20,7 +20,7 @@ data:
       cloud:
         stream:
           default:
-            group: swe-idcc-outputs
+            group: swe-idcc-exporter
           bindings:
             consumeTaskDtoUpdate-in-0:
               destination: swe-idcc-task-updated

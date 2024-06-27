@@ -8,38 +8,10 @@ services:
     networks:
       - gridcapa
 
-  core-valid-gridcapa-cgm-data-bridge:
+  core-valid-gridcapa-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/core-valid-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  core-valid-gridcapa-cbcora-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/core-valid-gridcapa-cbcora-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  core-valid-gridcapa-glsk-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/core-valid-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  core-valid-gridcapa-refprog-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/core-valid-gridcapa-refprog-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  core-valid-gridcapa-study-point-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/core-valid-gridcapa-study-point-data-bridge-application.yml:/config/application.yml
+      - ./config/core-valid-gridcapa-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -61,7 +33,7 @@ services:
     image: farao/gridcapa-core-valid:latest
     volumes:
       - ./config/core-valid-runner-application.yml:/config/application.yml
-      - ../../configuration/test/core-valid-runner-itools-config.yml:/home/farao/.itools/config.yml
+      - ../../configuration/core-valid-runner-itools-config.yml:/home/farao/.itools/config.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s

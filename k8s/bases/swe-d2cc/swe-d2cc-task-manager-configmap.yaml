@@ -57,6 +57,8 @@ data:
               destination: swe-d2cc-task-updated
             task-status-updated:
               destination: swe-d2cc-task-updated
+            task-input-updated:
+              destination: swe-d2cc-task-updated
           rabbit:
             default:
               consumer:
@@ -74,6 +76,9 @@ data:
               task-status-updated:
                 producer:
                   routing-key-expression: '''status'''
+              task-input-updated:
+                producer:
+                  routing-key-expression: '''input'''
       servlet:
         multipart:
           max-file-size: 100MB

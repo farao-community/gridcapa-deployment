@@ -12,9 +12,9 @@ spring:
     port: 5672
   cloud:
     stream:
+      default:
+        group: swe-idcc-job-launcher
       bindings:
-        default:
-          group: swe-idcc-job-launcher
         run-task:
           destination: swe-idcc-run-task
         stop-task:
@@ -29,15 +29,15 @@ spring:
         bindings:
           consumeTaskDtoUpdate-in-0:
             consumer:
-              binding-routing-key: status
+              binding-routing-key: input
 
 job-launcher:
   url:
     task-manager-timestamp-url: http://swe-idcc-task-manager:8080/tasks/
     task-manager-business-date-url: http://swe-idcc-task-manager:8080/tasks/businessdate/
   process:
-    tag: SWE_IDCC
     timezone: CET
+    days-to-add: 0
 
 scheduler:
   enable: false

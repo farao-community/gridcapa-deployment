@@ -8,45 +8,10 @@ services:
     networks:
       - gridcapa
 
-  core-cc-gridcapa-cgm-data-bridge:
+  core-cc-gridcapa-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/data-bridge/core-cc-gridcapa-cgm-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  core-cc-gridcapa-cbcora-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/core-cc-gridcapa-cbcora-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  core-cc-gridcapa-glsk-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/core-cc-gridcapa-glsk-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  core-cc-gridcapa-refprog-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/core-cc-gridcapa-refprog-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  core-cc-gridcapa-raorequest-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/core-cc-gridcapa-raorequest-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  core-cc-gridcapa-virtualhub-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/core-cc-gridcapa-virtualhub-data-bridge-application.yml:/config/application.yml
+      - ./config/core-cc-gridcapa-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -54,6 +19,7 @@ services:
     image: farao/gridcapa-task-manager:latest
     volumes:
       - ./config/core-cc-gridcapa-task-manager-application.yml:/config/application.yml
+      - ./config/data.sql:/config/data.sql
     networks:
       - gridcapa
 
@@ -75,7 +41,7 @@ services:
     image: farao/gridcapa-core-cc:latest
     volumes:
       - ./config/core-cc-runner-application.yml:/config/application.yml
-      - ../../configuration/test/core-cc-runner-itools-config.yml:/home/farao/.itools/config.yml
+      - ../../configuration/core-cc-runner-itools-config.yml:/home/farao/.itools/config.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s

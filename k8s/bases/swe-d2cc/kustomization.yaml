@@ -2,48 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - data-bridge/swe-d2cc-boundary-eq-data-bridge-configmap.yaml
-  - data-bridge/swe-d2cc-boundary-eq-data-bridge-deployment.yaml
-  - data-bridge/swe-d2cc-boundary-eq-data-bridge-service.yaml
-  - data-bridge/swe-d2cc-boundary-tp-data-bridge-configmap.yaml
-  - data-bridge/swe-d2cc-boundary-tp-data-bridge-deployment.yaml
-  - data-bridge/swe-d2cc-boundary-tp-data-bridge-service.yaml
-  - data-bridge/swe-d2cc-coreso-sv-data-bridge-configmap.yaml
-  - data-bridge/swe-d2cc-coreso-sv-data-bridge-deployment.yaml
-  - data-bridge/swe-d2cc-coreso-sv-data-bridge-service.yaml
-  - data-bridge/swe-d2cc-crac-data-bridge-configmap.yaml
-  - data-bridge/swe-d2cc-crac-data-bridge-deployment.yaml
-  - data-bridge/swe-d2cc-crac-data-bridge-service.yaml
-  - data-bridge/swe-d2cc-glsk-data-bridge-configmap.yaml
-  - data-bridge/swe-d2cc-glsk-data-bridge-deployment.yaml
-  - data-bridge/swe-d2cc-glsk-data-bridge-service.yaml
-  - data-bridge/swe-d2cc-ree-eq-data-bridge-configmap.yaml
-  - data-bridge/swe-d2cc-ree-eq-data-bridge-deployment.yaml
-  - data-bridge/swe-d2cc-ree-eq-data-bridge-service.yaml
-  - data-bridge/swe-d2cc-ree-ssh-data-bridge-configmap.yaml
-  - data-bridge/swe-d2cc-ree-ssh-data-bridge-deployment.yaml
-  - data-bridge/swe-d2cc-ree-ssh-data-bridge-service.yaml
-  - data-bridge/swe-d2cc-ree-tp-data-bridge-configmap.yaml
-  - data-bridge/swe-d2cc-ree-tp-data-bridge-deployment.yaml
-  - data-bridge/swe-d2cc-ree-tp-data-bridge-service.yaml
-  - data-bridge/swe-d2cc-ren-eq-data-bridge-configmap.yaml
-  - data-bridge/swe-d2cc-ren-eq-data-bridge-deployment.yaml
-  - data-bridge/swe-d2cc-ren-eq-data-bridge-service.yaml
-  - data-bridge/swe-d2cc-ren-ssh-data-bridge-configmap.yaml
-  - data-bridge/swe-d2cc-ren-ssh-data-bridge-deployment.yaml
-  - data-bridge/swe-d2cc-ren-ssh-data-bridge-service.yaml
-  - data-bridge/swe-d2cc-ren-tp-data-bridge-configmap.yaml
-  - data-bridge/swe-d2cc-ren-tp-data-bridge-deployment.yaml
-  - data-bridge/swe-d2cc-ren-tp-data-bridge-service.yaml
-  - data-bridge/swe-d2cc-rte-eq-data-bridge-configmap.yaml
-  - data-bridge/swe-d2cc-rte-eq-data-bridge-deployment.yaml
-  - data-bridge/swe-d2cc-rte-eq-data-bridge-service.yaml
-  - data-bridge/swe-d2cc-rte-ssh-data-bridge-configmap.yaml
-  - data-bridge/swe-d2cc-rte-ssh-data-bridge-deployment.yaml
-  - data-bridge/swe-d2cc-rte-ssh-data-bridge-service.yaml
-  - data-bridge/swe-d2cc-rte-tp-data-bridge-configmap.yaml
-  - data-bridge/swe-d2cc-rte-tp-data-bridge-deployment.yaml
-  - data-bridge/swe-d2cc-rte-tp-data-bridge-service.yaml
+  - swe-d2cc-data-bridge-configmap.yaml
+  - swe-d2cc-data-bridge-deployment.yaml
+  - swe-d2cc-data-bridge-service.yaml
   - swe-d2cc-adapter-configmap.yaml
   - swe-d2cc-adapter-deployment.yaml
   - swe-d2cc-adapter-service.yaml

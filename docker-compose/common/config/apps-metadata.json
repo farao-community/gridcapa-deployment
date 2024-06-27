@@ -48,6 +48,20 @@
     "name" : "Capa CORE Capacity Calculation",
     "url"  : "/core/cc",
     "appColor" : "#AB7544"
+  },{
+    "name" : "Capa SWE D2CC",
+    "url"  : "/swe/d2cc",
+    "appColor" : "#ebd82d"
+  },
+  {
+    "name" : "Capa SWE IDCC DACF",
+    "url"  : "/swe/idcc",
+    "appColor" : "#cfeb2d"
+  },
+  {
+    "name" : "Capa SWE IDCC IDCF",
+    "url"  : "/swe/idcf/",
+    "appColor" : "#659490"
   },
   {
     "name" : "Capa SWE BT Capacity Calculation",

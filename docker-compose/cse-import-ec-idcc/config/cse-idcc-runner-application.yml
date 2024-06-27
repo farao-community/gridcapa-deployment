@@ -12,12 +12,12 @@ spring:
     stream:
       default:
         binder: rabbit
+        group: cse-import-ec-idcc-runner
       bindings:
         softInterrupt-in-0:
           destination: cse-import-ec-idcc-stop-task
         request-in-0:
           destination: cse-import-ec-idcc-request
-          group: cse-import-ec-idcc-runner
         request-out-0:
           destination: cse-import-ec-idcc-response
         task-status-update:

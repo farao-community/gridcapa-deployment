@@ -4,24 +4,30 @@ kind: Kustomization
 resources:
   - ../ftp
   - ../common
+  - ../../../bases/cse-export-d2cc
   - ../../../bases/cse-export-idcc
   - ../../../bases/cse-import-d2cc
   - ../../../bases/cse-import-idcc
+  - ../../../bases/cse-import-ec-d2cc
   - ../../../bases/cse-import-ec-idcc
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
   - ../../../bases/core-cc
+  - ../azure-databridge-claims/cse-export-d2cc
   - ../azure-databridge-claims/cse-export-idcc
   - ../azure-databridge-claims/cse-import-d2cc
   - ../azure-databridge-claims/cse-import-idcc
+  - ../azure-databridge-claims/cse-import-ec-d2cc
   - ../azure-databridge-claims/cse-import-ec-idcc
   - ../azure-databridge-claims/swe-d2cc
   - ../azure-databridge-claims/swe-idcc
   - ../azure-databridge-claims/core-cc
   - gridcapa-app-env-configmap.yaml
+  - ../dev/cse-export-d2cc-app-idp-settings-configmap.yaml
   - ../dev/cse-export-idcc-app-idp-settings-configmap.yaml
   - ../dev/cse-import-d2cc-app-idp-settings-configmap.yaml
   - ../dev/cse-import-idcc-app-idp-settings-configmap.yaml
+  - ../dev/cse-import-ec-d2cc-app-idp-settings-configmap.yaml
   - ../dev/cse-import-ec-idcc-app-idp-settings-configmap.yaml
   - ../dev/swe-d2cc-gridcapa-app-idp-settings-configmap.yaml
   - ../dev/swe-idcc-gridcapa-app-idp-settings-configmap.yaml
@@ -31,6 +37,9 @@ resources:
   - ../../coreso/prod/postgresql-configmap.yaml
   - ../../coreso/common/postgresql-deployment.yaml
 
+
+components:
+  - ../../main_versions
 
 patches:
   - patch: |-
@@ -57,7 +66,21 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
+        name: cse-export-d2cc-runner
+      spec:
+        replicas: 1
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
         name: cse-export-idcc-runner
+      spec:
+        replicas: 1
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-d2cc-gridcapa-runner
       spec:
         replicas: 1
   - patch: |-
@@ -100,116 +123,8 @@ configMapGenerator:
   - name: env-configmap
     envs:
       - env.properties
-  - name: cse-export-runner-itools-configmap
-    files:
-      - config.yml=../../main_versions/prod/configuration/cse-export-runner-itools-config.yml
-  - name: cse-import-runner-itools-configmap
-    files:
-      - config.yml=../../main_versions/prod/configuration/cse-import-runner-itools-config.yml
-  - name: rao-runner-itools-configmap
-    files:
-      - config.yml=../../main_versions/prod/configuration/rao-runner-itools-config.yml
-  - name: swe-runner-itools-configmap
-    files:
-      - config.yml=../../main_versions/prod/configuration/swe-runner-itools-config.yml
 
 images:
-  - name: apps-metadata-server
-    newName: docker.io/bitnami/apache
-    newTag: "2.4"
-  - name: rabbitmq
-    newName: docker.io/rabbitmq
-    newTag: management
-  - name: minio
-    newName: docker.io/bitnami/minio
-    newTag: 2021.6.17
-  - name: minio-mc
-    newName: docker.io/minio/mc
-    newTag: RELEASE.2022-05-09T04-08-26Z
-  - name: gridsuite-config-notification-server
-    newName: docker.io/gridsuite/config-notification-server
-    newTag: 0.15.0
-  - name: gridsuite-config-server
-    newName: docker.io/gridsuite/config-server
-    newTag: 0.15.0
-  - name: gridcapa-rao-runner
-    newName: docker.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.19.1
-  - name: gridcapa-app
-    newName: docker.io/farao/gridcapa-app-auth
-    newTag: v1.12.0
-  - name: gridcapa-gateway
-    newName: docker.io/farao/gridcapa-gateway
-    newTag: 1.1.0
-  - name: gridcapa-cse-input-data-bridge
-    newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v1.3.2
-  - name: gridcapa-cse-adapter
-    newName: docker.io/farao/gridcapa-cse-adapter
-    newTag: v1.14.1
-  - name: gridcapa-cse-job-launcher
-    newName: docker.io/farao/gridcapa-job-launcher
-    newTag: v1.8.1
-  - name: gridcapa-cse-rao-logs-dispatcher
-    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: v1.3.1
-  - name: gridcapa-cse-import-runner
-    newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.22.0
-  - name: gridcapa-cse-export-runner
-    newName: docker.io/farao/gridcapa-cse-cc-export-runner
-    newTag: v1.22.0
-  - name: gridcapa-cse-task-manager
-    newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.23.0
-  - name: gridcapa-cse-exporter
-    newName: docker.io/farao/gridcapa-export
-    newTag: v1.6.2
-  - name: gridcapa-swe-input-data-bridge
-    newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v1.3.2
-  - name: gridcapa-swe-adapter
-    newName: docker.io/farao/gridcapa-swe-adapter
-    newTag: v1.3.0
-  - name: gridcapa-swe-job-launcher
-    newName: docker.io/farao/gridcapa-job-launcher
-    newTag: v1.8.1
-  - name: gridcapa-swe-rao-logs-dispatcher
-    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: v1.3.1
-  - name: gridcapa-swe-runner
-    newName: docker.io/farao/gridcapa-swe-runner
-    newTag: v1.15.0
-  - name: gridcapa-swe-task-manager
-    newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.23.0
-  - name: gridcapa-swe-exporter
-    newName: docker.io/farao/gridcapa-export
-    newTag: v1.6.2
-  - name: gridcapa-core-cc-input-data-bridge
-    newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v1.3.2
-  - name: gridcapa-core-cc-output-data-bridge
-    newName: docker.io/farao/gridcapa-output-data-bridge
-    newTag: v1.3.0
-  - name: gridcapa-core-cc-adapter
-    newName: docker.io/farao/gridcapa-core-cc-adapter
-    newTag: v1.0.2
-  - name: gridcapa-core-cc-job-launcher
-    newName: docker.io/farao/gridcapa-job-launcher
-    newTag: v1.8.1
-  - name: gridcapa-core-cc-rao-logs-dispatcher
-    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: v1.3.1
-  - name: gridcapa-core-cc-runner
-    newName: docker.io/farao/gridcapa-core-cc
-    newTag: v1.1.0
-  - name: gridcapa-core-cc-task-manager
-    newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.23.0
-  - name: gridcapa-core-cc-post-processing
-    newName: docker.io/farao/gridcapa-core-cc-post-processing
-    newTag: v1.2.1
 # dev specific
   - name: filebrowser
     newName: docker.io/filebrowser/filebrowser
@@ -217,3 +132,6 @@ images:
   - name: ftp
     newName: docker.io/delfer/alpine-ftp-server
     newTag: latest
+# Enable auth on Azure
+  - name: docker.io/farao/gridcapa-app
+    newName: docker.io/farao/gridcapa-app-auth

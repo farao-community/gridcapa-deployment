@@ -12,21 +12,21 @@ spring:
     port: 5672
   cloud:
     stream:
+      default:
+        group: cse-valid-idcc-job-launcher
       bindings:
         run-task:
           destination: cse-valid-idcc-run-task
-          group: cse-valid-idcc-job-launcher
         run-task-auto:
           destination: cse-valid-idcc-run-task-auto
-          group: cse-valid-idcc-job-launcher
 
 job-launcher:
   url:
     task-manager-timestamp-url: http://cse-valid-idcc-gridcapa-task-manager:8080/tasks/
     task-manager-business-date-url: http://cse-valid-idcc-gridcapa-task-manager:8080/tasks/businessdate/
   process:
-    tag: CSE_VALID_IDCC
     timezone: CET
+    days-to-add: 0
 
 scheduler:
   enable: false

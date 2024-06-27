@@ -8,89 +8,13 @@ services:
     networks:
       - gridcapa
 
-  cse-import-idcc-cgm-data-bridge:
+  cse-import-idcc-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/data-bridge/cse-idcc-cgm-data-bridge-application.yml:/config/application.yml
+      - ./config/cse-idcc-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  cse-import-idcc-crac-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-idcc-crac-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-idcc-glsk-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-idcc-glsk-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-idcc-ntc-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-idcc-ntc-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-idcc-ntc-red-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-idcc-ntc-red-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-idcc-ntc2-at-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-idcc-ntc2-at-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-idcc-ntc2-ch-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-idcc-ntc2-ch-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-idcc-ntc2-fr-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-idcc-ntc2-fr-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-idcc-ntc2-si-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-idcc-ntc2-si-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-idcc-vulcanus-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-idcc-vulcanus-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-idcc-user-config-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/cse-idcc-user-config-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  cse-import-idcc-automated-forced-pras-data-bridge:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge/ccse-idcc-gridcapa-automated-forced-pras-data-bridge-application.yml:/config/application.yml
-    networks:
-      - gridcapa
   cse-import-idcc-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
@@ -122,7 +46,7 @@ services:
   cse-import-idcc-runner:
     image: farao/gridcapa-cse-cc-import-runner:latest
     volumes:
-      - ../../configuration/test/cse-import-runner-itools-config.yml:/home/farao/.itools/config.yml
+      - ../../configuration/cse-import-runner-itools-config.yml:/home/farao/.itools/config.yml
       - ./config/cse-idcc-runner-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://cse-cc-runner/actuator/health" ]
