@@ -9,10 +9,10 @@ spring:
   cloud:
     stream:
       default:
+        binder: rabbit
         group: cse-valid-idcc-adapter
       bindings:
         consumeTask-in-0:
-          binder: rabbit
           destination: cse-valid-idcc-run-task
         task-status-update:
           destination: cse-valid-idcc-task-status-updated
@@ -21,15 +21,13 @@ spring:
           consumer:
             auto-bind-dlq: true
             max-attempts: 1
-    function:
-      definition: consumeTask
 
-cse-valid-runner:
+logging:
+  config: /config/logback.xml
+
+logback:
   amqp:
-    queue-name: cse-valid-idcc-requests
-
-cse-valid-adapter:
-  target-process: IDCC
+    exchange: cse-valid-idcc-task-manager-logs-exchange
 
 minio-adapter:
   bucket: gridcapa
@@ -38,9 +36,11 @@ minio-adapter:
   secret-key: gridcapa
   url: http://minio:9000
 
-logging:
-  config: /config/logback.xml
-
-logback:
+cse-valid-runner:
   amqp:
-    exchange: cse-valid-idcc-task-manager-logs-exchange
+    queue-name: cse-valid-idcc-requests
+
+cse-valid-adapter:
+  target-process: IDCC
+  whitelist:
+    - http://minio:9000/

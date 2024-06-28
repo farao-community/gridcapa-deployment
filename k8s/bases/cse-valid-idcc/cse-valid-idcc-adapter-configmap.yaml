@@ -12,18 +12,18 @@ data:
     spring:
       rabbitmq:
         host: gridcapa-rabbitmq
+        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        port: 5672
         template:
           reply-timeout: 60000000
       cloud:
         stream:
           default:
-             group: cse-valid-idcc-adapter
+            binder: rabbit
+            group: cse-valid-idcc-adapter
           bindings:
             consumeTask-in-0:
-              binder: rabbit
               destination: cse-valid-idcc-run-task
             task-status-update:
               destination: cse-valid-idcc-task-status-updated
@@ -33,19 +33,19 @@ data:
                 auto-bind-dlq: true
                 max-attempts: 1
 
-    minio-adapter:
-      bucket: ${MINIO_BUCKET}
-      base-path: ${MINIO_BASE_DIRECTORY}
-      access-key: ${GRIDCAPA_MINIO_USER}
-      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
-      url: http://gridcapa-minio:9000/
-
     logging:
       config: /config/logback.xml
 
     logback:
       amqp:
         exchange: cse-valid-idcc-task-manager-logs-exchange
+
+    minio-adapter:
+      bucket: ${MINIO_BUCKET}
+      base-path: ${MINIO_BASE_DIRECTORY}
+      access-key: ${GRIDCAPA_MINIO_USER}
+      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+      url: http://gridcapa-minio:9000/
 
     cse-valid-runner:
       amqp:
