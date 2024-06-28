@@ -1,6 +1,6 @@
 spring:
   application:
-    name: cse-d2cc-runner
+    name: cse-import-d2cc-runner
   rabbitmq:
     host: rabbitmq
     port: 5672
@@ -42,12 +42,6 @@ minio-adapter:
   secret-key: gridcapa
 
 cse-cc-runner:
-  zone-id: "Europe/Paris"
-  trm: 500
-  outputs:
-    initial-cgm: INITIAL_CGM
-    final-cgm: FINAL_CGM
-    ttc-res: TTC_RES
   mendrisio:
     mendrisio-cagno-line:
       target-ch-id: ml_0001
