@@ -1,7 +1,3 @@
-logback:
-  amqp:
-    exchange: core-cc-task-manager-logs-exchange
-    routing-key: "#"
 spring:
   application:
     name: core-cc-gridcapa-post-processing
@@ -10,6 +6,8 @@ spring:
     username: gridcapa
     password: gridcapa
     port: 5672
+    template:
+      reply-timeout: 7200000
   cloud:
     stream:
       default:
@@ -27,13 +25,15 @@ spring:
             consumer:
               binding-routing-key: status
 
+logback:
+  amqp:
+    exchange: core-cc-task-manager-logs-exchange
+    routing-key: "#"
+
 core-cc-post-processing:
   url:
     task-manager-timestamp-url: http://core-cc-gridcapa-task-manager:8080/tasks/
     task-manager-business-date-url: http://core-cc-gridcapa-task-manager:8080/tasks/businessdate/
-  process:
-    tag: CORE_CC
-    timezone: CET
 
 minio-adapter:
   bucket: gridcapa
