@@ -9,13 +9,25 @@ spring:
   cloud:
     stream:
       default:
+        binder: rabbit
         group: cse-export-idcc-adapter
       bindings:
         handleRun-in-0:
-          binder: rabbit
           destination: cse-export-idcc-launch-task
         task-status-update:
           destination: cse-export-idcc-task-status-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+
+logging:
+  config: /config/logback.xml
+
+logback:
+  amqp:
+    exchange: cse-export-idcc-task-manager-logs-exchange
 
 cse-cc-runner:
   binding:
@@ -36,10 +48,4 @@ url-validation:
 cse-adapter:
   exchange-type: export
   process-type: IDCC
-
-logging:
-  config: /config/logback.xml
-
-logback:
-  amqp:
-    exchange: cse-export-idcc-task-manager-logs-exchange
+  is-ec-import: false
