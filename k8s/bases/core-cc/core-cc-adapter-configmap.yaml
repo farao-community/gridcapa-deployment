@@ -12,31 +12,31 @@ data:
     spring:
       rabbitmq:
         host: gridcapa-rabbitmq
+        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        port: 5672
         template:
           reply-timeout: 60000000
       cloud:
         stream:
           default:
+            binder: rabbit
             group: core-cc-adapter
           bindings:
             consumeTask-in-0:
-              binder: rabbit
               destination: core-cc-run-task
             consumeAutoTask-in-0:
-              binder: rabbit
               destination: core-cc-run-task-auto
           rabbit:
             default:
               consumer:
                 auto-bind-dlq: true
                 max-attempts: 1
+    
     core-cc-runner:
       amqp:
         queue-name: core-cc-requests
-
+    
     minio-adapter:
       bucket: ${MINIO_BUCKET}
       base-path: ${MINIO_BASE_DIRECTORY}
