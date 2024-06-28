@@ -24,6 +24,7 @@ spring:
           destination: cse-export-idcc-task-status-updated
         stop-rao:
           destination: stop-rao-runner
+
 logback:
   amqp:
     exchange: cse-export-idcc-task-manager-logs-exchange
@@ -41,10 +42,6 @@ minio-adapter:
   secret-key: gridcapa
 
 cse-cc-runner:
-  zone-id: "Europe/Paris"
-  outputs:
-    final-cgm: FINAL_CGM
-    ttc-rao: TTC_RAO
   mendrisio:
     mendrisio-voltage-level: SMENDR3
     mendrisio-node-id: SMENDR3T
