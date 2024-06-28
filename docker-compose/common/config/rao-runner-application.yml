@@ -15,6 +15,14 @@ spring:
           binder: rabbit
           destination: stop-rao-runner
 
+logging:
+  config: /config/logback.xml
+
+logback:
+  amqp:
+    exchange: rao-runners-logs-exchange  # common exchange for logs to all rao client applications
+    routing-key: "#"
+
 minio-adapter:
   bucket: gridcapa
   base-path:
@@ -29,11 +37,3 @@ rao-runner:
   url:
     whitelist:
       - http://minio:9000/
-
-logging:
-  config: /config/logback.xml
-
-logback:
-  amqp:
-    exchange: rao-runners-logs-exchange  # common exchange for logs to all rao client applications
-    routing-key: "#"
