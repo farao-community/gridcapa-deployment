@@ -9,16 +9,12 @@ metadata:
     process: valid
 data:
   application.yml: |-
-    logback:
-      amqp:
-        exchange: core-valid-task-manager-logs-exchange
-        routing-key: "#"
     spring:
       rabbitmq:
         host: gridcapa-rabbitmq
+        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        port: 5672
         template:
           reply-timeout: 7200000
       cloud:
@@ -28,6 +24,11 @@ data:
               binder: rabbit
               destination: core-valid-task-status-updated
 
+    logback:
+      amqp:
+        exchange: core-valid-task-manager-logs-exchange
+        routing-key: "#"
+    
     rao-runner-server:
       amqp:
         client-app-id: core-valid-runner
