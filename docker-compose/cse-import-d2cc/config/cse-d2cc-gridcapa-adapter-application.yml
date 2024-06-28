@@ -9,13 +9,25 @@ spring:
   cloud:
     stream:
       default:
+        binder: rabbit
         group: cse-import-d2cc-adapter
       bindings:
         handleRun-in-0:
-          binder: rabbit
           destination: cse-import-d2cc-launch-task
         task-status-update:
           destination: cse-import-d2cc-task-status-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+
+logging:
+  config: /config/logback.xml
+
+logback:
+  amqp:
+    exchange: cse-import-d2cc-task-manager-logs-exchange
 
 cse-cc-runner:
   binding:
@@ -35,10 +47,4 @@ url-validation:
 cse-adapter:
   exchange-type: import
   process-type: D2CC
-
-logging:
-  config: /config/logback.xml
-
-logback:
-  amqp:
-    exchange: cse-import-d2cc-task-manager-logs-exchange
+  is-ec-import: false
