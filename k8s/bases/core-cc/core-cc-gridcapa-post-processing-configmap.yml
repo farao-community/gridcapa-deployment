@@ -9,13 +9,9 @@ metadata:
     process: cc
 data:
   application.yml: |-
-    logback:
-      amqp:
-        exchange: core-cc-task-manager-logs-exchange
-        routing-key: "#"
     spring:
       application:
-          name: core-cc-gridcapa-post-processing
+        name: core-cc-gridcapa-post-processing
       rabbitmq:
         host: gridcapa-rabbitmq
         username: ${RABBITMQ_USER}
@@ -40,13 +36,15 @@ data:
                 consumer:
                   binding-routing-key: status
 
+    logback:
+      amqp:
+        exchange: core-cc-task-manager-logs-exchange
+        routing-key: "#"
+    
     core-cc-post-processing:
       url:
         task-manager-timestamp-url: http://core-cc-task-manager/tasks/
         task-manager-business-date-url: http://core-cc-task-manager/tasks/businessdate/
-      process:
-        tag: CORE_CC
-        timezone: CET
 
     minio-adapter:
       bucket: gridcapa
