@@ -14,9 +14,9 @@ data:
         name: cse-import-ec-d2cc-runner
       rabbitmq:
         host: gridcapa-rabbitmq
+        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        port: 5672
         template:
           reply-timeout: 7200000
       cloud:
@@ -53,13 +53,6 @@ data:
       secret-key: ${MINIO_SECRET_KEY}
 
     cse-cc-runner:
-      zone-id: "Europe/Paris"
-      trm: 500
-      default-max-dichotomies-number: 4
-      outputs:
-        initial-cgm: INITIAL_CGM
-        final-cgm: FINAL_CGM
-        ttc-res: TTC_RES
       mendrisio:
         mendrisio-cagno-line:
           target-ch-id: ml_0001
