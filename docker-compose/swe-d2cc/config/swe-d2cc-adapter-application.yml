@@ -2,10 +2,10 @@ spring:
   application:
     name: swe-d2cc-adapter
   rabbitmq:
-    username: gridcapa
-    password: gridcapa
     host: rabbitmq
     port: 5672
+    username: gridcapa
+    password: gridcapa
   cloud:
     stream:
       default:
@@ -19,8 +19,6 @@ spring:
           consumer:
             auto-bind-dlq: true
             max-attempts: 1
-    function:
-      definition: consumeTask
 
 swe-adapter:
   process-type: D2CC
@@ -35,8 +33,3 @@ minio-adapter:
   access-key: gridcapa
   secret-key: gridcapa
   url: http://minio:9000
-
-logback:
-  amqp:
-    exchange: swe-d2cc-task-manager-logs-exchange
-    routing-key: "#"
