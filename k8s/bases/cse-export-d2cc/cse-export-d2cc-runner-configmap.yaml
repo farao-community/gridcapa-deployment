@@ -10,16 +10,19 @@ metadata:
 data:
   application.yml: |-
     spring:
+      application:
+        name: cse-export-d2cc-runner
       rabbitmq:
         host: gridcapa-rabbitmq
+        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        port: 5672
         template:
           reply-timeout: 7200000
       cloud:
         stream:
           default:
+            binder: rabbit
             group: cse-export-d2cc-runner
           bindings:
             softInterrupt-in-0:
@@ -50,10 +53,6 @@ data:
       secret-key: ${MINIO_SECRET_KEY}
 
     cse-cc-runner:
-      zone-id: "Europe/Paris"
-      outputs:
-        final-cgm: FINAL_CGM
-        ttc-rao: TTC_RAO
       mendrisio:
         mendrisio-voltage-level: SMENDR3
         mendrisio-node-id: SMENDR3T
