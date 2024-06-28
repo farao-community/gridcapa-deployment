@@ -9,13 +9,32 @@ spring:
   cloud:
     stream:
       default:
+        binder: rabbit
         group: cse-import-idcc-adapter
       bindings:
         handleRun-in-0:
-          binder: rabbit
           destination: cse-import-idcc-launch-task
         task-status-update:
           destination: cse-import-idcc-task-status-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+
+logging:
+  config: /config/logback.xml
+
+logback:
+  amqp:
+    exchange: cse-import-idcc-task-manager-logs-exchange
+
+minio-adapter:
+  url: http://minio:9000/
+  base-path:
+  bucket: gridcapa
+  access-key: gridcapa
+  secret-key: gridcapa
 
 cse-cc-runner:
   binding:
@@ -28,10 +47,4 @@ url-validation:
 cse-adapter:
   exchange-type: import
   process-type: IDCC
-
-logging:
-  config: /config/logback.xml
-
-logback:
-  amqp:
-    exchange: cse-import-idcc-task-manager-logs-exchange
+  is-ec-import: false
