@@ -13,6 +13,7 @@ data:
       amqp:
         exchange: core-valid-task-manager-logs-exchange
         routing-key: "#"
+
     spring:
       application:
         name: core-valid-gridcapa-job-launcher
@@ -43,12 +44,12 @@ data:
               consumeTaskDtoUpdate-in-0:
                 consumer:
                   binding-routing-key: input
+
     job-launcher:
       url:
         task-manager-timestamp-url: http://core-valid-task-manager/tasks/
         task-manager-business-date-url: http://core-valid-task-manager/tasks/businessdate/
       process:
-        timezone: CET
         days-to-add: 1
 
     scheduler:

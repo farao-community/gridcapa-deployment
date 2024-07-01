@@ -2,6 +2,7 @@ logback:
   amqp:
     exchange: cse-export-idcc-task-manager-logs-exchange
     routing-key: "#"
+
 spring:
   application:
     name: cse-export-idcc-gridcapa-job-launcher
@@ -39,9 +40,3 @@ job-launcher:
   url:
     task-manager-timestamp-url: http://cse-export-idcc-task-manager:8080/tasks/
     task-manager-business-date-url: http://cse-export-idcc-task-manager:8080/tasks/businessdate/
-  process:
-    timezone: CET
-    days-to-add: 0
-
-scheduler:
-  enable: false

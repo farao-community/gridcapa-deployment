@@ -13,6 +13,7 @@ data:
       amqp:
         exchange: cse-import-idcc-task-manager-logs-exchange
         routing-key: "#"
+
     spring:
       application:
         name: cse-import-idcc-gridcapa-job-launcher
@@ -45,14 +46,8 @@ data:
               consumeTaskDtoUpdate-in-0:
                 consumer:
                   binding-routing-key: input
+
     job-launcher:
-      auto: false
       url:
         task-manager-timestamp-url: http://cse-import-idcc-task-manager/tasks/
         task-manager-business-date-url: http://cse-import-idcc-task-manager/tasks/businessdate/
-      process:
-        timezone: CET
-        days-to-add: 0
-
-    scheduler:
-      enable: false

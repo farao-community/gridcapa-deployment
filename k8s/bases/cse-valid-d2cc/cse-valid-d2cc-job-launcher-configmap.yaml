@@ -13,6 +13,7 @@ data:
       amqp:
         exchange: cse-valid-d2cc-task-manager-logs-exchange
         routing-key: "#"
+
     spring:
       application:
         name: cse-valid-d2cc-gridcapa-job-launcher
@@ -45,14 +46,8 @@ data:
               consumeTaskDtoUpdate-in-0:
                 consumer:
                   binding-routing-key: input
+
     job-launcher:
-      auto: false
       url:
         task-manager-timestamp-url: http://cse-valid-d2cc-task-manager/tasks/
         task-manager-business-date-url: http://cse-valid-d2cc-task-manager/tasks/businessdate/
-      process:
-        timezone: CET
-        days-to-add: 0
-
-    scheduler:
-      enable: false

@@ -2,6 +2,7 @@ logback:
   amqp:
     exchange: swe-d2cc-task-manager-logs-exchange
     routing-key: "#"
+
 spring:
   application:
     name: swe-d2cc-job-launcher
@@ -35,9 +36,3 @@ job-launcher:
   url:
     task-manager-timestamp-url: http://swe-d2cc-task-manager:8080/tasks/
     task-manager-business-date-url: http://swe-d2cc-task-manager:8080/tasks/businessdate/
-  process:
-    timezone: CET
-    days-to-add: 0
-
-scheduler:
-  enable: false
