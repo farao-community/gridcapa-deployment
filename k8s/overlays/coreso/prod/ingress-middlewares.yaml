@@ -564,7 +564,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   creationTimestamp: null
-  name: gridcapa-core-cc-gridcapa-job-launcher
+  name: gridcapa-core-cc-adapter
   namespace: default
 spec:
   stripPrefix:

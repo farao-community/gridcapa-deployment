@@ -1485,12 +1485,12 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: kommander-traefik
-    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-core-cc-gridcapa-job-launcher@kubernetescrd,default-gridcapa-user-id@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: default-gridcapa-core-cc-adapter@kubernetescrd,default-gridcapa-user-id@kubernetescrd
     traefik.ingress.kubernetes.io/router.tls: "true"
   labels:
     app: gridcapa
     component: gridcapa-ingress
-  name: gridcapa-ingress-core-cc-job-launcher
+  name: gridcapa-ingress-core-cc-adapter
   namespace: default
 spec:
   rules:
@@ -1499,7 +1499,7 @@ spec:
         paths:
           - backend:
               service:
-                name: core-cc-gridcapa-job-launcher
+                name: core-cc-adapter
                 port:
                   number: 80
             path: /core/cc/gridcapa-job-launcher/

@@ -17,6 +17,7 @@ configMapGenerator:
   - name: core-cc-runner-itools-configmap
     files:
       - config.yml=configuration/core-cc-runner-itools-config.yml
+
 images:
   - name: apps-metadata-server
     newName: docker.io/bitnami/apache
@@ -91,7 +92,7 @@ images:
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.29.0
   - name: gridcapa-core-cc-input-data-bridge
-    newName: docker.io/farao/gridcapa-data-bridge
+    newName: docker.io/farao/gridcapa-core-cc-data-bridge
     newTag: v2.1.0
   - name: gridcapa-core-cc-output-data-bridge
     newName: docker.io/farao/gridcapa-output-data-bridge
@@ -99,9 +100,6 @@ images:
   - name: gridcapa-core-cc-adapter
     newName: docker.io/farao/gridcapa-core-cc-adapter
     newTag: v1.1.0
-  - name: gridcapa-core-cc-job-launcher
-    newName: docker.io/farao/gridcapa-job-launcher
-    newTag: v1.13.0
   - name: gridcapa-core-cc-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.4.0
