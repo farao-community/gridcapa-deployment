@@ -48,3 +48,4 @@ ftp:
 logback:
   amqp:
     exchange: swe-idcc-task-manager-logs-exchange
+    routing-key: "#"
