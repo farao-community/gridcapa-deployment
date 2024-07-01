@@ -1,6 +1,4 @@
 spring:
-  banner:
-    location: classpath:banner.txt
   rabbitmq:
     host: rabbitmq
     port: 5672
