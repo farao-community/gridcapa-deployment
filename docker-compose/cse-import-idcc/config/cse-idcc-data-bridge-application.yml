@@ -1,5 +1,6 @@
 data-bridge:
   configuration:
+    zone-id: "Europe/Paris"
     target-process: CSE_IMPORT_IDCC
     files:
       - file-type: CGM
