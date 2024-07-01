@@ -13,6 +13,7 @@ data:
       amqp:
         exchange: core-cc-task-manager-logs-exchange
         routing-key: "#"
+
     spring:
       application:
         name: core-cc-gridcapa-job-launcher
@@ -43,6 +44,7 @@ data:
               consumeTaskDtoUpdate-in-0:
                 consumer:
                   binding-routing-key: input
+
     job-launcher:
       auto: true
       auto-trigger-filetypes:
@@ -50,10 +52,3 @@ data:
       url:
         task-manager-timestamp-url: http://core-cc-task-manager/tasks/
         task-manager-business-date-url: http://core-cc-task-manager/tasks/businessdate/
-      process:
-        timezone: CET
-        days-to-add: 0
-
-    scheduler:
-      enable: false
-

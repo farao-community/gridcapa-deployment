@@ -2,6 +2,7 @@ logback:
   amqp:
     exchange: core-cc-task-manager-logs-exchange
     routing-key: "#"
+
 spring:
   application:
     name: core-cc-gridcapa-job-launcher
@@ -40,9 +41,3 @@ job-launcher:
   url:
     task-manager-timestamp-url: http://core-cc-gridcapa-task-manager:8080/tasks/
     task-manager-business-date-url: http://core-cc-gridcapa-task-manager:8080/tasks/businessdate/
-  process:
-    timezone: CET
-    days-to-add: 0
-
-scheduler:
-  enable: false
