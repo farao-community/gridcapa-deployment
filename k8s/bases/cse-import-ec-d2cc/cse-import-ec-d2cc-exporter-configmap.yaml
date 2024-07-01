@@ -9,8 +9,6 @@ metadata:
     process: import-ec-d2cc
 data:
   application.yml: |-
-    server:
-      port: 8080
     spring:
       application:
         name: cse-import-ec-d2cc-export
@@ -41,6 +39,7 @@ data:
       fetch-task:
         reties-number: 6
         interval-in-seconds: 10
+
     ftp:
       active: true
       host: ${SOURCE_HOST}
@@ -50,6 +49,8 @@ data:
       remote-relative-destination-directory: ${SINK_DIRECTORY}
       retry-count: 3
       retry-sleep: 30
+
     logback:
       amqp:
         exchange: cse-import-ec-d2cc-task-manager-logs-exchange
+        routing-key: "#"

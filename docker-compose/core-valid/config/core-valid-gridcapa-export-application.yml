@@ -40,3 +40,4 @@ ftp:
 logback:
   amqp:
     exchange: core-valid-task-manager-logs-exchange
+    routing-key: "#"

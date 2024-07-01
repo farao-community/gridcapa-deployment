@@ -9,8 +9,6 @@ metadata:
     process: import-idcc
 data:
   application.yml: |-
-    server:
-      port: 8080
     spring:
       application:
         name: cse-import-idcc-exporter
@@ -51,6 +49,8 @@ data:
       remote-relative-destination-directory: ${SINK_DIRECTORY}
       retry-count: 3
       retry-sleep: 30
+
     logback:
       amqp:
         exchange: cse-import-idcc-task-manager-logs-exchange
+        routing-key: "#"

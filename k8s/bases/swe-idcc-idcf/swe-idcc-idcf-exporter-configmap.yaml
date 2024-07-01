@@ -47,6 +47,7 @@ data:
       fetch-task:
         reties-number: 6
         interval-in-seconds: 10
+
     ftp:
       active: true
       host: ${SOURCE_HOST}
@@ -56,6 +57,8 @@ data:
       remote-relative-destination-directory: ${SINK_DIRECTORY}
       retry-count: 3
       retry-sleep: 30
+
     logback:
       amqp:
         exchange: swe-idcc-idcf-task-manager-logs-exchange
+        routing-key: "#"

@@ -9,8 +9,6 @@ metadata:
     process: import-d2cc
 data:
   application.yml: |-
-    server:
-      port: 8080
     spring:
       application:
         name: cse-import-d2cc-export
@@ -51,6 +49,8 @@ data:
       remote-relative-destination-directory: ${SINK_DIRECTORY}
       retry-count: 3
       retry-sleep: 30
+
     logback:
       amqp:
         exchange: cse-import-d2cc-task-manager-logs-exchange
+        routing-key: "#"

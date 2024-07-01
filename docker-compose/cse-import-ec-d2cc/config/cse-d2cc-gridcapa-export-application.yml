@@ -26,6 +26,7 @@ task-manager:
   fetch-task:
     reties-number: 6
     interval-in-seconds: 10
+
 ftp:
   active: true
   host: ftp-server
@@ -39,3 +40,4 @@ ftp:
 logback:
   amqp:
     exchange: cse-import-ec-d2cc-task-manager-logs-exchange
+    routing-key: "#"
