@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: cse-export-d2cc-task-manager
   datasource:
     url: jdbc:postgresql://gridcapa-postgres:5432/cse_export_d2cc_tasks
     driverClassName: org.postgresql.Driver
@@ -48,15 +50,10 @@ spring:
           task-input-updated:
             producer:
               routing-key-expression: '''input'''
-  servlet:
-    multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB
 
 task-server:
   process:
     tag: CSE_EXPORT_D2CC
-    timezone: CET
     inputs:
       - CGM
       - CRAC
@@ -81,6 +78,7 @@ stomp:
   starting-ws-endpoint: /tasks/notify
   notify: /task
   receive-request: /app
+
 logback:
   amqp:
     exchange: cse-export-d2cc-task-manager-logs-exchange

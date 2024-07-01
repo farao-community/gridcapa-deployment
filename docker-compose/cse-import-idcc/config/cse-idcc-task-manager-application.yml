@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: cse-import-idcc-task-manager
   datasource:
     url: jdbc:postgresql://gridcapa-postgres:5432/cse_import_idcc_tasks
     driverClassName: org.postgresql.Driver
@@ -48,15 +50,10 @@ spring:
           task-input-updated:
             producer:
               routing-key-expression: '''input'''
-  servlet:
-    multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB
 
 task-server:
   process:
     tag: CSE_IMPORT_IDCC
-    timezone: CET
     inputs:
       - CGM
       - CRAC

@@ -26,6 +26,8 @@ spring:
           destination: core-cc-task-status-updated
         consumeTaskEventUpdate-in-0:
           destination: core-cc-task-manager-logs-exchange
+          consumer:
+            batch-mode: true
         task-updated:
           destination: core-cc-task-updated
         task-status-updated:
@@ -41,21 +43,21 @@ spring:
           consumeMinioEvent-in-0:
             consumer:
               exchange-type: fanout
+          consumeTaskEventUpdate-in-0:
+            consumer:
+              enable-batching: true
+              batch-size: 200
+              receive-timeout: 3000
           task-status-updated:
             producer:
               routing-key-expression: '''status'''
           task-input-updated:
             producer:
               routing-key-expression: '''input'''
-  servlet:
-    multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB
 
 task-server:
   process:
     tag: CORE_CC
-    timezone: CET
     inputs:
       - CGM
       - CBCORA
@@ -72,6 +74,8 @@ task-server:
       - METADATA
     enable-export-logs: false
     manual-upload-base-path: CORE/CC
+  whitelist:
+    - http://minio:9000/
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}

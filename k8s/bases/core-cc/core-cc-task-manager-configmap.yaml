@@ -10,6 +10,8 @@ metadata:
 data:
   application.yml: |-
     spring:
+      application:
+        name: core-cc-task-manager
       datasource:
         url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
         driverClassName: org.postgresql.Driver
@@ -44,6 +46,8 @@ data:
               destination: core-cc-task-status-updated
             consumeTaskEventUpdate-in-0:
               destination: core-cc-task-manager-logs-exchange
+              consumer:
+                batch-mode: true
             task-updated:
               destination: core-cc-task-updated
             task-status-updated:
@@ -70,15 +74,10 @@ data:
               task-input-updated:
                 producer:
                   routing-key-expression: '''input'''
-      servlet:
-        multipart:
-          max-file-size: 100MB
-          max-request-size: 100MB
 
     task-server:
       process:
         tag: CORE_CC
-        timezone: CET
         inputs:
           - CGM
           - CBCORA
