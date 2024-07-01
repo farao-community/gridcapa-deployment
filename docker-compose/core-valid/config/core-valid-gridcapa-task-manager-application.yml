@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: core-valid-gridcapa-task-manager
   datasource:
     url: jdbc:postgresql://gridcapa-postgres:5432/core_valid_tasks
     driverClassName: org.postgresql.Driver
@@ -48,15 +50,10 @@ spring:
           task-input-updated:
             producer:
               routing-key-expression: '''input'''
-  servlet:
-    multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB
 
 task-server:
   process:
     tag: CORE_VALID
-    timezone: CET
     inputs:
       - CGM
       - CBCORA
@@ -68,6 +65,8 @@ task-server:
       - REX-RESULT
     enable-export-logs: false
     manual-upload-base-path: CORE/VALID
+  whitelist:
+    - http://minio:9000/
 
 minio-adapter:
   bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}

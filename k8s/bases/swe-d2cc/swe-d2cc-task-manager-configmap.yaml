@@ -10,6 +10,8 @@ metadata:
 data:
   application.yml: |-
     spring:
+      application:
+        name: swe-d2cc-task-manager
       datasource:
         url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
         driverClassName: org.postgresql.Driver
@@ -72,15 +74,10 @@ data:
               task-input-updated:
                 producer:
                   routing-key-expression: '''input'''
-      servlet:
-        multipart:
-          max-file-size: 100MB
-          max-request-size: 100MB
-    
+
     task-server:
       process:
         tag: SWE_D2CC
-        timezone: CET
         inputs:
           - CRAC
           - GLSK

@@ -10,6 +10,8 @@ metadata:
 data:
   application.yml: |-
     spring:
+      application:
+        name: cse-export-idcc-task-manager
       datasource:
         url: jdbc:postgresql://${POSTGRES_HOST}:5432/${POSTGRES_DB}
         driverClassName: org.postgresql.Driver
@@ -65,15 +67,10 @@ data:
               task-input-updated:
                 producer:
                   routing-key-expression: '''input'''
-      servlet:
-        multipart:
-          max-file-size: 100MB
-          max-request-size: 100MB
 
     task-server:
       process:
         tag: CSE_EXPORT_IDCC
-        timezone: CET
         inputs:
           - CGM
           - CRAC
