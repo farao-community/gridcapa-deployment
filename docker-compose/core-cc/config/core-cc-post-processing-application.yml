@@ -1,6 +1,6 @@
 spring:
   application:
-    name: core-cc-gridcapa-post-processing
+    name: core-cc-post-processing
   rabbitmq:
     host: rabbitmq
     username: gridcapa
@@ -32,8 +32,8 @@ logback:
 
 core-cc-post-processing:
   url:
-    task-manager-timestamp-url: http://core-cc-gridcapa-task-manager:8080/tasks/
-    task-manager-business-date-url: http://core-cc-gridcapa-task-manager:8080/tasks/businessdate/
+    task-manager-timestamp-url: http://core-cc-task-manager:8080/tasks/
+    task-manager-business-date-url: http://core-cc-task-manager:8080/tasks/businessdate/
 
 minio-adapter:
   bucket: gridcapa

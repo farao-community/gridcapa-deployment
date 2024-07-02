@@ -74,7 +74,7 @@ minio-adapter:
   secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
 
 stomp:
-  allowed-origin: http://cse-export-d2cc-gridcapa-app
+  allowed-origin: http://cse-export-d2cc-app
   starting-ws-endpoint: /tasks/notify
   notify: /task
   receive-request: /app

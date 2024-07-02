@@ -1,11 +1,15 @@
 spring:
   application:
-    name: cse-valid-d2cc-task-manager
+    name: core-cc-task-manager
   datasource:
-    url: jdbc:postgresql://gridcapa-postgres:5432/cse_valid_d2cc_tasks
+    url: jdbc:postgresql://gridcapa-postgres:5432/core_cc_tasks
     driverClassName: org.postgresql.Driver
-    username: cse_valid_d2cc_server
-    password: cse-valid-d2cc
+    username: core_cc_server
+    password: core-cc
+  sql:
+    init:
+      mode: always
+      data-locations: file:/config/data.sql
   rabbitmq:
     host: rabbitmq
     port: 5672
@@ -14,22 +18,22 @@ spring:
   cloud:
     stream:
       default:
-        group: cse-valid-d2cc-task-manager
+        group: core-cc-task-manager
       bindings:
         consumeMinioEvent-in-0:
           destination: gridcapa.minio.events
         consumeTaskStatusUpdate-in-0:
-          destination: cse-valid-d2cc-task-status-updated
+          destination: core-cc-task-status-updated
         consumeTaskEventUpdate-in-0:
-          destination: cse-valid-d2cc-task-manager-logs-exchange
+          destination: core-cc-task-manager-logs-exchange
           consumer:
             batch-mode: true
         task-updated:
-          destination: cse-valid-d2cc-task-updated
+          destination: core-cc-task-updated
         task-status-updated:
-          destination: cse-valid-d2cc-task-updated
+          destination: core-cc-task-updated
         task-input-updated:
-          destination: cse-valid-d2cc-task-updated
+          destination: core-cc-task-updated
       rabbit:
         default:
           consumer:
@@ -53,18 +57,23 @@ spring:
 
 task-server:
   process:
-    tag: CSE_VALID_D2CC
+    tag: CORE_CC
     inputs:
-      - TTC_ADJUSTMENT
       - CGM
-      - IMPORT_CRAC
+      - CBCORA
       - GLSK
+      - REFPROG
+      - RAOREQUEST
+      - VIRTUALHUB
     optional-inputs:
-      - EXPORT_CRAC
+      - DCCGM
     outputs:
-      - TTC-VALIDATION
+      - CNE
+      - RAO_RESULT
+      - CGM_OUT
+      - METADATA
     enable-export-logs: false
-    manual-upload-base-path: CSE/VALID/D2CC
+    manual-upload-base-path: CORE/CC
   whitelist:
     - http://minio:9000/
 
@@ -76,11 +85,15 @@ minio-adapter:
   secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
 
 stomp:
-  allowed-origin: http://cse-import-d2cc-gridcapa-app
+  allowed-origin: http://core-cc-app
   starting-ws-endpoint: /tasks/notify
   notify: /task
   receive-request: /app
 
 logback:
   amqp:
-    exchange: cse-valid-d2cc-task-manager-logs-exchange
+    exchange: core-cc-task-manager-logs-exchange
+
+runner:
+  parameters:
+    USE_DC_CGM_INPUT: false

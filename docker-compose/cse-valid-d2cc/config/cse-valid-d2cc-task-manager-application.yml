@@ -1,11 +1,11 @@
 spring:
   application:
-    name: cse-import-ec-idcc-task-manager
+    name: cse-valid-d2cc-task-manager
   datasource:
-    url: jdbc:postgresql://gridcapa-postgres:5432/cse_import_ec_idcc_tasks
+    url: jdbc:postgresql://gridcapa-postgres:5432/cse_valid_d2cc_tasks
     driverClassName: org.postgresql.Driver
-    username: cse_import_ec_idcc_server
-    password: cse-import-ec-idcc
+    username: cse_valid_d2cc_server
+    password: cse-valid-d2cc
   rabbitmq:
     host: rabbitmq
     port: 5672
@@ -14,22 +14,22 @@ spring:
   cloud:
     stream:
       default:
-        group: cse-import-ec-idcc-task-manager
+        group: cse-valid-d2cc-task-manager
       bindings:
         consumeMinioEvent-in-0:
           destination: gridcapa.minio.events
         consumeTaskStatusUpdate-in-0:
-          destination: cse-import-ec-idcc-task-status-updated
+          destination: cse-valid-d2cc-task-status-updated
         consumeTaskEventUpdate-in-0:
-          destination: cse-import-ec-idcc-task-manager-logs-exchange
+          destination: cse-valid-d2cc-task-manager-logs-exchange
           consumer:
             batch-mode: true
         task-updated:
-          destination: cse-import-ec-idcc-task-updated
+          destination: cse-valid-d2cc-task-updated
         task-status-updated:
-          destination: cse-import-ec-idcc-task-updated
+          destination: cse-valid-d2cc-task-updated
         task-input-updated:
-          destination: cse-import-ec-idcc-task-updated
+          destination: cse-valid-d2cc-task-updated
       rabbit:
         default:
           consumer:
@@ -53,27 +53,18 @@ spring:
 
 task-server:
   process:
-    tag: CSE_IMPORT_EC_IDCC
+    tag: CSE_VALID_D2CC
     inputs:
+      - TTC_ADJUSTMENT
       - CGM
-      - CRAC
+      - IMPORT_CRAC
       - GLSK
-      - NTC
-      - VULCANUS
     optional-inputs:
-      - NTC2-AT
-      - NTC2-CH
-      - NTC2-FR
-      - NTC2-SI
-      - NTC-RED
-      - AUTOMATED-FORCED-PRAS
-      - USER-CONFIG
+      - EXPORT_CRAC
     outputs:
-      - TTC_RES
-      - INITIAL_CGM
-      - FINAL_CGM
-    enable-export-logs: true
-    manual-upload-base-path: CSE/IMPORT_EC/IDCC
+      - TTC-VALIDATION
+    enable-export-logs: false
+    manual-upload-base-path: CSE/VALID/D2CC
   whitelist:
     - http://minio:9000/
 
@@ -85,11 +76,11 @@ minio-adapter:
   secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
 
 stomp:
-  allowed-origin: http://cse-import-ec-idcc-gridcapa-app
+  allowed-origin: http://cse-valid-d2cc-app
   starting-ws-endpoint: /tasks/notify
   notify: /task
   receive-request: /app
 
 logback:
   amqp:
-    exchange: cse-import-ec-idcc-task-manager-logs-exchange
+    exchange: cse-valid-d2cc-task-manager-logs-exchange

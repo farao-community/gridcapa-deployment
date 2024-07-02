@@ -5,7 +5,7 @@ logback:
 
 spring:
   application:
-    name: cse-valid-d2cc-gridcapa-job-launcher
+    name: cse-valid-d2cc-job-launcher
   rabbitmq:
     host: rabbitmq
     username: gridcapa
@@ -36,5 +36,5 @@ spring:
 
 job-launcher:
   url:
-    task-manager-timestamp-url: http://cse-valid-d2cc-gridcapa-task-manager:8080/tasks/
-    task-manager-business-date-url: http://cse-valid-d2cc-gridcapa-task-manager:8080/tasks/businessdate/
+    task-manager-timestamp-url: http://cse-valid-d2cc-task-manager:8080/tasks/
+    task-manager-business-date-url: http://cse-valid-d2cc-task-manager:8080/tasks/businessdate/

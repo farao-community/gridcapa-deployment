@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  cse-valid-d2cc-gridcapa-app:
+  cse-valid-d2cc-app:
     image: farao/gridcapa-app:latest
     volumes:
       - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
@@ -8,24 +8,24 @@ services:
     networks:
       - gridcapa
 
-  cse-valid-d2cc-gridcapa-task-manager:
+  cse-valid-d2cc-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
-      - ./config/cse-valid-d2cc-gridcapa-task-manager-application.yml:/config/application.yml
+      - ./config/cse-valid-d2cc-task-manager-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  data-bridge-valid-d2cc:
+  cse-valid-d2cc-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/data-bridge-valid-d2cc.yml:/config/application.yml
+      - ./config/cse-valid-d2cc-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  data-bridge-d2cc-output-ttc-validation:
+  cse-valid-d2cc-output-data-bridge:
     image: farao/gridcapa-output-data-bridge:latest
     volumes:
-      - ./config/data-bridge-d2cc-output-ttc-validation.yml:/config/application.yml
+      - ./config/cse-valid-d2cc-output-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -66,14 +66,14 @@ services:
       timeout: 30s
       retries: 5
     depends_on:
-      - cse-valid-d2cc-gridcapa-task-manager
+      - cse-valid-d2cc-task-manager
     networks:
       - gridcapa
 
-  cse-valid-d2cc-gridcapa-job-launcher:
+  cse-valid-d2cc-job-launcher:
     image: farao/gridcapa-job-launcher:latest
     volumes:
-      - ./config/cse-valid-d2cc-gridcapa-job-launcher.yml:/config/application.yml
+      - ./config/cse-valid-d2cc-job-launcher-application.yml:/config/application.yml
     networks:
       - gridcapa
 

@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  swe-btcc-gridcapa-app:
+  swe-btcc-app:
     image: farao/gridcapa-app:latest
     volumes:
       - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
@@ -26,7 +26,7 @@ services:
   swe-btcc-job-launcher:
     image: farao/gridcapa-job-launcher:latest
     volumes:
-      - ./config/swe-btcc-job-launcher.yml:/config/application.yml
+      - ./config/swe-btcc-job-launcher-application.yml:/config/application.yml
     networks:
       - gridcapa
 

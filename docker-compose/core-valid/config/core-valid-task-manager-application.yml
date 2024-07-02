@@ -1,11 +1,11 @@
 spring:
   application:
-    name: cse-valid-idcc-task-manager
+    name: core-valid-task-manager
   datasource:
-    url: jdbc:postgresql://gridcapa-postgres:5432/cse_valid_idcc_tasks
+    url: jdbc:postgresql://gridcapa-postgres:5432/core_valid_tasks
     driverClassName: org.postgresql.Driver
-    username: cse_valid_idcc_server
-    password: cse-valid-idcc
+    username: core_valid_server
+    password: core-valid
   rabbitmq:
     host: rabbitmq
     port: 5672
@@ -14,22 +14,22 @@ spring:
   cloud:
     stream:
       default:
-        group: cse-valid-idcc-task-manager
+        group: core-valid-task-manager
       bindings:
         consumeMinioEvent-in-0:
           destination: gridcapa.minio.events
         consumeTaskStatusUpdate-in-0:
-          destination: cse-valid-idcc-task-status-updated
+          destination: core-valid-task-status-updated
         consumeTaskEventUpdate-in-0:
-          destination: cse-valid-idcc-task-manager-logs-exchange
+          destination: core-valid-task-manager-logs-exchange
           consumer:
             batch-mode: true
         task-updated:
-          destination: cse-valid-idcc-task-updated
+          destination: core-valid-task-updated
         task-status-updated:
-          destination: cse-valid-idcc-task-updated
+          destination: core-valid-task-updated
         task-input-updated:
-          destination: cse-valid-idcc-task-updated
+          destination: core-valid-task-updated
       rabbit:
         default:
           consumer:
@@ -53,18 +53,18 @@ spring:
 
 task-server:
   process:
-    tag: CSE_VALID_IDCC
+    tag: CORE_VALID
     inputs:
-      - TTC_ADJUSTMENT
       - CGM
-      - IMPORT_CRAC
+      - CBCORA
       - GLSK
-    optional-inputs:
-      - EXPORT_CRAC
+      - REFPROG
+      - STUDY-POINTS
     outputs:
-      - TTC-VALIDATION
+      - REMEDIAL-ACTIONS-RESULT
+      - REX-RESULT
     enable-export-logs: false
-    manual-upload-base-path: CSE/VALID/IDCC
+    manual-upload-base-path: CORE/VALID
   whitelist:
     - http://minio:9000/
 
@@ -76,11 +76,11 @@ minio-adapter:
   secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
 
 stomp:
-  allowed-origin: http://cse-import-idcc-gridcapa-app
+  allowed-origin: http://core-valid-app
   starting-ws-endpoint: /tasks/notify
   notify: /task
   receive-request: /app
 
 logback:
   amqp:
-    exchange: cse-valid-idcc-task-manager-logs-exchange
+    exchange: core-valid-task-manager-logs-exchange

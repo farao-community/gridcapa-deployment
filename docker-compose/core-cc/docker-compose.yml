@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  core-cc-gridcapa-app:
+  core-cc-app:
     image: farao/gridcapa-app:latest
     volumes:
       - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
@@ -8,32 +8,32 @@ services:
     networks:
       - gridcapa
 
-  core-cc-gridcapa-data-bridge:
+  core-cc-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/core-cc-gridcapa-data-bridge-application.yml:/config/application.yml
+      - ./config/core-cc-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  core-cc-gridcapa-task-manager:
+  core-cc-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
-      - ./config/core-cc-gridcapa-task-manager-application.yml:/config/application.yml
+      - ./config/core-cc-task-manager-application.yml:/config/application.yml
       - ./config/data.sql:/config/data.sql
     networks:
       - gridcapa
 
-  core-cc-gridcapa-job-launcher:
+  core-cc-job-launcher:
     image: farao/gridcapa-job-launcher:latest
     volumes:
-      - ./config/core-cc-gridcapa-job-launcher.yml:/config/application.yml
+      - ./config/core-cc-job-launcher-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  core-cc-gridcapa-post-processing:
+  core-cc-post-processing:
     image: farao/gridcapa-core-cc-post-processing:latest
     volumes:
-      - ./config/core-cc-gridcapa-post-processing.yml:/config/application.yml
+      - ./config/core-cc-post-processing-application.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -65,11 +65,11 @@ services:
   core-cc-output-data-bridge:
     image: farao/gridcapa-output-data-bridge:latest
     volumes:
-      - ./config/core-cc-output-data-bridge.yml:/config/application.yml
+      - ./config/core-cc-output-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  rao-logs-dispatcher:
+  core-cc-rao-logs-dispatcher:
     image: farao/gridcapa-rao-logs-dispatcher:latest
     volumes:
       - ./config/core-cc-rao-logs-dispatcher-application.yml:/config/application.yml

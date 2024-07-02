@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  cse-export-d2cc-gridcapa-app:
+  cse-export-d2cc-app:
     image: farao/gridcapa-app:latest
     volumes:
       - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
@@ -25,7 +25,7 @@ services:
   cse-export-d2cc-job-launcher:
     image: farao/gridcapa-job-launcher:latest
     volumes:
-      - ./config/cse-export-d2cc-job-launcher.yml:/config/application.yml
+      - ./config/cse-export-d2cc-job-launcher-application.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -69,10 +69,10 @@ services:
     networks:
       - gridcapa
 
-  cse-export-d2cc-outputs-exporter:
+  cse-export-d2cc-exporter:
     image: farao/gridcapa-export:latest
     volumes:
-      - ./config/cse-export-d2cc-outputs-exporter-application.yml:/config/application.yml
+      - ./config/cse-export-d2cc-exporter-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s

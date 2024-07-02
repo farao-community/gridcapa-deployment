@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  cse-import-ec-idcc-gridcapa-app:
+  cse-import-ec-idcc-app:
     image: farao/gridcapa-app:latest
     volumes:
       - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
@@ -11,28 +11,28 @@ services:
   cse-import-ec-idcc-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/cse-idcc-ec-data-bridge-application.yml:/config/application.yml
+      - ./config/cse-import-ec-idcc-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
   cse-import-ec-idcc-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
-      - ./config/cse-idcc-task-manager-application.yml:/config/application.yml
+      - ./config/cse-import-ec-idcc-task-manager-application.yml:/config/application.yml
     networks:
       - gridcapa
 
   cse-import-ec-idcc-job-launcher:
     image: farao/gridcapa-job-launcher:latest
     volumes:
-      - ./config/cse-idcc-job-launcher.yml:/config/application.yml
+      - ./config/cse-import-ec-idcc-job-launcher-application.yml:/config/application.yml
     networks:
       - gridcapa
 
   cse-import-ec-idcc-rao-logs-dispatcher:
     image: farao/gridcapa-rao-logs-dispatcher:latest
     volumes:
-      - ./config/cse-idcc-rao-logs-dispatcher-application.yml:/config/application.yml
+      - ./config/cse-import-ec-idcc-rao-logs-dispatcher-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s
@@ -47,7 +47,7 @@ services:
     image: farao/gridcapa-cse-cc-import-runner:latest
     volumes:
       - ../../configuration/cse-import-runner-itools-config.yml:/home/farao/.itools/config.yml
-      - ./config/cse-idcc-runner-application.yml:/config/application.yml
+      - ./config/cse-import-ec-idcc-runner-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s
@@ -59,7 +59,7 @@ services:
   cse-import-ec-idcc-adapter:
     image: farao/gridcapa-cse-adapter:latest
     volumes:
-      - ./config/cse-idcc-adapter-application.yml:/config/application.yml
+      - ./config/cse-import-ec-idcc-adapter-application.yml:/config/application.yml
       - ../cse-common/logback-adapter.xml:/config/logback.xml
     healthcheck:
       test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
@@ -69,10 +69,10 @@ services:
     networks:
       - gridcapa
 
-  cse-import-ec-idcc-outputs-exporter:
+  cse-import-ec-idcc-exporter:
     image: farao/gridcapa-export:latest
     volumes:
-      - ./config/cse-idcc-gridcapa-export-application.yml:/config/application.yml
+      - ./config/cse-import-ec-idcc-exporter-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s

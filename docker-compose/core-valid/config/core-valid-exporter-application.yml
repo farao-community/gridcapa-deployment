@@ -22,7 +22,7 @@ spring:
               binding-routing-key: status
 
 task-manager:
-  base-url: http://core-valid-gridcapa-task-manager:8080
+  base-url: http://core-valid-task-manager:8080
   fetch-task:
     reties-number: 6
     interval-in-seconds: 10
