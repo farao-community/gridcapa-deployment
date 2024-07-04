@@ -93,6 +93,7 @@ data:
           - RTE_TP
           - BOUNDARY_EQ
           - BOUNDARY_TP
+        optional-inputs:
         outputs:
           - TTC
           - VOLTAGE_ESFR

@@ -80,6 +80,7 @@ data:
           - GLSK
           - REFPROG
           - STUDY-POINTS
+        optional-inputs:
         outputs:
           - REMEDIAL-ACTIONS-RESULT
           - REX-RESULT
