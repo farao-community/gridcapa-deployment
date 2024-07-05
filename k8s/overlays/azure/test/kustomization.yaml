@@ -40,7 +40,7 @@ resources:
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
-  - rao-auto-scale-down.yaml
+  - rao-auto-scale.yaml
   - filestash-deployment.yaml
   - filestash-service.yaml
   - keda/swe-d2cc-scale.yaml

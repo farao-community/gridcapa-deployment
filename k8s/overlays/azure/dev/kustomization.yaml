@@ -51,6 +51,7 @@ resources:
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
   - delete-all-ressources.yaml
+  - rao-auto-scale.yaml
 
 configMapGenerator:
   - name: env-configmap
