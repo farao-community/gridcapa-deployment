@@ -34,7 +34,7 @@ services:
     volumes:
       - ./config/cse-d2cc-rao-logs-dispatcher-application.yml:/config/application.yml
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://rao-logs-dispatcher/actuator/health" ]
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5
@@ -49,7 +49,7 @@ services:
       - ../../configuration/cse-import-runner-itools-config.yml:/home/farao/.itools/config.yml
       - ./config/cse-d2cc-gridcapa-runner-application.yml:/config/application.yml
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://cse-import-ec-d2cc-runner/actuator/health" ]
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5
@@ -62,7 +62,7 @@ services:
       - ./config/cse-d2cc-gridcapa-adapter-application.yml:/config/application.yml
       - ../cse-common/logback-adapter.xml:/config/logback.xml
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://cse-import-ec-d2cc-adapter/actuator/health" ]
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5
@@ -74,7 +74,7 @@ services:
     volumes:
       - ./config/cse-d2cc-gridcapa-export-application.yml:/config/application.yml
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://cse-import-ec-d2cc-gridcapa-export/actuator/health" ]
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5
