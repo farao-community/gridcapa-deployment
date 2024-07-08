@@ -35,7 +35,7 @@ services:
     volumes:
       - ./config/swe-idcc-adapter-application.yml:/config/application.yml
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5
@@ -60,7 +60,7 @@ services:
     volumes:
       - ./config/swe-idcc-export-application.yml:/config/application.yml
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://swe-idcc-outputs-exporter/actuator/health" ]
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5
@@ -72,7 +72,7 @@ services:
     volumes:
       - ./config/swe-idcc-rao-logs-dispatcher-application.yml:/config/application.yml
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://rao-logs-dispatcher/actuator/health" ]
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5

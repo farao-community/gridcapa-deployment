@@ -27,7 +27,7 @@ services:
     networks:
       - gridcapa
     healthcheck:
-      test: [ "CMD", "rabbitmq-diagnostics ping" ]
+      test: [ "CMD", "rabbitmq-diagnostics", "ping" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -122,7 +122,7 @@ services:
       - ./config/logback.xml:/config/logback.xml
       - ./xpr-licence/xpauth.xpr:/home/farao/farao-dep/runtime/xpress/bin/xpauth.xpr
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://rao-runner/actuator/health" ]
+      test: [ "CMD", "curl", "-f", "http://localhost:3030/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5

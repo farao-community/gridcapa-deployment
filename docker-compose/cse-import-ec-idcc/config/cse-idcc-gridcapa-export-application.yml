@@ -32,7 +32,7 @@ ftp:
   port: 21
   access-key: gridcapa
   secret-key: gridcapa
-  remote-relative-destination-directory: cse/idcc/import_ec/outputs
+  remote-relative-destination-directory: cse/import_ec/idcc/outputs
   retry-count: 3
   retry-sleep: 30
 
