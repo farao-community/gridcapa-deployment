@@ -20,7 +20,7 @@ data:
       cloud:
         stream:
           default:
-            group: swe-idcc
+            group: swe-idcc-rao-logs-dispatcher
           bindings:
             dispatchRaoEvents-in-0:
               destination: rao-runners-logs

@@ -2,24 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - data-bridge/cse-valid-idcc-cgm-data-bridge-configmap.yaml
-  - data-bridge/cse-valid-idcc-cgm-data-bridge-deployment.yaml
-  - data-bridge/cse-valid-idcc-cgm-data-bridge-service.yaml
-  - data-bridge/cse-valid-idcc-glsk-data-bridge-configmap.yaml
-  - data-bridge/cse-valid-idcc-glsk-data-bridge-deployment.yaml
-  - data-bridge/cse-valid-idcc-glsk-data-bridge-service.yaml
-  - data-bridge/cse-valid-idcc-crac-export-corner-data-bridge-configmap.yaml
-  - data-bridge/cse-valid-idcc-crac-export-corner-data-bridge-deployment.yaml
-  - data-bridge/cse-valid-idcc-crac-export-corner-data-bridge-service.yaml
-  - data-bridge/cse-valid-idcc-crac-import-corner-data-bridge-configmap.yaml
-  - data-bridge/cse-valid-idcc-crac-import-corner-data-bridge-deployment.yaml
-  - data-bridge/cse-valid-idcc-crac-import-corner-data-bridge-service.yaml
-  - data-bridge/cse-valid-idcc-ttc-adjustment-data-bridge-configmap.yaml
-  - data-bridge/cse-valid-idcc-ttc-adjustment-data-bridge-deployment.yaml
-  - data-bridge/cse-valid-idcc-ttc-adjustment-data-bridge-service.yaml
-  - data-bridge/cse-valid-idcc-output-data-bridge-configmap.yaml
-  - data-bridge/cse-valid-idcc-output-data-bridge-deployment.yaml
-  - data-bridge/cse-valid-idcc-output-data-bridge-service.yaml
+  - cse-valid-idcc-data-bridge-configmap.yaml
+  - cse-valid-idcc-data-bridge-deployment.yaml
+  - cse-valid-idcc-data-bridge-service.yaml
+  - cse-valid-idcc-output-data-bridge-configmap.yaml
+  - cse-valid-idcc-output-data-bridge-deployment.yaml
+  - cse-valid-idcc-output-data-bridge-service.yaml
   - cse-valid-idcc-adapter-configmap.yaml
   - cse-valid-idcc-adapter-deployment.yaml
   - cse-valid-idcc-adapter-service.yaml

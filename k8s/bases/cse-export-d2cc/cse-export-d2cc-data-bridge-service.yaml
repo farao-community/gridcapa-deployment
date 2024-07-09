@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cse-export-d2cc-data-bridge
+  labels:
+    app: gridcapa
+    component: data-bridge
+    region: cse
+    process: export-d2cc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: data-bridge
+    region: cse
+    process: export-d2cc
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http

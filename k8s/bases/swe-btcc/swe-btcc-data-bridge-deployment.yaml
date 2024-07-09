@@ -1,0 +1,143 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: swe-btcc-data-bridge
+  labels:
+    app: gridcapa
+    component: data-bridge
+    region: swe
+    process: btcc
+
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: data-bridge
+      region: swe
+      process: btcc
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: data-bridge
+        region: swe
+        process: btcc
+    spec:
+      containers:
+        - name: swe-btcc-data-bridge
+          image: gridcapa-swe-input-data-bridge
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SOURCE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-host
+            - name: SOURCE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-port
+            - name: SOURCE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-user
+            - name: SOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-ftp-credentials
+                  key: ftp-password
+            - name: SOURCE_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SOURCE_BASE_DIRECTORY_SWE_BTCC
+            - name: POLLING_DELAY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_POLLING_DELAY_SWE_BTCC
+            - name: MAX_POLLED_FILES
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MAX_POLLED_FILES_SWE_BTCC
+            - name: MAX_POOL_SIZE
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MAX_POOL_SIZE_SWE_BTCC
+            - name: DEFAULT_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_DEFAULT_TIMEOUT_DATA_BRIDGE
+            - name: DATA_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_DATA_TIMEOUT_DATA_BRIDGE
+            - name: CONNECTION_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_CONNECTION_TIMEOUT_DATA_BRIDGE
+            - name: SESSION_WAIT_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_SESSION_WAIT_TIMEOUT_DATA_BRIDGE
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+            - name: MINIO_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BUCKET_SWE_BTCC
+            - name: MINIO_BASE_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_SWE_BTCC
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: swe-btcc-data-bridge-volume
+            - mountPath: /data/gridcapa
+              name: swe-btcc-data-bridge-data
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 35
+            timeoutSeconds: 2
+            periodSeconds: 600
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            requests:
+              cpu: "0.1"
+              memory: "384Mi"
+            limits:
+              cpu: "0.5"
+              memory: "384Mi"
+      restartPolicy: Always
+      volumes:
+        - name: swe-btcc-data-bridge-volume
+          configMap:
+            name: swe-btcc-data-bridge
+        - name: swe-btcc-data-bridge-data
+          persistentVolumeClaim:
+            claimName: swe-btcc-data-bridge-storage
+

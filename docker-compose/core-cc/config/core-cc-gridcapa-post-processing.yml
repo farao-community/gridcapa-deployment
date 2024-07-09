@@ -12,9 +12,9 @@ spring:
     port: 5672
   cloud:
     stream:
+      default:
+        group: core-cc-post-processing
       bindings:
-        default:
-          group: core-cc-post-processing
         consumeTaskDtoUpdate-in-0:
           destination: core-cc-task-updated
       rabbit:

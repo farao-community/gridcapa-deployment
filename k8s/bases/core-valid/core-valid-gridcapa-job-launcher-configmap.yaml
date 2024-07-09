@@ -23,9 +23,9 @@ data:
         port: 5672
       cloud:
         stream:
+          default:
+            group: core-valid-job-launcher
           bindings:
-            default:
-              group: core-valid-job-launcher
             run-task:
               destination: core-valid-run-task
             run-task-auto:
@@ -42,14 +42,14 @@ data:
             bindings:
               consumeTaskDtoUpdate-in-0:
                 consumer:
-                  binding-routing-key: status
+                  binding-routing-key: input
     job-launcher:
       url:
         task-manager-timestamp-url: http://core-valid-task-manager/tasks/
         task-manager-business-date-url: http://core-valid-task-manager/tasks/businessdate/
       process:
-        tag: CORE_VALID
         timezone: CET
+        days-to-add: 1
 
     scheduler:
       enable: ${ENABLE_SCHEDULER}

@@ -21,13 +21,6 @@ data:
           maxLifetime: 2000000
           maximumPoolSize: ${HIKARI_MAX_POOL_SIZE:10}
           minimumIdle: ${HIKARI_MIN_IDLE:5}
-      jpa:
-        properties:
-          hibernate:
-            timezone:
-              default_storage: NORMALIZE_UTC
-        hibernate:
-          ddl-auto: update
       rabbitmq:
         host: gridcapa-rabbitmq
         port: 5672
@@ -50,6 +43,8 @@ data:
               destination: cse-valid-d2cc-task-updated
             task-status-updated:
               destination: cse-valid-d2cc-task-updated
+            task-input-updated:
+              destination: cse-valid-d2cc-task-updated
           rabbit:
             default:
               consumer:
@@ -67,6 +62,9 @@ data:
               task-status-updated:
                 producer:
                   routing-key-expression: '''status'''
+              task-input-updated:
+                producer:
+                  routing-key-expression: '''input'''
       servlet:
         multipart:
           max-file-size: 100MB

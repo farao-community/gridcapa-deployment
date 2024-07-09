@@ -7,7 +7,7 @@ spring:
   cloud:
     stream:
       default:
-        group: swe-d2cc-outputs
+        group: swe-d2cc-exporter
       bindings:
         consumeTaskDtoUpdate-in-0:
           destination: swe-d2cc-task-updated
@@ -23,6 +23,11 @@ spring:
 
 export:
   seperate-output-files: true
+  unzip-files:
+    - CGM_ESFR
+    - CGM_FRES
+    - CGM_PTES
+    - CGM_ESPT
 
 task-manager:
   base-url: http://swe-d2cc-task-manager:8080

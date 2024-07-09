@@ -15,10 +15,10 @@ services:
     networks:
       - gridcapa
 
-  data-bridge-idcc-ttc-adjustment:
+  data-bridge-valid-idcc:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/data-bridge-idcc-ttc-adjustment.yml:/config/application.yml
+      - ./config/data-bridge-valid-idcc.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -29,39 +29,11 @@ services:
     networks:
       - gridcapa
 
-  data-bridge-idcc-crac-import-corner:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge-idcc-crac-import-corner.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  data-bridge-idcc-crac-export-corner:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge-idcc-crac-export-corner.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  data-bridge-idcc-glsk:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge-idcc-glsk.yml:/config/application.yml
-    networks:
-      - gridcapa
-
-  data-bridge-idcc-cgm:
-    image: farao/gridcapa-data-bridge:latest
-    volumes:
-      - ./config/data-bridge-idcc-cgm.yml:/config/application.yml
-    networks:
-      - gridcapa
-
   cse-valid-idcc-runner:
     image: farao/gridcapa-cse-valid:latest
     volumes:
       - ./config/cse-valid-idcc-runner-application.yml:/config/application.yml
-      - ../../configuration/test/cse-valid-runner-itools-config.yml:/home/farao/.itools/config.yml
+      - ../../configuration/cse-valid-runner-itools-config.yml:/home/farao/.itools/config.yml
       - ./config/cse-valid-idcc-runner-logback.xml:/config/logback.xml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]

@@ -20,7 +20,7 @@ data:
       cloud:
         stream:
           default:
-            group: cse-export-d2cc
+            group: cse-export-d2cc-rao-logs-dispatcher
           bindings:
             dispatchRaoEvents-in-0:
               destination: rao-runners-logs

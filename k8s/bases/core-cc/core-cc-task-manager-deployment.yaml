@@ -93,6 +93,9 @@ spec:
             - mountPath: /config/application.yml
               subPath: application.yml
               name: core-cc-task-manager-configmap-volume
+            - mountPath: /config/data.sql
+              subPath: data.sql
+              name: core-cc-task-manager-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health

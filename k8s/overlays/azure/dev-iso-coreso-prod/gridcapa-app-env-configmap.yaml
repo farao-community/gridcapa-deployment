@@ -9,5 +9,6 @@ data:
   env.json: |-
     {
       "appsMetadataServerUrl" : "https://gridcapa-dev-tmp.farao-community.com/apps-metadata",
-      "appsMinioStorageServerUrl": "https://gridcapa-dev-tmp.farao-community.com/apps-metadata/data/minioStorageData.json"
+      "appsMinioStorageServerUrl": "https://gridcapa-dev-tmp.farao-community.com/apps-metadata/data/minioStorageData.json",
+      "appVersionAndEnvironnement": "Azure DEV iso Coreso Prod : 5.9.0"
     }

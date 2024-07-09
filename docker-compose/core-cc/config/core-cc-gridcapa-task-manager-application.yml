@@ -6,13 +6,10 @@ spring:
     driverClassName: org.postgresql.Driver
     username: core_cc_server
     password: core-cc
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        timezone:
-          default_storage: NORMALIZE_UTC
+  sql:
+    init:
+      mode: always
+      data-locations: file:/config/data.sql
   rabbitmq:
     host: rabbitmq
     port: 5672
@@ -33,6 +30,8 @@ spring:
           destination: core-cc-task-updated
         task-status-updated:
           destination: core-cc-task-updated
+        task-input-updated:
+          destination: core-cc-task-updated
       rabbit:
         default:
           consumer:
@@ -45,6 +44,9 @@ spring:
           task-status-updated:
             producer:
               routing-key-expression: '''status'''
+          task-input-updated:
+            producer:
+              routing-key-expression: '''input'''
   servlet:
     multipart:
       max-file-size: 100MB
@@ -61,6 +63,8 @@ task-server:
       - REFPROG
       - RAOREQUEST
       - VIRTUALHUB
+    optional-inputs:
+      - DCCGM
     outputs:
       - CNE
       - RAO_RESULT
@@ -85,3 +89,7 @@ stomp:
 logback:
   amqp:
     exchange: core-cc-task-manager-logs-exchange
+
+runner:
+  parameters:
+    USE_DC_CGM_INPUT: false

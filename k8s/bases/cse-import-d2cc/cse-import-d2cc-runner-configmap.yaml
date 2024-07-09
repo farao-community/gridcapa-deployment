@@ -23,12 +23,12 @@ data:
         stream:
           default:
             binder: rabbit
+            group: cse-import-d2cc-runner
           bindings:
             softInterrupt-in-0:
               destination: cse-import-d2cc-stop-task
             request-in-0:
               destination: cse-import-d2cc-request
-              group: cse-import-d2cc-runner
             request-out-0:
               destination: cse-import-d2cc-response
             task-status-update:
@@ -63,7 +63,7 @@ data:
       mendrisio:
         mendrisio-cagno-line:
           target-ch-id: ml_0001
-          ntc-id: ml_mendrisio-cagno
+          ntc-id: mendrisio-cagno
         mendrisio-voltage-level: SMENDR3
         mendrisio-node-id: SMENDR3T
       pisa:

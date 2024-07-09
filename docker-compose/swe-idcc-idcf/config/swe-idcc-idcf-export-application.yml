@@ -7,7 +7,7 @@ spring:
   cloud:
     stream:
       default:
-        group: swe-idcc-idcf-outputs
+        group: swe-idcc-idcf-exporter
       bindings:
         consumeTaskDtoUpdate-in-0:
           destination: swe-idcc-idcf-task-updated
@@ -23,6 +23,11 @@ spring:
 
 export:
   seperate-output-files: true
+  unzip-files:
+    - CGM_ESFR
+    - CGM_FRES
+    - CGM_PTES
+    - CGM_ESPT
 
 task-manager:
   base-url: http://swe-idcc-idcf-task-manager:8080

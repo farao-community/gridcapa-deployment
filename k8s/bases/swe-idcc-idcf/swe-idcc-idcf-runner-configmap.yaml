@@ -25,12 +25,12 @@ data:
         stream:
           default:
             binder: rabbit
+            group: swe-idcc-idcf-runner
           bindings:
             softInterrupt-in-0:
               destination: swe-idcc-idcf-stop-task
             request-in-0:
               destination: swe-idcc-idcf-request
-              group: swe-idcc-idcf-runner
             request-out-0:
               destination: swe-idcc-idcf-response
             task-status-update:
@@ -59,8 +59,10 @@ data:
 
     swe-runner:
       pst:
-        pst1-id: _e071a1d4-fef5-1bd9-5278-d195c5597b6e
-        pst2-id: _7824bc48-fc86-51db-8f9c-01b44933839e
+        pst-ids:
+          - _e071a1d4-fef5-1bd9-5278-d195c5597b6e
+          - _7824bc48-fc86-51db-8f9c-01b44933839e
+          - _f82152ac-578e-500e-97db-84e788c471ee
       unoptimized-cnecs-with-pst-es-fr:
         active: false
       dichotomy:

@@ -4,14 +4,6 @@ spring:
     driverClassName: org.postgresql.Driver
     username: swe_idcc_server
     password: swe-idcc
-  jpa:
-    defer-datasource-initialization: true
-    properties:
-      hibernate:
-        timezone:
-          default_storage: NORMALIZE_UTC
-    hibernate:
-      ddl-auto: update
   sql:
     init:
       mode: always
@@ -38,6 +30,8 @@ spring:
           destination: swe-idcc-task-updated
         task-status-updated:
           destination: swe-idcc-task-updated
+        task-input-updated:
+          destination: swe-idcc-task-updated
       rabbit:
         default:
           consumer:
@@ -55,6 +49,9 @@ spring:
           task-status-updated:
             producer:
               routing-key-expression: '''status'''
+          task-input-updated:
+            producer:
+              routing-key-expression: '''input'''
   servlet:
     multipart:
       max-file-size: 100MB

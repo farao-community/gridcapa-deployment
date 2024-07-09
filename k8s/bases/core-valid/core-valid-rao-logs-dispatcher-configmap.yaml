@@ -20,7 +20,7 @@ data:
       cloud:
         stream:
           default:
-            group: core-valid
+            group: core-valid-rao-logs-dispatcher
           bindings:
             dispatchRaoEvents-in-0:
               destination: rao-runners-logs

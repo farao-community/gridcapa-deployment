@@ -2,24 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - data-bridge/core-cc-cgm-data-bridge-configmap.yaml
-  - data-bridge/core-cc-cgm-data-bridge-deployment.yaml
-  - data-bridge/core-cc-cgm-data-bridge-service.yaml
-  - data-bridge/core-cc-cbcora-data-bridge-configmap.yaml
-  - data-bridge/core-cc-cbcora-data-bridge-deployment.yaml
-  - data-bridge/core-cc-cbcora-data-bridge-service.yaml
-  - data-bridge/core-cc-glsk-data-bridge-configmap.yaml
-  - data-bridge/core-cc-glsk-data-bridge-deployment.yaml
-  - data-bridge/core-cc-glsk-data-bridge-service.yaml
-  - data-bridge/core-cc-raorequest-data-bridge-configmap.yaml
-  - data-bridge/core-cc-raorequest-data-bridge-deployment.yaml
-  - data-bridge/core-cc-raorequest-data-bridge-service.yaml
-  - data-bridge/core-cc-refprog-data-bridge-configmap.yaml
-  - data-bridge/core-cc-refprog-data-bridge-deployment.yaml
-  - data-bridge/core-cc-refprog-data-bridge-service.yaml
-  - data-bridge/core-cc-virtualhub-data-bridge-configmap.yaml
-  - data-bridge/core-cc-virtualhub-data-bridge-deployment.yaml
-  - data-bridge/core-cc-virtualhub-data-bridge-service.yaml
+  - core-cc-data-bridge-configmap.yaml
+  - core-cc-data-bridge-deployment.yaml
+  - core-cc-data-bridge-service.yaml
   - core-cc-gridcapa-app-deployment.yaml
   - core-cc-gridcapa-app-process-metadata-configmap.yaml
   - core-cc-gridcapa-app-service.yaml

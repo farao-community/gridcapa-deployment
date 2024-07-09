@@ -12,13 +12,15 @@ spring:
     port: 5672
   cloud:
     stream:
+      default:
+        group: cse-export-d2cc-job-launcher
       bindings:
-        default:
-          group: cse-export-d2cc-job-launcher
         run-task:
           destination: cse-export-d2cc-launch-task
         run-task-auto:
           destination: cse-export-d2cc-launch-task
+        stop-task:
+          destination: cse-export-d2cc-stop-task
         consumeTaskDtoUpdate-in-0:
           destination: cse-export-d2cc-task-updated
       rabbit:
@@ -29,16 +31,17 @@ spring:
         bindings:
           consumeTaskDtoUpdate-in-0:
             consumer:
-              binding-routing-key: status
+              binding-routing-key: input
 
 job-launcher:
   auto: true
+  auto-trigger-filetypes:
   url:
     task-manager-timestamp-url: http://cse-export-d2cc-task-manager:8080/tasks/
     task-manager-business-date-url: http://cse-export-d2cc-task-manager:8080/tasks/businessdate/
   process:
-    tag: CSE_EXPORT_D2CC
     timezone: CET
+    days-to-add: 0
 
 scheduler:
   enable: false

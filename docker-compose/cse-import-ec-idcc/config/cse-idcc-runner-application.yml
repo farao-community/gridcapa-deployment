@@ -12,12 +12,12 @@ spring:
     stream:
       default:
         binder: rabbit
+        group: cse-import-ec-idcc-runner
       bindings:
         softInterrupt-in-0:
           destination: cse-import-ec-idcc-stop-task
         request-in-0:
           destination: cse-import-ec-idcc-request
-          group: cse-import-ec-idcc-runner
         request-out-0:
           destination: cse-import-ec-idcc-response
         task-status-update:
@@ -51,7 +51,7 @@ cse-cc-runner:
   mendrisio:
     mendrisio-cagno-line:
       target-ch-id: ml_0001
-      ntc-id: ml_mendrisio-cagno
+      ntc-id: mendrisio-cagno
     mendrisio-voltage-level: SMENDR3
     mendrisio-node-id: SMENDR3T
   pisa:
