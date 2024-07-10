@@ -18,10 +18,6 @@ spring:
       bindings:
         consumeTaskDtoUpdate-in-0:
           destination: core-cc-task-updated
-        consumeTask-in-0:
-          destination: core-cc-run-task
-        consumeAutoTask-in-0:
-          destination: core-cc-run-task-auto
       rabbit:
         default:
           consumer:
