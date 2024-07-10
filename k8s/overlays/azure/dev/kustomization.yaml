@@ -52,7 +52,6 @@ resources:
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
   - delete-all-ressources.yaml
-  - keda/rao-auto-scale.yaml
 
 configMapGenerator:
   - name: env-configmap
