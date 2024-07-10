@@ -68,7 +68,6 @@ configMapGenerator:
       - env.json=gridcapa-app-env-config.json
 
 patches:
-  # - Scale-up to 8 instances
   # - Adapt requests/limits
   # - Add ImagePullSecrets to retrieve private gridcapa-rao-runner-with-xpress from dockerhub
   - patch: |-
@@ -77,7 +76,6 @@ patches:
       metadata:
         name: rao-runner
       spec:
-        replicas: 8
         template:
           spec:
             containers:
