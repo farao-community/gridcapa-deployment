@@ -1,0 +1,99 @@
+spring:
+  application:
+    name: core-cc-task-manager
+  datasource:
+    url: jdbc:postgresql://gridcapa-postgres:5432/core_cc_tasks
+    driverClassName: org.postgresql.Driver
+    username: core_cc_server
+    password: core-cc
+  sql:
+    init:
+      mode: always
+      data-locations: file:/config/data.sql
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+  cloud:
+    stream:
+      default:
+        group: core-cc-task-manager
+      bindings:
+        consumeMinioEvent-in-0:
+          destination: gridcapa.minio.events
+        consumeTaskStatusUpdate-in-0:
+          destination: core-cc-task-status-updated
+        consumeTaskEventUpdate-in-0:
+          destination: core-cc-task-manager-logs-exchange
+          consumer:
+            batch-mode: true
+        task-updated:
+          destination: core-cc-task-updated
+        task-status-updated:
+          destination: core-cc-task-updated
+        task-input-updated:
+          destination: core-cc-task-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+        bindings:
+          consumeMinioEvent-in-0:
+            consumer:
+              exchange-type: fanout
+          consumeTaskEventUpdate-in-0:
+            consumer:
+              enable-batching: true
+              batch-size: 200
+              receive-timeout: 3000
+          task-status-updated:
+            producer:
+              routing-key-expression: '''status'''
+          task-input-updated:
+            producer:
+              routing-key-expression: '''input'''
+
+task-server:
+  process:
+    tag: CORE_CC
+    inputs:
+      - CGM
+      - CBCORA
+      - GLSK
+      - REFPROG
+      - RAOREQUEST
+      - VIRTUALHUB
+    optional-inputs:
+      - DCCGM
+    outputs:
+      - CNE
+      - RAO_RESULT
+      - CGM_OUT
+      - METADATA
+    enable-export-logs: false
+    manual-upload-base-path: CORE/CC
+  whitelist:
+    - http://minio:9000/
+
+minio-adapter:
+  bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
+  base-path:
+  url: ${GRIDCAPA_MINIO_URL:http://minio:9000}
+  access-key: ${GRIDCAPA_MINIO_ACCESS_KEY:gridcapa}
+  secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
+
+stomp:
+  allowed-origin: http://core-cc-app
+  starting-ws-endpoint: /tasks/notify
+  notify: /task
+  receive-request: /app
+
+logback:
+  amqp:
+    exchange: core-cc-task-manager-logs-exchange
+
+runner:
+  parameters:
+    USE_DC_CGM_INPUT: false

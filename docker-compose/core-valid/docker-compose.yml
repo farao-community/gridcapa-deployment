@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  core-valid-gridcapa-app:
+  core-valid-app:
     image: farao/gridcapa-app:latest
     volumes:
       - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
@@ -8,24 +8,24 @@ services:
     networks:
       - gridcapa
 
-  core-valid-gridcapa-data-bridge:
+  core-valid-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/core-valid-gridcapa-data-bridge-application.yml:/config/application.yml
+      - ./config/core-valid-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  core-valid-gridcapa-task-manager:
+  core-valid-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
-      - ./config/core-valid-gridcapa-task-manager-application.yml:/config/application.yml
+      - ./config/core-valid-task-manager-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  core-valid-gridcapa-job-launcher:
+  core-valid-job-launcher:
     image: farao/gridcapa-job-launcher:latest
     volumes:
-      - ./config/core-valid-gridcapa-job-launcher.yml:/config/application.yml
+      - ./config/core-valid-job-launcher-application.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -54,7 +54,7 @@ services:
     networks:
       - gridcapa
 
-  rao-logs-dispatcher:
+  core-valid-rao-logs-dispatcher:
     image: farao/gridcapa-rao-logs-dispatcher:latest
     volumes:
       - ./config/core-valid-rao-logs-dispatcher-application.yml:/config/application.yml
@@ -66,10 +66,10 @@ services:
     networks:
       - gridcapa
 
-  core-valid-outputs-exporter:
+  core-valid-exporter:
     image: farao/gridcapa-export:latest
     volumes:
-      - ./config/core-valid-gridcapa-export-application.yml:/config/application.yml
+      - ./config/core-valid-exporter-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s

@@ -5,9 +5,9 @@ resources:
   - core-cc-data-bridge-configmap.yaml
   - core-cc-data-bridge-deployment.yaml
   - core-cc-data-bridge-service.yaml
-  - core-cc-gridcapa-app-deployment.yaml
-  - core-cc-gridcapa-app-process-metadata-configmap.yaml
-  - core-cc-gridcapa-app-service.yaml
+  - core-cc-app-deployment.yaml
+  - core-cc-app-process-metadata-configmap.yaml
+  - core-cc-app-service.yaml
   - core-cc-runner-configmap.yaml
   - core-cc-runner-deployment.yaml
   - core-cc-runner-service.yaml
@@ -20,13 +20,13 @@ resources:
   - core-cc-rao-logs-dispatcher-configmap.yaml
   - core-cc-rao-logs-dispatcher-deployment.yaml
   - core-cc-rao-logs-dispatcher-service.yaml
-  - core-cc-gridcapa-job-launcher-deployment.yaml
-  - core-cc-gridcapa-job-launcher-service.yaml
-  - core-cc-gridcapa-job-launcher-configmap.yaml
-  - core-cc-gridcapa-output-data-bridge-deployment.yaml
-  - core-cc-gridcapa-output-data-bridge-service.yaml
-  - core-cc-gridcapa-output-data-bridge-configmap.yaml
-  - core-cc-gridcapa-post-processing-configmap.yml
-  - core-cc-gridcapa-post-processing-deployment.yml
-  - core-cc-gridcapa-post-processing-service.yml
+  - core-cc-job-launcher-deployment.yaml
+  - core-cc-job-launcher-service.yaml
+  - core-cc-job-launcher-configmap.yaml
+  - core-cc-output-data-bridge-deployment.yaml
+  - core-cc-output-data-bridge-service.yaml
+  - core-cc-output-data-bridge-configmap.yaml
+  - core-cc-post-processing-configmap.yml
+  - core-cc-post-processing-deployment.yml
+  - core-cc-post-processing-service.yml
   - core-cc-minio-purge.yaml

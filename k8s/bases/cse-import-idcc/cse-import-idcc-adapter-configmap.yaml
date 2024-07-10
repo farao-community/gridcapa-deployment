@@ -11,35 +11,34 @@ data:
   application.yml: |-
     spring:
       rabbitmq:
-        username: ${RABBITMQ_USER}
-        password: ${RABBITMQ_PASSWORD}
         host: gridcapa-rabbitmq
         port: 5672
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
         template:
           reply-timeout: 14400000
       cloud:
-          stream:
+        stream:
+          default:
+            binder: rabbit
+            group: cse-import-idcc-adapter
+          bindings:
+            handleRun-in-0:
+              destination: cse-import-idcc-launch-task
+            task-status-update:
+              destination: cse-import-idcc-task-status-updated
+          rabbit:
             default:
-              group: cse-import-idcc-adapter
-            bindings:
-              handleRun-in-0:
-                binder: rabbit
-                destination: cse-import-idcc-launch-task
-              task-status-update:
-                destination: cse-import-idcc-task-status-updated
-            rabbit:
-              default:
-                consumer:
-                  auto-bind-dlq: true
-                  max-attempts: 1
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+
+    logging:
+      config: /config/logback.xml
 
     logback:
       amqp:
         exchange: cse-import-idcc-task-manager-logs-exchange
-
-    cse-cc-runner:
-      binding:
-        destination: cse-import-idcc-request
 
     minio-adapter:
       url: http://gridcapa-minio:9000/
@@ -48,6 +47,10 @@ data:
       access-key: ${MINIO_ACCESS_KEY}
       secret-key: ${MINIO_SECRET_KEY}
 
+    cse-cc-runner:
+      binding:
+        destination: cse-import-idcc-request
+
     url-validation:
       whitelist:
         - http://gridcapa-minio:9000/
@@ -55,6 +58,4 @@ data:
     cse-adapter:
       exchange-type: import
       process-type: IDCC
-
-    logging:
-      config: /config/logback.xml
+      is-ec-import: false

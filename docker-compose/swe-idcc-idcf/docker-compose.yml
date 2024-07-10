@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  swe-idcc-idcf-gridcapa-app:
+  swe-idcc-idcf-app:
     image: farao/gridcapa-app:latest
     volumes:
       - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
@@ -26,7 +26,7 @@ services:
   swe-idcc-idcf-job-launcher:
     image: farao/gridcapa-job-launcher:latest
     volumes:
-      - ./config/swe-idcc-idcf-job-launcher.yml:/config/application.yml
+      - ./config/swe-idcc-idcf-job-launcher-application.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -55,10 +55,10 @@ services:
     networks:
       - gridcapa
 
-  swe-idcc-idcf-outputs-exporter:
+  swe-idcc-idcf-exporter:
     image: farao/gridcapa-export:latest
     volumes:
-      - ./config/swe-idcc-idcf-export-application.yml:/config/application.yml
+      - ./config/swe-idcc-idcf-exporter-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s

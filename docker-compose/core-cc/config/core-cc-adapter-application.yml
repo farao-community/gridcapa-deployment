@@ -9,19 +9,22 @@ spring:
   cloud:
     stream:
       default:
+        binder: rabbit
         group: core-cc-adapter
       bindings:
         consumeTask-in-0:
-          binder: rabbit
           destination: core-cc-run-task
         consumeAutoTask-in-0:
-          binder: rabbit
           destination: core-cc-run-task-auto
       rabbit:
         default:
           consumer:
             auto-bind-dlq: true
             max-attempts: 1
+
+core-cc-runner:
+  amqp:
+    queue-name: core-cc-requests
 
 minio-adapter:
   bucket: gridcapa
@@ -30,6 +33,6 @@ minio-adapter:
   secret-key: gridcapa
   url: http://minio:9000
 
-core-cc-runner:
-  amqp:
-    queue-name: core-cc-requests
+core-cc-adapter:
+  whitelist:
+    - http://minio:9000/

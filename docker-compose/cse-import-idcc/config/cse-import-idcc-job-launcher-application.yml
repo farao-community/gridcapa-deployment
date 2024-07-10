@@ -1,0 +1,40 @@
+logback:
+  amqp:
+    exchange: cse-import-idcc-task-manager-logs-exchange
+    routing-key: "#"
+
+spring:
+  application:
+    name: cse-import-idcc-gridcapa-job-launcher
+  rabbitmq:
+    host: rabbitmq
+    username: gridcapa
+    password: gridcapa
+    port: 5672
+  cloud:
+    stream:
+      default:
+        group: cse-import-idcc-job-launcher
+      bindings:
+        run-task:
+          destination: cse-import-idcc-launch-task
+        run-task-auto:
+          destination: cse-import-idcc-launch-task
+        stop-task:
+          destination: cse-import-idcc-stop-task
+        consumeTaskDtoUpdate-in-0:
+          destination: cse-import-idcc-task-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+        bindings:
+          consumeTaskDtoUpdate-in-0:
+            consumer:
+              binding-routing-key: input
+
+job-launcher:
+  url:
+    task-manager-timestamp-url: http://cse-import-idcc-task-manager:8080/tasks/
+    task-manager-business-date-url: http://cse-import-idcc-task-manager:8080/tasks/businessdate/

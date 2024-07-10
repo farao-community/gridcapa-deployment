@@ -12,9 +12,9 @@ data:
     spring:
       rabbitmq:
         host: gridcapa-rabbitmq
+        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        port: 5672
         template:
           reply-timeout: 7200000
       cloud:
@@ -23,6 +23,14 @@ data:
             task-status-update:
               binder: rabbit
               destination: cse-valid-d2cc-task-status-updated
+
+    logging:
+      config: /config/logback.xml
+
+    logback:
+      amqp:
+        exchange: cse-valid-d2cc-task-manager-logs-exchange
+        routing-key: "#"
 
     rao-runner-server:
       amqp:
@@ -38,12 +46,6 @@ data:
         response:
           destination: cse-valid-d2cc-response
           expiration: 600000
-        eic-codes:
-          austria: 10YAT-APG------L
-          france: 10YFR-RTE------C
-          italy: 10YIT-GRTN-----B
-          slovenia: 10YSI-ELES-----O
-          switzerland: 10YCH-SWISSGRIDZ
       whitelist:
         - http://gridcapa-minio:9000/
 
@@ -53,14 +55,6 @@ data:
       access-key: ${GRIDCAPA_MINIO_USER}
       secret-key: ${GRIDCAPA_MINIO_PASSWORD}
       url: http://gridcapa-minio:9000/
-
-    logging:
-      config: /config/logback.xml
-
-    logback:
-      amqp:
-        exchange: cse-valid-d2cc-task-manager-logs-exchange
-        routing-key: "#"
 
   logback.xml: |-
     <?xml version="1.0" encoding="UTF-8"?>

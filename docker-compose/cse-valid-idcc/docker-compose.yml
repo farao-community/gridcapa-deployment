@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  cse-valid-idcc-gridcapa-app:
+  cse-valid-idcc-app:
     image: farao/gridcapa-app:latest
     volumes:
       - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
@@ -8,24 +8,24 @@ services:
     networks:
       - gridcapa
 
-  cse-valid-idcc-gridcapa-task-manager:
+  cse-valid-idcc-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
-      - ./config/cse-valid-idcc-gridcapa-task-manager-application.yml:/config/application.yml
+      - ./config/cse-valid-idcc-task-manager-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  data-bridge-valid-idcc:
+  cse-valid-idcc-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/data-bridge-valid-idcc.yml:/config/application.yml
+      - ./config/cse-valid-idcc-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  data-bridge-idcc-output-ttc-validation:
+  cse-valid-idcc-output-data-bridge:
     image: farao/gridcapa-output-data-bridge:latest
     volumes:
-      - ./config/data-bridge-idcc-output-ttc-validation.yml:/config/application.yml
+      - ./config/cse-valid-idcc-output-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -66,14 +66,14 @@ services:
       timeout: 30s
       retries: 5
     depends_on:
-      - cse-valid-idcc-gridcapa-task-manager
+      - cse-valid-idcc-task-manager
     networks:
       - gridcapa
 
-  cse-valid-idcc-gridcapa-job-launcher:
+  cse-valid-idcc-job-launcher:
     image: farao/gridcapa-job-launcher:latest
     volumes:
-      - ./config/cse-valid-idcc-gridcapa-job-launcher.yml:/config/application.yml
+      - ./config/cse-valid-idcc-job-launcher-application.yml:/config/application.yml
     networks:
       - gridcapa
 

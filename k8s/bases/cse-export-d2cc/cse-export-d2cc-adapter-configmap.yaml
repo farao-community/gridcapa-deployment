@@ -11,28 +11,34 @@ data:
   application.yml: |-
     spring:
       rabbitmq:
-        username: ${RABBITMQ_USER}
-        password: ${RABBITMQ_PASSWORD}
         host: gridcapa-rabbitmq
         port: 5672
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
         template:
           reply-timeout: 14400000
       cloud:
-          stream:
+        stream:
+          default:
+            binder: rabbit
+            group: cse-export-d2cc-adapter
+          bindings:
+            handleRun-in-0:
+              destination: cse-export-d2cc-launch-task
+            task-status-update:
+              destination: cse-export-d2cc-task-status-updated
+          rabbit:
             default:
-              group: cse-export-d2cc-adapter
-            bindings:
-              handleRun-in-0:
-                binder: rabbit
-                destination: cse-export-d2cc-launch-task
-              task-status-update:
-                binder: rabbit
-                destination: cse-export-d2cc-task-status-updated
-            rabbit:
-              default:
-                consumer:
-                  auto-bind-dlq: true
-                  max-attempts: 1
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+
+    logging:
+      config: /config/logback.xml
+
+    logback:
+      amqp:
+        exchange: cse-export-d2cc-task-manager-logs-exchange
 
     cse-cc-runner:
       binding:
@@ -52,10 +58,4 @@ data:
     cse-adapter:
       exchange-type: export
       process-type: D2CC
-
-    logging:
-      config: /config/logback.xml
-
-    logback:
-      amqp:
-        exchange: cse-export-d2cc-task-manager-logs-exchange
+      is-ec-import: false
