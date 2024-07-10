@@ -21,31 +21,11 @@ spec:
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: cse-export-d2cc-cgm-data-bridge-scale
+  name: cse-export-d2cc-data-bridge-scale
   namespace: gridcapa-t
 spec:
   scaleTargetRef:
-    name: cse-export-d2cc-cgm-data-bridge
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
-        desiredReplicas: "1"
-
----
-
-apiVersion: keda.sh/v1alpha1
-kind: ScaledObject
-metadata:
-  name: cse-export-d2cc-crac-data-bridge-scale
-  namespace: gridcapa-t
-spec:
-  scaleTargetRef:
-    name: cse-export-d2cc-crac-data-bridge
+    name: cse-export-d2cc-data-bridge
   minReplicaCount: 0
   maxReplicaCount: 1
   triggers:

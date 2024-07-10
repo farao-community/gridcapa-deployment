@@ -1,51 +1,11 @@
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: cse-import-ec-d2cc-automated-forced-pras-data-bridge-scale
+  name: cse-import-ec-d2cc-data-bridge-scale
   namespace: gridcapa-t
 spec:
   scaleTargetRef:
-    name: cse-import-ec-d2cc-automated-forced-pras-data-bridge
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
-        desiredReplicas: "1"
-
----
-
-apiVersion: keda.sh/v1alpha1
-kind: ScaledObject
-metadata:
-  name: cse-import-ec-d2cc-cgm-data-bridge-scale
-  namespace: gridcapa-t
-spec:
-  scaleTargetRef:
-    name: cse-import-ec-d2cc-cgm-data-bridge
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
-        desiredReplicas: "1"
-
----
-
-apiVersion: keda.sh/v1alpha1
-kind: ScaledObject
-metadata:
-  name: cse-import-ec-d2cc-crac-data-bridge-scale
-  namespace: gridcapa-t
-spec:
-  scaleTargetRef:
-    name: cse-import-ec-d2cc-crac-data-bridge
+    name: cse-import-ec-d2cc-data-bridge
   minReplicaCount: 0
   maxReplicaCount: 1
   triggers:
@@ -66,26 +26,6 @@ metadata:
 spec:
   scaleTargetRef:
     name: cse-import-ec-d2cc-export
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
-        desiredReplicas: "1"
-
----
-
-apiVersion: keda.sh/v1alpha1
-kind: ScaledObject
-metadata:
-  name: cse-import-ec-d2cc-glsk-data-bridge-scale
-  namespace: gridcapa-t
-spec:
-  scaleTargetRef:
-    name: cse-import-ec-d2cc-glsk-data-bridge
   minReplicaCount: 0
   maxReplicaCount: 1
   triggers:
@@ -161,111 +101,11 @@ spec:
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: cse-import-ec-d2cc-ntc-data-bridge-scale
-  namespace: gridcapa-t
-spec:
-  scaleTargetRef:
-    name: cse-import-ec-d2cc-ntc-data-bridge
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
-        desiredReplicas: "1"
-
----
-
-apiVersion: keda.sh/v1alpha1
-kind: ScaledObject
-metadata:
-  name: cse-import-ec-d2cc-ntc-red-data-bridge-scale
-  namespace: gridcapa-t
-spec:
-  scaleTargetRef:
-    name: cse-import-ec-d2cc-ntc-red-data-bridge
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
-        desiredReplicas: "1"
-
----
-
-apiVersion: keda.sh/v1alpha1
-kind: ScaledObject
-metadata:
   name: cse-import-ec-d2cc-rao-logs-dispatcher-scale
   namespace: gridcapa-t
 spec:
   scaleTargetRef:
     name: cse-import-ec-d2cc-rao-logs-dispatcher
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
-        desiredReplicas: "1"
-
----
-
-apiVersion: keda.sh/v1alpha1
-kind: ScaledObject
-metadata:
-  name: cse-import-ec-d2cc-target-ch-data-bridge-scale
-  namespace: gridcapa-t
-spec:
-  scaleTargetRef:
-    name: cse-import-ec-d2cc-target-ch-data-bridge
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
-        desiredReplicas: "1"
-
----
-
-apiVersion: keda.sh/v1alpha1
-kind: ScaledObject
-metadata:
-  name: cse-import-ec-d2cc-user-config-data-bridge-scale
-  namespace: gridcapa-t
-spec:
-  scaleTargetRef:
-    name: cse-import-ec-d2cc-user-config-data-bridge
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
-        desiredReplicas: "1"
-
----
-
-apiVersion: keda.sh/v1alpha1
-kind: ScaledObject
-metadata:
-  name: cse-import-ec-d2cc-vulcanus-data-bridge-scale
-  namespace: gridcapa-t
-spec:
-  scaleTargetRef:
-    name: cse-import-ec-d2cc-vulcanus-data-bridge
   minReplicaCount: 0
   maxReplicaCount: 1
   triggers:

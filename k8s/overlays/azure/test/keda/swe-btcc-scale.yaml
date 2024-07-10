@@ -75,3 +75,23 @@ spec:
         start: "0 7 * * 1-5"
         end: "0 17 * * 1-5"
         desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-btcc-data-bridge-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: swe-btcc-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
