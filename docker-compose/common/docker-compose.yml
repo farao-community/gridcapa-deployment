@@ -36,7 +36,7 @@ services:
     image: delfer/alpine-ftp-server
     restart: always
     environment:
-      USERS: gridcapa|gridcapa|/data/gridcapa/|10000 gridcapa|gridcapa|/data/gridcapa/swe/d2cc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/cse/export/d2cc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/cse/import/d2cc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/core/cc/outputs|10000
+      USERS: gridcapa|gridcapa|/data/gridcapa/|10000 gridcapa|gridcapa|/data/gridcapa/swe/d2cc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/cse/export/d2cc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/cse/import/d2cc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/core/cc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/core/valid/outputs|10000 gridcapa|gridcapa|/data/gridcapa/cse/export/idcc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/cse/import_ec/d2cc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/cse/import_ec/idcc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/cse/import/idcc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/swe/idcc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/swe/idcf/outputs|10000
     volumes:
       - ftp-data:/data/gridcapa
     ports:
