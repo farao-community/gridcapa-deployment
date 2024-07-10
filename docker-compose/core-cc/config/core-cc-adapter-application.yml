@@ -38,7 +38,7 @@ minio-adapter:
 core-cc-adapter:
   auto-trigger-filetypes:
     - RAOREQUEST
-  task-manager-timestamp-url: http://core-cc-gridcapa-task-manager:8080/tasks/
+  task-manager-timestamp-url: http://core-cc-task-manager:8080/tasks/
   whitelist:
     - http://minio:9000/
 
