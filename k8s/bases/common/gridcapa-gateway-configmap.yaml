@@ -50,8 +50,8 @@ data:
               filters:
                 - StripPrefix=3
                 - RemoveRequestParameter=access_token
-            - id: core-cc-gridcapa-job-launcher
-              uri: http://core-cc-gridcapa-job-launcher
+            - id: core-cc-adapter
+              uri: http://core-cc-adapter
               predicates:
                 - Path=/core/cc/gridcapa-job-launcher/**
               filters:
