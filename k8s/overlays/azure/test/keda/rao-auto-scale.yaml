@@ -14,6 +14,9 @@ kind: ScaledObject
 metadata:
   name: gridcapa-rao-runner-scaled-object
   namespace: gridcapa-t
+  annotations:
+#    Set to true to pause the scaling
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
