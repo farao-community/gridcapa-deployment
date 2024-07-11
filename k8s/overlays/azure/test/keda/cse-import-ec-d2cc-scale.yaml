@@ -21,7 +21,7 @@ spec:
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: cse-import-ec-d2cc-export-scale
+  name: cse-import-ec-d2cc-exporter-scale
   namespace: gridcapa-t
 spec:
   scaleTargetRef:
