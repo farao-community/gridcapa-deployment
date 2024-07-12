@@ -25,7 +25,7 @@ spec:
       containers:
         - name: core-cc-gridcapa-post-processing
           image: gridcapa-core-cc-post-processing
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:

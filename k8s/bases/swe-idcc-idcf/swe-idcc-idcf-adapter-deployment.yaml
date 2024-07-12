@@ -25,7 +25,7 @@ spec:
       containers:
         - name: swe-idcc-idcf-adapter
           image: gridcapa-swe-adapter
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:

@@ -27,7 +27,7 @@ spec:
       containers:
         - name: cse-export-d2cc-runner
           image: gridcapa-cse-export-runner
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:
