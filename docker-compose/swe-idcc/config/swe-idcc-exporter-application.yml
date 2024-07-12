@@ -1,0 +1,51 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+  cloud:
+    stream:
+      default:
+        group: swe-idcc-exporter
+      bindings:
+        consumeTaskDtoUpdate-in-0:
+          destination: swe-idcc-task-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+        bindings:
+          consumeTaskDtoUpdate-in-0:
+            consumer:
+              binding-routing-key: status
+
+export:
+  seperate-output-files: true
+  unzip-files:
+    - CGM_ESFR
+    - CGM_FRES
+    - CGM_PTES
+    - CGM_ESPT
+
+task-manager:
+  base-url: http://swe-idcc-task-manager:8080
+  fetch-task:
+    reties-number: 6
+    interval-in-seconds: 10
+
+ftp:
+  active: true
+  host: ftp-server
+  port: 21
+  access-key: gridcapa
+  secret-key: gridcapa
+  remote-relative-destination-directory: swe/idcc/outputs
+  retry-count: 3
+  retry-sleep: 30
+
+logback:
+  amqp:
+    exchange: swe-idcc-task-manager-logs-exchange
+    routing-key: "#"

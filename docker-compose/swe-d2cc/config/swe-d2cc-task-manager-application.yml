@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: swe-d2cc-task-manager
   datasource:
     url: jdbc:postgresql://gridcapa-postgres:5432/swe_d2cc_tasks
     driverClassName: org.postgresql.Driver
@@ -52,15 +54,10 @@ spring:
           task-input-updated:
             producer:
               routing-key-expression: '''input'''
-  servlet:
-    multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB
 
 task-server:
   process:
     tag: SWE_D2CC
-    timezone: CET
     inputs:
       - CRAC
       - GLSK
@@ -76,6 +73,7 @@ task-server:
       - RTE_TP
       - BOUNDARY_EQ
       - BOUNDARY_TP
+    optional-inputs:
     outputs:
       - TTC
       - VOLTAGE_ESFR
@@ -105,7 +103,7 @@ minio-adapter:
   secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
 
 stomp:
-  allowed-origin: http://swe-d2cc-gridcapa-app
+  allowed-origin: http://swe-d2cc-app
   starting-ws-endpoint: /tasks/notify
   notify: /task
   receive-request: /app

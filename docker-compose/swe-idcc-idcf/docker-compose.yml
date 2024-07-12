@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  swe-idcc-idcf-gridcapa-app:
+  swe-idcc-idcf-app:
     image: farao/gridcapa-app:latest
     volumes:
       - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
@@ -26,7 +26,7 @@ services:
   swe-idcc-idcf-job-launcher:
     image: farao/gridcapa-job-launcher:latest
     volumes:
-      - ./config/swe-idcc-idcf-job-launcher.yml:/config/application.yml
+      - ./config/swe-idcc-idcf-job-launcher-application.yml:/config/application.yml
     networks:
       - gridcapa
 
@@ -35,7 +35,7 @@ services:
     volumes:
       - ./config/swe-idcc-idcf-adapter-application.yml:/config/application.yml
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5
@@ -55,12 +55,12 @@ services:
     networks:
       - gridcapa
 
-  swe-idcc-idcf-outputs-exporter:
+  swe-idcc-idcf-exporter:
     image: farao/gridcapa-export:latest
     volumes:
-      - ./config/swe-idcc-idcf-export-application.yml:/config/application.yml
+      - ./config/swe-idcc-idcf-exporter-application.yml:/config/application.yml
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://swe-idcc-idcf-outputs-exporter/actuator/health" ]
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5
@@ -72,7 +72,7 @@ services:
     volumes:
       - ./config/swe-idcc-idcf-rao-logs-dispatcher-application.yml:/config/application.yml
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://rao-logs-dispatcher/actuator/health" ]
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5

@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: cse-export-idcc-task-manager
   datasource:
     url: jdbc:postgresql://gridcapa-postgres:5432/cse_export_idcc_tasks
     driverClassName: org.postgresql.Driver
@@ -48,15 +50,10 @@ spring:
           task-input-updated:
             producer:
               routing-key-expression: '''input'''
-  servlet:
-    multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB
 
 task-server:
   process:
     tag: CSE_EXPORT_IDCC
-    timezone: CET
     inputs:
       - CGM
       - CRAC
@@ -77,7 +74,7 @@ minio-adapter:
   secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
 
 stomp:
-  allowed-origin: http://cse-export-idcc-gridcapa-app
+  allowed-origin: http://cse-export-idcc-app
   starting-ws-endpoint: /tasks/notify
   notify: /task
   receive-request: /app

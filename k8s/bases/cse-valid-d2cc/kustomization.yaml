@@ -11,9 +11,9 @@ resources:
   - cse-valid-d2cc-adapter-configmap.yaml
   - cse-valid-d2cc-adapter-deployment.yaml
   - cse-valid-d2cc-adapter-service.yaml
-  - cse-valid-d2cc-gridcapa-app-deployment.yaml
-  - cse-valid-d2cc-gridcapa-app-process-metadata-configmap.yaml
-  - cse-valid-d2cc-gridcapa-app-service.yaml
+  - cse-valid-d2cc-app-deployment.yaml
+  - cse-valid-d2cc-app-process-metadata-configmap.yaml
+  - cse-valid-d2cc-app-service.yaml
   - cse-valid-d2cc-job-launcher-deployment.yaml
   - cse-valid-d2cc-job-launcher-service.yaml
   - cse-valid-d2cc-job-launcher-configmap.yaml

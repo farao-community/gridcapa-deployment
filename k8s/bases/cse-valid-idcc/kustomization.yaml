@@ -11,9 +11,9 @@ resources:
   - cse-valid-idcc-adapter-configmap.yaml
   - cse-valid-idcc-adapter-deployment.yaml
   - cse-valid-idcc-adapter-service.yaml
-  - cse-valid-idcc-gridcapa-app-deployment.yaml
-  - cse-valid-idcc-gridcapa-app-process-metadata-configmap.yaml
-  - cse-valid-idcc-gridcapa-app-service.yaml
+  - cse-valid-idcc-app-deployment.yaml
+  - cse-valid-idcc-app-process-metadata-configmap.yaml
+  - cse-valid-idcc-app-service.yaml
   - cse-valid-idcc-job-launcher-deployment.yaml
   - cse-valid-idcc-job-launcher-service.yaml
   - cse-valid-idcc-job-launcher-configmap.yaml

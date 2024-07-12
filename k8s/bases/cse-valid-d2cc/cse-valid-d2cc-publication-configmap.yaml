@@ -12,17 +12,11 @@ data:
     spring:
       rabbitmq:
         host: gridcapa-rabbitmq
+        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        port: 5672
         template:
           reply-timeout: 7200000
-      cloud:
-        stream:
-          bindings:
-            task-status-update:
-              binder: rabbit
-              destination: cse-valid-d2cc-task-status-updated
 
     cse-valid-publication:
       filenames:

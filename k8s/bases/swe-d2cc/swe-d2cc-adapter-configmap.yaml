@@ -12,9 +12,9 @@ data:
     spring:
       rabbitmq:
         host: gridcapa-rabbitmq
+        port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
-        port: 5672
       cloud:
         stream:
           default:
@@ -28,8 +28,6 @@ data:
               consumer:
                 auto-bind-dlq: true
                 max-attempts: 1
-        function:
-          definition: consumeTask
 
     swe-adapter:
       process-type: D2CC

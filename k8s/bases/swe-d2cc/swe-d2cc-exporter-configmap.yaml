@@ -57,6 +57,8 @@ data:
       remote-relative-destination-directory: ${SINK_DIRECTORY}
       retry-count: 3
       retry-sleep: 30
+
     logback:
       amqp:
         exchange: swe-d2cc-task-manager-logs-exchange
+        routing-key: "#"

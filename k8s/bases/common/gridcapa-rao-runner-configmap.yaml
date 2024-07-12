@@ -13,6 +13,8 @@ data:
         port: 5672
         username: ${RABBITMQ_USER}
         password: ${RABBITMQ_PASSWORD}
+        template:
+          reply-timeout: 12000000
       cloud:
         stream:
           default:
@@ -22,17 +24,20 @@ data:
               binder: rabbit
               destination: stop-rao-runner
 
+    logging:
+      config: /config/logback.xml
+
+    logback:
+      amqp:
+        exchange: rao-runners-logs
+        routing-key: "#"
+
     minio-adapter:
       bucket: gridcapa
       base-path:
       access-key: ${MINIO_ACCESS_KEY}
       secret-key: ${MINIO_SECRET_KEY}
       url: http://gridcapa-minio:9000/
-
-    logback:
-      amqp:
-        exchange: rao-runners-logs
-        routing-key: "#"
 
     rao-runner:
       messages:
@@ -42,11 +47,6 @@ data:
         whitelist:
           - http://gridcapa-minio:9000/
 
-    logging:
-      config: /config/logback.xml
-
-    server:
-      port: 8080
   logback.xml: |-
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>

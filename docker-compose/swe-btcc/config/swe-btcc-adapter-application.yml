@@ -2,10 +2,10 @@ spring:
   application:
     name: swe-btcc-adapter
   rabbitmq:
-    username: gridcapa
-    password: gridcapa
     host: rabbitmq
     port: 5672
+    username: gridcapa
+    password: gridcapa
   cloud:
     stream:
       default:
@@ -19,8 +19,6 @@ spring:
           consumer:
             auto-bind-dlq: true
             max-attempts: 1
-    function:
-      definition: consumeTask
 
 swe-adapter:
   process-type: BTCC

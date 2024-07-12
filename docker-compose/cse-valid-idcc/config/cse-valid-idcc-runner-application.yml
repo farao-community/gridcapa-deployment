@@ -10,7 +10,16 @@ spring:
     stream:
       bindings:
         task-status-update:
+          binder: rabbit
           destination: cse-valid-idcc-task-status-updated
+
+logging:
+  config: /config/logback.xml
+
+logback:
+  amqp:
+    exchange: cse-valid-idcc-task-manager-logs-exchange
+    routing-key: "#"
 
 rao-runner-server:
   amqp:
@@ -26,12 +35,6 @@ cse-valid-runner:
     response:
       destination: cse-valid-idcc-response
       expiration: 600000
-  eic-codes:
-    austria: 10YAT-APG------L
-    france: 10YFR-RTE------C
-    italy: 10YIT-GRTN-----B
-    slovenia: 10YSI-ELES-----O
-    switzerland: 10YCH-SWISSGRIDZ
   whitelist:
     - http://minio:9000/
     - http://localhost:9000/
@@ -42,11 +45,3 @@ minio-adapter:
   access-key: gridcapa
   secret-key: gridcapa
   url: http://minio:9000
-
-logging:
-  config: /config/logback.xml
-
-logback:
-  amqp:
-    exchange: cse-valid-idcc-task-manager-logs-exchange
-    routing-key: "#"
