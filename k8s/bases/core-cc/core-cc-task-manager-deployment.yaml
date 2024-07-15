@@ -25,7 +25,7 @@ spec:
       containers:
         - name: core-cc-task-manager
           image: gridcapa-core-cc-task-manager
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:

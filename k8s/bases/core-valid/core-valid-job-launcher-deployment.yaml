@@ -25,7 +25,7 @@ spec:
       containers:
         - name: core-valid-gridcapa-job-launcher
           image: gridcapa-core-valid-job-launcher
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:
