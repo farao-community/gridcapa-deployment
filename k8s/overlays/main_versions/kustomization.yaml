@@ -38,7 +38,7 @@ images:
     newTag: 0.15.0
   - name: gridcapa-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.23.3
+    newTag: 1.23.4-patch-olf
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: v1.16.0
