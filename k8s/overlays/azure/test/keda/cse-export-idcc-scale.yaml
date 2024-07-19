@@ -1,6 +1,44 @@
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
+  name: cse-export-idcc-task-manager-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: cse-export-idcc-task-manager
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cse-export-idcc-runner-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: cse-export-idcc-runner
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
   name: cse-export-idcc-adapter-scale
   namespace: gridcapa-t
 spec:

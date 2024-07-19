@@ -1,6 +1,44 @@
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
+  name: cse-import-ec-d2cc-task-manager-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: cse-import-ec-d2cc-task-manager
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cse-import-ec-d2cc-gridcapa-runner-scale
+  namespace: gridcapa-t
+spec:
+  scaleTargetRef:
+    name: cse-import-ec-d2cc-gridcapa-runner
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
   name: cse-import-ec-d2cc-data-bridge-scale
   namespace: gridcapa-t
 spec:

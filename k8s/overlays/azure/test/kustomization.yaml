@@ -49,8 +49,8 @@ resources:
   - keda/swe-idcc-idcf-scale.yaml
   - keda/swe-btcc-scale.yaml
   - keda/core-cc-scale.yaml
-  - keda/cse-export-d2cc.yaml
-  - keda/cse-export-idcc.yaml
+  - keda/cse-export-d2cc-scale.yaml
+  - keda/cse-export-idcc-scale.yaml
   - keda/cse-import-d2cc-scale.yaml
   - keda/cse-import-idcc-scale.yaml
   - keda/cse-import-ec-d2cc-scale.yaml
