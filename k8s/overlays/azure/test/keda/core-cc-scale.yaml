@@ -3,6 +3,8 @@ kind: ScaledObject
 metadata:
   name: core-cc-task-manager-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-task-manager
@@ -22,6 +24,8 @@ kind: ScaledObject
 metadata:
   name: core-cc-runner-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-runner
@@ -41,6 +45,8 @@ kind: ScaledObject
 metadata:
   name: core-cc-adapter-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-adapter
@@ -61,6 +67,8 @@ kind: ScaledObject
 metadata:
   name: core-cc-data-bridge-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-data-bridge
@@ -81,6 +89,8 @@ kind: ScaledObject
 metadata:
   name: core-cc-gridcapa-app-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-gridcapa-app
@@ -101,6 +111,8 @@ kind: ScaledObject
 metadata:
   name: core-cc-gridcapa-job-launcher-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-gridcapa-job-launcher
@@ -121,6 +133,8 @@ kind: ScaledObject
 metadata:
   name: core-cc-gridcapa-post-processing-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-gridcapa-post-processing
@@ -142,6 +156,8 @@ kind: ScaledObject
 metadata:
   name: core-cc-output-data-bridge-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-output-data-bridge
@@ -162,6 +178,8 @@ kind: ScaledObject
 metadata:
   name: core-cc-rao-logs-dispatcher-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-rao-logs-dispatcher

@@ -3,6 +3,8 @@ kind: ScaledObject
 metadata:
   name: swe-idcc-runner-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: swe-idcc-runner
@@ -22,6 +24,8 @@ kind: ScaledObject
 metadata:
   name: swe-idcc-task-manager-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: swe-idcc-task-manager
@@ -41,6 +45,8 @@ kind: ScaledObject
 metadata:
   name: swe-idcc-adapter-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: swe-idcc-adapter
@@ -61,6 +67,8 @@ kind: ScaledObject
 metadata:
   name: swe-idcc-data-bridge-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: swe-idcc-data-bridge
@@ -81,6 +89,8 @@ kind: ScaledObject
 metadata:
   name: swe-idcc-exporter-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: swe-idcc-exporter
@@ -101,6 +111,8 @@ kind: ScaledObject
 metadata:
   name: swe-idcc-gridcapa-app-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: swe-idcc-gridcapa-app
@@ -121,6 +133,8 @@ kind: ScaledObject
 metadata:
   name: swe-idcc-gridcapa-job-launcher-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: swe-idcc-gridcapa-job-launcher
@@ -141,6 +155,8 @@ kind: ScaledObject
 metadata:
   name: swe-idcc-rao-logs-dispatcher-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: swe-idcc-rao-logs-dispatcher

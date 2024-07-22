@@ -22,6 +22,8 @@ kind: ScaledObject
 metadata:
   name: swe-btcc-runner-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: swe-btcc-runner
@@ -41,6 +43,8 @@ kind: ScaledObject
 metadata:
   name: swe-btcc-adapter-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: swe-btcc-adapter
@@ -61,6 +65,8 @@ kind: ScaledObject
 metadata:
   name: swe-btcc-gridcapa-app-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: swe-btcc-gridcapa-app
@@ -81,6 +87,8 @@ kind: ScaledObject
 metadata:
   name: swe-btcc-gridcapa-job-launcher-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: swe-btcc-gridcapa-job-launcher
@@ -101,6 +109,8 @@ kind: ScaledObject
 metadata:
   name: swe-btcc-rao-logs-dispatcher-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: swe-btcc-rao-logs-dispatcher
@@ -121,6 +131,8 @@ kind: ScaledObject
 metadata:
   name: swe-btcc-data-bridge-scale
   namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: swe-btcc-data-bridge
