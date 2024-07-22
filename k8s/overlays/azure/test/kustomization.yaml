@@ -41,20 +41,20 @@ resources:
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
-  - keda/rao-auto-scale.yaml
   - filestash-deployment.yaml
   - filestash-service.yaml
-  - keda/swe-d2cc-scale.yaml
-  - keda/swe-idcc-scale.yaml
-  - keda/swe-idcc-idcf-scale.yaml
-  - keda/swe-btcc-scale.yaml
   - keda/core-cc-scale.yaml
   - keda/cse-export-d2cc-scale.yaml
   - keda/cse-export-idcc-scale.yaml
   - keda/cse-import-d2cc-scale.yaml
-  - keda/cse-import-idcc-scale.yaml
   - keda/cse-import-ec-d2cc-scale.yaml
   - keda/cse-import-ec-idcc-scale.yaml
+  - keda/cse-import-idcc-scale.yaml
+  - keda/rao-auto-scale.yaml
+  - keda/swe-btcc-scale.yaml
+  - keda/swe-d2cc-scale.yaml
+  - keda/swe-idcc-idcf-scale.yaml
+  - keda/swe-idcc-scale.yaml
 
 components:
   - ../../main_versions
