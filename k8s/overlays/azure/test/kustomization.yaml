@@ -41,9 +41,20 @@ resources:
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
-  - rao-auto-scale-down.yaml
   - filestash-deployment.yaml
   - filestash-service.yaml
+  - keda/core-cc-scale.yaml
+  - keda/cse-export-d2cc-scale.yaml
+  - keda/cse-export-idcc-scale.yaml
+  - keda/cse-import-d2cc-scale.yaml
+  - keda/cse-import-ec-d2cc-scale.yaml
+  - keda/cse-import-ec-idcc-scale.yaml
+  - keda/cse-import-idcc-scale.yaml
+  - keda/rao-auto-scale.yaml
+  - keda/swe-btcc-scale.yaml
+  - keda/swe-d2cc-scale.yaml
+  - keda/swe-idcc-idcf-scale.yaml
+  - keda/swe-idcc-scale.yaml
 
 components:
   - ../../main_versions
@@ -57,7 +68,6 @@ configMapGenerator:
       - env.json=gridcapa-app-env-config.json
 
 patches:
-  # - Scale-up to 8 instances
   # - Adapt requests/limits
   # - Add ImagePullSecrets to retrieve private gridcapa-rao-runner-with-xpress from dockerhub
   - patch: |-
@@ -66,7 +76,6 @@ patches:
       metadata:
         name: rao-runner
       spec:
-        replicas: 8
         template:
           spec:
             containers:

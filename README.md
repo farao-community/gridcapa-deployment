@@ -183,7 +183,9 @@ This environment is used to test CSE gridcapa processes for CORESO
 ```bash
 kubectl kustomize k8s/overlays/azure/test --load-restrictor LoadRestrictionsNone |  ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p"  farao@51.137.209.168 kubectl apply -n gridcapa -f -
 ```
-
+In order to limit resources used by this environment, a KEDA (Kubernetes Event-Driven Autoscaling) has been set up. Its corresponding configuration
+is located at k8s/overlays/azure/test/keda. Should you wish to pause it for a time, simply edit the scaler you want to pause
+and change the **metadata.annotations.autoscaling.keda.sh/paused** value to **false**
 
 ### Using local gridcapa-app
 
