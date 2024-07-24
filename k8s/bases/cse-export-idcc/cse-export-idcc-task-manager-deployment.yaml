@@ -104,10 +104,10 @@ spec:
           resources:
             requests:
               cpu: "1.0"
-              memory: "1Gi"
+              memory: "10Gi"
             limits:
               cpu: "4.0"
-              memory: "2Gi"
+              memory: "20Gi"
       initContainers:
         - name: minio-notifications
           image: docker.io/minio/mc
