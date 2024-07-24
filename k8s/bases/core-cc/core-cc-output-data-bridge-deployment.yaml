@@ -29,7 +29,7 @@ spec:
       containers:
         - name: core-cc-output-data-bridge
           image: gridcapa-core-cc-output-data-bridge
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:

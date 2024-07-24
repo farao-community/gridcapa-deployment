@@ -1,0 +1,13 @@
+resources:
+  - core-cc-scale.yaml
+  - cse-export-d2cc-scale.yaml
+  - cse-export-idcc-scale.yaml
+  - cse-import-d2cc-scale.yaml
+  - cse-import-ec-d2cc-scale.yaml
+  - cse-import-ec-idcc-scale.yaml
+  - cse-import-idcc-scale.yaml
+  - rao-auto-scale.yaml
+  - swe-btcc-scale.yaml
+  - swe-d2cc-scale.yaml
+  - swe-idcc-idcf-scale.yaml
+  - swe-idcc-scale.yaml

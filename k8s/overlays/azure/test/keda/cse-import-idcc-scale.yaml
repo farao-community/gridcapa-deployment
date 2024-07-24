@@ -1,0 +1,171 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cse-import-idcc-gridcapa-runner-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: cse-import-idcc-gridcapa-runner
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cse-import-idcc-task-manager-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: cse-import-idcc-task-manager
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cse-import-idcc-data-bridge-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: cse-import-idcc-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cse-import-idcc-exporter-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: cse-import-idcc-exporter
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cse-import-idcc-gridcapa-adapter-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: cse-import-idcc-gridcapa-adapter
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cse-import-idcc-gridcapa-app-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: cse-import-idcc-gridcapa-app
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cse-import-idcc-gridcapa-job-launcher-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: cse-import-idcc-gridcapa-job-launcher
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cse-import-idcc-rao-logs-dispatcher-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: cse-import-idcc-rao-logs-dispatcher
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"

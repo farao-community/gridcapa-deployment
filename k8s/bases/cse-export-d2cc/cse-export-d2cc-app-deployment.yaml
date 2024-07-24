@@ -26,7 +26,7 @@ spec:
       containers:
         - name: cse-export-d2cc-gridcapa-app
           image: gridcapa-app
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
           volumeMounts:

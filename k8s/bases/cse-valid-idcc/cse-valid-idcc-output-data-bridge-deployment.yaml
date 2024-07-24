@@ -29,7 +29,7 @@ spec:
       containers:
         - name: cse-valid-idcc-output-data-bridge
           image: gridcapa-cse-valid-output-data-bridge
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:

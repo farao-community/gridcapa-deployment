@@ -25,7 +25,7 @@ spec:
       containers:
         - name: cse-import-ec-d2cc-task-manager
           image: gridcapa-cse-task-manager
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:

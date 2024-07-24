@@ -25,7 +25,7 @@ spec:
       containers:
         - name: core-cc-rao-logs-dispatcher
           image: gridcapa-core-cc-rao-logs-dispatcher
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:

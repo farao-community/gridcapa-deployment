@@ -21,7 +21,7 @@ spec:
       containers:
         - name: rao-runner
           image: gridcapa-rao-runner
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:

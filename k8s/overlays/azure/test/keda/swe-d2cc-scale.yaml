@@ -1,0 +1,171 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-task-manager-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-task-manager
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-runner-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-runner
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-adapter-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-adapter
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-data-bridge-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-data-bridge
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-exporter-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-exporter
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-gridcapa-app-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-gridcapa-app
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-gridcapa-job-launcher-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-gridcapa-job-launcher
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-rao-logs-dispatcher-scale
+  namespace: gridcapa-t
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-rao-logs-dispatcher
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "UTC"
+        start: "0 7 * * 1-5"
+        end: "0 17 * * 1-5"
+        desiredReplicas: "1"

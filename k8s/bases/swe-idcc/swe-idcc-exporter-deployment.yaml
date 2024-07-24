@@ -25,7 +25,7 @@ spec:
       containers:
         - name: gridcapa-swe-idcc-exporter
           image: gridcapa-swe-exporter
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:

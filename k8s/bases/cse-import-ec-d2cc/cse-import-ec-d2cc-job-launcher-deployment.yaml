@@ -25,7 +25,7 @@ spec:
       containers:
         - name: cse-import-ec-d2cc-gridcapa-job-launcher
           image: gridcapa-cse-job-launcher
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:

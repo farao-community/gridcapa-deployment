@@ -26,7 +26,7 @@ spec:
       containers:
         - name: cse-export-d2cc-data-bridge
           image: gridcapa-cse-input-data-bridge
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:

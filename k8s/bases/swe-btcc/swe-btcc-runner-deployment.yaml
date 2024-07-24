@@ -27,7 +27,7 @@ spec:
       containers:
         - name: gridcapa-swe-btcc-runner
           image: gridcapa-swe-runner
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:
