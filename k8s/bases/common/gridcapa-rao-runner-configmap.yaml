@@ -43,6 +43,7 @@ data:
       messages:
         rao-request:
           queue-name: rao-request-queue
+          delivery-limit: 2
       url:
         whitelist:
           - http://gridcapa-minio:9000/
