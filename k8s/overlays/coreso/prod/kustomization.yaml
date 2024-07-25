@@ -65,10 +65,10 @@ patches:
                 resources:
                   requests:
                     cpu: "14.0"
-                    memory: "50Gi"
+                    memory: "30Gi"
                   limits:
                     cpu: "16.0"
-                    memory: "60Gi"
+                    memory: "40Gi"
             imagePullSecrets:
               - name: dockerhub-acr-secret
   - patch: |-
