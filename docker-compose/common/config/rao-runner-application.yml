@@ -34,6 +34,7 @@ rao-runner:
   messages:
     rao-request:
       queue-name: rao-request-queue
+      delivery-limit: 2
   url:
     whitelist:
       - http://minio:9000/
