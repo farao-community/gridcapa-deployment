@@ -18,8 +18,6 @@ spring:
       bindings:
         run-task:
           destination: cse-import-idcc-launch-task
-        run-task-auto:
-          destination: cse-import-idcc-launch-task
         stop-task:
           destination: cse-import-idcc-stop-task
         consumeTaskDtoUpdate-in-0:

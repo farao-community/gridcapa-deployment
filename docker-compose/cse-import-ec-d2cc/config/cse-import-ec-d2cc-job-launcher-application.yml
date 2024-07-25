@@ -18,8 +18,6 @@ spring:
       bindings:
         run-task:
           destination: cse-import-ec-d2cc-launch-task
-        run-task-auto:
-          destination: cse-import-ec-d2cc-launch-task
         stop-task:
           destination: cse-import-ec-d2cc-stop-task
         consumeTaskDtoUpdate-in-0:

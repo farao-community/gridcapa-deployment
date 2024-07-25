@@ -31,8 +31,6 @@ data:
               destination: core-valid-run-task
             run-task-auto:
               destination: core-valid-run-task-auto
-            stop-task:
-              destination: core-valid-stop-task
             consumeTaskDtoUpdate-in-0:
               destination: core-valid-task-updated
           rabbit:

@@ -18,10 +18,6 @@ spring:
       bindings:
         run-task:
           destination: cse-valid-idcc-run-task
-        run-task-auto:
-          destination: cse-valid-idcc-run-task
-        stop-task:
-          destination: cse-valid-idcc-stop-task
         consumeTaskDtoUpdate-in-0:
           destination: cse-valid-idcc-task-updated
       rabbit:

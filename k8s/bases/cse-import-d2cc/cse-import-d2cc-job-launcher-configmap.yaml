@@ -29,8 +29,6 @@ data:
           bindings:
             run-task:
               destination: cse-import-d2cc-launch-task
-            run-task-auto:
-              destination: cse-import-d2cc-launch-task
             stop-task:
               destination: cse-import-d2cc-stop-task
             consumeTaskDtoUpdate-in-0:
