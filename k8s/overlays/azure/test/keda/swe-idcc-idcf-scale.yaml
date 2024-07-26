@@ -9,14 +9,14 @@ spec:
   scaleTargetRef:
     name: swe-idcc-idcf-runner
   minReplicaCount: 0
-  maxReplicaCount: 1
+  maxReplicaCount: 2
   triggers:
     - type: cron
       metadata:
         timezone: "UTC"
         start: "0 7 * * 1-5"
         end: "0 17 * * 1-5"
-        desiredReplicas: "1"
+        desiredReplicas: "2"
 
 ---
 apiVersion: keda.sh/v1alpha1
