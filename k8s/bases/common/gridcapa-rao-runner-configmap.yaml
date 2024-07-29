@@ -47,6 +47,7 @@ data:
       url:
         whitelist:
           - http://gridcapa-minio:9000/
+        interrupt-server-url: http://interruption-server/interrupted/
 
   logback.xml: |-
     <?xml version="1.0" encoding="UTF-8"?>
