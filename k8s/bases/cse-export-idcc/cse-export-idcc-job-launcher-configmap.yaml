@@ -51,3 +51,4 @@ data:
       url:
         task-manager-timestamp-url: http://cse-export-idcc-task-manager/tasks/
         task-manager-business-date-url: http://cse-export-idcc-task-manager/tasks/businessdate/
+        interrupt-run-url: http://interruption-server/interrupt/

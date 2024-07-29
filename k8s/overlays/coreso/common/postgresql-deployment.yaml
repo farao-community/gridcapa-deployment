@@ -148,6 +148,16 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: core-cc-password
+            - name: POSTGRES_INTERRUPTION_SERVER_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: interruption-server-user
+            - name: POSTGRES_INTERRUPTION_SERVER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: interruption-server-password
           resources:
             limits:
               cpu: "500m"

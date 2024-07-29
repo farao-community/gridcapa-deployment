@@ -36,3 +36,4 @@ job-launcher:
   url:
     task-manager-timestamp-url: http://swe-idcc-idcf-task-manager:8080/tasks/
     task-manager-business-date-url: http://swe-idcc-idcf-task-manager:8080/tasks/businessdate/
+    interrupt-run-url: http://interruption-server:8080/interrupt/

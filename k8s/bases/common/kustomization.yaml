@@ -13,6 +13,9 @@ resources:
   - gridcapa-gateway-configmap.yaml
   - gridcapa-gateway-deployment.yaml
   - gridcapa-gateway-service.yaml
+  - gridcapa-interruption-server-configmap.yaml
+  - gridcapa-interruption-server-deployment.yaml
+  - gridcapa-interruption-server-service.yaml
   - gridcapa-rao-runner-configmap.yaml
   - gridcapa-rao-runner-deployment.yaml
   - gridcapa-rao-runner-service.yaml

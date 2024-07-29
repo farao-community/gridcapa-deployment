@@ -38,3 +38,4 @@ rao-runner:
   url:
     whitelist:
       - http://minio:9000/
+    interrupt-server-url: http://interruption-server:8080/interrupted/
