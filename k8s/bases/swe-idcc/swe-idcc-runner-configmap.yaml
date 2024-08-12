@@ -29,8 +29,6 @@ data:
               destination: swe-idcc-stop-task
             request-in-0:
               destination: swe-idcc-request
-            request-out-0:
-              destination: swe-idcc-response
             task-status-update:
               destination: swe-idcc-task-status-updated
             stop-rao:

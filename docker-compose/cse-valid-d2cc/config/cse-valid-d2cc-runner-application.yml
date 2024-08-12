@@ -32,9 +32,6 @@ cse-valid-runner:
     request:
       destination: cse-valid-d2cc-requests
       routing-key: "#"
-    response:
-      destination: cse-valid-d2cc-response
-      expiration: 600000
   whitelist:
     - http://minio:9000/
     - http://localhost:9000/

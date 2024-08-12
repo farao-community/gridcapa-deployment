@@ -18,8 +18,6 @@ spring:
           destination: cse-import-idcc-stop-task
         request-in-0:
           destination: cse-import-idcc-request
-        request-out-0:
-          destination: cse-import-idcc-response
         task-status-update:
           destination: cse-import-idcc-task-status-updated
         stop-rao:

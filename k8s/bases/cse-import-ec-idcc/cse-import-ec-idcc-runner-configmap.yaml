@@ -29,8 +29,6 @@ data:
               destination: cse-import-ec-idcc-stop-task
             request-in-0:
               destination: cse-import-ec-idcc-request
-            request-out-0:
-              destination: cse-import-ec-idcc-response
             task-status-update:
               destination: cse-import-ec-idcc-task-status-updated
             stop-rao:
