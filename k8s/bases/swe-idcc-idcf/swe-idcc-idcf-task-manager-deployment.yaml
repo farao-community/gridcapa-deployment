@@ -115,7 +115,7 @@ spec:
               memory: "5Gi"
             limits:
               cpu: "4.0"
-              memory: "10Gi"
+              memory: "20Gi"
       initContainers:
         - name: minio-notifications
           image: minio-mc
