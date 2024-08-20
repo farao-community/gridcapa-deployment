@@ -43,6 +43,9 @@ data:
         request:
           destination: cse-valid-d2cc-requests
           routing-key: "#"
+        response:
+          destination: cse-valid-d2cc-response
+          expiration: 600000
       whitelist:
         - http://gridcapa-minio:9000/
 
