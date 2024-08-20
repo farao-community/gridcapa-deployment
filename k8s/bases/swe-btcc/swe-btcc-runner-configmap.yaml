@@ -29,8 +29,6 @@ data:
               destination: swe-btcc-stop-task
             request-in-0:
               destination: swe-btcc-request
-            request-out-0:
-              destination: swe-btcc-response
             task-status-update:
               destination: swe-btcc-task-status-updated
             stop-rao:

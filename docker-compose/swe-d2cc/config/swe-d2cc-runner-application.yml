@@ -18,8 +18,6 @@ spring:
           destination: swe-d2cc-stop-task
         request-in-0:
           destination: swe-d2cc-request
-        request-out-0:
-          destination: swe-d2cc-response
         task-status-update:
           destination: swe-d2cc-task-status-updated
         stop-rao:

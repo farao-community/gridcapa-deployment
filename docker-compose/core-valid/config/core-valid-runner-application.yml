@@ -29,9 +29,6 @@ core-valid-runner:
     request:
       destination: core-valid-requests
       routing-key: "#"
-    response:
-      destination: core-valid-response
-      expiration: 600000
   whitelist:
     - http://minio:9000/
 

@@ -29,8 +29,6 @@ data:
               destination: cse-export-d2cc-stop-task
             request-in-0:
               destination: cse-export-d2cc-request
-            request-out-0:
-              destination: cse-export-d2cc-response
             task-status-update:
               destination: cse-export-d2cc-task-status-updated
             stop-rao:

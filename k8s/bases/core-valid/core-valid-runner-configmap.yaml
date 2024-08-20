@@ -40,9 +40,6 @@ data:
         request:
           destination: core-valid-requests
           routing-key: "#"
-        response:
-          destination: core-valid-response
-          expiration: 6000000
       whitelist:
         - http://gridcapa-minio:9000/
 
