@@ -17,14 +17,14 @@ data:
           - file-type: BOUNDARY_EQ
             file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z__ENTSOE_EQBD_[0-9]{3}.(xml|XML)
             time-validity: yearly
-            remote-file-regex: ".*.zip|(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z__ENTSOE_EQBD_[0-9]{3}.(xml|XML)"
+            remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z__ENTSOE_EQBD_[0-9]{3}.(xml|XML|zip)"
             source-directory: "/boundaries"
             sink-directory: "/BOUNDARIES"
             file-list-persistence-file: /data/gridcapa/swe-idcc/ftp-metadata-store.boundary-eq.properties
           - file-type: BOUNDARY_TP
             file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z__ENTSOE_TPBD_[0-9]{3}.(xml|XML)
             time-validity: yearly
-            remote-file-regex: ".*.zip|(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z__ENTSOE_TPBD_[0-9]{3}.(xml|XML)"
+            remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})T(?<hour>[0-9]{2})(?<minute>[0-9]{2})Z__ENTSOE_TPBD_[0-9]{3}.(xml|XML|zip)"
             source-directory: "/boundaries"
             sink-directory: "/BOUNDARIES"
             file-list-persistence-file: /data/gridcapa/swe-idcc/ftp-metadata-store.boundary-tp.properties
