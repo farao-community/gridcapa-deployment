@@ -36,6 +36,7 @@ job-launcher:
   url:
     task-manager-timestamp-url: http://core-valid-task-manager:8080/tasks/
     task-manager-business-date-url: http://core-valid-task-manager:8080/tasks/businessdate/
+    interrupt-run-url: http://interruption-server:8080/interrupt/
   process:
     days-to-add: 1
 
