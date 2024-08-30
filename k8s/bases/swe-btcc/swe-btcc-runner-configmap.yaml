@@ -52,6 +52,7 @@ data:
           - _f82152ac-578e-500e-97db-84e788c471ee
       whitelist:
         - http://gridcapa-minio:9000/
+      interrupt-server-url: http://interruption-server/interrupted/
     
     minio-adapter:
       bucket: ${MINIO_BUCKET}

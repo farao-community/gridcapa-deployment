@@ -71,3 +71,4 @@ data:
             - FFG.IL14 FFG.IL13 3
       whitelist:
         - http://gridcapa-minio:9000/
+      interrupt-server-url: http://interruption-server/interrupted/

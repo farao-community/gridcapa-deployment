@@ -41,6 +41,7 @@ swe-runner:
       - _f82152ac-578e-500e-97db-84e788c471ee
   whitelist:
     - http://minio:9000/
+  interrupt-server-url: http://interruption-server:8080/interrupted/
 
 minio-adapter:
   bucket: gridcapa
