@@ -89,6 +89,6 @@ spec:
       volumes:
         - name: interruption-server-volume
           configMap:
-            name: interruption-server
+            name: interruption-server-configmap
         - name: tmp-emptydir
           emptyDir: {}
