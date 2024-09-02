@@ -111,7 +111,7 @@ images:
     newTag: v1.31.0
   - name: gridcapa-core-cc-post-processing
     newName: docker.io/farao/gridcapa-core-cc-post-processing
-    newTag: v1.9.0
+    newTag: v1.10.0
   - name: gridcapa-interruption-server
     newName: docker.io/farao/gridcapa-interruption-server
     newTag: v1.0.0
