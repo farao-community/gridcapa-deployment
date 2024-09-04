@@ -20,6 +20,9 @@ spec:
         - name: gridcapa-postgresql
           image: docker.io/bitnami/postgresql:14.6.0
           imagePullPolicy: IfNotPresent
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
           ports:
             - containerPort: 5432
           env:
@@ -218,7 +221,7 @@ spec:
               memory: 1Gi
           volumeMounts:
             - name: postgres-data
-              mountPath: /bitnami/postgres # important to let postgres and not postgresql otherwise rights issues
+              mountPath: /bitnami # important to let postgres and not postgresql otherwise rights issues
             - name: postgres-init
               subPath: init.sh
               mountPath: /docker-entrypoint-initdb.d/init.sh
