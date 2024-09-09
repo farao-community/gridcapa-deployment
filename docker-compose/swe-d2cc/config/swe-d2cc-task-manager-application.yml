@@ -28,8 +28,6 @@ spring:
           destination: swe-d2cc-task-manager-logs-exchange
           consumer:
             batch-mode: true
-        task-updated:
-          destination: swe-d2cc-task-updated
         task-status-updated:
           destination: swe-d2cc-task-updated
         task-input-updated:

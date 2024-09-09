@@ -44,8 +44,6 @@ data:
               destination: core-valid-task-manager-logs-exchange
               consumer:
                 batch-mode: true
-            task-updated:
-              destination: core-valid-task-updated
             task-status-updated:
               destination: core-valid-task-updated
             task-input-updated:

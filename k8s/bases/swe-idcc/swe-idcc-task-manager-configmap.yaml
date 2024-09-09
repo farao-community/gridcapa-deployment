@@ -48,8 +48,6 @@ data:
               destination: swe-idcc-task-manager-logs-exchange
               consumer:
                 batch-mode: true
-            task-updated:
-              destination: swe-idcc-task-updated
             task-status-updated:
               destination: swe-idcc-task-updated
             task-input-updated:

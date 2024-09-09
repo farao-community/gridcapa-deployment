@@ -28,8 +28,6 @@ spring:
           destination: core-cc-task-manager-logs-exchange
           consumer:
             batch-mode: true
-        task-updated:
-          destination: core-cc-task-updated
         task-status-updated:
           destination: core-cc-task-updated
         task-input-updated:
