@@ -99,7 +99,7 @@ images:
     newTag: v1.4.1
   - name: gridcapa-core-cc-adapter
     newName: docker.io/farao/gridcapa-core-cc-adapter
-    newTag: v2.0.0
+    newTag: v2.1.0
   - name: gridcapa-core-cc-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.4.1
