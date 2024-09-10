@@ -11,9 +11,9 @@ spec:
   triggers:
     - type: cron
       metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
+        timezone: "Europe/Paris"
+        start: "30 8 * * 1-5"
+        end: "0 19 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -32,9 +32,9 @@ spec:
   triggers:
     - type: cron
       metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
+        timezone: "Europe/Paris"
+        start: "30 8 * * 1-5"
+        end: "0 19 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -53,9 +53,9 @@ spec:
   triggers:
     - type: cron
       metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
+        timezone: "Europe/Paris"
+        start: "30 8 * * 1-5"
+        end: "0 19 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -75,9 +75,9 @@ spec:
   triggers:
     - type: cron
       metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
+        timezone: "Europe/Paris"
+        start: "30 8 * * 1-5"
+        end: "0 19 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -97,9 +97,9 @@ spec:
   triggers:
     - type: cron
       metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
+        timezone: "Europe/Paris"
+        start: "30 8 * * 1-5"
+        end: "0 19 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -119,9 +119,9 @@ spec:
   triggers:
     - type: cron
       metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
+        timezone: "Europe/Paris"
+        start: "30 8 * * 1-5"
+        end: "0 19 * * 1-5"
         desiredReplicas: "1"
 
 ---
@@ -141,7 +141,7 @@ spec:
   triggers:
     - type: cron
       metadata:
-        timezone: "UTC"
-        start: "0 7 * * 1-5"
-        end: "0 17 * * 1-5"
+        timezone: "Europe/Paris"
+        start: "30 8 * * 1-5"
+        end: "0 19 * * 1-5"
         desiredReplicas: "1"
