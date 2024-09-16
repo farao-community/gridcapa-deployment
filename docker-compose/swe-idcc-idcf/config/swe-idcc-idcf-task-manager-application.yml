@@ -28,8 +28,6 @@ spring:
           destination: swe-idcc-idcf-task-manager-logs-exchange
           consumer:
             batch-mode: true
-        task-updated:
-          destination: swe-idcc-idcf-task-updated
         task-status-updated:
           destination: swe-idcc-idcf-task-updated
         task-input-updated:

@@ -41,8 +41,6 @@ data:
               destination: cse-import-idcc-task-manager-logs-exchange
               consumer:
                 batch-mode: true
-            task-updated:
-              destination: cse-import-idcc-task-updated
             task-status-updated:
               destination: cse-import-idcc-task-updated
             task-input-updated:

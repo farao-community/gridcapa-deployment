@@ -24,8 +24,6 @@ spring:
           destination: cse-import-ec-idcc-task-manager-logs-exchange
           consumer:
             batch-mode: true
-        task-updated:
-          destination: cse-import-ec-idcc-task-updated
         task-status-updated:
           destination: cse-import-ec-idcc-task-updated
         task-input-updated:

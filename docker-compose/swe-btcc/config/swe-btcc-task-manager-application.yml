@@ -28,8 +28,6 @@ spring:
           destination: swe-btcc-task-manager-logs-exchange
           consumer:
             batch-mode: true
-        task-updated:
-          destination: swe-btcc-task-updated
         task-status-updated:
           destination: swe-btcc-task-updated
         task-input-updated:
