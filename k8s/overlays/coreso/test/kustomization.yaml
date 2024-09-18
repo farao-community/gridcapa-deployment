@@ -30,6 +30,7 @@ resources:
   - minio-pv-claim.yaml
   - postgresql-configmap.yaml
   - postgresql-pv-claim.yaml
+  - postgresql-data-pv-claim.yaml
   - ../../main_versions/configuration/gridcapa-gateway-johndoe-configmap.yaml
 
 components:
