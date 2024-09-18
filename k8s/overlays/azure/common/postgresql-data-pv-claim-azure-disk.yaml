@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: azure-disk-pvc
+  name: gridcapa-postgresql-data-storage
 spec:
   accessModes:
     - ReadWriteOnce

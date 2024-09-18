@@ -200,9 +200,9 @@ spec:
           volumeMounts:
             - name: postgresql-data
               mountPath: /bitnami/postgresql
-            #              Temporary, used only for moving to properly using persistence, to delete afterwards
             - name: postgres-data
               mountPath: /bitnami/postgres
+            # Temporary, used only for moving to properly using persistence, to delete afterwards
             - name: postgres-init
               subPath: init.sh
               mountPath: /docker-entrypoint-initdb.d/init.sh
@@ -212,7 +212,7 @@ spec:
             claimName: gridcapa-postgresql-storage
         - name: postgresql-data
           persistentVolumeClaim:
-            claimName: azure-disk-pvc
+            claimName: gridcapa-postgresql-data-storage
         - name: postgres-init
           configMap:
             name: gridcapa-postgresql-configmap

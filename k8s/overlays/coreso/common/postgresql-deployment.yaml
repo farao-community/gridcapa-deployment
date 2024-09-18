@@ -177,9 +177,9 @@ spec:
           volumeMounts:
             - name: postgresql-data
               mountPath: /bitnami/postgresql
-            # Temporary, used only for moving to properly using persistence, to delete afterwards
             - name: postgres-data
               mountPath: /bitnami/postgres
+            # Temporary, used only for moving to properly using persistence, to delete afterwards
             - name: postgres-init
               subPath: init.sh
               mountPath: /docker-entrypoint-initdb.d/init.sh
