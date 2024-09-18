@@ -18,6 +18,13 @@ spec:
       annotations:
         "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
     spec:
+      initContainers:
+        - name: init-permissions
+          image: busybox
+          command: [ 'sh', '-c', 'mkdir -p /bitnami/postgresql/data && chmod -R 0700 /bitnami/postgresql/data && chown -R 1001:root /bitnami/postgresql/data' ]
+          volumeMounts:
+            - name: postgresql-data
+              mountPath: /bitnami/postgresql/data
       containers:
         - name: gridcapa-postgresql
           image: docker.io/bitnami/postgresql:14.6.0
@@ -25,6 +32,8 @@ spec:
           ports:
             - containerPort: 5432
           env:
+            - name: BITNAMI_DEBUG
+              value: "true"
             - name: PGPASSWORD
               valueFrom:
                 secretKeyRef:
@@ -189,8 +198,11 @@ spec:
               cpu: "500m"
               memory: 5Gi
           volumeMounts:
+            - name: postgresql-data
+              mountPath: /bitnami/postgresql
             - name: postgres-data
-              mountPath: /bitnami/postgres # important to let postgres and not postgresql otherwise rights issues
+              mountPath: /bitnami/postgres
+            # Temporary volume only used for moving data to new volume using persistence properly. Should be deleted afterwards
             - name: postgres-init
               subPath: init.sh
               mountPath: /docker-entrypoint-initdb.d/init.sh
@@ -198,6 +210,9 @@ spec:
         - name: postgres-data
           persistentVolumeClaim:
             claimName: gridcapa-postgresql-storage
+        - name: postgresql-data
+          persistentVolumeClaim:
+            claimName: gridcapa-postgresql-data-storage
         - name: postgres-init
           configMap:
             name: gridcapa-postgresql-configmap
