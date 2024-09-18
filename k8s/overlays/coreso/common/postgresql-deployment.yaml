@@ -16,6 +16,13 @@ spec:
         app: gridcapa
         component: postgresql
     spec:
+      initContainers:
+        - name: init-permissions
+          image: busybox
+          command: [ 'sh', '-c', 'mkdir -p /bitnami/postgresql/data && chmod -R 0700 /bitnami/postgresql/data && chown -R 1001:root /bitnami/postgresql/data' ]
+          volumeMounts:
+            - name: postgresql-data
+              mountPath: /bitnami/postgresql/data
       securityContext:
         fsGroup: 1001
       containers:
@@ -28,6 +35,8 @@ spec:
           ports:
             - containerPort: 5432
           env:
+            - name: BITNAMI_DEBUG
+              value: "true"
             - name: PGPASSWORD
               valueFrom:
                 secretKeyRef:
@@ -166,6 +175,9 @@ spec:
               cpu: "500m"
               memory: 5Gi
           volumeMounts:
+            - name: postgresql-data
+              mountPath: /bitnami/postgresql
+            # Temporary, used only for moving to properly using persistence, to delete afterwards
             - name: postgres-data
               mountPath: /bitnami/postgres
             - name: postgres-init
@@ -175,6 +187,9 @@ spec:
         - name: postgres-data
           persistentVolumeClaim:
             claimName: gridcapa-postgresql-storage
+        - name: postgresql-data
+          persistentVolumeClaim:
+            claimName: gridcapa-postgresql-data-storage
         - name: postgres-init
           configMap:
             name: gridcapa-postgresql-configmap
