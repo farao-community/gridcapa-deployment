@@ -33,6 +33,8 @@ data:
               destination: swe-d2cc-stop-task
             consumeTaskDtoUpdate-in-0:
               destination: swe-d2cc-task-updated
+            task-status-update:
+              destination: swe-d2cc-task-status-updated
           rabbit:
             default:
               consumer:

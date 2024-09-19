@@ -22,6 +22,8 @@ spring:
           destination: swe-idcc-stop-task
         consumeTaskDtoUpdate-in-0:
           destination: swe-idcc-task-updated
+        task-status-update:
+          destination: swe-idcc-task-status-updated
       rabbit:
         default:
           consumer:

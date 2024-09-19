@@ -24,6 +24,8 @@ spring:
           destination: cse-export-idcc-stop-task
         consumeTaskDtoUpdate-in-0:
           destination: cse-export-idcc-task-updated
+        task-status-update:
+          destination: cse-export-idcc-task-status-updated
       rabbit:
         default:
           consumer:

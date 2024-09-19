@@ -18,6 +18,9 @@ spring:
       bindings:
         consumeTaskDtoUpdate-in-0:
           destination: core-cc-task-updated
+        task-status-update:
+          binder: rabbit
+          destination: core-cc-task-status-updated
       rabbit:
         default:
           consumer:

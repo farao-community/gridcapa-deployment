@@ -35,6 +35,8 @@ data:
               destination: cse-import-idcc-stop-task
             consumeTaskDtoUpdate-in-0:
               destination: cse-import-idcc-task-updated
+            task-status-update:
+              destination: cse-import-idcc-task-status-updated
           rabbit:
             default:
               consumer:
