@@ -57,10 +57,10 @@ task-server:
       - CRAC
       - GLSK
       - NTC
+      - NTC-RED
       - TARGET-CH
       - VULCANUS
     optional-inputs:
-      - NTC-RED
       - AUTOMATED-FORCED-PRAS
       - USER-CONFIG
     outputs:
