@@ -1,5 +1,5 @@
 {
   "appsMetadataServerUrl" : "https://gridcapa.ingress-gridcapa-test-vaas.rh.1648.local/apps-metadata",
   "appsMinioStorageServerUrl": "https://gridcapa.ingress-gridcapa-test-vaas.rh.1648.local/apps-metadata/data/minioStorageData.json",
-  "appVersionAndEnvironnement": "Coreso Test : 5.12.0"
+  "appVersionAndEnvironnement": "Coreso Test : 5.12.1"
 }
