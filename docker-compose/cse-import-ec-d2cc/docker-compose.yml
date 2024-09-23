@@ -56,7 +56,7 @@ services:
     networks:
       - gridcapa
 
-  cse-import-ec-d2cc-adpater:
+  cse-import-ec-d2cc-adapter:
     image: farao/gridcapa-cse-adapter:latest
     volumes:
       - ./config/cse-import-ec-d2cc-adapter-application.yml:/config/application.yml
