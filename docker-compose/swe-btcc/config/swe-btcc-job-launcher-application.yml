@@ -22,6 +22,8 @@ spring:
           destination: swe-btcc-stop-task
         consumeTaskDtoUpdate-in-0:
           destination: swe-btcc-task-updated
+        task-status-update:
+          destination: swe-btcc-task-status-updated
       rabbit:
         default:
           consumer:

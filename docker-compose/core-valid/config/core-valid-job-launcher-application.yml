@@ -22,6 +22,9 @@ spring:
           destination: core-valid-run-task-auto
         consumeTaskDtoUpdate-in-0:
           destination: core-valid-task-updated
+        task-status-update:
+          binder: rabbit
+          destination: core-valid-task-status-updated
       rabbit:
         default:
           consumer:

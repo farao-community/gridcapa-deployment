@@ -22,6 +22,8 @@ spring:
           destination: cse-import-d2cc-stop-task
         consumeTaskDtoUpdate-in-0:
           destination: cse-import-d2cc-task-updated
+        task-status-update:
+          destination: cse-import-d2cc-task-status-updated
       rabbit:
         default:
           consumer:

@@ -33,6 +33,8 @@ data:
               destination: swe-idcc-idcf-stop-task
             consumeTaskDtoUpdate-in-0:
               destination: swe-idcc-idcf-task-updated
+            task-status-update:
+              destination: swe-idcc-idcf-task-status-updated
           rabbit:
             default:
               consumer:
