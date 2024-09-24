@@ -87,7 +87,7 @@ images:
     newTag: v1.4.1
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
-    newTag: v1.24.2
+    newTag: fix-unrealistic-remote-voltage-target
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.32.1
