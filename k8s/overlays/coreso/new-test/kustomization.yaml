@@ -3,26 +3,26 @@ kind: Kustomization
 
 resources:
   - ../common
-  - ../../../bases/cse-export-d2cc
-  - ../../../bases/cse-export-idcc
-  - ../../../bases/cse-import-d2cc
-  - ../../../bases/cse-import-idcc
+#  - ../../../bases/cse-export-d2cc
+#  - ../../../bases/cse-export-idcc
+#  - ../../../bases/cse-import-d2cc
+#  - ../../../bases/cse-import-idcc
   - ../../../bases/cse-import-ec-d2cc
-  - ../../../bases/cse-import-ec-idcc
-  - ../../../bases/swe-d2cc
-  - ../../../bases/swe-idcc
-  - ../../../bases/swe-idcc-idcf
-  - ../../../bases/core-cc
-  - ../coreso-databridge-claims/cse-export-d2cc
-  - ../coreso-databridge-claims/cse-export-idcc
-  - ../coreso-databridge-claims/cse-import-d2cc
-  - ../coreso-databridge-claims/cse-import-idcc
+#  - ../../../bases/cse-import-ec-idcc
+#  - ../../../bases/swe-d2cc
+#  - ../../../bases/swe-idcc
+#  - ../../../bases/swe-idcc-idcf
+#  - ../../../bases/core-cc
+#  - ../coreso-databridge-claims/cse-export-d2cc
+#  - ../coreso-databridge-claims/cse-export-idcc
+#  - ../coreso-databridge-claims/cse-import-d2cc
+#  - ../coreso-databridge-claims/cse-import-idcc
   - ../coreso-databridge-claims/cse-import-ec-d2cc
-  - ../coreso-databridge-claims/cse-import-ec-idcc
-  - ../coreso-databridge-claims/swe-d2cc
-  - ../coreso-databridge-claims/swe-idcc
-  - ../coreso-databridge-claims/swe-idcc-idcf
-  - ../coreso-databridge-claims/core-cc
+#  - ../coreso-databridge-claims/cse-import-ec-idcc
+#  - ../coreso-databridge-claims/swe-d2cc
+#  - ../coreso-databridge-claims/swe-idcc
+#  - ../coreso-databridge-claims/swe-idcc-idcf
+#  - ../coreso-databridge-claims/core-cc
   - apps-metadata-server-configmap.yaml
   - gridcapa-ingress.yaml
   - gridcapa-ingress-minio.yaml
@@ -76,7 +76,7 @@ patches:
       metadata:
         name: rao-runner
       spec:
-        replicas: 16
+        replicas: 1
         template:
           spec:
             tolerations:
@@ -95,42 +95,42 @@ patches:
                     memory: "40Gi"
             imagePullSecrets:
               - name: dockerhub-acr-secret
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-export-idcc-runner
-      spec:
-        replicas: 4
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-export-d2cc-runner
-      spec:
-        replicas:
-          8
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: swe-d2cc-runner
-      spec:
-        replicas: 2
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: swe-idcc-runner
-      spec:
-        replicas: 2
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: swe-idcc-idcf-runner
-      spec:
-        replicas: 2
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: cse-export-idcc-runner
+#      spec:
+#        replicas: 4
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: cse-export-d2cc-runner
+#      spec:
+#        replicas:
+#          8
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: swe-d2cc-runner
+#      spec:
+#        replicas: 2
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: swe-idcc-runner
+#      spec:
+#        replicas: 2
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: swe-idcc-idcf-runner
+#      spec:
+#        replicas: 2
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -138,76 +138,76 @@ patches:
         name: cse-import-ec-d2cc-gridcapa-runner
       spec:
         replicas: 8
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-import-ec-idcc-gridcapa-runner
-      spec:
-        replicas: 4
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-import-d2cc-gridcapa-runner
-      spec:
-        replicas: 4
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-import-idcc-gridcapa-runner
-      spec:
-        replicas: 4
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: core-cc-runner
-      spec:
-        replicas: 6
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: cse-import-ec-idcc-gridcapa-runner
+#      spec:
+#        replicas: 4
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: cse-import-d2cc-gridcapa-runner
+#      spec:
+#        replicas: 4
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: cse-import-idcc-gridcapa-runner
+#      spec:
+#        replicas: 4
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: core-cc-runner
+#      spec:
+#        replicas: 6
 
   # Remove volumes related to authentication within application deployments
-  - target:
-      kind: Deployment
-      name: cse-export-idcc-gridcapa-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
-  - target:
-      kind: Deployment
-      name: cse-export-d2cc-gridcapa-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
-  - target:
-      kind: Deployment
-      name: swe-d2cc-gridcapa-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
-  - target:
-      kind: Deployment
-      name: swe-idcc-gridcapa-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
-  - target:
-      kind: Deployment
-      name: swe-idcc-idcf-gridcapa-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: cse-export-idcc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: cse-export-d2cc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: swe-d2cc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: swe-idcc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: swe-idcc-idcf-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
       name: cse-import-ec-d2cc-gridcapa-app
@@ -216,38 +216,38 @@ patches:
         path: /spec/template/spec/containers/0/volumeMounts/2
       - op: remove
         path: /spec/template/spec/volumes/2
-  - target:
-      kind: Deployment
-      name: cse-import-ec-idcc-gridcapa-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
-  - target:
-      kind: Deployment
-      name: cse-import-d2cc-gridcapa-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
-  - target:
-      kind: Deployment
-      name: cse-import-idcc-gridcapa-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
-  - target:
-      kind: Deployment
-      name: core-cc-gridcapa-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: cse-import-ec-idcc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: cse-import-d2cc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: cse-import-idcc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: core-cc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
 
   # Use "John Doe" gateway config to share UI config across all users
   - patch: |-
