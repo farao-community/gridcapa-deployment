@@ -60,10 +60,10 @@ images:
     newTag: v1.4.1
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.32.0
+    newTag: v1.33.0
   - name: gridcapa-cse-export-runner
     newName: docker.io/farao/gridcapa-cse-cc-export-runner
-    newTag: v1.32.0
+    newTag: v1.33.0
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.32.1
@@ -87,7 +87,7 @@ images:
     newTag: v1.4.1
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
-    newTag: v1.24.2
+    newTag: v1.25.0
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.32.1
