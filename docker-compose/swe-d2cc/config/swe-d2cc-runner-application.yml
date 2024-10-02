@@ -34,6 +34,8 @@ rao-runner-server:
     queue-name: rao-request-queue
 
 swe-runner:
+  data-fix:
+    fix-unrealistic-remote-voltage-target: true
   pst:
     pst-ids:
       - _e071a1d4-fef5-1bd9-5278-d195c5597b6e
