@@ -43,7 +43,8 @@ spec:
                   name: gridcapa-keycloak-credentials
                   key: keycloak-password
             - name: KC_HOSTNAME
-              value: "auth-tmp.farao-community.com"
+#              value: "135.236.112.168"
+              value: "auth.farao-community.com"
             - name: KC_HOSTNAME_STRICT_HTTPS
               value: "false"
             - name: KC_PROXY

@@ -115,7 +115,7 @@ services:
       - rabbitmq
 
   rao-runner:
-    image: farao/gridcapa-rao-runner-with-xpress:latest
+    image: farao/gridcapa-rao-runner-with-xpress:v1.26.0
     volumes:
       - ./config/rao-runner-application.yml:/config/application.yml
 #      - ./config/rao-runner-itools.yml:/home/farao/.itools/config.yml
