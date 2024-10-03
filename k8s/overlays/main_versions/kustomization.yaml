@@ -42,7 +42,7 @@ images:
     newTag: v1.26.0
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
-    newTag: v1.19.0
+    newTag: v1.18.0
   - name: gridcapa-gateway
     newName: docker.io/farao/gridcapa-gateway
     newTag: 1.3.0
