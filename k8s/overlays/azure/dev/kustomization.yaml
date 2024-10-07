@@ -136,6 +136,9 @@ images:
   - name: gridcapa-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner-with-xpress
     newTag: latest
+  - name: gridcapa-rao-failure-handler
+    newName: docker.io/farao/gridcapa-rao-failure-handler
+    newTag: latest
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app-auth
     newTag: latest
