@@ -130,7 +130,7 @@ services:
       - gridcapa
 
   rao-failure-handler:
-    image: farao/gridcapa-rao-failure-handler:1.0.0
+    image: farao/gridcapa-rao-failure-handler:latest
     volumes:
       - ./config/rao-failure-handler-application.yml:/config/application.yml
     healthcheck:
