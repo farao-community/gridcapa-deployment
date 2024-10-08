@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: core-valid-exporter
-          image: gridcapa-core-exporter
+          image: gridcapa-core-valid-exporter
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
