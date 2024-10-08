@@ -20,6 +20,7 @@ open-loadflow-default-parameters:
   newtonRaphsonConvEpsPerEq: 1.0E-3
   minRealisticVoltage: 0.5
   maxRealisticVoltage: 1.5
+  stateVectorScalingMode: MAX_VOLTAGE_CHANGE
 
 rao-objective-function:
   type: MAX_MIN_MARGIN_IN_AMPERE
