@@ -1,0 +1,22 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: rao-failure-handler
+  labels:
+    app: gridcapa
+    component: rao-failure-handler
+data:
+  application.yml: |-
+    spring:
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        port: 5672
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        template:
+          reply-timeout: 12000000
+
+    logback:
+      amqp:
+        exchange: rao-runners-logs
+        routing-key: "#"

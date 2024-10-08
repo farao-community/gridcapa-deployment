@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ../common
+  - ../../../bases/core-cc
   - ../../../bases/cse-export-d2cc
   - ../../../bases/cse-export-idcc
   - ../../../bases/cse-import-d2cc
@@ -12,7 +13,7 @@ resources:
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
   - ../../../bases/swe-idcc-idcf
-  - ../../../bases/core-cc
+  - ../coreso-databridge-claims/core-cc
   - ../coreso-databridge-claims/cse-export-d2cc
   - ../coreso-databridge-claims/cse-export-idcc
   - ../coreso-databridge-claims/cse-import-d2cc
@@ -22,7 +23,6 @@ resources:
   - ../coreso-databridge-claims/swe-d2cc
   - ../coreso-databridge-claims/swe-idcc
   - ../coreso-databridge-claims/swe-idcc-idcf
-  - ../coreso-databridge-claims/core-cc
   - apps-metadata-server-configmap.yaml
   - ingress-gridcapa.yaml
   - ingress-middlewares.yaml

@@ -1,0 +1,13 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+    template:
+      reply-timeout: 7200000
+
+logback:
+  amqp:
+    exchange: rao-runners-logs-exchange  # common exchange for logs to all rao client applications
+    routing-key: "#"
