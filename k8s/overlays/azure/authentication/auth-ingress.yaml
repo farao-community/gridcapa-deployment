@@ -27,4 +27,4 @@ spec:
   tls:
     - hosts:
       - auth.farao-community.com
-      secretName: keycloak-selfsigned-tls
+      secretName: gridcapa-tls
