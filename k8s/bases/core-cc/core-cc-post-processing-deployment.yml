@@ -77,7 +77,7 @@ spec:
               memory: "2Gi"
             limits:
               cpu: "1.0"
-              memory: "2Gi"
+              memory: "4Gi"
       restartPolicy: Always
       volumes:
         - name: core-cc-gridcapa-post-processing-configmap-volume
