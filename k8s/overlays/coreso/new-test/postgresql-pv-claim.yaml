@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gridcapa-postgresql-storage
+  labels:
+    app: gridcapa
+    component: postgresql
+spec:
+  storageClassName: vsphere-raw-block-sc
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
