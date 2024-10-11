@@ -34,6 +34,8 @@ rao-runner-server:
     queue-name: rao-request-queue
 
 swe-runner:
+  network-export:
+    intermediate-network: true
   data-fix:
     remove-remote-voltage-regulation-in-france: true
   pst:

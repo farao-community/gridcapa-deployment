@@ -89,6 +89,17 @@ patches:
                     memory: "40Gi"
             imagePullSecrets:
               - name: dockerhub-acr-secret
+# Activate iidm export on SWE D2CC
+  - patch: |-
+      kind: ConfigMap
+      apiVersion: v1
+      metadata:
+        name: swe-d2cc-runner-configmap
+      data:
+        application.yml: |-
+          swe-runner:
+            network-export:
+              intermediate-network: true
 # Scale-up to 2 instances of CSE import IDCC runner
   - patch: |-
       kind: Deployment
