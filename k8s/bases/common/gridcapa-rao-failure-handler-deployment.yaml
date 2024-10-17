@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rao-failure-handler
+  labels:
+    app: gridcapa
+    component: rao-failure-handler
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: rao-failure-handler
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: rao-failure-handler
+    spec:
+      containers:
+        - name: rao-failure-handler
+          image: gridcapa-rao-failure-handler
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-user
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-rabbitmq-credentials
+                  key: rabbitmq-password
+          volumeMounts:
+            - mountPath: /config/application.yml
+              subPath: application.yml
+              name: rao-failure-handler-volume
+            - mountPath: /tmp
+              name: tmp-emptydir
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            readOnlyRootFilesystem: true
+          resources:
+            requests:
+              memory: "2Gi"
+            limits:
+              memory: "3Gi"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 10
+            failureThreshold: 1
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 10
+            failureThreshold: 1
+            successThreshold: 1
+      restartPolicy: Always
+      imagePullSecrets: []
+      volumes:
+        - name: rao-failure-handler-volume
+          configMap:
+            name: rao-failure-handler
+        - name: tmp-emptydir
+          emptyDir: {}

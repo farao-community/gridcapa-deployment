@@ -24,6 +24,9 @@ data:
               binder: rabbit
               destination: stop-rao-runner
 
+    server:
+      port: 8080
+
     logging:
       config: /config/logback.xml
 

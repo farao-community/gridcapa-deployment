@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ../common
+  - ../../../bases/core-cc
   - ../../../bases/cse-common
   - ../../../bases/cse-export-d2cc
   - ../../../bases/cse-export-idcc
@@ -14,7 +15,7 @@ resources:
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
   - ../../../bases/swe-idcc-idcf
-  - ../../../bases/core-cc
+  - ../azure-databridge-claims/core-cc
   - ../azure-databridge-claims/cse-export-d2cc
   - ../azure-databridge-claims/cse-export-idcc
   - ../azure-databridge-claims/cse-import-d2cc
@@ -25,8 +26,8 @@ resources:
   - ../azure-databridge-claims/swe-d2cc
   - ../azure-databridge-claims/swe-idcc
   - ../azure-databridge-claims/swe-idcc-idcf
-  - ../azure-databridge-claims/core-cc
   - apps-metadata-server-configmap.yaml
+  - core-cc-gridcapa-app-idp-settings-configmap.yaml
   - cse-export-d2cc-app-idp-settings-configmap.yaml
   - cse-export-idcc-app-idp-settings-configmap.yaml
   - cse-import-d2cc-app-idp-settings-configmap.yaml
@@ -37,7 +38,6 @@ resources:
   - swe-d2cc-app-idp-settings-configmap.yaml
   - swe-idcc-app-idp-settings-configmap.yaml
   - swe-idcc-idcf-gridcapa-app-idp-settings-configmap.yaml
-  - core-cc-gridcapa-app-idp-settings-configmap.yaml
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml

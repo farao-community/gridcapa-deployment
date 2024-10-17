@@ -109,28 +109,6 @@ spec:
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: core-cc-gridcapa-job-launcher-scale
-  namespace: gridcapa-t
-  annotations:
-    autoscaling.keda.sh/paused: "false"
-spec:
-  scaleTargetRef:
-    name: core-cc-gridcapa-job-launcher
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "Europe/Paris"
-        start: "30 8 * * 1-5"
-        end: "0 19 * * 1-5"
-        desiredReplicas: "1"
-
----
-
-apiVersion: keda.sh/v1alpha1
-kind: ScaledObject
-metadata:
   name: core-cc-gridcapa-post-processing-scale
   namespace: gridcapa-t
   annotations:

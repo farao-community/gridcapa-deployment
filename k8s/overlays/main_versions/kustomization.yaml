@@ -19,6 +19,7 @@ configMapGenerator:
       - config.yml=configuration/core-cc-runner-itools-config.yml
 
 images:
+    # Common
   - name: apps-metadata-server
     newName: docker.io/bitnami/apache
     newTag: "2.4"
@@ -40,57 +41,19 @@ images:
   - name: gridcapa-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner-with-xpress
     newTag: v1.26.0
+  - name: gridcapa-rao-failure-handler
+    newName: docker.io/farao/gridcapa-rao-failure-handler
+    newTag: v1.0.0
+  - name: gridcapa-interruption-server
+    newName: docker.io/farao/gridcapa-interruption-server
+    newTag: v1.0.0
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: v1.18.0
   - name: gridcapa-gateway
     newName: docker.io/farao/gridcapa-gateway
     newTag: 1.3.0
-  - name: gridcapa-cse-input-data-bridge
-    newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v2.1.1
-  - name: gridcapa-cse-adapter
-    newName: docker.io/farao/gridcapa-cse-adapter
-    newTag: v1.17.0
-  - name: gridcapa-cse-job-launcher
-    newName: docker.io/farao/gridcapa-job-launcher
-    newTag: v1.16.0
-  - name: gridcapa-cse-rao-logs-dispatcher
-    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: v1.4.1
-  - name: gridcapa-cse-import-runner
-    newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.32.0
-  - name: gridcapa-cse-export-runner
-    newName: docker.io/farao/gridcapa-cse-cc-export-runner
-    newTag: v1.32.0
-  - name: gridcapa-cse-task-manager
-    newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.32.1
-  - name: gridcapa-cse-exporter
-    newName: docker.io/farao/gridcapa-export
-    newTag: v1.8.1
-  - name: gridcapa-swe-input-data-bridge
-    newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v2.1.1
-  - name: gridcapa-swe-exporter
-    newName: docker.io/farao/gridcapa-export
-    newTag: v1.8.1
-  - name: gridcapa-swe-adapter
-    newName: docker.io/farao/gridcapa-swe-adapter
-    newTag: v1.7.0
-  - name: gridcapa-swe-job-launcher
-    newName: docker.io/farao/gridcapa-job-launcher
-    newTag: v1.16.0
-  - name: gridcapa-swe-rao-logs-dispatcher
-    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: v1.4.1
-  - name: gridcapa-swe-runner
-    newName: docker.io/farao/gridcapa-swe-runner
-    newTag: v1.24.2
-  - name: gridcapa-swe-task-manager
-    newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.32.1
+    # Core CC
   - name: gridcapa-core-cc-input-data-bridge
     newName: docker.io/farao/gridcapa-core-cc-data-bridge
     newTag: v1.0.0
@@ -112,6 +75,50 @@ images:
   - name: gridcapa-core-cc-post-processing
     newName: docker.io/farao/gridcapa-core-cc-post-processing
     newTag: v1.10.0
-  - name: gridcapa-interruption-server
-    newName: docker.io/farao/gridcapa-interruption-server
-    newTag: v1.0.0
+    # CSE
+  - name: gridcapa-cse-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: v2.1.1
+  - name: gridcapa-cse-adapter
+    newName: docker.io/farao/gridcapa-cse-adapter
+    newTag: v1.17.0
+  - name: gridcapa-cse-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: v1.16.0
+  - name: gridcapa-cse-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
+    newTag: v1.4.1
+  - name: gridcapa-cse-import-runner
+    newName: docker.io/farao/gridcapa-cse-cc-import-runner
+    newTag: v1.33.0
+  - name: gridcapa-cse-export-runner
+    newName: docker.io/farao/gridcapa-cse-cc-export-runner
+    newTag: v1.33.0
+  - name: gridcapa-cse-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: v1.32.1
+  - name: gridcapa-cse-exporter
+    newName: docker.io/farao/gridcapa-export
+    newTag: v1.8.1
+    # SWE
+  - name: gridcapa-swe-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: v2.1.1
+  - name: gridcapa-swe-exporter
+    newName: docker.io/farao/gridcapa-export
+    newTag: v1.8.1
+  - name: gridcapa-swe-adapter
+    newName: docker.io/farao/gridcapa-swe-adapter
+    newTag: v1.7.0
+  - name: gridcapa-swe-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: v1.16.0
+  - name: gridcapa-swe-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
+    newTag: v1.4.1
+  - name: gridcapa-swe-runner
+    newName: docker.io/farao/gridcapa-swe-runner
+    newTag: v1.25.0
+  - name: gridcapa-swe-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: v1.32.1

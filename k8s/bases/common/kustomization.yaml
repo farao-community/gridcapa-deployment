@@ -19,6 +19,9 @@ resources:
   - gridcapa-rao-runner-configmap.yaml
   - gridcapa-rao-runner-deployment.yaml
   - gridcapa-rao-runner-service.yaml
+  - gridcapa-rao-failure-handler-configmap.yaml
+  - gridcapa-rao-failure-handler-deployment.yaml
+  - gridcapa-rao-failure-handler-service.yaml
   - minio-deployment.yaml
   - minio-service.yaml
   - rabbitmq-configmap.yaml
