@@ -4,7 +4,7 @@ metadata:
   name: swe-idcc-idcf-runner-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-idcc-idcf-runner
@@ -25,7 +25,7 @@ metadata:
   name: swe-idcc-idcf-task-manager-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-idcc-idcf-task-manager
@@ -46,7 +46,7 @@ metadata:
   name: swe-idcc-idcf-adapter-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-idcc-idcf-adapter
@@ -68,7 +68,7 @@ metadata:
   name: swe-idcc-idcf-data-bridge-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-idcc-idcf-data-bridge
@@ -90,7 +90,7 @@ metadata:
   name: swe-idcc-idcf-exporter-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-idcc-idcf-exporter
@@ -112,7 +112,7 @@ metadata:
   name: swe-idcc-idcf-gridcapa-app-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-idcc-idcf-gridcapa-app
@@ -134,7 +134,7 @@ metadata:
   name: swe-idcc-idcf-gridcapa-job-launcher-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-idcc-idcf-gridcapa-job-launcher
@@ -156,7 +156,7 @@ metadata:
   name: swe-idcc-idcf-rao-logs-dispatcher-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-idcc-idcf-rao-logs-dispatcher
