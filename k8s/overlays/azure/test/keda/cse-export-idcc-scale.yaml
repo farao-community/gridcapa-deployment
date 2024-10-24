@@ -4,7 +4,7 @@ metadata:
   name: cse-export-idcc-task-manager-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-export-idcc-task-manager
@@ -25,7 +25,7 @@ metadata:
   name: cse-export-idcc-runner-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-export-idcc-runner
@@ -46,7 +46,7 @@ metadata:
   name: cse-export-idcc-adapter-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-export-idcc-adapter
@@ -68,7 +68,7 @@ metadata:
   name: cse-export-idcc-data-bridge-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-export-idcc-data-bridge
@@ -90,7 +90,7 @@ metadata:
   name: cse-export-idcc-exporter-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-export-idcc-exporter
@@ -112,7 +112,7 @@ metadata:
   name: cse-export-idcc-gridcapa-app-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-export-idcc-gridcapa-app
@@ -134,7 +134,7 @@ metadata:
   name: cse-export-idcc-gridcapa-job-launcher-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-export-idcc-gridcapa-job-launcher
@@ -156,7 +156,7 @@ metadata:
   name: cse-export-idcc-rao-logs-dispatcher-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-export-idcc-rao-logs-dispatcher

@@ -4,7 +4,7 @@ metadata:
   name: cse-import-d2cc-task-manager-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-d2cc-task-manager
@@ -25,7 +25,7 @@ metadata:
   name: cse-import-d2cc-gridcapa-runner-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-d2cc-gridcapa-runner
@@ -46,7 +46,7 @@ metadata:
   name: cse-import-d2cc-data-bridge-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-d2cc-data-bridge
@@ -68,7 +68,7 @@ metadata:
   name: cse-import-d2cc-export-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-d2cc-export
@@ -90,7 +90,7 @@ metadata:
   name: cse-import-d2cc-gridcapa-adapter-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-d2cc-gridcapa-adapter
@@ -112,7 +112,7 @@ metadata:
   name: cse-import-d2cc-gridcapa-app-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-d2cc-gridcapa-app
@@ -134,7 +134,7 @@ metadata:
   name: cse-import-d2cc-gridcapa-job-launcher-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-d2cc-gridcapa-job-launcher
@@ -156,7 +156,7 @@ metadata:
   name: cse-import-d2cc-rao-logs-dispatcher-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-d2cc-rao-logs-dispatcher
