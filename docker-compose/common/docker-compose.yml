@@ -129,6 +129,18 @@ services:
     networks:
       - gridcapa
 
+  rao-failure-handler:
+    image: farao/gridcapa-rao-failure-handler:latest
+    volumes:
+      - ./config/rao-failure-handler-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
   interruption-server:
     image: farao/gridcapa-interruption-server:latest
     volumes:
