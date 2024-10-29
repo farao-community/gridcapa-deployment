@@ -40,7 +40,7 @@ images:
     newTag: 0.15.0
   - name: gridcapa-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.27.0
+    newTag: v1.27.1
   - name: gridcapa-rao-failure-handler
     newName: docker.io/farao/gridcapa-rao-failure-handler
     newTag: v1.0.0
@@ -68,7 +68,7 @@ images:
     newTag: v1.4.1
   - name: gridcapa-core-cc-runner
     newName: docker.io/farao/gridcapa-core-cc
-    newTag: v1.10.0
+    newTag: v1.10.1
   - name: gridcapa-core-cc-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.32.1
@@ -90,10 +90,10 @@ images:
     newTag: v1.4.1
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
-    newTag: v1.34.0
+    newTag: v1.34.1
   - name: gridcapa-cse-export-runner
     newName: docker.io/farao/gridcapa-cse-cc-export-runner
-    newTag: v1.34.0
+    newTag: v1.34.1
   - name: gridcapa-cse-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.32.1
@@ -118,7 +118,7 @@ images:
     newTag: v1.4.1
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
-    newTag: v1.26.1
+    newTag: v1.26.2
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.32.1
