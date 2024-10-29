@@ -109,6 +109,15 @@ patches:
               - name: dockerhub-acr-secret
 
 images:
+  - name: filebrowser
+    newName: docker.io/filebrowser/filebrowser
+    newTag: latest
+  - name: ftp
+    newName: docker.io/delfer/alpine-ftp-server
+    newTag: latest
+  - name: publication-cronjob
+    newName: docker.io/farao/cronjob-base
+    newTag: 1.0.0
     # Core Valid
   - name: gridcapa-core-valid-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
