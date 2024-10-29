@@ -74,7 +74,7 @@ images:
     newTag: v1.32.1
   - name: gridcapa-core-cc-post-processing
     newName: docker.io/farao/gridcapa-core-cc-post-processing
-    newTag: v1.11.0
+    newTag: v1.11.1
     # CSE
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
