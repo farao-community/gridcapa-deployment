@@ -80,13 +80,13 @@ images:
     newTag: 0.15.0
   - name: gridcapa-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner-with-xpress
-#    newTag: latest
-#  - name: gridcapa-rao-failure-handler
-#    newName: docker.io/farao/gridcapa-rao-failure-handler
-#    newTag: latest
-#  - name: gridcapa-interruption-server
-#    newName: docker.io/farao/gridcapa-interruption-server
-#    newTag: latest
+    newTag: latest
+  - name: gridcapa-rao-failure-handler
+    newName: docker.io/farao/gridcapa-rao-failure-handler
+    newTag: latest
+  - name: gridcapa-interruption-server
+    newName: docker.io/farao/gridcapa-interruption-server
+    newTag: latest
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app-auth
     newTag: v1.18.0
