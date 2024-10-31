@@ -10,6 +10,8 @@ spec:
     matchLabels:
       app: gridcapa
       component: postgresql
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
