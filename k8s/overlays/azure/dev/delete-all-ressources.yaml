@@ -14,5 +14,5 @@ spec:
               command:
                 - /bin/sh
                 - -c
-                - kubectl --kubeconfig=/.kube/config -n gridcapa-d delete all --all --ignore-not-found=true --grace-period=0 --force
+                - kubectl --kubeconfig=.kube/config -n gridcapa-d delete all --all --ignore-not-found=true --grace-period=0 --force
           restartPolicy: OnFailure
