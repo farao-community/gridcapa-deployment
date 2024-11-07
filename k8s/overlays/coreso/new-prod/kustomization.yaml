@@ -1,0 +1,265 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../common
+#  - ../../../bases/core-cc
+#  - ../../../bases/cse-export-d2cc
+#  - ../../../bases/cse-export-idcc
+#  - ../../../bases/cse-import-d2cc
+#  - ../../../bases/cse-import-idcc
+  - ../../../bases/cse-import-ec-d2cc
+#  - ../../../bases/cse-import-ec-idcc
+#  - ../../../bases/swe-d2cc
+#  - ../../../bases/swe-idcc
+#  - ../../../bases/swe-idcc-idcf
+#  - ../coreso-databridge-claims/core-cc
+#  - ../coreso-databridge-claims/cse-export-d2cc
+#  - ../coreso-databridge-claims/cse-export-idcc
+#  - ../coreso-databridge-claims/cse-import-d2cc
+#  - ../coreso-databridge-claims/cse-import-idcc
+  - ../coreso-databridge-claims/cse-import-ec-d2cc
+#  - ../coreso-databridge-claims/cse-import-ec-idcc
+#  - ../coreso-databridge-claims/swe-d2cc
+#  - ../coreso-databridge-claims/swe-idcc
+#  - ../coreso-databridge-claims/swe-idcc-idcf
+  - apps-metadata-server-configmap.yaml
+  - ingress-gridcapa.yaml
+  - ingress-middlewares.yaml
+  - ingress-minio.yaml
+  - minio-pv-claim.yaml
+  - postgresql-configmap.yaml
+  - postgresql-data-pv-claim.yaml
+  - ../../main_versions/configuration/gridcapa-gateway-johndoe-configmap.yaml
+
+components:
+  - ../../main_versions
+
+patches:
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: gridcapa-minio
+      spec:
+        template:
+          spec:
+            volumes:
+              - name: gridcapa-minio-data
+                persistentVolumeClaim:
+                  claimName: gridcapa-coreso-minio-storage
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: rao-runner
+      spec:
+        replicas: 1
+        template:
+          spec:
+            tolerations:
+              - key: "rao-runners"
+                operator: "Equal"
+                value: "true"
+                effect: "NoSchedule"
+            containers:
+              - name: rao-runner
+                resources:
+                  requests:
+                    cpu: "14.0"
+                    memory: "30Gi"
+                  limits:
+                    cpu: "16.0"
+                    memory: "40Gi"
+            imagePullSecrets:
+              - name: dockerhub-acr-secret
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: cse-export-d2cc-runner
+#      spec:
+#        replicas: 8
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: cse-export-idcc-runner
+#      spec:
+#        replicas: 4
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-d2cc-gridcapa-runner
+      spec:
+        replicas: 8
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: cse-import-ec-idcc-gridcapa-runner
+#      spec:
+#        replicas: 4
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: cse-import-idcc-gridcapa-runner
+#      spec:
+#        replicas: 4
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: cse-import-d2cc-gridcapa-runner
+#      spec:
+#        replicas: 8
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: swe-d2cc-runner
+#      spec:
+#        replicas: 3
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: swe-idcc-runner
+#      spec:
+#        replicas: 3
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: swe-idcc-idcf-runner
+#      spec:
+#        replicas: 3
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: core-cc-runner
+#      spec:
+#        replicas: 12
+  - patch: |-
+      apiVersion: apps/v1
+      kind: StatefulSet
+      metadata:
+        name: gridcapa-rabbitmq
+      spec:
+        volumeClaimTemplates:
+          - metadata:
+              name: gridcapa-rabbitmq-data
+            spec:
+              storageClassName: vsphere-raw-block-sc
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: "5Gi"
+  # Remove volumes related to authentication within application deployments
+#  - target:
+#      kind: Deployment
+#      name: cse-export-d2cc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: cse-export-idcc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: cse-import-ec-d2cc-gridcapa-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: cse-import-ec-idcc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: cse-import-idcc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: cse-import-d2cc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: swe-d2cc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: swe-idcc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: swe-idcc-idcf-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: core-cc-gridcapa-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+
+  # Use "John Doe" gateway config to share UI config across all users
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: gateway
+      spec:
+        template:
+          spec:
+            volumes:
+              - name: gateway-configmap-volume
+                configMap:
+                  name: gateway-johndoe-configmap
+
+configMapGenerator:
+  - name: env-configmap
+    envs:
+      - env.properties
+  - name: gridcapa-app-env-configmap
+    files:
+      - env.json=gridcapa-app-env-config.json

@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kommander-traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    app: gridcapa
+    component: gridcapa
+  name: gridcapa-minio
+  namespace: default
+spec:
+  rules:
+    - host: gridcapa.ingress-k8s-1648-vsp-prd-004.rh.1648.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: gridcapa-minio
+                port:
+                  number: 9000
+            path: /minio
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa.ingress-k8s-1648-vsp-prd-004.rh.1648.local
+      secretName: ingresswildcard
