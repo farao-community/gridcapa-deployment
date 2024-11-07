@@ -43,7 +43,7 @@ images:
     newTag: v1.29.1
   - name: gridcapa-rao-failure-handler
     newName: docker.io/farao/gridcapa-rao-failure-handler
-    newTag: v1.0.0
+    newTag: v1.1.0
   - name: gridcapa-interruption-server
     newName: docker.io/farao/gridcapa-interruption-server
     newTag: v1.0.0
