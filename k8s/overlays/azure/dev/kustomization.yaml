@@ -12,6 +12,9 @@ resources:
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
 
+components:
+  - ../../main_versions
+
 configMapGenerator:
   - name: env-configmap
     envs:
@@ -50,19 +53,6 @@ patches:
               - name: dockerhub-acr-secret
 
 images:
-    # Common
-  - name: apps-metadata-server
-    newName: docker.io/bitnami/apache
-    newTag: "2.4"
-  - name: rabbitmq
-    newName: docker.io/rabbitmq
-    newTag: management
-  - name: minio
-    newName: docker.io/bitnami/minio
-    newTag: 2021.6.17
-  - name: minio-mc
-    newName: docker.io/minio/mc
-    newTag: RELEASE.2022-05-09T04-08-26Z
   - name: filebrowser
     newName: docker.io/filebrowser/filebrowser
     newTag: latest
@@ -72,49 +62,50 @@ images:
   - name: publication-cronjob
     newName: docker.io/farao/cronjob-base
     newTag: 1.0.0
-  - name: gridsuite-config-notification-server
-    newName: docker.io/gridsuite/config-notification-server
-    newTag: 0.15.0
-  - name: gridsuite-config-server
-    newName: docker.io/gridsuite/config-server
-    newTag: 0.15.0
-  - name: gridcapa-rao-runner
-    newName: docker.io/farao/gridcapa-rao-runner-with-xpress
+    # Core Valid
+  - name: gridcapa-core-valid-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
     newTag: latest
-  - name: gridcapa-rao-failure-handler
-    newName: docker.io/farao/gridcapa-rao-failure-handler
+  - name: gridcapa-core-valid-adapter
+    newName: docker.io/farao/gridcapa-core-valid-adapter
     newTag: latest
-  - name: gridcapa-interruption-server
-    newName: docker.io/farao/gridcapa-interruption-server
+  - name: gridcapa-core-valid-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
     newTag: latest
-  - name: gridcapa-app
-    newName: docker.io/farao/gridcapa-app-auth
-    newTag: v1.18.0
-  - name: gridcapa-gateway
-    newName: docker.io/farao/gridcapa-gateway
-    newTag: 1.3.0
-    # CORE CC
-  - name: gridcapa-core-cc-input-data-bridge
-    newName: docker.io/farao/gridcapa-core-cc-data-bridge
-    newTag: v1.0.0
-  - name: gridcapa-core-cc-output-data-bridge
-    newName: docker.io/farao/gridcapa-output-data-bridge
-    newTag: v1.4.1
-  - name: gridcapa-core-cc-adapter
-    newName: docker.io/farao/gridcapa-core-cc-adapter
-    newTag: v2.1.0
-  - name: gridcapa-core-cc-rao-logs-dispatcher
+  - name: gridcapa-core-valid-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: v1.4.1
-  - name: gridcapa-core-cc-runner
-    newName: docker.io/farao/gridcapa-core-cc
-    newTag: v1.9.0
-  - name: gridcapa-core-cc-task-manager
+    newTag: latest
+  - name: gridcapa-core-valid-runner
+    newName: docker.io/farao/gridcapa-core-valid
+    newTag: latest
+  - name: gridcapa-core-valid-task-manager
     newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.32.1
-  - name: gridcapa-core-cc-post-processing
-    newName: docker.io/farao/gridcapa-core-cc-post-processing
-    newTag: v1.10.0
-  - name: gridcapa-interruption-server
-    newName: docker.io/farao/gridcapa-interruption-server
-    newTag: v1.0.0
+    newTag: latest
+  - name: gridcapa-core-valid-exporter
+    newName: docker.io/farao/gridcapa-export
+    newTag: latest
+    # CSE Valid
+  - name: gridcapa-cse-valid-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: latest
+  - name: gridcapa-cse-valid-output-data-bridge
+    newName: docker.io/farao/gridcapa-output-data-bridge
+    newTag: latest
+  - name: gridcapa-cse-valid-adapter
+    newName: docker.io/farao/gridcapa-cse-valid-adapter
+    newTag: latest
+  - name: gridcapa-cse-valid-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: latest
+  - name: gridcapa-cse-valid-runner
+    newName: docker.io/farao/gridcapa-cse-valid
+    newTag: latest
+  - name: gridcapa-cse-valid-publication
+    newName: docker.io/farao/gridcapa-cse-valid-publication
+    newTag: latest
+  - name: gridcapa-cse-valid-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest
+# Enable auth on Azure
+  - name: docker.io/farao/gridcapa-app
+    newName: docker.io/farao/gridcapa-app-auth

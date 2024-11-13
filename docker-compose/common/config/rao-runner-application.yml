@@ -31,6 +31,7 @@ minio-adapter:
   url: http://minio:9000/
 
 rao-runner:
+  with-interruption-server: true
   messages:
     rao-request:
       queue-name: rao-request-queue
