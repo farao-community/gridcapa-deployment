@@ -11,7 +11,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+    - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
       http:
         paths:
           - backend:
@@ -23,5 +23,5 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - gridcapa.ingress-gridcapa-test-vaas.rh.1648.local
+        - gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
       secretName: ingresswildcard
