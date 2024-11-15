@@ -1,5 +1,5 @@
 {
    "appsMetadataServerUrl" : "https://gridcapa-dev-tmp.farao-community.com/apps-metadata",
    "appsMinioStorageServerUrl": "https://gridcapa-dev-tmp.farao-community.com/apps-metadata/data/minioStorageData.json",
-   "appVersionAndEnvironnement": "Azure Dev : 5.14.2"
+   "appVersionAndEnvironnement": "Azure Dev : 5.15.0"
 }
