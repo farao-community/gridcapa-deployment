@@ -32,12 +32,12 @@ metadata:
   labels:
     app: gridcapa
     component: gridcapa
-  name: gridcapa-test-tmp
+  name: gridcapa
   namespace: gridcapa-t
 spec:
   ingressClassName: nginx
   rules:
-    - host: gridcapa-test-tmp.farao-community.com
+    - host: gridcapa.farao-community.com
       http:
         paths:
           - backend:
@@ -536,6 +536,6 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - gridcapa-test-tmp.farao-community.com
+        - gridcapa.farao-community.com
         - filestash.farao-community.com
       secretName: gridcapa-tls
