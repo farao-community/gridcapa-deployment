@@ -14,8 +14,8 @@ spec:
       port:
         number: 80
   rules:
-#  - host: auth.farao-community.com
-  - http:
+  - host: auth.farao-community.com
+    http:
       paths:
         - backend:
             service:
