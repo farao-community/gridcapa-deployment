@@ -22,6 +22,7 @@ spec:
         region: core
         process: valid
     spec:
+      priorityClassName: medium-priority
       containers:
         - name: core-valid-task-manager
           image: gridcapa-core-valid-task-manager

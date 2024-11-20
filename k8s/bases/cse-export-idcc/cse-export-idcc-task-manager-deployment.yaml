@@ -22,6 +22,7 @@ spec:
         region: cse
         process: export-idcc
     spec:
+      priorityClassName: medium-priority
       containers:
         - name: cse-export-idcc-task-manager
           image: gridcapa-cse-task-manager

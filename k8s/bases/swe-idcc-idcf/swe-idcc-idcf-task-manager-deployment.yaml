@@ -22,6 +22,7 @@ spec:
         region: swe
         process: idcc-idcf
     spec:
+      priorityClassName: medium-priority
       containers:
         - name: swe-idcc-idcf-task-manager
           image: gridcapa-swe-task-manager

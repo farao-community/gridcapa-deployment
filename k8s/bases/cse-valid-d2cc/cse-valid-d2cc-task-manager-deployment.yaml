@@ -22,6 +22,7 @@ spec:
         region: cse
         process: valid-d2cc
     spec:
+      priorityClassName: medium-priority
       containers:
         - name: cse-valid-d2cc-task-manager
           image: gridcapa-cse-valid-task-manager

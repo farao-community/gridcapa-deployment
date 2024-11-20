@@ -22,6 +22,7 @@ spec:
         region: cse
         process: import-ec-d2cc
     spec:
+      priorityClassName: medium-priority
       containers:
         - name: cse-import-ec-d2cc-task-manager
           image: gridcapa-cse-task-manager
