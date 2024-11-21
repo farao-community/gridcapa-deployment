@@ -166,10 +166,10 @@ admin keycloak UI.
 This environment is used for CI for all gridcapa processes
 
 - host: gridcapa-dev.farao-community.com
-- namespace: default
+- namespace: gridcapa-d
 
 ```bash
-kubectl kustomize k8s/overlays/azure/dev --load-restrictor LoadRestrictionsNone |  ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p"  farao@48.209.10.114 kubectl apply -f -
+kubectl kustomize k8s/overlays/azure/dev/ --load-restrictor LoadRestrictionsNone |  ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p"  farao@XX.XXX.XXX.XXX kubectl apply -n gridcapa-d -f -
 ```
 
 Info: need to install connect-proxy with "dzdo apt install connect-proxy"
@@ -178,10 +178,10 @@ Info: need to install connect-proxy with "dzdo apt install connect-proxy"
 This environment is used to test CSE gridcapa processes for CORESO
 
 - host: gridcapa.farao-community.com
-- namespace: gridcapa
+- namespace: gridcapa-t
 
 ```bash
-kubectl kustomize k8s/overlays/azure/test --load-restrictor LoadRestrictionsNone |  ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p"  farao@48.209.10.114 kubectl apply -n gridcapa -f -
+kubectl kustomize k8s/overlays/azure/test/ --load-restrictor LoadRestrictionsNone |  ssh -o "ProxyCommand=connect-proxy -H proxy-metier:8080 %h %p"  farao@XX.XXX.XXX.XXX kubectl apply -n gridcapa-t -f -
 ```
 In order to limit resources used by this environment, a KEDA (Kubernetes Event-Driven Autoscaling) has been set up. Its corresponding configuration
 is located at k8s/overlays/azure/test/keda. Should you wish to pause it for a time, simply edit the scaler you want to pause
