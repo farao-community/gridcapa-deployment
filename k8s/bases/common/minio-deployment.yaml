@@ -19,6 +19,7 @@ spec:
       annotations:
         "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
     spec:
+      priorityClassName: highest-priority
       securityContext:
         fsGroup: 1001
       containers:
