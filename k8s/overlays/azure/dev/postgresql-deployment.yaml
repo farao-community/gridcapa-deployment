@@ -18,6 +18,7 @@ spec:
         app: gridcapa
         component: postgresql
     spec:
+      priorityClassName: highest-priority
       initContainers:
         - name: init-permissions
           image: busybox
