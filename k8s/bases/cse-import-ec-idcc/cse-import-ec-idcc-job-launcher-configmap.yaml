@@ -47,7 +47,7 @@ data:
                 consumer:
                   binding-routing-key: input
 
-    gridcapa-version: 5.15.0
+    gridcapa-version: ${GRIDCAPA_VERSION}
 
     job-launcher:
       url:
