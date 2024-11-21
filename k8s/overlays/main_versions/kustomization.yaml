@@ -62,7 +62,7 @@ images:
     newTag: v1.4.1
   - name: gridcapa-core-cc-adapter
     newName: docker.io/farao/gridcapa-core-cc-adapter
-    newTag: v2.3.0
+    newTag: v2.4.0
   - name: gridcapa-core-cc-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.4.1
@@ -84,7 +84,7 @@ images:
     newTag: v1.17.0
   - name: gridcapa-cse-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
-    newTag: v1.16.0
+    newTag: v1.17.0
   - name: gridcapa-cse-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.4.1
@@ -112,7 +112,7 @@ images:
     newTag: v1.7.0
   - name: gridcapa-swe-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
-    newTag: v1.16.0
+    newTag: v1.17.0
   - name: gridcapa-swe-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.4.1

@@ -48,7 +48,9 @@ data:
       access-key: ${GRIDCAPA_MINIO_USER}
       secret-key: ${GRIDCAPA_MINIO_PASSWORD}
       url: http://gridcapa-minio:9000/
-    
+
+    gridcapa-version: ${GRIDCAPA_VERSION}
+
     core-cc-adapter:
       auto-trigger-filetypes:
         - RAOREQUEST

@@ -59,6 +59,11 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: GRIDCAPA_MINIO_BASE_DIRECTORY_CORE_CC
+            - name: GRIDCAPA_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_VERSION
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml

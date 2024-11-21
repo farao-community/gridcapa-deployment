@@ -46,6 +46,8 @@ data:
                 consumer:
                   binding-routing-key: input
 
+    gridcapa-version: ${GRIDCAPA_VERSION}
+
     job-launcher:
       url:
         task-manager-timestamp-url: http://cse-valid-d2cc-task-manager/tasks/

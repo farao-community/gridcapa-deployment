@@ -44,6 +44,11 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: GRIDCAPA_CORE_VALID_ENABLE_SCHEDULER
+            - name: GRIDCAPA_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_VERSION
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
