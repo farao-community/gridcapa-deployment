@@ -46,6 +46,8 @@ data:
                 consumer:
                   binding-routing-key: input
 
+    gridcapa-version: 5.15.0
+
     job-launcher:
       url:
         task-manager-timestamp-url: http://cse-valid-idcc-task-manager/tasks/
