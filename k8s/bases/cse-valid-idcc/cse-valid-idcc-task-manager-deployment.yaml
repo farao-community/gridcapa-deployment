@@ -22,6 +22,7 @@ spec:
         region: cse
         process: valid-idcc
     spec:
+      priorityClassName: medium-priority
       containers:
         - name: cse-valid-idcc-task-manager
           image: gridcapa-cse-valid-task-manager
