@@ -11,6 +11,7 @@ cse-valid-publication:
   filenames:
     ttc-validation: "'TTC_RTEValidation_'yyyyMMdd'_%s'e'_(?<version>[0-9]{1,2}).xml'"
   url:
+    task-manager-timestamp-url: http://cse-valid-d2cc-task-manager:8080/tasks/
     task-manager-business-date-url: http://cse-valid-d2cc-task-manager:8080/tasks/businessdate/
   whitelist:
     - http://localhost:9000
