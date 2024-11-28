@@ -22,6 +22,7 @@ data:
       filenames:
         ttc-validation: "'TTC_RTEValidation_'yyyyMMdd'_%s'e'_(?<version>[0-9]{1,2}).xml'"
       url:
+        task-manager-timestamp-url: http://cse-valid-idcc-task-manager/tasks/
         task-manager-business-date-url: http://cse-valid-idcc-task-manager/tasks/businessdate/
       whitelist:
         - http://gridcapa-minio:9000
