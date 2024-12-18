@@ -94,4 +94,4 @@ logback:
 
 runner:
   parameters:
-    USE_DC_CGM_INPUT: false
+    USE_DC_CGM_INPUT: true
