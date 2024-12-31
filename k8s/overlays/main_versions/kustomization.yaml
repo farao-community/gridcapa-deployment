@@ -81,7 +81,7 @@ images:
     newTag: v2.3.0
   - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
-    newTag: v1.19.0
+    newTag: v1.20.0
   - name: gridcapa-cse-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
     newTag: v1.19.0
