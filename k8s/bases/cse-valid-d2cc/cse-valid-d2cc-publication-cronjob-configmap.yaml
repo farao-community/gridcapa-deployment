@@ -10,8 +10,8 @@ metadata:
 data:
   gridcapa_trigger_publication.sh: |-
     date
-    echo "curl -X POST -d \"process=D2CC&targetDate=$(date +%Y-%m-%d)&targetDateOffset=1\" http://cse-valid-d2cc-publication/publish"
-    curl -X POST -d "process=D2CC&targetDate=$(date +%Y-%m-%d)&targetDateOffset=1" http://cse-valid-d2cc-publication/publish
+    echo "curl -X POST -d \"processType=D2CC&targetDate=$(date +%Y-%m-%d)&targetDateOffset=1\" http://cse-valid-d2cc-publication/publish"
+    curl -X POST -d "processType=D2CC&targetDate=$(date +%Y-%m-%d)&targetDateOffset=1" http://cse-valid-d2cc-publication/publish
     echo "----------"
 
   cron.gridcapa_trigger_publication: |-
