@@ -34,8 +34,8 @@ data:
                 max-attempts: 1
     
     core-valid-runner:
-      amqp:
-        queue-name: core-valid-requests
+      binding:
+        destination: core-valid-requests
 
     minio-adapter:
       bucket: ${MINIO_BUCKET}
