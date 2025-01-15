@@ -62,13 +62,13 @@ images:
     newTag: v1.6.0
   - name: gridcapa-core-cc-adapter
     newName: docker.io/farao/gridcapa-core-cc-adapter
-    newTag: v2.7.0
+    newTag: v2.8.0
   - name: gridcapa-core-cc-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
     newTag: v1.6.0
   - name: gridcapa-core-cc-runner
     newName: docker.io/farao/gridcapa-core-cc
-    newTag: v1.15.0
+    newTag: v1.16.0
   - name: gridcapa-core-cc-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.34.0
