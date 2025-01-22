@@ -2,63 +2,27 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: core-cc-task-manager-scale
-  namespace: gridcapa-t
-  annotations:
-    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-task-manager
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "Europe/Paris"
-        start: "30 8 * * 1-5"
-        end: "0 19 * * 1-5"
-        desiredReplicas: "1"
 
 ---
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: core-cc-runner-scale
-  namespace: gridcapa-t
-  annotations:
-    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-runner
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "Europe/Paris"
-        start: "30 8 * * 1-5"
-        end: "0 19 * * 1-5"
-        desiredReplicas: "1"
 
 ---
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: core-cc-adapter-scale
-  namespace: gridcapa-t
-  annotations:
-    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-adapter
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "Europe/Paris"
-        start: "30 8 * * 1-5"
-        end: "0 19 * * 1-5"
-        desiredReplicas: "1"
 
 ---
 
@@ -66,21 +30,9 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: core-cc-data-bridge-scale
-  namespace: gridcapa-t
-  annotations:
-    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-data-bridge
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "Europe/Paris"
-        start: "30 8 * * 1-5"
-        end: "0 19 * * 1-5"
-        desiredReplicas: "1"
 
 ---
 
@@ -88,21 +40,9 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: core-cc-gridcapa-app-scale
-  namespace: gridcapa-t
-  annotations:
-    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-gridcapa-app
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "Europe/Paris"
-        start: "30 8 * * 1-5"
-        end: "0 19 * * 1-5"
-        desiredReplicas: "1"
 
 ---
 
@@ -110,22 +50,9 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: core-cc-gridcapa-post-processing-scale
-  namespace: gridcapa-t
-  annotations:
-    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-gridcapa-post-processing
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "Europe/Paris"
-        start: "30 8 * * 1-5"
-        end: "0 19 * * 1-5"
-        desiredReplicas: "1"
-
 
 ---
 
@@ -133,21 +60,9 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: core-cc-output-data-bridge-scale
-  namespace: gridcapa-t
-  annotations:
-    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-output-data-bridge
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "Europe/Paris"
-        start: "30 8 * * 1-5"
-        end: "0 19 * * 1-5"
-        desiredReplicas: "1"
 
 ---
 
@@ -155,18 +70,6 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: core-cc-rao-logs-dispatcher-scale
-  namespace: gridcapa-t
-  annotations:
-    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: core-cc-rao-logs-dispatcher
-  minReplicaCount: 0
-  maxReplicaCount: 1
-  triggers:
-    - type: cron
-      metadata:
-        timezone: "Europe/Paris"
-        start: "30 8 * * 1-5"
-        end: "0 19 * * 1-5"
-        desiredReplicas: "1"
