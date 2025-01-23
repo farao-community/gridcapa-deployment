@@ -4,7 +4,7 @@ metadata:
   name: swe-d2cc-task-manager-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-d2cc-task-manager
@@ -25,19 +25,19 @@ metadata:
   name: swe-d2cc-runner-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-d2cc-runner
   minReplicaCount: 0
-  maxReplicaCount: 2
+  maxReplicaCount: 6
   triggers:
     - type: cron
       metadata:
         timezone: "Europe/Paris"
         start: "30 8 * * 1-5"
         end: "0 19 * * 1-5"
-        desiredReplicas: "2"
+        desiredReplicas: "6"
 
 ---
 apiVersion: keda.sh/v1alpha1
@@ -46,7 +46,7 @@ metadata:
   name: swe-d2cc-adapter-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-d2cc-adapter
@@ -68,7 +68,7 @@ metadata:
   name: swe-d2cc-data-bridge-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-d2cc-data-bridge
@@ -90,7 +90,7 @@ metadata:
   name: swe-d2cc-exporter-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-d2cc-exporter
@@ -112,7 +112,7 @@ metadata:
   name: swe-d2cc-gridcapa-app-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-d2cc-gridcapa-app
@@ -134,7 +134,7 @@ metadata:
   name: swe-d2cc-gridcapa-job-launcher-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-d2cc-gridcapa-job-launcher
@@ -156,7 +156,7 @@ metadata:
   name: swe-d2cc-rao-logs-dispatcher-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: swe-d2cc-rao-logs-dispatcher

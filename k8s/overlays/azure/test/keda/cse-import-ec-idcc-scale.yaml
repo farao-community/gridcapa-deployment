@@ -4,7 +4,7 @@ metadata:
   name: cse-import-ec-idcc-gridcapa-runner-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: cse-import-ec-idcc-gridcapa-runner
@@ -25,7 +25,7 @@ metadata:
   name: cse-import-ec-idcc-task-manager-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: cse-import-ec-idcc-task-manager
@@ -46,7 +46,7 @@ metadata:
   name: cse-import-ec-idcc-data-bridge-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: cse-import-ec-idcc-data-bridge
@@ -68,7 +68,7 @@ metadata:
   name: cse-import-ec-idcc-exporter-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: cse-import-ec-idcc-exporter
@@ -90,7 +90,7 @@ metadata:
   name: cse-import-ec-idcc-gridcapa-adapter-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: cse-import-ec-idcc-gridcapa-adapter
@@ -112,7 +112,7 @@ metadata:
   name: cse-import-ec-idcc-gridcapa-app-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: cse-import-ec-idcc-gridcapa-app
@@ -134,7 +134,7 @@ metadata:
   name: cse-import-ec-idcc-gridcapa-job-launcher-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: cse-import-ec-idcc-gridcapa-job-launcher
@@ -156,7 +156,7 @@ metadata:
   name: cse-import-ec-idcc-rao-logs-dispatcher-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: cse-import-ec-idcc-rao-logs-dispatcher
