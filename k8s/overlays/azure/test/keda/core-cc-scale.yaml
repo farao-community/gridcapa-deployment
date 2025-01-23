@@ -4,7 +4,7 @@ metadata:
   name: core-cc-task-manager-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: core-cc-task-manager
@@ -25,19 +25,19 @@ metadata:
   name: core-cc-runner-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: core-cc-runner
   minReplicaCount: 0
-  maxReplicaCount: 1
+  maxReplicaCount: 3
   triggers:
     - type: cron
       metadata:
         timezone: "Europe/Paris"
         start: "30 8 * * 1-5"
         end: "0 19 * * 1-5"
-        desiredReplicas: "1"
+        desiredReplicas: "3"
 
 ---
 apiVersion: keda.sh/v1alpha1
@@ -46,7 +46,7 @@ metadata:
   name: core-cc-adapter-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: core-cc-adapter
@@ -68,7 +68,7 @@ metadata:
   name: core-cc-data-bridge-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: core-cc-data-bridge
@@ -90,7 +90,7 @@ metadata:
   name: core-cc-gridcapa-app-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: core-cc-gridcapa-app
@@ -112,7 +112,7 @@ metadata:
   name: core-cc-gridcapa-post-processing-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: core-cc-gridcapa-post-processing
@@ -135,7 +135,7 @@ metadata:
   name: core-cc-output-data-bridge-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: core-cc-output-data-bridge
@@ -157,7 +157,7 @@ metadata:
   name: core-cc-rao-logs-dispatcher-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "false"
+    autoscaling.keda.sh/paused: "true"
 spec:
   scaleTargetRef:
     name: core-cc-rao-logs-dispatcher
