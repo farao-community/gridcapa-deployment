@@ -4,7 +4,7 @@ metadata:
   name: cse-import-idcc-gridcapa-runner-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-idcc-gridcapa-runner
@@ -25,7 +25,7 @@ metadata:
   name: cse-import-idcc-task-manager-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-idcc-task-manager
@@ -46,7 +46,7 @@ metadata:
   name: cse-import-idcc-data-bridge-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-idcc-data-bridge
@@ -68,7 +68,7 @@ metadata:
   name: cse-import-idcc-exporter-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-idcc-exporter
@@ -90,7 +90,7 @@ metadata:
   name: cse-import-idcc-gridcapa-adapter-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-idcc-gridcapa-adapter
@@ -112,7 +112,7 @@ metadata:
   name: cse-import-idcc-gridcapa-app-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-idcc-gridcapa-app
@@ -134,7 +134,7 @@ metadata:
   name: cse-import-idcc-gridcapa-job-launcher-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-idcc-gridcapa-job-launcher
@@ -156,7 +156,7 @@ metadata:
   name: cse-import-idcc-rao-logs-dispatcher-scale
   namespace: gridcapa-t
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   scaleTargetRef:
     name: cse-import-idcc-rao-logs-dispatcher
