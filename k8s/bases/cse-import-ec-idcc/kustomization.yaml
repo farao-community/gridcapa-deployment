@@ -27,3 +27,7 @@ resources:
   - cse-import-ec-idcc-exporter-deployment.yaml
   - cse-import-ec-idcc-exporter-service.yaml
   - cse-import-ec-idcc-minio-purge.yaml
+
+labels:
+  - pairs:
+      on-demand: "true"

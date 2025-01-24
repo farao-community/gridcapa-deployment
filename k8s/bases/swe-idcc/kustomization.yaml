@@ -27,3 +27,7 @@ resources:
   - swe-idcc-task-manager-deployment.yaml
   - swe-idcc-task-manager-service.yaml
   - swe-idcc-minio-purge.yaml
+
+labels:
+  - pairs:
+      on-demand: "true"

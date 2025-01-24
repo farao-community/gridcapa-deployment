@@ -24,3 +24,7 @@ resources:
   - swe-btcc-task-manager-configmap.yaml
   - swe-btcc-task-manager-deployment.yaml
   - swe-btcc-task-manager-service.yaml
+
+labels:
+  - pairs:
+      on-demand: "true"
