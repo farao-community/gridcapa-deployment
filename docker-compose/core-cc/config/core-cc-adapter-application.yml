@@ -48,5 +48,5 @@ core-cc-adapter:
     - http://minio:9000/
 
 core-cc-runner:
-  amqp:
-    queue-name: core-cc-requests
+  binding:
+    destination: core-cc-requests

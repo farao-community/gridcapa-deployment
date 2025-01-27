@@ -19,10 +19,14 @@ data:
           reply-timeout: 7200000
       cloud:
         stream:
+          default:
+            binder: rabbit
+            group: core-cc-runner
           bindings:
             task-status-update:
-              binder: rabbit
               destination: core-cc-task-status-updated
+            request-in-0:
+              destination: core-cc-requests
 
     logback:
       amqp:
@@ -36,10 +40,6 @@ data:
 
     core-cc-runner:
       async-time-out: 7200000
-      bindings:
-        request:
-          destination: core-cc-requests
-          routing-key: "#"
       whitelist:
         - http://gridcapa-minio:9000/
 
