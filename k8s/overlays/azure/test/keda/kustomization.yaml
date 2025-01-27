@@ -11,3 +11,19 @@ resources:
   - swe-d2cc-scale.yaml
   - swe-idcc-idcf-scale.yaml
   - swe-idcc-scale.yaml
+
+patches:
+  #  Add gridcapa-t as the namespace
+  - target:
+      kind: ScaledObject
+    path: patches/add-namespace-patch.yaml
+  #  Add the cron trigger to every ScaledObject except the rao who is instead autoscaled on rabbit mq queue length
+  - target:
+      kind: ScaledObject
+      labelSelector: "component!=rao"
+    path: patches/cron-trigger-patch.yaml
+  #  Increase designated runners number of replicas
+  - target:
+      kind: ScaledObject
+      labelSelector: "desiredReplicas=upscaled"
+    path: patches/two-replicas-patch.yaml

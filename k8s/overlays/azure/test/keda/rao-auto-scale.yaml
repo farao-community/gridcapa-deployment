@@ -2,7 +2,6 @@ apiVersion: keda.sh/v1alpha1
 kind: TriggerAuthentication
 metadata:
   name: keda-trigger-auth-rabbitmq-conn
-  namespace: gridcapa-t
 spec:
   secretTargetRef:
     - parameter: host
@@ -13,7 +12,8 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: gridcapa-rao-runner-scaled-object
-  namespace: gridcapa-t
+  labels:
+    component: rao
   annotations:
 #    Set to true to pause the scaling
     autoscaling.keda.sh/paused: "false"
@@ -22,7 +22,6 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: rao-runner
-  minReplicaCount: 0
   maxReplicaCount: 12
   fallback:
     failureThreshold: 3

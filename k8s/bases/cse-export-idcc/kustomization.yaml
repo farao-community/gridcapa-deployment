@@ -27,3 +27,7 @@ resources:
   - cse-export-idcc-rao-logs-dispatcher-deployment.yaml
   - cse-export-idcc-rao-logs-dispatcher-service.yaml
   - cse-export-idcc-minio-purge.yaml
+
+labels:
+  - pairs:
+      on-demand: "true"

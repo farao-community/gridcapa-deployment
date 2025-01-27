@@ -1,0 +1,14 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: common-cron-trigger-patch
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "Europe/Paris"
+        start: "30 8 * * 1-5"
+        end: "0 19 * * 1-5"
+        desiredReplicas: "1"
