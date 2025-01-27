@@ -4,50 +4,50 @@ kind: Kustomization
 resources:
   - ../ftp
   - ../common
-#  - ../../../bases/core-cc
-#  - ../../../bases/core-valid
-#  - ../../../bases/cse-common
-#  - ../../../bases/cse-export-d2cc
-#  - ../../../bases/cse-export-idcc
-#  - ../../../bases/cse-import-d2cc
-#  - ../../../bases/cse-import-idcc
+  - ../../../bases/core-cc
+  - ../../../bases/core-valid
+  - ../../../bases/cse-common
+  - ../../../bases/cse-export-d2cc
+  - ../../../bases/cse-export-idcc
+  - ../../../bases/cse-import-d2cc
+  - ../../../bases/cse-import-idcc
   - ../../../bases/cse-import-ec-d2cc
-#  - ../../../bases/cse-import-ec-idcc
-#  - ../../../bases/cse-valid-d2cc
-#  - ../../../bases/cse-valid-idcc
-#  - ../../../bases/swe-btcc
-#  - ../../../bases/swe-d2cc
-#  - ../../../bases/swe-idcc
-#  - ../../../bases/swe-idcc-idcf
-#  - ../azure-databridge-claims/core-cc
-#  - ../azure-databridge-claims/core-valid
-#  - ../azure-databridge-claims/cse-export-d2cc
-#  - ../azure-databridge-claims/cse-export-idcc
-#  - ../azure-databridge-claims/cse-import-d2cc
-#  - ../azure-databridge-claims/cse-import-idcc
+  - ../../../bases/cse-import-ec-idcc
+  - ../../../bases/cse-valid-d2cc
+  - ../../../bases/cse-valid-idcc
+  - ../../../bases/swe-btcc
+  - ../../../bases/swe-d2cc
+  - ../../../bases/swe-idcc
+  - ../../../bases/swe-idcc-idcf
+  - ../azure-databridge-claims/core-cc
+  - ../azure-databridge-claims/core-valid
+  - ../azure-databridge-claims/cse-export-d2cc
+  - ../azure-databridge-claims/cse-export-idcc
+  - ../azure-databridge-claims/cse-import-d2cc
+  - ../azure-databridge-claims/cse-import-idcc
   - ../azure-databridge-claims/cse-import-ec-d2cc
-#  - ../azure-databridge-claims/cse-import-ec-idcc
-#  - ../azure-databridge-claims/cse-valid-d2cc
-#  - ../azure-databridge-claims/cse-valid-idcc
-#  - ../azure-databridge-claims/swe-btcc
-#  - ../azure-databridge-claims/swe-d2cc
-#  - ../azure-databridge-claims/swe-idcc
-#  - ../azure-databridge-claims/swe-idcc-idcf
+  - ../azure-databridge-claims/cse-import-ec-idcc
+  - ../azure-databridge-claims/cse-valid-d2cc
+  - ../azure-databridge-claims/cse-valid-idcc
+  - ../azure-databridge-claims/swe-btcc
+  - ../azure-databridge-claims/swe-d2cc
+  - ../azure-databridge-claims/swe-idcc
+  - ../azure-databridge-claims/swe-idcc-idcf
   - apps-metadata-server-configmap.yaml
-#  - core-cc-gridcapa-app-idp-settings-configmap.yaml
-#  - core-valid-gridcapa-app-idp-settings-configmap.yaml
-#  - cse-export-d2cc-app-idp-settings-configmap.yaml
-#  - cse-export-idcc-app-idp-settings-configmap.yaml
-#  - cse-import-d2cc-app-idp-settings-configmap.yaml
-#  - cse-import-idcc-app-idp-settings-configmap.yaml
+  - core-cc-gridcapa-app-idp-settings-configmap.yaml
+  - core-valid-gridcapa-app-idp-settings-configmap.yaml
+  - cse-export-d2cc-app-idp-settings-configmap.yaml
+  - cse-export-idcc-app-idp-settings-configmap.yaml
+  - cse-import-d2cc-app-idp-settings-configmap.yaml
+  - cse-import-idcc-app-idp-settings-configmap.yaml
   - cse-import-ec-d2cc-app-idp-settings-configmap.yaml
-#  - cse-import-ec-idcc-app-idp-settings-configmap.yaml
-#  - cse-valid-d2cc-gridcapa-app-idp-settings-configmap.yaml
-#  - cse-valid-idcc-gridcapa-app-idp-settings-configmap.yaml
-#  - swe-btcc-gridcapa-app-idp-settings-configmap.yaml
-#  - swe-d2cc-gridcapa-app-idp-settings-configmap.yaml
-#  - swe-idcc-gridcapa-app-idp-settings-configmap.yaml
-#  - swe-idcc-idcf-gridcapa-app-idp-settings-configmap.yaml
+  - cse-import-ec-idcc-app-idp-settings-configmap.yaml
+  - cse-valid-d2cc-gridcapa-app-idp-settings-configmap.yaml
+  - cse-valid-idcc-gridcapa-app-idp-settings-configmap.yaml
+  - swe-btcc-gridcapa-app-idp-settings-configmap.yaml
+  - swe-d2cc-gridcapa-app-idp-settings-configmap.yaml
+  - swe-idcc-gridcapa-app-idp-settings-configmap.yaml
+  - swe-idcc-idcf-gridcapa-app-idp-settings-configmap.yaml
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
