@@ -28,7 +28,7 @@ images:
     newTag: management
   - name: minio
     newName: docker.io/bitnami/minio
-    newTag: 2021.6.17
+    newTag: 2024.12.18
   - name: minio-mc
     newName: docker.io/minio/mc
     newTag: RELEASE.2022-05-09T04-08-26Z
