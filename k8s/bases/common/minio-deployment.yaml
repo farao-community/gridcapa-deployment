@@ -34,7 +34,7 @@ spec:
             - containerPort: 9001
           env:
             - name: MINIO_BROWSER_REDIRECT_URL
-            #Since Minio 2022, a url has to be set here even though it is not used
+              #Since Minio 2022, a url has to be set here even though it is not used
               value: "http://minio.local/minio/"
             - name: MINIO_ROOT_USER
               valueFrom:
@@ -75,9 +75,10 @@ spec:
             - name: MINIO_NOTIFY_AMQP_DURABLE
               value: on
           volumeMounts:
-            # Delete this mount and associated volume after migration
+            # Comment starts here
             - name: gridcapa-minio-data
               mountPath: /data
+            # Comment ends here
             - name: gridcapa-minio
               mountPath: /bitnami/minio/data
           livenessProbe:
@@ -103,12 +104,16 @@ spec:
               memory: "350Mi"
             limits:
               cpu: "2.0"
+              # Temporary memory upgrade for the purpose of data migration
+              # To be reduced to "350Mi" afterwards
               memory: "4Gi"
       restartPolicy: Always
       volumes:
+        # Comment starts here
         - name: gridcapa-minio-data
           persistentVolumeClaim:
             claimName: gridcapa-minio-storage
+        # Comment ends here
         - name: gridcapa-minio
           persistentVolumeClaim:
             claimName: gridcapa-minio-pv
