@@ -6,7 +6,7 @@ resources:
   - azure-storage-class.yaml
   - azure-storage-azure-disk.yaml
   - minio-pv-claim.yaml
-  - minio-pvc.yaml
+  - minio-data-pv-claim.yaml
   - postgresql-data-pv-claim.yaml
   - postgresql-service.yaml
   - minio-get-storage-data-pv-claim.yaml

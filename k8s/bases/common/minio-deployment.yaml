@@ -75,7 +75,7 @@ spec:
             - name: MINIO_NOTIFY_AMQP_DURABLE
               value: on
           volumeMounts:
-            # Comment starts here
+            # This volume mount should be commented after data migration
             - name: gridcapa-minio-data
               mountPath: /data
             # Comment ends here
@@ -109,7 +109,7 @@ spec:
               memory: "4Gi"
       restartPolicy: Always
       volumes:
-        # Comment starts here
+        # This volume should be commented after data migration
         - name: gridcapa-minio-data
           persistentVolumeClaim:
             claimName: gridcapa-minio-storage
