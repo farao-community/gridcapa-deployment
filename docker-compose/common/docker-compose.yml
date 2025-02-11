@@ -71,13 +71,14 @@ services:
       - gridcapa
 
   minio:
-    image: bitnami/minio:2021.6.17
+    image: bitnami/minio:2024.12.18
     restart: always
     volumes:
-      - minio-data:/data
+      - minio-data:/bitnami/minio/data
     environment:
-      MINIO_ACCESS_KEY: gridcapa
-      MINIO_SECRET_KEY: gridcapa
+      MINIO_BROWSER_REDIRECT_URL: "http://localhost/minio/"
+      MINIO_ROOT_USER: gridcapa
+      MINIO_ROOT_PASSWORD: gridcapa
       MINIO_DEFAULT_BUCKETS: gridcapa
       MINIO_NOTIFY_AMQP_ENABLE: "on"
       MINIO_NOTIFY_AMQP_URL: amqp://gridcapa:gridcapa@rabbitmq:5672
@@ -88,6 +89,7 @@ services:
       MINIO_NOTIFY_AMQP_DURABLE: "on"
     ports:
       - "9000:9000"
+      - "9001:9001"
     networks:
       - gridcapa
 

@@ -31,13 +31,17 @@ spec:
             runAsUser: 1001
           ports:
             - containerPort: 9000
+            - containerPort: 9001
           env:
-            - name: MINIO_ACCESS_KEY
+            - name: MINIO_BROWSER_REDIRECT_URL
+              #Since Minio 2022, a url has to be set here even though it is not used
+              value: "http://minio.local/minio/"
+            - name: MINIO_ROOT_USER
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-minio-credentials
                   key: minio-access-key
-            - name: MINIO_SECRET_KEY
+            - name: MINIO_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: gridcapa-minio-credentials
@@ -71,8 +75,12 @@ spec:
             - name: MINIO_NOTIFY_AMQP_DURABLE
               value: on
           volumeMounts:
+            # This volume mount should be commented after data migration
             - name: gridcapa-minio-data
               mountPath: /data
+            # Comment ends here
+            - name: gridcapa-minio
+              mountPath: /bitnami/minio/data
           livenessProbe:
             tcpSocket:
               port: 9000
@@ -96,9 +104,16 @@ spec:
               memory: "350Mi"
             limits:
               cpu: "2.0"
-              memory: "350Mi"
+              # Temporary memory upgrade for the purpose of data migration
+              # To be reduced to "350Mi" afterwards
+              memory: "4Gi"
       restartPolicy: Always
       volumes:
+        # This volume should be commented after data migration
         - name: gridcapa-minio-data
           persistentVolumeClaim:
             claimName: gridcapa-minio-storage
+        # Comment ends here
+        - name: gridcapa-minio
+          persistentVolumeClaim:
+            claimName: gridcapa-minio-pv
