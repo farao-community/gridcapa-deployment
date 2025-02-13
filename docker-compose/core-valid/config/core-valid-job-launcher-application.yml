@@ -35,7 +35,7 @@ spring:
             consumer:
               binding-routing-key: input
 
-gridcapa-version: 5.16.1
+gridcapa-version: 5.16.2
 
 job-launcher:
   url:
