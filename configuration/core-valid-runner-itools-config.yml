@@ -9,6 +9,7 @@ rao-ra-usage-limits-per-contingency:
 
 rao-range-actions-optimization:
   pst-ra-min-impact-threshold: 0.01
+  hvdc-ra-min-impact-threshold: 0.01
 
 rao-topological-actions-optimization:
   relative-minimum-impact-threshold: 0

@@ -4,9 +4,10 @@ rao-objective-function:
   unit: MEGAWATT
 
 rao-range-actions-optimization:
-  pst-ra-min-impact-threshold: 0.01
+  pst-ra-min-impact-threshold: 1
+  hvdc-ra-min-impact-threshold: 0.001
 
-rao-linear-optimization-solver:
+search-tree-linear-optimization-solver:
   solver: XPRESS
   relative-mip-gap: 0.001
   solver-specific-parameters: THREADS 1 MAXNODE 100000 MAXTIME 300
