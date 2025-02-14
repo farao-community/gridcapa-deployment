@@ -187,6 +187,14 @@ In order to limit resources used by this environment, a KEDA (Kubernetes Event-D
 is located at k8s/overlays/azure/test/keda. Should you wish to pause it for a time, simply edit the scaler you want to pause
 and change the **metadata.annotations.autoscaling.keda.sh/paused** value to **false**
 
+On this environment by default only **CORE-CC** , **SWE D2CC** & **CSE IMPORT-EC-D2CC** are deployed. This is done to limit the resources
+used by the cluster. To deploy each and every process please uncomment corresponding lines in k8s/overlays/azure/test/kustomization.yaml
+
+Label **on-demand: "true"** is added on every on-demand process to easily go back to the "light" version of the 
+app (where only the three processes and common services are kept). To do that, run **ktest delete all -l on-demand="true"**
+or use the alias **trim-test**
+ 
+
 ### Using local gridcapa-app
 
 In order to be able to use a local gridcapa-app and all elements deployed in the docker environment, you have to deal with CORS limitation.

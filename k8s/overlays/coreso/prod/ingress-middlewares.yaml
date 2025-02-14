@@ -692,3 +692,14 @@ spec:
   headers:
     customRequestHeaders:
       userId: johnDoe
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: minio-console-rewrite
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /minio

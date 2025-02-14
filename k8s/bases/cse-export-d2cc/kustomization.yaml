@@ -27,3 +27,7 @@ resources:
   - cse-export-d2cc-rao-logs-dispatcher-deployment.yaml
   - cse-export-d2cc-rao-logs-dispatcher-service.yaml
   - cse-export-d2cc-minio-purge.yaml
+
+labels:
+  - pairs:
+      on-demand: "true"

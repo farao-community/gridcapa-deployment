@@ -27,3 +27,7 @@ resources:
   - cse-import-d2cc-exporter-deployment.yaml
   - cse-import-d2cc-exporter-service.yaml
   - cse-import-d2cc-minio-purge.yaml
+
+labels:
+  - pairs:
+      on-demand: "true"

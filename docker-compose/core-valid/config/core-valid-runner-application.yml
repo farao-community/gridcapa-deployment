@@ -8,10 +8,14 @@ spring:
       reply-timeout: 7200000
   cloud:
     stream:
+      default:
+        binder: rabbit
+        group: core-valid-runner
       bindings:
         task-status-update:
-          binder: rabbit
           destination: core-valid-task-status-updated
+        request-in-0:
+          destination: core-valid-requests
 
 logback:
   amqp:
