@@ -4,7 +4,6 @@ rao-objective-function:
   unit: MEGAWATT
 
 rao-range-actions-optimization:
-  pst-ra-min-impact-threshold: 1
   hvdc-ra-min-impact-threshold: 0.001
 
 search-tree-linear-optimization-solver:

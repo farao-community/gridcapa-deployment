@@ -23,7 +23,7 @@ rao-objective-function:
 
 rao-range-actions-optimization:
   pst-ra-min-impact-threshold: 0.01
-  hvdc-ra-min-impact-threshold: 0.01
+  hvdc-ra-min-impact-threshold: 0.001
 
 rao-linear-optimization-solver:
   solver: CBC

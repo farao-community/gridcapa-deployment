@@ -29,7 +29,7 @@ rao-objective-function:
 
 rao-range-actions-optimization:
   pst-ra-min-impact-threshold: 0.01
-  hvdc-ra-min-impact-threshold: 0.01
+  hvdc-ra-min-impact-threshold: 0.001
 
 search-tree-linear-optimization-solver:
   solver: XPRESS
