@@ -25,6 +25,11 @@ rao-range-actions-optimization:
   pst-ra-min-impact-threshold: 0.01
   hvdc-ra-min-impact-threshold: 0.001
 
+search-tree-range-actions-optimization:
+  max-mip-iterations: 5
+  pst-sensitivity-threshold: 0.01
+  pst-model: CONTINUOUS
+
 rao-linear-optimization-solver:
   solver: CBC
 
@@ -32,21 +37,16 @@ rao-topological-actions-optimization:
   relative-minimum-impact-threshold: 0
   absolute-minimum-impact-threshold: 2
 
+search-tree-topological-actions-optimization:
+  max-preventive-search-tree-depth: 3
+  max-auto-search-tree-depth: 3
+  max-curative-search-tree-depth: 3
+
 rao-not-optimized-cnecs:
   do-not-optimize-curative-cnecs-for-tsos-without-cras: false
 
 rao-ra-usage-limits-per-contingency:
   max-curative-ra-per-tso: [ "{IT}:6", "{FR}:5", "{CH}:1", "{AT}:3", "{SI}:3" ]
-
-search-tree-range-actions-optimization:
-  max-mip-iterations: 5
-  pst-sensitivity-threshold: 0.01
-  pst-model: CONTINUOUS
-
-search-tree-topological-actions-optimization:
-  max-preventive-search-tree-depth: 3
-  max-auto-search-tree-depth: 3
-  max-curative-search-tree-depth: 3
 
 search-tree-second-preventive-rao:
   execution-condition: POSSIBLE_CURATIVE_IMPROVEMENT

@@ -30,6 +30,11 @@ rao-range-actions-optimization:
   pst-ra-min-impact-threshold: 0.01
   hvdc-ra-min-impact-threshold: 0.001
 
+search-tree-range-actions-optimization:
+  max-mip-iterations: 5
+  pst-sensitivity-threshold: 0.01
+  pst-model: APPROXIMATED_INTEGERS
+
 search-tree-linear-optimization-solver:
   solver: XPRESS
   relative-mip-gap: 0.001
@@ -39,19 +44,14 @@ rao-topological-actions-optimization:
   relative-minimum-impact-threshold: 0
   absolute-minimum-impact-threshold: 2
 
-rao-not-optimized-cnecs:
-  do-not-optimize-curative-cnecs-for-tsos-without-cras: false
-
-search-tree-range-actions-optimization:
-  max-mip-iterations: 5
-  pst-sensitivity-threshold: 0.01
-  pst-model: APPROXIMATED_INTEGERS
-
 search-tree-topological-actions-optimization:
   max-preventive-search-tree-depth: 3
   max-auto-search-tree-depth: 3
   max-curative-search-tree-depth: 3
   predefined-combinations: [ "{PRA_2N_VALPELLINE}+{PRA_2N_AVISE}" ]
+
+rao-not-optimized-cnecs:
+  do-not-optimize-curative-cnecs-for-tsos-without-cras: false
 
 search-tree-second-preventive-rao:
   execution-condition: POSSIBLE_CURATIVE_IMPROVEMENT
