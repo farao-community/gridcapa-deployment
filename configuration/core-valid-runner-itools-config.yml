@@ -11,9 +11,18 @@ rao-range-actions-optimization:
   pst-ra-min-impact-threshold: 0.01
   hvdc-ra-min-impact-threshold: 0.001
 
+search-tree-range-actions-optimization:
+  max-mip-iterations: 2
+  pst-sensitivity-threshold: 1.0e-06
+
 rao-topological-actions-optimization:
   relative-minimum-impact-threshold: 0
   absolute-minimum-impact-threshold: 10
+
+search-tree-topological-actions-optimization:
+  max-preventive-search-tree-depth: 5
+  max-auto-search-tree-depth: 5
+  max-curative-search-tree-depth: 5
 
 rao-not-optimized-cnecs:
   do-not-optimize-curative-cnecs-for-tsos-without-cras: true
@@ -34,15 +43,6 @@ load-flow-default-parameters:
 
 open-loadflow-default-parameters:
   throwsExceptionInCaseOfSlackDistributionFailure: true
-
-search-tree-range-actions-optimization:
-  max-mip-iterations: 2
-  pst-sensitivity-threshold: 1.0e-06
-
-search-tree-topological-actions-optimization:
-  max-preventive-search-tree-depth: 5
-  max-auto-search-tree-depth: 5
-  max-curative-search-tree-depth: 5
 
 search-tree-load-flow-and-sensitivity-computation:
   load-flow-provider: OpenLoadFlow

@@ -3,8 +3,16 @@ rao-objective-function:
   enforce-curative-security: true
   unit: MEGAWATT
 
+search-tree-objective-function:
+  curative-min-obj-improvement: 10
+
 rao-range-actions-optimization:
   hvdc-ra-min-impact-threshold: 0.001
+
+search-tree-range-actions-optimization:
+  max-mip-iterations: 2
+  pst-sensitivity-threshold: 0.0001
+  pst-model: APPROXIMATED_INTEGERS
 
 search-tree-linear-optimization-solver:
   solver: XPRESS
@@ -14,6 +22,13 @@ search-tree-linear-optimization-solver:
 rao-topological-actions-optimization:
   relative-minimum-impact-threshold: 0
   absolute-minimum-impact-threshold: 10
+
+search-tree-topological-actions-optimization:
+  max-preventive-search-tree-depth: 4
+  max-auto-search-tree-depth: 4
+  max-curative-search-tree-depth: 4
+  skip-actions-far-from-most-limiting-element: true
+  max-number-of-boundaries-for-skipping-actions: 1
 
 rao-not-optimized-cnecs:
   do-not-optimize-curative-cnecs-for-tsos-without-cras: true
@@ -57,21 +72,6 @@ load-flow-default-parameters:
 
 open-loadflow-default-parameters:
   maxNewtonRaphsonIterations: 30
-
-search-tree-objective-function:
-  curative-min-obj-improvement: 10
-
-search-tree-range-actions-optimization:
-  max-mip-iterations: 2
-  pst-sensitivity-threshold: 0.0001
-  pst-model: APPROXIMATED_INTEGERS
-
-search-tree-topological-actions-optimization:
-  max-preventive-search-tree-depth: 4
-  max-auto-search-tree-depth: 4
-  max-curative-search-tree-depth: 4
-  skip-actions-far-from-most-limiting-element: true
-  max-number-of-boundaries-for-skipping-actions: 1
 
 search-tree-second-preventive-rao:
   execution-condition: COST_INCREASE
