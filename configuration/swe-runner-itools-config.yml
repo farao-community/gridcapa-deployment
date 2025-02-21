@@ -17,48 +17,50 @@ open-loadflow-default-parameters:
   maxNewtonRaphsonIterations: 30
   plausibleActivePowerLimit: 10000
   maxIteration: 100
-  newtonRaphsonConvEpsPerEq: 1.0E-3
+  newtonRaphsonConvEpsPerEq: 0.001
   minRealisticVoltage: 0.5
   maxRealisticVoltage: 1.5
   stateVectorScalingMode: MAX_VOLTAGE_CHANGE
 
 rao-objective-function:
-  type: MAX_MIN_MARGIN_IN_AMPERE
-  preventive-stop-criterion: SECURE
-  curative-stop-criterion: SECURE
-  optimize-curative-if-preventive-unsecure : true
+  type: SECURE_FLOW
+  enforce-curative-security: true
+  unit: AMPERE
 
 rao-range-actions-optimization:
+  pst-ra-min-impact-threshold: 0.01
+  hvdc-ra-min-impact-threshold: 0.001
+
+search-tree-range-actions-optimization:
   max-mip-iterations: 5
-  pst-penalty-cost: 0.01
-  pst-sensitivity-threshold : 1.0
+  pst-sensitivity-threshold: 1
   pst-model: APPROXIMATED_INTEGERS
 
-rao-linear-optimization-solver:
+search-tree-linear-optimization-solver:
   solver: XPRESS
   solver-specific-parameters: THREADS 1 MAXNODE 100000 MAXTIME 300
   relative-mip-gap: 0.001
 
 rao-topological-actions-optimization:
+  relative-minimum-impact-threshold: 0
+  absolute-minimum-impact-threshold: 1
+
+search-tree-topological-actions-optimization:
   max-preventive-search-tree-depth: 3
   max-auto-search-tree-depth: 3
   max-curative-search-tree-depth: 3
-  relative-minimum-impact-threshold: 0.0
-  absolute-minimum-impact-threshold: 1.0
-
-rao-second-preventive-rao:
-  execution-condition: POSSIBLE_CURATIVE_IMPROVEMENT
-  re-optimize-curative-range-actions: true
-  hint-from-first-preventive-rao: true
 
 rao-not-optimized-cnecs:
   do-not-optimize-curative-cnecs-for-tsos-without-cras: false
 
-rao-load-flow-and-sensitivity-computation:
+search-tree-second-preventive-rao:
+  execution-condition: POSSIBLE_CURATIVE_IMPROVEMENT
+  re-optimize-curative-range-actions: true
+  hint-from-first-preventive-rao: true
+
+search-tree-load-flow-and-sensitivity-computation:
   load-flow-provider: OpenLoadFlow
   sensitivity-provider: OpenLoadFlow
 
-rao-multi-threading:
-  contingency-scenarios-in-parallel: 14
-  preventive-leaves-in-parallel: 14
-  curative-leaves-in-parallel: 1
+search-tree-multi-threading:
+  available-cpus: 14
