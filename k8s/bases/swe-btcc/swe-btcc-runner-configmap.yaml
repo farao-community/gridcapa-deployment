@@ -23,16 +23,20 @@ data:
         stream:
           default:
             binder: rabbit
-            group: swe-btcc-runner
           bindings:
             softInterrupt-in-0:
-              destination: swe-btcc-stop-task
+              destination: stop-task
             request-in-0:
               destination: swe-btcc-request
+              group: swe-btcc-runner
             task-status-update:
               destination: swe-btcc-task-status-updated
-            stop-rao:
-              destination: stop-rao-runner
+              group: swe-btcc-runner
+          rabbit:
+            bindings:
+              softInterrupt-in-0:
+                consumer:
+                  bindingRoutingKey: swe-btcc
 
     logback:
       amqp:

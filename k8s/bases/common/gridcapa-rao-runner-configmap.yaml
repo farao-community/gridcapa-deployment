@@ -18,12 +18,16 @@ data:
       cloud:
         stream:
           default:
-            group: rao-runner
+            binder: rabbit
           bindings:
             stop-in-0:
-              binder: rabbit
-              destination: stop-rao-runner
-
+              destination: stop-task
+          rabbit:
+            bindings:
+              stop-in-0:
+                consumer:
+                  bindingRoutingKey: "#"
+    
     server:
       port: 8080
 
@@ -123,7 +127,7 @@ data:
         <root level="info">
             <appender-ref ref="STDOUT" />
         </root>
-
+        
         <logger name="com.powsybl.openrao" level="INFO"/>
         <logger name="com.powsybl.openloadflow" level="ERROR"/>
         <logger name="com.powsybl.commons" level="WARN"/>
