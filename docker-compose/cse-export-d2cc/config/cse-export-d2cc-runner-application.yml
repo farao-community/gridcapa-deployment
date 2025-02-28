@@ -12,16 +12,20 @@ spring:
     stream:
       default:
         binder: rabbit
-        group: cse-export-d2cc-runner
       bindings:
         softInterrupt-in-0:
-          destination: cse-export-d2cc-stop-task
+          destination: stop-task
         request-in-0:
           destination: cse-export-d2cc-request
+          group: cse-export-d2cc-runner
         task-status-update:
           destination: cse-export-d2cc-task-status-updated
-        stop-rao:
-          destination: stop-rao-runner
+          group: cse-export-d2cc-runner
+      rabbit:
+        bindings:
+          softInterrupt-in-0:
+            consumer:
+              bindingRoutingKey: cse-export-d2cc
 
 logback:
   amqp:

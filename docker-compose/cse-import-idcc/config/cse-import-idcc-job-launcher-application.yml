@@ -19,7 +19,7 @@ spring:
         run-task:
           destination: cse-import-idcc-launch-task
         stop-task:
-          destination: cse-import-idcc-stop-task
+          destination: stop-task
         consumeTaskDtoUpdate-in-0:
           destination: cse-import-idcc-task-updated
         task-status-update:
@@ -30,6 +30,9 @@ spring:
             auto-bind-dlq: true
             max-attempts: 1
         bindings:
+          stop-task:
+            producer:
+              routingKey: cse-import-idcc
           consumeTaskDtoUpdate-in-0:
             consumer:
               binding-routing-key: input

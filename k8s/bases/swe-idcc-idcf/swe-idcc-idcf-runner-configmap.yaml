@@ -23,16 +23,20 @@ data:
         stream:
           default:
             binder: rabbit
-            group: swe-idcc-idcf-runner
           bindings:
             softInterrupt-in-0:
-              destination: swe-idcc-idcf-stop-task
+              destination: stop-task
             request-in-0:
               destination: swe-idcc-idcf-request
+              group: swe-idcc-idcf-runner
             task-status-update:
               destination: swe-idcc-idcf-task-status-updated
-            stop-rao:
-              destination: stop-rao-runner
+              group: swe-idcc-idcf-runner
+          rabbit:
+            bindings:
+              softInterrupt-in-0:
+                consumer:
+                  bindingRoutingKey: swe-idcc-idcf
 
     logback:
       amqp:
