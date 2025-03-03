@@ -19,7 +19,7 @@ spring:
         run-task:
           destination: swe-d2cc-run-task
         stop-task:
-          destination: swe-d2cc-stop-task
+          destination: stop-task
         consumeTaskDtoUpdate-in-0:
           destination: swe-d2cc-task-updated
         task-status-update:
@@ -30,6 +30,9 @@ spring:
             auto-bind-dlq: true
             max-attempts: 1
         bindings:
+          stop-task:
+            producer:
+              routingKey: swe-d2cc
           consumeTaskDtoUpdate-in-0:
             consumer:
               binding-routing-key: input
