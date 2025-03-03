@@ -23,17 +23,20 @@ data:
         stream:
           default:
             binder: rabbit
-            group: cse-export-idcc-runner
           bindings:
             softInterrupt-in-0:
-              destination: cse-export-idcc-stop-task
+              destination: stop-task
             request-in-0:
               destination: cse-export-idcc-request
+              group: cse-export-idcc-runner
             task-status-update:
               destination: cse-export-idcc-task-status-updated
-            stop-rao:
-              destination: stop-rao-runner
-
+              group: cse-export-idcc-runner
+          rabbit:
+            bindings:
+              softInterrupt-in-0:
+                consumer:
+                  bindingRoutingKey: cse-export-idcc
     logback:
       amqp:
         exchange: cse-export-idcc-task-manager-logs-exchange
