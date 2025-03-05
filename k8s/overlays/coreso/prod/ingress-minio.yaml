@@ -4,7 +4,6 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: kommander-traefik
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.middlewares: default-minio-console-rewrite@kubernetescrd
     traefik.ingress.kubernetes.io/router.tls: "true"
     app: gridcapa
     component: gridcapa
@@ -19,7 +18,7 @@ spec:
               service:
                 name: gridcapa-minio
                 port:
-                  number: 9001
+                  number: 9000
             path: /minio
             pathType: ImplementationSpecific
   tls:
