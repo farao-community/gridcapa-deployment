@@ -12,8 +12,4 @@ spec:
     component: gridcapa-minio
   ports:
     - port: 9000
-      targetPort: 9000
-      name: api
-    - port: 9001
-      targetPort: 9001
-      name: console
+      name: browser
