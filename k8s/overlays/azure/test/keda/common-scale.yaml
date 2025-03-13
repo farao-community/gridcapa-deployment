@@ -69,3 +69,11 @@ metadata:
 spec:
   scaleTargetRef:
     name: filestash
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: apps-metadata-server-scale
+spec:
+  scaleTargetRef:
+    name: apps-metadata-server
