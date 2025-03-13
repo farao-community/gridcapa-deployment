@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cse-import-idcc-gridcapa-app
+  name: cse-import-idcc-app
   labels:
     app: gridcapa
     component: front-app

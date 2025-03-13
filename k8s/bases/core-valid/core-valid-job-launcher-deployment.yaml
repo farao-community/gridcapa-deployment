@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: core-valid-gridcapa-job-launcher
+  name: core-valid-job-launcher
   labels:
     app: gridcapa
     component: job-launcher
@@ -82,4 +82,4 @@ spec:
       volumes:
         - name: core-valid-gridcapa-job-launcher-configmap-volume
           configMap:
-            name: core-valid-gridcapa-job-launcher-configmap
+            name: core-valid-job-launcher-configmap

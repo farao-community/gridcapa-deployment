@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-import-ec-idcc-gridcapa-app
+  name: cse-import-ec-idcc-app
   labels:
     app: gridcapa
     component: front-app
@@ -64,10 +64,10 @@ spec:
       volumes:
         - name: gridcapa-app-env-configmap-volume
           configMap:
-            name: gridcapa-app-env-configmap
+            name: app-env-configmap
         - name: gridcapa-app-process-metadata-configmap-volume
           configMap:
-            name: cse-import-ec-idcc-gridcapa-app-process-metadata-configmap
+            name: cse-import-ec-idcc-app-process-metadata-configmap
         - name: cse-import-ec-idcc-app-idp-settings-configmap-volume
           configMap:
             name: cse-import-ec-idcc-app-idp-settings-configmap

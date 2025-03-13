@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-import-ec-d2cc-gridcapa-job-launcher
+  name: cse-import-ec-d2cc-job-launcher
   labels:
     app: gridcapa
     component: job-launcher
@@ -77,4 +77,4 @@ spec:
       volumes:
         - name: cse-import-ec-d2cc-gridcapa-job-launcher-configmap-volume
           configMap:
-            name: cse-import-ec-d2cc-gridcapa-job-launcher-configmap
+            name: cse-import-ec-d2cc-job-launcher-configmap

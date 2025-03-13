@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-export-d2cc-gridcapa-app
+  name: cse-export-d2cc-app
   labels:
     app: gridcapa
     component: front-app
@@ -67,10 +67,10 @@ spec:
       volumes:
         - name: gridcapa-app-env-configmap-volume
           configMap:
-            name: gridcapa-app-env-configmap
+            name: app-env-configmap
         - name: gridcapa-app-process-metadata-configmap-volume
           configMap:
-            name: cse-export-d2cc-gridcapa-app-process-metadata-configmap
+            name: cse-export-d2cc-app-process-metadata-configmap
         - name: cse-export-d2cc-app-idp-settings-configmap-volume
           configMap:
             name: cse-export-d2cc-app-idp-settings-configmap

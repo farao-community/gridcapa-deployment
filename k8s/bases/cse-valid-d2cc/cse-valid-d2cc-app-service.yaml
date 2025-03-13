@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cse-valid-d2cc-gridcapa-app
+  name: cse-valid-d2cc-app
   labels:
     app: gridcapa
     component: front-app

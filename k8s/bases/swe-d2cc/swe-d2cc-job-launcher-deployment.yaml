@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: swe-d2cc-gridcapa-job-launcher
+  name: swe-d2cc-job-launcher
   labels:
     app: gridcapa
     component: job-launcher
@@ -77,4 +77,4 @@ spec:
       volumes:
         - name: swe-d2cc-gridcapa-job-launcher-configmap-volume
           configMap:
-            name: swe-d2cc-gridcapa-job-launcher-configmap
+            name: swe-d2cc-job-launcher-configmap

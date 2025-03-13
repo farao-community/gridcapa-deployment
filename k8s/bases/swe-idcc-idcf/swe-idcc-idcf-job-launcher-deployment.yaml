@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: swe-idcc-idcf-gridcapa-job-launcher
+  name: swe-idcc-idcf-job-launcher
   labels:
     app: gridcapa
     component: job-launcher
@@ -77,5 +77,5 @@ spec:
       volumes:
         - name: swe-idcc-idcf-gridcapa-job-launcher-configmap-volume
           configMap:
-            name: swe-idcc-idcf-gridcapa-job-launcher-configmap
+            name: swe-idcc-idcf-job-launcher-configmap
 
