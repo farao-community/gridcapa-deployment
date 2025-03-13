@@ -1,0 +1,63 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: config-notification-server-scale
+spec:
+  scaleTargetRef:
+    name: config-notification-server
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: config-server-scale
+spec:
+  scaleTargetRef:
+    name: config-server
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: gateway-scale
+spec:
+  scaleTargetRef:
+    name: gateway-server
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: interruption-server-scale
+spec:
+  scaleTargetRef:
+    name: interruption-server
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: rao-failure-handler-scale
+spec:
+  scaleTargetRef:
+    name: rao-failure-handler
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: gridcapa-minio-scale
+spec:
+  scaleTargetRef:
+    name: gridcapa-minio
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: gridcapa-rabbitmq-scale
+spec:
+  scaleTargetRef:
+    name: gridcapa-rabbitmq
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: gridcapa-postgresql-scale
+spec:
+  scaleTargetRef:
+    name: gridcapa-postgresql
