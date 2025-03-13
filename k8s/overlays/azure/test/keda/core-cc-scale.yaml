@@ -42,7 +42,7 @@ metadata:
   name: core-cc-gridcapa-app-scale
 spec:
   scaleTargetRef:
-    name: core-cc-gridcapa-app
+    name: core-cc-app
 
 ---
 
@@ -52,7 +52,7 @@ metadata:
   name: core-cc-gridcapa-post-processing-scale
 spec:
   scaleTargetRef:
-    name: core-cc-gridcapa-post-processing
+    name: core-cc-post-processing
 
 ---
 

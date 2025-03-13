@@ -54,7 +54,7 @@ metadata:
   name: swe-d2cc-gridcapa-app-scale
 spec:
   scaleTargetRef:
-    name: swe-d2cc-gridcapa-app
+    name: swe-d2cc-app
 
 ---
 
@@ -64,7 +64,7 @@ metadata:
   name: swe-d2cc-gridcapa-job-launcher-scale
 spec:
   scaleTargetRef:
-    name: swe-d2cc-gridcapa-job-launcher
+    name: swe-d2cc-job-launcher
 
 ---
 

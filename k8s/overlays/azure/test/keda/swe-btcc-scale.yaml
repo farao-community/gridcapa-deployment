@@ -32,7 +32,7 @@ metadata:
   name: swe-btcc-gridcapa-app-scale
 spec:
   scaleTargetRef:
-    name: swe-btcc-gridcapa-app
+    name: swe-btcc-app
 
 ---
 
@@ -42,7 +42,7 @@ metadata:
   name: swe-btcc-gridcapa-job-launcher-scale
 spec:
   scaleTargetRef:
-    name: swe-btcc-gridcapa-job-launcher
+    name: swe-btcc-job-launcher
 
 ---
 

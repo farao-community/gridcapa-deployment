@@ -6,7 +6,7 @@ metadata:
     desiredReplicas: upscaled
 spec:
   scaleTargetRef:
-    name: cse-import-idcc-gridcapa-runner
+    name: cse-import-idcc-runner
 
 ---
 apiVersion: keda.sh/v1alpha1
@@ -44,7 +44,7 @@ metadata:
   name: cse-import-idcc-gridcapa-adapter-scale
 spec:
   scaleTargetRef:
-    name: cse-import-idcc-gridcapa-adapter
+    name: cse-import-idcc-adapter
 
 ---
 
@@ -54,7 +54,7 @@ metadata:
   name: cse-import-idcc-gridcapa-app-scale
 spec:
   scaleTargetRef:
-    name: cse-import-idcc-gridcapa-app
+    name: cse-import-idcc-app
 
 ---
 
@@ -64,7 +64,7 @@ metadata:
   name: cse-import-idcc-gridcapa-job-launcher-scale
 spec:
   scaleTargetRef:
-    name: cse-import-idcc-gridcapa-job-launcher
+    name: cse-import-idcc-job-launcher
 
 ---
 
