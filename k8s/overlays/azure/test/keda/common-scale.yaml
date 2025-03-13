@@ -20,7 +20,7 @@ metadata:
   name: gateway-scale
 spec:
   scaleTargetRef:
-    name: gateway-server
+    name: gateway
 ---
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
