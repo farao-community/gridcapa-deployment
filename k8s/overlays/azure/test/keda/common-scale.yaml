@@ -61,3 +61,11 @@ metadata:
 spec:
   scaleTargetRef:
     name: gridcapa-postgresql
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: filestash-scale
+spec:
+  scaleTargetRef:
+    name: filestash
