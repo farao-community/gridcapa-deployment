@@ -59,7 +59,7 @@ images:
     newTag: v1.2.1
   - name: gridcapa-core-cc-output-data-bridge
     newName: docker.io/farao/gridcapa-output-data-bridge
-    newTag: v1.6.0
+    newTag: v1.7.0
   - name: gridcapa-core-cc-adapter
     newName: docker.io/farao/gridcapa-core-cc-adapter
     newTag: v2.8.0
