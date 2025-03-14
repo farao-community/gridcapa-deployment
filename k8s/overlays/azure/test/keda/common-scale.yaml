@@ -52,6 +52,7 @@ metadata:
   name: gridcapa-rabbitmq-scale
 spec:
   scaleTargetRef:
+    kind: StatefulSet
     name: gridcapa-rabbitmq
 ---
 apiVersion: keda.sh/v1alpha1
