@@ -145,7 +145,7 @@ spec:
       volumes:
         - name: swe-d2cc-data-bridge-volume
           configMap:
-            name: swe-d2cc-data-bridge
+            name: swe-d2cc-data-bridge-configmap
         - name: swe-d2cc-data-bridge-data
           persistentVolumeClaim:
             claimName: swe-d2cc-data-bridge-storage
