@@ -9,6 +9,6 @@ spec:
     - type: cron
       metadata:
         timezone: "Europe/Paris"
-        start: "30 8 * * 1-5"
+        start: "25 8 * * 1-5"
         end: "0 19 * * 1-5"
         desiredReplicas: "1"
