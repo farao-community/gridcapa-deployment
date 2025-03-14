@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: core-cc-gridcapa-app-process-metadata-configmap
+  name: core-cc-app-process-metadata-configmap
   labels:
     app: gridcapa
     component: front-app-process-metadata

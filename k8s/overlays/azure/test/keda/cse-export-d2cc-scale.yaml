@@ -62,7 +62,7 @@ metadata:
   name: cse-export-d2cc-gridcapa-job-launcher-scale
 spec:
   scaleTargetRef:
-    name: cse-export-d2cc-gridcapa-job-launcher
+    name: cse-export-d2cc-job-launcher
 
 ---
 

@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: swe-btcc-gridcapa-job-launcher
+  name: swe-btcc-job-launcher
   labels:
     app: gridcapa
     component: job-launcher
@@ -77,4 +77,4 @@ spec:
       volumes:
         - name: swe-btcc-gridcapa-job-launcher-configmap-volume
           configMap:
-            name: swe-btcc-gridcapa-job-launcher-configmap
+            name: swe-btcc-job-launcher-configmap

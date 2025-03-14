@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-import-ec-d2cc-gridcapa-job-launcher-configmap
+  name: cse-import-ec-d2cc-job-launcher-configmap
   labels:
     app: gridcapa
     component: job-launcher

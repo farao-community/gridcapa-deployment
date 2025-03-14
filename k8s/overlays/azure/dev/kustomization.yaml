@@ -60,7 +60,7 @@ configMapGenerator:
   - name: env-configmap
     envs:
       - env.properties
-  - name: gridcapa-app-env-configmap
+  - name: app-env-configmap
     files:
       - env.json=gridcapa-app-env-config.json
 

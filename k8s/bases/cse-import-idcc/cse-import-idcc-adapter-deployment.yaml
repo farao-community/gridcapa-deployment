@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-import-idcc-gridcapa-adapter
+  name: cse-import-idcc-adapter
   labels:
     app: gridcapa
     component: adapter
@@ -95,7 +95,7 @@ spec:
       volumes:
         - name: cse-import-idcc-adapter-configmap-volume
           configMap:
-            name: cse-import-idcc-gridcapa-adapter-configmap
+            name: cse-import-idcc-adapter-configmap
         - name: cse-adapter-logback-configmap-volume
           configMap:
             name: cse-adapter-logback-configmap

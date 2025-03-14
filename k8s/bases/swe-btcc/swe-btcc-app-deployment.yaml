@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: swe-btcc-gridcapa-app
+  name: swe-btcc-app
   labels:
     app: gridcapa
     component: front-app
@@ -63,10 +63,10 @@ spec:
       volumes:
         - name: gridcapa-app-env-configmap-volume
           configMap:
-            name: gridcapa-app-env-configmap
+            name: app-env-configmap
         - name: gridcapa-app-process-metadata-configmap-volume
           configMap:
-            name: swe-btcc-gridcapa-app-process-metadata-configmap
+            name: swe-btcc-app-process-metadata-configmap
         - name: swe-btcc-gridcapa-app-idp-settings-configmap-volume
           configMap:
-            name: swe-btcc-gridcapa-app-idp-settings-configmap
+            name: swe-btcc-app-idp-settings-configmap

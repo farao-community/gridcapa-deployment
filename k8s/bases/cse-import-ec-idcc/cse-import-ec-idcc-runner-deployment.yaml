@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-import-ec-idcc-gridcapa-runner
+  name: cse-import-ec-idcc-runner
   labels:
     app: gridcapa
     component: runner

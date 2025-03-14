@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: core-cc-gridcapa-post-processing
+  name: core-cc-post-processing
   labels:
     app: gridcapa
     component: post-processing

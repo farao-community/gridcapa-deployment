@@ -145,7 +145,7 @@ spec:
       volumes:
         - name: swe-idcc-idcf-data-bridge-volume
           configMap:
-            name: swe-idcc-idcf-data-bridge
+            name: swe-idcc-idcf-data-bridge-configmap
         - name: swe-idcc-idcf-data-bridge-data
           persistentVolumeClaim:
             claimName: swe-idcc-idcf-data-bridge-storage

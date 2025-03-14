@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: swe-idcc-idcf-gridcapa-app
+  name: swe-idcc-idcf-app
   labels:
     app: gridcapa
     component: front-app

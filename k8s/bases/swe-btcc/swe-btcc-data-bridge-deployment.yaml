@@ -145,7 +145,7 @@ spec:
       volumes:
         - name: swe-btcc-data-bridge-volume
           configMap:
-            name: swe-btcc-data-bridge
+            name: swe-btcc-data-bridge-configmap
         - name: swe-btcc-data-bridge-data
           persistentVolumeClaim:
             claimName: swe-btcc-data-bridge-storage

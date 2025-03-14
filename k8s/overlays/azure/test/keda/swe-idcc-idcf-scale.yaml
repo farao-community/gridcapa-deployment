@@ -54,7 +54,7 @@ metadata:
   name: swe-idcc-idcf-gridcapa-app-scale
 spec:
   scaleTargetRef:
-    name: swe-idcc-idcf-gridcapa-app
+    name: swe-idcc-idcf-app
 
 ---
 
@@ -64,7 +64,7 @@ metadata:
   name: swe-idcc-idcf-gridcapa-job-launcher-scale
 spec:
   scaleTargetRef:
-    name: swe-idcc-idcf-gridcapa-job-launcher
+    name: swe-idcc-idcf-job-launcher
 
 ---
 

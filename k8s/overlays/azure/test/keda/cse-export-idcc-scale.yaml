@@ -52,7 +52,7 @@ metadata:
   name: cse-export-idcc-gridcapa-app-scale
 spec:
   scaleTargetRef:
-    name: cse-export-idcc-gridcapa-app
+    name: cse-export-idcc-app
 
 ---
 
@@ -62,7 +62,7 @@ metadata:
   name: cse-export-idcc-gridcapa-job-launcher-scale
 spec:
   scaleTargetRef:
-    name: cse-export-idcc-gridcapa-job-launcher
+    name: cse-export-idcc-job-launcher
 
 ---
 

@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: core-cc-gridcapa-app
+  name: core-cc-app
   labels:
     app: gridcapa
     component: front-app
@@ -63,10 +63,10 @@ spec:
       volumes:
         - name: gridcapa-app-env-configmap-volume
           configMap:
-            name: gridcapa-app-env-configmap
+            name: app-env-configmap
         - name: gridcapa-app-process-metadata-configmap-volume
           configMap:
-            name: core-cc-gridcapa-app-process-metadata-configmap
+            name: core-cc-app-process-metadata-configmap
         - name: core-cc-gridcapa-app-idp-settings-configmap-volume
           configMap:
-            name: core-cc-gridcapa-app-idp-settings-configmap
+            name: core-cc-app-idp-settings-configmap

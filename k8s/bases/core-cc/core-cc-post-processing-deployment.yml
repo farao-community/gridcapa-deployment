@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: core-cc-gridcapa-post-processing
+  name: core-cc-post-processing
   labels:
     app: gridcapa
     component: post-processing
@@ -82,4 +82,4 @@ spec:
       volumes:
         - name: core-cc-gridcapa-post-processing-configmap-volume
           configMap:
-            name: core-cc-gridcapa-post-processing-configmap
+            name: core-cc-post-processing-configmap
