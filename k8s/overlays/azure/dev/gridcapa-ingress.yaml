@@ -280,8 +280,8 @@ spec:
               service:
                 name: gridcapa-minio
                 port:
-                  number: 9000
-            path: /()(minio.*)
+                  number: 9001
+            path: /minio(/|$)(.*)
             pathType: Prefix
           - backend:
               service:

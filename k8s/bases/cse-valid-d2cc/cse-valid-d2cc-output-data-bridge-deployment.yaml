@@ -82,7 +82,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
-                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_CSE_VALID_D2CC
+                  key: GRIDCAPA_MINIO_BASE_DIRECTORY_OUTPUT_CSE_VALID_D2CC
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
