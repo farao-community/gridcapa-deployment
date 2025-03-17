@@ -92,28 +92,28 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-import-ec-d2cc-gridcapa-runner
+        name: cse-import-ec-d2cc-runner
       spec:
         replicas: 8
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-import-ec-idcc-gridcapa-runner
+        name: cse-import-ec-idcc-runner
       spec:
         replicas: 4
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-import-idcc-gridcapa-runner
+        name: cse-import-idcc-runner
       spec:
         replicas: 4
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-import-d2cc-gridcapa-runner
+        name: cse-import-d2cc-runner
       spec:
         replicas: 8
   - patch: |-
@@ -163,7 +163,7 @@ patches:
   # Remove volumes related to authentication within application deployments
   - target:
       kind: Deployment
-      name: cse-export-d2cc-gridcapa-app
+      name: cse-export-d2cc-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
@@ -171,7 +171,7 @@ patches:
         path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
-      name: cse-export-idcc-gridcapa-app
+      name: cse-export-idcc-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
@@ -179,7 +179,7 @@ patches:
         path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
-      name: cse-import-ec-d2cc-gridcapa-app
+      name: cse-import-ec-d2cc-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
@@ -187,7 +187,7 @@ patches:
         path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
-      name: cse-import-ec-idcc-gridcapa-app
+      name: cse-import-ec-idcc-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
@@ -195,7 +195,7 @@ patches:
         path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
-      name: cse-import-idcc-gridcapa-app
+      name: cse-import-idcc-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
@@ -203,7 +203,7 @@ patches:
         path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
-      name: cse-import-d2cc-gridcapa-app
+      name: cse-import-d2cc-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
@@ -219,7 +219,7 @@ patches:
         path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
-      name: swe-idcc-gridcapa-app
+      name: swe-idcc-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
@@ -227,7 +227,7 @@ patches:
         path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
-      name: swe-idcc-idcf-gridcapa-app
+      name: swe-idcc-idcf-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
@@ -235,7 +235,7 @@ patches:
         path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
-      name: core-cc-gridcapa-app
+      name: core-cc-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
@@ -260,6 +260,6 @@ configMapGenerator:
   - name: env-configmap
     envs:
       - env.properties
-  - name: gridcapa-app-env-configmap
+  - name: app-env-configmap
     files:
       - env.json=gridcapa-app-env-config.json
