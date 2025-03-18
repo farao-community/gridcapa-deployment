@@ -1,0 +1,4 @@
+# On Azure TEST, platform is only up on weekdays
+- op: replace
+  path: /spec/schedule
+  value: "0 12 * * 1-5"
