@@ -3,7 +3,7 @@ kind: ScaledObject
 metadata:
   name: common-cron-trigger-patch
   annotations:
-    autoscaling.keda.sh/paused: "true"
+    autoscaling.keda.sh/paused: "false"
 spec:
   triggers:
     - type: cron
