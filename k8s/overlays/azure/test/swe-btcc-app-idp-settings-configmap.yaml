@@ -4,7 +4,7 @@ metadata:
   name: swe-btcc-app-idp-settings-configmap
   labels:
     app: gridcapa
-    component: swe-btcc-gridcapa-app-idp-settings-configmap
+    component: swe-btcc-app-idp-settings-configmap
     region: swe
     process: btcc
 data:

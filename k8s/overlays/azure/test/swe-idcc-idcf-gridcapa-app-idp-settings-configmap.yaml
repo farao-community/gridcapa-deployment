@@ -4,7 +4,7 @@ metadata:
   name: swe-idcc-idcf-app-idp-settings-configmap
   labels:
     app: gridcapa
-    component: swe-idcc-idcf-gridcapa-app-idp-settings-configmap
+    component: swe-idcc-idcf-app-idp-settings-configmap
     region: swe
     process: idcc-idcf
 data:
