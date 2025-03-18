@@ -52,7 +52,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: core-cc-gridcapa-post-processing-configmap-volume
+              name: core-cc-post-processing-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health

@@ -32,10 +32,10 @@ spec:
           volumeMounts:
             - mountPath: /usr/local/apache2/htdocs/gridcapa/env.json
               subPath: env.json
-              name: gridcapa-app-env-configmap-volume
+              name: app-env-configmap-volume
             - mountPath: /usr/local/apache2/htdocs/gridcapa/process-metadata.json
               subPath: process-metadata.json
-              name: gridcapa-app-process-metadata-configmap-volume
+              name: app-process-metadata-configmap-volume
             - mountPath: /usr/local/apache2/htdocs/gridcapa/idpSettings.json
               subPath: idpSettings.json
               name: cse-import-d2cc-app-idp-settings-configmap-volume
@@ -62,10 +62,10 @@ spec:
               memory: "128Mi"
       restartPolicy: Always
       volumes:
-        - name: gridcapa-app-env-configmap-volume
+        - name: app-env-configmap-volume
           configMap:
             name: app-env-configmap
-        - name: gridcapa-app-process-metadata-configmap-volume
+        - name: app-process-metadata-configmap-volume
           configMap:
             name: cse-import-d2cc-app-process-metadata-configmap
         - name: cse-import-d2cc-app-idp-settings-configmap-volume

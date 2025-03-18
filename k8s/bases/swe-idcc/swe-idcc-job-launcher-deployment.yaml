@@ -47,7 +47,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: swe-idcc-gridcapa-job-launcher-configmap-volume
+              name: swe-idcc-job-launcher-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health

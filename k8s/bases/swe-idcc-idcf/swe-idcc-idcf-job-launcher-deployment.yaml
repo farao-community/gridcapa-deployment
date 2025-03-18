@@ -47,7 +47,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: swe-idcc-idcf-gridcapa-job-launcher-configmap-volume
+              name: swe-idcc-idcf-job-launcher-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -75,7 +75,7 @@ spec:
               memory: "384Mi"
       restartPolicy: Always
       volumes:
-        - name: swe-idcc-idcf-gridcapa-job-launcher-configmap-volume
+        - name: swe-idcc-idcf-job-launcher-configmap-volume
           configMap:
             name: swe-idcc-idcf-job-launcher-configmap
 

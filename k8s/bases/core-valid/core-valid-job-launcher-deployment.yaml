@@ -52,7 +52,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: core-valid-gridcapa-job-launcher-configmap-volume
+              name: core-valid-job-launcher-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
