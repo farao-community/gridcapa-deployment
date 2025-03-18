@@ -65,10 +65,10 @@ spec:
               memory: "128Mi"
       restartPolicy: Always
       volumes:
-        - name: gridcapa-app-env-configmap-volume
+        - name: app-env-configmap-volume
           configMap:
             name: app-env-configmap
-        - name: gridcapa-app-process-metadata-configmap-volume
+        - name: app-process-metadata-configmap-volume
           configMap:
             name: cse-export-d2cc-app-process-metadata-configmap
         - name: cse-export-d2cc-app-idp-settings-configmap-volume

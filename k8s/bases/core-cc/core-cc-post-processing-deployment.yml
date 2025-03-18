@@ -80,6 +80,6 @@ spec:
               memory: "4Gi"
       restartPolicy: Always
       volumes:
-        - name: core-cc-gridcapa-post-processing-configmap-volume
+        - name: core-cc-post-processing-configmap-volume
           configMap:
             name: core-cc-post-processing-configmap

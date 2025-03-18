@@ -61,13 +61,13 @@ spec:
               memory: "128Mi"
       restartPolicy: Always
       volumes:
-        - name: gridcapa-app-env-configmap-volume
+        - name: app-env-configmap-volume
           configMap:
             name: app-env-configmap
-        - name: gridcapa-app-process-metadata-configmap-volume
+        - name: app-process-metadata-configmap-volume
           configMap:
             name: swe-idcc-idcf-app-process-metadata-configmap
-        - name: swe-idcc-idcf-gridcapa-app-idp-settings-configmap-volume
+        - name: swe-idcc-idcf-app-idp-settings-configmap-volume
           configMap:
             name: swe-idcc-idcf-app-idp-settings-configmap
 

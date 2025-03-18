@@ -75,7 +75,7 @@ spec:
               memory: "384Mi"
       restartPolicy: Always
       volumes:
-        - name: swe-idcc-gridcapa-job-launcher-configmap-volume
+        - name: swe-idcc-job-launcher-configmap-volume
           configMap:
             name: swe-idcc-job-launcher-configmap
 
