@@ -37,7 +37,7 @@ spec:
               name: app-process-metadata-configmap-volume
             - mountPath: /usr/local/apache2/htdocs/gridcapa/idpSettings.json
               subPath: idpSettings.json
-              name: swe-d2cc-gridcapa-app-idp-settings-configmap-volume
+              name: swe-d2cc-app-idp-settings-configmap-volume
           livenessProbe:
             tcpSocket:
               port: 80
