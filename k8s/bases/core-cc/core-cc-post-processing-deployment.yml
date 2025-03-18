@@ -23,7 +23,7 @@ spec:
         process: cc
     spec:
       containers:
-        - name: core-cc-gridcapa-post-processing
+        - name: core-cc-post-processing
           image: gridcapa-core-cc-post-processing
           imagePullPolicy: IfNotPresent
           ports:

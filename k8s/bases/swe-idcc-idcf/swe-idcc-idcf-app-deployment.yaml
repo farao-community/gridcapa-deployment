@@ -23,7 +23,7 @@ spec:
         process: idcc-idcf
     spec:
       containers:
-        - name: swe-idcc-idcf-gridcapa-app
+        - name: swe-idcc-idcf-app
           image: gridcapa-app
           imagePullPolicy: IfNotPresent
           ports:

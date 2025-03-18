@@ -23,7 +23,7 @@ spec:
         process: import-ec-d2cc
     spec:
       containers:
-        - name: cse-import-ec-d2cc-gridcapa-job-launcher
+        - name: cse-import-ec-d2cc-job-launcher
           image: gridcapa-cse-job-launcher
           imagePullPolicy: IfNotPresent
           ports:

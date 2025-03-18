@@ -25,7 +25,7 @@ spec:
         "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
     spec:
       containers:
-        - name: cse-import-ec-idcc-gridcapa-runner
+        - name: cse-import-ec-idcc-runner
           image: gridcapa-cse-import-runner
           imagePullPolicy: IfNotPresent
           ports:

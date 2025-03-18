@@ -23,7 +23,7 @@ spec:
         process: valid
     spec:
       containers:
-        - name: core-valid-gridcapa-job-launcher
+        - name: core-valid-job-launcher
           image: gridcapa-core-valid-job-launcher
           imagePullPolicy: IfNotPresent
           ports:

@@ -24,7 +24,7 @@ spec:
         process: export-idcc
     spec:
       containers:
-        - name: cse-export-idcc-gridcapa-app
+        - name: cse-export-idcc-app
           image: gridcapa-app
           imagePullPolicy: IfNotPresent
           ports:

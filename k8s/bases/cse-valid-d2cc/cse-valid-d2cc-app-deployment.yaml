@@ -23,7 +23,7 @@ spec:
         process: valid-d2cc
     spec:
       containers:
-        - name: cse-valid-d2cc-gridcapa-app
+        - name: cse-valid-d2cc-app
           image: gridcapa-app
           imagePullPolicy: IfNotPresent
           ports:

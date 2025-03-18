@@ -23,7 +23,7 @@ spec:
         process: btcc
     spec:
       containers:
-        - name: swe-btcc-gridcapa-app
+        - name: swe-btcc-app
           image: gridcapa-app
           imagePullPolicy: IfNotPresent
           ports:

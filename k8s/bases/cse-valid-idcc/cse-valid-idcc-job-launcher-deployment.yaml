@@ -23,7 +23,7 @@ spec:
         process: valid-idcc
     spec:
       containers:
-        - name: cse-valid-idcc-gridcapa-job-launcher
+        - name: cse-valid-idcc-job-launcher
           image: gridcapa-cse-valid-job-launcher
           imagePullPolicy: IfNotPresent
           ports:

@@ -24,7 +24,7 @@ spec:
         process: import-ec-d2cc
     spec:
       containers:
-        - name: cse-import-ec-d2cc-gridcapa-app
+        - name: cse-import-ec-d2cc-app
           image: gridcapa-app
           imagePullPolicy: IfNotPresent
           ports:

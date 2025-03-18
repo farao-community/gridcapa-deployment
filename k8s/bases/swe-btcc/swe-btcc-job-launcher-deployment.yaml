@@ -23,7 +23,7 @@ spec:
         process: btcc
     spec:
       containers:
-        - name: gridcapa-job-launcher
+        - name: swe-btcc-job-launcher
           image: gridcapa-swe-job-launcher
           imagePullPolicy: IfNotPresent
           ports:

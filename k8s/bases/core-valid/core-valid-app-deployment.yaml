@@ -23,7 +23,7 @@ spec:
         process: valid
     spec:
       containers:
-        - name: core-valid-gridcapa-app
+        - name: core-valid-app
           image: gridcapa-app
           imagePullPolicy: IfNotPresent
           ports:

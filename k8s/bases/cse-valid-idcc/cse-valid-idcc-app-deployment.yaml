@@ -23,7 +23,7 @@ spec:
         process: valid-idcc
     spec:
       containers:
-        - name: cse-valid-idcc-gridcapa-app
+        - name: cse-valid-idcc-app
           image: gridcapa-app
           imagePullPolicy: IfNotPresent
           ports:

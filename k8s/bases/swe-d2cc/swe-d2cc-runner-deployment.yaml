@@ -25,7 +25,7 @@ spec:
         "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
     spec:
       containers:
-        - name: gridcapa-swe-d2cc-runner
+        - name: swe-d2cc-runner
           image: gridcapa-swe-runner
           imagePullPolicy: IfNotPresent
           ports:

@@ -23,7 +23,7 @@ spec:
         process: d2cc
     spec:
       containers:
-        - name: gridcapa-job-launcher
+        - name: swe-d2cc-job-launcher
           image: gridcapa-swe-job-launcher
           imagePullPolicy: IfNotPresent
           ports:

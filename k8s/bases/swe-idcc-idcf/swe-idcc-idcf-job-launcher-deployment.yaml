@@ -23,7 +23,7 @@ spec:
         process: idcc-idcf
     spec:
       containers:
-        - name: gridcapa-job-launcher
+        - name: swe-idcc-idcf-job-launcher
           image: gridcapa-swe-job-launcher
           imagePullPolicy: IfNotPresent
           ports:

@@ -23,7 +23,7 @@ spec:
         process: import-idcc
     spec:
       containers:
-        - name: cse-import-idcc-gridcapa-job-launcher
+        - name: cse-import-idcc-job-launcher
           image: gridcapa-cse-job-launcher
           imagePullPolicy: IfNotPresent
           ports:
