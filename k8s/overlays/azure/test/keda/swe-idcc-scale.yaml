@@ -51,7 +51,7 @@ spec:
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: swe-idcc-gridcapa-app-scale
+  name: swe-idcc-app-scale
 spec:
   scaleTargetRef:
     name: swe-idcc-app
@@ -61,7 +61,7 @@ spec:
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: swe-idcc-gridcapa-job-launcher-scale
+  name: swe-idcc-job-launcher-scale
 spec:
   scaleTargetRef:
     name: swe-idcc-job-launcher

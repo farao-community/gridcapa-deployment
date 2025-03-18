@@ -39,7 +39,7 @@ spec:
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: core-cc-gridcapa-app-scale
+  name: core-cc-app-scale
 spec:
   scaleTargetRef:
     name: core-cc-app
@@ -49,7 +49,7 @@ spec:
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: core-cc-gridcapa-post-processing-scale
+  name: core-cc-post-processing-scale
 spec:
   scaleTargetRef:
     name: core-cc-post-processing
