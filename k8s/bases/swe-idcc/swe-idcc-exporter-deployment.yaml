@@ -23,7 +23,7 @@ spec:
         process: idcc
     spec:
       containers:
-        - name: gridcapa-swe-idcc-exporter
+        - name: swe-idcc-exporter
           image: gridcapa-swe-exporter
           imagePullPolicy: IfNotPresent
           ports:

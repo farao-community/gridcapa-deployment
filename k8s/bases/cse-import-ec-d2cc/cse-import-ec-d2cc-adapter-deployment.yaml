@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-import-ec-d2cc-gridcapa-adapter
+  name: cse-import-ec-d2cc-adapter
   labels:
     app: gridcapa
     component: adapter
@@ -23,7 +23,7 @@ spec:
         process: import-ec-d2cc
     spec:
       containers:
-        - name: cse-import-ec-d2cc-gridcapa-adapter
+        - name: cse-import-ec-d2cc-adapter
           image: gridcapa-cse-adapter
           imagePullPolicy: IfNotPresent
           ports:
@@ -95,7 +95,7 @@ spec:
       volumes:
         - name: cse-import-ec-d2cc-adapter-configmap-volume
           configMap:
-            name: cse-import-ec-d2cc-gridcapa-adapter-configmap
+            name: cse-import-ec-d2cc-adapter-configmap
         - name: cse-adapter-logback-configmap-volume
           configMap:
             name: cse-adapter-logback-configmap

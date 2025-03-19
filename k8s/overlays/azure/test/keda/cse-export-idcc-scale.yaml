@@ -49,20 +49,20 @@ spec:
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: cse-export-idcc-gridcapa-app-scale
+  name: cse-export-idcc-app-scale
 spec:
   scaleTargetRef:
-    name: cse-export-idcc-gridcapa-app
+    name: cse-export-idcc-app
 
 ---
 
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: cse-export-idcc-gridcapa-job-launcher-scale
+  name: cse-export-idcc-job-launcher-scale
 spec:
   scaleTargetRef:
-    name: cse-export-idcc-gridcapa-job-launcher
+    name: cse-export-idcc-job-launcher
 
 ---
 

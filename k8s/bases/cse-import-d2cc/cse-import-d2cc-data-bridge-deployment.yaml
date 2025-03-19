@@ -145,7 +145,7 @@ spec:
       volumes:
         - name: cse-import-d2cc-data-bridge
           configMap:
-            name: cse-import-d2cc-data-bridge
+            name: cse-import-d2cc-data-bridge-configmap
         - name: cse-import-d2cc-data-bridge-data
           persistentVolumeClaim:
             claimName: cse-import-d2cc-data-bridge-storage

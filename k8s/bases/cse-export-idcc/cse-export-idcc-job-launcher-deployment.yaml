@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-export-idcc-gridcapa-job-launcher
+  name: cse-export-idcc-job-launcher
   labels:
     app: gridcapa
     component: job-launcher
@@ -77,4 +77,4 @@ spec:
       volumes:
         - name: cse-export-idcc-job-launcher-configmap-volume
           configMap:
-            name: cse-export-idcc-gridcapa-job-launcher-configmap
+            name: cse-export-idcc-job-launcher-configmap

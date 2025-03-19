@@ -84,8 +84,8 @@ data:
               filters:
                 - StripPrefix=3
                 - RemoveRequestParameter=access_token
-            - id: core-valid-gridcapa-job-launcher
-              uri: http://core-valid-gridcapa-job-launcher
+            - id: core-valid-job-launcher
+              uri: http://core-valid-job-launcher
               predicates:
                 - Path=/core/valid/gridcapa-job-launcher/**
               filters:
@@ -118,8 +118,8 @@ data:
               filters:
                 - StripPrefix=4
                 - RemoveRequestParameter=access_token
-            - id: cse-import-d2cc-gridcapa-job-launcher
-              uri: http://cse-import-d2cc-gridcapa-job-launcher
+            - id: cse-import-d2cc-job-launcher
+              uri: http://cse-import-d2cc-job-launcher
               predicates:
                 - Path=/cse/import/d2cc/gridcapa-job-launcher/**
               filters:
@@ -152,8 +152,8 @@ data:
               filters:
                 - StripPrefix=4
                 - RemoveRequestParameter=access_token
-            - id: cse-import-idcc-gridcapa-job-launcher
-              uri: http://cse-import-idcc-gridcapa-job-launcher
+            - id: cse-import-idcc-job-launcher
+              uri: http://cse-import-idcc-job-launcher
               predicates:
                 - Path=/cse/import/idcc/gridcapa-job-launcher/**
               filters:
@@ -186,8 +186,8 @@ data:
               filters:
                 - StripPrefix=4
                 - RemoveRequestParameter=access_token
-            - id: cse-export-d2cc-gridcapa-job-launcher
-              uri: http://cse-export-d2cc-gridcapa-job-launcher
+            - id: cse-export-d2cc-job-launcher
+              uri: http://cse-export-d2cc-job-launcher
               predicates:
                 - Path=/cse/export/d2cc/gridcapa-job-launcher/**
               filters:
@@ -220,8 +220,8 @@ data:
               filters:
                 - StripPrefix=4
                 - RemoveRequestParameter=access_token
-            - id: cse-export-idcc-gridcapa-job-launcher
-              uri: http://cse-export-idcc-gridcapa-job-launcher
+            - id: cse-export-idcc-job-launcher
+              uri: http://cse-export-idcc-job-launcher
               predicates:
                 - Path=/cse/export/idcc/gridcapa-job-launcher/**
               filters:
@@ -260,8 +260,8 @@ data:
               filters:
                 - StripPrefix=4
                 - RemoveRequestParameter=access_token
-            - id: cse-valid-idcc-gridcapa-job-launcher
-              uri: http://cse-valid-idcc-gridcapa-job-launcher
+            - id: cse-valid-idcc-job-launcher
+              uri: http://cse-valid-idcc-job-launcher
               predicates:
                 - Path=/cse/valid/idcc/gridcapa-job-launcher/**
               filters:
@@ -294,8 +294,8 @@ data:
               filters:
                 - StripPrefix=4
                 - RemoveRequestParameter=access_token
-            - id: cse-valid-d2cc-gridcapa-job-launcher
-              uri: http://cse-valid-d2cc-gridcapa-job-launcher
+            - id: cse-valid-d2cc-job-launcher
+              uri: http://cse-valid-d2cc-job-launcher
               predicates:
                 - Path=/cse/valid/d2cc/gridcapa-job-launcher/**
               filters:
@@ -328,8 +328,8 @@ data:
               filters:
                 - StripPrefix=3
                 - RemoveRequestParameter=access_token
-            - id: swe-btcc-gridcapa-job-launcher
-              uri: http://swe-btcc-gridcapa-job-launcher
+            - id: swe-btcc-job-launcher
+              uri: http://swe-btcc-job-launcher
               predicates:
                 - Path=/swe/btcc/gridcapa-job-launcher/**
               filters:
@@ -362,8 +362,8 @@ data:
               filters:
                 - StripPrefix=3
                 - RemoveRequestParameter=access_token
-            - id: swe-d2cc-gridcapa-job-launcher
-              uri: http://swe-d2cc-gridcapa-job-launcher
+            - id: swe-d2cc-job-launcher
+              uri: http://swe-d2cc-job-launcher
               predicates:
                 - Path=/swe/d2cc/gridcapa-job-launcher/**
               filters:
@@ -396,8 +396,8 @@ data:
               filters:
                 - StripPrefix=3
                 - RemoveRequestParameter=access_token
-            - id: swe-idcc-gridcapa-job-launcher
-              uri: http://swe-idcc-gridcapa-job-launcher
+            - id: swe-idcc-job-launcher
+              uri: http://swe-idcc-job-launcher
               predicates:
                 - Path=/swe/idcc/gridcapa-job-launcher/**
               filters:
@@ -430,8 +430,8 @@ data:
               filters:
                 - StripPrefix=3
                 - RemoveRequestParameter=access_token
-            - id: swe-idcc-idcf-gridcapa-job-launcher
-              uri: http://swe-idcc-idcf-gridcapa-job-launcher
+            - id: swe-idcc-idcf-job-launcher
+              uri: http://swe-idcc-idcf-job-launcher
               predicates:
                 - Path=/swe/idcf/gridcapa-job-launcher/**
               filters:
@@ -464,8 +464,8 @@ data:
               filters:
                 - StripPrefix=4
                 - RemoveRequestParameter=access_token
-            - id: cse-import-ec-idcc-gridcapa-job-launcher
-              uri: http://cse-import-ec-idcc-gridcapa-job-launcher
+            - id: cse-import-ec-idcc-job-launcher
+              uri: http://cse-import-ec-idcc-job-launcher
               predicates:
                 - Path=/cse/import-ec/idcc/gridcapa-job-launcher/**
               filters:
@@ -498,8 +498,8 @@ data:
               filters:
                 - StripPrefix=4
                 - RemoveRequestParameter=access_token
-            - id: cse-import-ec-d2cc-gridcapa-job-launcher
-              uri: http://cse-import-ec-d2cc-gridcapa-job-launcher
+            - id: cse-import-ec-d2cc-job-launcher
+              uri: http://cse-import-ec-d2cc-job-launcher
               predicates:
                 - Path=/cse/import-ec/d2cc/gridcapa-job-launcher/**
               filters:
