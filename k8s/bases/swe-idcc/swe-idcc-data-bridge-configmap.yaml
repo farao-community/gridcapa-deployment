@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: swe-idcc-data-bridge
+  name: swe-idcc-data-bridge-configmap
   labels:
     app: gridcapa
     component: data-bridge

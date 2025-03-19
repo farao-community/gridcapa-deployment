@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: swe-idcc-gridcapa-job-launcher
+  name: swe-idcc-job-launcher
   labels:
     app: gridcapa
     component: job-launcher
@@ -47,7 +47,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: swe-idcc-gridcapa-job-launcher-configmap-volume
+              name: swe-idcc-job-launcher-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -75,7 +75,7 @@ spec:
               memory: "384Mi"
       restartPolicy: Always
       volumes:
-        - name: swe-idcc-gridcapa-job-launcher-configmap-volume
+        - name: swe-idcc-job-launcher-configmap-volume
           configMap:
-            name: swe-idcc-gridcapa-job-launcher-configmap
+            name: swe-idcc-job-launcher-configmap
 

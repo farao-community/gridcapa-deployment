@@ -23,7 +23,7 @@ spec:
         process: d2cc
     spec:
       containers:
-        - name: gridcapa-swe-d2cc-exporter
+        - name: swe-d2cc-exporter
           image: gridcapa-swe-exporter
           imagePullPolicy: IfNotPresent
           ports:

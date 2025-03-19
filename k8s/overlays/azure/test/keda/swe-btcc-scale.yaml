@@ -29,20 +29,20 @@ spec:
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: swe-btcc-gridcapa-app-scale
+  name: swe-btcc-app-scale
 spec:
   scaleTargetRef:
-    name: swe-btcc-gridcapa-app
+    name: swe-btcc-app
 
 ---
 
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: swe-btcc-gridcapa-job-launcher-scale
+  name: swe-btcc-job-launcher-scale
 spec:
   scaleTargetRef:
-    name: swe-btcc-gridcapa-job-launcher
+    name: swe-btcc-job-launcher
 
 ---
 

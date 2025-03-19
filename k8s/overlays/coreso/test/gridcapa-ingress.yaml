@@ -17,7 +17,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-export-d2cc-gridcapa-app
+                name: cse-export-d2cc-app
                 port:
                   number: 80
             path: /cse/export/d2cc/
@@ -104,7 +104,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-export-d2cc-gridcapa-job-launcher
+                name: cse-export-d2cc-job-launcher
                 port:
                   number: 80
             path: /cse/export/d2cc/gridcapa-job-launcher/
@@ -191,7 +191,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-export-idcc-gridcapa-app
+                name: cse-export-idcc-app
                 port:
                   number: 80
             path: /cse/export/idcc/
@@ -278,7 +278,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-export-idcc-gridcapa-job-launcher
+                name: cse-export-idcc-job-launcher
                 port:
                   number: 80
             path: /cse/export/idcc/gridcapa-job-launcher/
@@ -365,7 +365,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-ec-d2cc-gridcapa-app
+                name: cse-import-ec-d2cc-app
                 port:
                   number: 80
             path: /cse/import-ec/d2cc/
@@ -452,7 +452,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-ec-d2cc-gridcapa-job-launcher
+                name: cse-import-ec-d2cc-job-launcher
                 port:
                   number: 80
             path: /cse/import-ec/d2cc/gridcapa-job-launcher/
@@ -539,7 +539,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-ec-idcc-gridcapa-app
+                name: cse-import-ec-idcc-app
                 port:
                   number: 80
             path: /cse/import-ec/idcc/
@@ -626,7 +626,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-ec-idcc-gridcapa-job-launcher
+                name: cse-import-ec-idcc-job-launcher
                 port:
                   number: 80
             path: /cse/import-ec/idcc/gridcapa-job-launcher/
@@ -713,7 +713,7 @@ spec:
         paths:
           - backend:
               service:
-                name: swe-d2cc-gridcapa-app
+                name: swe-d2cc-app
                 port:
                   number: 80
             path: /swe/d2cc/
@@ -800,7 +800,7 @@ spec:
         paths:
           - backend:
               service:
-                name: swe-d2cc-gridcapa-job-launcher
+                name: swe-d2cc-job-launcher
                 port:
                   number: 80
             path: /swe/d2cc/gridcapa-job-launcher/
@@ -887,7 +887,7 @@ spec:
         paths:
           - backend:
               service:
-                name: swe-idcc-gridcapa-app
+                name: swe-idcc-app
                 port:
                   number: 80
             path: /swe/idcc/
@@ -974,7 +974,7 @@ spec:
         paths:
           - backend:
               service:
-                name: swe-idcc-gridcapa-job-launcher
+                name: swe-idcc-job-launcher
                 port:
                   number: 80
             path: /swe/idcc/gridcapa-job-launcher/
@@ -1033,7 +1033,7 @@ spec:
         paths:
           - backend:
               service:
-                name: swe-idcc-idcf-gridcapa-app
+                name: swe-idcc-idcf-app
                 port:
                   number: 80
             path: /swe/idcf/
@@ -1120,7 +1120,7 @@ spec:
         paths:
           - backend:
               service:
-                name: swe-idcc-idcf-gridcapa-job-launcher
+                name: swe-idcc-idcf-job-launcher
                 port:
                   number: 80
             path: /swe/idcf/gridcapa-job-launcher/
@@ -1237,7 +1237,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-d2cc-gridcapa-app
+                name: cse-import-d2cc-app
                 port:
                   number: 80
             path: /cse/import/d2cc/
@@ -1324,7 +1324,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-d2cc-gridcapa-job-launcher
+                name: cse-import-d2cc-job-launcher
                 port:
                   number: 80
             path: /cse/import/d2cc/gridcapa-job-launcher/
@@ -1411,7 +1411,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-idcc-gridcapa-app
+                name: cse-import-idcc-app
                 port:
                   number: 80
             path: /cse/import/idcc/
@@ -1498,7 +1498,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-idcc-gridcapa-job-launcher
+                name: cse-import-idcc-job-launcher
                 port:
                   number: 80
             path: /cse/import/idcc/gridcapa-job-launcher/
@@ -1585,7 +1585,7 @@ spec:
         paths:
           - backend:
               service:
-                name: core-cc-gridcapa-app
+                name: core-cc-app
                 port:
                   number: 80
             path: /core/cc/

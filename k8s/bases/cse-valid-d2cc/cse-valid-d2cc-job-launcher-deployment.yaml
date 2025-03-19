@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-valid-d2cc-gridcapa-job-launcher
+  name: cse-valid-d2cc-job-launcher
   labels:
     app: gridcapa
     component: job-launcher
@@ -23,7 +23,7 @@ spec:
         process: valid-d2cc
     spec:
       containers:
-        - name: cse-valid-d2cc-gridcapa-job-launcher
+        - name: cse-valid-d2cc-job-launcher
           image: gridcapa-cse-valid-job-launcher
           imagePullPolicy: IfNotPresent
           ports:
@@ -47,7 +47,7 @@ spec:
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
-              name: cse-valid-d2cc-gridcapa-job-launcher-configmap-volume
+              name: cse-valid-d2cc-job-launcher-configmap-volume
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -75,6 +75,6 @@ spec:
               memory: "384Mi"
       restartPolicy: Always
       volumes:
-        - name: cse-valid-d2cc-gridcapa-job-launcher-configmap-volume
+        - name: cse-valid-d2cc-job-launcher-configmap-volume
           configMap:
-            name: cse-valid-d2cc-gridcapa-job-launcher-configmap
+            name: cse-valid-d2cc-job-launcher-configmap

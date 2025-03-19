@@ -1,10 +1,10 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: core-cc-gridcapa-app-idp-settings-configmap
+  name: core-cc-app-idp-settings-configmap
   labels:
     app: gridcapa
-    component: core-cc-gridcapa-app-idp-settings-configmap
+    component: core-cc-app-idp-settings-configmap
     region: core
     process: cc
 data:

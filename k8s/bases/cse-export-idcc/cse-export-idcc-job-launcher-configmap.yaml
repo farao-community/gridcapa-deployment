@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-export-idcc-gridcapa-job-launcher-configmap
+  name: cse-export-idcc-job-launcher-configmap
   labels:
     app: gridcapa
     component: job-launcher
