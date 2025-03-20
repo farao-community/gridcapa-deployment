@@ -75,10 +75,6 @@ spec:
             - name: MINIO_NOTIFY_AMQP_DURABLE
               value: on
           volumeMounts:
-            # This volume mount should be commented after data migration
-            - name: gridcapa-minio-data
-              mountPath: /data
-            # Comment ends here
             - name: gridcapa-minio
               mountPath: /bitnami/minio/data
           livenessProbe:
@@ -104,16 +100,9 @@ spec:
               memory: "350Mi"
             limits:
               cpu: "2.0"
-              # Temporary memory upgrade for the purpose of data migration
-              # To be reduced to "350Mi" afterwards
-              memory: "4Gi"
+              memory: "350Mi"
       restartPolicy: Always
       volumes:
-        # This volume should be commented after data migration
-        - name: gridcapa-minio-data
-          persistentVolumeClaim:
-            claimName: gridcapa-minio-storage
-        # Comment ends here
         - name: gridcapa-minio
           persistentVolumeClaim:
             claimName: gridcapa-minio-pv
