@@ -92,7 +92,7 @@ patches:
         name: minio-get-storage-data-cron
       spec:
         timeZone: "Europe/Paris"
-        schedule: "*/10 9-19 * * 1-5"
+        schedule: "*/10 9-18 * * 1-5"
 #  Uncomment if deploying cse import idcc
 #  - patch: |-
 #      kind: Deployment
