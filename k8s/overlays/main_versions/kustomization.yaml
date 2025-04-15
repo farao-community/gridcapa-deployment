@@ -46,7 +46,7 @@ images:
     newTag: v1.3.1
   - name: gridcapa-interruption-server
     newName: docker.io/farao/gridcapa-interruption-server
-    newTag: v1.2.0
+    newTag: v1.3.0
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: v1.18.1
