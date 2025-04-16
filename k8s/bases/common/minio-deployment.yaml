@@ -11,6 +11,8 @@ spec:
     matchLabels:
       app: gridcapa
       component: gridcapa-minio
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
