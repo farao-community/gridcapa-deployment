@@ -47,9 +47,6 @@ patches:
         template:
           spec:
             volumes:
-              - name: gridcapa-minio-data
-                persistentVolumeClaim:
-                  claimName: gridcapa-coreso-minio-storage
               - name: gridcapa-minio
                 persistentVolumeClaim:
                   claimName: gridcapa-coreso-minio
