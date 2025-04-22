@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-import-ec-idcc-gridcapa-runner
+  name: cse-import-ec-idcc-runner
   labels:
     app: gridcapa
     component: runner
@@ -25,7 +25,7 @@ spec:
         "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
     spec:
       containers:
-        - name: cse-import-ec-idcc-gridcapa-runner
+        - name: cse-import-ec-idcc-runner
           image: gridcapa-cse-import-runner
           imagePullPolicy: IfNotPresent
           ports:

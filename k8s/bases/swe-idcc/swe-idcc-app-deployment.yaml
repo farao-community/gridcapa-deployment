@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: swe-idcc-gridcapa-app
+  name: swe-idcc-app
   labels:
     app: gridcapa
     component: front-app
@@ -23,7 +23,7 @@ spec:
         process: idcc
     spec:
       containers:
-        - name: swe-idcc-gridcapa-app
+        - name: swe-idcc-app
           image: gridcapa-app
           imagePullPolicy: IfNotPresent
           ports:
@@ -31,13 +31,13 @@ spec:
           volumeMounts:
             - mountPath: /usr/local/apache2/htdocs/gridcapa/env.json
               subPath: env.json
-              name: gridcapa-app-env-configmap-volume
+              name: app-env-configmap-volume
             - mountPath: /usr/local/apache2/htdocs/gridcapa/process-metadata.json
               subPath: process-metadata.json
-              name: gridcapa-app-process-metadata-configmap-volume
+              name: app-process-metadata-configmap-volume
             - mountPath: /usr/local/apache2/htdocs/gridcapa/idpSettings.json
               subPath: idpSettings.json
-              name: swe-idcc-gridcapa-app-idp-settings-configmap-volume
+              name: swe-idcc-app-idp-settings-configmap-volume
           livenessProbe:
             tcpSocket:
               port: 80
@@ -61,12 +61,12 @@ spec:
               memory: "128Mi"
       restartPolicy: Always
       volumes:
-        - name: gridcapa-app-env-configmap-volume
+        - name: app-env-configmap-volume
           configMap:
-            name: gridcapa-app-env-configmap
-        - name: gridcapa-app-process-metadata-configmap-volume
+            name: app-env-configmap
+        - name: app-process-metadata-configmap-volume
           configMap:
-            name: swe-idcc-gridcapa-app-process-metadata-configmap
-        - name: swe-idcc-gridcapa-app-idp-settings-configmap-volume
+            name: swe-idcc-app-process-metadata-configmap
+        - name: swe-idcc-app-idp-settings-configmap-volume
           configMap:
-            name: swe-idcc-gridcapa-app-idp-settings-configmap
+            name: swe-idcc-app-idp-settings-configmap

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: swe-idcc-idcf-gridcapa-job-launcher
+  name: swe-idcc-idcf-job-launcher
   labels:
     app: gridcapa
     component: job-launcher

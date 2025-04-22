@@ -19,7 +19,7 @@ spring:
         run-task:
           destination: cse-import-ec-idcc-launch-task
         stop-task:
-          destination: cse-import-ec-idcc-stop-task
+          destination: stop-task
         consumeTaskDtoUpdate-in-0:
           destination: cse-import-ec-idcc-task-updated
         task-status-update:
@@ -30,11 +30,14 @@ spring:
             auto-bind-dlq: true
             max-attempts: 1
         bindings:
+          stop-task:
+            producer:
+              routingKey: cse-import-ec-idcc
           consumeTaskDtoUpdate-in-0:
             consumer:
               binding-routing-key: input
 
-gridcapa-version : 5.16.1
+gridcapa-version : 5.18.0
 
 job-launcher:
   url:

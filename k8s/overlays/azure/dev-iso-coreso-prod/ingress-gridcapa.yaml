@@ -34,7 +34,7 @@ spec:
         paths:
           - backend:
               service:
-                name: cse-import-idcc-gridcapa-app
+                name: cse-import-idcc-app
                 port:
                   number: 80
             path: /cse/import/idcc(/|$)(.*)
@@ -76,7 +76,7 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: cse-import-d2cc-gridcapa-app
+                name: cse-import-d2cc-app
                 port:
                   number: 80
             path: /cse/import/d2cc(/|$)(.*)
@@ -118,7 +118,7 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: cse-export-d2cc-gridcapa-app
+                name: cse-export-d2cc-app
                 port:
                   number: 80
             path: /cse/export/d2cc(/|$)(.*)
@@ -161,7 +161,7 @@ spec:
 
           - backend:
               service:
-                name: cse-export-idcc-gridcapa-app
+                name: cse-export-idcc-app
                 port:
                   number: 80
             path: /cse/export/idcc(/|$)(.*)
@@ -231,7 +231,7 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: swe-d2cc-gridcapa-app
+                name: swe-d2cc-app
                 port:
                   number: 80
             path: /swe/d2cc(/|$)(.*)
@@ -273,7 +273,7 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: swe-idcc-gridcapa-app
+                name: swe-idcc-app
                 port:
                   number: 80
             path: /swe/idcc(/|$)(.*)
@@ -316,7 +316,7 @@ spec:
 
           - backend:
               service:
-                name: cse-import-ec-d2cc-gridcapa-app
+                name: cse-import-ec-d2cc-app
                 port:
                   number: 80
             path: /cse/import-ec/d2cc(/|$)(.*)
@@ -359,7 +359,7 @@ spec:
 
           - backend:
               service:
-                name: cse-import-ec-idcc-gridcapa-app
+                name: cse-import-ec-idcc-app
                 port:
                   number: 80
             path: /cse/import-ec/idcc(/|$)(.*)
@@ -401,7 +401,7 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: core-cc-gridcapa-app
+                name: core-cc-app
                 port:
                   number: 80
             path: /core/cc(/|$)(.*)

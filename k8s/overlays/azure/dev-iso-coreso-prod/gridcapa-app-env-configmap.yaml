@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: gridcapa-app-env-configmap
+  name: app-env-configmap
   labels:
     app: gridcapa
     component: gridcapa-app-env-configmap

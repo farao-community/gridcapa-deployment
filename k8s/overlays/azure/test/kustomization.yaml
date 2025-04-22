@@ -55,7 +55,7 @@ configMapGenerator:
   - name: env-configmap
     envs:
       - env.properties
-  - name: gridcapa-app-env-configmap
+  - name: app-env-configmap
     files:
       - env.json=gridcapa-app-env-config.json
 
@@ -81,12 +81,24 @@ patches:
                     memory: "40Gi"
             imagePullSecrets:
               - name: dockerhub-acr-secret
+  - target:
+      labelSelector: "component=minio-purge"
+    path: get-storage-data-cron-patch.yaml
+# On Azure TEST, platform is only up between 9-19 on weekdays
+  - patch: |-
+      kind: CronJob
+      apiVersion: batch/v1
+      metadata:
+        name: minio-get-storage-data-cron
+      spec:
+        timeZone: "Europe/Paris"
+        schedule: "*/10 9-18 * * 1-5"
 #  Uncomment if deploying cse import idcc
 #  - patch: |-
 #      kind: Deployment
 #      apiVersion: apps/v1
 #      metadata:
-#        name: cse-import-idcc-gridcapa-runner
+#        name: cse-import-idcc-runner
 #      spec:
 #        template:
 #          spec:

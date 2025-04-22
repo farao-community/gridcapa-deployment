@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: cse-valid-d2cc-gridcapa-app
+  name: cse-valid-d2cc-app
   labels:
     app: gridcapa
     component: front-app
@@ -23,7 +23,7 @@ spec:
         process: valid-d2cc
     spec:
       containers:
-        - name: cse-valid-d2cc-gridcapa-app
+        - name: cse-valid-d2cc-app
           image: gridcapa-app
           imagePullPolicy: IfNotPresent
           ports:
@@ -31,10 +31,10 @@ spec:
           volumeMounts:
             - mountPath: /usr/local/apache2/htdocs/gridcapa/env.json
               subPath: env.json
-              name: gridcapa-app-env-configmap-volume
+              name: app-env-configmap-volume
             - mountPath: /usr/local/apache2/htdocs/gridcapa/process-metadata.json
               subPath: process-metadata.json
-              name: gridcapa-app-process-metadata-configmap-volume
+              name: app-process-metadata-configmap-volume
             - mountPath: /usr/local/apache2/htdocs/gridcapa/idpSettings.json
               subPath: idpSettings.json
               name: cse-valid-d2cc-app-idp-settings-configmap-volume
@@ -61,12 +61,12 @@ spec:
               memory: "128Mi"
       restartPolicy: Always
       volumes:
-        - name: gridcapa-app-env-configmap-volume
+        - name: app-env-configmap-volume
           configMap:
-            name: gridcapa-app-env-configmap
-        - name: gridcapa-app-process-metadata-configmap-volume
+            name: app-env-configmap
+        - name: app-process-metadata-configmap-volume
           configMap:
-            name: cse-valid-d2cc-gridcapa-app-process-metadata-configmap
+            name: cse-valid-d2cc-app-process-metadata-configmap
         - name: cse-valid-d2cc-app-idp-settings-configmap-volume
           configMap:
             name: cse-valid-d2cc-app-idp-settings-configmap

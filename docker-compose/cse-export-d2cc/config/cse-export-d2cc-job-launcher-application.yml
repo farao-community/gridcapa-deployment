@@ -21,7 +21,7 @@ spring:
         run-task-auto:
           destination: cse-export-d2cc-launch-task
         stop-task:
-          destination: cse-export-d2cc-stop-task
+          destination: stop-task
         consumeTaskDtoUpdate-in-0:
           destination: cse-export-d2cc-task-updated
         task-status-update:
@@ -32,11 +32,14 @@ spring:
             auto-bind-dlq: true
             max-attempts: 1
         bindings:
+          stop-task:
+            producer:
+              routingKey: cse-export-d2cc
           consumeTaskDtoUpdate-in-0:
             consumer:
               binding-routing-key: input
 
-gridcapa-version: 5.16.1
+gridcapa-version: 5.18.0
 
 job-launcher:
   auto: true

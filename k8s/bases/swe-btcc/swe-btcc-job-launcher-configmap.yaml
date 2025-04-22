@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: swe-btcc-gridcapa-job-launcher-configmap
+  name: swe-btcc-job-launcher-configmap
   labels:
     app: gridcapa
     component: job-launcher
@@ -30,7 +30,7 @@ data:
             run-task:
               destination: swe-btcc-run-task
             stop-task:
-              destination: swe-btcc-stop-task
+              destination: stop-task
             consumeTaskDtoUpdate-in-0:
               destination: swe-btcc-task-updated
             task-status-update:
@@ -41,6 +41,9 @@ data:
                 auto-bind-dlq: true
                 max-attempts: 1
             bindings:
+              stop-task:
+                producer:
+                  routingKey: swe-btcc
               consumeTaskDtoUpdate-in-0:
                 consumer:
                   binding-routing-key: input

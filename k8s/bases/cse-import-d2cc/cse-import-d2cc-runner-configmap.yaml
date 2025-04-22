@@ -23,16 +23,20 @@ data:
         stream:
           default:
             binder: rabbit
-            group: cse-import-d2cc-runner
           bindings:
             softInterrupt-in-0:
-              destination: cse-import-d2cc-stop-task
+              destination: stop-task
             request-in-0:
               destination: cse-import-d2cc-request
+              group: cse-import-d2cc-runner
             task-status-update:
               destination: cse-import-d2cc-task-status-updated
-            stop-rao:
-              destination: stop-rao-runner
+              group: cse-import-d2cc-runner
+          rabbit:
+            bindings:
+              softInterrupt-in-0:
+                consumer:
+                  bindingRoutingKey: cse-import-d2cc
 
     logback:
       amqp:

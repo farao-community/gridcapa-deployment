@@ -10,12 +10,12 @@ spec:
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: cse-import-ec-d2cc-gridcapa-runner-scale
+  name: cse-import-ec-d2cc-runner-scale
   labels:
     desiredReplicas: upscaled
 spec:
   scaleTargetRef:
-    name: cse-import-ec-d2cc-gridcapa-runner
+    name: cse-import-ec-d2cc-runner
 
 ---
 apiVersion: keda.sh/v1alpha1
@@ -41,30 +41,30 @@ spec:
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: cse-import-ec-d2cc-gridcapa-adapter-scale
+  name: cse-import-ec-d2cc-adapter-scale
 spec:
   scaleTargetRef:
-    name: cse-import-ec-d2cc-gridcapa-adapter
+    name: cse-import-ec-d2cc-adapter
 
 ---
 
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: cse-import-ec-d2cc-gridcapa-app-scale
+  name: cse-import-ec-d2cc-app-scale
 spec:
   scaleTargetRef:
-    name: cse-import-ec-d2cc-gridcapa-app
+    name: cse-import-ec-d2cc-app
 
 ---
 
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: cse-import-ec-d2cc-gridcapa-job-launcher-scale
+  name: cse-import-ec-d2cc-job-launcher-scale
 spec:
   scaleTargetRef:
-    name: cse-import-ec-d2cc-gridcapa-job-launcher
+    name: cse-import-ec-d2cc-job-launcher
 
 ---
 

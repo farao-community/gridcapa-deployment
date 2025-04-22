@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: cse-export-idcc-gridcapa-job-launcher-configmap
+  name: cse-export-idcc-job-launcher-configmap
   labels:
     app: gridcapa
     component: job-launcher
@@ -32,7 +32,7 @@ data:
             run-task-auto:
               destination: cse-export-idcc-launch-task
             stop-task:
-              destination: cse-export-idcc-stop-task
+              destination: stop-task
             consumeTaskDtoUpdate-in-0:
               destination: cse-export-idcc-task-updated
             task-status-update:
@@ -43,6 +43,9 @@ data:
                 auto-bind-dlq: true
                 max-attempts: 1
             bindings:
+              stop-task:
+                producer:
+                  routingKey: cse-export-idcc
               consumeTaskDtoUpdate-in-0:
                 consumer:
                   binding-routing-key: input
