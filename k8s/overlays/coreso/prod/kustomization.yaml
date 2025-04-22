@@ -27,7 +27,6 @@ resources:
   - ingress-gridcapa.yaml
   - ingress-middlewares.yaml
   - ingress-minio.yaml
-  - minio-pv-claim.yaml
   - minio-pvc.yaml
   - postgresql-configmap.yaml
   - postgresql-data-pv-claim.yaml
@@ -46,9 +45,6 @@ patches:
         template:
           spec:
             volumes:
-              - name: gridcapa-minio-data
-                persistentVolumeClaim:
-                  claimName: gridcapa-coreso-minio-storage
               - name: gridcapa-minio
                 persistentVolumeClaim:
                   claimName: gridcapa-coreso-minio

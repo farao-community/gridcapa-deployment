@@ -5,7 +5,6 @@ resources:
   - ../../../bases/common
   - azure-storage-class.yaml
   - azure-storage-azure-disk.yaml
-  - minio-pv-claim.yaml
   - minio-data-pv-claim.yaml
   - postgresql-data-pv-claim.yaml
   - postgresql-service.yaml
