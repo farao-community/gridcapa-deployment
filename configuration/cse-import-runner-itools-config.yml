@@ -19,6 +19,7 @@ open-loadflow-default-parameters:
   newtonRaphsonConvEpsPerEq: 0.01
   minRealisticVoltage: 0.4
   maxRealisticVoltage: 1.6
+  maxOuterLoopIterations: 30
   stateVectorScalingMode: MAX_VOLTAGE_CHANGE
   reactiveLimitsMaxPqPvSwitch: 2
 
