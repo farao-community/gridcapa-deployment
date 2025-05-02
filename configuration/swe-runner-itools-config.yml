@@ -5,6 +5,7 @@ sensitivity-analysis:
   default-impl-name: OpenLoadFlow
 
 load-flow-default-parameters:
+  readSlackBus: true
   writeSlackBus: false
   voltageInitMode: DC_VALUES
   balanceType: PROPORTIONAL_TO_LOAD
@@ -20,7 +21,9 @@ open-loadflow-default-parameters:
   newtonRaphsonConvEpsPerEq: 0.001
   minRealisticVoltage: 0.5
   maxRealisticVoltage: 1.5
+  maxOuterLoopIterations: 30
   stateVectorScalingMode: MAX_VOLTAGE_CHANGE
+  slackDistributionFailureBehavior: FAIL
 
 rao-objective-function:
   type: SECURE_FLOW
