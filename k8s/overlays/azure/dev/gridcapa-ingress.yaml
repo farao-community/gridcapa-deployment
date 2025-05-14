@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite ^/test/web/e26d6f38-1456-4456-8609-656faa9310aa$ https://example.org/e26d6f38-1456-4456-8609-656faa9310aa redirect;
+      
       rewrite ^/cse/import/idcc$ /cse/import/idcc/ permanent;
       rewrite ^/cse/import/d2cc$ /cse/import/d2cc/ permanent;
       rewrite ^/cse/import-ec/idcc$ /cse/import-ec/idcc/ permanent;
@@ -43,6 +45,13 @@ spec:
     - host: gridcapa-dev.farao-community.com
       http:
         paths:
+          - backend:
+              service:
+                name: simple-web-server-svc
+                port:
+                  number: 80
+            path: /test/web(/|$)(.*)
+            pathType: Prefix
           - backend:
               service:
                 name: cse-import-idcc-gridcapa-app
