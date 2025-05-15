@@ -49,7 +49,7 @@ data:
 
     swe-runner:
       data-fix:
-        remove-remote-voltage-regulation-in-france: true
+        remove-remote-voltage-regulation-in-france: false
       pst:
         pst-ids:
           - _e071a1d4-fef5-1bd9-5278-d195c5597b6e
