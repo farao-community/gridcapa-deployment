@@ -10,7 +10,7 @@ metadata:
 data:
   process-metadata.json: |-
     {
-      "processName": "SWE IDCC DACF",
+      "processName": "SWE IDCC 1st run",
       "dayIncrementInDate": 1,
       "globalViewTimestampFilter": [
         "02:30",

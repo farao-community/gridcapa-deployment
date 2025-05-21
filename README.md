@@ -21,9 +21,9 @@ GridCapa currently contains the following applications:
 - GridCapa CSE IMPORT_EC D2CC
 - GridCapa CSE IMPORT_EC IDCC
 - GridCapa SWE BTCC
-- GridCapa SWE D2CC
-- GridCapa SWE IDCC DACF
-- GridCapa SWE IDCC IDCF
+- GridCapa SWE D2CC (CCC DA)
+- GridCapa SWE IDCC DACF (1st run)
+- GridCapa SWE IDCC IDCF (2nd run)
 
 
 ### Prerequisites
@@ -187,7 +187,7 @@ In order to limit resources used by this environment, a KEDA (Kubernetes Event-D
 is located at k8s/overlays/azure/test/keda. Should you wish to pause it for a time, simply edit the scaler you want to pause
 and change the **metadata.annotations.autoscaling.keda.sh/paused** value to **false**
 
-On this environment by default only **CORE-CC** , **SWE D2CC** & **CSE IMPORT-EC-D2CC** are deployed. This is done to limit the resources
+On this environment by default only **CORE-CC** , **SWE D2CC (CCC DA)** & **CSE IMPORT-EC-D2CC** are deployed. This is done to limit the resources
 used by the cluster. To deploy each and every process please uncomment corresponding lines in k8s/overlays/azure/test/kustomization.yaml
 
 Label **on-demand: "true"** is added on every on-demand process to easily go back to the "light" version of the 
