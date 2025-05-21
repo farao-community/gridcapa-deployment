@@ -9,53 +9,53 @@ data:
   apps-metadata.json: |-
     [
       {
+        "name" : "Capa CORE CC",
+        "url"  : "/core/cc/",
+        "appColor" : "#21afe1"
+      },
+      {
         "name" : "Capa CSE EXPORT D2CC",
         "url"  : "/cse/export/d2cc/",
-        "appColor" : "#f4d03f"
+        "appColor" : "#8ff0a4"
       },
       {
         "name" : "Capa CSE EXPORT IDCC",
         "url"  : "/cse/export/idcc/",
-        "appColor" : "#e629da"
-      },
-      {
-        "name" : "Capa SWE D2CC",
-        "url"  : "/swe/d2cc/",
-        "appColor" : "#ebd82d"
-      },
-      {
-        "name" : "Capa SWE IDCC DACF",
-        "url"  : "/swe/idcc/",
-        "appColor" : "#cfeb2d"
-      },
-      {
-        "name" : "Capa SWE IDCC IDCF",
-        "url"  : "/swe/idcf/",
-        "appColor" : "#659490"
-      },
-      {
-        "name" : "Capa CSE IMPORT EC D2CC",
-        "url"  : "/cse/import-ec/d2cc/",
-        "appColor" : "#008080"
-      },
-      {
-        "name" : "Capa CSE IMPORT EC IDCC",
-        "url"  : "/cse/import-ec/idcc/",
-        "appColor" : "#808000"
+        "appColor" : "#57e389"
       },
       {
         "name" : "Capa CSE IMPORT D2CC",
         "url"  : "/cse/import/d2cc/",
-        "appColor" : "#36cf29"
+        "appColor" : "#33d17a"
       },
       {
         "name" : "Capa CSE IMPORT IDCC",
         "url"  : "/cse/import/idcc/",
-        "appColor" : "#21afe1"
+        "appColor" : "#2ec27e"
       },
       {
-        "name" : "Capa CORE CC",
-        "url"  : "/core/cc/",
-        "appColor" : "#0894f5"
+        "name" : "Capa CSE IMPORT EC D2CC",
+        "url"  : "/cse/import-ec/d2cc/",
+        "appColor" : "#26a269"
+      },
+      {
+        "name" : "Capa CSE IMPORT EC IDCC",
+        "url"  : "/cse/import-ec/idcc/",
+        "appColor" : "#187746"
+      },
+      {
+        "name" : "Capa SWE CCC DA",
+        "url"  : "/swe/d2cc/",
+        "appColor" : "#fbf57b"
+      },
+      {
+        "name" : "Capa SWE IDCC 1st run",
+        "url"  : "/swe/idcc/",
+        "appColor" : "#f8e45c"
+      },
+      {
+        "name" : "Capa SWE IDCC 2nd run",
+        "url"  : "/swe/idcf/",
+        "appColor" : "#f6d32d"
       }
     ]

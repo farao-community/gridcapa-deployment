@@ -1,71 +1,72 @@
 [
   {
-    "name" : "Capa CSE IMPORT D2CC",
-    "url"  : "/cse/import/d2cc",
-    "appColor" : "#36cf29"
-  },
-  {
-    "name" : "Capa CSE IMPORT IDCC",
-    "url"  : "/cse/import/idcc",
+    "name" : "Capa CORE CC",
+    "url"  : "/core/cc",
     "appColor" : "#21afe1"
   },
   {
     "name" : "Capa CSE EXPORT D2CC",
     "url"  : "/cse/export/d2cc",
-    "appColor" : "#f4d03f"
+    "appColor" : "#8ff0a4"
   },
   {
     "name" : "Capa CSE EXPORT IDCC",
     "url"  : "/cse/export/idcc",
-    "appColor" : "#e629da"
+    "appColor" : "#57e389"
   },
   {
-    "name" : "Capa CORE Validation",
-    "url"  : "/core/valid",
-    "appColor" : "#F56908"
+    "name" : "Capa CSE IMPORT D2CC",
+    "url"  : "/cse/import/d2cc",
+    "appColor" : "#33d17a"
   },
   {
-    "name" : "Capa CSE Validation IDCC",
-    "url"  : "/cse/valid/idcc",
-    "appColor" : "#b22222"
-  },
-  {
-    "name" : "Capa CSE Validation D2CC",
-    "url"  : "/cse/valid/d2cc",
-    "appColor" : "#800000"
-  },
-  {
-    "name" : "Capa CSE IMPORT EC IDCC",
-    "url"  : "/cse/import-ec/idcc",
-    "appColor" : "#808000"
+    "name" : "Capa CSE IMPORT IDCC",
+    "url"  : "/cse/import/idcc",
+    "appColor" : "#2ec27e"
   },
   {
     "name" : "Capa CSE IMPORT EC D2CC",
     "url"  : "/cse/import-ec/d2cc",
-    "appColor" : "#008080"
+    "appColor" : "#26a269"
   },
   {
-    "name" : "Capa CORE Capacity Calculation",
-    "url"  : "/core/cc",
-    "appColor" : "#AB7544"
-  },{
-    "name" : "Capa SWE D2CC",
+    "name" : "Capa CSE IMPORT EC IDCC",
+    "url"  : "/cse/import-ec/idcc",
+    "appColor" : "#187746"
+  },
+  {
+    "name" : "Capa SWE CCC DA",
     "url"  : "/swe/d2cc",
-    "appColor" : "#ebd82d"
+    "appColor" : "#fbf57b"
   },
   {
-    "name" : "Capa SWE IDCC DACF",
+    "name" : "Capa SWE IDCC 1st run",
     "url"  : "/swe/idcc",
-    "appColor" : "#cfeb2d"
+    "appColor" : "#f8e45c"
   },
   {
-    "name" : "Capa SWE IDCC IDCF",
-    "url"  : "/swe/idcf/",
-    "appColor" : "#659490"
+    "name" : "Capa SWE IDCC 2nd run",
+    "url"  : "/swe/idcf",
+    "appColor" : "#f6d32d"
   },
   {
-    "name" : "Capa SWE BT Capacity Calculation",
+    "name" : "Capa SWE BTCC",
     "url"  : "/swe/btcc",
-    "appColor" : "#A74FFF"
+    "appColor" : "#f5c211"
+  },
+  {
+    "name" : "Capa CORE Validation",
+    "url"  : "/core/valid",
+    "appColor" : "#f66151"
+  },
+  {
+    "name" : "Capa CSE Validation IDCC",
+    "url"  : "/cse/valid/idcc",
+    "appColor" : "#ed333b"
+  },
+  {
+    "name" : "Capa CSE Validation D2CC",
+    "url"  : "/cse/valid/d2cc",
+    "appColor" : "#c01c28"
   }
 ]
