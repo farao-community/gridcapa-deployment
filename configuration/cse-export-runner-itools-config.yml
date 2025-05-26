@@ -58,7 +58,6 @@ search-tree-range-actions-optimization:
 
 search-tree-topological-actions-optimization:
   max-preventive-search-tree-depth: 3
-  max-auto-search-tree-depth: 3
   max-curative-search-tree-depth: 3
 
 search-tree-second-preventive-rao:

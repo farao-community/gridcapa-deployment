@@ -25,7 +25,6 @@ rao-topological-actions-optimization:
 
 search-tree-topological-actions-optimization:
   max-preventive-search-tree-depth: 4
-  max-auto-search-tree-depth: 4
   max-curative-search-tree-depth: 4
   skip-actions-far-from-most-limiting-element: true
   max-number-of-boundaries-for-skipping-actions: 1
