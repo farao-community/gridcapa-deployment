@@ -21,7 +21,6 @@ rao-topological-actions-optimization:
 
 search-tree-topological-actions-optimization:
   max-preventive-search-tree-depth: 5
-  max-auto-search-tree-depth: 5
   max-curative-search-tree-depth: 5
 
 rao-not-optimized-cnecs:
