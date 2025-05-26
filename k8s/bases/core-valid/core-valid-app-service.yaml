@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: core-valid-gridcapa-app
+  name: core-valid-app
   labels:
     app: gridcapa
     component: front-app

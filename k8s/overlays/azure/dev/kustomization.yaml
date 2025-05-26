@@ -63,6 +63,12 @@ configMapGenerator:
   - name: app-env-configmap
     files:
       - env.json=gridcapa-app-env-config.json
+  - name: core-valid-runner-itools-configmap
+    files:
+      - config.yml=configuration/core-valid-runner-itools-config.yml
+  - name: cse-valid-runner-itools-configmap
+    files:
+      - config.yml=configuration/cse-valid-runner-itools-config.yml
 
 patches:
   # Add ImagePullSecrets to retrieve private gridcapa-rao-runner-with-xpress from dockerhub
