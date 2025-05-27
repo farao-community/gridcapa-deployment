@@ -38,7 +38,8 @@ rao-topological-actions-optimization:
   absolute-minimum-impact-threshold: 2
 
 search-tree-topological-actions-optimization:
-  max-search-tree-depth: 3
+  max-preventive-search-tree-depth: 3
+  max-curative-search-tree-depth: 3
 
 rao-not-optimized-cnecs:
   do-not-optimize-curative-cnecs-for-tsos-without-cras: false
