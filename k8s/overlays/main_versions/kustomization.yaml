@@ -52,7 +52,7 @@ images:
     newTag: v1.18.1
   - name: gridcapa-gateway
     newName: docker.io/farao/gridcapa-gateway
-    newTag: 1.6.0
+    newTag: v1.6.0
     # Core CC
   - name: gridcapa-core-cc-input-data-bridge
     newName: docker.io/farao/gridcapa-core-cc-data-bridge
