@@ -37,10 +37,14 @@ data:
     export:
       seperate-output-files: true
       unzip-files:
-        - CGM_ESFR
-        - CGM_FRES
-        - CGM_PTES
-        - CGM_ESPT
+        - CGM_ESFR_FIRST_UNSECURE
+        - CGM_ESFR_LAST_SECURE
+        - CGM_FRES_FIRST_UNSECURE
+        - CGM_FRES_LAST_SECURE
+        - CGM_PTES_FIRST_UNSECURE
+        - CGM_PTES_LAST_SECURE
+        - CGM_ESPT_FIRST_UNSECURE
+        - CGM_ESPT_LAST_SECURE
 
     task-manager:
       base-url: http://swe-d2cc-task-manager
