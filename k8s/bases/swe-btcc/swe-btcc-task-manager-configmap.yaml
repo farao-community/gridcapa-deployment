@@ -98,16 +98,20 @@ data:
           - VOLTAGE_FRES
           - CNE_ESFR_FIRST_UNSECURE
           - CNE_ESFR_LAST_SECURE
-          - CGM_ESFR
+          - CGM_ESFR_FIRST_UNSECURE
+          - CGM_ESFR_LAST_SECURE
           - CNE_FRES_FIRST_UNSECURE
           - CNE_FRES_LAST_SECURE
-          - CGM_FRES
+          - CGM_FRES_FIRST_UNSECURE
+          - CGM_FRES_LAST_SECURE
           - CNE_ESPT_FIRST_UNSECURE
           - CNE_ESPT_LAST_SECURE
-          - CGM_ESPT
+          - CGM_ESPT_FIRST_UNSECURE
+          - CGM_ESPT_LAST_SECURE
           - CNE_PTES_FIRST_UNSECURE
           - CNE_PTES_LAST_SECURE
-          - CGM_PTES
+          - CGM_PTES_FIRST_UNSECURE
+          - CGM_PTES_LAST_SECURE
         enable-export-logs: true
         manual-upload-base-path: ${MINIO_BASE_DIRECTORY}
       whitelist:
