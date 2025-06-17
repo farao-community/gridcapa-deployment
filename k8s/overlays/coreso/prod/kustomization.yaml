@@ -211,7 +211,7 @@ patches:
         path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
-      name: swe-d2cc-gridcapa-app
+      name: swe-d2cc-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
