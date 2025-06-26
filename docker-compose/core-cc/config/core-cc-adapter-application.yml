@@ -38,7 +38,7 @@ minio-adapter:
   secret-key: gridcapa
   url: http://minio:9000
 
-gridcapa-version: 5.18.1
+gridcapa-version: ${GRIDCAPA_VERSION}
 
 core-cc-adapter:
   auto-trigger-filetypes:

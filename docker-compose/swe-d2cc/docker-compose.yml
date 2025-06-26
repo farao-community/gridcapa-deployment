@@ -25,6 +25,8 @@ services:
 
   swe-d2cc-job-launcher:
     image: farao/gridcapa-job-launcher:latest
+    env_file:
+      - ../common/config/version.env
     volumes:
       - ./config/swe-d2cc-job-launcher-application.yml:/config/application.yml
     networks:

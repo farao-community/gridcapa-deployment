@@ -24,6 +24,8 @@ services:
 
   cse-import-d2cc-job-launcher:
     image: farao/gridcapa-job-launcher:latest
+    env_file:
+      - ../common/config/version.env
     volumes:
       - ./config/cse-import-d2cc-job-launcher-application.yml:/config/application.yml
     networks:
