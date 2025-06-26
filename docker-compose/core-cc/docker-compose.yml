@@ -45,6 +45,8 @@ services:
 
   core-cc-adapter:
     image: farao/gridcapa-core-cc-adapter:latest
+    env_file:
+      - ../common/config/version.env
     volumes:
       - ./config/core-cc-adapter-application.yml:/config/application.yml
     healthcheck:

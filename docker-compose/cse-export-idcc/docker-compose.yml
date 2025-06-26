@@ -24,6 +24,8 @@ services:
 
   cse-export-idcc-job-launcher:
     image: farao/gridcapa-job-launcher:latest
+    env_file:
+      - ../common/config/version.env
     volumes:
       - ./config/cse-export-idcc-job-launcher-application.yml:/config/application.yml
     networks:

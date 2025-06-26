@@ -24,6 +24,8 @@ services:
 
   core-valid-job-launcher:
     image: farao/gridcapa-job-launcher:latest
+    env_file:
+      - ../common/config/version.env
     volumes:
       - ./config/core-valid-job-launcher-application.yml:/config/application.yml
     networks:
