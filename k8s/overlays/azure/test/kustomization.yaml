@@ -93,6 +93,62 @@ patches:
       spec:
         timeZone: "Europe/Paris"
         schedule: "*/10 9-18 * * 1-5"
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-d2cc-runner
+      spec:
+        template:
+          spec:
+            containers:
+             - name: swe-d2cc-runner
+               env:
+                 - name: EXPORT_FAILED_NETWORK
+                   value: "true"
+#  Uncomment if deploying swe idcc idcf
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: swe-idcc-idcf-runner
+#      spec:
+#        template:
+#          spec:
+#            containers:
+#             - name: gridcapa-swe-idcc-idcf-runner
+#               env:
+#                 - name: EXPORT_FAILED_NETWORK
+#                   value: "true"
+#  Uncomment if deploying swe btcc
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: swe-btcc-runner
+#      spec:
+#        template:
+#          spec:
+#            containers:
+#             - name: gridcapa-swe-btcc-runner
+#               env:
+#                 - name: EXPORT_FAILED_NETWORK
+#                   value: "true"
+#  Uncomment if deploying swe idcc
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: swe-idcc-runner
+#      spec:
+#        template:
+#          spec:
+#            containers:
+#             - name: swe-idcc-runner
+#               env:
+#                 - name: EXPORT_FAILED_NETWORK
+ #                  value: "true"
 #  Uncomment if deploying cse import idcc
 #  - patch: |-
 #      kind: Deployment
