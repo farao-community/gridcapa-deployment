@@ -51,7 +51,7 @@ resources:
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
-  - delete-all-ressources.yaml
+  - delete-all-resources.yaml
 
 components:
   - ../../main_versions
