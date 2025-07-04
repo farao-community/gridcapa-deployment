@@ -61,6 +61,8 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: GRIDCAPA_MINIO_BASE_DIRECTORY_SWE_BTCC
+            - name: EXPORT_FAILED_NETWORK
+              value: "false"
           volumeMounts:
             - mountPath: /config/application.yml
               subPath: application.yml
