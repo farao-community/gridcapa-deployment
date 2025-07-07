@@ -23,6 +23,8 @@ open-loadflow-default-parameters:
   maxRealisticVoltage: 1.5
   maxOuterLoopIterations: 30
   stateVectorScalingMode: MAX_VOLTAGE_CHANGE
+  maxVoltageChangeStateVectorScalingMaxDv: 0.4
+  maxVoltageChangeStateVectorScalingMaxDphi: 1
   slackDistributionFailureBehavior: FAIL
 
 rao-objective-function:
