@@ -58,7 +58,7 @@ data:
       whitelist:
         - http://gridcapa-minio:9000/
       interrupt-server-url: http://interruption-server/interrupted/
-
+      export-failed-network: ${EXPORT_FAILED_NETWORK}
     minio-adapter:
       bucket: ${MINIO_BUCKET}
       base-path: ${MINIO_BASE_DIRECTORY}
