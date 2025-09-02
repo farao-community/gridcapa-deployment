@@ -106,9 +106,6 @@ minio-adapter:
 
 stomp:
   allowed-origin: http://swe-idcc-idcf-app
-  starting-ws-endpoint: /tasks/notify
-  notify: /task
-  receive-request: /app
 
 logback:
   amqp:

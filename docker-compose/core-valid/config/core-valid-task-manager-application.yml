@@ -76,9 +76,6 @@ minio-adapter:
 
 stomp:
   allowed-origin: http://core-valid-app
-  starting-ws-endpoint: /tasks/notify
-  notify: /task
-  receive-request: /app
 
 logback:
   amqp:

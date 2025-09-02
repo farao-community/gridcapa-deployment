@@ -101,9 +101,6 @@ data:
 
     stomp:
       allowed-origin: ${APP_URL}
-      starting-ws-endpoint: /tasks/notify
-      notify: /task
-      receive-request: /app
 
     logback:
       amqp:
