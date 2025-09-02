@@ -84,9 +84,6 @@ minio-adapter:
 
 stomp:
   allowed-origin: http://cse-import-ec-idcc-app
-  starting-ws-endpoint: /tasks/notify
-  notify: /task
-  receive-request: /app
 
 logback:
   amqp:
