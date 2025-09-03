@@ -21,7 +21,7 @@ configMapGenerator:
 images:
     # Common
   - name: apps-metadata-server
-    newName: docker.io/bitnami/apache
+    newName: docker.io/bitnamilegacy/apache
     newTag: "2.4"
   - name: rabbitmq
     newName: docker.io/rabbitmq
