@@ -27,7 +27,7 @@ images:
     newName: docker.io/rabbitmq
     newTag: management
   - name: minio
-    newName: docker.io/bitnami/minio
+    newName: docker.io/bitnamilegacy/minio
     newTag: 2024.12.18
   - name: minio-mc
     newName: docker.io/minio/mc
