@@ -30,7 +30,7 @@ spec:
         fsGroup: 1001
       containers:
         - name: gridcapa-postgresql
-          image: docker.io/bitnamilegacy/postgresql:14
+          image: docker.io/farao/bitnami-postgresql:14
           imagePullPolicy: IfNotPresent
           securityContext:
             runAsNonRoot: true

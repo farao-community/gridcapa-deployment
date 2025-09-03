@@ -30,7 +30,7 @@ spec:
               mountPath: /bitnami/postgresql/data
       containers:
         - name: gridcapa-postgresql
-          image: docker.io/bitnamilegacy/postgresql:14.6.0
+          image: docker.io/farao/bitnami-postgresql:14.6.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5432

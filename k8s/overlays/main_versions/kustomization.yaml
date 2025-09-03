@@ -21,13 +21,13 @@ configMapGenerator:
 images:
     # Common
   - name: apps-metadata-server
-    newName: docker.io/bitnamilegacy/apache
+    newName: docker.io/farao/bitnami-apache
     newTag: "2.4"
   - name: rabbitmq
     newName: docker.io/rabbitmq
     newTag: management
   - name: minio
-    newName: docker.io/bitnamilegacy/minio
+    newName: docker.io/farao/bitnami-minio
     newTag: 2024.12.18
   - name: minio-mc
     newName: docker.io/minio/mc
