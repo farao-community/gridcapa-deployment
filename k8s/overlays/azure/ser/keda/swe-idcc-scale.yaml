@@ -1,0 +1,77 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-runner-scale
+  labels:
+    desiredReplicas: upscaled
+spec:
+  scaleTargetRef:
+    name: swe-idcc-runner
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-task-manager-scale
+spec:
+  scaleTargetRef:
+    name: swe-idcc-task-manager
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-adapter-scale
+spec:
+  scaleTargetRef:
+    name: swe-idcc-adapter
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-data-bridge-scale
+spec:
+  scaleTargetRef:
+    name: swe-idcc-data-bridge
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-exporter-scale
+spec:
+  scaleTargetRef:
+    name: swe-idcc-exporter
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-app-scale
+spec:
+  scaleTargetRef:
+    name: swe-idcc-app
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-job-launcher-scale
+spec:
+  scaleTargetRef:
+    name: swe-idcc-job-launcher
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-idcc-rao-logs-dispatcher-scale
+spec:
+  scaleTargetRef:
+    name: swe-idcc-rao-logs-dispatcher
