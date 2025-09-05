@@ -29,6 +29,8 @@ data:
           bindings:
             run-task:
               destination: swe-d2cc-run-task
+            run-task-auto:
+              destination: swe-d2cc-run-task
             stop-task:
               destination: stop-task
             consumeTaskDtoUpdate-in-0:
@@ -51,6 +53,7 @@ data:
     gridcapa-version: ${GRIDCAPA_VERSION}
 
     job-launcher:
+      auto: true
       url:
         task-manager-timestamp-url: http://swe-d2cc-task-manager/tasks/
         task-manager-business-date-url: http://swe-d2cc-task-manager/tasks/businessdate/
