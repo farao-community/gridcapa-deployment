@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gridcapa-postgresql-data-storage
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: azure-disk
+  resources:
+    requests:
+      storage: 10Gi

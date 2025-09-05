@@ -1,0 +1,8 @@
+resources:
+  - rao-auto-scale.yaml
+
+patches:
+  #  Add gridcapa-ser as the namespace
+  - target:
+      kind: ScaledObject
+    path: patches/add-namespace-patch.yaml
