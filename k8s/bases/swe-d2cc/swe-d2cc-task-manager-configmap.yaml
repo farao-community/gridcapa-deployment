@@ -135,8 +135,8 @@ data:
       parameters:
         RUN_ES-FR: true
         RUN_FR-ES: true
-        RUN_ES-PT: true
-        RUN_PT-ES: true
+        RUN_ES-PT: false
+        RUN_PT-ES: false
         MAX_TTC_ES-FR: 6400
         MAX_TTC_FR-ES: 6400
         MAX_TTC_ES-PT: 6400
@@ -168,12 +168,12 @@ data:
     UPDATE SET name = 'Run FR -> ES', display_order = 10, parameter_type = 'BOOLEAN', section_title = 'FR -> ES', section_order = 2;
     
     INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
-    VALUES ('RUN_ES-PT', 'Run ES -> PT', 10, 'BOOLEAN', 'ES -> PT', 3, 'true')
+    VALUES ('RUN_ES-PT', 'Run ES -> PT', 10, 'BOOLEAN', 'ES -> PT', 3, 'false')
     ON CONFLICT (id) DO
     UPDATE SET name = 'Run ES -> PT', display_order = 10, parameter_type = 'BOOLEAN', section_title = 'ES -> PT', section_order = 3;
     
     INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
-    VALUES ('RUN_PT-ES', 'Run PT -> ES', 10, 'BOOLEAN', 'PT -> ES', 4, 'true')
+    VALUES ('RUN_PT-ES', 'Run PT -> ES', 10, 'BOOLEAN', 'PT -> ES', 4, 'false')
     ON CONFLICT (id) DO
     UPDATE SET name = 'Run PT -> ES', display_order = 10, parameter_type = 'BOOLEAN', section_title = 'PT -> ES', section_order = 4;
     
