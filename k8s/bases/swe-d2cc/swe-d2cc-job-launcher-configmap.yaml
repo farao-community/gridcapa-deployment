@@ -54,6 +54,7 @@ data:
 
     job-launcher:
       auto: true
+      auto-trigger-filetypes:
       url:
         task-manager-timestamp-url: http://swe-d2cc-task-manager/tasks/
         task-manager-business-date-url: http://swe-d2cc-task-manager/tasks/businessdate/
