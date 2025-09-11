@@ -26,3 +26,7 @@ spec:
                   number: 80
             path: /
             pathType: Prefix
+  tls:
+    - hosts:
+        - auth-ser.farao-community.com
+      secretName: gridcapa-tls

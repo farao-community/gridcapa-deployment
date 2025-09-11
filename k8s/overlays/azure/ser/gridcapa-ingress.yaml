@@ -138,7 +138,5 @@ spec:
   tls:
     - hosts:
         - gridcapa-ser.farao-community.com
-      secretName: gridcapa-tls
-    - hosts:
         - filestash-ser.farao-community.com
-      secretName: gridcapa-filestash-tls
+      secretName: gridcapa-tls
