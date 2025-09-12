@@ -4,6 +4,8 @@ kind: Kustomization
 resources:
   - ../../../bases/common
   - ../../../bases/cse-common
+  - gridcapa-documentation-deployment.yaml
+  - gridcapa-documentation-service.yaml
   - postgresql-deployment.yaml
   - postgresql-service.yaml
   - minio-get-storage-data-pv-claim.yaml

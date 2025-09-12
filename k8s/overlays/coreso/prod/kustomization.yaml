@@ -24,6 +24,7 @@ resources:
   - ../coreso-databridge-claims/swe-idcc
   - ../coreso-databridge-claims/swe-idcc-idcf
   - apps-metadata-server-configmap.yaml
+  - gridcapa-documentation-configmap.yml
   - ingress-gridcapa.yaml
   - ingress-middlewares.yaml
   - ingress-minio.yaml
