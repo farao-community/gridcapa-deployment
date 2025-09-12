@@ -35,16 +35,8 @@ data:
                   binding-routing-key: status
 
     export:
-      seperate-output-files: true
+      seperate-output-files: false
       unzip-files:
-        - CGM_ESFR_FIRST_UNSECURE
-        - CGM_ESFR_LAST_SECURE
-        - CGM_FRES_FIRST_UNSECURE
-        - CGM_FRES_LAST_SECURE
-        - CGM_PTES_FIRST_UNSECURE
-        - CGM_PTES_LAST_SECURE
-        - CGM_ESPT_FIRST_UNSECURE
-        - CGM_ESPT_LAST_SECURE
 
     task-manager:
       base-url: http://swe-d2cc-task-manager
