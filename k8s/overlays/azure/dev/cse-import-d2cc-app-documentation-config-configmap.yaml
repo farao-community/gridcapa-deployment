@@ -1,0 +1,15 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cse-import-d2cc-app-documentation-config-configmap
+  labels:
+    app: gridcapa
+    component: front-app-documentation-config
+    region: cse
+    process: import-d2cc
+data:
+  documentation-config.json: |-
+    {
+      "displayDocumentationButton": true,
+      "documentationUrl": "https://gridcapa.github.io"
+    }

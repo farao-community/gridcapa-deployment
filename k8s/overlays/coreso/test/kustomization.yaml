@@ -23,6 +23,16 @@ resources:
   - ../coreso-databridge-claims/swe-d2cc
   - ../coreso-databridge-claims/swe-idcc
   - ../coreso-databridge-claims/swe-idcc-idcf
+  - core-cc-app-documentation-config-configmap.yaml
+  - cse-export-d2cc-app-documentation-config-configmap.yaml
+  - cse-export-idcc-app-documentation-config-configmap.yaml
+  - cse-import-d2cc-app-documentation-config-configmap.yaml
+  - cse-import-idcc-app-documentation-config-configmap.yaml
+  - cse-import-ec-d2cc-app-documentation-config-configmap.yaml
+  - cse-import-ec-idcc-app-documentation-config-configmap.yaml
+  - swe-d2cc-app-documentation-config-configmap.yaml
+  - swe-idcc-app-documentation-config-configmap.yaml
+  - swe-idcc-idcf-app-documentation-config-configmap.yaml
   - apps-metadata-server-configmap.yaml
   - gridcapa-documentation-configmap.yml
   - gridcapa-ingress.yaml
@@ -173,81 +183,81 @@ patches:
       name: cse-export-idcc-app
     patch: |-
       - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
+        path: /spec/template/spec/containers/0/volumeMounts/3
       - op: remove
-        path: /spec/template/spec/volumes/2
+        path: /spec/template/spec/volumes/3
   - target:
       kind: Deployment
       name: cse-export-d2cc-app
     patch: |-
       - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
+        path: /spec/template/spec/containers/0/volumeMounts/3
       - op: remove
-        path: /spec/template/spec/volumes/2
+        path: /spec/template/spec/volumes/3
   - target:
       kind: Deployment
       name: swe-d2cc-app
     patch: |-
       - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
+        path: /spec/template/spec/containers/0/volumeMounts/3
       - op: remove
-        path: /spec/template/spec/volumes/2
+        path: /spec/template/spec/volumes/3
   - target:
       kind: Deployment
       name: swe-idcc-app
     patch: |-
       - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
+        path: /spec/template/spec/containers/0/volumeMounts/3
       - op: remove
-        path: /spec/template/spec/volumes/2
+        path: /spec/template/spec/volumes/3
   - target:
       kind: Deployment
       name: swe-idcc-idcf-app
     patch: |-
       - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
+        path: /spec/template/spec/containers/0/volumeMounts/3
       - op: remove
-        path: /spec/template/spec/volumes/2
+        path: /spec/template/spec/volumes/3
   - target:
       kind: Deployment
       name: cse-import-ec-d2cc-app
     patch: |-
       - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
+        path: /spec/template/spec/containers/0/volumeMounts/3
       - op: remove
-        path: /spec/template/spec/volumes/2
+        path: /spec/template/spec/volumes/3
   - target:
       kind: Deployment
       name: cse-import-ec-idcc-app
     patch: |-
       - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
+        path: /spec/template/spec/containers/0/volumeMounts/3
       - op: remove
-        path: /spec/template/spec/volumes/2
+        path: /spec/template/spec/volumes/3
   - target:
       kind: Deployment
       name: cse-import-d2cc-app
     patch: |-
       - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
+        path: /spec/template/spec/containers/0/volumeMounts/3
       - op: remove
-        path: /spec/template/spec/volumes/2
+        path: /spec/template/spec/volumes/3
   - target:
       kind: Deployment
       name: cse-import-idcc-app
     patch: |-
       - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
+        path: /spec/template/spec/containers/0/volumeMounts/3
       - op: remove
-        path: /spec/template/spec/volumes/2
+        path: /spec/template/spec/volumes/3
   - target:
       kind: Deployment
       name: core-cc-app
     patch: |-
       - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
+        path: /spec/template/spec/containers/0/volumeMounts/3
       - op: remove
-        path: /spec/template/spec/volumes/2
+        path: /spec/template/spec/volumes/3
 
   # Use "John Doe" gateway config to share UI config across all users
   - patch: |-
