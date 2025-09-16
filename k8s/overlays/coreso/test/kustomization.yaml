@@ -23,16 +23,7 @@ resources:
   - ../coreso-databridge-claims/swe-d2cc
   - ../coreso-databridge-claims/swe-idcc
   - ../coreso-databridge-claims/swe-idcc-idcf
-  - core-cc-app-documentation-config-configmap.yaml
-  - cse-export-d2cc-app-documentation-config-configmap.yaml
-  - cse-export-idcc-app-documentation-config-configmap.yaml
-  - cse-import-d2cc-app-documentation-config-configmap.yaml
-  - cse-import-idcc-app-documentation-config-configmap.yaml
-  - cse-import-ec-d2cc-app-documentation-config-configmap.yaml
-  - cse-import-ec-idcc-app-documentation-config-configmap.yaml
-  - swe-d2cc-app-documentation-config-configmap.yaml
-  - swe-idcc-app-documentation-config-configmap.yaml
-  - swe-idcc-idcf-app-documentation-config-configmap.yaml
+  - app-documentation-config-configmap.yaml
   - apps-metadata-server-configmap.yaml
   - gridcapa-documentation-configmap.yml
   - gridcapa-ingress.yaml

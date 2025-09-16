@@ -33,6 +33,7 @@ resources:
   - ../azure-databridge-claims/swe-d2cc
   - ../azure-databridge-claims/swe-idcc
   - ../azure-databridge-claims/swe-idcc-idcf
+  - app-documentation-config-configmap.yaml
   - apps-metadata-server-configmap.yaml
   - core-cc-gridcapa-app-idp-settings-configmap.yaml
   - core-valid-gridcapa-app-idp-settings-configmap.yaml
@@ -48,17 +49,6 @@ resources:
   - swe-d2cc-gridcapa-app-idp-settings-configmap.yaml
   - swe-idcc-gridcapa-app-idp-settings-configmap.yaml
   - swe-idcc-idcf-gridcapa-app-idp-settings-configmap.yaml
-  - core-cc-app-documentation-config-configmap.yaml
-  - cse-export-d2cc-app-documentation-config-configmap.yaml
-  - cse-export-idcc-app-documentation-config-configmap.yaml
-  - cse-import-d2cc-app-documentation-config-configmap.yaml
-  - cse-import-idcc-app-documentation-config-configmap.yaml
-  - cse-import-ec-d2cc-app-documentation-config-configmap.yaml
-  - cse-import-ec-idcc-app-documentation-config-configmap.yaml
-  - swe-btcc-app-documentation-config-configmap.yaml
-  - swe-d2cc-app-documentation-config-configmap.yaml
-  - swe-idcc-app-documentation-config-configmap.yaml
-  - swe-idcc-idcf-app-documentation-config-configmap.yaml
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml

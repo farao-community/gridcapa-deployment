@@ -73,7 +73,7 @@ spec:
             name: cse-import-idcc-app-process-metadata-configmap
         - name: app-documentation-config-configmap-volume
           configMap:
-            name: cse-import-idcc-app-documentation-config-configmap
+            name: app-documentation-config-configmap
         - name: cse-import-idcc-app-idp-settings-configmap-volume
           configMap:
             name: cse-import-idcc-app-idp-settings-configmap

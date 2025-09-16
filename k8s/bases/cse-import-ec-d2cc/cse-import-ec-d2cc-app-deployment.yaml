@@ -73,7 +73,7 @@ spec:
             name: cse-import-ec-d2cc-app-process-metadata-configmap
         - name: app-documentation-config-configmap-volume
           configMap:
-            name: cse-import-ec-d2cc-app-documentation-config-configmap
+            name: app-documentation-config-configmap
         - name: cse-import-ec-d2cc-app-idp-settings-configmap-volume
           configMap:
             name: cse-import-ec-d2cc-app-idp-settings-configmap

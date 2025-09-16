@@ -72,7 +72,7 @@ spec:
             name: swe-idcc-app-process-metadata-configmap
         - name: app-documentation-config-configmap-volume
           configMap:
-            name: swe-idcc-app-documentation-config-configmap
+            name: app-documentation-config-configmap
         - name: swe-idcc-app-idp-settings-configmap-volume
           configMap:
             name: swe-idcc-app-idp-settings-configmap

@@ -76,7 +76,7 @@ spec:
             name: cse-export-idcc-app-process-metadata-configmap
         - name: app-documentation-config-configmap-volume
           configMap:
-            name: cse-export-idcc-app-documentation-config-configmap
+            name: app-documentation-config-configmap
         - name: cse-export-idcc-app-idp-settings-configmap-volume
           configMap:
             name: cse-export-idcc-app-idp-settings-configmap
