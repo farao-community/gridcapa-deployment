@@ -1,0 +1,37 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: gridcapa-documentation
+  labels:
+    app: gridcapa
+    component: documentation
+spec:
+  selector:
+    matchLabels:
+      app: gridcapa
+      component: documentation
+  template:
+    metadata:
+      labels:
+        app: gridcapa
+        component: documentation
+    spec:
+      containers:
+        - name: gridcapa-documentation-container
+          image: docker.io/farao/gridcapa-doc:0.2.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          env:
+            - name: DOCU_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: gridcapa-documentation-configmap
+                  key: DOCU_URL
+            - name: DOCU_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: gridcapa-documentation-configmap
+                  key: DOCU_BASE_URL
+      restartPolicy: Always
+  minReadySeconds: 10

@@ -8,6 +8,7 @@ resources:
   - postgresql-deployment.yaml
   - filestash-deployment.yaml
   - filestash-service.yaml
+  - app-documentation-config-configmap.yaml
   - apps-metadata-server-configmap.yaml
   #  Processes to be deployed each time
   - ../../../bases/core-cc
