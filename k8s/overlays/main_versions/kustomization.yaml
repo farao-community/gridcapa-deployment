@@ -43,10 +43,10 @@ images:
     newTag: v1.39.0
   - name: gridcapa-rao-failure-handler
     newName: docker.io/farao/gridcapa-rao-failure-handler
-    newTag: v1.4.0
+    newTag: v1.5.0
   - name: gridcapa-interruption-server
     newName: docker.io/farao/gridcapa-interruption-server
-    newTag: v1.4.0
+    newTag: v1.5.0
   - name: gridcapa-app
     newName: docker.io/farao/gridcapa-app
     newTag: v1.19.1
@@ -56,16 +56,16 @@ images:
     # Core CC
   - name: gridcapa-core-cc-input-data-bridge
     newName: docker.io/farao/gridcapa-core-cc-data-bridge
-    newTag: v1.3.0
+    newTag: v1.4.0
   - name: gridcapa-core-cc-output-data-bridge
     newName: docker.io/farao/gridcapa-output-data-bridge
-    newTag: v1.9.0
+    newTag: v1.10.0
   - name: gridcapa-core-cc-adapter
     newName: docker.io/farao/gridcapa-core-cc-adapter
-    newTag: v2.10.0
+    newTag: v2.11.0
   - name: gridcapa-core-cc-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: v1.7.0
+    newTag: v1.8.0
   - name: gridcapa-core-cc-runner
     newName: docker.io/farao/gridcapa-core-cc
     newTag: v1.23.0
@@ -78,16 +78,16 @@ images:
     # CSE
   - name: gridcapa-cse-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v2.4.0
+    newTag: v2.5.0
   - name: gridcapa-cse-adapter
     newName: docker.io/farao/gridcapa-cse-adapter
-    newTag: v1.21.0
+    newTag: v1.22.0
   - name: gridcapa-cse-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
     newTag: v1.21.0
   - name: gridcapa-cse-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: v1.7.0
+    newTag: v1.8.0
   - name: gridcapa-cse-import-runner
     newName: docker.io/farao/gridcapa-cse-cc-import-runner
     newTag: v1.46.0
@@ -103,7 +103,7 @@ images:
     # SWE
   - name: gridcapa-swe-input-data-bridge
     newName: docker.io/farao/gridcapa-data-bridge
-    newTag: v2.4.0
+    newTag: v2.5.0
   - name: gridcapa-swe-exporter
     newName: docker.io/farao/gridcapa-export
     newTag: v1.11.0
@@ -115,7 +115,7 @@ images:
     newTag: v1.21.0
   - name: gridcapa-swe-rao-logs-dispatcher
     newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: v1.7.0
+    newTag: v1.8.0
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
     newTag: v1.40.0
