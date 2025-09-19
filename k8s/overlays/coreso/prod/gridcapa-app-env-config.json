@@ -1,5 +1,5 @@
 {
    "appsMetadataServerUrl" : "https://gridcapa.ingress-k8s-1648-vsp-prd-004.rh.1648.local/apps-metadata",
    "appsMinioStorageServerUrl": "https://gridcapa.ingress-k8s-1648-vsp-prd-004.rh.1648.local/apps-metadata/data/minioStorageData.json",
-   "appVersionAndEnvironnement": "Coreso Prod : 5.18.1"
+   "appVersionAndEnvironnement": "Coreso Prod : 5.19.0"
 }

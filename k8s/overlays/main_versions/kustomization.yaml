@@ -21,13 +21,13 @@ configMapGenerator:
 images:
     # Common
   - name: apps-metadata-server
-    newName: docker.io/bitnami/apache
+    newName: docker.io/farao/bitnami-apache
     newTag: "2.4"
   - name: rabbitmq
     newName: docker.io/rabbitmq
     newTag: management
   - name: minio
-    newName: docker.io/bitnami/minio
+    newName: docker.io/farao/bitnami-minio
     newTag: 2024.12.18
   - name: minio-mc
     newName: docker.io/minio/mc
@@ -109,7 +109,7 @@ images:
     newTag: v1.11.0
   - name: gridcapa-swe-adapter
     newName: docker.io/farao/gridcapa-swe-adapter
-    newTag: v1.12.0
+    newTag: v1.13.0
   - name: gridcapa-swe-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
     newTag: v1.21.0
