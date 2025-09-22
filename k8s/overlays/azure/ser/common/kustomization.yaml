@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ../../../../bases/common
   - azure-storage-class.yaml
+  - azure-disk-stdssd-lrs.yaml
   - azure-storage-azure-disk.yaml
   - minio-data-pv-claim.yaml
   - postgresql-data-pv-claim.yaml

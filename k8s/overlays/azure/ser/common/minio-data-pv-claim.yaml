@@ -6,10 +6,9 @@ metadata:
     app: gridcapa
     component: gridcapa-minio-pv
 spec:
-  storageClassName: azure-storage-class
+  storageClassName: azure-disk-stdssd-lrs
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-#      TODO upgrade to 500Go ?
-      storage: 50Gi
+      storage: 3Ti
