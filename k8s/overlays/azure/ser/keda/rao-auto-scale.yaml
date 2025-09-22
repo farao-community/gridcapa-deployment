@@ -22,7 +22,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: rao-runner
-  maxReplicaCount: 24
+  maxReplicaCount: 36
   fallback:
     failureThreshold: 3
     replicas: 0
