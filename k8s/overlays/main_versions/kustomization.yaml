@@ -26,6 +26,9 @@ images:
   - name: rabbitmq
     newName: docker.io/rabbitmq
     newTag: management
+  - name: filestash
+    newName: docker.io/farao/filestash
+    newTag: fix-download
   - name: minio
     newName: docker.io/farao/bitnami-minio
     newTag: 2024.12.18
