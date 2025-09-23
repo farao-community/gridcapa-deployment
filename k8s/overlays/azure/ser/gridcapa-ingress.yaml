@@ -2,9 +2,19 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite ^/swe/d2cc$ /swe/d2cc/ permanent;
+      rewrite ^/swe/idcc$ /swe/idcc/ permanent;
+      rewrite ^/utils/rabbitmq$ /utils/rabbitmq/ permanent;
+      if ($request_uri ~ "^/utils/rabbitmq(/.*)") {
+        proxy_pass http://upstream_balancer$1;
+        break;
+      }
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/server-snippet: |
+      merge_slashes off;
     nginx.ingress.kubernetes.io/service-upstream: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/client-max-body-size: "50m"
