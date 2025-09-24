@@ -66,9 +66,6 @@ patches:
                     memory: "40Gi"
             imagePullSecrets:
               - name: dockerhub-acr-secret
-  - target:
-      labelSelector: "component=minio-purge"
-    path: get-storage-data-cron-patch.yaml
 
 # Enable auth on Azure
 images:
