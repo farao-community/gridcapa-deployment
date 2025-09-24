@@ -7,8 +7,6 @@ resources:
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
-  - filestash-deployment.yaml
-  - filestash-service.yaml
   - apps-metadata-server-configmap.yaml
   #  SWE D2CC
   - ../../../bases/swe-d2cc
@@ -41,14 +39,14 @@ patches:
       metadata:
         name: swe-d2cc-runner
       spec:
-        replicas: 2
+        replicas: 4
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
         name: swe-idcc-runner
       spec:
-        replicas: 2
+        replicas: 4
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
@@ -68,7 +66,6 @@ patches:
                     memory: "40Gi"
             imagePullSecrets:
               - name: dockerhub-acr-secret
-#  TODO DO NOT purge ?
   - target:
       labelSelector: "component=minio-purge"
     path: get-storage-data-cron-patch.yaml
