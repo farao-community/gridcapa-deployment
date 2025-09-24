@@ -55,6 +55,7 @@ data:
     job-launcher:
       auto: true
       auto-trigger-filetypes:
+        - RTE_EQ
       url:
         task-manager-timestamp-url: http://swe-idcc-task-manager/tasks/
         task-manager-business-date-url: http://swe-idcc-task-manager/tasks/businessdate/
