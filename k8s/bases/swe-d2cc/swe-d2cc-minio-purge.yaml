@@ -33,4 +33,20 @@ spec:
                       key: minio-secret-key
                 - name: MC_HOST_minio
                   value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
+            - name: swe-d2cc-xiidm-minio-purge
+              image: minio-mc
+              args: [ "rm", "--older-than", "6h", "minio/gridcapa/SWE/D2CC/XIIDM/" ]
+              env:
+                - name: MINIO_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-access-key
+                - name: MINIO_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: gridcapa-minio-credentials
+                      key: minio-secret-key
+                - name: MC_HOST_minio
+                  value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
           restartPolicy: Never
