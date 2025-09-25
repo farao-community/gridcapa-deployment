@@ -109,7 +109,7 @@ images:
     newTag: v2.4.0
   - name: gridcapa-swe-exporter
     newName: docker.io/farao/gridcapa-export
-    newTag: v1.11.0
+    newTag: ser
   - name: gridcapa-swe-adapter
     newName: docker.io/farao/gridcapa-swe-adapter
     newTag: v1.13.0_extend_minio
@@ -121,7 +121,7 @@ images:
     newTag: v1.7.0
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
-    newTag: v1.39.0_gg_hvdc
+    newTag: ser
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.37.0
