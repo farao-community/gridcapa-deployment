@@ -8,7 +8,7 @@ metadata:
     region: swe
     process: idcc
 spec:
-  schedule: "0 * * * *"
+  schedule: "0 12 * * *"
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 3
