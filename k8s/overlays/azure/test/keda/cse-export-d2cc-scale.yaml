@@ -11,6 +11,8 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: cse-export-d2cc-runner-scale
+  labels:
+    component: runner
 spec:
   scaleTargetRef:
     name: cse-export-d2cc-runner

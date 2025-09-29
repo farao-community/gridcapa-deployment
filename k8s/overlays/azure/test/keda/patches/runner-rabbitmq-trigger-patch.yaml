@@ -1,0 +1,23 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: common-runner-rabbitmq-trigger-patch
+  annotations:
+    autoscaling.keda.sh/paused: "false"
+spec:
+  maxReplicaCount: 6
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        scaleDown:
+#          3600s = 1h
+          stabilizationWindowSeconds: 3600
+  triggers:
+    - type: rabbitmq
+      metadata:
+        protocol: http
+        mode: QueueLength
+        value: "1"
+        pollingInterval: "5"
+      authenticationRef:
+        name: keda-trigger-auth-rabbitmq-conn
