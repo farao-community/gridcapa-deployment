@@ -36,6 +36,9 @@ patches:
       - op: add
         path: /spec/maxReplicaCount
         value: 12
+      - op: add
+        path: /spec/triggers/0/metadata/queueName
+        value: rao-request-queue
   - target:
       name: core-cc-runner-scale
     patch: |-
