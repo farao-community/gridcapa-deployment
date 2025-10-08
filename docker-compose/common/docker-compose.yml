@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   gridcapa-postgres:
-    image: bitnami/postgresql:14.6.0
+    image: docker.io/farao/bitnami-postgresql:14.6.0
     environment:
       ALLOW_EMPTY_PASSWORD: 'yes'
     ports:
@@ -71,7 +71,7 @@ services:
       - gridcapa
 
   minio:
-    image: bitnami/minio:2024.12.18
+    image: docker.io/farao/bitnami-minio:2024.12.18
     restart: always
     volumes:
       - minio-data:/bitnami/minio/data
