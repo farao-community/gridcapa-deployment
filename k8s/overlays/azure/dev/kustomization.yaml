@@ -33,6 +33,7 @@ resources:
   - ../azure-databridge-claims/swe-d2cc
   - ../azure-databridge-claims/swe-idcc
   - ../azure-databridge-claims/swe-idcc-idcf
+  - app-documentation-config-configmap.yaml
   - apps-metadata-server-configmap.yaml
   - core-cc-gridcapa-app-idp-settings-configmap.yaml
   - core-valid-gridcapa-app-idp-settings-configmap.yaml
