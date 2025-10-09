@@ -6,8 +6,6 @@ resources:
   - gridcapa-ingress.yaml
   - postgresql-configmap.yaml
   - postgresql-deployment.yaml
-  - filestash-deployment.yaml
-  - filestash-service.yaml
   - apps-metadata-server-configmap.yaml
   #  Processes to be deployed each time
   - ../../../bases/core-cc
