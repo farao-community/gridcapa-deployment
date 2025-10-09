@@ -31,6 +31,8 @@ data:
           bindings:
             run-task:
               destination: cse-import-ec-idcc-launch-task
+            run-task-auto:
+              destination: cse-import-ec-idcc-launch-task
             stop-task:
               destination: stop-task
             consumeTaskDtoUpdate-in-0:
@@ -53,6 +55,8 @@ data:
     gridcapa-version: ${GRIDCAPA_VERSION}
 
     job-launcher:
+      auto: true
+      auto-trigger-filetypes:
       url:
         task-manager-timestamp-url: http://cse-import-ec-idcc-task-manager/tasks/
         task-manager-business-date-url: http://cse-import-ec-idcc-task-manager/tasks/businessdate/
