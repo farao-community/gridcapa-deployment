@@ -1,3 +1,0 @@
-- op: replace
-  path: /spec/triggers/0/metadata/desiredReplicas
-  value: "2"

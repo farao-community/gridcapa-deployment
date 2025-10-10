@@ -11,6 +11,8 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: swe-btcc-runner-scale
+  labels:
+    component: runner
 spec:
   scaleTargetRef:
     name: swe-btcc-runner

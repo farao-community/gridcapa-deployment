@@ -12,7 +12,7 @@ kind: ScaledObject
 metadata:
   name: swe-d2cc-runner-scale
   labels:
-    desiredReplicas: upscaled
+    component: runner
 spec:
   scaleTargetRef:
     name: swe-d2cc-runner

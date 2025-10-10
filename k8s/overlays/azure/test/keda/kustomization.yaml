@@ -1,4 +1,5 @@
 resources:
+  - auth-rabbitmq-trigger.yaml
   - common-scale.yaml
   - core-cc-scale.yaml
   - cse-export-d2cc-scale.yaml
@@ -7,7 +8,6 @@ resources:
   - cse-import-ec-d2cc-scale.yaml
   - cse-import-ec-idcc-scale.yaml
   - cse-import-idcc-scale.yaml
-  - rao-auto-scale.yaml
   - swe-btcc-scale.yaml
   - swe-d2cc-scale.yaml
   - swe-idcc-idcf-scale.yaml
@@ -18,13 +18,90 @@ patches:
   - target:
       kind: ScaledObject
     path: patches/add-namespace-patch.yaml
-  #  Add the cron trigger to every ScaledObject except the rao who is instead autoscaled on rabbit mq queue length
+  #  Add the cron trigger to every ScaledObject except RAO and runners (they use RabbitMQ triggers)
   - target:
       kind: ScaledObject
-      labelSelector: "component!=rao"
+      labelSelector: "component!=runner"
     path: patches/cron-trigger-patch.yaml
-  #  Increase designated runners number of replicas
+  #  Add RabbitMQ trigger to all runners
   - target:
       kind: ScaledObject
-      labelSelector: "desiredReplicas=upscaled"
-    path: patches/two-replicas-patch.yaml
+      labelSelector: "component=runner"
+    path: patches/runner-rabbitmq-trigger-patch.yaml
+
+  # Set proper RabbitMQ triggers (including queue names) per runner
+  - target:
+      name: rao-runner-scale
+    patch: |-
+      - op: add
+        path: /spec/maxReplicaCount
+        value: 12
+      - op: add
+        path: /spec/triggers/0/metadata/queueName
+        value: rao-request-queue
+  - target:
+      name: core-cc-runner-scale
+    patch: |-
+      - op: add
+        path: /spec/triggers/0/metadata/queueName
+        value: core-cc-request.core-cc-runner
+  - target:
+      name: cse-export-d2cc-runner-scale
+    patch: |-
+      - op: add
+        path: /spec/triggers/0/metadata/queueName
+        value: cse-export-d2cc-request.cse-export-d2cc-runner
+  - target:
+      name: cse-export-idcc-runner-scale
+    patch: |-
+      - op: add
+        path: /spec/triggers/0/metadata/queueName
+        value: cse-export-idcc-request.cse-export-idcc-runner
+  - target:
+      name: cse-import-d2cc-runner-scale
+    patch: |-
+      - op: add
+        path: /spec/triggers/0/metadata/queueName
+        value: cse-import-d2cc-request.cse-import-d2cc-runner
+  - target:
+      name: cse-import-ec-d2cc-runner-scale
+    patch: |-
+      - op: add
+        path: /spec/triggers/0/metadata/queueName
+        value: cse-import-ec-d2cc-request.cse-import-ec-d2cc-runner
+  - target:
+      name: cse-import-ec-idcc-runner-scale
+    patch: |-
+      - op: add
+        path: /spec/triggers/0/metadata/queueName
+        value: cse-import-ec-idcc-request.cse-import-ec-idcc-runner
+  - target:
+      name: cse-import-idcc-runner-scale
+    patch: |-
+      - op: add
+        path: /spec/triggers/0/metadata/queueName
+        value: cse-import-idcc-request.cse-import-idcc-runner
+  - target:
+      name: swe-btcc-runner-scale
+    patch: |-
+      - op: add
+        path: /spec/triggers/0/metadata/queueName
+        value: swe-btcc-request.swe-btcc-runner
+  - target:
+      name: swe-d2cc-runner-scale
+    patch: |-
+      - op: add
+        path: /spec/triggers/0/metadata/queueName
+        value: swe-d2cc-request.swe-d2cc-runner
+  - target:
+      name: swe-idcc-idcf-runner-scale
+    patch: |-
+      - op: add
+        path: /spec/triggers/0/metadata/queueName
+        value: swe-idcc-idcf-request.swe-idcc-idcf-runner
+  - target:
+      name: swe-idcc-runner-scale
+    patch: |-
+      - op: add
+        path: /spec/triggers/0/metadata/queueName
+        value: swe-idcc-request.swe-idcc-runner

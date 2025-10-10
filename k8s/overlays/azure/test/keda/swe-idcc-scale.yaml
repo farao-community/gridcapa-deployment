@@ -3,7 +3,7 @@ kind: ScaledObject
 metadata:
   name: swe-idcc-runner-scale
   labels:
-    desiredReplicas: upscaled
+    component: runner
 spec:
   scaleTargetRef:
     name: swe-idcc-runner

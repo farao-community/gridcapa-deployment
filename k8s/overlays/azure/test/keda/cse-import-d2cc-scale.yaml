@@ -12,7 +12,7 @@ kind: ScaledObject
 metadata:
   name: cse-import-d2cc-runner-scale
   labels:
-    desiredReplicas: upscaled
+    component: runner
 spec:
   scaleTargetRef:
     name: cse-import-d2cc-runner

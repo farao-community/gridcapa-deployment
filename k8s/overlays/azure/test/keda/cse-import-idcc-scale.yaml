@@ -3,7 +3,7 @@ kind: ScaledObject
 metadata:
   name: cse-import-idcc-runner-scale
   labels:
-    desiredReplicas: upscaled
+    component: runner
 spec:
   scaleTargetRef:
     name: cse-import-idcc-runner
