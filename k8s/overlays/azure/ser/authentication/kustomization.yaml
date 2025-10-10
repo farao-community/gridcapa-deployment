@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - auth-ingress.yaml
+  - keycloak-deployment.yaml
+  - keycloak-pv-claim.yaml
+  - keycloak-service.yaml

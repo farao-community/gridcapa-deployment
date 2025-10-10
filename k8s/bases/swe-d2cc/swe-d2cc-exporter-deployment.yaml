@@ -89,10 +89,10 @@ spec:
           resources:
             requests:
               cpu: "0.5"
-              memory: "500Mi"
+              memory: "1Gi"
             limits:
               cpu: "2.0"
-              memory: "1Gi"
+              memory: "2Gi"
       restartPolicy: Always
       volumes:
         - name: swe-d2cc-exporter-configmap-volume
