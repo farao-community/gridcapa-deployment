@@ -43,7 +43,7 @@ gridcapa-version: ${GRIDCAPA_VERSION}
 
 job-launcher:
   auto: true
-  auto-trigger-filetypes:
+  auto-trigger-filetypes: []
   url:
     task-manager-timestamp-url: http://cse-import-ec-idcc-task-manager:8080/tasks/
     task-manager-business-date-url: http://cse-import-ec-idcc-task-manager:8080/tasks/businessdate/

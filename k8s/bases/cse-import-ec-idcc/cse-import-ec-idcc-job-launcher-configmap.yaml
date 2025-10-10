@@ -56,7 +56,7 @@ data:
 
     job-launcher:
       auto: true
-      auto-trigger-filetypes:
+      auto-trigger-filetypes: []
       url:
         task-manager-timestamp-url: http://cse-import-ec-idcc-task-manager/tasks/
         task-manager-business-date-url: http://cse-import-ec-idcc-task-manager/tasks/businessdate/
