@@ -49,6 +49,9 @@ GRANT ALL PRIVILEGES ON DATABASE core_valid_intraday_tasks TO core_valid_intrada
 CREATE DATABASE core_valid_day_ahead_conservative_tasks;
 CREATE USER core_valid_day_ahead_conservative_server WITH ENCRYPTED PASSWORD 'core-valid-day-ahead-conservative';
 GRANT ALL PRIVILEGES ON DATABASE core_valid_day_ahead_conservative_tasks TO core_valid_day_ahead_conservative_server;
+CREATE DATABASE ce_cc_tasks;
+CREATE USER ce_cc_server WITH ENCRYPTED PASSWORD 'ce-cc';
+GRANT ALL PRIVILEGES ON DATABASE ce_cc_tasks TO ce_cc_server;
 ---- interruption server
 CREATE DATABASE interruption_server_db;
 CREATE USER interruption_server WITH ENCRYPTED PASSWORD 'interruption';

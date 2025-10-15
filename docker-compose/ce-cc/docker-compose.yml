@@ -1,0 +1,81 @@
+version: "3.7"
+services:
+  ce-cc-app:
+    image: farao/gridcapa-app:latest
+    volumes:
+      - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ./config/ce-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+    networks:
+      - gridcapa
+
+  ce-cc-data-bridge:
+    image: farao/gridcapa-core-cc-data-bridge:latest
+    volumes:
+      - ./config/ce-cc-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  ce-cc-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./config/ce-cc-task-manager-application.yml:/config/application.yml
+      - ./config/data.sql:/config/data.sql
+    networks:
+      - gridcapa
+
+  ce-cc-post-processing:
+    image: farao/gridcapa-core-cc-post-processing:latest
+    volumes:
+      - ./config/ce-cc-post-processing-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  ce-cc-runner:
+    image: farao/gridcapa-core-cc:latest
+    volumes:
+      - ./config/ce-cc-runner-application.yml:/config/application.yml
+      - ../../configuration/ce-cc-runner-itools-config.yml:/home/farao/.itools/config.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  ce-cc-adapter:
+    image: farao/gridcapa-core-cc-adapter:latest
+    env_file:
+      - ../common/config/version.env
+    volumes:
+      - ./config/ce-cc-adapter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  ce-cc-output-data-bridge:
+    image: farao/gridcapa-output-data-bridge:latest
+    volumes:
+      - ./config/ce-cc-output-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  ce-cc-rao-logs-dispatcher:
+    image: farao/gridcapa-rao-logs-dispatcher:latest
+    volumes:
+      - ./config/ce-cc-rao-logs-dispatcher-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+networks:
+  gridcapa:
+    name: gridcapa
