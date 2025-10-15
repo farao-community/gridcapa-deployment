@@ -36,7 +36,35 @@ services:
     image: delfer/alpine-ftp-server
     restart: always
     environment:
-      USERS: gridcapa|gridcapa|/data/gridcapa/|10000 gridcapa|gridcapa|/data/gridcapa/core/cc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/core/valid/outputs|10000 gridcapa|gridcapa|/data/gridcapa/cse/export/d2cc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/cse/export/idcc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/cse/import/d2cc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/cse/import_ec/d2cc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/cse/import_ec/idcc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/cse/import/idcc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/cse/valid/outputs/cia|10000 gridcapa|gridcapa|/data/gridcapa/swe/d2cc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/swe/idcc/outputs|10000 gridcapa|gridcapa|/data/gridcapa/swe/idcf/outputs|10000
+      USERS: |-
+        gridcapa|gridcapa|/data/gridcapa/
+        gridcapa|gridcapa|/data/gridcapa/core/cc/
+        gridcapa|gridcapa|/data/gridcapa/core/valid/
+        gridcapa|gridcapa|/data/gridcapa/cse/export/d2cc/
+        gridcapa|gridcapa|/data/gridcapa/cse/export/idcc/
+        gridcapa|gridcapa|/data/gridcapa/cse/import/d2cc/
+        gridcapa|gridcapa|/data/gridcapa/cse/import_ec/d2cc/
+        gridcapa|gridcapa|/data/gridcapa/cse/import_ec/idcc/
+        gridcapa|gridcapa|/data/gridcapa/cse/import/idcc/
+        gridcapa|gridcapa|/data/gridcapa/cse/valid/
+        gridcapa|gridcapa|/data/gridcapa/cse/valid/outputs/
+        gridcapa|gridcapa|/data/gridcapa/swe/btcc/
+        gridcapa|gridcapa|/data/gridcapa/swe/d2cc/
+        gridcapa|gridcapa|/data/gridcapa/swe/idcc/
+        gridcapa|gridcapa|/data/gridcapa/swe/idcf/
+        gridcapa|gridcapa|/data/gridcapa/core/cc/outputs/
+        gridcapa|gridcapa|/data/gridcapa/core/valid/outputs/
+        gridcapa|gridcapa|/data/gridcapa/cse/export/d2cc/outputs/
+        gridcapa|gridcapa|/data/gridcapa/cse/export/idcc/outputs/
+        gridcapa|gridcapa|/data/gridcapa/cse/import/d2cc/outputs/
+        gridcapa|gridcapa|/data/gridcapa/cse/import_ec/d2cc/outputs/
+        gridcapa|gridcapa|/data/gridcapa/cse/import_ec/idcc/outputs/
+        gridcapa|gridcapa|/data/gridcapa/cse/import/idcc/outputs/
+        gridcapa|gridcapa|/data/gridcapa/cse/valid/outputs/cia/
+        gridcapa|gridcapa|/data/gridcapa/swe/btcc/outputs/
+        gridcapa|gridcapa|/data/gridcapa/swe/d2cc/outputs/
+        gridcapa|gridcapa|/data/gridcapa/swe/idcc/outputs/
+        gridcapa|gridcapa|/data/gridcapa/swe/idcf/outputs/
     volumes:
       - ftp-data:/data/gridcapa
     ports:
