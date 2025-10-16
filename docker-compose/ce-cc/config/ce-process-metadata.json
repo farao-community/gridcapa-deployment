@@ -1,0 +1,32 @@
+{
+  "processName": "CE Capacity Calculation",
+  "globalViewTimestampFilter": [
+  ],
+  "manualExportEnabled": false,
+  "parametersEnabled": true,
+  "eventLevelPredefinedFilter": [
+    {
+      "filterName": "INFO",
+      "defaultChecked": false,
+      "filterValue": [
+        "INFO"
+      ]
+    },
+    {
+      "filterName": "WARN",
+      "defaultChecked": false,
+      "filterValue": [
+        "WARN"
+      ]
+    },
+    {
+      "filterName": "ERROR",
+      "defaultChecked": false,
+      "filterValue": [
+        "ERROR"
+      ]
+    }
+  ],
+  "eventLogPredefinedFilter": [
+  ]
+}
