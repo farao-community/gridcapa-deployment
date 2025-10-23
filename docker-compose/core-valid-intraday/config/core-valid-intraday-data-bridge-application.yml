@@ -25,7 +25,7 @@ data-bridge:
         source-directory: "/glsks"
         sink-directory: "/GLSKs"
         file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.glsk.properties
-      - file-type: MARKET-POINTS
+      - file-type: MARKET-POINT
         file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-FID2-632-v(?<version>[0-9]*)-10V1001C--00264T-to-10V1001C–00085T.(xml|XML)"
         time-validity: daily
         remote-file-regex: ".*"
@@ -46,7 +46,7 @@ data-bridge:
         source-directory: "/pras"
         sink-directory: "/PRAs"
         file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.pra.properties
-      - file-type: VERTICES
+      - file-type: VERTICE
         file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-3]{1}[0-9]{1})-(?<hour>[0-2]{1}[0-9]{1})00-FID2-701-INIT_VIRG_REFBAL_PRES_REPREVERTICES-v(?<version>[0-9]*).(csv|CSV)"
         time-validity: hourly
         remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-FID2-645-v(?<version>[0-9]*)-10V1001C--00264T-to-10V1001C–00085T.(zip|ZIP)"
