@@ -1,0 +1,51 @@
+rao-objective-function:
+  type: SECURE_FLOW
+  unit: MEGAWATT
+
+rao-ra-usage-limits-per-contingency:
+  max-curative-pst-per-tso: ["{FR}:0"]
+  max-curative-ra-per-tso: ["{FR}:1"]
+  max-curative-topo-per-tso: ["{FR}:1"]
+
+rao-range-actions-optimization:
+  pst-ra-min-impact-threshold: 0.01
+  hvdc-ra-min-impact-threshold: 0.001
+
+search-tree-range-actions-optimization:
+  max-mip-iterations: 2
+  pst-sensitivity-threshold: 1.0e-06
+
+rao-topological-actions-optimization:
+  relative-minimum-impact-threshold: 0
+  absolute-minimum-impact-threshold: 10
+
+search-tree-topological-actions-optimization:
+  max-preventive-search-tree-depth: 5
+  max-curative-search-tree-depth: 5
+
+rao-not-optimized-cnecs:
+  do-not-optimize-curative-cnecs-for-tsos-without-cras: true
+
+load-flow-default-parameters:
+  voltageInitMode: DC_VALUES
+  transformerVoltageControlOn: false
+  phaseShifterRegulationOn: false
+  noGeneratorReactiveLimits: false
+  twtSplitShuntAdmittance: true
+  simulShunt: false
+  readSlackBus: false
+  writeSlackBus: false
+  dc: true
+  distributedSlack: true
+  balanceType: PROPORTIONAL_TO_LOAD
+  countriesToBalance: AL,AT,BA,BE,BG,CH,CZ,DE,ES,FR,GR,HR,HU,IT,ME,MK,NL,PL,PT,RO,RS,SI,SK,TR,UA
+
+open-loadflow-default-parameters:
+  throwsExceptionInCaseOfSlackDistributionFailure: true
+
+search-tree-load-flow-and-sensitivity-computation:
+  load-flow-provider: OpenLoadFlow
+  sensitivity-provider: OpenLoadFlow
+
+search-tree-multi-threading:
+  available-cpus: 8
