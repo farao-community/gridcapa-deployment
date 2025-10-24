@@ -69,7 +69,7 @@ configMapGenerator:
   - name: core-valid-runner-itools-configmap
     files:
       - config.yml=configuration/core-valid-runner-itools-config.yml
-  - name: core-valid-runner-itools-configmap
+  - name: core-valid-intraday-runner-itools-configmap
     files:
       - config.yml=configuration/core-valid-intraday-runner-itools-config.yml
   - name: cse-valid-runner-itools-configmap

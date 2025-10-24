@@ -6,7 +6,7 @@ metadata:
     app: gridcapa
     component: data-bridge-storage
     region: core
-    process: valid
+    process: valid-intraday
 spec:
   storageClassName: azure-storage-class
   accessModes:
