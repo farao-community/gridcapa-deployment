@@ -55,6 +55,11 @@
     "appColor" : "#f5c211"
   },
   {
+    "name" : "Capa CORE Intraday Validation",
+    "url"  : "/core/valid-intraday/",
+    "appColor" : "#f98d81"
+  },
+  {
     "name" : "Capa CORE Validation",
     "url"  : "/core/valid/",
     "appColor" : "#f66151"

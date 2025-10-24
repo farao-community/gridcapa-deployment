@@ -64,7 +64,7 @@ task-server:
     outputs:
       - IVA-RESULT
     enable-export-logs: false
-    manual-upload-base-path: CORE/VALID_INTRADAY
+    manual-upload-base-path: CORE/valid-intraDAY
   whitelist:
     - http://minio:9000/
 
