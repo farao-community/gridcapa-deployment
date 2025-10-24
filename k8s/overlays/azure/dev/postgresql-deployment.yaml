@@ -125,6 +125,16 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: core-valid-password
+            - name: POSTGRES_CORE_VALID_INTRADAY_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: core-valid-intraday-user
+            - name: POSTGRES_CORE_VALID_INTRADAY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: core-valid-intraday-password
             - name: POSTGRES_SWE_BTCC_USER
               valueFrom:
                 secretKeyRef:

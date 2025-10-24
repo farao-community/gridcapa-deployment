@@ -10,6 +10,7 @@ metadata:
       rewrite ^/cse/export/idcc$ /cse/export/idcc/ permanent;
       rewrite ^/cse/export/d2cc$ /cse/export/d2cc/ permanent;
       rewrite ^/core/valid$ /core/valid/ permanent;
+      rewrite ^/core/valid-intraday$ /core/valid-intraday/ permanent;
       rewrite ^/cse/valid/idcc$ /cse/valid/idcc/ permanent;
       rewrite ^/cse/valid/d2cc$ /cse/valid/d2cc/ permanent;
       rewrite ^/swe/btcc$ /swe/btcc/ permanent;
@@ -325,7 +326,48 @@ spec:
                   number: 80
             path: /()(core/valid/gridcapa-job-launcher/.*)
             pathType: Prefix
-
+          - backend:
+              service:
+                name: core-valid-intraday-app
+                port:
+                  number: 80
+            path: /core/valid-intraday(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/valid-intraday/config/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/valid-intraday/config-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/valid-intraday/task-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/valid-intraday/task-manager/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(core/valid-intraday/gridcapa-job-launcher/.*)
+            pathType: Prefix
           - backend:
               service:
                 name: cse-valid-idcc-app

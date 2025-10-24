@@ -6,6 +6,7 @@ resources:
   - ../common
   - ../../../bases/core-cc
   - ../../../bases/core-valid
+  - ../../../bases/core-valid-intraday
   - ../../../bases/cse-common
   - ../../../bases/cse-export-d2cc
   - ../../../bases/cse-export-idcc
@@ -21,6 +22,7 @@ resources:
   - ../../../bases/swe-idcc-idcf
   - ../azure-databridge-claims/core-cc
   - ../azure-databridge-claims/core-valid
+  - ../azure-databridge-claims/core-valid-intraday
   - ../azure-databridge-claims/cse-export-d2cc
   - ../azure-databridge-claims/cse-export-idcc
   - ../azure-databridge-claims/cse-import-d2cc
@@ -36,6 +38,7 @@ resources:
   - apps-metadata-server-configmap.yaml
   - core-cc-gridcapa-app-idp-settings-configmap.yaml
   - core-valid-gridcapa-app-idp-settings-configmap.yaml
+  - core-valid-intraday-gridcapa-app-idp-settings-configmap.yaml
   - cse-export-d2cc-app-idp-settings-configmap.yaml
   - cse-export-idcc-app-idp-settings-configmap.yaml
   - cse-import-d2cc-app-idp-settings-configmap.yaml
@@ -66,6 +69,9 @@ configMapGenerator:
   - name: core-valid-runner-itools-configmap
     files:
       - config.yml=configuration/core-valid-runner-itools-config.yml
+  - name: core-valid-runner-itools-configmap
+    files:
+      - config.yml=configuration/core-valid-intraday-runner-itools-config.yml
   - name: cse-valid-runner-itools-configmap
     files:
       - config.yml=configuration/cse-valid-runner-itools-config.yml
@@ -177,6 +183,28 @@ images:
     newName: docker.io/farao/gridcapa-task-manager
     newTag: latest
   - name: gridcapa-core-valid-exporter
+    newName: docker.io/farao/gridcapa-export
+    newTag: latest
+    # Core Valid Intraday
+  - name: gridcapa-core-valid-intraday-input-data-bridge
+    newName: docker.io/farao/gridcapa-data-bridge
+    newTag: latest
+  - name: gridcapa-core-valid-intraday-adapter
+    newName: docker.io/farao/gridcapa-core-valid-intraday-adapter
+    newTag: latest
+  - name: gridcapa-core-valid-intraday-job-launcher
+    newName: docker.io/farao/gridcapa-job-launcher
+    newTag: latest
+  - name: gridcapa-core-valid-intraday-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
+    newTag: latest
+  - name: gridcapa-core-valid-intraday-runner
+    newName: docker.io/farao/gridcapa-core-valid
+    newTag: latest
+  - name: gridcapa-core-valid-intraday-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: latest
+  - name: gridcapa-core-valid-intraday-exporter
     newName: docker.io/farao/gridcapa-export
     newTag: latest
     # CSE Valid

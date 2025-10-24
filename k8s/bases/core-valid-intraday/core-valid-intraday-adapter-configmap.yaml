@@ -1,0 +1,49 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: core-valid-intraday-adapter-configmap
+  labels:
+    app: gridcapa
+    component: adapter
+    region: core
+    process: valid-intraday
+data:
+  application.yml: |-
+    spring:
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        port: 5672
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        template:
+          reply-timeout: 60000000
+      cloud:
+        stream:
+          default:
+            binder: rabbit
+            group: core-valid-intraday-adapter
+          bindings:
+            consumeTask-in-0:
+              destination: core-valid-intraday-run-task
+            consumeAutoTask-in-0:
+              destination: core-valid-intraday-run-task-auto
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+    
+    core-valid-intraday-runner:
+      binding:
+        destination: core-valid-intraday-requests
+
+    minio-adapter:
+      bucket: ${MINIO_BUCKET}
+      base-path: ${MINIO_BASE_DIRECTORY}
+      access-key: ${GRIDCAPA_MINIO_USER}
+      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+      url: http://gridcapa-minio:9000/
+    
+    core-valid-intraday-adapter:
+      whitelist:
+        - http://gridcapa-minio:9000/

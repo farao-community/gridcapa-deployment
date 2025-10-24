@@ -1,0 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - core-valid-intraday-data-bridge-configmap.yaml
+  - core-valid-intraday-data-bridge-deployment.yaml
+  - core-valid-intraday-data-bridge-service.yaml
+  - core-valid-intraday-app-deployment.yaml
+  - core-valid-intraday-app-process-metadata-configmap.yaml
+  - core-valid-intraday-app-service.yaml
+  - core-valid-intraday-runner-configmap.yaml
+  - core-valid-intraday-runner-deployment.yaml
+  - core-valid-intraday-runner-service.yaml
+  - core-valid-intraday-adapter-configmap.yaml
+  - core-valid-intraday-adapter-deployment.yaml
+  - core-valid-intraday-adapter-service.yaml
+  - core-valid-intraday-task-manager-configmap.yaml
+  - core-valid-intraday-task-manager-deployment.yaml
+  - core-valid-intraday-task-manager-service.yaml
+  - core-valid-intraday-rao-logs-dispatcher-configmap.yaml
+  - core-valid-intraday-rao-logs-dispatcher-deployment.yaml
+  - core-valid-intraday-rao-logs-dispatcher-service.yaml
+  - core-valid-intraday-job-launcher-deployment.yaml
+  - core-valid-intraday-job-launcher-service.yaml
+  - core-valid-intraday-job-launcher-configmap.yaml
+  - core-valid-intraday-exporter-configmap.yaml
+  - core-valid-intraday-exporter-deployment.yaml
+  - core-valid-intraday-exporter-service.yaml
+  - core-valid-intraday-minio-purge.yaml
