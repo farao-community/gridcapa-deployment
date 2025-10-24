@@ -38,12 +38,14 @@ spring:
 gridcapa-version: ${GRIDCAPA_VERSION}
 
 job-launcher:
+  auto: true
+  auto-trigger-filetypes: [ ]
   url:
     task-manager-timestamp-url: http://core-valid-intraday-task-manager:8080/tasks/
     task-manager-business-date-url: http://core-valid-intraday-task-manager:8080/tasks/businessdate/
     interrupt-run-url: http://interruption-server:8080/interrupt/
   process:
-    days-to-add: 1
+    days-to-add: 0
 
 scheduler:
   enable: true
