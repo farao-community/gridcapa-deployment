@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: ce-cc-post-processing
+  rabbitmq:
+    host: rabbitmq
+    username: gridcapa
+    password: gridcapa
+    port: 5672
+    template:
+      reply-timeout: 7200000
+  cloud:
+    stream:
+      default:
+        group: ce-cc-post-processing
+      bindings:
+        consumeTaskDtoUpdate-in-0:
+          destination: ce-cc-task-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+        bindings:
+          consumeTaskDtoUpdate-in-0:
+            consumer:
+              binding-routing-key: status
+
+logback:
+  amqp:
+    exchange: ce-cc-task-manager-logs-exchange
+    routing-key: "#"
+
+core-cc-post-processing:
+  url:
+    task-manager-timestamp-url: http://ce-cc-task-manager:8080/tasks/
+    task-manager-business-date-url: http://ce-cc-task-manager:8080/tasks/businessdate/
+
+minio-adapter:
+  bucket: gridcapa
+  base-path: /CE/CC
+  access-key: gridcapa
+  secret-key: gridcapa
+  url: http://minio:9000
