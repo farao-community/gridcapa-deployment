@@ -76,4 +76,4 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CORE/valid-intraDAY
+      base-directory: /CORE/VALID-INTRADAY

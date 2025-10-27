@@ -28,7 +28,7 @@ core-valid-intraday-runner:
 
 minio-adapter:
   bucket: gridcapa
-  base-path: /CORE/valid-intraDAY
+  base-path: /CORE/VALID-INTRADAY
   access-key: gridcapa
   secret-key: gridcapa
   url: http://minio:9000
