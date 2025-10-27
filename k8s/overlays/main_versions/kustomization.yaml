@@ -26,6 +26,9 @@ images:
   - name: rabbitmq
     newName: docker.io/rabbitmq
     newTag: management
+  - name: filestash
+    newName: docker.io/farao/filestash
+    newTag: fix-download
   - name: minio
     newName: docker.io/farao/bitnami-minio
     newTag: 2024.12.18
@@ -40,7 +43,7 @@ images:
     newTag: 0.15.0
   - name: gridcapa-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.39.0
+    newTag: v1.38.0
   - name: gridcapa-rao-failure-handler
     newName: docker.io/farao/gridcapa-rao-failure-handler
     newTag: v1.5.0
@@ -106,10 +109,10 @@ images:
     newTag: v2.5.0
   - name: gridcapa-swe-exporter
     newName: docker.io/farao/gridcapa-export
-    newTag: v1.11.0
+    newTag: ser
   - name: gridcapa-swe-adapter
     newName: docker.io/farao/gridcapa-swe-adapter
-    newTag: v1.13.0
+    newTag: v1.13.0_extend_minio
   - name: gridcapa-swe-job-launcher
     newName: docker.io/farao/gridcapa-job-launcher
     newTag: v1.21.0
@@ -118,7 +121,7 @@ images:
     newTag: v1.8.0
   - name: gridcapa-swe-runner
     newName: docker.io/farao/gridcapa-swe-runner
-    newTag: v1.40.0
+    newTag: ser
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.37.0
