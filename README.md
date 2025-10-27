@@ -14,6 +14,7 @@ Docker Compose scripts are designed to run all GridCapa applications independent
 GridCapa currently contains the following applications:
 - Gridcapa CORE CC
 - GridCapa CORE Validation
+- Gridcapa CORE Validation Intraday
 - GridCapa CSE EXPORT D2CC
 - GridCapa CSE EXPORT IDCC
 - GridCapa CSE IMPORT D2CC
