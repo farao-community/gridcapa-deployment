@@ -1,5 +1,5 @@
 {
-  "processName": "CORE Validation Intraday",
+  "processName": "CORE Validation IDCC",
   "globalViewTimestampFilter": [
   ],
   "manualExportEnabled": true,

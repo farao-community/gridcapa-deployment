@@ -55,12 +55,12 @@
     "appColor" : "#f5c211"
   },
   {
-    "name" : "Capa CORE Intraday Validation",
-    "url"  : "/core/valid-intraday/",
+    "name" : "Capa CORE IDCC Validation",
+    "url"  : "/core/valid/idcc/",
     "appColor" : "#f98d81"
   },
   {
-    "name" : "Capa CORE Validation",
+    "name" : "Capa CORE D2CC Optimized Validation",
     "url"  : "/core/valid/",
     "appColor" : "#f66151"
   },
