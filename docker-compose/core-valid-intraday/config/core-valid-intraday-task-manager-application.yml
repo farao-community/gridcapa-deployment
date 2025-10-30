@@ -81,3 +81,4 @@ stomp:
 logback:
   amqp:
     exchange: core-valid-intraday-task-manager-logs-exchange
+    
