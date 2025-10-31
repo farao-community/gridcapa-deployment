@@ -59,7 +59,7 @@ task-server:
       - MARKET-POINTS
       - MERGED-CNEC
       - PRA
-      - VERTICE
+      - VERTICES
     optional-inputs:
     outputs:
       - IVA-RESULT
