@@ -1,0 +1,54 @@
+logback:
+  amqp:
+    exchange: core-valid-intraday-task-manager-logs-exchange
+    routing-key: "#"
+
+spring:
+  application:
+    name: core-valid-intraday-job-launcher
+  rabbitmq:
+    host: rabbitmq
+    username: gridcapa
+    password: gridcapa
+    port: 5672
+  cloud:
+    stream:
+      default:
+        group: core-valid-intraday-job-launcher
+      bindings:
+        run-task:
+          destination: core-valid-intraday-run-task
+        run-task-auto:
+          destination: core-valid-intraday-run-task-auto
+        consumeTaskDtoUpdate-in-0:
+          destination: core-valid-intraday-task-updated
+        task-status-update:
+          binder: rabbit
+          destination: core-valid-intraday-task-status-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+        bindings:
+          consumeTaskDtoUpdate-in-0:
+            consumer:
+              binding-routing-key: input
+
+gridcapa-version: ${GRIDCAPA_VERSION}
+
+job-launcher:
+  auto: true
+  auto-trigger-filetypes: [ ]
+  url:
+    task-manager-timestamp-url: http://core-valid-intraday-task-manager:8080/tasks/
+    task-manager-business-date-url: http://core-valid-intraday-task-manager:8080/tasks/businessdate/
+    interrupt-run-url: http://interruption-server:8080/interrupt/
+  process:
+    days-to-add: 0
+
+scheduler:
+  enable: true
+  start-hour: 0
+  end-hour: 23
+  frequency-in-minutes: 1

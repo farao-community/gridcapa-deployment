@@ -1,0 +1,38 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+    template:
+      reply-timeout: 6000000
+  cloud:
+    stream:
+      default:
+        binder: rabbit
+        group: core-valid-intraday-adapter
+      bindings:
+        consumeTask-in-0:
+          destination: core-valid-intraday-run-task
+        consumeAutoTask-in-0:
+          destination: core-valid-intraday-run-task-auto
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+
+core-valid-intraday-runner:
+  binding:
+    destination: core-valid-intraday-requests
+
+minio-adapter:
+  bucket: gridcapa
+  base-path: /CORE/VALID/IDCC
+  access-key: gridcapa
+  secret-key: gridcapa
+  url: http://minio:9000
+
+core-valid-intraday-adapter:
+  whitelist:
+    - http://minio:9000/

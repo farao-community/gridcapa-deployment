@@ -1,0 +1,85 @@
+version: "3.7"
+services:
+  core-valid-intraday-app:
+    image: farao/gridcapa-app:latest
+    volumes:
+      - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ./config/core-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+    networks:
+      - gridcapa
+
+  core-valid-intraday-data-bridge:
+    image: farao/gridcapa-data-bridge:latest
+    volumes:
+      - ./config/core-valid-intraday-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-valid-intraday-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./config/core-valid-intraday-task-manager-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-valid-intraday-job-launcher:
+    image: farao/gridcapa-job-launcher:latest
+    env_file:
+      - ../common/config/version.env
+    volumes:
+      - ./config/core-valid-intraday-job-launcher-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  core-valid-intraday-runner:
+    image: farao/gridcapa-core-valid-intraday:latest
+    volumes:
+      - ./config/core-valid-intraday-runner-application.yml:/config/application.yml
+      - ../../configuration/core-valid-intraday-runner-itools-config.yml:/home/farao/.itools/config.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  core-valid-intraday-adapter:
+    image: farao/gridcapa-core-valid-intraday-adapter:latest
+    volumes:
+      - ./config/core-valid-intraday-adapter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  core-valid-intraday-rao-logs-dispatcher:
+    image: farao/gridcapa-rao-logs-dispatcher:latest
+    volumes:
+      - ./config/core-valid-intraday-rao-logs-dispatcher-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  core-valid-intraday-exporter:
+    image: farao/gridcapa-export:latest
+    volumes:
+      - ./config/core-valid-intraday-exporter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+networks:
+  gridcapa:
+    name: gridcapa

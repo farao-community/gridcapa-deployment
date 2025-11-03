@@ -43,6 +43,9 @@ GRANT ALL PRIVILEGES ON DATABASE cse_import_ec_d2cc_tasks TO cse_import_ec_d2cc_
 CREATE DATABASE core_cc_tasks;
 CREATE USER core_cc_server WITH ENCRYPTED PASSWORD 'core-cc';
 GRANT ALL PRIVILEGES ON DATABASE core_cc_tasks TO core_cc_server;
+CREATE DATABASE core_valid_intraday_tasks;
+CREATE USER core_valid_intraday_server WITH ENCRYPTED PASSWORD 'core-valid-intraday';
+GRANT ALL PRIVILEGES ON DATABASE core_valid_intraday_tasks TO core_valid_intraday_server;
 ---- interruption server
 CREATE DATABASE interruption_server_db;
 CREATE USER interruption_server WITH ENCRYPTED PASSWORD 'interruption';
