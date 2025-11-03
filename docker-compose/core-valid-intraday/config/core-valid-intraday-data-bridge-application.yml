@@ -47,7 +47,7 @@ data-bridge:
         sink-directory: "/PRAs"
         file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.pra.properties
       - file-type: VERTICES
-        file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-3]{1}[0-9]{1})-(?<hour>[0-2]{1}[0-9]{1})00-FID2-701-INIT_VIRG_REFBAL_PRES_REPREVERTICES-v(?<version>[0-9]*).(csv|CSV)"
+        file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-3]{1}[0-9]{1})-(?<hour>[0-2]{1}[0-9]{1}[abAB]{0,1})00-FID2-701-INIT_VIRG_REFBAL_PRES_REPREVERTICES-v(?<version>[0-9]*).(csv|CSV)"
         time-validity: hourly
         remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-FID2-645-v(?<version>[0-9]*)-10V1001C--00264T-to-10V1001C-00085T.(zip|ZIP)"
         doUnzip: true
