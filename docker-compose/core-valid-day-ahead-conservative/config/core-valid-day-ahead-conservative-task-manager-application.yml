@@ -53,12 +53,7 @@ task-server:
   process:
     tag: CORE_VALID_DAY_AHEAD_CONSERVATIVE
     inputs:
-      - CGM
       - CNEC-RAM
-      - GLSK
-      - MARKET-POINTS
-      - MERGED-CNEC
-      - PRA
       - VERTICES
     optional-inputs:
     outputs:
