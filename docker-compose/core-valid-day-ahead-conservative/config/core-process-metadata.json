@@ -1,0 +1,31 @@
+{
+  "processName": "CORE Validation IDCC",
+  "globalViewTimestampFilter": [
+  ],
+  "manualExportEnabled": true,
+  "eventLevelPredefinedFilter": [
+    {
+      "filterName": "INFO",
+      "defaultChecked": false,
+      "filterValue": [
+        "INFO"
+      ]
+    },
+    {
+      "filterName": "WARN",
+      "defaultChecked": false,
+      "filterValue": [
+        "WARN"
+      ]
+    },
+    {
+      "filterName": "ERROR",
+      "defaultChecked": false,
+      "filterValue": [
+        "ERROR"
+      ]
+    }
+  ],
+  "eventLogPredefinedFilter": [
+  ]
+}
