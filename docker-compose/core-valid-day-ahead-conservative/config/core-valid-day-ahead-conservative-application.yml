@@ -10,35 +10,35 @@ spring:
     stream:
       default:
         binder: rabbit
-        group: core-valid-intraday-runner
+        group: core-valid-day-ahead-conservative-runner
       bindings:
         task-status-update:
-          destination: core-valid-intraday-task-status-updated
+          destination: core-valid-day-ahead-conservative-task-status-updated
         request-in-0:
-          destination: core-valid-intraday-requests
+          destination: core-valid-day-ahead-conservative-requests
 
 logback:
   amqp:
-    exchange: core-valid-intraday-task-manager-logs-exchange
+    exchange: core-valid-day-ahead-conservative-task-manager-logs-exchange
     routing-key: "#"
 
 rao-runner-server:
   amqp:
-    client-app-id: core-valid-intraday-runner
+    client-app-id: core-valid-day-ahead-conservative-runner
     queue-name: rao-request-queue
 
-core-valid-intraday-runner:
+core-valid-day-ahead-conservative-runner:
   async-time-out: 7200000
   bindings:
     request:
-      destination: core-valid-intraday-requests
+      destination: core-valid-day-ahead-conservative-requests
       routing-key: "#"
   whitelist:
     - http://minio:9000/
 
 minio-adapter:
   bucket: gridcapa
-  base-path: /CORE/VALID/IDCC
+  base-path: /CORE/VALID/D2CC_CONSERVATIVE
   access-key: gridcapa
   secret-key: gridcapa
   url: http://minio:9000

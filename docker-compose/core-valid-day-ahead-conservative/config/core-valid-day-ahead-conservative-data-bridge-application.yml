@@ -61,7 +61,7 @@ data-bridge:
       port: 21
       username: gridcapa
       password: gridcapa
-      base-directory: /data/gridcapa/core/valid/idcc
+      base-directory: /data/gridcapa/core/valid/d2cc-conservative
       polling-delay-in-ms: 5000
       max-messages-per-poll: 10
       max-pool-size: 2
@@ -76,4 +76,4 @@ data-bridge:
       access-key: gridcapa
       secret-key: gridcapa
       bucket: gridcapa
-      base-directory: /CORE/VALID/IDCC
+      base-directory: /CORE/VALID/D2CC_CONSERVATIVE

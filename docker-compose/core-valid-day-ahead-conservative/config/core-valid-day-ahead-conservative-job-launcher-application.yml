@@ -1,11 +1,11 @@
 logback:
   amqp:
-    exchange: core-valid-intraday-task-manager-logs-exchange
+    exchange: core-valid-day-ahead-conservative-task-manager-logs-exchange
     routing-key: "#"
 
 spring:
   application:
-    name: core-valid-intraday-job-launcher
+    name: core-valid-day-ahead-conservative-job-launcher
   rabbitmq:
     host: rabbitmq
     username: gridcapa
@@ -14,17 +14,17 @@ spring:
   cloud:
     stream:
       default:
-        group: core-valid-intraday-job-launcher
+        group: core-valid-day-ahead-conservative-job-launcher
       bindings:
         run-task:
-          destination: core-valid-intraday-run-task
+          destination: core-valid-day-ahead-conservative-run-task
         run-task-auto:
-          destination: core-valid-intraday-run-task-auto
+          destination: core-valid-day-ahead-conservative-run-task-auto
         consumeTaskDtoUpdate-in-0:
-          destination: core-valid-intraday-task-updated
+          destination: core-valid-day-ahead-conservative-task-updated
         task-status-update:
           binder: rabbit
-          destination: core-valid-intraday-task-status-updated
+          destination: core-valid-day-ahead-conservative-task-status-updated
       rabbit:
         default:
           consumer:
@@ -41,8 +41,8 @@ job-launcher:
   auto: true
   auto-trigger-filetypes: [ ]
   url:
-    task-manager-timestamp-url: http://core-valid-intraday-task-manager:8080/tasks/
-    task-manager-business-date-url: http://core-valid-intraday-task-manager:8080/tasks/businessdate/
+    task-manager-timestamp-url: http://core-valid-day-ahead-conservative-task-manager:8080/tasks/
+    task-manager-business-date-url: http://core-valid-day-ahead-conservative-task-manager:8080/tasks/businessdate/
     interrupt-run-url: http://interruption-server:8080/interrupt/
   process:
     days-to-add: 0

@@ -10,29 +10,29 @@ spring:
     stream:
       default:
         binder: rabbit
-        group: core-valid-intraday-adapter
+        group: core-valid-day-ahead-conservative-adapter
       bindings:
         consumeTask-in-0:
-          destination: core-valid-intraday-run-task
+          destination: core-valid-day-ahead-conservative-run-task
         consumeAutoTask-in-0:
-          destination: core-valid-intraday-run-task-auto
+          destination: core-valid-day-ahead-conservative-run-task-auto
       rabbit:
         default:
           consumer:
             auto-bind-dlq: true
             max-attempts: 1
 
-core-valid-intraday-runner:
+core-valid-day-ahead-conservative-runner:
   binding:
-    destination: core-valid-intraday-requests
+    destination: core-valid-day-ahead-conservative-requests
 
 minio-adapter:
   bucket: gridcapa
-  base-path: /CORE/VALID/IDCC
+  base-path: /CORE/VALID/D2CC_CONSERVATIVE
   access-key: gridcapa
   secret-key: gridcapa
   url: http://minio:9000
 
-core-valid-intraday-adapter:
+core-valid-day-ahead-conservative-adapter:
   whitelist:
     - http://minio:9000/

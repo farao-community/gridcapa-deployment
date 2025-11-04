@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  core-valid-intraday-app:
+  core-valid-day-ahead-conservative-app:
     image: farao/gridcapa-app:latest
     volumes:
       - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
@@ -8,34 +8,34 @@ services:
     networks:
       - gridcapa
 
-  core-valid-intraday-data-bridge:
+  core-valid-day-ahead-conservative-data-bridge:
     image: farao/gridcapa-data-bridge:latest
     volumes:
-      - ./config/core-valid-intraday-data-bridge-application.yml:/config/application.yml
+      - ./config/core-valid-day-ahead-conservative-data-bridge-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  core-valid-intraday-task-manager:
+  core-valid-day-ahead-conservative-task-manager:
     image: farao/gridcapa-task-manager:latest
     volumes:
-      - ./config/core-valid-intraday-task-manager-application.yml:/config/application.yml
+      - ./config/core-valid-day-ahead-conservative-task-manager-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  core-valid-intraday-job-launcher:
+  core-valid-day-ahead-conservative-job-launcher:
     image: farao/gridcapa-job-launcher:latest
     env_file:
       - ../common/config/version.env
     volumes:
-      - ./config/core-valid-intraday-job-launcher-application.yml:/config/application.yml
+      - ./config/core-valid-day-ahead-conservative-job-launcher-application.yml:/config/application.yml
     networks:
       - gridcapa
 
-  core-valid-intraday-runner:
-    image: farao/gridcapa-core-valid-intraday:latest
+  core-valid-day-ahead-conservative-runner:
+    image: farao/gridcapa-core-valid-day-ahead-conservative:latest
     volumes:
-      - ./config/core-valid-intraday-runner-application.yml:/config/application.yml
-      - ../../configuration/core-valid-intraday-runner-itools-config.yml:/home/farao/.itools/config.yml
+      - ./config/core-valid-day-ahead-conservative-runner-application.yml:/config/application.yml
+      - ../../configuration/core-valid-day-ahead-conservative-runner-itools-config.yml:/home/farao/.itools/config.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s
@@ -44,10 +44,10 @@ services:
     networks:
       - gridcapa
 
-  core-valid-intraday-adapter:
-    image: farao/gridcapa-core-valid-intraday-adapter:latest
+  core-valid-day-ahead-conservative-adapter:
+    image: farao/gridcapa-core-valid-day-ahead-conservative-adapter:latest
     volumes:
-      - ./config/core-valid-intraday-adapter-application.yml:/config/application.yml
+      - ./config/core-valid-day-ahead-conservative-adapter-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s
@@ -56,22 +56,10 @@ services:
     networks:
       - gridcapa
 
-  core-valid-intraday-rao-logs-dispatcher:
-    image: farao/gridcapa-rao-logs-dispatcher:latest
-    volumes:
-      - ./config/core-valid-intraday-rao-logs-dispatcher-application.yml:/config/application.yml
-    healthcheck:
-      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
-      interval: 30s
-      timeout: 30s
-      retries: 5
-    networks:
-      - gridcapa
-
-  core-valid-intraday-exporter:
+  core-valid-day-ahead-conservative-exporter:
     image: farao/gridcapa-export:latest
     volumes:
-      - ./config/core-valid-intraday-exporter-application.yml:/config/application.yml
+      - ./config/core-valid-day-ahead-conservative-exporter-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
       interval: 30s

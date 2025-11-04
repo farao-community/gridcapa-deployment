@@ -7,10 +7,10 @@ spring:
   cloud:
     stream:
       default:
-        group: core-valid-intraday-exporter
+        group: core-valid-day-ahead-conservative-exporter
       bindings:
         consumeTaskDtoUpdate-in-0:
-          destination: core-valid-intraday-task-updated
+          destination: core-valid-day-ahead-conservative-task-updated
       rabbit:
         default:
           consumer:
@@ -22,7 +22,7 @@ spring:
               binding-routing-key: status
 
 task-manager:
-  base-url: http://core-valid-intraday-task-manager:8080
+  base-url: http://core-valid-day-ahead-conservative-task-manager:8080
   fetch-task:
     reties-number: 6
     interval-in-seconds: 10
@@ -33,11 +33,11 @@ ftp:
   port: 21
   access-key: gridcapa
   secret-key: gridcapa
-  remote-relative-destination-directory: data/gridcapa/core/valid/idcc/outputs
+  remote-relative-destination-directory: data/gridcapa/core/valid/d2cc-conservative/outputs
   retry-count: 3
   retry-sleep: 30
 
 logback:
   amqp:
-    exchange: core-valid-intraday-task-manager-logs-exchange
+    exchange: core-valid-day-ahead-conservative-task-manager-logs-exchange
     routing-key: "#"
