@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: minio-get-storage-data-pv
+  labels:
+    app: gridcapa
+    component: minio-get-storage-data
+spec:
+  storageClassName: azure-storage-class
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1M

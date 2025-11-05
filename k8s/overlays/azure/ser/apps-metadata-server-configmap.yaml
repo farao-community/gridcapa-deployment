@@ -1,0 +1,21 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: apps-metadata-server-configmap
+  labels:
+    app: gridcapa
+    component: apps-metadata-server-configmap
+data:
+  apps-metadata.json: |-
+    [
+      {
+        "name" : "Capa SWE CCC DA",
+        "url"  : "/swe/d2cc/",
+        "appColor" : "#fbf57b"
+      },
+      {
+        "name" : "Capa SWE IDCC 1st run",
+        "url"  : "/swe/idcc/",
+        "appColor" : "#f8e45c"
+      }
+    ]

@@ -1,0 +1,77 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-task-manager-scale
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-task-manager
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-runner-scale
+  labels:
+    desiredReplicas: upscaled
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-runner
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-adapter-scale
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-adapter
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-data-bridge-scale
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-data-bridge
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-exporter-scale
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-exporter
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-app-scale
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-app
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-job-launcher-scale
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-job-launcher
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: swe-d2cc-rao-logs-dispatcher-scale
+spec:
+  scaleTargetRef:
+    name: swe-d2cc-rao-logs-dispatcher

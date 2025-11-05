@@ -1,0 +1,152 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite ^/swe/d2cc$ /swe/d2cc/ permanent;
+      rewrite ^/swe/idcc$ /swe/idcc/ permanent;
+      rewrite ^/utils/rabbitmq$ /utils/rabbitmq/ permanent;
+      if ($request_uri ~ "^/utils/rabbitmq(/.*)") {
+        proxy_pass http://upstream_balancer$1;
+        break;
+      }
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/server-snippet: |
+      merge_slashes off;
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/client-max-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+  labels:
+    app: gridcapa
+    component: gridcapa
+  name: gridcapa
+  namespace: gridcapa-ser
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: gridcapa-ser.farao-community.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: swe-d2cc-app
+                port:
+                  number: 80
+            path: /swe/d2cc(/|$)(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/d2cc/config/.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/d2cc/config-notification/.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/d2cc/task-notification/.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/d2cc/task-manager/.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/d2cc/gridcapa-job-launcher/.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: swe-idcc-app
+                port:
+                  number: 80
+            path: /swe/idcc(/|$)(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/idcc/config/.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/idcc/config-notification/.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/idcc/task-notification/.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/idcc/task-manager/.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(swe/idcc/gridcapa-job-launcher/.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: gridcapa-rabbitmq
+                port:
+                  number: 15672
+            path: /utils/rabbitmq(/|$)(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: apps-metadata-server
+                port:
+                  number: 80
+            path: /apps-metadata(/|$)(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: gridcapa-minio
+                port:
+                  number: 9001
+            path: /minio(/|$)(.*)
+            pathType: ImplementationSpecific
+    - host: filestash-ser.farao-community.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: filestash
+                port:
+                  number: 80
+            path: /()(.*)
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - gridcapa-ser.farao-community.com
+        - filestash-ser.farao-community.com
+      secretName: gridcapa-tls
