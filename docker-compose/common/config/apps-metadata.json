@@ -61,8 +61,13 @@
   },
   {
     "name" : "Capa CORE D2CC Optimized Validation",
-    "url"  : "/core/valid/",
+    "url"  : "/core/valid/d2cc-optimized/",
     "appColor" : "#f66151"
+  },
+  {
+    "name" : "Capa CORE D2CC Conservative Validation",
+    "url"  : "/core/valid/d2cc-conservative/",
+    "appColor" : "#ee220c"
   },
   {
     "name" : "Capa CSE Validation IDCC",
