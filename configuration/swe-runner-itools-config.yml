@@ -60,7 +60,6 @@ rao-not-optimized-cnecs:
 
 search-tree-second-preventive-rao:
   execution-condition: POSSIBLE_CURATIVE_IMPROVEMENT
-  re-optimize-curative-range-actions: true
   hint-from-first-preventive-rao: true
 
 search-tree-load-flow-and-sensitivity-computation:
