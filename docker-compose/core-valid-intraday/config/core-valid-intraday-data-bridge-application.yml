@@ -34,8 +34,8 @@ data-bridge:
         sink-directory: "/MARKETPOINTs"
         file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.marketpoint.properties
       - file-type: MERGED-CNEC
-        file-regex: ".*"
-        time-validity: hourly
+        file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-FID2-666-v(?<version>[0-9]*)-10V1001C--00264T-to-10V1001C-00085T.(xml|XML)"
+        time-validity: daily
         remote-file-regex: ".*"
         source-directory: "/mergedcnecs"
         sink-directory: "/MERGEDCNECs"
