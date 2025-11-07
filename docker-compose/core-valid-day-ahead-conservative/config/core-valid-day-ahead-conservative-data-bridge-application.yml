@@ -1,0 +1,44 @@
+data-bridge:
+  configuration:
+    zone-id: "Europe/Paris"
+    target-process: CORE_VALID
+    files:
+      - file-type: CNEC-RAM
+        file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-3]{1}[0-9]{1})-(?<hour>[0-2]{1}[0-9]{1})(?<minute>00[abAB]?)-F309-INTERM_AMRINCL_REFBAL_PRES_FBPARAMS_CSV-v(?<version>[0-9]*).(csv|CSV)"
+        time-validity: hourly
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F309-v(?<version>[0-9]*)-17XTSO-CS------W-to-10V1001C--00085T.(zip|ZIP)"
+        doUnzip: true
+        source-directory: "/cnecrams"
+        sink-directory: "/CNECRAMs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.cnecram.properties
+      - file-type: VERTICES
+        file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-3]{1}[0-9]{1})-(?<hour>[0-2]{1}[0-9]{1})(?<minute>00[abAB]?)-F320-INTERMEDIATE_VERTICES-v(?<version>[0-9]*).(csv|CSV)"
+        time-validity: hourly
+        remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F320-v(?<version>[0-9]*)-17XTSO-CS------W-to-10V1001C--00085T.(zip|ZIP)"
+        doUnzip: true
+        source-directory: "/vertices"
+        sink-directory: "/VERTICEs"
+        file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.vertices.properties
+  sources:
+    ftp:
+      active: true
+      host: ftp-server
+      port: 21
+      username: gridcapa
+      password: gridcapa
+      base-directory: /data/gridcapa/core/valid/d2cc-conservative
+      polling-delay-in-ms: 5000
+      max-messages-per-poll: 10
+      max-pool-size: 2
+      timeouts:
+        data-timeout: 60000
+        default-timeout: 500
+        connect-timeout: 1000
+        session-wait-timeout: 1000
+  sinks:
+    minio:
+      url: http://minio:9000
+      access-key: gridcapa
+      secret-key: gridcapa
+      bucket: gridcapa
+      base-directory: /CORE/VALID/D2CC_CONSERVATIVE
