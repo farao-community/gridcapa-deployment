@@ -35,8 +35,7 @@ services:
   core-valid-day-ahead-conservative-runner:
     image: farao/gridcapa-core-valid-day-ahead-conservative:latest
     volumes:
-      - ./config/core-valid-day-ahead-conservative-runner-application.yml:/config/application.yml
-      - ../../configuration/core-valid-day-ahead-conservative-runner-itools-config.yml:/home/farao/.itools/config.yml
+      - ./config/core-valid-day-ahead-conservative-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s
@@ -47,6 +46,8 @@ services:
 
   core-valid-day-ahead-conservative-adapter:
     image: farao/gridcapa-core-valid-day-ahead-conservative-adapter:latest
+    env_file:
+      - ../common/config/version.env
     volumes:
       - ./config/core-valid-day-ahead-conservative-adapter-application.yml:/config/application.yml
     healthcheck:

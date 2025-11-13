@@ -33,7 +33,7 @@ ftp:
   port: 21
   access-key: gridcapa
   secret-key: gridcapa
-  remote-relative-destination-directory: data/gridcapa/core/valid/d2cc-conservative/outputs
+  remote-relative-destination-directory: data/gridcapa/core/valid/d2cc_conservative/outputs
   retry-count: 3
   retry-sleep: 30
 
