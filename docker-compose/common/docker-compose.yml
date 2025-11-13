@@ -42,7 +42,6 @@ services:
         gridcapa|gridcapa|/data/gridcapa/core/valid/
         gridcapa|gridcapa|/data/gridcapa/core/valid/idcc/
         gridcapa|gridcapa|/data/gridcapa/core/valid/d2cc_conservative/
-        gridcapa|gridcapa|/data/gridcapa/core/valid/d2cc_optimized/
         gridcapa|gridcapa|/data/gridcapa/cse/export/d2cc/
         gridcapa|gridcapa|/data/gridcapa/cse/export/idcc/
         gridcapa|gridcapa|/data/gridcapa/cse/import/d2cc/
