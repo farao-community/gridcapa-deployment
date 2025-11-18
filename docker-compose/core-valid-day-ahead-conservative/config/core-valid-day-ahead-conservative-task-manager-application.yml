@@ -59,7 +59,6 @@ task-server:
     inputs:
       - CNEC-RAM
       - VERTICES
-    optional-inputs:
     outputs:
       - IVA-RESULT
     enable-export-logs: false
@@ -80,3 +79,7 @@ stomp:
 logback:
   amqp:
     exchange: core-valid-day-ahead-conservative-task-manager-logs-exchange
+
+runner:
+  parameters:
+    USE_PROJECTION: true
