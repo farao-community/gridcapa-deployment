@@ -16,7 +16,6 @@ open-loadflow-default-parameters:
   minPlausibleTargetVoltage: 0.5
   maxPlausibleTargetVoltage: 1.5
   maxNewtonRaphsonIterations: 30
-  plausibleActivePowerLimit: 10000
   newtonRaphsonConvEpsPerEq: 0.01
   minRealisticVoltage: 0.4
   maxRealisticVoltage: 1.6
@@ -25,6 +24,7 @@ open-loadflow-default-parameters:
   maxVoltageChangeStateVectorScalingMaxDv: 0.4
   maxVoltageChangeStateVectorScalingMaxDphi: 1
   slackDistributionFailureBehavior: FAIL
+  startWithFrozenACEmulation: false
 
 rao-objective-function:
   type: SECURE_FLOW
@@ -64,7 +64,6 @@ search-tree-topological-actions-optimization:
 
 search-tree-second-preventive-rao:
   execution-condition: POSSIBLE_CURATIVE_IMPROVEMENT
-  re-optimize-curative-range-actions: true
   hint-from-first-preventive-rao: true
 
 search-tree-load-flow-and-sensitivity-computation:
