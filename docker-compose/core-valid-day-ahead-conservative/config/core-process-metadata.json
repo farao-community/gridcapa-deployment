@@ -1,0 +1,32 @@
+{
+  "processName": "CORE Validation D2CC Conservative",
+  "globalViewTimestampFilter": [
+  ],
+  "manualExportEnabled": true,
+  "parametersEnabled": true,
+  "eventLevelPredefinedFilter": [
+    {
+      "filterName": "INFO",
+      "defaultChecked": false,
+      "filterValue": [
+        "INFO"
+      ]
+    },
+    {
+      "filterName": "WARN",
+      "defaultChecked": false,
+      "filterValue": [
+        "WARN"
+      ]
+    },
+    {
+      "filterName": "ERROR",
+      "defaultChecked": false,
+      "filterValue": [
+        "ERROR"
+      ]
+    }
+  ],
+  "eventLogPredefinedFilter": [
+  ]
+}
