@@ -9,9 +9,9 @@ VALUES ('MAX_VERTICES_PER_BRANCH', 'MAX VERTICES PER BRANCH', 1, 'INT', 'BRANCH 
 UPDATE SET name = 'MAX VERTICES PER BRANCH', display_order = 1, parameter_type = 'INT', section_title = 'BRANCH MAX IVA', section_order = 2;
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
-VALUES ('RAM_LIMIT', 'RAM LIMIT', 2, 'INT', 'BRANCH MAX IVA', 2, '-10')
+VALUES ('RAM_THRESHOLD', 'RAM THRESHOLD, 2, 'INT', 'BRANCH MAX IVA', 2, '-10')
     ON CONFLICT (id) DO
-UPDATE SET name = 'RAM LIMIT', display_order = 2, parameter_type = 'INT', section_title = 'BRANCH MAX IVA', section_order = 2;
+UPDATE SET name = 'RAM THRESHOLD', display_order = 2, parameter_type = 'INT', section_title = 'BRANCH MAX IVA', section_order = 2;
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
 VALUES ('MIN_RAM_MCCC', 'MIN RAM MCCC PERCENT', 3, 'INT', 'BRANCH MAX IVA', 2, '20')
