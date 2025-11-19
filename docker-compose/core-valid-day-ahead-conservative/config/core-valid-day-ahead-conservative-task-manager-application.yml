@@ -6,6 +6,10 @@ spring:
     driverClassName: org.postgresql.Driver
     username: core_valid_day_ahead_conservative_server
     password: core-valid-day-ahead-conservative
+  sql:
+    init:
+      mode: always
+      data-locations: file:/config/data.sql
   rabbitmq:
     host: rabbitmq
     port: 5672
@@ -55,7 +59,6 @@ task-server:
     inputs:
       - CNEC-RAM
       - VERTICES
-    optional-inputs:
     outputs:
       - IVA-RESULT
     enable-export-logs: false
@@ -76,3 +79,7 @@ stomp:
 logback:
   amqp:
     exchange: core-valid-day-ahead-conservative-task-manager-logs-exchange
+
+runner:
+  parameters:
+    USE_PROJECTION: true
