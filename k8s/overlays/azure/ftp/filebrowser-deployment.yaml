@@ -38,7 +38,7 @@ spec:
             - mountPath: "/srv/ftp"
               name: ftp-server-storage
           env:
-            - name: FB_BASEURL
+            - name: FB_BASE_URL
               value: "/utils/filebrowser"
             - name: FB_USERNAME
               valueFrom:

@@ -96,7 +96,7 @@ services:
       - ftp-data:/srv/ftp
       - sftp-data:/srv/sftp
     environment:
-      FB_BASEURL: /utils/filebrowser
+      FB_BASE_URL: /utils/filebrowser
       FB_USERNAME: gridcapa
       FB_PASSWORD: $$2y$$10$$aWh9euDInAg94hlz3eLRteghF5ASR8LCq6K2EkGwxi4a9oxSyhnP.
     networks:
