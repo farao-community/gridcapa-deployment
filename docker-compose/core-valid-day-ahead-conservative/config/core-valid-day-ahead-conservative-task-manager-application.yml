@@ -1,0 +1,78 @@
+spring:
+  application:
+    name: core-valid-day-ahead-conservative-task-manager
+  datasource:
+    url: jdbc:postgresql://gridcapa-postgres:5432/core_valid_day_ahead_conservative_tasks
+    driverClassName: org.postgresql.Driver
+    username: core_valid_day_ahead_conservative_server
+    password: core-valid-day-ahead-conservative
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+  cloud:
+    stream:
+      default:
+        group: core-valid-day-ahead-conservative-task-manager
+      bindings:
+        consumeMinioEvent-in-0:
+          destination: gridcapa.minio.events
+        consumeTaskStatusUpdate-in-0:
+          destination: core-valid-day-ahead-conservative-task-status-updated
+        consumeTaskEventUpdate-in-0:
+          destination: core-valid-day-ahead-conservative-task-manager-logs-exchange
+          consumer:
+            batch-mode: true
+        task-status-updated:
+          destination: core-valid-day-ahead-conservative-task-updated
+        task-input-updated:
+          destination: core-valid-day-ahead-conservative-task-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+        bindings:
+          consumeMinioEvent-in-0:
+            consumer:
+              exchange-type: fanout
+          consumeTaskEventUpdate-in-0:
+            consumer:
+              enable-batching: true
+              batch-size: 200
+              receive-timeout: 3000
+          task-status-updated:
+            producer:
+              routing-key-expression: '''status'''
+          task-input-updated:
+            producer:
+              routing-key-expression: '''input'''
+
+task-server:
+  process:
+    tag: CORE_VALID_DAY_AHEAD_CONSERVATIVE
+    inputs:
+      - CNEC-RAM
+      - VERTICES
+    optional-inputs:
+    outputs:
+      - IVA-RESULT
+    enable-export-logs: false
+    manual-upload-base-path: CORE/VALID/D2CC_CONSERVATIVE
+  whitelist:
+    - http://minio:9000/
+
+minio-adapter:
+  bucket: ${GRIDCAPA_MINIO_BUCKET:gridcapa}
+  base-path:
+  url: ${GRIDCAPA_MINIO_URL:http://minio:9000}
+  access-key: ${GRIDCAPA_MINIO_ACCESS_KEY:gridcapa}
+  secret-key: ${GRIDCAPA_MINIO_SECRET_KEY:gridcapa}
+
+stomp:
+  allowed-origin: http://core-valid-day-ahead-conservative-app
+
+logback:
+  amqp:
+    exchange: core-valid-day-ahead-conservative-task-manager-logs-exchange
