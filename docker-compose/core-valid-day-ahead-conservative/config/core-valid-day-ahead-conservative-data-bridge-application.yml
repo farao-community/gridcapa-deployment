@@ -1,7 +1,7 @@
 data-bridge:
   configuration:
     zone-id: "Europe/Paris"
-    target-process: CORE_VALID
+    target-process: CORE_VALID_DAY_AHEAD_CONSERVATIVE
     files:
       - file-type: CNEC-RAM
         file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-3]{1}[0-9]{1})-(?<hour>[0-9]{2})(?<minute>00[abAB]?)-F309-INTERM_AMRINCL_REFBAL_PRES_FBPARAMS_CSV-v(?<version>[0-9]*).(csv|CSV)"
