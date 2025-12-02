@@ -23,3 +23,13 @@ INSERT INTO parameter (id, name, display_order, parameter_type, section_title, s
                                '[FR-FR] Creys - Saint-Vulbas 2 [DIR];[FR-FR] Creys - Saint-Vulbas 2 [OPP];[FR-CH] Cornier - Riddes [DIR];[FR-CH] Cornier - Riddes [OPP];[FR-FR] Creys - Genissiat 1 [DIR];[FR-FR] Creys - Genissiat 1 [OPP];[FR-FR] Creys - Saint-Vulbas 1 [DIR];[FR-FR] Creys - Saint-Vulbas 1 [OPP];[FR-FR] Frasnes - Genissiat [DIR];[FR-FR] Frasnes - Genissiat [OPP];[FR-FR] Creys - Genissiat 2 [DIR];[FR-FR] Creys - Genissiat 2 [OPP];[FR-CH] Cornier - Saint-Triphon [DIR];[FR-CH] Cornier - Saint-Triphon [OPP]')
     ON CONFLICT (id) DO
 UPDATE SET name = 'EXCLUDED BRANCHES', display_order = 4, parameter_type = 'STRING', section_title = 'BRANCH MAX IVA', section_order = 2;
+
+INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
+    VALUES ('CURATIVE_IVA_MARGIN', 'CURATIVE IVA MARGIN', 1, 'INT', 'IVA MARGINS', 3, '30')
+    ON CONFLICT (id) DO
+UPDATE SET name = 'CURATIVE IVA MARGIN', display_order = 1, parameter_type = 'INT', section_title = 'IVA MARGINS', section_order = 3;
+                                                                                       
+INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
+    VALUES ('PREVENTIVE_IVA_MARGIN', 'PREVENTIVE IVA MARGIN', 2, 'INT', 'IVA MARGINS', 3, '30')
+    ON CONFLICT (id) DO
+UPDATE SET name = 'PREVENTIVE IVA MARGIN', display_order = 2, parameter_type = 'INT', section_title = 'IVA MARGINS', section_order = 3;
