@@ -22,11 +22,6 @@ logback:
     exchange: core-valid-day-ahead-conservative-task-manager-logs-exchange
     routing-key: "#"
 
-rao-runner-server:
-  amqp:
-    client-app-id: core-valid-day-ahead-conservative-runner
-    queue-name: rao-request-queue
-
 core-valid-day-ahead-conservative-runner:
   async-time-out: 7200000
   bindings:

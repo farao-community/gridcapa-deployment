@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   core-valid-day-ahead-conservative-app:
-    image: farao/gridcapa-app:latest
+    image: farao/gridcapa-app:test-34
     volumes:
       - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
       - ./config/core-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
@@ -16,7 +16,7 @@ services:
       - gridcapa
 
   core-valid-day-ahead-conservative-task-manager:
-    image: farao/gridcapa-task-manager:latest
+    image: farao/gridcapa-task-manager:test-text-2
     volumes:
       - ./config/core-valid-day-ahead-conservative-task-manager-application.yml:/config/application.yml
       - ./config/data.sql:/config/data.sql
@@ -33,9 +33,9 @@ services:
       - gridcapa
 
   core-valid-day-ahead-conservative-runner:
-    image: farao/gridcapa-core-valid-day-ahead-conservative:latest
+    image: farao/gridcapa-core-valid-day-ahead-conservative:test-2
     volumes:
-      - ./config/core-valid-day-ahead-conservative-application.yml:/config/application.yml
+      - ./config/core-valid-day-ahead-conservative-runner-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s
@@ -45,7 +45,7 @@ services:
       - gridcapa
 
   core-valid-day-ahead-conservative-adapter:
-    image: farao/gridcapa-core-valid-day-ahead-conservative-adapter:latest
+    image: farao/gridcapa-core-valid-day-ahead-conservative-adapter:test-1
     env_file:
       - ../common/config/version.env
     volumes:
@@ -58,12 +58,24 @@ services:
     networks:
       - gridcapa
 
-  core-valid-day-ahead-conservative-exporter:
-    image: farao/gridcapa-export:latest
+  core-valid-day-ahead-conservative-output-data-bridge:
+    image: farao/gridcapa-output-data-bridge:latest
     volumes:
-      - ./config/core-valid-day-ahead-conservative-exporter-application.yml:/config/application.yml
+      - ./config/core-valid-day-ahead-conservative-output-data-bridge-application.yml:/config/application.yml
     healthcheck:
       test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  core-valid-day-ahead-conservative-post-processing:
+    image: farao/gridcapa-core-valid-day-ahead-conservative-post-processing:test-2
+    volumes:
+      - ./config/core-valid-day-ahead-conservative-post-processing-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s
       timeout: 30s
       retries: 5
