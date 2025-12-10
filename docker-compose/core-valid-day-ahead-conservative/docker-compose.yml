@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   core-valid-day-ahead-conservative-app:
-    image: farao/gridcapa-app:test-34
+    image: farao/gridcapa-app:latest
     volumes:
       - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
       - ./config/core-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
@@ -16,7 +16,7 @@ services:
       - gridcapa
 
   core-valid-day-ahead-conservative-task-manager:
-    image: farao/gridcapa-task-manager:test-text-2
+    image: farao/gridcapa-task-manager:latest
     volumes:
       - ./config/core-valid-day-ahead-conservative-task-manager-application.yml:/config/application.yml
       - ./config/data.sql:/config/data.sql
@@ -33,7 +33,7 @@ services:
       - gridcapa
 
   core-valid-day-ahead-conservative-runner:
-    image: farao/gridcapa-core-valid-day-ahead-conservative:test-2
+    image: farao/gridcapa-core-valid-day-ahead-conservative:latest
     volumes:
       - ./config/core-valid-day-ahead-conservative-runner-application.yml:/config/application.yml
     healthcheck:
@@ -45,7 +45,7 @@ services:
       - gridcapa
 
   core-valid-day-ahead-conservative-adapter:
-    image: farao/gridcapa-core-valid-day-ahead-conservative-adapter:test-1
+    image: farao/gridcapa-core-valid-day-ahead-conservative-adapter:latest
     env_file:
       - ../common/config/version.env
     volumes:
@@ -71,7 +71,7 @@ services:
       - gridcapa
 
   core-valid-day-ahead-conservative-post-processing:
-    image: farao/gridcapa-core-valid-day-ahead-conservative-post-processing:test-2
+    image: farao/gridcapa-core-valid-day-ahead-conservative-post-processing:latest
     volumes:
       - ./config/core-valid-day-ahead-conservative-post-processing-application.yml:/config/application.yml
     healthcheck:
