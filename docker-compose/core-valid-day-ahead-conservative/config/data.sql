@@ -33,6 +33,7 @@ INSERT INTO parameter (id, name, display_order, parameter_type, section_title, s
     VALUES ('PREVENTIVE_IVA_MARGIN', 'PREVENTIVE IVA MARGIN', 2, 'INT', 'IVA MARGINS', 3, '30')
     ON CONFLICT (id) DO
 UPDATE SET name = 'PREVENTIVE IVA MARGIN', display_order = 2, parameter_type = 'INT', section_title = 'IVA MARGINS', section_order = 3;
+
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
     VALUES ('JUSTIFICATION_MESSAGE', 'JUSTIFICATION MESSAGE', 1, 'STRING', 'OUTPUT', 4,
                                'IVA applied due to security assessment on')
