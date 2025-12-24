@@ -65,5 +65,8 @@ search-tree-load-flow-and-sensitivity-computation:
   load-flow-provider: OpenLoadFlow
   sensitivity-provider: OpenLoadFlow
 
+open-sensitivityanalysis-default-parameters:
+  startWithFrozenACEmulation: false
+
 search-tree-multi-threading:
   available-cpus: 14

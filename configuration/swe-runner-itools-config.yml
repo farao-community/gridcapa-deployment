@@ -47,6 +47,12 @@ search-tree-linear-optimization-solver:
   solver-specific-parameters: THREADS 1 MAXNODE 100000 MAXTIME 300
   relative-mip-gap: 0.001
 
+search-tree-pst-regulation-parameters:
+  psts-to-regulate: [
+    "{_e071a1d4-fef5-1bd9-5278-d195c5597b6e}:{_1d9c658e-1a01-c0ee-d127-a22e1270a242 + _2e81de07-4c22-5aa1-9683-5e51b054f7f8}",
+    "{_f82152ac-578e-500e-97db-84e788c471ee}:{_0a3cbdb0-cd71-52b0-b93d-cb48c9fea3e2 + _6f6b15b3-9bcc-7864-7669-522e9f06e931}"
+  ]
+
 rao-topological-actions-optimization:
   relative-minimum-impact-threshold: 0
   absolute-minimum-impact-threshold: 1
@@ -65,6 +71,9 @@ search-tree-second-preventive-rao:
 search-tree-load-flow-and-sensitivity-computation:
   load-flow-provider: OpenLoadFlow
   sensitivity-provider: OpenLoadFlow
+
+open-sensitivityanalysis-default-parameters:
+  startWithFrozenACEmulation: false
 
 search-tree-multi-threading:
   available-cpus: 14
