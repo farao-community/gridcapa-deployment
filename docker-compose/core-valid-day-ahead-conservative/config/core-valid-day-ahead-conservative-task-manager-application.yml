@@ -61,8 +61,10 @@ task-server:
       - VERTICES
     outputs:
       - IVA-RESULT
+    optional-inputs:
     enable-export-logs: false
     manual-upload-base-path: CORE/VALID/D2CC_CONSERVATIVE
+    is-on-the-hour-process: true
   whitelist:
     - http://minio:9000/
 

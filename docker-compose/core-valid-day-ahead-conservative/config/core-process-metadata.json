@@ -4,6 +4,7 @@
   ],
   "manualExportEnabled": true,
   "parametersEnabled": true,
+  "isOnTheHourProcess": true,
   "eventLevelPredefinedFilter": [
     {
       "filterName": "INFO",
