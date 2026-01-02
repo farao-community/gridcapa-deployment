@@ -3,9 +3,9 @@ spring:
     name: core-valid-day-ahead-conservative-post-processing
   rabbitmq:
     host: rabbitmq
+    port: 5672
     username: gridcapa
     password: gridcapa
-    port: 5672
     template:
       reply-timeout: 7200000
   cloud:
