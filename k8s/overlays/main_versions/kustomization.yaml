@@ -17,6 +17,9 @@ configMapGenerator:
   - name: core-cc-runner-itools-configmap
     files:
       - config.yml=configuration/core-cc-runner-itools-config.yml
+  - name: ce-cc-runner-itools-configmap
+    files:
+      - config.yml=configuration/ce-cc-runner-itools-config.yml
 
 images:
     # Common

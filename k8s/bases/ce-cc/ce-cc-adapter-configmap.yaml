@@ -1,0 +1,63 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ce-cc-adapter-configmap
+  labels:
+    app: gridcapa
+    component: adapter
+    region: ce
+    process: cc
+data:
+  application.yml: |-
+    logback:
+      amqp:
+        exchange: ce-cc-task-manager-logs-exchange
+        routing-key: "#"
+    
+    spring:
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        port: 5672
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+        template:
+          reply-timeout: 60000000
+      cloud:
+        stream:
+          default:
+            group: ce-cc-adapter
+          bindings:
+            consumeTaskDtoUpdate-in-0:
+              destination: ce-cc-task-updated
+            task-status-update:
+              binder: rabbit
+              destination: ce-cc-task-status-updated
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+            bindings:
+              consumeTaskDtoUpdate-in-0:
+                consumer:
+                  binding-routing-key: input
+    
+    minio-adapter:
+      bucket: ${MINIO_BUCKET}
+      base-path: ${MINIO_BASE_DIRECTORY}
+      access-key: ${GRIDCAPA_MINIO_USER}
+      secret-key: ${GRIDCAPA_MINIO_PASSWORD}
+      url: http://gridcapa-minio:9000/
+
+    gridcapa-version: ${GRIDCAPA_VERSION}
+
+    core-cc-adapter:
+      auto-trigger-filetypes:
+        - RAOREQUEST
+      task-manager-timestamp-url: http://ce-cc-task-manager/tasks/
+      whitelist:
+        - http://gridcapa-minio:9000/
+    
+    core-cc-runner:
+      binding:
+        destination: ce-cc-requests

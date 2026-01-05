@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ce-cc-app
+  labels:
+    app: gridcapa
+    component: front-app
+    region: ce
+    process: cc
+spec:
+  type: ClusterIP
+  selector:
+    app: gridcapa
+    component: front-app
+    region: ce
+    process: cc
+  ports:
+    - port: 80
+      targetPort: 80
+      name: http

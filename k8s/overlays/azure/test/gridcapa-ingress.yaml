@@ -524,6 +524,50 @@ spec:
                   number: 80
             path: /()(core/cc/gridcapa-job-launcher/.*)
             pathType: Prefix
+
+          - backend:
+              service:
+                name: ce-cc-app
+                port:
+                  number: 80
+            path: /ce/cc(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(ce/cc/config/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(ce/cc/config-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(ce/cc/task-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(ce/cc/task-manager/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(ce/cc/gridcapa-job-launcher/.*)
+            pathType: Prefix
+
   tls:
     - hosts:
         - gridcapa.farao-community.com

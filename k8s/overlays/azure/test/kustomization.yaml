@@ -8,12 +8,15 @@ resources:
   - postgresql-deployment.yaml
   - apps-metadata-server-configmap.yaml
   #  Processes to be deployed each time
+  - ../../../bases/ce-cc
   - ../../../bases/core-cc
   - ../../../bases/cse-import-ec-d2cc
   - ../../../bases/swe-d2cc
+  - ../azure-databridge-claims/ce-cc
   - ../azure-databridge-claims/core-cc
   - ../azure-databridge-claims/cse-import-ec-d2cc
   - ../azure-databridge-claims/swe-d2cc
+  - ce-cc-gridcapa-app-idp-settings-configmap.yaml
   - core-cc-gridcapa-app-idp-settings-configmap.yaml
   - cse-import-ec-d2cc-app-idp-settings-configmap.yaml
   - swe-d2cc-app-idp-settings-configmap.yaml

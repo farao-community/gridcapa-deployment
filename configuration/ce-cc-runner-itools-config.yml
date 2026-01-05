@@ -71,10 +71,10 @@ load-flow-default-parameters:
 
 open-loadflow-default-parameters:
   maxNewtonRaphsonIterations: 30
+  startWithFrozenACEmulation: false
 
 search-tree-second-preventive-rao:
   execution-condition: COST_INCREASE
-  re-optimize-curative-range-actions: false
   hint-from-first-preventive-rao: false
 
 search-tree-load-flow-and-sensitivity-computation:
