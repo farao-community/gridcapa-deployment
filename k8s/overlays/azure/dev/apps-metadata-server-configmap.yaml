@@ -9,6 +9,10 @@ data:
   apps-metadata.json: |-
     [
       {
+        "name" : "Capa CE DACC",
+        "url"  : "/ce/cc/",
+        "appColor" : "#ffffff"
+      },{
         "name" : "Capa CORE DACC",
         "url"  : "/core/cc/",
         "appColor" : "#21afe1"
