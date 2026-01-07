@@ -15,7 +15,7 @@ data:
         target-process: CE_CC
         files:
           - file-type: CBCORA
-            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F301-.*ceSO.*\.xml
+            file-regex: (?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F301-.*CORESO.*\.xml
             remote-file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F301-.*CORESO.*\\.xml"
             source-directory: "/F301"
             sink-directory: "/CRACs"
