@@ -11,12 +11,13 @@ data:
       {
         "name" : "Capa CE DACC",
         "url"  : "/ce/cc/",
-        "appColor" : "#ffffff"
-      },{
+        "appColor" : "#1111ff"
+      },
+      {
         "name" : "Capa CORE DACC",
         "url"  : "/core/cc/",
         "appColor" : "#21afe1"
-      },
+      },      
       {
         "name" : "Capa IN D2CC Export",
         "url"  : "/cse/export/d2cc/",
