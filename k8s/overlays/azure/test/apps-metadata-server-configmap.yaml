@@ -17,7 +17,7 @@ data:
         "name" : "Capa CORE DACC",
         "url"  : "/core/cc/",
         "appColor" : "#21afe1"
-      },      
+      },
       {
         "name" : "Capa IN D2CC Export",
         "url"  : "/cse/export/d2cc/",
