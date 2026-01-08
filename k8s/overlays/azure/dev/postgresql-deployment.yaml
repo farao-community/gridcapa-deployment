@@ -195,6 +195,16 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: core-cc-password
+            - name: POSTGRES_CE_CC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: ce-cc-user
+            - name: POSTGRES_CE_CC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: ce-cc-password
             - name: POSTGRES_INTERRUPTION_SERVER_USER
               valueFrom:
                 secretKeyRef:

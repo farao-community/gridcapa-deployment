@@ -1,0 +1,119 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ce-cc-task-manager-configmap
+  labels:
+    app: gridcapa
+    component: task-manager
+    region: ce
+    process: cc
+data:
+  application.yml: |-
+    spring:
+      application:
+        name: ce-cc-task-manager
+      datasource:
+        url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+        driverClassName: org.postgresql.Driver
+        username: ${POSTGRES_USER}
+        password: ${POSTGRES_PASSWORD}
+        sslmode: ${POSTGRES_SSL_MODE:disable}
+        hikari:
+          connectionTimeout: 30000
+          idleTimeout: 30000
+          maxLifetime: 2000000
+          maximumPoolSize: ${HIKARI_MAX_POOL_SIZE:10}
+          minimumIdle: ${HIKARI_MIN_IDLE:5}
+      jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+      sql:
+        init:
+          mode: always
+          data-locations: file:/config/data.sql
+      rabbitmq:
+        host: gridcapa-rabbitmq
+        port: 5672
+        username: ${RABBITMQ_USER}
+        password: ${RABBITMQ_PASSWORD}
+      cloud:
+        stream:
+          default:
+            group: ce-cc-task-manager
+          bindings:
+            consumeMinioEvent-in-0:
+              destination: gridcapa.minio.events
+            consumeTaskStatusUpdate-in-0:
+              destination: ce-cc-task-status-updated
+            consumeTaskEventUpdate-in-0:
+              destination: ce-cc-task-manager-logs-exchange
+              consumer:
+                batch-mode: true
+            task-status-updated:
+              destination: ce-cc-task-updated
+            task-input-updated:
+              destination: ce-cc-task-updated
+          rabbit:
+            default:
+              consumer:
+                auto-bind-dlq: true
+                max-attempts: 1
+            bindings:
+              consumeMinioEvent-in-0:
+                consumer:
+                  exchange-type: fanout
+              consumeTaskEventUpdate-in-0:
+                consumer:
+                  enable-batching: true
+                  batch-size: 200
+                  receive-timeout: 3000
+              task-status-updated:
+                producer:
+                  routing-key-expression: '''status'''
+              task-input-updated:
+                producer:
+                  routing-key-expression: '''input'''
+
+    task-server:
+      process:
+        tag: CE_CC
+        inputs:
+          - CGM
+          - CBCORA
+          - GLSK
+          - REFPROG
+          - RAOREQUEST
+          - VIRTUALHUB
+        optional-inputs:
+          - DCCGM
+        outputs:
+          - CNE
+          - RAO_RESULT
+          - CGM_OUT
+          - METADATA
+        enable-export-logs: false
+        manual-upload-base-path: ${MINIO_BASE_DIRECTORY}
+      whitelist:
+        - http://gridcapa-minio:9000/
+
+    minio-adapter:
+      bucket: gridcapa
+      base-path:
+      url: http://gridcapa-minio:9000/
+      access-key: ${MINIO_ACCESS_KEY}
+      secret-key: ${MINIO_SECRET_KEY}
+
+    stomp:
+      allowed-origin: ${APP_URL}
+
+    logback:
+      amqp:
+        exchange: ce-cc-task-manager-logs-exchange
+        
+    runner:
+      parameters:
+        USE_DC_CGM_INPUT: true
+  data.sql: |-
+    INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
+    VALUES ('USE_DC_CGM_INPUT', 'USE DC CGM INPUT', 1, 'BOOLEAN', 'DC CGM INPUT', 1, 'true')
+    ON CONFLICT (id) DO
+    UPDATE SET name = 'USE DC CGM INPUT', display_order = 1, parameter_type = 'BOOLEAN', section_title = 'DC CGM INPUT', section_order = 1;

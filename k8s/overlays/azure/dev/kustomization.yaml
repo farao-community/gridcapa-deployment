@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ../ftp
   - ../common
+  - ../../../bases/ce-cc
   - ../../../bases/core-cc
   - ../../../bases/core-valid
   - ../../../bases/cse-common
@@ -19,6 +20,7 @@ resources:
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
   - ../../../bases/swe-idcc-idcf
+  - ../azure-databridge-claims/ce-cc
   - ../azure-databridge-claims/core-cc
   - ../azure-databridge-claims/core-valid
   - ../azure-databridge-claims/cse-export-d2cc
@@ -34,6 +36,7 @@ resources:
   - ../azure-databridge-claims/swe-idcc
   - ../azure-databridge-claims/swe-idcc-idcf
   - apps-metadata-server-configmap.yaml
+  - ce-cc-gridcapa-app-idp-settings-configmap.yaml
   - core-cc-gridcapa-app-idp-settings-configmap.yaml
   - core-valid-gridcapa-app-idp-settings-configmap.yaml
   - cse-export-d2cc-app-idp-settings-configmap.yaml

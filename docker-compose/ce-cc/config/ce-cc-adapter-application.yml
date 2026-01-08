@@ -1,0 +1,52 @@
+logback:
+  amqp:
+    exchange: ce-cc-task-manager-logs-exchange
+    routing-key: "#"
+
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: gridcapa
+    password: gridcapa
+    template:
+      reply-timeout: 6000000
+  cloud:
+    stream:
+      default:
+        group: ce-cc-adapter
+      bindings:
+        consumeTaskDtoUpdate-in-0:
+          destination: ce-cc-task-updated
+        task-status-update:
+          binder: rabbit
+          destination: ce-cc-task-status-updated
+      rabbit:
+        default:
+          consumer:
+            auto-bind-dlq: true
+            max-attempts: 1
+        bindings:
+          consumeTaskDtoUpdate-in-0:
+            consumer:
+              binding-routing-key: input
+
+minio-adapter:
+  bucket: gridcapa
+  base-path: /CE/CC
+  access-key: gridcapa
+  secret-key: gridcapa
+  url: http://minio:9000
+
+gridcapa-version: ${GRIDCAPA_VERSION}
+
+core-cc-adapter:
+  auto-trigger-filetypes:
+    - RAOREQUEST
+  task-manager-timestamp-url: http://ce-cc-task-manager:8080/tasks/
+  whitelist:
+    - http://minio:9000/
+
+core-cc-runner:
+  binding:
+    destination: ce-cc-requests

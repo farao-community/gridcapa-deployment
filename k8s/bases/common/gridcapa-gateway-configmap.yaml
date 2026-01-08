@@ -22,6 +22,40 @@ data:
       cloud:
         gateway:
           routes:
+            - id: ce-cc-gridsuite-config
+              uri: http://config-server
+              predicates:
+                - Path=/ce/cc/config/**
+              filters:
+                - StripPrefix=3
+                - TokenValidator
+            - id: ce-cc-gridsuite-config-notification
+              uri: http://config-notification-server
+              predicates:
+                - Path=/ce/cc/config-notification/**
+              filters:
+                - StripPrefix=3
+                - TokenValidator
+                - RemoveRequestParameter=access_token
+            - id: ce-cc-task-manager
+              uri: http://ce-cc-task-manager
+              predicates:
+                - Path=/ce/cc/task-manager/**
+              filters:
+                - StripPrefix=3
+            - id: ce-cc-task-notification-server
+              uri: http://ce-cc-task-manager
+              predicates:
+                - Path=/ce/cc/task-notification/**
+              filters:
+                - StripPrefix=3
+                - RemoveRequestParameter=access_token
+            - id: ce-cc-adapter
+              uri: http://ce-cc-adapter
+              predicates:
+                - Path=/ce/cc/gridcapa-job-launcher/**
+              filters:
+                - StripPrefix=3
             - id: core-cc-gridsuite-config
               uri: http://config-server
               predicates:

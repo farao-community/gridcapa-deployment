@@ -1,0 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ce-cc-data-bridge-configmap.yaml
+  - ce-cc-data-bridge-deployment.yaml
+  - ce-cc-data-bridge-service.yaml
+  - ce-cc-app-deployment.yaml
+  - ce-cc-app-process-metadata-configmap.yaml
+  - ce-cc-app-service.yaml
+  - ce-cc-runner-configmap.yaml
+  - ce-cc-runner-deployment.yaml
+  - ce-cc-runner-service.yaml
+  - ce-cc-adapter-configmap.yaml
+  - ce-cc-adapter-deployment.yaml
+  - ce-cc-adapter-service.yaml
+  - ce-cc-task-manager-configmap.yaml
+  - ce-cc-task-manager-deployment.yaml
+  - ce-cc-task-manager-service.yaml
+  - ce-cc-rao-logs-dispatcher-configmap.yaml
+  - ce-cc-rao-logs-dispatcher-deployment.yaml
+  - ce-cc-rao-logs-dispatcher-service.yaml
+  - ce-cc-output-data-bridge-deployment.yaml
+  - ce-cc-output-data-bridge-service.yaml
+  - ce-cc-output-data-bridge-configmap.yaml
+  - ce-cc-post-processing-configmap.yml
+  - ce-cc-post-processing-deployment.yml
+  - ce-cc-post-processing-service.yml
+  - ce-cc-minio-purge.yaml
