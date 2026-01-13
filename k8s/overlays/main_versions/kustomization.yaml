@@ -56,6 +56,28 @@ images:
   - name: gridcapa-gateway
     newName: docker.io/farao/gridcapa-gateway
     newTag: v1.7.0
+    # CE CC (currently uses same images as Core CC)
+  - name: gridcapa-ce-cc-input-data-bridge
+    newName: docker.io/farao/gridcapa-core-cc-data-bridge
+    newTag: v1.5.0
+  - name: gridcapa-ce-cc-output-data-bridge
+    newName: docker.io/farao/gridcapa-output-data-bridge
+    newTag: v1.11.0
+  - name: gridcapa-ce-cc-adapter
+    newName: docker.io/farao/gridcapa-core-cc-adapter
+    newTag: v2.12.0
+  - name: gridcapa-ce-cc-rao-logs-dispatcher
+    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
+    newTag: v1.9.0
+  - name: gridcapa-ce-cc-runner
+    newName: docker.io/farao/gridcapa-core-cc
+    newTag: v1.26.0
+  - name: gridcapa-ce-cc-task-manager
+    newName: docker.io/farao/gridcapa-task-manager
+    newTag: v1.38.0
+  - name: gridcapa-ce-cc-post-processing
+    newName: docker.io/farao/gridcapa-core-cc-post-processing
+    newTag: v1.23.0
     # Core CC
   - name: gridcapa-core-cc-input-data-bridge
     newName: docker.io/farao/gridcapa-core-cc-data-bridge
@@ -125,25 +147,3 @@ images:
   - name: gridcapa-swe-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.38.0
-    # CE CC
-  - name: gridcapa-ce-cc-input-data-bridge
-    newName: docker.io/farao/gridcapa-core-cc-data-bridge
-    newTag: v1.5.0
-  - name: gridcapa-ce-cc-output-data-bridge
-    newName: docker.io/farao/gridcapa-output-data-bridge
-    newTag: v1.11.0
-  - name: gridcapa-ce-cc-adapter
-    newName: docker.io/farao/gridcapa-core-cc-adapter
-    newTag: v2.12.0
-  - name: gridcapa-ce-cc-rao-logs-dispatcher
-    newName: docker.io/farao/gridcapa-rao-logs-dispatcher
-    newTag: v1.9.0
-  - name: gridcapa-ce-cc-runner
-    newName: docker.io/farao/gridcapa-core-cc
-    newTag: v1.26.0
-  - name: gridcapa-ce-cc-task-manager
-    newName: docker.io/farao/gridcapa-task-manager
-    newTag: v1.38.0
-  - name: gridcapa-ce-cc-post-processing
-    newName: docker.io/farao/gridcapa-core-cc-post-processing
-    newTag: v1.23.0
