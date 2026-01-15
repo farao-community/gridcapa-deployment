@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.class: kommander-traefik
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.middlewares: default-minio-console-rewrite@kubernetescrd
     traefik.ingress.kubernetes.io/router.tls: "true"
@@ -11,6 +10,7 @@ metadata:
   name: gridcapa-minio
   namespace: default
 spec:
+  ingressClassName: kommander-traefik
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-prd-004.rh.1648.local
       http:
