@@ -18,6 +18,8 @@ spring:
       bindings:
         run-task:
           destination: swe-idcc-idcf-run-task
+        run-task-auto:
+          destination: swe-idcc-idcf-run-task
         stop-task:
           destination: swe-idcc-idcf-stop-task
         consumeTaskDtoUpdate-in-0:
@@ -37,6 +39,8 @@ spring:
 gridcapa-version: ${GRIDCAPA_VERSION}
 
 job-launcher:
+  auto: true
+  auto-trigger-filetypes: [ ]
   url:
     task-manager-timestamp-url: http://swe-idcc-idcf-task-manager:8080/tasks/
     task-manager-business-date-url: http://swe-idcc-idcf-task-manager:8080/tasks/businessdate/
