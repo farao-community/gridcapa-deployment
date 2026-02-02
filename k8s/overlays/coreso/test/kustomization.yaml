@@ -175,6 +175,28 @@ patches:
       spec:
         replicas: 6
 
+  # Postgresql deployment patch for test to have CE CC
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: gridcapa-postgresql
+      spec:
+        template:
+          spec:
+            containers:
+              - name: gridcapa-postgresql
+                env:
+                  - name: POSTGRES_CE_CC_USER
+                    valueFrom:
+                      secretKeyRef:
+                        name: gridcapa-postgresql-credentials
+                        key: ce-cc-user
+                  - name: POSTGRES_CE_CC_PASSWORD
+                    valueFrom:
+                      secretKeyRef:
+                        name: gridcapa-postgresql-credentials
+                        key: ce-cc-password
 
   # Remove volumes related to authentication within application deployments
   - target:
