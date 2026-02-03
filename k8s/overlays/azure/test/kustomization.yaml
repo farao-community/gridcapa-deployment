@@ -143,7 +143,7 @@ patches:
 #             - name: swe-idcc-runner
 #               env:
 #                 - name: EXPORT_FAILED_NETWORK
-#                  value: "true"
+#                   value: "true"
 
 # Enable auth on Azure
 images:
