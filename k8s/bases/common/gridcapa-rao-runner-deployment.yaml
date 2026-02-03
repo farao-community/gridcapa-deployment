@@ -25,6 +25,8 @@ spec:
           ports:
             - containerPort: 8080
           env:
+            - name: JAVA_TOOL_OPTIONS
+              value: "-Xmx20480m"
             - name: RABBITMQ_USER
               valueFrom:
                 secretKeyRef:
