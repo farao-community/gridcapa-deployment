@@ -45,7 +45,7 @@ services:
       - gridcapa
 
   swe-d2cc-runner:
-    image: farao/gridcapa-swe-runner:latest
+    image: test_logs:latest
     volumes:
       - ./config/swe-d2cc-runner-application.yml:/config/application.yml
       - ../../configuration/swe-runner-itools-config.yml:/home/farao/.itools/config.yml

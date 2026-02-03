@@ -16,7 +16,7 @@ services:
       - gridcapa
 
   core-valid-day-ahead-conservative-task-manager:
-    image: farao/gridcapa-task-manager:latest
+    image: test_iva_taskmgr:latest
     volumes:
       - ./config/core-valid-day-ahead-conservative-task-manager-application.yml:/config/application.yml
       - ./config/data.sql:/config/data.sql
@@ -33,7 +33,7 @@ services:
       - gridcapa
 
   core-valid-day-ahead-conservative-runner:
-    image: farao/gridcapa-core-valid-day-ahead-conservative:latest
+    image: test_iva_app:latest
     volumes:
       - ./config/core-valid-day-ahead-conservative-runner-application.yml:/config/application.yml
     healthcheck:
@@ -45,7 +45,7 @@ services:
       - gridcapa
 
   core-valid-day-ahead-conservative-adapter:
-    image: farao/gridcapa-core-valid-day-ahead-conservative-adapter:latest
+    image: test_iva_adapter:latest
     env_file:
       - ../common/config/version.env
     volumes:
@@ -71,7 +71,7 @@ services:
       - gridcapa
 
   core-valid-day-ahead-conservative-post-processing:
-    image: farao/gridcapa-core-valid-day-ahead-conservative-post-processing:latest
+    image: test_iva_postproc:latest
     volumes:
       - ./config/core-valid-day-ahead-conservative-post-processing-application.yml:/config/application.yml
     healthcheck:

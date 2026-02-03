@@ -6,8 +6,6 @@ resources:
   - ../../../bases/core-cc
   - ../../../bases/cse-export-d2cc
   - ../../../bases/cse-export-idcc
-  - ../../../bases/cse-import-d2cc
-  - ../../../bases/cse-import-idcc
   - ../../../bases/cse-import-ec-d2cc
   - ../../../bases/cse-import-ec-idcc
   - ../../../bases/swe-d2cc
@@ -16,8 +14,6 @@ resources:
   - ../coreso-databridge-claims/core-cc
   - ../coreso-databridge-claims/cse-export-d2cc
   - ../coreso-databridge-claims/cse-export-idcc
-  - ../coreso-databridge-claims/cse-import-d2cc
-  - ../coreso-databridge-claims/cse-import-idcc
   - ../coreso-databridge-claims/cse-import-ec-d2cc
   - ../coreso-databridge-claims/cse-import-ec-idcc
   - ../coreso-databridge-claims/swe-d2cc
@@ -106,20 +102,6 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-import-idcc-runner
-      spec:
-        replicas: 4
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-import-d2cc-runner
-      spec:
-        replicas: 8
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
         name: swe-d2cc-runner
       spec:
         replicas: 3
@@ -188,22 +170,6 @@ patches:
   - target:
       kind: Deployment
       name: cse-import-ec-idcc-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
-  - target:
-      kind: Deployment
-      name: cse-import-idcc-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
-  - target:
-      kind: Deployment
-      name: cse-import-d2cc-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2

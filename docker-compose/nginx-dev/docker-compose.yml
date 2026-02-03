@@ -5,7 +5,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:Z
+      - ./nginx-core-valid-day-ahead-conservative.conf:/etc/nginx/nginx.conf:Z
       - ../common/config/apps-metadata.json:/usr/share/nginx/html/apps-metadata.json:Z
     networks:
       - gridcapa
