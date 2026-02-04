@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #333333;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.center {
+    margin: 50px auto;
+    width: 90%;
+    padding: 10px;
+    text-align: center;
+}
+a {
+    font-weight: bold;
+    text-decoration: none;
+    font-size: x-large;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+menu {
+    margin:auto;
+    list-style-type:none;
+}
+li {
+    display:block;
+    padding:0.5rem;
+    text-align:left;
+}
+span {
+    font-weight: bold;
+    font-size: xxx-large;
+}
+.gridcapa-homepage {
+    display: flex;
+    justify-content: space-between;
+}
+.divider {
+    border-left: 1px solid #000;
+    height: 100%;
+}
