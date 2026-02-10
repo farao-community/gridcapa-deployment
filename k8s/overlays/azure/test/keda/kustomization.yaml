@@ -4,10 +4,8 @@ resources:
   - core-cc-scale.yaml
   - cse-export-d2cc-scale.yaml
   - cse-export-idcc-scale.yaml
-  - cse-import-d2cc-scale.yaml
   - cse-import-ec-d2cc-scale.yaml
   - cse-import-ec-idcc-scale.yaml
-  - cse-import-idcc-scale.yaml
   - swe-btcc-scale.yaml
   - swe-d2cc-scale.yaml
   - swe-idcc-idcf-scale.yaml
@@ -58,12 +56,6 @@ patches:
         path: /spec/triggers/0/metadata/queueName
         value: cse-export-idcc-request.cse-export-idcc-runner
   - target:
-      name: cse-import-d2cc-runner-scale
-    patch: |-
-      - op: add
-        path: /spec/triggers/0/metadata/queueName
-        value: cse-import-d2cc-request.cse-import-d2cc-runner
-  - target:
       name: cse-import-ec-d2cc-runner-scale
     patch: |-
       - op: add
@@ -75,12 +67,6 @@ patches:
       - op: add
         path: /spec/triggers/0/metadata/queueName
         value: cse-import-ec-idcc-request.cse-import-ec-idcc-runner
-  - target:
-      name: cse-import-idcc-runner-scale
-    patch: |-
-      - op: add
-        path: /spec/triggers/0/metadata/queueName
-        value: cse-import-idcc-request.cse-import-idcc-runner
   - target:
       name: swe-btcc-runner-scale
     patch: |-

@@ -18,8 +18,6 @@ GridCapa currently contains the following applications:
 - Gridcapa CORE Validation IDCC
 - GridCapa CSE EXPORT D2CC
 - GridCapa CSE EXPORT IDCC
-- GridCapa CSE IMPORT D2CC
-- GridCapa CSE IMPORT IDCC
 - GridCapa CSE IMPORT_EC D2CC
 - GridCapa CSE IMPORT_EC IDCC
 - GridCapa SWE BTCC
@@ -40,9 +38,9 @@ cd docker-compose/common
 docker-compose up -d
 ```
 
-Then, you can deploy independently any process you want. For example to deploy CSE IMPORT D2CC :
+Then, you can deploy independently any process you want. For example to deploy CSE IMPORT EC D2CC :
 ```bash
-cd docker-compose/cse-import-d2cc
+cd docker-compose/cse-import-ec-d2cc
 docker-compose up -d
 ```
 
@@ -123,7 +121,7 @@ kubectl create secret generic admin-rabbitmq-credentials --from-literal='rabbitm
 kubectl create secret generic rabbitmq-secrets --from-literal='rabbitmq-erlang-cookie=<RABBITMQ_ERLANG_COOKIE>'
 kubectl create secret generic gridcapa-minio-credentials --from-literal='minio-access-key=<MINIO_ACCESS_KEY>' --from-literal='minio-secret-key=<MINIO_SECRET_KEY>'
 kubectl create secret generic gridcapa-ftp-credentials --from-literal='ftp-user=<FTP_USER>' --from-literal='ftp-password=<FTP_PASSWORD>'
-kubectl create secret generic gridcapa-postgresql-credentials --from-literal='postgres-password=<POSTGRES_PASSWORD>' --from-literal='config-user=<CONFIG_USER>' --from-literal='config-password=<CONFIG_PASSWORD>' --from-literal='ce-cc-user=<CE_CC_USER>' --from-literal='ce-cc-password=<CE_CC_PASSWORD>' --from-literal='core-cc-user=<CORE_CC_USER>' --from-literal='core-cc-password=<CORE_CC_PASSWORD>' --from-literal='core-valid-user=<CORE_VALID_USER>' --from-literal='core-valid-password=<CORE_VALID_PASSWORD>' --from-literal='cse-export-d2cc-user=<CSE_EXPORT_D2CC_USER>' --from-literal='cse-export-d2cc-password=<CSE_EXPORT_D2CC_PASSWORD>' --from-literal='cse-export-idcc-user=<CSE_EXPORT_IDCC_USER>' --from-literal='cse-export-idcc-password=<CSE_EXPORT_IDCC_PASSWORD>' --from-literal='cse-import-d2cc-user=<CSE_IMPORT_D2CC_USER>' --from-literal='cse-import-d2cc-password=<CSE_IMPORT_D2CC_PASSWORD>' --from-literal='cse-import-idcc-user=<CSE_IMPORT_IDCC_USER>' --from-literal='cse-import-idcc-password=<CSE_IMPORT_IDCC_PASSWORD>' --from-literal='cse-import-ec-d2cc-user=<CSE_IMPORT_EC_D2CC_USER>' --from-literal='cse-import-ec-d2cc-password=<CSE_IMPORT_EC_D2CC_PASSWORD>' --from-literal='cse-import-ec-idcc-user=<CSE_IMPORT_EC_IDCC_USER>' --from-literal='cse-import-ec-idcc-password=<CSE_IMPORT_EC_IDCC_PASSWORD>' --from-literal='cse-valid-d2cc-user=<CSE_VALID_D2CC_USER>' --from-literal='cse-valid-d2cc-password=<CSE_VALID_D2CC_PASSWORD>' --from-literal='cse-valid-idcc-user=<CSE_VALID_IDCC_USER>' --from-literal='cse-valid-idcc-password=<CSE_VALID_IDCC_PASSWORD>' --from-literal='swe-btcc-user=<SWE_BTCC_USER>' --from-literal='swe-btcc-password=<SWE_BTCC_PASSWORD>' --from-literal='swe-d2cc-user=<SWE_D2CC_USER>' --from-literal='swe-d2cc-password=<SWE_D2CC_PASSWORD>' --from-literal='swe-idcc-user=<SWE_IDCC_USER>' --from-literal='swe-idcc-password=<SWE_IDCC_PASSWORD>' --from-literal='swe-idcc-idcf-user=<SWE_IDCC_IDCF_USER>' --from-literal='swe-idcc-idcf-password=<SWE_IDCC_IDCF_PASSWORD>'
+kubectl create secret generic gridcapa-postgresql-credentials --from-literal='postgres-password=<POSTGRES_PASSWORD>' --from-literal='config-user=<CONFIG_USER>' --from-literal='config-password=<CONFIG_PASSWORD>' --from-literal='ce-cc-user=<CE_CC_USER>' --from-literal='ce-cc-password=<CE_CC_PASSWORD>' --from-literal='core-cc-user=<CORE_CC_USER>' --from-literal='core-cc-password=<CORE_CC_PASSWORD>' --from-literal='core-valid-user=<CORE_VALID_USER>' --from-literal='core-valid-password=<CORE_VALID_PASSWORD>' --from-literal='cse-export-d2cc-user=<CSE_EXPORT_D2CC_USER>' --from-literal='cse-export-d2cc-password=<CSE_EXPORT_D2CC_PASSWORD>' --from-literal='cse-export-idcc-user=<CSE_EXPORT_IDCC_USER>' --from-literal='cse-export-idcc-password=<CSE_EXPORT_IDCC_PASSWORD>' --from-literal='cse-import-ec-d2cc-user=<CSE_IMPORT_EC_D2CC_USER>' --from-literal='cse-import-ec-d2cc-password=<CSE_IMPORT_EC_D2CC_PASSWORD>' --from-literal='cse-import-ec-idcc-user=<CSE_IMPORT_EC_IDCC_USER>' --from-literal='cse-import-ec-idcc-password=<CSE_IMPORT_EC_IDCC_PASSWORD>' --from-literal='cse-valid-d2cc-user=<CSE_VALID_D2CC_USER>' --from-literal='cse-valid-d2cc-password=<CSE_VALID_D2CC_PASSWORD>' --from-literal='cse-valid-idcc-user=<CSE_VALID_IDCC_USER>' --from-literal='cse-valid-idcc-password=<CSE_VALID_IDCC_PASSWORD>' --from-literal='swe-btcc-user=<SWE_BTCC_USER>' --from-literal='swe-btcc-password=<SWE_BTCC_PASSWORD>' --from-literal='swe-d2cc-user=<SWE_D2CC_USER>' --from-literal='swe-d2cc-password=<SWE_D2CC_PASSWORD>' --from-literal='swe-idcc-user=<SWE_IDCC_USER>' --from-literal='swe-idcc-password=<SWE_IDCC_PASSWORD>' --from-literal='swe-idcc-idcf-user=<SWE_IDCC_IDCF_USER>' --from-literal='swe-idcc-idcf-password=<SWE_IDCC_IDCF_PASSWORD>'
 kubectl create secret generic gridcapa-keycloak-credentials --from-literal='keycloak-user=<KEYCLOAK_USER>' --from-literal='keycloak-password=<KEYCLOAK_PASSWORD>'
 kubectl create secret tls gridcapa-tls --key <private key file> --cert <certificate file>
 ```
