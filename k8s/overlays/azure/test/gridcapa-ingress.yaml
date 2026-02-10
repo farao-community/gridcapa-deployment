@@ -393,6 +393,13 @@ spec:
             pathType: Prefix
           - backend:
               service:
+                name: apps-metadata-server
+                port:
+                  number: 80
+            path: /homepage(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
                 name: gridcapa-minio
                 port:
                   number: 9001

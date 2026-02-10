@@ -1765,6 +1765,13 @@ spec:
                   number: 80
             path: /apps-metadata/
             pathType: ImplementationSpecific
+          - backend:
+          service:
+            name: apps-metadata-server
+            port:
+              number: 80
+          path: /homepage/
+          pathType: ImplementationSpecific
   tls:
     - hosts:
         - gridcapa.ingress-k8s-1648-vsp-prd-004.rh.1648.local
