@@ -2,7 +2,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
+    nginx.ingress.kubernetes.io/app-root: /homepage/homepage.html # requests to "/" will be redirected to "/homepage.html"
     nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite ^/homepage$ /homepage/ permanent;
       rewrite ^/cse/import/idcc$ /cse/import/idcc/ permanent;
       rewrite ^/cse/import/d2cc$ /cse/import/d2cc/ permanent;
       rewrite ^/cse/import-ec/idcc$ /cse/import-ec/idcc/ permanent;
