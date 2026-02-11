@@ -592,6 +592,9 @@ spec:
   stripPrefix:
     prefixes:
       - /apps-metadata/
+  redirectRegex:
+    - regex: "/"
+    - replacement: "/homepage/homepage.html"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
