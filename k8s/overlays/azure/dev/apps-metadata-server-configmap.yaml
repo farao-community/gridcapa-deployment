@@ -19,60 +19,49 @@ data:
     \  c-0.137,1.333,0.896,1.496,0.896,1.496l12.458,3.338\"/>\n</g>\n</svg>"
   homepage.css: |-
     body {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-        'Helvetica Neue', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        background-color: #333333;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+            'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+            'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #333333;
     }
-
     code {
-        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
-    }
-
+        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    } 
     .center {
-        margin: 50px auto;
-        width: 90%;
-        padding: 10px;
-        text-align: center;
-    }
-    
+      margin: 50px auto;
+      width: 90%;
+      padding: 10px;
+      text-align: center;
+    }      
     a {
-        font-weight: bold;
-        text-decoration: none;
-        font-size: x-large;
-        display: block;
-        justify-content: center;
-        align-items: center;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: x-large;
+      display: block;
     }
-    
     menu {
-        margin: auto;
-        list-style-type: none;
+      margin:auto;
+      list-style-type:none;
     }
-    
     li {
-        display: block;
-        padding: 0.5rem;
-        text-align: left;
+      display:block;
+      padding:0.5rem;
+      text-align:left;
     }
-    
     span {
-        font-weight: bold;
-        font-size: xxx-large;
+      font-weight: bold;
+      font-size: xxx-large;
     }
-    
     .gridcapa-homepage {
-        display: flex;
-        justify-content: space-between;
+      display: flex;
+      justify-content: space-between;
     }
-    
     .divider {
-        border-left: 1px solid #000;
-        height: 100%;
+      border-left: 1px solid #000;
+      height: 100%;
     }
   homepage.html: |+
     <!DOCTYPE html>
@@ -116,18 +105,21 @@ data:
     fetch('apps-metadata.json')
         .then(res => res.json())
         .then(res => buildMenu(res))
-
+        .catch(err => console.error('Failed to load apps metadata:', err))
+    
     let buildMenu = (apps) => {
         const menu = document.getElementById('gridcapa-homepage-menu');
+        const fragment = document.createDocumentFragment();
         for (const app of apps) {
-            menu.innerHTML +=
-                '<li><a href="'
-                + app.url
-                + '" style="color: '
-                + app.appColor + '">'
-                + app.name.replace('Capa ', '')
-                + '</a></li>';
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = app.url;
+            a.style.color = app.appColor;
+            a.textContent = app.name.replace('Capa ', '');
+            li.appendChild(a);
+            fragment.appendChild(li);
         }
+        menu.appendChild(fragment);
     }
   logo-minio.svg: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!-- Generator: Adobe
     Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<!DOCTYPE
