@@ -592,9 +592,18 @@ spec:
   stripPrefix:
     prefixes:
       - /apps-metadata/
+      - /homepage/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-homepage-redirect
+  namespace: default
+spec:
   redirectRegex:
-    - regex: "/"
-    - replacement: "/homepage/homepage.html"
+    regex: "^/$"
+    replacement: "/homepage/homepage.html"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
