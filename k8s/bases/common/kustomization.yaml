@@ -29,3 +29,10 @@ resources:
   - rabbitmq-service.yaml
   - rabbitmq-statefulset.yaml
   - minio-get-storage-data-cron.yaml
+
+configMapGenerator:
+  - name: homepage-configmap
+    files:
+      - homepage.html=homepage/homepage.html
+      - homepage.css=homepage/homepage.css
+      - homepage.js=homepage/homepage.js

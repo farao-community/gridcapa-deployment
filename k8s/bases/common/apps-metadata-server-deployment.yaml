@@ -69,3 +69,6 @@ spec:
         - name: minio-get-storage-data-data
           persistentVolumeClaim:
             claimName: minio-get-storage-data-pv
+        - name: homepage-configmap-volume
+          configMap:
+            name: homepage-configmap
