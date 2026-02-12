@@ -35,9 +35,6 @@ spec:
             - mountPath: /opt/bitnami/apache/htdocs/homepage.js
               subPath: homepage.js
               name: homepage-configmap-volume
-            - mountPath: /opt/bitnami/apache/htdocs/homepage.js
-              subPath: homepage.js
-              name: homepage-configmap-volume
             - mountPath: /opt/bitnami/apache/htdocs/farao-logo.svg
               subPath: farao-logo.svg
               name: homepage-configmap-volume
