@@ -25,6 +25,15 @@ spec:
           volumeMounts:
             - mountPath: /opt/bitnami/apache/htdocs/
               name: apps-metadata-server-configmap-volume
+            - mountPath: /opt/bitnami/apache/htdocs/homepage.html
+              subPath: homepage.html
+              name: homepage-configmap-volume
+            - mountPath: /opt/bitnami/apache/htdocs/homepage.css
+              subPath: homepage.css
+              name: homepage-configmap-volume
+            - mountPath: /opt/bitnami/apache/htdocs/homepage.js
+              subPath: homepage.js
+              name: homepage-configmap-volume
             - mountPath: /opt/bitnami/apache/var/run/
               name: run-emptydir
             - mountPath: /opt/bitnami/apache/htdocs/data/
