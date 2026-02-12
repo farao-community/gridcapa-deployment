@@ -36,3 +36,4 @@ configMapGenerator:
       - homepage.html=homepage/homepage.html
       - homepage.css=homepage/homepage.css
       - homepage.js=homepage/homepage.js
+      - farao-logo.svg=homepage/farao-logo.svg

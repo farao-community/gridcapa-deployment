@@ -23,7 +23,8 @@ spec:
           ports:
             - containerPort: 8080
           volumeMounts:
-            - mountPath: /opt/bitnami/apache/htdocs/
+            - mountPath: /opt/bitnami/apache/htdocs/apps-metadata.json
+              subPath: apps-metadata.json
               name: apps-metadata-server-configmap-volume
             - mountPath: /opt/bitnami/apache/htdocs/homepage.html
               subPath: homepage.html
@@ -33,6 +34,12 @@ spec:
               name: homepage-configmap-volume
             - mountPath: /opt/bitnami/apache/htdocs/homepage.js
               subPath: homepage.js
+              name: homepage-configmap-volume
+            - mountPath: /opt/bitnami/apache/htdocs/homepage.js
+              subPath: homepage.js
+              name: homepage-configmap-volume
+            - mountPath: /opt/bitnami/apache/htdocs/farao-logo.svg
+              subPath: farao-logo.svg
               name: homepage-configmap-volume
             - mountPath: /opt/bitnami/apache/var/run/
               name: run-emptydir

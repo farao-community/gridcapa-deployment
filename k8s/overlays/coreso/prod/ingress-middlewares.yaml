@@ -680,7 +680,7 @@ metadata:
 spec:
   redirectRegex:
     regex: "^/$"
-    replacement: "/homepage.html"
+    replacement: "/apps-metadata/homepage.html"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
