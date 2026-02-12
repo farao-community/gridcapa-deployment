@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    nginx.ingress.kubernetes.io/app-root: /homepage.html # requests to "/" will be redirected to "/homepage.html"
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^/cse/import/idcc$ /cse/import/idcc/ permanent;
       rewrite ^/cse/import/d2cc$ /cse/import/d2cc/ permanent;
@@ -320,13 +319,6 @@ spec:
                 port:
                   number: 80
             path: /apps-metadata(/|$)(.*)
-            pathType: Prefix
-          - backend:
-              service:
-                name: apps-metadata-server
-                port:
-                  number: 80
-            path: /homepage(/|$)(.*)
             pathType: Prefix
           - backend:
               service:
