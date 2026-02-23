@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
+    nginx.ingress.kubernetes.io/app-root: /apps-metadata/homepage.html # requests to "/" will be redirected to "/apps-metadata/homepage.html"
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^/cse/import/idcc$ /cse/import/idcc/ permanent;
       rewrite ^/cse/import/d2cc$ /cse/import/d2cc/ permanent;
@@ -18,8 +19,8 @@ metadata:
       rewrite ^/swe/idcf$ /swe/idcf/ permanent;
       rewrite ^/core/cc$ /core/cc/ permanent;
       rewrite ^/ce/cc$ /ce/cc/ permanent;
-
       rewrite ^/utils/rabbitmq$ /utils/rabbitmq/ permanent;
+      
       if ($request_uri ~ "^/utils/rabbitmq(/.*)") {
         proxy_pass http://upstream_balancer$1;
         break;
