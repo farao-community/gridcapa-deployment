@@ -16,32 +16,32 @@ data:
       {
         "name" : "Capa IN D2CC Export",
         "url"  : "/cse/export/d2cc/",
-        "appColor" : "#90F2A5"
+        "appColor" : "#27E550"
       },
       {
         "name" : "Capa IN D2CC Import",
         "url"  : "/cse/import/d2cc/",
-        "appColor" : "#90F2A5"
+        "appColor" : "#27E550"
       },
       {
         "name" : "Capa IN D2CC Import EC",
         "url"  : "/cse/import-ec/d2cc/",
-        "appColor" : "#90F2A5"
+        "appColor" : "#27E550"
       },
       {
         "name" : "Capa IN IDCC Export",
         "url"  : "/cse/export/idcc/",
-        "appColor" : "#90F2A5"
+        "appColor" : "#27E550"
       },
       {
         "name" : "Capa IN IDCC Import",
         "url"  : "/cse/import/idcc/",
-        "appColor" : "#90F2A5"
+        "appColor" : "#27E550"
       },
       {
         "name" : "Capa IN IDCC Import EC",
         "url"  : "/cse/import-ec/idcc/",
-        "appColor" : "#90F2A5"
+        "appColor" : "#27E550"
       },
       {
         "name" : "Capa SWE D2CC",
@@ -51,11 +51,11 @@ data:
       {
         "name" : "Capa SWE IDCC 1st run",
         "url"  : "/swe/idcc/",
-        "appColor" : "#FBF57B"
+        "appColor" : "#954ECA"
       },
       {
         "name" : "Capa SWE IDCC 2nd run",
         "url"  : "/swe/idcf/",
-        "appColor" : "#FBF57B"
+        "appColor" : "#954ECA"
       }
     ]
