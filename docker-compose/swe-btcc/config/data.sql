@@ -113,3 +113,8 @@ INSERT INTO parameter (id, name, display_order, parameter_type, section_title, s
 VALUES ('EXPORT_FIRST_UNSECURE_SHIFTED_CGM', 'Export First Unsecure shifted CGM', 10, 'BOOLEAN', 'Other parameters', 7, 'false')
     ON CONFLICT (id) DO
 UPDATE SET name = 'Export First Unsecure shifted CGM', display_order = 10, parameter_type = 'BOOLEAN', section_title = 'Other parameters', section_order = 7;
+
+INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
+VALUES ('RUN_GLSK_CHECKS_FIRST', 'Run GLSK checks before load flow computation', 11, 'BOOLEAN', 'Other parameters', 7, 'true')
+    ON CONFLICT (id) DO
+UPDATE SET name = 'Run GLSK checks before load flow computation', display_order = 11, parameter_type = 'BOOLEAN', section_title = 'Other parameters', section_order = 7;
