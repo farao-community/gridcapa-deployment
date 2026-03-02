@@ -8,19 +8,17 @@ resources:
   - postgresql-deployment.yaml
   - apps-metadata-server-configmap.yaml
   #  Processes to be deployed each time
-  - ../../../bases/ce-cc
   - ../../../bases/core-cc
   - ../../../bases/cse-import-ec-d2cc
   - ../../../bases/swe-d2cc
-  - ../azure-databridge-claims/ce-cc
   - ../azure-databridge-claims/core-cc
   - ../azure-databridge-claims/cse-import-ec-d2cc
   - ../azure-databridge-claims/swe-d2cc
-  - ce-cc-gridcapa-app-idp-settings-configmap.yaml
   - core-cc-gridcapa-app-idp-settings-configmap.yaml
   - cse-import-ec-d2cc-app-idp-settings-configmap.yaml
   - swe-d2cc-app-idp-settings-configmap.yaml
   #  Process to be deployed on demand - to uncomment if needed
+#  - ../../../bases/ce-cc
 #  - ../../../bases/cse-common
 #  - ../../../bases/cse-export-d2cc
 #  - ../../../bases/cse-export-idcc
@@ -30,6 +28,7 @@ resources:
 #  - ../../../bases/swe-btcc
 #  - ../../../bases/swe-idcc
 #  - ../../../bases/swe-idcc-idcf
+#  - ../azure-databridge-claims/ce-cc
 #  - ../azure-databridge-claims/cse-export-d2cc
 #  - ../azure-databridge-claims/cse-export-idcc
 #  - ../azure-databridge-claims/cse-import-d2cc
@@ -38,6 +37,7 @@ resources:
 #  - ../azure-databridge-claims/swe-btcc
 #  - ../azure-databridge-claims/swe-idcc
 #  - ../azure-databridge-claims/swe-idcc-idcf
+#  - ce-cc-gridcapa-app-idp-settings-configmap.yaml
 #  - cse-export-d2cc-app-idp-settings-configmap.yaml
 #  - cse-export-idcc-app-idp-settings-configmap.yaml
 #  - cse-import-d2cc-app-idp-settings-configmap.yaml
