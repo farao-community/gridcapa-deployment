@@ -515,6 +515,17 @@ spec:
     prefixes:
       - /core/cc/task-manager/
 ---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  creationTimestamp: null
+  name: gridcapa-core-cc-task-notification
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - /core/cc/task-notification/
+---
 
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
