@@ -657,7 +657,7 @@ metadata:
 spec:
   stripPrefix:
     prefixes:
-      - /cse/import/idcc/task-notification/
+      - /core/cc/task-notification/
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
