@@ -39,16 +39,6 @@ data:
         "appColor" : "#27E550"
       },
       {
-        "name" : "Capa IN D2CC Import",
-        "url"  : "/cse/import/d2cc/",
-        "appColor" : "#27E550"
-      },
-      {
-        "name" : "Capa IN IDCC Import",
-        "url"  : "/cse/import/idcc/",
-        "appColor" : "#27E550"
-      },
-      {
         "name" : "Capa SWE D2CC",
         "url"  : "/swe/d2cc/",
         "appColor" : "#954ECA"
@@ -61,11 +51,6 @@ data:
       {
         "name" : "Capa SWE IDCC 2nd run",
         "url"  : "/swe/idcf/",
-        "appColor" : "#954ECA"
-      },
-      {
-        "name" : "Capa SWE BTCC",
-        "url"  : "/swe/btcc/",
         "appColor" : "#954ECA"
       }
     ]
