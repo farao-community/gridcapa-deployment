@@ -9,6 +9,11 @@ data:
   apps-metadata.json: |-
     [
       {
+        "name" : "Capa CE DACC",
+        "url"  : "/ce/cc/",
+        "appColor" : "#FFC000"
+      },
+      {
         "name" : "Capa CORE DACC",
         "url"  : "/core/cc/",
         "appColor" : "#21B3E6"
@@ -19,11 +24,6 @@ data:
         "appColor" : "#27E550"
       },
       {
-        "name" : "Capa IN D2CC Import",
-        "url"  : "/cse/import/d2cc/",
-        "appColor" : "#27E550"
-      },
-      {
         "name" : "Capa IN D2CC Import EC",
         "url"  : "/cse/import-ec/d2cc/",
         "appColor" : "#27E550"
@@ -31,11 +31,6 @@ data:
       {
         "name" : "Capa IN IDCC Export",
         "url"  : "/cse/export/idcc/",
-        "appColor" : "#27E550"
-      },
-      {
-        "name" : "Capa IN IDCC Import",
-        "url"  : "/cse/import/idcc/",
         "appColor" : "#27E550"
       },
       {
