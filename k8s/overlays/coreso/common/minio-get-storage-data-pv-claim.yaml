@@ -8,7 +8,7 @@ metadata:
 spec:
   storageClassName: thick-csi-pur-default
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1M
