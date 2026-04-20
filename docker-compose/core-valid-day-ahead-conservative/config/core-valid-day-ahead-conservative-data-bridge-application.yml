@@ -21,7 +21,7 @@ data-bridge:
         file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.vertices.properties
       - file-type: NET-POSITION-FORECAST
         file-regex: "(?<year>[0-9]{4})(?<month>[0-9]{2})(?<day>[0-9]{2})-F230-v(?<version>[0-9]*)-17XTSO-CS------W-to-10V1001C--00085T.(xml|XML)"
-        time-validity: hourly
+        time-validity: daily
         source-directory: "/npfs"
         sink-directory: "/NPFs"
         file-list-persistence-file: /tmp/gridcapa/ftp-metadata-store.npfs.properties
