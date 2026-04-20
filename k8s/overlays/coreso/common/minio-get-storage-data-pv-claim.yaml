@@ -6,7 +6,7 @@ metadata:
     app: gridcapa
     component: minio-get-storage-data
 spec:
-  storageClassName: nfs-gold
+  storageClassName: thick-csi-pur-default
   accessModes:
     - ReadWriteMany
   resources:

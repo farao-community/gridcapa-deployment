@@ -6,7 +6,7 @@ metadata:
     app: gridcapa
     component: postgresql
 spec:
-  storageClassName: vsphere-raw-block-sc
+  storageClassName: thick-csi-pur-default
   accessModes:
     - ReadWriteOnce
   resources:

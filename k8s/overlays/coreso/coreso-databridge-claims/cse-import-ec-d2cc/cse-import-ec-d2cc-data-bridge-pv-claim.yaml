@@ -8,7 +8,7 @@ metadata:
     region: cse
     process: import-ec-d2cc
 spec:
-  storageClassName: nfs-gold
+  storageClassName: thick-csi-pur-default
   accessModes:
     - ReadWriteOnce
   resources:
