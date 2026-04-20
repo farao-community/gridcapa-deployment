@@ -10,7 +10,7 @@ metadata:
 spec:
   storageClassName: nfs-gold
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 32M
