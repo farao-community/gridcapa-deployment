@@ -59,8 +59,10 @@ task-server:
     inputs:
       - CNEC-RAM
       - VERTICES
+      - NET-POSITION-FORECAST
     outputs:
       - IVA-RESULT
+      - STUDY-POINTS
     optional-inputs:
     enable-export-logs: false
     manual-upload-base-path: CORE/VALID/D2CC_CONSERVATIVE
@@ -85,6 +87,7 @@ logback:
 runner:
   parameters:
     USE_PROJECTION: true
+    USE_AHC: false
     MAX_VERTICES_PER_BRANCH: 5
     RAM_THRESHOLD: -15
     MIN_RAM_MCCC: 20
