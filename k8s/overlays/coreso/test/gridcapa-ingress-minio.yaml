@@ -9,7 +9,7 @@ metadata:
     app: gridcapa
     component: gridcapa
   name: gridcapa-minio
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local

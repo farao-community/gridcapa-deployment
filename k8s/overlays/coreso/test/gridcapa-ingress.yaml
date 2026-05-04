@@ -9,7 +9,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-export-d2cc-app
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -38,7 +38,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-export-d2cc-config
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -67,7 +67,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-export-d2cc-config-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -96,7 +96,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-export-d2cc-job-launcher
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -125,7 +125,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-export-d2cc-task-manager
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -154,7 +154,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-export-d2cc-task-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -183,7 +183,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-export-idcc-app
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -212,7 +212,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-export-idcc-config
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -241,7 +241,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-export-idcc-config-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -270,7 +270,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-export-idcc-job-launcher
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -299,7 +299,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-export-idcc-task-manager
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -328,7 +328,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-export-idcc-task-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -357,7 +357,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-import-ec-d2cc-app
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -386,7 +386,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-import-ec-d2cc-config
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -415,7 +415,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-import-ec-d2cc-config-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -444,7 +444,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-import-ec-d2cc-job-launcher
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -473,7 +473,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-import-ec-d2cc-task-manager
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -502,7 +502,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-import-ec-d2cc-task-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -531,7 +531,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-import-ec-idcc-app
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -560,7 +560,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-import-ec-idcc-config
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -589,7 +589,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-import-ec-idcc-config-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -618,7 +618,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-import-ec-idcc-job-launcher
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -647,7 +647,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-import-ec-idcc-task-manager
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -676,7 +676,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-cse-import-ec-idcc-task-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -705,7 +705,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-d2cc-app
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -734,7 +734,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-d2cc-config
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -763,7 +763,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-d2cc-config-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -792,7 +792,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-d2cc-job-launcher
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -821,7 +821,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-d2cc-task-manager
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -850,7 +850,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-d2cc-task-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -879,7 +879,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-idcc-app
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -908,7 +908,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-idcc-config
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -937,7 +937,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-idcc-config-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -966,7 +966,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-idcc-job-launcher
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -995,7 +995,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-idcc-task-manager
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1025,7 +1025,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-idcc-idcf-app
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1054,7 +1054,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-idcc-idcf-config
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1083,7 +1083,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-idcc-idcf-config-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1112,7 +1112,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-idcc-idcf-job-launcher
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1141,7 +1141,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-idcc-idcf-task-manager
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1170,7 +1170,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-idcc-idcf-task-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1200,7 +1200,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-idcc-task-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1229,7 +1229,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-core-cc-app
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1258,7 +1258,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-core-cc-config
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1287,7 +1287,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-core-cc-config-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1316,7 +1316,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-core-cc-adapter
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1345,7 +1345,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-core-cc-task-manager
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1374,7 +1374,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-core-cc-task-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1403,7 +1403,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-ce-cc-app
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1432,7 +1432,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-ce-cc-config
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1461,7 +1461,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-ce-cc-config-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1490,7 +1490,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-ce-cc-adapter
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1519,7 +1519,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-ce-cc-task-manager
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1548,7 +1548,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-ce-cc-task-notification
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1578,7 +1578,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-apps-metadata
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
@@ -1607,7 +1607,7 @@ metadata:
     app: gridcapa
     component: gridcapa-ingress
   name: gridcapa-ingress-rabbitmq
-  namespace: default
+  namespace: gridcapa-test
 spec:
   rules:
     - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
