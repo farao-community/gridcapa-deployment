@@ -1,26 +1,4 @@
----
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  annotations:
-    haproxy.router.openshift.io/timeout: 5m
-    app: gridcapa
-    component: gridcapa
-  labels:
-    app: http-minio
-  name: http-minio
-spec:
-  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/minio
-  port:
-    targetPort: https
-  tls:
-    insecureEdgeTerminationPolicy: Redirect
-    termination: edge
-  to:
-    kind: Service
-    name: gridcapa-minio
-    weight: 100
-  wildcardPolicy: None
+
 ---
   apiVersion: route.openshift.io/v1
   kind: Route
@@ -33,7 +11,7 @@ spec:
       app: swe-d2cc-app
     name: swe-d2cc-app
   spec:
-    host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/swe/d2cc
+    host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
     port:
       targetPort: http
     tls:
@@ -45,25 +23,3 @@ spec:
       weight: 100
     wildcardPolicy: None
 ---
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  annotations:
-    haproxy.router.openshift.io/timeout: 5m
-    app: gridcapa
-    component: gridcapa
-  labels:
-    app: rabbitmq
-  name: http-rabbitmq
-spec:
-  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/utils/rabbitmq
-  port:
-    targetPort: http
-  tls:
-    insecureEdgeTerminationPolicy: Redirect
-    termination: edge
-  to:
-    kind: Service
-    name: gridcapa-utils-rabbitmq
-    weight: 100
-  wildcardPolicy: None
