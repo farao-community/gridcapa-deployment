@@ -10,7 +10,7 @@ metadata:
     app: http-minio
   name: http-minio
 spec:
-  host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local/minio
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/minio
   port:
     targetPort: https
   tls:
@@ -33,7 +33,7 @@ spec:
       app: swe-d2cc-app
     name: swe-d2cc-app
   spec:
-    host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local/swe/d2cc
+    host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/swe/d2cc
     port:
       targetPort: http
     tls:
@@ -56,7 +56,7 @@ metadata:
     app: rabbitmq
   name: http-rabbitmq
 spec:
-  host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local/utils/rabbitmq
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/utils/rabbitmq
   port:
     targetPort: http
   tls:
