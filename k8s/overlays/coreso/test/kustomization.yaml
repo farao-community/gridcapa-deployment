@@ -25,6 +25,7 @@ resources:
 #  - gridcapa-ingress.yaml
 #  - gridcapa-ingress-minio.yaml
 #  - ingress-middlewares.yaml
+  - ingress-openshift.yaml
   - minio-pvc.yaml
   - postgresql-configmap.yaml
   - postgresql-data-pv-claim.yaml
