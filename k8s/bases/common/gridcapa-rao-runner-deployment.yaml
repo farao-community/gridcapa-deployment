@@ -65,7 +65,6 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
             runAsNonRoot: true
-            runAsUser: 1000
             readOnlyRootFilesystem: true
           resources:
             requests:

@@ -73,7 +73,7 @@ patches:
       metadata:
         name: rao-runner
       spec:
-        replicas: 4
+        replicas: 1
         template:
           spec:
             tolerations:
@@ -85,10 +85,10 @@ patches:
               - name: rao-runner
                 resources:
                   requests:
-                    cpu: "14.0"
+                    cpu: "7.0"
                     memory: "30Gi"
                   limits:
-                    cpu: "16.0"
+                    cpu: "7.0"
                     memory: "40Gi"
             imagePullSecrets:
               - name: dockerhub-acr-secret
