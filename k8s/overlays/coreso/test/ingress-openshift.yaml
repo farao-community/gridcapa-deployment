@@ -10,7 +10,7 @@
     name: gridcapa-minio
   spec:
     host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
-    path: "/minio"
+    path: /minio
     port:
       targetPort: http
     tls:
@@ -34,7 +34,7 @@ metadata:
   name: gridcapa-ingress-apps-metadata
 spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
-  path: "/apps-metadata/"
+  path: /apps-metadata/
   port:
     targetPort: http
   tls:
@@ -57,7 +57,7 @@ metadata:
   name: gridcapa-ingress-rabbitmq
 spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
-  path: "/utils/rabbitmq/"
+  path: /utils/rabbitmq/
   port:
     targetPort: http
   tls:
@@ -81,7 +81,7 @@ metadata:
   name: gridcapa-ingress-swe-d2cc-app
 spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
-  path: "/swe/d2cc/"
+  path: /swe/d2cc/
   port:
     targetPort: http
   tls:
@@ -105,7 +105,7 @@ metadata:
   name: gridcapa-ingress-swe-d2cc-config
 spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
-  path: "/swe/d2cc/config/"
+  path: /swe/d2cc/config/
   port:
     targetPort: http
   tls:
@@ -128,7 +128,7 @@ metadata:
   name: gridcapa-ingress-swe-d2cc-config-notification
 spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
-  path: "/swe/d2cc/config-notification/"
+  path: /swe/d2cc/config-notification/
   port:
     targetPort: http
   tls:
@@ -151,7 +151,7 @@ metadata:
   name: gridcapa-ingress-swe-d2cc-job-launcher
 spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
-  path: "/swe/d2cc/gridcapa-job-launcher/"
+  path: /swe/d2cc/gridcapa-job-launcher/
   port:
     targetPort: http
   tls:
@@ -174,7 +174,7 @@ metadata:
   name: gridcapa-ingress-swe-d2cc-task-manager
 spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
-  path: "/swe/d2cc/task-manager/"
+  path: /swe/d2cc/task-manager/
   port:
     targetPort: http
   tls:
@@ -197,7 +197,7 @@ metadata:
   name: gridcapa-ingress-swe-d2cc-task-notification
 spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
-  path: "/swe/d2cc/task-notification/"
+  path: /swe/d2cc/task-notification/
   port:
     targetPort: http
   tls:
