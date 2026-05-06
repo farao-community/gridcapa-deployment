@@ -1,25 +1,199 @@
-
 ---
   apiVersion: route.openshift.io/v1
   kind: Route
   metadata:
     annotations:
       haproxy.router.openshift.io/timeout: 5m
-      app: gridcapa
-      component: gridcapa
     labels:
-      app: swe-d2cc-app
-    name: swe-d2cc-app
+      app: gridcapa
+      component: gridcapa-ingress
+    name: gridcapa-minio
   spec:
-    host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+    host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/minio
     port:
-      targetPort: http
+      targetPort: 9001
     tls:
       insecureEdgeTerminationPolicy: Redirect
       termination: edge
     to:
       kind: Service
-      name: swe-d2cc-app
+      name: gridcapa-minio
       weight: 100
     wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-apps-metadata
+spec:
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/apps-metadata/
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: apps-metadata-server
+    weight: 100
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-rabbitmq
+spec:
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/utils/rabbitmq/
+  port:
+    targetPort: 15672
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: gridcapa-rabbitmq
+    weight: 100
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-swe-d2cc-app
+spec:
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/swe/d2cc/
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: swe-d2cc-app
+    weight: 100
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-swe-d2cc-config
+spec:
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/swe/d2cc/config/
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: config-server
+    weight: 100
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-swe-d2cc-config-notification
+spec:
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/swe/d2cc/config-notification/
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: config-notification-server
+    weight: 100
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-swe-d2cc-job-launcher
+spec:
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/swe/d2cc/gridcapa-job-launcher/
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: swe-d2cc-job-launcher
+    weight: 100
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-swe-d2cc-task-manager
+spec:
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/swe/d2cc/task-manager/
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: swe-d2cc-task-manager
+    weight: 100
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-swe-d2cc-task-notification
+spec:
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/swe/d2cc/task-notification/
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: swe-d2cc-task-manager
+    weight: 100
+  wildcardPolicy: None
 ---
