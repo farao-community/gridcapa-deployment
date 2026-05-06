@@ -4,14 +4,12 @@
   metadata:
     annotations:
       haproxy.router.openshift.io/timeout: 5m
-      haproxy.router.openshift.io/rewrite-target: /
     labels:
       app: gridcapa
       component: gridcapa-ingress
     name: gridcapa-minio
   spec:
-    host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
-    path: /minio/
+    host: minio-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
     port:
       targetPort: console
     tls:
