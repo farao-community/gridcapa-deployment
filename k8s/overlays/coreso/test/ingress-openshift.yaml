@@ -4,7 +4,7 @@
   metadata:
     annotations:
       haproxy.router.openshift.io/timeout: 5m
-    haproxy.router.openshift.io/rewrite-target: /minio
+    haproxy.router.openshift.io/rewrite-target: /
     labels:
       app: gridcapa
       component: gridcapa-ingress
@@ -29,7 +29,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
-    haproxy.router.openshift.io/rewrite-target: /apps-metadata/
+    haproxy.router.openshift.io/rewrite-target: /
   labels:
     app: gridcapa
     component: gridcapa-ingress
@@ -53,7 +53,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
-    haproxy.router.openshift.io/rewrite-target: /utils/rabbitmq/
+    haproxy.router.openshift.io/rewrite-target: /
   labels:
     app: gridcapa
     component: gridcapa-ingress
@@ -78,7 +78,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
-    haproxy.router.openshift.io/rewrite-target: /swe/d2cc/
+    haproxy.router.openshift.io/rewrite-target: /
   labels:
     app: gridcapa
     component: gridcapa-ingress
@@ -103,7 +103,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
-    haproxy.router.openshift.io/rewrite-target: /swe/d2cc/config/
+    haproxy.router.openshift.io/rewrite-target: /
   labels:
     app: gridcapa
     component: gridcapa-ingress
@@ -127,7 +127,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
-    haproxy.router.openshift.io/rewrite-target: /swe/d2cc/config-notification/
+    haproxy.router.openshift.io/rewrite-target: /
   labels:
     app: gridcapa
     component: gridcapa-ingress
@@ -151,7 +151,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
-    haproxy.router.openshift.io/rewrite-target: /swe/d2cc/gridcapa-job-launcher/
+    haproxy.router.openshift.io/rewrite-target: /
   labels:
     app: gridcapa
     component: gridcapa-ingress
@@ -175,7 +175,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
-    haproxy.router.openshift.io/rewrite-target: /swe/d2cc/task-manager/
+    haproxy.router.openshift.io/rewrite-target: /
   labels:
     app: gridcapa
     component: gridcapa-ingress
@@ -199,7 +199,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
-    haproxy.router.openshift.io/rewrite-target: /swe/d2cc/task-notification/
+    haproxy.router.openshift.io/rewrite-target: /
   labels:
     app: gridcapa
     component: gridcapa-ingress
