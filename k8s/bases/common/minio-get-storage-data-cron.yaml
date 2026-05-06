@@ -18,7 +18,7 @@ spec:
             - name: minio-get-storage-data-cron
               image: minio-mc
               command: ["/bin/sh"]
-              args: [ "-c", "mc alias set gridcapa-minio http://gridcapa-minio:9000 $(MINIO_ACCESS_KEY) $(MINIO_SECRET_KEY) | mc admin info gridcapa-minio --json &> /data/minioStorageData.json" ]
+              args: [ "-c", "mc alias set gridcapa-minio http://gridcapa-minio.gridcapa-test.svc.cluster.local:9000 $(MINIO_ACCESS_KEY) $(MINIO_SECRET_KEY) | mc admin info gridcapa-minio --json &> /data/minioStorageData.json" ]
               env:
                 - name: MINIO_ACCESS_KEY
                   valueFrom:
