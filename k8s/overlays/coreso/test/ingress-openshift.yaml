@@ -19,6 +19,7 @@
     to:
       kind: Service
       name: gridcapa-minio
+      port: 9001
       weight: 100
     wildcardPolicy: None
 ---
