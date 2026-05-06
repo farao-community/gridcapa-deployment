@@ -12,13 +12,14 @@
     host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
     path: "/minio"
     port:
-      targetPort: 9001
+      targetPort: http
     tls:
       insecureEdgeTerminationPolicy: Redirect
       termination: edge
     to:
       kind: Service
       name: gridcapa-minio
+      port: 9001
       weight: 100
     wildcardPolicy: None
 ---
@@ -58,13 +59,14 @@ spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
   path: "/utils/rabbitmq/"
   port:
-    targetPort: 15672
+    targetPort: http
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
   to:
     kind: Service
     name: gridcapa-rabbitmq
+    port: 15672
     weight: 100
   wildcardPolicy: None
 ---
