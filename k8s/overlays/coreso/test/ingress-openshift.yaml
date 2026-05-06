@@ -9,7 +9,8 @@
       component: gridcapa-ingress
     name: gridcapa-minio
   spec:
-    host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/minio
+    host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+    path: "/minio"
     port:
       targetPort: 9001
     tls:
@@ -31,7 +32,8 @@ metadata:
     component: gridcapa-ingress
   name: gridcapa-ingress-apps-metadata
 spec:
-  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/apps-metadata/
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: "/apps-metadata/"
   port:
     targetPort: http
   tls:
@@ -53,7 +55,8 @@ metadata:
     component: gridcapa-ingress
   name: gridcapa-ingress-rabbitmq
 spec:
-  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/utils/rabbitmq/
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: "/utils/rabbitmq/"
   port:
     targetPort: 15672
   tls:
@@ -75,7 +78,8 @@ metadata:
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-d2cc-app
 spec:
-  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/swe/d2cc/
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: "/swe/d2cc/"
   port:
     targetPort: http
   tls:
@@ -97,7 +101,8 @@ metadata:
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-d2cc-config
 spec:
-  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/swe/d2cc/config/
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: "/swe/d2cc/config/"
   port:
     targetPort: http
   tls:
@@ -119,7 +124,8 @@ metadata:
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-d2cc-config-notification
 spec:
-  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/swe/d2cc/config-notification/
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: "/swe/d2cc/config-notification/"
   port:
     targetPort: http
   tls:
@@ -141,7 +147,8 @@ metadata:
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-d2cc-job-launcher
 spec:
-  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/swe/d2cc/gridcapa-job-launcher/
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: "/swe/d2cc/gridcapa-job-launcher/"
   port:
     targetPort: http
   tls:
@@ -163,7 +170,8 @@ metadata:
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-d2cc-task-manager
 spec:
-  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/swe/d2cc/task-manager/
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: "/swe/d2cc/task-manager/"
   port:
     targetPort: http
   tls:
@@ -185,7 +193,8 @@ metadata:
     component: gridcapa-ingress
   name: gridcapa-ingress-swe-d2cc-task-notification
 spec:
-  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local/swe/d2cc/task-notification/
+  host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: "/swe/d2cc/task-notification/"
   port:
     targetPort: http
   tls:
