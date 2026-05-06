@@ -4,6 +4,7 @@
   metadata:
     annotations:
       haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /minio
     labels:
       app: gridcapa
       component: gridcapa-ingress
@@ -28,6 +29,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /apps-metadata/
   labels:
     app: gridcapa
     component: gridcapa-ingress
@@ -51,6 +53,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /utils/rabbitmq/
   labels:
     app: gridcapa
     component: gridcapa-ingress
@@ -75,6 +78,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /swe/d2cc/
   labels:
     app: gridcapa
     component: gridcapa-ingress
@@ -99,6 +103,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /swe/d2cc/config/
   labels:
     app: gridcapa
     component: gridcapa-ingress
@@ -122,6 +127,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /swe/d2cc/config-notification/
   labels:
     app: gridcapa
     component: gridcapa-ingress
@@ -145,6 +151,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /swe/d2cc/gridcapa-job-launcher/
   labels:
     app: gridcapa
     component: gridcapa-ingress
@@ -168,6 +175,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /swe/d2cc/task-manager/
   labels:
     app: gridcapa
     component: gridcapa-ingress
@@ -191,6 +199,7 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /swe/d2cc/task-notification/
   labels:
     app: gridcapa
     component: gridcapa-ingress
