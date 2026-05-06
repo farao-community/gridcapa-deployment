@@ -4,6 +4,7 @@
   metadata:
     annotations:
       haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /
     labels:
       app: gridcapa
       component: gridcapa-ingress
