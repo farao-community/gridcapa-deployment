@@ -12,7 +12,7 @@
     host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
     path: "/minio"
     port:
-      targetPort: https
+      targetPort: http
     tls:
       insecureEdgeTerminationPolicy: Redirect
       termination: edge
@@ -36,7 +36,7 @@ spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
   path: "/apps-metadata/"
   port:
-    targetPort: https
+    targetPort: http
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
@@ -59,7 +59,7 @@ spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
   path: "/utils/rabbitmq/"
   port:
-    targetPort: https
+    targetPort: http
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
@@ -83,7 +83,7 @@ spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
   path: "/swe/d2cc/"
   port:
-    targetPort: https
+    targetPort: http
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
@@ -107,7 +107,7 @@ spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
   path: "/swe/d2cc/config/"
   port:
-    targetPort: https
+    targetPort: http
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
@@ -130,7 +130,7 @@ spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
   path: "/swe/d2cc/config-notification/"
   port:
-    targetPort: https
+    targetPort: http
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
@@ -153,7 +153,7 @@ spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
   path: "/swe/d2cc/gridcapa-job-launcher/"
   port:
-    targetPort: https
+    targetPort: http
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
@@ -176,7 +176,7 @@ spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
   path: "/swe/d2cc/task-manager/"
   port:
-    targetPort: https
+    targetPort: http
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
@@ -199,7 +199,7 @@ spec:
   host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
   path: "/swe/d2cc/task-notification/"
   port:
-    targetPort: https
+    targetPort: http
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
