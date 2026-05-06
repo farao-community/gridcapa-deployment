@@ -11,16 +11,15 @@
     name: gridcapa-minio
   spec:
     host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
-    path: /minio
+    path: /minio/
     port:
-      targetPort: http
+      targetPort: console
     tls:
       insecureEdgeTerminationPolicy: Redirect
       termination: edge
     to:
       kind: Service
       name: gridcapa-minio
-      port: 9001
       weight: 100
     wildcardPolicy: None
 ---
