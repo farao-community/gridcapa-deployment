@@ -35,9 +35,9 @@ spec:
             - containerPort: 9000
             - containerPort: 9001
           env:
-#            - name: MINIO_BROWSER_REDIRECT_URL
-#              #Since Minio 2022, a url has to be set here even though it is not used
-#              value: "http://minio.local/minio/"
+            - name: MINIO_BROWSER_REDIRECT_URL
+              #Since Minio 2022, a url has to be set here even though it is not used
+              value: "http://minio.local/minio/"
             - name: MINIO_ROOT_USER
               valueFrom:
                 secretKeyRef:
