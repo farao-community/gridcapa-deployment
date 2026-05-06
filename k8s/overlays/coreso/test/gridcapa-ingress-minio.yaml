@@ -12,7 +12,7 @@ metadata:
   namespace: gridcapa-test
 spec:
   rules:
-    - host: gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
+    - host: gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
       http:
         paths:
           - backend:
@@ -24,5 +24,5 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - gridcapa.ingress-k8s-1648-vsp-tst-002.rh.1648.local
+        - gridcapa.apps.s1049-ocp-u-ipi-001.rh.s1049.local
       secretName: ingresswildcard
