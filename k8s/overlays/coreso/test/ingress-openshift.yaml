@@ -35,7 +35,7 @@ spec:
   host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
   path: /apps-metadata/
   port:
-    targetPort: http
+    targetPort: apps-metadata-server
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
@@ -118,6 +118,14 @@ spec:
     name: config-server
     weight: 100
   wildcardPolicy: None
+  httpHeaders:
+    actions:
+      request:
+        - name: userId
+          action:
+            type: Set
+            set:
+              value: johnDoe
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
