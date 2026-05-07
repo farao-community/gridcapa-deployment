@@ -8,9 +8,9 @@ metadata:
     region: ce
     process: cc
 spec:
-  storageClassName: nfs-gold
+  storageClassName: thick-csi-pur-default
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 32M
