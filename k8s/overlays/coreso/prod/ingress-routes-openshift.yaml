@@ -118,6 +118,14 @@ spec:
     kind: Service
     name: apps-metadata-server
   wildcardPolicy: None
+  httpHeaders:
+    actions:
+      request:
+        - name: userId
+          action:
+            type: Set
+            set:
+              value: johnDoe
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
