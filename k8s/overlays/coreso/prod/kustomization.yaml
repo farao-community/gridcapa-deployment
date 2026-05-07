@@ -22,9 +22,12 @@ resources:
   - ../coreso-databridge-claims/swe-idcc
   - ../coreso-databridge-claims/swe-idcc-idcf
   - apps-metadata-server-configmap.yaml
-  - ingress-gridcapa.yaml
-  - ingress-middlewares.yaml
-  - ingress-minio.yaml
+######## DON'T USE OLD INGRESS TRAEFIK WITH OPENSHIFT ######
+#  - ingress-gridcapa.yaml
+#  - ingress-middlewares.yaml
+#  - ingress-minio.yaml
+############################################################
+  - ingress-routes-openshift.yaml
   - minio-pvc.yaml
   - postgresql-configmap.yaml
   - postgresql-data-pv-claim.yaml
