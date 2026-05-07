@@ -70,6 +70,8 @@ spec:
     weight: 100
   wildcardPolicy: None
 ---
+---
+---
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
@@ -212,6 +214,161 @@ metadata:
 spec:
   host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
   path: /swe/d2cc/task-notification/
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: swe-d2cc-task-manager
+    weight: 100
+  wildcardPolicy: None
+---
+---
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-core-cc-app
+spec:
+  host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: /core/cc/
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: core-cc-app
+    port: http
+    weight: 100
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-core-cc-config
+spec:
+  host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: /core/cc/config/
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: config-server
+    weight: 100
+  wildcardPolicy: None
+  httpHeaders:
+    actions:
+      request:
+        - name: userId
+          action:
+            type: Set
+            set:
+              value: johnDoe
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-core-cc-config-notification
+spec:
+  host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: /core/cc/config-notification/
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: config-notification-server
+    weight: 100
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-core-cc-job-launcher
+spec:
+  host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: /core/cc/gridcapa-job-launcher/
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: core-cc-job-launcher
+    weight: 100
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-core-cc-task-manager
+spec:
+  host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: /core/cc/task-manager/
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: core-cc-task-manager
+    weight: 100
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /
+  labels:
+    app: gridcapa
+    component: gridcapa-ingress
+  name: gridcapa-ingress-core-cc-task-notification
+spec:
+  host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: /core/cc/task-notification/
   port:
     targetPort: http
   tls:

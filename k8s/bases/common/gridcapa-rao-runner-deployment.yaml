@@ -63,9 +63,13 @@ spec:
               subPath: xpauth.xpr
               name: xpress-license
           securityContext:
-            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            runAsUser: 1000820000
             runAsNonRoot: true
             readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
           resources:
             requests:
               cpu: "8.0"

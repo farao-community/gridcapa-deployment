@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - ../common
 #  - ../../../bases/ce-cc
-#  - ../../../bases/core-cc
+  - ../../../bases/core-cc
 #  - ../../../bases/cse-export-d2cc
 #  - ../../../bases/cse-export-idcc
 #  - ../../../bases/cse-import-ec-d2cc
@@ -13,7 +13,7 @@ resources:
 #  - ../../../bases/swe-idcc
 #  - ../../../bases/swe-idcc-idcf
 #  - ../coreso-databridge-claims/ce-cc
-#  - ../coreso-databridge-claims/core-cc
+  - ../coreso-databridge-claims/core-cc
 #  - ../coreso-databridge-claims/cse-export-d2cc
 #  - ../coreso-databridge-claims/cse-export-idcc
 #  - ../coreso-databridge-claims/cse-import-ec-d2cc
@@ -22,9 +22,11 @@ resources:
 #  - ../coreso-databridge-claims/swe-idcc
 #  - ../coreso-databridge-claims/swe-idcc-idcf
   - apps-metadata-server-configmap.yaml
+######## DON'T USE OLD INGRESS FOR OPENSHIFT ######
 #  - gridcapa-ingress.yaml
 #  - gridcapa-ingress-minio.yaml
 #  - ingress-middlewares.yaml
+###################################################
   - ingress-openshift.yaml
   - minio-pvc.yaml
   - postgresql-configmap.yaml
@@ -143,13 +145,13 @@ patches:
 #        name: cse-import-ec-idcc-runner
 #      spec:
 #        replicas: 4
-#  - patch: |-
-#      kind: Deployment
-#      apiVersion: apps/v1
-#      metadata:
-#        name: core-cc-runner
-#      spec:
-#        replicas: 6
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: core-cc-runner
+      spec:
+        replicas: 1
 #  - patch: |-
 #      kind: Deployment
 #      apiVersion: apps/v1
@@ -237,14 +239,14 @@ patches:
 #        path: /spec/template/spec/containers/0/volumeMounts/2
 #      - op: remove
 #        path: /spec/template/spec/volumes/2
-#  - target:
-#      kind: Deployment
-#      name: core-cc-app
-#    patch: |-
-#      - op: remove
-#        path: /spec/template/spec/containers/0/volumeMounts/2
-#      - op: remove
-#        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: core-cc-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
 #  - target:
 #      kind: Deployment
 #      name: ce-cc-app
