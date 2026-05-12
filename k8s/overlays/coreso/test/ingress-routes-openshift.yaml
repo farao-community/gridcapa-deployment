@@ -329,7 +329,7 @@ spec:
     termination: edge
   to:
     kind: Service
-    name: core-cc-job-launcher
+    name: core-cc-adapter
 
   wildcardPolicy: None
 ---
