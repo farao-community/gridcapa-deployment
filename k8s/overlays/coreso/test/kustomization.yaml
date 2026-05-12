@@ -7,20 +7,20 @@ resources:
 #  - ../../../bases/core-cc
 #  - ../../../bases/cse-export-d2cc
 #  - ../../../bases/cse-export-idcc
-  - ../../../bases/cse-import-ec-d2cc
-  - ../../../bases/cse-import-ec-idcc
+#  - ../../../bases/cse-import-ec-d2cc
+#  - ../../../bases/cse-import-ec-idcc
 #  - ../../../bases/swe-d2cc
-#  - ../../../bases/swe-idcc
-#  - ../../../bases/swe-idcc-idcf
+  - ../../../bases/swe-idcc
+  - ../../../bases/swe-idcc-idcf
 #  - ../coreso-databridge-claims/ce-cc
 #  - ../coreso-databridge-claims/core-cc
 #  - ../coreso-databridge-claims/cse-export-d2cc
 #  - ../coreso-databridge-claims/cse-export-idcc
-  - ../coreso-databridge-claims/cse-import-ec-d2cc
-  - ../coreso-databridge-claims/cse-import-ec-idcc
+#  - ../coreso-databridge-claims/cse-import-ec-d2cc
+#  - ../coreso-databridge-claims/cse-import-ec-idcc
 #  - ../coreso-databridge-claims/swe-d2cc
-#  - ../coreso-databridge-claims/swe-idcc
-#  - ../coreso-databridge-claims/swe-idcc-idcf
+  - ../coreso-databridge-claims/swe-idcc
+  - ../coreso-databridge-claims/swe-idcc-idcf
   - apps-metadata-server-configmap.yaml
 ######## DON'T USE OLD INGRESS TRAEFIK WITH OPENSHIFT ######
 #  - gridcapa-ingress.yaml
@@ -117,34 +117,34 @@ patches:
 #        name: swe-d2cc-runner
 #      spec:
 #        replicas: 2
-#  - patch: |-
-#      kind: Deployment
-#      apiVersion: apps/v1
-#      metadata:
-#        name: swe-idcc-runner
-#      spec:
-#        replicas: 2
-#  - patch: |-
-#      kind: Deployment
-#      apiVersion: apps/v1
-#      metadata:
-#        name: swe-idcc-idcf-runner
-#      spec:
-#        replicas: 2
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-import-ec-d2cc-runner
+        name: swe-idcc-runner
       spec:
         replicas: 1
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-import-ec-idcc-runner
+        name: swe-idcc-idcf-runner
       spec:
         replicas: 1
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: cse-import-ec-d2cc-runner
+#      spec:
+#        replicas: 8
+#  - patch: |-
+#      kind: Deployment
+#      apiVersion: apps/v1
+#      metadata:
+#        name: cse-import-ec-idcc-runner
+#      spec:
+#        replicas: 4
 #  - patch: |-
 #      kind: Deployment
 #      apiVersion: apps/v1
@@ -185,25 +185,9 @@ patches:
 #        path: /spec/template/spec/containers/0/volumeMounts/2
 #      - op: remove
 #        path: /spec/template/spec/volumes/2
-#  - target:
-#      kind: Deployment
-#      name: swe-idcc-app
-#    patch: |-
-#      - op: remove
-#        path: /spec/template/spec/containers/0/volumeMounts/2
-#      - op: remove
-#        path: /spec/template/spec/volumes/2
-#  - target:
-#      kind: Deployment
-#      name: swe-idcc-idcf-app
-#    patch: |-
-#      - op: remove
-#        path: /spec/template/spec/containers/0/volumeMounts/2
-#      - op: remove
-#        path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
-      name: cse-import-ec-d2cc-app
+      name: swe-idcc-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
@@ -211,12 +195,28 @@ patches:
         path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
-      name: cse-import-ec-idcc-app
+      name: swe-idcc-idcf-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
       - op: remove
         path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: cse-import-ec-d2cc-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
+#  - target:
+#      kind: Deployment
+#      name: cse-import-ec-idcc-app
+#    patch: |-
+#      - op: remove
+#        path: /spec/template/spec/containers/0/volumeMounts/2
+#      - op: remove
+#        path: /spec/template/spec/volumes/2
 #  - target:
 #      kind: Deployment
 #      name: core-cc-app
