@@ -51,6 +51,121 @@ kind: Route
 metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /apps-metadata.json
+  labels:
+    app: gridcapa
+    component: gridcapa-homepage
+  name: gridcapa-ingress-homepage-apps-metadata
+spec:
+  host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: /apps-metadata.json
+  port:
+    targetPort: apps-metadata-server
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: apps-metadata-server
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /homepage.html
+  labels:
+    app: gridcapa
+    component: gridcapa-homepage
+  name: gridcapa-ingress-homepage-html
+spec:
+  host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: /
+  port:
+    targetPort: apps-metadata-server
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: apps-metadata-server
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /homepage.css
+  labels:
+    app: gridcapa
+    component: gridcapa-homepage
+  name: gridcapa-ingress-homepage-css
+spec:
+  host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: /homepage.css
+  port:
+    targetPort: apps-metadata-server
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: apps-metadata-server
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /homepage.js
+  labels:
+    app: gridcapa
+    component: gridcapa-homepage
+  name: gridcapa-ingress-homepage-js
+spec:
+  host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: /homepage.js
+  port:
+    targetPort: apps-metadata-server
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: apps-metadata-server
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+    haproxy.router.openshift.io/rewrite-target: /farao-logo.svg
+  labels:
+    app: gridcapa
+    component: gridcapa-homepage
+  name: gridcapa-ingress-homepage-logo
+spec:
+  host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
+  path: /farao-logo.svg
+  port:
+    targetPort: apps-metadata-server
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: apps-metadata-server
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
     haproxy.router.openshift.io/rewrite-target: /
   labels:
     app: gridcapa
