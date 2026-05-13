@@ -289,7 +289,7 @@ spec:
     termination: edge
   to:
     kind: Service
-    name: ce-cc-job-launcher
+    name: ce-cc-adapter
 
   wildcardPolicy: None
 ---
