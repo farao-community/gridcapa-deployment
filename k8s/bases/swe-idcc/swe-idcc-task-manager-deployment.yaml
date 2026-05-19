@@ -22,7 +22,7 @@ spec:
         region: swe
         process: idcc
     spec:
-      
+
       containers:
         - name: swe-idcc-task-manager
           image: gridcapa-swe-task-manager

@@ -22,7 +22,7 @@ spec:
         region: ce
         process: cc
     spec:
-      
+
       containers:
         - name: ce-cc-task-manager
           image: gridcapa-ce-cc-task-manager

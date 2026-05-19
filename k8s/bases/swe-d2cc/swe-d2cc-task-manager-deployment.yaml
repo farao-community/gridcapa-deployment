@@ -22,7 +22,7 @@ spec:
         region: swe
         process: d2cc
     spec:
-      
+
       containers:
         - name: swe-d2cc-task-manager
           image: gridcapa-swe-task-manager

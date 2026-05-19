@@ -22,7 +22,7 @@ spec:
         region: core
         process: valid
     spec:
-      
+
       containers:
         - name: core-valid-task-manager
           image: gridcapa-core-valid-task-manager
