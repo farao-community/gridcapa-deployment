@@ -69,10 +69,10 @@ patches:
               - name: rao-runner
                 resources:
                   requests:
-                    cpu: "6.0"
+                    cpu: "2.0"
                     memory: "30Gi"
                   limits:
-                    cpu: "7.0"
+                    cpu: "2.0"
                     memory: "40Gi"
             imagePullSecrets:
               - name: dockerhub-acr-secret
