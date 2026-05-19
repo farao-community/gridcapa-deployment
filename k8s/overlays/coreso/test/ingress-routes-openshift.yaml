@@ -47,7 +47,7 @@ spec:
 
   wildcardPolicy: None
 ---
-# HOMPAGE
+# HOMEPAGE
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
