@@ -146,7 +146,7 @@ patches:
       metadata:
         name: core-cc-runner
       spec:
-        replicas: 2
+        replicas: 1
   - patch: |-
       apiVersion: apps/v1
       kind: StatefulSet
