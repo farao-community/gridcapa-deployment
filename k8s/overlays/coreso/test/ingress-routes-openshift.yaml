@@ -31,20 +31,23 @@ metadata:
   labels:
     app: gridcapa
     component: gridcapa-ingress
-  name: gridcapa-ingress-apps-metadata
+  name: gridcapa-ingress-rabbitmq
 spec:
   host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
-  path: /apps-metadata/
+  path: /utils/rabbitmq/
   port:
-    targetPort: apps-metadata-server
+    targetPort: http
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
   to:
     kind: Service
-    name: apps-metadata-server
+    name: gridcapa-rabbitmq
+    port: 15672
 
   wildcardPolicy: None
+---
+# HOMPAGE
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -159,31 +162,6 @@ spec:
   to:
     kind: Service
     name: apps-metadata-server
-  wildcardPolicy: None
----
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  annotations:
-    haproxy.router.openshift.io/timeout: 5m
-    haproxy.router.openshift.io/rewrite-target: /
-  labels:
-    app: gridcapa
-    component: gridcapa-ingress
-  name: gridcapa-ingress-rabbitmq
-spec:
-  host: gridcapa-test.apps.s1049-ocp-u-ipi-001.rh.s1049.local
-  path: /utils/rabbitmq/
-  port:
-    targetPort: http
-  tls:
-    insecureEdgeTerminationPolicy: Redirect
-    termination: edge
-  to:
-    kind: Service
-    name: gridcapa-rabbitmq
-    port: 15672
-
   wildcardPolicy: None
 ---
 #CE CC
