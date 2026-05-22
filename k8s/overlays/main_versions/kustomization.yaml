@@ -28,7 +28,7 @@ images:
     newTag: "2.4"
   - name: rabbitmq
     newName: docker.io/rabbitmq
-    newTag: management
+    newTag: 4.2.6-management
   - name: minio
     newName: docker.io/farao/bitnami-minio
     newTag: 2024.12.18
