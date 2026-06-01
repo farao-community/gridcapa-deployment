@@ -22,9 +22,7 @@ resources:
   - ../coreso-databridge-claims/swe-idcc
   - ../coreso-databridge-claims/swe-idcc-idcf
   - apps-metadata-server-configmap.yaml
-  - gridcapa-ingress.yaml
-  - gridcapa-ingress-minio.yaml
-  - ingress-middlewares.yaml
+  - ingress-routes-openshift.yaml
   - minio-pvc.yaml
   - postgresql-configmap.yaml
   - postgresql-data-pv-claim.yaml
@@ -58,7 +56,7 @@ patches:
           - metadata:
               name: gridcapa-rabbitmq-data
             spec:
-              storageClassName: vsphere-raw-block-sc
+              storageClassName: thick-csi-pur-default
               accessModes:
                 - ReadWriteOnce
               resources:
@@ -76,6 +74,7 @@ patches:
         replicas: 16
         template:
           spec:
+            priorityClassName: openshift-user-critical
             tolerations:
               - key: "rao-runners"
                 operator: "Equal"

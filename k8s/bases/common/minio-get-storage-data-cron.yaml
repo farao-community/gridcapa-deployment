@@ -6,6 +6,7 @@ metadata:
     app: gridcapa
     component: minio-get-storage-data
 spec:
+  suspend: true
   schedule: "*/10 * * * *"
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 3
