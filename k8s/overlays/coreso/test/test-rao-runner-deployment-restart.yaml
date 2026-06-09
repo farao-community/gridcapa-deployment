@@ -48,6 +48,7 @@ metadata:
   namespace: gridcapa-test
 spec:
   concurrencyPolicy: Forbid
+  # Don't forget that reference hour is the one of the cluster (UTC), which is two hours later than us (CEST): CEST 12h = UTC 10h
   schedule: '0 12 * * *' # Run at noon everyday
   jobTemplate:
     spec:
