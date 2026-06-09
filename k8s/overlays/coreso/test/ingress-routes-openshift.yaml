@@ -19,7 +19,6 @@
     to:
       kind: Service
       name: gridcapa-minio
-  
     wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -43,8 +42,6 @@ spec:
   to:
     kind: Service
     name: gridcapa-rabbitmq
-    port: 15672
-
   wildcardPolicy: None
 ---
 # HOMEPAGE
@@ -187,8 +184,6 @@ spec:
   to:
     kind: Service
     name: ce-cc-app
-    port: http
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -212,7 +207,6 @@ spec:
   to:
     kind: Service
     name: config-server
-
   wildcardPolicy: None
   httpHeaders:
     actions:
@@ -244,7 +238,6 @@ spec:
   to:
     kind: Service
     name: config-notification-server
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -268,7 +261,6 @@ spec:
   to:
     kind: Service
     name: ce-cc-adapter
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -292,7 +284,6 @@ spec:
   to:
     kind: Service
     name: ce-cc-task-manager
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -316,7 +307,6 @@ spec:
   to:
     kind: Service
     name: ce-cc-task-manager
-
   wildcardPolicy: None
 ---
 #CORE CC
@@ -342,8 +332,6 @@ spec:
   to:
     kind: Service
     name: core-cc-app
-    port: http
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -367,7 +355,6 @@ spec:
   to:
     kind: Service
     name: config-server
-
   wildcardPolicy: None
   httpHeaders:
     actions:
@@ -399,7 +386,6 @@ spec:
   to:
     kind: Service
     name: config-notification-server
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -423,7 +409,6 @@ spec:
   to:
     kind: Service
     name: core-cc-adapter
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -447,7 +432,6 @@ spec:
   to:
     kind: Service
     name: core-cc-task-manager
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -471,7 +455,6 @@ spec:
   to:
     kind: Service
     name: core-cc-task-manager
-
   wildcardPolicy: None
 ---
 #CSE EXPORT D2CC
@@ -497,8 +480,6 @@ spec:
   to:
     kind: Service
     name: cse-export-d2cc-app
-    port: http
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -522,7 +503,6 @@ spec:
   to:
     kind: Service
     name: config-server
-
   wildcardPolicy: None
   httpHeaders:
     actions:
@@ -554,7 +534,6 @@ spec:
   to:
     kind: Service
     name: config-notification-server
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -578,7 +557,6 @@ spec:
   to:
     kind: Service
     name: cse-export-d2cc-job-launcher
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -602,7 +580,6 @@ spec:
   to:
     kind: Service
     name: cse-export-d2cc-task-manager
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -626,7 +603,6 @@ spec:
   to:
     kind: Service
     name: cse-export-d2cc-task-manager
-
   wildcardPolicy: None
 ---
 #CSE EXPORT IDCC
@@ -652,8 +628,6 @@ spec:
   to:
     kind: Service
     name: cse-export-idcc-app
-    port: http
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -677,7 +651,6 @@ spec:
   to:
     kind: Service
     name: config-server
-
   wildcardPolicy: None
   httpHeaders:
     actions:
@@ -709,7 +682,6 @@ spec:
   to:
     kind: Service
     name: config-notification-server
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -733,7 +705,6 @@ spec:
   to:
     kind: Service
     name: cse-export-idcc-job-launcher
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -757,7 +728,6 @@ spec:
   to:
     kind: Service
     name: cse-export-idcc-task-manager
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -781,7 +751,6 @@ spec:
   to:
     kind: Service
     name: cse-export-idcc-task-manager
-
   wildcardPolicy: None
 ---
 #CSE IMPORT-EC D2CC
@@ -807,8 +776,6 @@ spec:
   to:
     kind: Service
     name: cse-import-ec-d2cc-app
-    port: http
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -832,7 +799,6 @@ spec:
   to:
     kind: Service
     name: config-server
-
   wildcardPolicy: None
   httpHeaders:
     actions:
@@ -864,7 +830,6 @@ spec:
   to:
     kind: Service
     name: config-notification-server
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -888,7 +853,6 @@ spec:
   to:
     kind: Service
     name: cse-import-ec-d2cc-job-launcher
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -912,7 +876,6 @@ spec:
   to:
     kind: Service
     name: cse-import-ec-d2cc-task-manager
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -936,7 +899,6 @@ spec:
   to:
     kind: Service
     name: cse-import-ec-d2cc-task-manager
-
   wildcardPolicy: None
 ---
 #CSE IMPORT-EC IDCC
@@ -962,8 +924,6 @@ spec:
   to:
     kind: Service
     name: cse-import-ec-idcc-app
-    port: http
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -987,7 +947,6 @@ spec:
   to:
     kind: Service
     name: config-server
-
   wildcardPolicy: None
   httpHeaders:
     actions:
@@ -1019,7 +978,6 @@ spec:
   to:
     kind: Service
     name: config-notification-server
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -1043,7 +1001,6 @@ spec:
   to:
     kind: Service
     name: cse-import-ec-idcc-job-launcher
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -1067,7 +1024,6 @@ spec:
   to:
     kind: Service
     name: cse-import-ec-idcc-task-manager
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -1091,7 +1047,6 @@ spec:
   to:
     kind: Service
     name: cse-import-ec-idcc-task-manager
-
   wildcardPolicy: None
 ---
 #SWE D2CC
@@ -1117,8 +1072,6 @@ spec:
   to:
     kind: Service
     name: swe-d2cc-app
-    port: http
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -1142,7 +1095,6 @@ spec:
   to:
     kind: Service
     name: config-server
-
   wildcardPolicy: None
   httpHeaders:
     actions:
@@ -1174,7 +1126,6 @@ spec:
   to:
     kind: Service
     name: config-notification-server
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -1198,7 +1149,6 @@ spec:
   to:
     kind: Service
     name: swe-d2cc-job-launcher
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -1222,7 +1172,6 @@ spec:
   to:
     kind: Service
     name: swe-d2cc-task-manager
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -1246,7 +1195,6 @@ spec:
   to:
     kind: Service
     name: swe-d2cc-task-manager
-
   wildcardPolicy: None
 ---
 #SWE IDCC
@@ -1272,8 +1220,6 @@ spec:
   to:
     kind: Service
     name: swe-idcc-app
-    port: http
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -1297,7 +1243,6 @@ spec:
   to:
     kind: Service
     name: config-server
-
   wildcardPolicy: None
   httpHeaders:
     actions:
@@ -1329,7 +1274,6 @@ spec:
   to:
     kind: Service
     name: config-notification-server
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -1353,7 +1297,6 @@ spec:
   to:
     kind: Service
     name: swe-idcc-job-launcher
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -1377,7 +1320,6 @@ spec:
   to:
     kind: Service
     name: swe-idcc-task-manager
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -1401,7 +1343,6 @@ spec:
   to:
     kind: Service
     name: swe-idcc-task-manager
-
   wildcardPolicy: None
 ---
 ---
@@ -1428,8 +1369,6 @@ spec:
   to:
     kind: Service
     name: swe-idcc-idcf-app
-    port: http
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -1453,7 +1392,6 @@ spec:
   to:
     kind: Service
     name: config-server
-
   wildcardPolicy: None
   httpHeaders:
     actions:
@@ -1485,7 +1423,6 @@ spec:
   to:
     kind: Service
     name: config-notification-server
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -1509,7 +1446,6 @@ spec:
   to:
     kind: Service
     name: swe-idcc-idcf-job-launcher
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -1533,7 +1469,6 @@ spec:
   to:
     kind: Service
     name: swe-idcc-idcf-task-manager
-
   wildcardPolicy: None
 ---
 apiVersion: route.openshift.io/v1
@@ -1557,6 +1492,5 @@ spec:
   to:
     kind: Service
     name: swe-idcc-idcf-task-manager
-
   wildcardPolicy: None
 ---
