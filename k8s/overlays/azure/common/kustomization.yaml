@@ -27,3 +27,14 @@ patches:
               resources:
                 requests:
                   storage: "5Gi"
+  - target:
+      kind: Deployment
+      name: gridcapa-minio
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          # Since Minio 2022, a url has to be set here even though it is not used
+          # However, this causes troubles on Coreso environment so we only add it on Azure
+          name: MINIO_BROWSER_REDIRECT_URL
+          value: "http://minio.local/minio/"
