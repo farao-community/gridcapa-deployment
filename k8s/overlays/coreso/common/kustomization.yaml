@@ -7,3 +7,16 @@ resources:
   - postgresql-deployment.yaml
   - postgresql-service.yaml
   - minio-get-storage-data-pv-claim.yaml
+
+
+patches:
+  - patch: |-
+      kind: CronJob
+      apiVersion: batch/v1
+      metadata:
+        name: minio-get-storage-data-cron
+        labels:
+          app: gridcapa
+          component: minio-get-storage-data
+      spec:
+        suspend: true
