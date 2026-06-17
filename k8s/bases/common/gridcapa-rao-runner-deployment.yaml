@@ -25,8 +25,15 @@ spec:
           ports:
             - containerPort: 8080
           env:
+            - name: MINIO_URL
+              value: "http://gridcapa-minio:9000"
+            - name: MINIO_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configmap
+                  key: GRIDCAPA_MINIO_BUCKET_CORE_CC
             - name: JAVA_TOOL_OPTIONS
-              value: "-Xmx20480m"
+              value: "-Xmx10240m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/farao/dump.hprof -XX:+ExitOnOutOfMemoryError -XX:OnOutOfMemoryError=/app/on-out-of-memory-error.sh"
             - name: RABBITMQ_USER
               valueFrom:
                 secretKeyRef:
@@ -56,6 +63,9 @@ spec:
               name: rao-runner-volume
             - mountPath: /config/logback.xml
               subPath: logback.xml
+              name: rao-runner-volume
+            - mountPath: /app/on-out-of-memory-error.sh
+              subPath: on-out-of-memory-error.sh
               name: rao-runner-volume
             - mountPath: /tmp
               name: tmp-emptydir
