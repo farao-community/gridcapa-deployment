@@ -119,7 +119,6 @@ Some secrets are needed on the cluster as deployment prerequisites. Encrypted pa
 
 ```bash
 kubectl create secret generic gridcapa-rabbitmq-credentials --from-literal='rabbitmq-user=<RABBITMQ_USER>' --from-literal='rabbitmq-password=<RABBITMQ_PASSWORD>'
-kubectl create secret generic admin-rabbitmq-credentials --from-literal='rabbitmq-user=<RABBITMQ_USER>' --from-literal='rabbitmq-password=<RABBITMQ_PASSWORD>'
 kubectl create secret generic rabbitmq-secrets --from-literal='rabbitmq-erlang-cookie=<RABBITMQ_ERLANG_COOKIE>'
 kubectl create secret generic gridcapa-minio-credentials --from-literal='minio-access-key=<MINIO_ACCESS_KEY>' --from-literal='minio-secret-key=<MINIO_SECRET_KEY>'
 kubectl create secret generic gridcapa-ftp-credentials --from-literal='ftp-user=<FTP_USER>' --from-literal='ftp-password=<FTP_PASSWORD>'
