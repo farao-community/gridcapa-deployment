@@ -93,6 +93,8 @@ spec:
           volumeMounts:
             - name: minio-get-storage-data-data
               mountPath: /data/
+            - name: emptydir
+              mountPath: /opt
       restartPolicy: Always
       volumes:
         - name: apps-metadata-server-configmap-volume
