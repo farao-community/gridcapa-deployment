@@ -1,12 +1,17 @@
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
-VALUES ('USE_PROJECTION', 'USE PROJECTION', 1, 'BOOLEAN', 'PROJECTION ', 1, 'true')
+VALUES ('USE_PROJECTION', 'USE PROJECTION', 1, 'BOOLEAN', 'CONFIGURATION ', 1, 'true')
     ON CONFLICT (id) DO
-UPDATE SET name = 'USE PROJECTION', display_order = 1, parameter_type = 'BOOLEAN', section_title = 'PROJECTION', section_order = 1;
+UPDATE SET name = 'USE PROJECTION', display_order = 1, parameter_type = 'BOOLEAN', section_title = 'CONFIGURATION', section_order = 1;
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
-VALUES ('USE_AHC', 'USE AHC', 1, 'BOOLEAN', 'AHC IMPORT', 1, 'true')
+VALUES ('USE_AHC', 'USE AHC', 2, 'BOOLEAN', 'CONFIGURATION', 1, 'true')
     ON CONFLICT (id) DO
-UPDATE SET name = 'USE AHC', display_order = 1, parameter_type = 'BOOLEAN', section_title = 'AHC IMPORT', section_order = 1;
+UPDATE SET name = 'USE AHC', display_order = 2, parameter_type = 'BOOLEAN', section_title = 'CONFIGURATION', section_order = 1;
+
+INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
+     VALUES ('EXPORT_STUDY_POINTS', 'EXPORT_STUDY_POINTS', 3, 'BOOLEAN', 'CONFIGURATION', 1, 'true')
+     ON CONFLICT (id) DO
+UPDATE SET name = 'EXPORT_STUDY_POINTS', display_order = 3, parameter_type = 'BOOLEAN', section_title = 'CONFIGURATION', section_order = 1;
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
 VALUES ('MAX_VERTICES_PER_BRANCH', 'MAX VERTICES PER BRANCH', 1, 'INT', 'BRANCH MAX IVA', 2, '5')
