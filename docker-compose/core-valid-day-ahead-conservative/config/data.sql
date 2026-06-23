@@ -9,9 +9,9 @@ VALUES ('USE_AHC', 'USE AHC', 2, 'BOOLEAN', 'CONFIGURATION', 1, 'true')
 UPDATE SET name = 'USE AHC', display_order = 2, parameter_type = 'BOOLEAN', section_title = 'CONFIGURATION', section_order = 1;
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
-     VALUES ('EXPORT_STUDY_POINTS', 'EXPORT_STUDY_POINTS', 3, 'BOOLEAN', 'CONFIGURATION', 1, 'true')
+     VALUES ('EXPORT_STUDY_POINTS', 'EXPORT STUDY POINTS', 3, 'BOOLEAN', 'CONFIGURATION', 1, 'true')
      ON CONFLICT (id) DO
-UPDATE SET name = 'EXPORT_STUDY_POINTS', display_order = 3, parameter_type = 'BOOLEAN', section_title = 'CONFIGURATION', section_order = 1;
+UPDATE SET name = 'EXPORT STUDY POINTS', display_order = 3, parameter_type = 'BOOLEAN', section_title = 'CONFIGURATION', section_order = 1;
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
 VALUES ('MAX_VERTICES_PER_BRANCH', 'MAX VERTICES PER BRANCH', 1, 'INT', 'BRANCH MAX IVA', 2, '5')
