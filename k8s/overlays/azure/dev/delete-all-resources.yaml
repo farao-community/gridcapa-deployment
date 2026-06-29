@@ -10,7 +10,7 @@ spec:
         spec:
           containers:
             - name: kubectl
-              image: bitnami/kubectl:1.33.1
+              image: farao/bitnami-kubectl:20260605
               command:
                 - /bin/sh
                 - -c
