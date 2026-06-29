@@ -1,0 +1,90 @@
+
+patches:
+  ## highest priority
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: gateway
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-highest-priority 
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: gridcapa-minio
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-highest-priority 
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: gridcapa-postgresql
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-highest-priority 
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: gridcapa-rabbitmq
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-highest-priority 
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
