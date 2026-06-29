@@ -85,15 +85,6 @@ patches:
   - target:
       labelSelector: "component=minio-purge"
     path: get-storage-data-cron-patch.yaml
-# On Azure TEST, platform is only up between 9-19 on weekdays
-  - patch: |-
-      kind: CronJob
-      apiVersion: batch/v1
-      metadata:
-        name: minio-get-storage-data-cron
-      spec:
-        timeZone: "Europe/Paris"
-        schedule: "*/10 9-18 * * 1-5"
 
   - patch: |-
       kind: Deployment
