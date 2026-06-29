@@ -7,3 +7,1648 @@ resources:
   - postgresql-deployment.yaml
   - postgresql-service.yaml
   - minio-get-storage-data-pv-claim.yaml
+
+patches:
+## highest priority
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: gateway
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-highest-priority 
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: gridcapa-minio
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-highest-priority 
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: gridcapa-postgresql
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-highest-priority 
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: gridcapa-rabbitmq
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-highest-priority 
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+## medium priority
+# common
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: interruption-server
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: rao-failure-handler
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: rao-runner
+        labels:
+          - accepts-neighbours: false 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - true
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# ce cc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: ce-cc-task-manager
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: ce-cc-runner
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: ce-cc-post-processing
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# core cc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: core-cc-task-manager
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: core-cc-runner
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: core-cc-post-processing
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# cse-export-d2cc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-d2cc-task-manager
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-d2cc-runner
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# cse-export-idcc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-idcc-task-manager
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-idcc-runner
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# cse-import-ec-d2cc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-d2cc-task-manager
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-d2cc-runner
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+  # cse-import-ec-idcc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-idcc-task-manager
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-idcc-runner
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# swe-d2cc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-d2cc-task-manager
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-d2cc-runner
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# swe-idcc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-task-manager
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-runner
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# swe-idcc-idcf
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-idcf-task-manager
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-idcf-runner
+        labels:
+          - accepts-neighbours: true 
+      spec:
+        template:
+          spec:
+            priorityClassName: gridcapa-medium-priority    
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+## low priority
+# common
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: apps-metadata-server
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: config-notification-server
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: config-server
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# ce cc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: ce-cc-adapter
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: ce-cc-app
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: ce-cc-data-bridge
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: ce-cc-output-data-bridge
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: ce-cc-rao-logs-dispatcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# core cc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: core-cc-adapter
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: core-cc-app
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: core-cc-data-bridge
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: core-cc-output-data-bridge
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: core-cc-rao-logs-dispatcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# cse-export-d2cc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-d2cc-adapter
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-d2cc-app
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-d2cc-data-bridge
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-d2cc-exporter
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-d2cc-job-launcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-d2cc-rao-logs-dispatcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# cse-export-idcc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-idcc-adapter
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-idcc-app
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-idcc-data-bridge
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-idcc-exporter
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-idcc-job-launcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-export-idcc-rao-logs-dispatcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# cse-import-ec-d2cc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-d2cc-adapter
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-d2cc-app
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-d2cc-data-bridge
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-d2cc-export
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-d2cc-job-launcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-d2cc-rao-logs-dispatcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# cse-import-ec-idcc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-idcc-adapter
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-idcc-app
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-idcc-data-bridge
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-idcc-exporter
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-idcc-job-launcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: cse-import-ec-idcc-rao-logs-dispatcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# swe-d2cc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-d2cc-adapter
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-d2cc-app
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-d2cc-data-bridge
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-d2cc-exporter
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-d2cc-job-launcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-d2cc-rao-logs-dispatcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# swe-idcc
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-adapter
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-app
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-data-bridge
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-exporter
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-job-launcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-rao-logs-dispatcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+# swe-idcc-idcf
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-idcf-adapter
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-idcf-app
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-idcf-data-bridge
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-idcf-exporter
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-idcf-job-launcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
+
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: swe-idcc-idcf-rao-logs-dispatcher
+        labels:
+          - accepts-neighbours: true 
+      spec:  
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: accepts-neighbours
+                  operator: In
+                  values:
+                  - false
+              topologyKey: topology.kubernetes.io/zone
