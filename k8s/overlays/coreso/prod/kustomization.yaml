@@ -53,7 +53,6 @@ patches:
         replicas: 40
         template:
           spec:
-            priorityClassName: openshift-user-critical
             tolerations:
               - key: "rao-runners"
                 operator: "Equal"
