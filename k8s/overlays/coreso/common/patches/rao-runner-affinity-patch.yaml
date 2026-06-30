@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rao-runner
+  labels:
+    accepts-neighbours: false
+spec:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: accepts-neighbours
+            operator: In
+            values:
+            - true
+            - false
+        topologyKey: topology.kubernetes.io/zone
