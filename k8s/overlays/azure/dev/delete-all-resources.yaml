@@ -10,11 +10,15 @@ spec:
         spec:
           containers:
             - name: kubectl
-              image: bitnami/kubectl:1.33.1
+              image: farao/bitnami-kubectl:20260605
               command:
                 - /bin/sh
                 - -c
-                - kubectl --kubeconfig=/.kube-config -n gridcapa-d delete all --all --ignore-not-found=true --grace-period=0 --force
+                - kubectl --kubeconfig=/.kube-config -n gridcapa-d delete deployments --all --ignore-not-found=true --grace-period=0 --force
+                  &&
+                  kubectl --kubeconfig=/.kube-config -n gridcapa-d delete statefulsets --all --ignore-not-found=true --grace-period=0 --force
+                  &&
+                  kubectl --kubeconfig=/.kube-config -n gridcapa-d delete all --all --ignore-not-found=true --grace-period=0 --force
               volumeMounts:
                 - mountPath: /.kube-config
                   name: kubeconfig-volume
