@@ -74,7 +74,6 @@ patches:
         replicas: 16
         template:
           spec:
-            priorityClassName: openshift-user-critical
             tolerations:
               - key: "rao-runners"
                 operator: "Equal"
@@ -229,6 +228,20 @@ patches:
         path: /spec/template/spec/containers/0/volumeMounts/2
       - op: remove
         path: /spec/template/spec/volumes/2
+  # Patch affinities for non rao runners
+  - target:
+      kind: Deployment
+      labelSelector: "component != rao-runner"
+    path: ../common/patches/non-rao-runner-affinity-patch.yaml
+  - target:
+      kind: StatefulSet
+      labelSelector: "component != rao-runner"
+    path: ../common/patches/non-rao-runner-affinity-patch-statefulset.yaml
+  # Patches for medium priority
+  - target:
+      kind: Deployment
+      labelSelector: "component in ( rao-runner, task-manager, runner, post-processing, interruption-server, rao-failure-handler )"
+    path: ../common/patches/medium-priority-patch.yaml
 
 
   # Use "John Doe" gateway config to share UI config across all users

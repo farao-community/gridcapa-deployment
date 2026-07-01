@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ignored
+spec:
+  template:
+    metadata:
+      labels:
+        accepts-neighbours: true
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: accepts-neighbours
+                operator: In
+                values:
+                - false
+            topologyKey: topology.kubernetes.io/zone
