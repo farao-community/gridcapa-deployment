@@ -16,12 +16,12 @@ patches:
       labelSelector: "component = rao-runner"
     path: patches/rao-runner-affinity-patch.yaml
 
-#  # Patches for high priority
+  # Patches for high priority
   - target:
       kind: Deployment
       labelSelector: "component in ( gateway, gridcapa-minio, postgresql )"
     path: patches/high-priority-patch.yaml
   - target:
       kind: StatefulSet
-      labelSelector: "component=gridcapa-rabbitmq"
-    path: patches/statefullset-high-priority-patch.yaml
+      labelSelector: "component = gridcapa-rabbitmq"
+    path: patches/high-priority-patch-statefulset.yaml
