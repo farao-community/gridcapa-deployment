@@ -12,6 +12,12 @@ resources:
   - priority-classes.yaml
 
 patches:
+  #  Patch affinities for rao runners
+  - target:
+      kind: Deployment
+      labelSelector: "component = rao-runner"
+    path: ../../../bases/common/patches/affinity/rao-runner-affinity-patch.yaml
+
   - patch: |-
       apiVersion: apps/v1
       kind: StatefulSet
