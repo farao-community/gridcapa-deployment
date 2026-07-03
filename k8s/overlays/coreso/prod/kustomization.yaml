@@ -226,16 +226,16 @@ patches:
   - target:
       kind: Deployment
       labelSelector: "component != rao-runner"
-    path: ../common/patches/non-rao-runner-affinity-patch.yaml
+    path: ../../../bases/common/patches/affinity/non-rao-runner-affinity-patch.yaml
   - target:
       kind: StatefulSet
       labelSelector: "component != rao-runner"
-    path: ../common/patches/non-rao-runner-affinity-patch-statefulset.yaml
+    path: ../../../bases/common/patches/affinity/non-rao-runner-affinity-patch-statefulset.yaml
   # Patches for medium priority
   - target:
       kind: Deployment
       labelSelector: "component in ( rao-runner, task-manager, runner, post-processing, interruption-server, rao-failure-handler )"
-    path: ../common/patches/medium-priority-patch.yaml
+    path: ../../../bases/common/patches/priority/medium-priority-patch.yaml
 
   # Use "John Doe" gateway config to share UI config across all users
   - patch: |-
