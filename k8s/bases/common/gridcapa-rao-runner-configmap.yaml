@@ -119,7 +119,10 @@ data:
             <appender-ref ref="amqp-business-events"/>
             <appender-ref ref="STDOUT" />
         </logger>
-        <logger name="com.powsybl.openrao.commons.logs.TechnicalLogs" level="INFO">
+        <logger name="com.powsybl.openrao.commons.logs.TechnicalLogs" level="TRACE">
+            <appender-ref ref="STDOUT" />
+        </logger>
+        <logger name="com.powsybl.openrao" level="TRACE">
             <appender-ref ref="STDOUT" />
         </logger>
 
@@ -128,11 +131,11 @@ data:
             <appender-ref ref="STDOUT" />
         </root>
 
-        <logger name="com.powsybl.openrao" level="INFO"/>
-        <logger name="com.powsybl.openloadflow" level="ERROR"/>
+        <logger name="com.powsybl.openrao" level="TRACE"/>
+        <logger name="com.powsybl.openloadflow" level="DEBUG"/>
         <logger name="com.powsybl.commons" level="WARN"/>
         <logger name="com.powsybl.openrao.virtualhubs" level="WARN"/>
-        <logger name="com.powsybl" level="OFF"/>
+        <logger name="com.powsybl" level="DEBUG"/>
     </configuration>
 
   on-out-of-memory-error.sh: |-
@@ -141,4 +144,4 @@ data:
     .minio/mc alias set gridcapa_minio $MINIO_URL $MINIO_ACCESS_KEY $MINIO_SECRET_KEY
     .minio/mc ls gridcapa_minio
     FILENAME="dump_${HOSTNAME}_$(date +%F_%T_%Z).hprof"
-    .minio/mc cp "dump.hprof" "gridcapa_minio/$MINIO_BUCKET/rao-runner-crash-data/$FILENAME"
+    .minio/mc cp "/tmp/dump.hprof" "gridcapa_minio/$MINIO_BUCKET/rao-runner-crash-data/$FILENAME"

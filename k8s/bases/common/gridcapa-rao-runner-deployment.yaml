@@ -33,7 +33,7 @@ spec:
                   name: env-configmap
                   key: GRIDCAPA_MINIO_BUCKET_CORE_CC
             - name: JAVA_TOOL_OPTIONS
-              value: "-Xmx10240m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/farao/dump.hprof -XX:+ExitOnOutOfMemoryError -XX:OnOutOfMemoryError=/app/on-out-of-memory-error.sh"
+              value: "-Xmx10240m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/dump.hprof -XX:+ExitOnOutOfMemoryError -XX:OnOutOfMemoryError=/app/on-out-of-memory-error.sh"
             - name: RABBITMQ_USER
               valueFrom:
                 secretKeyRef:
@@ -67,6 +67,8 @@ spec:
             - mountPath: /app/on-out-of-memory-error.sh
               subPath: on-out-of-memory-error.sh
               name: rao-runner-volume
+            - mountPath: /.mc
+              name: mc-emptydir
             - mountPath: /tmp
               name: tmp-emptydir
             - mountPath: /home/farao/farao-dep/runtime/xpress/bin/xpauth.xpr
@@ -91,10 +93,10 @@ spec:
             httpGet:
               path: /actuator/health
               port: 8080
-            initialDelaySeconds: 15
-            periodSeconds: 20
-            timeoutSeconds: 10
-            failureThreshold: 1
+            initialDelaySeconds: 50
+            periodSeconds: 60
+            timeoutSeconds: 45
+            failureThreshold: 40
             successThreshold: 1
           readinessProbe:
             httpGet:
@@ -114,8 +116,11 @@ spec:
         - name: rao-runner-volume
           configMap:
             name: rao-runner
+            defaultMode: 0770
         - name: rao-runner-itools-volume
           configMap:
             name: rao-runner-itools-configmap
+        - name: mc-emptydir
+          emptyDir: {}
         - name: tmp-emptydir
           emptyDir: {}
