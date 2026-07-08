@@ -228,15 +228,7 @@ patches:
         path: /spec/template/spec/containers/0/volumeMounts/2
       - op: remove
         path: /spec/template/spec/volumes/2
-  # Patch affinities for non rao runners
-  - target:
-      kind: Deployment
-      labelSelector: "component != rao-runner"
-    path: ../../../bases/common/patches/affinity/non-rao-runner-affinity-patch.yaml
-  - target:
-      kind: StatefulSet
-      labelSelector: "component != rao-runner"
-    path: ../../../bases/common/patches/affinity/non-rao-runner-affinity-patch-statefulset.yaml
+
   # Patches for medium priority
   - target:
       kind: Deployment

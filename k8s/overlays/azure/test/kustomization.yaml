@@ -61,15 +61,6 @@ configMapGenerator:
       - env.json=gridcapa-app-env-config.json
 
 patches:
-  # Patch affinities for non rao runners
-  - target:
-      kind: Deployment
-      labelSelector: "component != rao-runner"
-    path: ../../../bases/common/patches/affinity/non-rao-runner-affinity-patch.yaml
-  - target:
-      kind: StatefulSet
-      labelSelector: "component != rao-runner"
-    path: ../../../bases/common/patches/affinity/non-rao-runner-affinity-patch-statefulset.yaml
   # Patches for high priority
   - target:
       kind: Deployment
