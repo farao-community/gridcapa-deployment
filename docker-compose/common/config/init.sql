@@ -49,7 +49,7 @@ GRANT ALL PRIVILEGES ON DATABASE core_valid_intraday_tasks TO core_valid_intrada
 CREATE DATABASE core_valid_intraday_runner;
 CREATE USER core_valid_intraday_runner_server WITH ENCRYPTED PASSWORD 'core-valid-intraday-runner';
 GRANT ALL PRIVILEGES ON DATABASE core_valid_intraday_runner TO core_valid_intraday_runner_server;
-CREATE DATABASE core_valid_day_ahead_conservative_runner;
+CREATE DATABASE core_valid_day_ahead_conservative_tasks;
 CREATE USER core_valid_day_ahead_conservative_server WITH ENCRYPTED PASSWORD 'core-valid-day-ahead-conservative';
 GRANT ALL PRIVILEGES ON DATABASE core_valid_day_ahead_conservative_tasks TO core_valid_day_ahead_conservative_server;
 CREATE DATABASE ce_cc_tasks;
