@@ -9,8 +9,8 @@ UPDATE SET name = 'MARGIN FOR PREFILTER', display_order = 2, parameter_type = 'I
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
 VALUES ('FRM_MARGIN_PERCENTAGE', 'FRM MARGIN PERCENTAGE' , 1, 'INT', 'COMPUTE IVA', 2, '5')
     ON CONFLICT (id) DO
-UPDATE SET name = 'FRM MARGIN PERCENTAGE', display_order = 1, parameter_type = 'INT', section_title = 'COMPUTE IVA', section_order = 1;
+UPDATE SET name = 'FRM MARGIN PERCENTAGE', display_order = 1, parameter_type = 'INT', section_title = 'COMPUTE IVA', section_order = 2;
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
 VALUES ('MIN_RAM_MCCC', 'MINIMUM RAM MCCC' , 2, 'INT', 'COMPUTE IVA', 2, '20')
     ON CONFLICT (id) DO
-UPDATE SET name = 'MINIMUM RAM MCCC', display_order = 2, parameter_type = 'INT', section_title = 'COMPUTE IVA', section_order = 1;
+UPDATE SET name = 'MINIMUM RAM MCCC', display_order = 2, parameter_type = 'INT', section_title = 'COMPUTE IVA', section_order = 2;
