@@ -4,6 +4,10 @@ spring:
     driverClassName: org.postgresql.Driver
     username: core_valid_intraday_runner_server
     password: core-valid-intraday-runner
+  sql:
+    init:
+      mode: always
+      data-locations: file:/config/data-runner.sql
   rabbitmq:
     host: rabbitmq
     port: 5672

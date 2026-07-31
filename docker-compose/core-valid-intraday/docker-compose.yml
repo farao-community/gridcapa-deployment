@@ -37,6 +37,7 @@ services:
     volumes:
       - ./config/core-valid-intraday-runner-application.yml:/config/application.yml
       - ../../configuration/core-valid-intraday-runner-itools-config.yml:/home/farao/.itools/config.yml
+      - ./config/data-runner.sql:/config/data-runner.sql
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 30s
