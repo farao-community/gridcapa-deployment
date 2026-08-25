@@ -9,6 +9,7 @@ resources:
   - postgresql-data-pv-claim.yaml
   - postgresql-service.yaml
   - minio-get-storage-data-pv-claim.yaml
+  - priority-classes.yaml
 
 patches:
   - patch: |-
