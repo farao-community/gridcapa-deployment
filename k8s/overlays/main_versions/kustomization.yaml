@@ -33,7 +33,7 @@ images:
     newName: docker.io/farao/bitnami-minio
     newTag: 2024.12.18
   - name: minio-mc
-    newName: docker.io/minio/mc
+    newName: docker.io/farao/minio-mc
     newTag: RELEASE.2022-05-09T04-08-26Z
   - name: gridsuite-config-notification-server
     newName: docker.io/gridsuite/config-notification-server
