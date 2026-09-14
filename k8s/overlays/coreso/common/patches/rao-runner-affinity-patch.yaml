@@ -6,7 +6,7 @@ spec:
   template:
     metadata:
       labels:
-        accepts-neighbours: false
+        accepts-neighbours: "false"
     spec:
       affinity:
         podAntiAffinity:
@@ -16,6 +16,6 @@ spec:
               - key: accepts-neighbours
                 operator: In
                 values:
-                - true
-                - false
+                - "true"
+                - "false"
             topologyKey: topology.kubernetes.io/zone
