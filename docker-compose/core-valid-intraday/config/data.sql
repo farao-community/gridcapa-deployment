@@ -26,3 +26,7 @@ INSERT INTO parameter (id, name, display_order, parameter_type, section_title, s
 VALUES ('PONDERATION_CONSTRAINED', 'PONDERATION CONSTRAINED' , 3, 'INT', 'VERTICES SELECTION PONDERATION', 3, '34')
     ON CONFLICT (id) DO
 UPDATE SET name = 'PONDERATION CONSTRAINED', display_order = 3, parameter_type = 'INT', section_title = 'VERTICES SELECTION PONDERATION', section_order = 3;
+INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
+VALUES ('RAM_MARGIN', 'RAM MARGIN' , 1, 'INT', 'DICHOTOMY PARAMETERS', 4, '15')
+    ON CONFLICT (id) DO
+UPDATE SET name = 'PONDERATION CONSTRAINED', display_order = 1, parameter_type = 'INT', section_title = 'DICHOTOMY PARAMETERS', section_order = 4;
