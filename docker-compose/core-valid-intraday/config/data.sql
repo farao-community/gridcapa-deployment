@@ -1,8 +1,4 @@
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
-VALUES ('IS_PROJECTION_ACTIVE', 'IS VERTEX PROJECTION ON DOMAIN ACTIVE', 1, 'BOOLEAN', 'VERTICES PROJECTION', 0, 'true')
-    ON CONFLICT (id) DO
-UPDATE SET name = 'NUMBER OF MAX SELECTED VERTICES', display_order = 1, parameter_type = 'BOOLEAN', section_title = 'VERTICES PROJECTION', section_order = 0;
-INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
 VALUES ('MAX_SELECTED_VERTICES', 'NUMBER OF MAX SELECTED VERTICES', 1, 'INT', 'VERTICES FILTERING', 1, '6')
     ON CONFLICT (id) DO
 UPDATE SET name = 'NUMBER OF MAX SELECTED VERTICES', display_order = 1, parameter_type = 'INT', section_title = 'VERTICES FILTERING', section_order = 1;
@@ -18,6 +14,10 @@ INSERT INTO parameter (id, name, display_order, parameter_type, section_title, s
 VALUES ('IS_HUB_CAPACITY_FILTER_ACTIVE', 'ACTIVATE HUB CAPACITY FILTER' , 4, 'BOOLEAN', 'VERTICES FILTERING', 1, 'true')
     ON CONFLICT (id) DO
 UPDATE SET name = 'ACTIVATE HUB CAPACITY FILTER', display_order = 4, parameter_type = 'BOOLEAN', section_title = 'VERTICES FILTERING', section_order = 1;
+INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
+VALUES ('IS_CALCULATE_DELTA_NP_HUB', 'USE CALCULATED DELTA NP HUB' , 5, 'BOOLEAN', 'VERTICES FILTERING', 1, 'true')
+    ON CONFLICT (id) DO
+UPDATE SET name = 'ACTIVATE HUB CAPACITY FILTER', display_order = 5, parameter_type = 'BOOLEAN', section_title = 'VERTICES FILTERING', section_order = 1;
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
 VALUES ('FRM_MARGIN_PERCENTAGE', 'FRM MARGIN PERCENTAGE' , 1, 'INT', 'COMPUTE IVA', 2, '5')
     ON CONFLICT (id) DO

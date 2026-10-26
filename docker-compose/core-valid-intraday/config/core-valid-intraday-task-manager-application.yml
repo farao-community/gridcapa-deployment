@@ -67,9 +67,9 @@ task-server:
       - GLSK
       - MARKET-POINTS
       - MERGED-CNEC
-      - PRA
       - VERTICES
     optional-inputs:
+      - PRA
     outputs:
       - IVA-RESULT
     enable-export-logs: false
@@ -93,11 +93,11 @@ logback:
 
 runner:
   parameters:
-    IS_PROJECTION_ACTIVE: true
     MAX_SELECTED_VERTICES: 6
     MARGIN_FOR_PREFILTER: 0
     IS_HISTORIC_FILTER_ACTIVE: true
     IS_HUB_CAPACITY_FILTER_ACTIVE: true
+    IS_CALCULATE_DELTA_NP_HUB: true
     FRM_MARGIN_PERCENTAGE: 5
     MIN_RAM_MCCC: 20
     PONDERATION_CLOSEST: 33
