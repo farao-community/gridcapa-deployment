@@ -93,7 +93,6 @@ logback:
 
 runner:
   parameters:
-    IS_PROJECTION_ACTIVE: true
     MAX_SELECTED_VERTICES: 6
     MARGIN_FOR_PREFILTER: 0
     IS_HISTORIC_FILTER_ACTIVE: true
