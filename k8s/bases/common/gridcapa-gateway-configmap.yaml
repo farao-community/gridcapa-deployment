@@ -56,6 +56,40 @@ data:
                 - Path=/ce/cc/gridcapa-job-launcher/**
               filters:
                 - StripPrefix=3
+            - id: celtic-cc-gridsuite-config
+              uri: http://config-server
+              predicates:
+                - Path=/celtic/cc/config/**
+              filters:
+                - StripPrefix=3
+                - TokenValidator
+            - id: celtic-cc-gridsuite-config-notification
+              uri: http://config-notification-server
+              predicates:
+                - Path=/celtic/cc/config-notification/**
+              filters:
+                - StripPrefix=3
+                - TokenValidator
+                - RemoveRequestParameter=access_token
+            - id: celtic-cc-task-manager
+              uri: http://celtic-cc-task-manager
+              predicates:
+                - Path=/celtic/cc/task-manager/**
+              filters:
+                - StripPrefix=3
+            - id: celtic-cc-task-notification-server
+              uri: http://celtic-cc-task-manager
+              predicates:
+                - Path=/celtic/cc/task-notification/**
+              filters:
+                - StripPrefix=3
+                - RemoveRequestParameter=access_token
+            - id: celtic-cc-adapter
+              uri: http://celtic-cc-adapter
+              predicates:
+                - Path=/celtic/cc/gridcapa-job-launcher/**
+              filters:
+                - StripPrefix=3
             - id: core-cc-gridsuite-config
               uri: http://config-server
               predicates:

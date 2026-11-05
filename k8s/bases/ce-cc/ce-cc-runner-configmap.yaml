@@ -42,6 +42,7 @@ data:
       async-time-out: 7200000
       rao-results-merge:
         parallelization: 6
+      target-process: CE_CC
       whitelist:
         - http://gridcapa-minio:9000/
 
