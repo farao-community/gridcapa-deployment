@@ -40,6 +40,8 @@ data:
 
     core-cc-runner:
       async-time-out: 7200000
+      rao-results-merge:
+        parallelization: 6
       whitelist:
         - http://gridcapa-minio:9000/
 
