@@ -2,6 +2,8 @@ resources:
   - auth-rabbitmq-trigger.yaml
   - common-scale.yaml
   - core-cc-scale.yaml
+  - celtic-cc-scale.yaml
+  - ce-cc-scale.yaml
   - cse-export-d2cc-scale.yaml
   - cse-export-idcc-scale.yaml
   - cse-import-d2cc-scale.yaml
@@ -44,7 +46,19 @@ patches:
     patch: |-
       - op: add
         path: /spec/triggers/0/metadata/queueName
-        value: core-cc-request.core-cc-runner
+        value: core-cc-requests.core-cc-runner
+  - target:
+      name: celtic-cc-runner-scale
+    patch: |-
+      - op: add
+        path: /spec/triggers/0/metadata/queueName
+        value: celtic-cc-requests.celtic-cc-runner
+  - target:
+      name: ce-cc-runner-scale
+    patch: |-
+      - op: add
+        path: /spec/triggers/0/metadata/queueName
+        value: ce-cc-requests.ce-cc-runner
   - target:
       name: cse-export-d2cc-runner-scale
     patch: |-
