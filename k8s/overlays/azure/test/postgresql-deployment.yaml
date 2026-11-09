@@ -177,6 +177,16 @@ spec:
                 secretKeyRef:
                   name: gridcapa-postgresql-credentials
                   key: ce-cc-password
+            - name: POSTGRES_CELTIC_CC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: celtic-cc-user
+            - name: POSTGRES_CELTIC_CC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-postgresql-credentials
+                  key: celtic-cc-password
             - name: POSTGRES_INTERRUPTION_SERVER_USER
               valueFrom:
                 secretKeyRef:

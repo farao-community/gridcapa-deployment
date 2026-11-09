@@ -18,10 +18,10 @@ metadata:
       rewrite ^/swe/idcc$ /swe/idcc/ permanent;
       rewrite ^/swe/idcf$ /swe/idcf/ permanent;
       rewrite ^/core/cc$ /core/cc/ permanent;
-      rewrite ^/ce/cc$ /ce/cc/ permanent;
       rewrite ^/celtic/cc$ /celtic/cc/ permanent;
-      rewrite ^/utils/rabbitmq$ /utils/rabbitmq/ permanent;
+      rewrite ^/ce/cc$ /ce/cc/ permanent;
       
+      rewrite ^/utils/rabbitmq$ /utils/rabbitmq/ permanent;
       if ($request_uri ~ "^/utils/rabbitmq(/.*)") {
         proxy_pass http://upstream_balancer$1;
         break;
