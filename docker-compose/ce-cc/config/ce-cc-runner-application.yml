@@ -29,6 +29,9 @@ rao-runner-server:
 
 core-cc-runner:
   async-time-out: 7200000
+  rao-results-merge:
+    parallelization: 6
+  target-process: CE_CC
   whitelist:
     - http://minio:9000/
 
