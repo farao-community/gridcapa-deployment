@@ -14,6 +14,11 @@ data:
         "appColor" : "#FFC000"
       },
       {
+        "name" : "Capa CORE+CELTIC DACC",
+        "url"  : "/celtic/cc/",
+        "appColor" : "#FF00FF"
+      },
+      {
         "name" : "Capa CORE DACC",
         "url"  : "/core/cc/",
         "appColor" : "#21B3E6"

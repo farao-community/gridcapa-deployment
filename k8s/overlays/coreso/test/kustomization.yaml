@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ../common
   - ../../../bases/ce-cc
+  - ../../../bases/celtic-cc
   - ../../../bases/core-cc
   - ../../../bases/cse-export-d2cc
   - ../../../bases/cse-export-idcc
@@ -13,6 +14,7 @@ resources:
   - ../../../bases/swe-idcc
   - ../../../bases/swe-idcc-idcf
   - ../coreso-databridge-claims/ce-cc
+  - ../coreso-databridge-claims/celtic-cc
   - ../coreso-databridge-claims/core-cc
   - ../coreso-databridge-claims/cse-export-d2cc
   - ../coreso-databridge-claims/cse-export-idcc
@@ -151,6 +153,13 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
+        name: celtic-cc-runner
+      spec:
+        replicas: 6
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
         name: ce-cc-runner
       spec:
         replicas: 6
@@ -215,6 +224,14 @@ patches:
   - target:
       kind: Deployment
       name: core-cc-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: celtic-cc-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
