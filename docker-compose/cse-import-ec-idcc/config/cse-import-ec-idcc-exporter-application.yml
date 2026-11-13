@@ -39,5 +39,5 @@ ftp:
 
 logback:
   amqp:
-    exchange: cse-import-idcc-task-manager-logs-exchange
+    exchange: cse-import-ec-idcc-task-manager-logs-exchange
     routing-key: "#"

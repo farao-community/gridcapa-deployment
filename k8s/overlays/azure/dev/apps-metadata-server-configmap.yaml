@@ -44,16 +44,6 @@ data:
         "appColor" : "#27E550"
       },
       {
-        "name" : "Capa IN D2CC Import",
-        "url"  : "/cse/import/d2cc/",
-        "appColor" : "#27E550"
-      },
-      {
-        "name" : "Capa IN IDCC Import",
-        "url"  : "/cse/import/idcc/",
-        "appColor" : "#90F2A5"
-      },
-      {
         "name" : "Capa SWE D2CC",
         "url"  : "/swe/d2cc/",
         "appColor" : "#954ECA"

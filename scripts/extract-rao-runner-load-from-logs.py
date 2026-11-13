@@ -10,9 +10,7 @@ TIMESTAMP_REGEX = "\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}"
 RAO_REQUEST_RECEIVED = "RAO request received"
 RAO_RESPONSE_SENT = "RAO response sent"
 RAO_REQUEST_REGEXP = f"({RAO_REQUEST_RECEIVED}|{RAO_RESPONSE_SENT})"
-PROCESS_LIST = ["CSE/IMPORT/D2CC",
-                "CSE/IMPORT/IDCC",
-                "CSE/EXPORT/D2CC",
+PROCESS_LIST = ["CSE/EXPORT/D2CC",
                 "CSE/EXPORT/IDCC",
                 "SWE/D2CC",
                 "SWE/IDCC",
