@@ -19,6 +19,7 @@ resources:
   - swe-d2cc-app-idp-settings-configmap.yaml
   #  Process to be deployed on demand - to uncomment if needed
 #  - ../../../bases/ce-cc
+#  - ../../../bases/celtic-cc
 #  - ../../../bases/cse-common
 #  - ../../../bases/cse-export-d2cc
 #  - ../../../bases/cse-export-idcc
@@ -29,6 +30,7 @@ resources:
 #  - ../../../bases/swe-idcc
 #  - ../../../bases/swe-idcc-idcf
 #  - ../azure-databridge-claims/ce-cc
+#  - ../azure-databridge-claims/celtic-cc
 #  - ../azure-databridge-claims/cse-export-d2cc
 #  - ../azure-databridge-claims/cse-export-idcc
 #  - ../azure-databridge-claims/cse-import-d2cc
@@ -38,6 +40,7 @@ resources:
 #  - ../azure-databridge-claims/swe-idcc
 #  - ../azure-databridge-claims/swe-idcc-idcf
 #  - ce-cc-gridcapa-app-idp-settings-configmap.yaml
+#  - celtic-cc-gridcapa-app-idp-settings-configmap.yaml
 #  - cse-export-d2cc-app-idp-settings-configmap.yaml
 #  - cse-export-idcc-app-idp-settings-configmap.yaml
 #  - cse-import-d2cc-app-idp-settings-configmap.yaml

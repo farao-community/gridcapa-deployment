@@ -1,0 +1,81 @@
+version: "3.7"
+services:
+  celtic-cc-app:
+    image: farao/gridcapa-app:latest
+    volumes:
+      - ../common/config/env.json:/usr/local/apache2/htdocs/gridcapa/env.json:Z
+      - ./config/celtic-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
+    networks:
+      - gridcapa
+
+  celtic-cc-data-bridge:
+    image: farao/gridcapa-core-cc-data-bridge:latest
+    volumes:
+      - ./config/celtic-cc-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  celtic-cc-task-manager:
+    image: farao/gridcapa-task-manager:latest
+    volumes:
+      - ./config/celtic-cc-task-manager-application.yml:/config/application.yml
+      - ./config/data.sql:/config/data.sql
+    networks:
+      - gridcapa
+
+  celtic-cc-post-processing:
+    image: farao/gridcapa-core-cc-post-processing:latest
+    volumes:
+      - ./config/celtic-cc-post-processing-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  celtic-cc-runner:
+    image: farao/gridcapa-core-cc:latest
+    volumes:
+      - ./config/celtic-cc-runner-application.yml:/config/application.yml
+      - ../../configuration/celtic-cc-runner-itools-config.yml:/home/farao/.itools/config.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  celtic-cc-adapter:
+    image: farao/gridcapa-core-cc-adapter:latest
+    env_file:
+      - ../common/config/version.env
+    volumes:
+      - ./config/celtic-cc-adapter-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+  celtic-cc-output-data-bridge:
+    image: farao/gridcapa-output-data-bridge:latest
+    volumes:
+      - ./config/celtic-cc-output-data-bridge-application.yml:/config/application.yml
+    networks:
+      - gridcapa
+
+  celtic-cc-rao-logs-dispatcher:
+    image: farao/gridcapa-rao-logs-dispatcher:latest
+    volumes:
+      - ./config/celtic-cc-rao-logs-dispatcher-application.yml:/config/application.yml
+    healthcheck:
+      test: [ "CMD", "wget", "-O", "-", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    networks:
+      - gridcapa
+
+networks:
+  gridcapa:
+    name: gridcapa

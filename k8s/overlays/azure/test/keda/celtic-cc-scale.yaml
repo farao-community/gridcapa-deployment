@@ -1,0 +1,77 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: celtic-cc-task-manager-scale
+spec:
+  scaleTargetRef:
+    name: celtic-cc-task-manager
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: celtic-cc-runner-scale
+  labels:
+    component: runner
+spec:
+  scaleTargetRef:
+    name: celtic-cc-runner
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: celtic-cc-adapter-scale
+spec:
+  scaleTargetRef:
+    name: celtic-cc-adapter
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: celtic-cc-data-bridge-scale
+spec:
+  scaleTargetRef:
+    name: celtic-cc-data-bridge
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: celtic-cc-app-scale
+spec:
+  scaleTargetRef:
+    name: celtic-cc-app
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: celtic-cc-post-processing-scale
+spec:
+  scaleTargetRef:
+    name: celtic-cc-post-processing
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: celtic-cc-output-data-bridge-scale
+spec:
+  scaleTargetRef:
+    name: celtic-cc-output-data-bridge
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: celtic-cc-rao-logs-dispatcher-scale
+spec:
+  scaleTargetRef:
+    name: celtic-cc-rao-logs-dispatcher

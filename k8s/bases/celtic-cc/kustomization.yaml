@@ -1,0 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - celtic-cc-data-bridge-configmap.yaml
+  - celtic-cc-data-bridge-deployment.yaml
+  - celtic-cc-data-bridge-service.yaml
+  - celtic-cc-app-deployment.yaml
+  - celtic-cc-app-process-metadata-configmap.yaml
+  - celtic-cc-app-service.yaml
+  - celtic-cc-runner-configmap.yaml
+  - celtic-cc-runner-deployment.yaml
+  - celtic-cc-runner-service.yaml
+  - celtic-cc-adapter-configmap.yaml
+  - celtic-cc-adapter-deployment.yaml
+  - celtic-cc-adapter-service.yaml
+  - celtic-cc-task-manager-configmap.yaml
+  - celtic-cc-task-manager-deployment.yaml
+  - celtic-cc-task-manager-service.yaml
+  - celtic-cc-rao-logs-dispatcher-configmap.yaml
+  - celtic-cc-rao-logs-dispatcher-deployment.yaml
+  - celtic-cc-rao-logs-dispatcher-service.yaml
+  - celtic-cc-output-data-bridge-deployment.yaml
+  - celtic-cc-output-data-bridge-service.yaml
+  - celtic-cc-output-data-bridge-configmap.yaml
+  - celtic-cc-post-processing-configmap.yml
+  - celtic-cc-post-processing-deployment.yml
+  - celtic-cc-post-processing-service.yml
+  - celtic-cc-minio-purge.yaml

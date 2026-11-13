@@ -52,6 +52,9 @@ GRANT ALL PRIVILEGES ON DATABASE core_valid_intraday_runner TO core_valid_intrad
 CREATE DATABASE core_valid_day_ahead_conservative_tasks;
 CREATE USER core_valid_day_ahead_conservative_server WITH ENCRYPTED PASSWORD 'core-valid-day-ahead-conservative';
 GRANT ALL PRIVILEGES ON DATABASE core_valid_day_ahead_conservative_tasks TO core_valid_day_ahead_conservative_server;
+CREATE DATABASE celtic_cc_tasks;
+CREATE USER celtic_cc_server WITH ENCRYPTED PASSWORD 'celtic-cc';
+GRANT ALL PRIVILEGES ON DATABASE celtic_cc_tasks TO celtic_cc_server;
 CREATE DATABASE ce_cc_tasks;
 CREATE USER ce_cc_server WITH ENCRYPTED PASSWORD 'ce-cc';
 GRANT ALL PRIVILEGES ON DATABASE ce_cc_tasks TO ce_cc_server;
