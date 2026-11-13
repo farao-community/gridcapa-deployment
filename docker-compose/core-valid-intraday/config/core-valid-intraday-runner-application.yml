@@ -1,4 +1,9 @@
 spring:
+  datasource:
+    url: jdbc:postgresql://gridcapa-postgres:5432/core_valid_intraday_runner
+    driverClassName: org.postgresql.Driver
+    username: core_valid_intraday_runner_server
+    password: core-valid-intraday-runner
   rabbitmq:
     host: rabbitmq
     port: 5672

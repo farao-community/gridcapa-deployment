@@ -8,9 +8,9 @@ metadata:
     region: cse
     process: export-idcc
 spec:
-  storageClassName: nfs-gold
+  storageClassName: thick-csi-pur-default
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 32M

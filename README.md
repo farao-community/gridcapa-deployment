@@ -13,6 +13,7 @@ Docker Compose scripts are designed to run all GridCapa applications independent
 
 GridCapa currently contains the following applications:
 - Gridcapa CE CC
+- Gridcapa Celtic CC
 - Gridcapa CORE CC
 - GridCapa CORE Validation
 - Gridcapa CORE Validation IDCC
@@ -55,9 +56,8 @@ docker-compose up -d
 **Be careful to your local resources if you try to deploy too many processes it could be quite heavy.**
 
 Multiple environment are available:
-- Main GridCapa UI on pages : http://localhost/ce/cc/, http://localhost/core/cc/, http://localhost/core/valid/, http://localhost/cse/export/d2cc/, http://localhost/cse/export/idcc/, http://localhost/cse/import/d2cc/, http://localhost/cse/import/idcc/, http://localhost/cse/import-ec/d2cc/, http://localhost/cse/import-ec/idcc/, http://localhost/swe/btcc/, http://localhost/swe/d2cc/, http://localhost/swe/idcc/, http://localhost/swe/idcf/ according to what has been deployed.
-- FTP server file browser on page http://localhost/utils/filebrowser/. Default credentials are gridcapa/gridcapa.
-- SFTP server file browser on page http://localhost/utils/filebrowser/. Default credentials are gridcapa/gridcapa.
+- Main GridCapa UI on pages : http://localhost/ce/cc/, http://localhost/celtic/cc/, http://localhost/core/cc/, http://localhost/core/valid/, http://localhost/cse/export/d2cc/, http://localhost/cse/export/idcc/, http://localhost/cse/import-ec/d2cc/, http://localhost/cse/import-ec/idcc/, http://localhost/swe/btcc/, http://localhost/swe/d2cc/, http://localhost/swe/idcc/, http://localhost/swe/idcf/ according to what has been deployed.
+- FTP and SFTP server file browser on page http://localhost/utils/filebrowser/. Default credentials are gridcapa/gridcapa.
 - RabbitMQ management UI on page http://localhost/utils/rabbitmq/. Default credentials are gridcapa/gridcapa.
 - MinIO browser on page http://localhost/minio/. Default credentials are gridcapa/gridcapa.
 
@@ -67,7 +67,7 @@ Multiple environment are available:
 cd docker-compose-for-front-end-development
 docker-compose up -d
 ```
-- Now you have the gridcapa back-end running with docker-compose 
+- Now you have the GridCapa back-end running with docker-compose 
 - Then run locally gridcapa-app following the application [README](https://github.com/farao-community/gridcapa-app/blob/master/README.md).
 - You should be able now to debug locally your front-end application
 
@@ -102,7 +102,7 @@ Check that they have been correctly saved by listing current notifications enabl
 Xpress is a commercial solver and as such requires a licence to be used. 
 Please copy yours (xprauth.xpr file) inside the following folder :
 
-```bash
+```text
 docker-compose/common/xpr-licence
 ```
 
@@ -117,11 +117,10 @@ Some secrets are needed on the cluster as deployment prerequisites. Encrypted pa
 
 ```bash
 kubectl create secret generic gridcapa-rabbitmq-credentials --from-literal='rabbitmq-user=<RABBITMQ_USER>' --from-literal='rabbitmq-password=<RABBITMQ_PASSWORD>'
-kubectl create secret generic admin-rabbitmq-credentials --from-literal='rabbitmq-user=<RABBITMQ_USER>' --from-literal='rabbitmq-password=<RABBITMQ_PASSWORD>'
 kubectl create secret generic rabbitmq-secrets --from-literal='rabbitmq-erlang-cookie=<RABBITMQ_ERLANG_COOKIE>'
 kubectl create secret generic gridcapa-minio-credentials --from-literal='minio-access-key=<MINIO_ACCESS_KEY>' --from-literal='minio-secret-key=<MINIO_SECRET_KEY>'
 kubectl create secret generic gridcapa-ftp-credentials --from-literal='ftp-user=<FTP_USER>' --from-literal='ftp-password=<FTP_PASSWORD>'
-kubectl create secret generic gridcapa-postgresql-credentials --from-literal='postgres-password=<POSTGRES_PASSWORD>' --from-literal='config-user=<CONFIG_USER>' --from-literal='config-password=<CONFIG_PASSWORD>' --from-literal='ce-cc-user=<CE_CC_USER>' --from-literal='ce-cc-password=<CE_CC_PASSWORD>' --from-literal='core-cc-user=<CORE_CC_USER>' --from-literal='core-cc-password=<CORE_CC_PASSWORD>' --from-literal='core-valid-user=<CORE_VALID_USER>' --from-literal='core-valid-password=<CORE_VALID_PASSWORD>' --from-literal='cse-export-d2cc-user=<CSE_EXPORT_D2CC_USER>' --from-literal='cse-export-d2cc-password=<CSE_EXPORT_D2CC_PASSWORD>' --from-literal='cse-export-idcc-user=<CSE_EXPORT_IDCC_USER>' --from-literal='cse-export-idcc-password=<CSE_EXPORT_IDCC_PASSWORD>' --from-literal='cse-import-ec-d2cc-user=<CSE_IMPORT_EC_D2CC_USER>' --from-literal='cse-import-ec-d2cc-password=<CSE_IMPORT_EC_D2CC_PASSWORD>' --from-literal='cse-import-ec-idcc-user=<CSE_IMPORT_EC_IDCC_USER>' --from-literal='cse-import-ec-idcc-password=<CSE_IMPORT_EC_IDCC_PASSWORD>' --from-literal='cse-valid-d2cc-user=<CSE_VALID_D2CC_USER>' --from-literal='cse-valid-d2cc-password=<CSE_VALID_D2CC_PASSWORD>' --from-literal='cse-valid-idcc-user=<CSE_VALID_IDCC_USER>' --from-literal='cse-valid-idcc-password=<CSE_VALID_IDCC_PASSWORD>' --from-literal='swe-btcc-user=<SWE_BTCC_USER>' --from-literal='swe-btcc-password=<SWE_BTCC_PASSWORD>' --from-literal='swe-d2cc-user=<SWE_D2CC_USER>' --from-literal='swe-d2cc-password=<SWE_D2CC_PASSWORD>' --from-literal='swe-idcc-user=<SWE_IDCC_USER>' --from-literal='swe-idcc-password=<SWE_IDCC_PASSWORD>' --from-literal='swe-idcc-idcf-user=<SWE_IDCC_IDCF_USER>' --from-literal='swe-idcc-idcf-password=<SWE_IDCC_IDCF_PASSWORD>'
+kubectl create secret generic gridcapa-postgresql-credentials --from-literal='postgres-password=<POSTGRES_PASSWORD>' --from-literal='config-user=<CONFIG_USER>' --from-literal='config-password=<CONFIG_PASSWORD>' --from-literal='ce-cc-user=<CE_CC_USER>' --from-literal='ce-cc-password=<CE_CC_PASSWORD>' --from-literal='celtic-cc-user=<CELTIC_CC_USER>' --from-literal='celtic-cc-password=<CELTIC_CC_PASSWORD>' --from-literal='core-cc-user=<CORE_CC_USER>' --from-literal='core-cc-password=<CORE_CC_PASSWORD>' --from-literal='core-valid-user=<CORE_VALID_USER>' --from-literal='core-valid-password=<CORE_VALID_PASSWORD>' --from-literal='cse-export-d2cc-user=<CSE_EXPORT_D2CC_USER>' --from-literal='cse-export-d2cc-password=<CSE_EXPORT_D2CC_PASSWORD>' --from-literal='cse-export-idcc-user=<CSE_EXPORT_IDCC_USER>' --from-literal='cse-export-idcc-password=<CSE_EXPORT_IDCC_PASSWORD>' --from-literal='cse-import-ec-d2cc-user=<CSE_IMPORT_EC_D2CC_USER>' --from-literal='cse-import-ec-d2cc-password=<CSE_IMPORT_EC_D2CC_PASSWORD>' --from-literal='cse-import-ec-idcc-user=<CSE_IMPORT_EC_IDCC_USER>' --from-literal='cse-import-ec-idcc-password=<CSE_IMPORT_EC_IDCC_PASSWORD>' --from-literal='cse-valid-d2cc-user=<CSE_VALID_D2CC_USER>' --from-literal='cse-valid-d2cc-password=<CSE_VALID_D2CC_PASSWORD>' --from-literal='cse-valid-idcc-user=<CSE_VALID_IDCC_USER>' --from-literal='cse-valid-idcc-password=<CSE_VALID_IDCC_PASSWORD>' --from-literal='swe-btcc-user=<SWE_BTCC_USER>' --from-literal='swe-btcc-password=<SWE_BTCC_PASSWORD>' --from-literal='swe-d2cc-user=<SWE_D2CC_USER>' --from-literal='swe-d2cc-password=<SWE_D2CC_PASSWORD>' --from-literal='swe-idcc-user=<SWE_IDCC_USER>' --from-literal='swe-idcc-password=<SWE_IDCC_PASSWORD>' --from-literal='swe-idcc-idcf-user=<SWE_IDCC_IDCF_USER>' --from-literal='swe-idcc-idcf-password=<SWE_IDCC_IDCF_PASSWORD>'
 kubectl create secret generic gridcapa-keycloak-credentials --from-literal='keycloak-user=<KEYCLOAK_USER>' --from-literal='keycloak-password=<KEYCLOAK_PASSWORD>'
 kubectl create secret tls gridcapa-tls --key <private key file> --cert <certificate file>
 ```
@@ -163,7 +162,7 @@ It is deployed on a different ingress controller and the address is auth.farao-c
 admin keycloak UI.
 
 ### Deployment on Azure DEV
-This environment is used for CI for all gridcapa processes
+This environment is used for development purpose for CORESO GridCapa processes
 
 - host: gridcapa-dev.farao-community.com
 - namespace: gridcapa-d
@@ -175,7 +174,7 @@ kubectl kustomize k8s/overlays/azure/dev/ --load-restrictor LoadRestrictionsNone
 Info: need to install connect-proxy with "dzdo apt install connect-proxy"
 
 ### Deployment on Azure TEST
-This environment is used to test CSE gridcapa processes for CORESO
+This environment is used to test GridCapa processes for CORESO
 
 - host: gridcapa.farao-community.com
 - namespace: gridcapa-t
@@ -187,7 +186,7 @@ In order to limit resources used by this environment, a KEDA (Kubernetes Event-D
 is located at k8s/overlays/azure/test/keda. Should you wish to pause it for a time, simply edit the scaler you want to pause
 and change the **metadata.annotations.autoscaling.keda.sh/paused** value to **false**
 
-On this environment by default only **CE CC** , **CORE CC** , **SWE D2CC** & **CSE IMPORT-EC D2CC** are deployed. This is done to limit the resources
+On this environment by default only **CORE CC** , **CSE IMPORT-EC D2CC** & **SWE D2CC** are deployed. This is done to limit the resources
 used by the cluster. To deploy each and every process please uncomment corresponding lines in k8s/overlays/azure/test/kustomization.yaml
 
 Label **on-demand: "true"** is added on every on-demand process to easily go back to the "light" version of the 

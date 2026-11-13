@@ -46,7 +46,7 @@ data-bridge:
         do-unzip: false
         source-directory: "/F139"
         sink-directory: "/DCCGMs"
-        file-list-persistence-file: /data/gridcapa/ce-cc/ftp-metadata-store.dccgm.properties
+        file-list-persistence-file: /tmp/gridcapa/ce-cc/ftp-metadata-store.dccgm.properties
   sources:
     ftp:
       active: true

@@ -10,7 +10,7 @@ metadata:
 spec:
   storageClassName: azure-storage-class
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 144M

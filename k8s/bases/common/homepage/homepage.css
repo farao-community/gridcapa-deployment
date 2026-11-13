@@ -1,0 +1,82 @@
+html {
+    width: 100%;
+    height: 100%;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #333333;
+    display: flex;
+    justify-content: space-between;
+    margin: 50px auto;
+    width: 90%;
+    height: 90%;
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+menu {
+    margin: auto;
+    list-style-type: none;
+}
+
+li {
+    display: block;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.grid-logo {
+    color: white;
+    font-weight: bold;
+    font-size: xxx-large;
+}
+
+div {
+    align-self: center;
+    width: 50%;
+}
+
+.capa-logo {
+    color: grey;
+    font-weight: lighter;
+    font-size: xxx-large;
+}
+
+@media (max-width: 600px) {
+
+    img {
+        margin-bottom: 15%;
+        position: fixed;
+        width: 20%;
+    }
+    a {
+        font-size: medium;
+    }
+    div {
+        width: 80%;
+    }
+    div.logo-div {
+        width: 15%;
+        align-items: center;
+        display: flex;
+    }
+
+    h1 {
+        display: none;
+    }
+}
+
+img {
+    width: 30%;
+}

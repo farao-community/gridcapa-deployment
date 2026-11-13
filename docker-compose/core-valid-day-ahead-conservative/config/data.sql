@@ -4,12 +4,17 @@ VALUES ('USE_PROJECTION', 'USE PROJECTION', 1, 'BOOLEAN', 'PROJECTION ', 1, 'tru
 UPDATE SET name = 'USE PROJECTION', display_order = 1, parameter_type = 'BOOLEAN', section_title = 'PROJECTION', section_order = 1;
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
+VALUES ('USE_AHC', 'USE AHC', 1, 'BOOLEAN', 'AHC IMPORT', 1, 'true')
+    ON CONFLICT (id) DO
+UPDATE SET name = 'USE AHC', display_order = 1, parameter_type = 'BOOLEAN', section_title = 'AHC IMPORT', section_order = 1;
+
+INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
 VALUES ('MAX_VERTICES_PER_BRANCH', 'MAX VERTICES PER BRANCH', 1, 'INT', 'BRANCH MAX IVA', 2, '5')
     ON CONFLICT (id) DO
 UPDATE SET name = 'MAX VERTICES PER BRANCH', display_order = 1, parameter_type = 'INT', section_title = 'BRANCH MAX IVA', section_order = 2;
 
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
-VALUES ('RAM_THRESHOLD', 'RAM THRESHOLD', 2, 'INT', 'BRANCH MAX IVA', 2, '-10')
+VALUES ('RAM_THRESHOLD', 'RAM THRESHOLD', 2, 'INT', 'BRANCH MAX IVA', 2, '-15')
     ON CONFLICT (id) DO
 UPDATE SET name = 'RAM THRESHOLD', display_order = 2, parameter_type = 'INT', section_title = 'BRANCH MAX IVA', section_order = 2;
 
@@ -30,7 +35,7 @@ INSERT INTO parameter (id, name, display_order, parameter_type, section_title, s
 UPDATE SET name = 'CURATIVE IVA MARGIN', display_order = 1, parameter_type = 'INT', section_title = 'IVA MARGINS', section_order = 3;
                                                                                        
 INSERT INTO parameter (id, name, display_order, parameter_type, section_title, section_order, parameter_value)
-    VALUES ('PREVENTIVE_IVA_MARGIN', 'PREVENTIVE IVA MARGIN', 2, 'INT', 'IVA MARGINS', 3, '30')
+    VALUES ('PREVENTIVE_IVA_MARGIN', 'PREVENTIVE IVA MARGIN', 2, 'INT', 'IVA MARGINS', 3, '0')
     ON CONFLICT (id) DO
 UPDATE SET name = 'PREVENTIVE IVA MARGIN', display_order = 2, parameter_type = 'INT', section_title = 'IVA MARGINS', section_order = 3;
 

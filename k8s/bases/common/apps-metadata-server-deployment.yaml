@@ -23,8 +23,21 @@ spec:
           ports:
             - containerPort: 8080
           volumeMounts:
-            - mountPath: /opt/bitnami/apache/htdocs/
+            - mountPath: /opt/bitnami/apache/htdocs/apps-metadata.json
+              subPath: apps-metadata.json
               name: apps-metadata-server-configmap-volume
+            - mountPath: /opt/bitnami/apache/htdocs/homepage.html
+              subPath: homepage.html
+              name: homepage-configmap-volume
+            - mountPath: /opt/bitnami/apache/htdocs/homepage.css
+              subPath: homepage.css
+              name: homepage-configmap-volume
+            - mountPath: /opt/bitnami/apache/htdocs/homepage.js
+              subPath: homepage.js
+              name: homepage-configmap-volume
+            - mountPath: /opt/bitnami/apache/htdocs/farao-logo.svg
+              subPath: farao-logo.svg
+              name: homepage-configmap-volume
             - mountPath: /opt/bitnami/apache/var/run/
               name: run-emptydir
             - mountPath: /opt/bitnami/apache/htdocs/data/
@@ -59,6 +72,27 @@ spec:
             timeoutSeconds: 2
             failureThreshold: 1
             successThreshold: 1
+        - name: minio-get-storage-data
+          image: minio-mc
+          imagePullPolicy: IfNotPresent
+          command: ["/bin/sh"]
+          args: [ "-c", "while true; do mc alias set gridcapa-minio http://gridcapa-minio:9000 $(MINIO_ACCESS_KEY) $(MINIO_SECRET_KEY) | mc admin info gridcapa-minio --json &> /data/minioStorageData.json; sleep 5m; done" ]
+          env:
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gridcapa-minio-credentials
+                  key: minio-secret-key
+            - name: MC_HOST_minio
+              value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
+          volumeMounts:
+            - name: minio-get-storage-data-data
+              mountPath: /data/
       restartPolicy: Always
       volumes:
         - name: apps-metadata-server-configmap-volume
@@ -69,3 +103,6 @@ spec:
         - name: minio-get-storage-data-data
           persistentVolumeClaim:
             claimName: minio-get-storage-data-pv
+        - name: homepage-configmap-volume
+          configMap:
+            name: homepage-configmap

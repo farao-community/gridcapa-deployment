@@ -121,4 +121,4 @@ spec:
             name: core-cc-output-data-bridge-configmap
         - name: core-cc-output-data-bridge-data
           persistentVolumeClaim:
-            claimName: core-cc-data-bridge-storage
+            claimName: core-cc-output-data-bridge-storage

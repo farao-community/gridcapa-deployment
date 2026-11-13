@@ -13,7 +13,7 @@ services:
       - gridcapa
 
   rabbitmq:
-    image: rabbitmq:management
+    image: rabbitmq:4.2.6-management
     environment:
       RABBITMQ_DEFAULT_USER: gridcapa
       RABBITMQ_DEFAULT_PASS: gridcapa

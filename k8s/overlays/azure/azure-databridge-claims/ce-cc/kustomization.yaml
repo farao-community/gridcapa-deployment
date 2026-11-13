@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
   - ce-cc-data-bridge-pv-claim.yaml
+  - ce-cc-output-data-bridge-pv-claim.yaml

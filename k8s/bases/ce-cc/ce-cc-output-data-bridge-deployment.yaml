@@ -121,4 +121,4 @@ spec:
             name: ce-cc-output-data-bridge-configmap
         - name: ce-cc-output-data-bridge-data
           persistentVolumeClaim:
-            claimName: ce-cc-data-bridge-storage
+            claimName: ce-cc-output-data-bridge-storage

@@ -3,30 +3,28 @@ kind: Kustomization
 
 resources:
   - ../common
+  - ../../../bases/ce-cc
+  - ../../../bases/celtic-cc
   - ../../../bases/core-cc
   - ../../../bases/cse-export-d2cc
   - ../../../bases/cse-export-idcc
-  - ../../../bases/cse-import-d2cc
-  - ../../../bases/cse-import-idcc
   - ../../../bases/cse-import-ec-d2cc
   - ../../../bases/cse-import-ec-idcc
   - ../../../bases/swe-d2cc
   - ../../../bases/swe-idcc
   - ../../../bases/swe-idcc-idcf
+  - ../coreso-databridge-claims/ce-cc
+  - ../coreso-databridge-claims/celtic-cc
   - ../coreso-databridge-claims/core-cc
   - ../coreso-databridge-claims/cse-export-d2cc
   - ../coreso-databridge-claims/cse-export-idcc
-  - ../coreso-databridge-claims/cse-import-d2cc
-  - ../coreso-databridge-claims/cse-import-idcc
   - ../coreso-databridge-claims/cse-import-ec-d2cc
   - ../coreso-databridge-claims/cse-import-ec-idcc
   - ../coreso-databridge-claims/swe-d2cc
   - ../coreso-databridge-claims/swe-idcc
   - ../coreso-databridge-claims/swe-idcc-idcf
   - apps-metadata-server-configmap.yaml
-  - ingress-gridcapa.yaml
-  - ingress-middlewares.yaml
-  - ingress-minio.yaml
+  - ingress-routes-openshift.yaml
   - minio-pvc.yaml
   - postgresql-configmap.yaml
   - postgresql-data-pv-claim.yaml
@@ -106,20 +104,6 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: cse-import-idcc-runner
-      spec:
-        replicas: 4
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
-        name: cse-import-d2cc-runner
-      spec:
-        replicas: 8
-  - patch: |-
-      kind: Deployment
-      apiVersion: apps/v1
-      metadata:
         name: swe-d2cc-runner
       spec:
         replicas: 3
@@ -142,6 +126,20 @@ patches:
       apiVersion: apps/v1
       metadata:
         name: core-cc-runner
+      spec:
+        replicas: 12
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: celtic-cc-runner
+      spec:
+        replicas: 12
+  - patch: |-
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: ce-cc-runner
       spec:
         replicas: 12
   - patch: |-
@@ -195,22 +193,6 @@ patches:
         path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
-      name: cse-import-idcc-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
-  - target:
-      kind: Deployment
-      name: cse-import-d2cc-app
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/volumeMounts/2
-      - op: remove
-        path: /spec/template/spec/volumes/2
-  - target:
-      kind: Deployment
       name: swe-d2cc-app
     patch: |-
       - op: remove
@@ -241,6 +223,36 @@ patches:
         path: /spec/template/spec/containers/0/volumeMounts/2
       - op: remove
         path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: celtic-cc-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
+      name: ce-cc-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  # Patch affinities for non rao runners
+  - target:
+      kind: Deployment
+      labelSelector: "component != rao-runner"
+    path: ../common/patches/non-rao-runner-affinity-patch.yaml
+  - target:
+      kind: StatefulSet
+      labelSelector: "component != rao-runner"
+    path: ../common/patches/non-rao-runner-affinity-patch-statefulset.yaml
+  # Patches for medium priority
+  - target:
+      kind: Deployment
+      labelSelector: "component in ( rao-runner, task-manager, runner, post-processing, interruption-server, rao-failure-handler )"
+    path: ../common/patches/medium-priority-patch.yaml
 
   # Use "John Doe" gateway config to share UI config across all users
   - patch: |-

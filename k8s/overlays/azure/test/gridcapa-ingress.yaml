@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
+    nginx.ingress.kubernetes.io/app-root: /apps-metadata/homepage.html # requests to "/" will be redirected to "/apps-metadata/homepage.html"
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^/cse/import/idcc$ /cse/import/idcc/ permanent;
       rewrite ^/cse/import/d2cc$ /cse/import/d2cc/ permanent;
@@ -14,6 +15,8 @@ metadata:
       rewrite ^/swe/idcc$ /swe/idcc/ permanent;
       rewrite ^/swe/idcf$ /swe/idcf/ permanent;
       rewrite ^/core/cc$ /core/cc/ permanent;
+      rewrite ^/celtic/cc$ /celtic/cc/ permanent;
+      rewrite ^/ce/cc$ /ce/cc/ permanent;
       
       rewrite ^/utils/rabbitmq$ /utils/rabbitmq/ permanent;
       if ($request_uri ~ "^/utils/rabbitmq(/.*)") {
@@ -438,6 +441,49 @@ spec:
                 port:
                   number: 80
             path: /()(core/cc/gridcapa-job-launcher/.*)
+            pathType: Prefix
+
+          - backend:
+              service:
+                name: celtic-cc-app
+                port:
+                  number: 80
+            path: /celtic/cc(/|$)(.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(celtic/cc/config/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(celtic/cc/config-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(celtic/cc/task-notification/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(celtic/cc/task-manager/.*)
+            pathType: Prefix
+          - backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            path: /()(celtic/cc/gridcapa-job-launcher/.*)
             pathType: Prefix
 
           - backend:

@@ -58,6 +58,9 @@ data:
         mendrisio-voltage-level: SMENDR3
         mendrisio-node-id: SMENDR3T
       pisa:
+        aligned-ra-names:
+          - PRA_HVDC_GILE_PIOSSASCO_1 + PRA_HVDC_GILE_PIOSSASCO_2
+          - CRA_HVDC_GILE_PIOSSASCO_1 + CRA_HVDC_GILE_PIOSSASCO_2
         link1:
           node-fr: FFG.IL12
           node-it: FFG.IL11

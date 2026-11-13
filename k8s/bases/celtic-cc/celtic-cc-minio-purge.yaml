@@ -1,12 +1,14 @@
 kind: CronJob
 apiVersion: batch/v1
 metadata:
-  name: minio-get-storage-data-cron
+  name: celtic-cc-minio-purge
   labels:
     app: gridcapa
-    component: minio-get-storage-data
+    component: minio-purge
+    region: celtic
+    process: cc
 spec:
-  schedule: "*/10 * * * *"
+  schedule: "0 12 * * *"
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 3
@@ -15,10 +17,9 @@ spec:
       template:
         spec:
           containers:
-            - name: minio-get-storage-data-cron
+            - name: celtic-cc-others-minio-purge
               image: minio-mc
-              command: ["/bin/sh"]
-              args: [ "-c", "mc alias set gridcapa-minio http://gridcapa-minio:9000 $(MINIO_ACCESS_KEY) $(MINIO_SECRET_KEY) | mc admin info gridcapa-minio --json &> /data/minioStorageData.json" ]
+              args: [ "rm", "--recursive", "--force", "--older-than", "7d", "minio/gridcapa/CELTIC/CC/" ]
               env:
                 - name: MINIO_ACCESS_KEY
                   valueFrom:
@@ -32,13 +33,4 @@ spec:
                       key: minio-secret-key
                 - name: MC_HOST_minio
                   value: http://$(MINIO_ACCESS_KEY):$(MINIO_SECRET_KEY)@gridcapa-minio:9000
-              volumeMounts:
-                - name: minio-get-storage-data-data
-                  mountPath: /data/
-
           restartPolicy: Never
-          volumes:
-            - name: minio-get-storage-data-data
-              persistentVolumeClaim:
-                claimName: minio-get-storage-data-pv
-

@@ -1,0 +1,77 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: ce-cc-task-manager-scale
+spec:
+  scaleTargetRef:
+    name: ce-cc-task-manager
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: ce-cc-runner-scale
+  labels:
+    component: runner
+spec:
+  scaleTargetRef:
+    name: ce-cc-runner
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: ce-cc-adapter-scale
+spec:
+  scaleTargetRef:
+    name: ce-cc-adapter
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: ce-cc-data-bridge-scale
+spec:
+  scaleTargetRef:
+    name: ce-cc-data-bridge
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: ce-cc-app-scale
+spec:
+  scaleTargetRef:
+    name: ce-cc-app
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: ce-cc-post-processing-scale
+spec:
+  scaleTargetRef:
+    name: ce-cc-post-processing
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: ce-cc-output-data-bridge-scale
+spec:
+  scaleTargetRef:
+    name: ce-cc-output-data-bridge
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: ce-cc-rao-logs-dispatcher-scale
+spec:
+  scaleTargetRef:
+    name: ce-cc-rao-logs-dispatcher

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: celtic-cc-data-bridge-storage
+  labels:
+    app: gridcapa
+    component: data-bridge-storage
+    region: celtic
+    process: cc
+spec:
+  storageClassName: thick-csi-pur-default
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 32M

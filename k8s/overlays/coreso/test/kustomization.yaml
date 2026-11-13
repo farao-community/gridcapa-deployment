@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ../common
   - ../../../bases/ce-cc
+  - ../../../bases/celtic-cc
   - ../../../bases/core-cc
   - ../../../bases/cse-export-d2cc
   - ../../../bases/cse-export-idcc
@@ -13,6 +14,7 @@ resources:
   - ../../../bases/swe-idcc
   - ../../../bases/swe-idcc-idcf
   - ../coreso-databridge-claims/ce-cc
+  - ../coreso-databridge-claims/celtic-cc
   - ../coreso-databridge-claims/core-cc
   - ../coreso-databridge-claims/cse-export-d2cc
   - ../coreso-databridge-claims/cse-export-idcc
@@ -22,9 +24,7 @@ resources:
   - ../coreso-databridge-claims/swe-idcc
   - ../coreso-databridge-claims/swe-idcc-idcf
   - apps-metadata-server-configmap.yaml
-  - gridcapa-ingress.yaml
-  - gridcapa-ingress-minio.yaml
-  - ingress-middlewares.yaml
+  - ingress-routes-openshift.yaml
   - minio-pvc.yaml
   - postgresql-configmap.yaml
   - postgresql-data-pv-claim.yaml
@@ -58,7 +58,7 @@ patches:
           - metadata:
               name: gridcapa-rabbitmq-data
             spec:
-              storageClassName: vsphere-raw-block-sc
+              storageClassName: thick-csi-pur-default
               accessModes:
                 - ReadWriteOnce
               resources:
@@ -153,32 +153,16 @@ patches:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: ce-cc-runner
+        name: celtic-cc-runner
       spec:
         replicas: 6
-
-  # Postgresql deployment patch for test to have CE CC
   - patch: |-
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: gridcapa-postgresql
+        name: ce-cc-runner
       spec:
-        template:
-          spec:
-            containers:
-              - name: gridcapa-postgresql
-                env:
-                  - name: POSTGRES_CE_CC_USER
-                    valueFrom:
-                      secretKeyRef:
-                        name: gridcapa-postgresql-credentials
-                        key: ce-cc-user
-                  - name: POSTGRES_CE_CC_PASSWORD
-                    valueFrom:
-                      secretKeyRef:
-                        name: gridcapa-postgresql-credentials
-                        key: ce-cc-password
+        replicas: 6
 
   # Remove volumes related to authentication within application deployments
   - target:
@@ -247,12 +231,34 @@ patches:
         path: /spec/template/spec/volumes/2
   - target:
       kind: Deployment
+      name: celtic-cc-app
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/2
+      - op: remove
+        path: /spec/template/spec/volumes/2
+  - target:
+      kind: Deployment
       name: ce-cc-app
     patch: |-
       - op: remove
         path: /spec/template/spec/containers/0/volumeMounts/2
       - op: remove
         path: /spec/template/spec/volumes/2
+  # Patch affinities for non rao runners
+  - target:
+      kind: Deployment
+      labelSelector: "component != rao-runner"
+    path: ../common/patches/non-rao-runner-affinity-patch.yaml
+  - target:
+      kind: StatefulSet
+      labelSelector: "component != rao-runner"
+    path: ../common/patches/non-rao-runner-affinity-patch-statefulset.yaml
+  # Patches for medium priority
+  - target:
+      kind: Deployment
+      labelSelector: "component in ( rao-runner, task-manager, runner, post-processing, interruption-server, rao-failure-handler )"
+    path: ../common/patches/medium-priority-patch.yaml
 
 
   # Use "John Doe" gateway config to share UI config across all users
