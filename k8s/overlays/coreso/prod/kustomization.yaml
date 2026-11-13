@@ -55,11 +55,6 @@ patches:
         replicas: 40
         template:
           spec:
-            tolerations:
-              - key: "rao-runners"
-                operator: "Equal"
-                value: "true"
-                effect: "NoSchedule"
             imagePullSecrets:
               - name: dockerhub-acr-secret
   - patch: |-
