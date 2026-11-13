@@ -3,8 +3,6 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      rewrite ^/cse/import/idcc$ /cse/import/idcc/ permanent;
-      rewrite ^/cse/import/d2cc$ /cse/import/d2cc/ permanent;
       rewrite ^/cse/import-ec/d2cc$ /cse/import-ec/d2cc/ permanent;
       rewrite ^/cse/import-ec/idcc$ /cse/import-ec/idcc/ permanent;
       rewrite ^/cse/export/d2cc$ /cse/export/d2cc/ permanent;

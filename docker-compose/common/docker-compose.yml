@@ -44,10 +44,8 @@ services:
         gridcapa|gridcapa|/data/gridcapa/core/valid/d2cc_conservative/
         gridcapa|gridcapa|/data/gridcapa/cse/export/d2cc/
         gridcapa|gridcapa|/data/gridcapa/cse/export/idcc/
-        gridcapa|gridcapa|/data/gridcapa/cse/import/d2cc/
         gridcapa|gridcapa|/data/gridcapa/cse/import_ec/d2cc/
         gridcapa|gridcapa|/data/gridcapa/cse/import_ec/idcc/
-        gridcapa|gridcapa|/data/gridcapa/cse/import/idcc/
         gridcapa|gridcapa|/data/gridcapa/cse/valid/
         gridcapa|gridcapa|/data/gridcapa/cse/valid/outputs/
         gridcapa|gridcapa|/data/gridcapa/swe/btcc/
@@ -60,10 +58,8 @@ services:
         gridcapa|gridcapa|/data/gridcapa/core/valid/outputs/
         gridcapa|gridcapa|/data/gridcapa/cse/export/d2cc/outputs/
         gridcapa|gridcapa|/data/gridcapa/cse/export/idcc/outputs/
-        gridcapa|gridcapa|/data/gridcapa/cse/import/d2cc/outputs/
         gridcapa|gridcapa|/data/gridcapa/cse/import_ec/d2cc/outputs/
         gridcapa|gridcapa|/data/gridcapa/cse/import_ec/idcc/outputs/
-        gridcapa|gridcapa|/data/gridcapa/cse/import/idcc/outputs/
         gridcapa|gridcapa|/data/gridcapa/cse/valid/outputs/cia/
         gridcapa|gridcapa|/data/gridcapa/swe/btcc/outputs/
         gridcapa|gridcapa|/data/gridcapa/swe/d2cc/outputs/
