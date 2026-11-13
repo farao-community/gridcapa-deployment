@@ -72,11 +72,11 @@ spec:
             allowPrivilegeEscalation: false
           resources:
             requests:
-              cpu: "8.0"
-              memory: "20Gi"
+              cpu: "14.0"
+              memory: "40Gi"
             limits:
-              cpu: "8.0"
-              memory: "30Gi"
+              cpu: "16.0"
+              memory: "55Gi"
           livenessProbe:
             httpGet:
               path: /actuator/health

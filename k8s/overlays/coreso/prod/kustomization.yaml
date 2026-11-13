@@ -60,15 +60,6 @@ patches:
                 operator: "Equal"
                 value: "true"
                 effect: "NoSchedule"
-            containers:
-              - name: rao-runner
-                resources:
-                  requests:
-                    cpu: "14.0"
-                    memory: "30Gi"
-                  limits:
-                    cpu: "16.0"
-                    memory: "40Gi"
             imagePullSecrets:
               - name: dockerhub-acr-secret
   - patch: |-
