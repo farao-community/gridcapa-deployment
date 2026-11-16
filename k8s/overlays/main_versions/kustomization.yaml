@@ -46,7 +46,7 @@ images:
     newTag: 0.15.0
   - name: gridcapa-rao-runner
     newName: docker.io/farao/gridcapa-rao-runner-with-xpress
-    newTag: v1.47.0-SEM-SNAPSHOT
+    newTag: v1.46.1-CELTIC-SNAPSHOT-261116
   - name: gridcapa-rao-failure-handler
     newName: docker.io/farao/gridcapa-rao-failure-handler
     newTag: v1.6.0
@@ -74,13 +74,13 @@ images:
     newTag: v1.9.0
   - name: gridcapa-ce-cc-runner
     newName: docker.io/farao/gridcapa-core-cc
-    newTag: v1.29.0-CELTIC-SNAPSHOT-3 # To upgrade?
+    newTag: v1.29.1-CELTIC-SNAPSHOT-261116
   - name: gridcapa-ce-cc-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.40.0
   - name: gridcapa-ce-cc-post-processing
     newName: docker.io/farao/gridcapa-core-cc-post-processing
-    newTag: v1.25.0-CE-SNAPSHOT # To upgrade?
+    newTag: v1.25.1-CE-SNAPSHOT-261116
     # CELTIC CC
   - name: gridcapa-celtic-cc-input-data-bridge
     newName: docker.io/farao/gridcapa-core-cc-data-bridge
@@ -96,13 +96,13 @@ images:
     newTag: v1.9.0
   - name: gridcapa-celtic-cc-runner
     newName: docker.io/farao/gridcapa-core-cc
-    newTag: v1.29.0-CELTIC-SNAPSHOT-3 # To upgrade?
+    newTag: v1.29.1-CELTIC-SNAPSHOT-261116
   - name: gridcapa-celtic-cc-task-manager
     newName: docker.io/farao/gridcapa-task-manager
     newTag: v1.40.0
   - name: gridcapa-celtic-cc-post-processing
     newName: docker.io/farao/gridcapa-core-cc-post-processing
-    newTag: v1.25.0-CELTIC-SNAPSHOT-3 # To upgrade?
+    newTag: v1.25.1-CELTIC-SNAPSHOT-261116
     # Core CC
   - name: gridcapa-core-cc-input-data-bridge
     newName: docker.io/farao/gridcapa-core-cc-data-bridge
