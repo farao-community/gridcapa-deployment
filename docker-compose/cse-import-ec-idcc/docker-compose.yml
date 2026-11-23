@@ -7,6 +7,8 @@ services:
       - ./config/cse-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
     networks:
       - gridcapa
+    ports:
+      - "8080:80"
 
   cse-import-ec-idcc-data-bridge:
     image: farao/gridcapa-data-bridge:latest

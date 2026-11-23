@@ -7,6 +7,8 @@ services:
       - ./config/ce-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
     networks:
       - gridcapa
+    ports:
+      - "8080:80"
 
   ce-cc-data-bridge:
     image: farao/gridcapa-core-cc-data-bridge:latest
