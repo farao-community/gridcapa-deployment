@@ -7,6 +7,8 @@ services:
       - ./config/core-process-metadata.json:/usr/local/apache2/htdocs/gridcapa/process-metadata.json:Z
     networks:
       - gridcapa
+    ports:
+      - "8080:80"
 
   core-valid-day-ahead-conservative-data-bridge:
     image: farao/gridcapa-data-bridge:latest
